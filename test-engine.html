@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>RCPSG — Engine Tests</title>
+  <style>
+    body { font-family: monospace; background:#0a0a1a; color:#eee; padding:20px; }
+    .pass { color:#44ff66; }
+    .fail { color:#ff4444; font-weight:bold; }
+    h2 { margin-top: 18px; color:#5577ff; }
+  </style>
+</head>
+<body>
+  <h1>RCPSG Engine Tests</h1>
+  <div id="out"></div>
+
+  <script src="js/engine/state.js"></script>
+  <script src="js/engine/battle.js"></script>
+  <script src="js/engine/crisis.js"></script>
+  <script src="content/stub.js"></script>
+  <script>
+    const out = document.getElementById('out');
+    let passed = 0, failed = 0;
+    function check(name, cond, detail = '') {
+      const ok = !!cond;
+      if (ok) passed++; else failed++;
+      out.innerHTML += `<div class="${ok ? 'pass' : 'fail'}">${ok ? '✓' : '✗'} ${name}${detail ? ' — ' + detail : ''}</div>`;
+    }
+    function section(name) { out.innerHTML += `<h2>${name}</h2>`; }
+
+    // ─── State load/save ────────────────────────────────────────
+    section('State load/save');
+    State.reset();
+    let s = State.load();
+    check('default xp = 0', s.xp === 0);
+    check('default level = 1', s.level === 1);
+    check('default maxHp = 80', s.maxHp === 80);
+    check('default gold = 0', s.gold === 0);
+    s.xp = 999; State.save(s);
+    const s2 = State.load();
+    check('persisted xp', s2.xp === 999);
+
+    // ─── Level math ─────────────────────────────────────────────
+    section('Level math');
+    check('lvl 1 at xp 0',     State.levelFromXp(0)   === 1);
+    check('lvl 1 at xp 249',   State.levelFromXp(249) === 1);
+    check('lvl 2 at xp 250',   State.levelFromXp(250) === 2);
+    check('lvl 5 at xp 1800',  State.levelFromXp(1800)=== 5);
+    check('lvl 10 at xp 12000',State.levelFromXp(12000)===10);
+    check('lvl 10 at xp 99999',State.levelFromXp(99999)===10);
+    check('title lvl 1 Student RT', State.titleForLevel(1) === 'Student RT');
+    check('title lvl 10 RT Director', State.titleForLevel(10) === 'RT Director');
+    check('maxHp lvl 1 = 80',  State.maxHpForLevel(1) === 80);
+    check('maxHp lvl 10 = 90', State.maxHpForLevel(10) === 90);
+
+    // ─── addXp ──────────────────────────────────────────────────
+    section('addXp');
+    State.reset(); s = State.load();
+    let r = State.addXp(s, 100);
+    check('no level up at 100xp', !r.leveledUp);
+    check('xp = 100', s.xp === 100);
+    r = State.addXp(s, 200);
+    check('level up at 300xp', r.leveledUp && s.level === 2);
+    check('maxHp now 81', s.maxHp === 81);
+    r = State.addXp(s, 100, { doubleActive: true });
+    check('double xp doubles', r.gained === 200 && s.xp === 500);
+
+    // ─── Streak ────────────────────────────────────────────────
+    section('Streak');
+    State.reset(); s = State.load();
+    State.tickStreakForDailyComplete(s);
+    check('streak = 1 after first', s.streak.count === 1);
+    // Simulate yesterday played, then today
+    s.streak.lastPlayed = new Date(Date.now() - 86400000).toISOString().slice(0,10);
+    s.streak.count = 5;
+    State.tickStreakForDailyComplete(s);
+    check('streak = 6 (consecutive)', s.streak.count === 6);
+    check('streak bonus xp = 30', State.streakBonusXp(s) === 30);
+    // Gap of 2 with no shield → reset
+    s.streak.lastPlayed = new Date(Date.now() - 2*86400000).toISOString().slice(0,10);
+    s.streak.count = 5; s.streak.shieldUsed = false;
+    State.tickStreakForDailyComplete(s);
+    check('streak resets after 2-day gap (no shield)', s.streak.count === 1);
+    // Gap of 2 with streak >= 7 and shield available → keep streak
+    s.streak.lastPlayed = new Date(Date.now() - 2*86400000).toISOString().slice(0,10);
+    s.streak.count = 10; s.streak.shieldUsed = false;
+    State.tickStreakForDailyComplete(s);
+    check('streak shield protects', s.streak.count === 10 && s.streak.shieldUsed === true);
+
+    // ─── Inventory ────────────────────────────────────────────
+    section('Inventory');
+    State.reset(); s = State.load();
+    State.addItem(s, 'healthPotion', 2);
+    check('add 2 potions', s.inventory.healthPotion === 2);
+    check('consume succeeds', State.consumeItem(s, 'healthPotion') === true);
+    check('count decrements', s.inventory.healthPotion === 1);
+    State.consumeItem(s, 'healthPotion');
+    check('consume below 0 returns false', State.consumeItem(s, 'healthPotion') === false);
+
+    // ─── Equipped ────────────────────────────────────────────
+    section('Equipped');
+    State.reset(); s = State.load();
+    State.addItem(s, 'healthPotion', 2);
+    State.addItem(s, 'shieldRune', 1);
+    State.setEquipped(s, ['healthPotion', 'shieldRune', 'reviveCharm']);
+    check('equipped filters out items with 0 count', s.equipped.length === 2);
+    check('equipped contains potion', s.equipped.includes('healthPotion'));
+
+    // ─── Daily challenge ────────────────────────────────────
+    section('Daily challenge');
+    State.reset(); s = State.load();
+    const candidates = [
+      { id: 'copd', name: 'Blue Bloater', course: 'rcp103' },
+      { id: 'asthma', name: 'Hyperresponsive', course: 'rcp103' },
+    ];
+    State.ensureDailyChallenge(s, candidates);
+    check('daily set today', s.dailyChallenge.date === State.isoToday());
+    check('daily has bossId', !!s.dailyChallenge.bossId);
+    check('daily available', State.isDailyAvailable(s));
+    s.dailyChallenge.completed = true;
+    check('daily not available when completed', !State.isDailyAvailable(s));
+
+    // ─── Battle ────────────────────────────────────────────
+    section('Battle');
+    const fakeQs = [
+      { id:'a', topic:'x', course:'rcp103', q:'A?', choices:['1','2','3','4'], correct:0, explanation:'' },
+      { id:'b', topic:'x', course:'rcp103', q:'B?', choices:['1','2','3','4'], correct:1, explanation:'' },
+      { id:'c', topic:'x', course:'rcp103', q:'C?', choices:['1','2','3','4'], correct:2, explanation:'' },
+      { id:'d', topic:'x', course:'rcp103', q:'D?', choices:['1','2','3','4'], correct:3, explanation:'' },
+      { id:'e', topic:'x', course:'rcp103', q:'E?', choices:['1','2','3','4'], correct:0, explanation:'' },
+      { id:'f', topic:'x', course:'rcp103', q:'F?', choices:['1','2','3','4'], correct:1, explanation:'' },
+      { id:'g', topic:'x', course:'rcp103', q:'G?', choices:['1','2','3','4'], correct:2, explanation:'' },
+      { id:'h', topic:'x', course:'rcp103', q:'H?', choices:['1','2','3','4'], correct:3, explanation:'' },
+      { id:'i', topic:'x', course:'rcp103', q:'I?', choices:['1','2','3','4'], correct:0, explanation:'' },
+      { id:'j', topic:'x', course:'rcp103', q:'J?', choices:['1','2','3','4'], correct:1, explanation:'' },
+    ];
+    const fakeBoss = { id:'x', name:'Test', emoji:'👾', hp:100, course:'rcp103', questionTopics:['x'] };
+    // Force unshuffled order by stubbing Math.random
+    const _r = Math.random; Math.random = () => 0.5;
+
+    let bt = Battle.start({ boss: fakeBoss, playerMaxHp: 80, equipped: [], isDaily: false, questionPool: fakeQs });
+    check('boss start hp 100', bt.bossHp === 100);
+    check('player start hp 80', bt.playerHp === 80);
+    check('10 questions queued', bt.questions.length === 10);
+
+    // Correct answer on q0 (q.correct depends on the shuffled order; just answer per the q)
+    let q = Battle.currentQ(bt);
+    let res = Battle.answer(bt, q.correct);
+    check('correct answer reduces boss hp by 10', res.correct && bt.bossHp === 90);
+
+    // Wrong answer: pick (correct + 1) % 4
+    q = Battle.currentQ(bt);
+    res = Battle.answer(bt, (q.correct + 1) % 4);
+    check('wrong answer reduces player hp by 15', !res.correct && bt.playerHp === 65);
+
+    // Shield rune absorbs next wrong
+    bt = Battle.start({ boss: fakeBoss, playerMaxHp: 80, equipped: ['shieldRune'], isDaily: false, questionPool: fakeQs });
+    Battle.useItem(bt, 'shieldRune');
+    q = Battle.currentQ(bt);
+    res = Battle.answer(bt, (q.correct + 1) % 4);
+    check('shield absorbs wrong, hp unchanged', !res.correct && res.shielded && bt.playerHp === 80);
+
+    // Health potion heals up to 25
+    bt = Battle.start({ boss: fakeBoss, playerMaxHp: 80, equipped: ['healthPotion'], isDaily: false, questionPool: fakeQs });
+    bt.playerHp = 50;
+    const eff = Battle.useItem(bt, 'healthPotion');
+    check('potion heals 25', eff.effect === 'heal' && bt.playerHp === 75);
+
+    // Crit on streak of 3
+    bt = Battle.start({ boss: fakeBoss, playerMaxHp: 80, equipped: [], isDaily: false, questionPool: fakeQs });
+    for (let k = 0; k < 3; k++) { q = Battle.currentQ(bt); Battle.answer(bt, q.correct); }
+    check('3 correct → boss hp 100 - 10 -10 -15 = 65', bt.bossHp === 65);
+
+    // Daily disables items
+    bt = Battle.start({ boss: fakeBoss, playerMaxHp: 80, equipped: ['healthPotion','shieldRune'], isDaily: true, questionPool: fakeQs });
+    check('daily strips items', bt.items.length === 0);
+
+    // Rewards computation
+    bt = Battle.start({ boss: fakeBoss, playerMaxHp: 80, equipped: [], isDaily: false, questionPool: fakeQs });
+    bt.correctCount = 8; bt.outcome = 'victory';
+    const rew = Battle.computeRewards(bt);
+    check('victory rewards: 8*10 +50 = 130 xp', rew.xp === 130);
+    check('victory rewards: 8*5 +100 = 140 gold', rew.gold === 140);
+
+    // Double XP doubles
+    bt = Battle.start({ boss: fakeBoss, playerMaxHp: 80, equipped: ['doubleXpTome'], isDaily: false, questionPool: fakeQs });
+    bt.correctCount = 5; bt.outcome = 'victory';
+    const rew2 = Battle.computeRewards(bt);
+    check('double xp tome doubles', rew2.xp === (5*10 + 50) * 2);
+
+    Math.random = _r;
+
+    // ─── Crisis ────────────────────────────────────────────
+    section('Crisis');
+    const scenario = ALL_SCENARIOS[0];
+    let c = Crisis.start(scenario);
+    check('crisis start hp = startingHp', c.patientHp === scenario.startingHp);
+    check('first decision id matches', c.currentId === scenario.decisions[0].id);
+
+    // Pick the +10 option in first decision (titrate O2)
+    const titrate = scenario.decisions[0].options.findIndex(o => o.hpDelta === 10);
+    let cr = Crisis.choose(c, titrate);
+    check('+10 hp delta applied', cr.hpDelta === 10 && c.patientHp === 70);
+
+    // Pick the +15 option in d2
+    const ac = scenario.decisions[1].options.findIndex(o => o.hpDelta === 15);
+    Crisis.choose(c, ac);
+    check('hp climbs to 85 (cap 60? no, max is startingHp)', c.patientHp === c.patientMaxHp);
+
+    // Pick the +20 option in d3 — should terminate
+    const bipap = scenario.decisions[2].options.findIndex(o => o.hpDelta === 20);
+    cr = Crisis.choose(c, bipap);
+    check('final decision terminates', cr.gameOver === true);
+    check('outcome stabilized', c.outcome === 'stabilized');
+    const rw = Crisis.rewards(c);
+    check('stabilized rewards 100xp/50g', rw.xp === 100 && rw.gold === 50);
+
+    // Bad-path: pick all minus options → coded
+    c = Crisis.start(scenario);
+    Crisis.choose(c, scenario.decisions[0].options.findIndex(o => o.hpDelta === -25));
+    Crisis.choose(c, scenario.decisions[1].options.findIndex(o => o.hpDelta === -15));
+    Crisis.choose(c, scenario.decisions[2].options.findIndex(o => o.hpDelta === -10));
+    check('coded after disasters', c.outcome === 'coded');
+
+    // ─── Summary ────────────────────────────────────────
+    out.innerHTML += `<h2>${failed === 0 ? '✓ ALL PASSED' : '✗ ' + failed + ' FAILED'} (${passed} passed)</h2>`;
+  </script>
+</body>
+</html>
