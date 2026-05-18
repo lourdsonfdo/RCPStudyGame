@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>RCP Study Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main id="app">
+    <!-- Each screen is a <section> with a data-screen id. app.js toggles .active. -->
+    <section data-screen="home"           class="screen active"></section>
+    <section data-screen="course-mode"    class="screen"></section>
+    <section data-screen="boss-select"    class="screen"></section>
+    <section data-screen="prep-camp"      class="screen"></section>
+    <section data-screen="training"       class="screen"></section>
+    <section data-screen="battle"         class="screen"></section>
+    <section data-screen="results"        class="screen"></section>
+    <section data-screen="scenario-select" class="screen"></section>
+    <section data-screen="crisis"         class="screen"></section>
+    <section data-screen="outcome"        class="screen"></section>
+    <section data-screen="settings"       class="screen"></section>
+    <section data-screen="level-up"       class="screen overlay"></section>
+  </main>
+
+  <!-- Engine -->
+  <script src="js/engine/state.js"></script>
+  <script src="js/engine/battle.js" defer></script>
+  <script src="js/engine/crisis.js" defer></script>
+  <script src="js/engine/shop.js"   defer></script>
+
+  <!-- Content (stub initially; replaced by full content later) -->
+  <script src="content/stub.js"           defer></script>
+  <script src="content/questions.js"      defer></script>
+  <script src="content/rcp103-bosses.js"  defer></script>
+  <script src="content/rcp104-bosses.js"  defer></script>
+  <script src="content/rcp103-scenarios.js" defer></script>
+  <script src="content/rcp104-scenarios.js" defer></script>
+
+  <!-- Screens -->
+  <script src="js/screens/home.js"            defer></script>
+  <script src="js/screens/course-mode.js"     defer></script>
+  <script src="js/screens/boss-select.js"     defer></script>
+  <script src="js/screens/prep-camp.js"       defer></script>
+  <script src="js/screens/training.js"        defer></script>
+  <script src="js/screens/battle.js"          defer></script>
+  <script src="js/screens/results.js"         defer></script>
+  <script src="js/screens/scenario-select.js" defer></script>
+  <script src="js/screens/crisis.js"          defer></script>
+  <script src="js/screens/outcome.js"         defer></script>
+  <script src="js/screens/settings.js"        defer></script>
+  <script src="js/screens/level-up.js"        defer></script>
+
+  <!-- App router (boots last) -->
+  <script src="js/app.js" defer></script>
+</body>
+</html>

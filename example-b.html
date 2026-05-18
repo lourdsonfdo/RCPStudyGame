@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Approach B — Canvas / Phaser-style</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #000; display: flex; justify-content: center; overflow: hidden; }
+    canvas { display: block; image-rendering: pixelated; }
+    .tag {
+      position: fixed; top: 6px; left: 50%; transform: translateX(-50%);
+      font: 10px/1 monospace; color: #555; background: #000;
+      padding: 4px 8px; border: 1px dashed #333; z-index: 10; white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+<div class="tag">APPROACH B · CANVAS (PHASER-STYLE)</div>
+<canvas id="c"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+const W = Math.min(window.innerWidth, 430);
+const H = window.innerHeight;
+canvas.width  = W;
+canvas.height = H;
+
+// ── palette ──────────────────────────────────────────────────────────
+const C = {
+  bg:      '#0a0a1a',
+  panel:   '#131326',
+  border:  '#2a2a4a',
+  hpGreen: '#33dd55',
+  hpRed:   '#ee3322',
+  hpTrack: '#222240',
+  qBorder: '#3355ff',
+  qBg:     '#111128',
+  btnBg:   '#131326',
+  btnBdr:  '#333355',
+  correct: '#44ff66',
+  wrong:   '#ff4444',
+  xpFill:  '#66dd22',
+  gold:    '#ffd700',
+  orange:  '#ff9900',
+  white:   '#eeeeee',
+  dim:     '#888888',
+  dark:    '#555555',
+};
+
+// ── pixel font helper ─────────────────────────────────────────────────
+function px(size, weight = '') {
+  return `${weight} ${size}px "Courier New", monospace`;
+}
+
+// ── game state ────────────────────────────────────────────────────────
+let t = 0;                          // frame counter
+let bossY = 0;                      // boss bob offset
+let bossAngle = 0;
+
+// answer states: null | 'correct' | 'wrong'
+const btnState = [null, 'correct', null, null];
+
+// click detection rects  { x, y, w, h, idx }
+const btnRects = [];
+
+// ── layout constants (proportional to W) ─────────────────────────────
+const PAD  = 12;
+const ROW  = W - PAD * 2;
+
+// ── draw helpers ─────────────────────────────────────────────────────
+function rect(x, y, w, h, fill, stroke, lw = 2) {
+  ctx.fillStyle = fill;
+  ctx.fillRect(x, y, w, h);
+  if (stroke) {
+    ctx.strokeStyle = stroke;
+    ctx.lineWidth = lw;
+    ctx.strokeRect(x + lw / 2, y + lw / 2, w - lw, h - lw);
+  }
+}
+
+function text(str, x, y, color, size, align = 'left') {
+  ctx.fillStyle = color;
+  ctx.font = px(size);
+  ctx.textAlign = align;
+  ctx.textBaseline = 'middle';
+  ctx.fillText(str, x, y);
+}
+
+function pixelGrid(x, y, w, h) {
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(x, y, w, h);
+  ctx.clip();
+  ctx.strokeStyle = 'rgba(40,40,80,0.28)';
+  ctx.lineWidth = 1;
+  const CELL = 16;
+  for (let gx = x; gx <= x + w; gx += CELL) {
+    ctx.beginPath(); ctx.moveTo(gx, y); ctx.lineTo(gx, y + h); ctx.stroke();
+  }
+  for (let gy = y; gy <= y + h; gy += CELL) {
+    ctx.beginPath(); ctx.moveTo(x, gy); ctx.lineTo(x + w, gy); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function hpBar(x, y, w, h, pct, fill) {
+  rect(x, y, w, h, C.hpTrack, C.border, 1);
+  rect(x + 1, y + 1, Math.max(0, (w - 2) * pct), h - 2, fill, null);
+}
+
+function answerBtn(x, y, w, h, key, label, state, idx) {
+  let bg  = C.btnBg;
+  let bdr = C.btnBdr;
+  let fg  = '#bbbbbb';
+  let kfg = '#5577ff';
+  if (state === 'correct') { bg = '#0d2010'; bdr = C.correct; fg = C.correct; kfg = C.correct; }
+  if (state === 'wrong')   { bg = '#200d0d'; bdr = C.wrong;   fg = C.wrong;   kfg = C.wrong; }
+
+  rect(x, y, w, h, bg, bdr, 2);
+
+  // key circle
+  ctx.fillStyle = kfg;
+  ctx.font = px(8, 'bold');
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(key, x + 14, y + h / 2);
+
+  // label
+  ctx.fillStyle = fg;
+  ctx.font = px(9);
+  ctx.fillText(label, x + 34, y + h / 2);
+
+  // store hit rect
+  btnRects[idx] = { x, y, w, h, idx };
+}
+
+// ── main draw ─────────────────────────────────────────────────────────
+function draw() {
+  t++;
+  bossY    = Math.sin(t * 0.035) * 8;
+  bossAngle = Math.sin(t * 0.035) * 0.06;
+
+  // background
+  rect(0, 0, W, H, C.bg, null);
+
+  let cy = 20; // cursor y
+
+  // ── approach label ────────────────────────────────────────────────
+  cy += 20; // space for fixed .tag div
+
+  // ── top bar ───────────────────────────────────────────────────────
+  const TB_H = 32;
+  rect(PAD, cy, ROW, TB_H, C.panel, C.border);
+  text('⚡ BOSS BATTLE', PAD + 10, cy + TB_H / 2, C.orange, 7);
+  // course badge
+  const badgeW = 58;
+  rect(W / 2 - badgeW / 2, cy + 6, badgeW, TB_H - 12, '#22cc44', null);
+  text('RCP 104', W / 2, cy + TB_H / 2, '#000000', 7, 'center');
+  text('CH 11', W - PAD - 10, cy + TB_H / 2, C.dark, 7, 'right');
+  cy += TB_H + 8;
+
+  // ── HP bars ───────────────────────────────────────────────────────
+  const HP_H = 54;
+  rect(PAD, cy, ROW, HP_H, C.panel, C.border);
+  const barX = PAD + 60;
+  const barW = ROW - 70 - 30;
+
+  text('PLAYER', PAD + 10, cy + 17, '#aaaaaa', 6);
+  hpBar(barX, cy + 10, barW, 14, 0.70, C.hpGreen);
+  text('70', barX + barW + 6, cy + 17, C.dim, 6);
+
+  text('BOSS', PAD + 10, cy + 38, '#aaaaaa', 6);
+  hpBar(barX, cy + 31, barW, 14, 0.38, C.hpRed);
+  text('38', barX + barW + 6, cy + 38, C.dim, 6);
+  cy += HP_H + 8;
+
+  // ── arena ─────────────────────────────────────────────────────────
+  const ARENA_H = 160;
+  rect(PAD, cy, ROW, ARENA_H, '#0e0e22', C.border);
+  pixelGrid(PAD, cy, ROW, ARENA_H);
+
+  // boss sprite (large emoji on canvas)
+  ctx.save();
+  ctx.translate(W / 2, cy + 72 + bossY);
+  ctx.rotate(bossAngle);
+  ctx.font = '72px serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.shadowColor = '#ff4444';
+  ctx.shadowBlur = 20;
+  ctx.fillText('🧪', 0, 0);
+  ctx.restore();
+
+  text('CORTICOSTEROID BOSS', W / 2, cy + ARENA_H - 26, '#ff6666', 8, 'center');
+  text('CHAPTER 11 · ANTI-INFLAMMATORY', W / 2, cy + ARENA_H - 10, C.dark, 6, 'center');
+  cy += ARENA_H + 8;
+
+  // ── question box ──────────────────────────────────────────────────
+  const Q_H = 70;
+  rect(PAD, cy, ROW, Q_H, C.qBg, C.qBorder);
+  // glow
+  ctx.shadowColor = '#3355ff';
+  ctx.shadowBlur = 10;
+  ctx.strokeStyle = C.qBorder;
+  ctx.lineWidth = 2;
+  ctx.strokeRect(PAD + 1, cy + 1, ROW - 2, Q_H - 2);
+  ctx.shadowBlur = 0;
+
+  text('▸ Q3 / 10', PAD + 12, cy + 14, C.qBorder, 6);
+  text("Pulmicort's generic name is?", PAD + 12, cy + 40, C.white, 10);
+  cy += Q_H + 8;
+
+  // ── answer buttons ────────────────────────────────────────────────
+  const BTN_H = 42;
+  const BTN_GAP = 6;
+  const labels = ['Fluticasone', 'Budesonide ✓', 'Beclomethasone', 'Mometasone'];
+  const keys   = ['A', 'B', 'C', 'D'];
+  for (let i = 0; i < 4; i++) {
+    answerBtn(PAD, cy, ROW, BTN_H, keys[i], labels[i], btnState[i], i);
+    cy += BTN_H + BTN_GAP;
+  }
+  cy += 2;
+
+  // ── xp bar ────────────────────────────────────────────────────────
+  const XP_H = 48;
+  rect(PAD, cy, ROW, XP_H, C.panel, C.border);
+  text('★ LVL 3 · INTERN RT', PAD + 10, cy + 14, C.gold, 7);
+  text('🔥 ×4 STREAK', W - PAD - 10, cy + 14, C.orange, 7, 'right');
+  hpBar(PAD + 8, cy + 26, ROW - 16, 10, 0.45, C.xpFill);
+  text('450 / 1000 XP', W - PAD - 10, cy + 42, C.dark, 6, 'right');
+}
+
+// ── click / tap ───────────────────────────────────────────────────────
+canvas.addEventListener('click', e => {
+  const r = canvas.getBoundingClientRect();
+  const mx = e.clientX - r.left;
+  const my = e.clientY - r.top;
+  for (const b of btnRects) {
+    if (b && mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h) {
+      if (b.idx === 1) btnState[b.idx] = 'correct';
+      else btnState[b.idx] = 'wrong';
+    }
+  }
+});
+
+// ── loop ──────────────────────────────────────────────────────────────
+function loop() {
+  draw();
+  requestAnimationFrame(loop);
+}
+loop();
+</script>
+</body>
+</html>
