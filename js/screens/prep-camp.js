@@ -25,7 +25,7 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
       </div>
 
       <div class="arena" style="min-height: 150px;">
-        <div class="boss-emoji">${boss.emoji}</div>
+        <div class="boss-portrait">${(window.BOSS_SPRITES && window.BOSS_SPRITES[boss.id]) || `<div class="boss-emoji">${boss.emoji}</div>`}</div>
         <div class="boss-name">${boss.name}</div>
         <div class="boss-sub">${boss.description || ''}</div>
       </div>

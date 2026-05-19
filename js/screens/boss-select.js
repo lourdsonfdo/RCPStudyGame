@@ -29,7 +29,13 @@ App.registerScreen('boss-select', ({ root, state, ctx }) => {
         const defeated = state.defeatedBosses.includes(b.id);
         return `
           <div class="tile ${unlocked ? '' : 'locked'} ${defeated ? 'defeated' : ''}" data-boss-id="${b.id}">
-            <div class="tile-emoji">${unlocked ? b.emoji : '🔒'}</div>
+            <div class="tile-emoji">${
+              !unlocked
+                ? '🔒'
+                : (window.BOSS_SPRITES && window.BOSS_SPRITES[b.id])
+                  ? `<div class="boss-portrait-sm">${window.BOSS_SPRITES[b.id]}</div>`
+                  : b.emoji
+            }</div>
             <div class="tile-name">${unlocked ? b.name : '???'}</div>
             <div class="tile-sub">${unlocked ? (b.description || '') : 'LOCKED'}</div>
             ${defeated ? '<div class="tile-badge">✓ DEFEATED</div>' : ''}

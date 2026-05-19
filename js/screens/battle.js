@@ -59,7 +59,7 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
       </div>
 
       <div class="arena" id="arena">
-        <div class="boss-emoji">${boss.emoji}</div>
+        <div class="boss-portrait" id="boss-portrait">${(window.BOSS_SPRITES && window.BOSS_SPRITES[boss.id]) || `<div class="boss-emoji">${boss.emoji}</div>`}</div>
         <div class="boss-name">${boss.name}</div>
         <div class="boss-sub">${boss.description || ''}</div>
       </div>
