@@ -77,13 +77,19 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
         `).join('')}
       </div>
 
-      ${session.items.length ? `
+      ${(() => {
+        // Only show items the player can manually trigger.
+        // reviveCharm and doubleXpTome auto-activate — they're shown as passive badges, not buttons.
+        const active  = session.items.filter(k => ITEM_LABEL[k]);
+        const passive = session.items.filter(k => !ITEM_LABEL[k]);
+        if (!active.length && !passive.length) return '';
+        return `
       <div class="panel" style="display:flex; gap:6px; flex-wrap:wrap;">
         <div class="t-xs t-mute" style="width:100%;">ITEMS</div>
-        ${session.items.map(k => `
-          <button class="item-btn" data-use="${k}">${ITEM_EMOJI[k]} ${ITEM_LABEL[k]}</button>
-        `).join('')}
-      </div>` : ''}
+        ${active.map(k => `<button class="item-btn" data-use="${k}">${ITEM_EMOJI[k]} ${ITEM_LABEL[k]}</button>`).join('')}
+        ${passive.map(k => `<span class="item-btn" style="opacity:.7;cursor:default;">${PASSIVE_EMOJI[k]} ${PASSIVE_LABEL[k]}</span>`).join('')}
+      </div>`;
+      })()}
     `;
 
     // Click answers
@@ -146,8 +152,8 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
   function endBattle() {
     Battle.computeRewards(session);
 
-    // Award rewards
-    const lvlInfo = State.addXp(state, session.xpEarned, { doubleActive: session.doubleXpActive });
+    // Award rewards — computeRewards already applied the doubleXpTome multiplier, so don't double again here
+    const lvlInfo = State.addXp(state, session.xpEarned);
     State.addGold(state, session.goldEarned);
     if (session.outcome === 'victory' && !state.defeatedBosses.includes(boss.id)) {
       state.defeatedBosses.push(boss.id);
@@ -164,5 +170,10 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
   render();
 });
 
+// Manually-activated items (have buttons)
 const ITEM_LABEL = { healthPotion:'Potion', hintScroll:'Hint', shieldRune:'Shield' };
 const ITEM_EMOJI = { healthPotion:'🧪', hintScroll:'🔮', shieldRune:'🛡' };
+
+// Passive items (auto-trigger, shown as badges)
+const PASSIVE_LABEL = { reviveCharm:'Revive Ready', doubleXpTome:'2× XP Active' };
+const PASSIVE_EMOJI = { reviveCharm:'💖', doubleXpTome:'⚡' };

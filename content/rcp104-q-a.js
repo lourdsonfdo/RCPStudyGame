@@ -540,7 +540,7 @@
       course: 'rcp104',
       difficulty: 2,
       q: 'Inhaled Nitric Oxide (NO) is FDA approved for?',
-      choices: ['Adult ARDS','Persistent Pulmonary Hypertension of the Newborn (PPHN)','Asthma exacerbation','COPD','CF'],
+      choices: ['Adult ARDS','Persistent Pulmonary Hypertension of the Newborn (PPHN)','Asthma exacerbation','COPD'],
       correct: 1,
       explanation: 'iNO (INOmax) is approved for PPHN in term/near-term neonates with hypoxic respiratory failure. ARDS use is off-label/investigational.',
     },

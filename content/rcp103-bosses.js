@@ -7,7 +7,7 @@
     { id:'asthma',     name:'The Hyperresponsive',   emoji:'💨', course:'rcp103', description:'Asthma: zones, biphasic, severity',     hp:100, unlockedByDefault:true,  questionTopics:['asthma'] },
     { id:'abg',        name:'The Acid-Base Specter', emoji:'🩸', course:'rcp103', description:'ABG interpretation & anion gap',        hp:100, unlockedByDefault:true,  questionTopics:['abg','acid-base'] },
     { id:'pleural',    name:'Tension Wraith',        emoji:'🫁', course:'rcp103', description:'PTX, effusion, chest tubes',            hp:100, unlockedByDefault:false, questionTopics:['pleural','chest-tubes','flail-chest'] },
-    { id:'infectious', name:'The Consolidation King',emoji:'🦠', course:'rcp103', description:'Pneumonia / TB / fungal',               hp:100, unlockedByDefault:false, questionTopics:['pneumonia','tb','fungal'] },
+    { id:'infectious', name:'The Consolidation King',emoji:'🦠', course:'rcp103', description:'Pneumonia / TB / fungal',               hp:100, unlockedByDefault:false, questionTopics:['infectious','pneumonia','tb','fungal'] },
     { id:'ards',       name:'Hyaline Hydra',         emoji:'💧', course:'rcp103', description:'ARDS — Berlin, P/F, lung-protective',   hp:100, unlockedByDefault:false, questionTopics:['ards'] },
     { id:'ild',        name:'The Honeycomb Husk',    emoji:'🪨', course:'rcp103', description:'ILD, pneumoconioses, IPF',              hp:100, unlockedByDefault:false, questionTopics:['ild','pneumoconioses'] },
     { id:'sleep',      name:'Apnea Phantom',         emoji:'😴', course:'rcp103', description:'OSA / CSA / CPAP / BiPAP',              hp:100, unlockedByDefault:false, questionTopics:['sleep-apnea'] },
