@@ -115,14 +115,47 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
 
     // Visual feedback
     btn.classList.add(res.correct ? 'correct' : 'wrong');
-    if (!res.correct) {
+
+    const arena = root.querySelector('#arena');
+    const bossPortrait = root.querySelector('#boss-portrait');
+
+    if (res.correct) {
+      // Damage number on boss
+      const dmgAmount = res.crit ? 15 : 10;
+      Fx.damageNumber(bossPortrait, '-' + dmgAmount, { crit: res.crit });
+      // Particle burst
+      Fx.particles(bossPortrait, { color: res.crit ? 'gold' : 'green', count: res.crit ? 24 : 14 });
+      // Boss hit reaction
+      Fx.bossHit(bossPortrait);
+      // Streak fire at 3+
+      if (session.streak >= 3) {
+        const qLabel = root.querySelector('.q-label');
+        if (qLabel) Fx.attachFire(qLabel);
+      }
+      // Crit banner
+      if (res.crit) {
+        Fx.banner('CRIT!', 'crit');
+        Fx.shake(2);
+        Fx.flash('rgba(255,200,0,.4)');
+      } else {
+        Fx.shake(1);
+      }
+    } else {
+      // Player took damage
+      if (res.shielded) {
+        Fx.damageNumber(arena, 'BLOCK!', { miss: true });
+        Fx.particles(arena, { color: 'blue', count: 10 });
+        Fx.shake(1);
+      } else {
+        Fx.damageNumber(arena, '-15', {});
+        Fx.particles(arena, { color: 'red', count: 10 });
+        Fx.bossLunge(bossPortrait, 1);
+        Fx.shake(3);
+        Fx.flash('rgba(255,68,68,.45)');
+      }
+      // Highlight correct answer
       const correctBtn = root.querySelectorAll('.ans-btn')[correctIdx];
       if (correctBtn) correctBtn.classList.add('correct');
-      const arena = root.querySelector('#arena');
-      if (arena) arena.classList.add('shake');
-    } else {
-      const arena = root.querySelector('#arena');
-      if (arena) arena.classList.add('flash-red');
     }
 
     // Brief explanation overlay

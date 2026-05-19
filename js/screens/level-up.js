@@ -40,4 +40,11 @@ App.registerScreen('level-up', ({ root, state, ctx }) => {
     if (e.currentTarget !== root) return;
     App.goto(ctx.returnTo || 'home', ctx.returnCtx || {});
   });
+
+  // Juicy entrance
+  setTimeout(() => {
+    Fx.flash('rgba(255,215,0,.45)', 400);
+    const star = root.querySelector('.fanfare');
+    if (star) Fx.particles(star, { color: 'gold', count: 32 });
+  }, 50);
 });

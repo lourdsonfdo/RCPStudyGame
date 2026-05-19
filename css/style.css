@@ -835,3 +835,168 @@ body::after {
   border-radius: 2px;
   cursor: pointer;
 }
+
+/* ============================================================
+   FX ENGINE STYLES — particles, damage numbers, screen flash,
+   shake, fire, banners, boss reactions
+   ============================================================ */
+
+/* Floating damage numbers */
+.fx-dmg {
+  position: fixed;
+  pointer-events: none;
+  z-index: 150;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--gold);
+  text-shadow: 0 0 8px var(--gold), 0 2px 0 #000, 0 -1px 0 #000, 1px 0 0 #000, -1px 0 0 #000;
+  transform: translate(-50%, 0);
+  animation: dmg-rise 1.5s cubic-bezier(.2,.7,.4,1) forwards;
+  letter-spacing: 1px;
+}
+.fx-dmg.crit  { color: #ffff66; font-size: 20px; text-shadow: 0 0 12px #ffff00, 0 0 4px #ff8800, 0 2px 0 #000; }
+.fx-dmg.heal  { color: var(--green); text-shadow: 0 0 8px var(--green), 0 2px 0 #000; }
+.fx-dmg.miss  { color: #999; font-size: 11px; }
+@keyframes dmg-rise {
+  0%   { transform: translate(-50%, 0) scale(0.4); opacity: 0; }
+  15%  { transform: translate(-50%, -8px) scale(1.2); opacity: 1; }
+  30%  { transform: translate(-50%, -16px) scale(1); }
+  100% { transform: translate(-50%, -64px) scale(0.9); opacity: 0; }
+}
+
+/* Particles */
+.fx-particle {
+  position: fixed;
+  width: 6px; height: 6px;
+  pointer-events: none;
+  z-index: 140;
+  border-radius: 1px;
+  animation: particle-fly 0.9s cubic-bezier(.3,.7,.5,1) forwards;
+}
+.fx-particle.fx-gold  { background: var(--gold); box-shadow: 0 0 6px var(--gold); }
+.fx-particle.fx-green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.fx-particle.fx-red   { background: var(--red); box-shadow: 0 0 6px var(--red); }
+.fx-particle.fx-blue  { background: var(--blue-2); box-shadow: 0 0 6px var(--blue-2); }
+.fx-particle.fx-fire  { background: #ff9900; box-shadow: 0 0 8px #ff6600, 0 0 4px #ffcc00; }
+@keyframes particle-fly {
+  0%   { transform: translate(0,0)              scale(1);   opacity: 1; }
+  100% { transform: translate(var(--dx),var(--dy)) scale(0.2); opacity: 0; }
+}
+
+/* Full-screen color flash */
+.fx-flash {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 130;
+  mix-blend-mode: screen;
+  animation: flash-fade 200ms ease-out forwards;
+}
+@keyframes flash-fade {
+  0%   { opacity: 0.55; }
+  100% { opacity: 0;    }
+}
+
+/* Screen shake — 5 intensities */
+@keyframes shake-1 {
+  0%,100% { transform: translate(0,0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, 0); }
+}
+@keyframes shake-2 {
+  0%,100% { transform: translate(0,0); }
+  20% { transform: translate(-3px, 2px); }
+  40% { transform: translate(3px, -2px); }
+  60% { transform: translate(-2px, 1px); }
+  80% { transform: translate(2px, -1px); }
+}
+@keyframes shake-3 {
+  0%,100% { transform: translate(0,0); }
+  15% { transform: translate(-6px, 3px) rotate(-0.4deg); }
+  30% { transform: translate(6px, -3px) rotate(0.4deg); }
+  45% { transform: translate(-4px, 2px); }
+  60% { transform: translate(4px, -2px); }
+  80% { transform: translate(-2px, 1px); }
+}
+@keyframes shake-4 {
+  0%,100% { transform: translate(0,0); }
+  10% { transform: translate(-10px, 4px) rotate(-0.7deg); }
+  25% { transform: translate(10px, -4px) rotate(0.7deg); }
+  40% { transform: translate(-7px, 3px); }
+  60% { transform: translate(7px, -3px); }
+  80% { transform: translate(-3px, 1px); }
+}
+@keyframes shake-5 {
+  0%,100% { transform: translate(0,0); }
+  10% { transform: translate(-14px, 6px) rotate(-1deg); }
+  25% { transform: translate(14px, -6px) rotate(1deg); }
+  40% { transform: translate(-10px, 4px) rotate(-.5deg); }
+  60% { transform: translate(10px, -4px) rotate(.5deg); }
+  80% { transform: translate(-4px, 2px); }
+}
+.fx-shake-1 { animation: shake-1 0.4s ease-in-out; }
+.fx-shake-2 { animation: shake-2 0.5s ease-in-out; }
+.fx-shake-3 { animation: shake-3 0.5s ease-in-out; }
+.fx-shake-4 { animation: shake-4 0.55s ease-in-out; }
+.fx-shake-5 { animation: shake-5 0.6s ease-in-out; }
+
+/* Streak fire — attached to an element via Fx.attachFire(el) */
+.fx-fire {
+  position: absolute;
+  top: -8px; right: -4px;
+  display: inline-flex;
+  pointer-events: none;
+  z-index: 5;
+}
+.fx-fire span {
+  font-size: 14px;
+  animation: fire-flicker 0.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px #ff9900);
+}
+.fx-fire span:nth-child(1) { animation-delay: 0s;   transform: translateX(-2px); }
+.fx-fire span:nth-child(2) { animation-delay: 0.1s; transform: translateY(-3px) scale(1.1); }
+.fx-fire span:nth-child(3) { animation-delay: 0.2s; transform: translateX(2px); }
+@keyframes fire-flicker {
+  0%,100% { transform: translate(var(--fx,0),0) scale(1); }
+  50%     { transform: translate(var(--fx,0),-2px) scale(1.15); }
+}
+
+/* Banner — CRIT! / COMBO! */
+.fx-banner {
+  position: fixed;
+  top: 35%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  z-index: 145;
+  pointer-events: none;
+  font-family: var(--font-pixel);
+  font-size: 22px;
+  letter-spacing: 4px;
+  padding: 8px 14px;
+  animation: banner-burst 0.9s cubic-bezier(.2,1.4,.5,1) forwards;
+}
+.fx-banner-crit  { color: #ffff44; text-shadow: 0 0 14px #ffaa00, 0 0 6px #ff4400, 0 3px 0 #000; }
+.fx-banner-combo { color: #44ff66; text-shadow: 0 0 14px var(--green), 0 3px 0 #000; }
+@keyframes banner-burst {
+  0%   { transform: translate(-50%, -50%) scale(0.4) rotate(-10deg); opacity: 0; }
+  20%  { transform: translate(-50%, -50%) scale(1.4) rotate(4deg);   opacity: 1; }
+  35%  { transform: translate(-50%, -50%) scale(1.1) rotate(0deg); }
+  80%  { transform: translate(-50%, -50%) scale(1)    rotate(0deg);   opacity: 1; }
+  100% { transform: translate(-50%, -70%) scale(0.9)  rotate(0deg);   opacity: 0; }
+}
+
+/* Boss reactions */
+@keyframes lunge {
+  0%   { transform: translateX(0) scale(1); }
+  30%  { transform: translateX(calc(var(--lunge-dir,1) * -16px)) scale(1.1) rotate(calc(var(--lunge-dir,1) * -5deg)); }
+  60%  { transform: translateX(calc(var(--lunge-dir,1) * 6px)) scale(1.05); }
+  100% { transform: translateX(0) scale(1); }
+}
+.boss-portrait.fx-lunge { animation: lunge 0.5s cubic-bezier(.3,.8,.5,1.2); }
+
+@keyframes bosshit {
+  0%   { filter: brightness(1) drop-shadow(0 0 16px var(--red)); transform: scale(1); }
+  20%  { filter: brightness(3) drop-shadow(0 0 24px #fff); transform: scale(0.88); }
+  60%  { filter: brightness(1.4) drop-shadow(0 0 18px var(--red)); transform: scale(1.06); }
+  100% { filter: brightness(1) drop-shadow(0 0 16px var(--red)); transform: scale(1); }
+}
+.boss-portrait.fx-bosshit { animation: bosshit 0.4s ease-out; }
