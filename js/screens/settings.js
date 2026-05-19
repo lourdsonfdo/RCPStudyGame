@@ -40,7 +40,10 @@ App.registerScreen('settings', ({ root, state }) => {
 
   root.querySelector('#reset').addEventListener('click', () => {
     if (!confirm('Erase all XP, gold, items, and progress?')) return;
+    Audio_.stop();
     State.reset();
+    localStorage.removeItem('rcpsg_audio');
+    localStorage.removeItem('rcpsg_music_hinted');
     location.reload();
   });
 });
