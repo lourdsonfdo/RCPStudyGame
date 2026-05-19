@@ -1000,3 +1000,155 @@ body::after {
   100% { filter: brightness(1) drop-shadow(0 0 16px var(--red)); transform: scale(1); }
 }
 .boss-portrait.fx-bosshit { animation: bosshit 0.4s ease-out; }
+
+/* ============================================================
+   ANIMATED ARENA BACKGROUNDS — parallax pixel layers
+   ============================================================ */
+
+/* Base: the .arena already has a static pixel grid via ::before.
+   We layer additional animated elements via inner divs (added by JS). */
+
+.arena-bg {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.arena > * { z-index: 1; }  /* keep boss/text above background layers */
+
+/* Layer 1 — slow drifting "energy clouds" (radial gradients) */
+.arena-bg-clouds {
+  position: absolute; inset: -50%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(85,119,255,.18) 0%, transparent 25%),
+    radial-gradient(circle at 75% 70%, rgba(255,68,68,.14)  0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(170,85,255,.10) 0%, transparent 35%);
+  animation: arena-drift 24s linear infinite;
+  filter: blur(2px);
+}
+@keyframes arena-drift {
+  0%   { transform: translate(0,0)         rotate(0deg); }
+  100% { transform: translate(-25%, 15%)   rotate(360deg); }
+}
+
+/* Layer 2 — fast horizontal scanning beam */
+.arena-bg-beam {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: -30%; width: 30%;
+  background: linear-gradient(90deg, transparent, rgba(85,119,255,.18), transparent);
+  animation: beam-sweep 6s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+@keyframes beam-sweep {
+  0%, 100% { left: -30%; }
+  50%      { left: 110%; }
+}
+
+/* Layer 3 — floating pixel motes (small dots that drift up) */
+.arena-mote {
+  position: absolute;
+  width: 3px; height: 3px;
+  background: var(--blue-2);
+  box-shadow: 0 0 4px var(--blue-2);
+  border-radius: 50%;
+  animation: mote-rise linear infinite;
+  opacity: 0.7;
+}
+.arena-mote.m-green { background: var(--green); box-shadow: 0 0 4px var(--green); }
+.arena-mote.m-gold  { background: var(--gold);  box-shadow: 0 0 4px var(--gold); }
+.arena-mote.m-red   { background: var(--red);   box-shadow: 0 0 4px var(--red); }
+@keyframes mote-rise {
+  0%   { transform: translateY(110%) scale(0.6); opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.8; }
+  100% { transform: translateY(-20%) scale(1);   opacity: 0; }
+}
+
+/* Battle-arena specific: red/orange palette */
+.arena.arena-battle .arena-bg-clouds {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,68,68,.20)  0%, transparent 25%),
+    radial-gradient(circle at 75% 70%, rgba(255,153,0,.15)  0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(204,34,34,.10)  0%, transparent 35%);
+}
+.arena.arena-battle .arena-bg-beam {
+  background: linear-gradient(90deg, transparent, rgba(255,68,68,.22), transparent);
+}
+
+/* Crisis-arena specific: blue/teal palette (medical) */
+.arena.arena-crisis .arena-bg-clouds {
+  background:
+    radial-gradient(circle at 30% 40%, rgba(68,255,102,.16) 0%, transparent 25%),
+    radial-gradient(circle at 70% 60%, rgba(85,119,255,.18) 0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(34,204,68,.10)  0%, transparent 35%);
+}
+.arena.arena-crisis .arena-bg-beam {
+  background: linear-gradient(90deg, transparent, rgba(68,255,102,.20), transparent);
+}
+
+/* Victory-arena: gold/green palette */
+.arena.arena-victory .arena-bg-clouds {
+  background:
+    radial-gradient(circle at 30% 40%, rgba(255,215,0,.22) 0%, transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(68,255,102,.18) 0%, transparent 30%);
+}
+
+/* Defeat-arena: dark/purple palette */
+.arena.arena-defeat .arena-bg-clouds {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(170,85,255,.18) 0%, transparent 35%),
+    radial-gradient(circle at 30% 60%, rgba(85,85,85,.20)   0%, transparent 30%);
+}
+.arena.arena-defeat .arena-bg-beam { opacity: 0; }
+
+
+/* ============================================================
+   SCREEN TRANSITIONS — pixel dissolve when changing screens
+   ============================================================ */
+
+.screen-transition {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 250;
+  display: grid;
+  /* 16-column × 24-row pixel grid; each cell fades in then out */
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows:    repeat(24, 1fr);
+  gap: 0;
+}
+.screen-transition .pixel {
+  background: #0a0a1a;
+  opacity: 0;
+  animation: pixel-in 0.25s ease-in forwards;
+}
+.screen-transition.out .pixel {
+  animation: pixel-out 0.25s ease-out forwards;
+}
+@keyframes pixel-in  { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+@keyframes pixel-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0); } }
+
+
+/* ============================================================
+   HOME SCREEN AMBIENT — floating energy orbs
+   ============================================================ */
+.home-orb {
+  position: fixed;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  animation: orb-float linear infinite;
+}
+.home-orb.h1 { background: var(--blue-2); box-shadow: 0 0 12px var(--blue-2); }
+.home-orb.h2 { background: var(--green);  box-shadow: 0 0 12px var(--green); }
+.home-orb.h3 { background: var(--gold);   box-shadow: 0 0 12px var(--gold); }
+.home-orb.h4 { background: var(--purple); box-shadow: 0 0 12px var(--purple); }
+@keyframes orb-float {
+  0%   { transform: translate(0,100vh) scale(0.4); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.6; }
+  100% { transform: translate(var(--ox,0), -10vh) scale(1); opacity: 0; }
+}

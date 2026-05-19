@@ -47,6 +47,9 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
       <button class="btn btn-block btn-primary" data-go="fight">⚔️ ENTER BOSS FIGHT</button>
     `;
 
+    const arenaEl = root.querySelector('.arena');
+    if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: 'battle' });
+
     root.querySelector('[data-back]').addEventListener('click', () => App.goto('boss-select', { course: ctx.course }));
     root.querySelectorAll('[data-go]').forEach(btn => {
       btn.addEventListener('click', () => {

@@ -32,6 +32,9 @@ App.registerScreen('results', ({ root, state, ctx }) => {
     <button class="btn btn-block" data-action="home">🏠 HOME</button>
   `;
 
+  const arenaEl = root.querySelector('.arena');
+  if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: s.outcome === 'victory' ? 'victory' : 'defeat' });
+
   // Show level-up overlay if applicable
   if (ctx.lvlInfo.leveledUp) {
     setTimeout(() => App.goto('level-up', { newLevel: ctx.lvlInfo.newLevel, returnTo: 'results', returnCtx: ctx }), 400);

@@ -13,6 +13,13 @@
   function $screen(id) { return document.querySelector(`[data-screen="${id}"]`); }
 
   function goto(screenId, ctx = {}) {
+    // Skip transition on initial home boot (no current screen to fade FROM)
+    const isInitial = !document.querySelector('.screen.active') || (currentScreen === screenId);
+    if (isInitial) { _doSwitch(screenId, ctx); return; }
+    _transition(() => _doSwitch(screenId, ctx));
+  }
+
+  function _doSwitch(screenId, ctx) {
     routeCtx = { ...ctx };
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const el = $screen(screenId);
@@ -20,10 +27,40 @@
     el.classList.add('active');
     currentScreen = screenId;
     window.scrollTo(0, 0);
-
     const init = screenInits[screenId];
     if (init) init({ root: el, state, ctx: routeCtx });
     else el.innerHTML = `<div class="panel t-center t-mute">Screen <b>${screenId}</b> not implemented.</div>`;
+  }
+
+  function _transition(midpointFn) {
+    // Build pixel grid overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'screen-transition';
+    const cells = 16 * 24;
+    // Randomize delay per cell so dissolve looks pixel-art-y
+    const order = Array.from({ length: cells }, (_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    for (let i = 0; i < cells; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'pixel';
+      cell.style.animationDelay = (order[i] / cells * 0.15) + 's';
+      overlay.appendChild(cell);
+    }
+    document.body.appendChild(overlay);
+
+    // After fade-in completes, switch screens then fade out
+    setTimeout(() => {
+      midpointFn();
+      overlay.classList.add('out');
+      // Reverse delays for fade-out so it doesn't all clear at once
+      overlay.querySelectorAll('.pixel').forEach((c, i) => {
+        c.style.animationDelay = (order[i] / cells * 0.15) + 's';
+      });
+      setTimeout(() => overlay.remove(), 450);
+    }, 250);
   }
 
   function registerScreen(id, init) { screenInits[id] = init; }
@@ -117,6 +154,8 @@
 
     // Mini-player + first-visit hint
     injectMiniPlayer();
+    // Ambient floating orbs (every screen)
+    injectHomeOrbs();
     if (!localStorage.getItem('rcpsg_music_hinted')) {
       setTimeout(() => {
         toast('🎵 Tap the music icon to pick a soundtrack');
@@ -124,6 +163,20 @@
       }, 1200);
     }
   });
+
+  function injectHomeOrbs() {
+    if (document.querySelector('.home-orb')) return;
+    const colors = ['h1','h2','h3','h4'];
+    for (let i = 0; i < 7; i++) {
+      const o = document.createElement('div');
+      o.className = 'home-orb ' + colors[i % colors.length];
+      o.style.left = (Math.random() * 100) + '%';
+      o.style.setProperty('--ox', ((Math.random() - 0.5) * 80) + 'vw');
+      o.style.animationDuration = (12 + Math.random() * 12) + 's';
+      o.style.animationDelay = (-Math.random() * 14) + 's';
+      document.body.appendChild(o);
+    }
+  }
 
   // ────────────────────────────  EXPORT  ────────────────────────────
   global.App = { goto, registerScreen, refresh, getState, persist, toast };

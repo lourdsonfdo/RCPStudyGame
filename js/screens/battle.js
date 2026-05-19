@@ -105,6 +105,10 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     root.querySelectorAll('[data-use]').forEach(btn => {
       btn.addEventListener('click', () => useItem(btn.dataset.use));
     });
+
+    // Animated arena background
+    const arenaEl = root.querySelector('#arena');
+    if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: 'battle' });
   }
 
   function handleAnswer(idx, btn) {

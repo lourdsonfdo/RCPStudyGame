@@ -43,6 +43,9 @@ App.registerScreen('crisis', ({ root, state, ctx }) => {
 
       <button class="btn btn-block btn-primary" id="begin">▶ BEGIN ASSESSMENT</button>
     `;
+    const arenaEl = root.querySelector('.arena');
+    if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: 'crisis' });
+
     root.querySelector('[data-back]').addEventListener('click', () => App.goto('scenario-select', { course: ctx.course }));
     root.querySelector('#begin').addEventListener('click', () => { phase = 'decision'; render(); });
   }
