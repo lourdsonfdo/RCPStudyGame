@@ -68,7 +68,8 @@
     el.classList.add('active');
     currentScreen = screenId;
     window.scrollTo(0, 0);
-    applyQuizScaleForScreen(screenId);  // Only active on battle/training
+    applyQuizScaleForScreen(screenId);
+    updateQuickSettingsVisibility(screenId);
     const init = screenInits[screenId];
     if (init) init({ root: el, state, ctx: routeCtx });
     else el.innerHTML = `<div class="panel t-center t-mute">Screen <b>${screenId}</b> not implemented.</div>`;
@@ -183,6 +184,83 @@
     renderMini();
   }
 
+  // ── Quick-settings floating button (active on battle/training/crisis) ──
+  function injectQuickSettings() {
+    if (document.querySelector('.quick-settings-mini')) return;
+    const mini = document.createElement('div');
+    mini.className = 'quick-settings-mini';
+    mini.innerHTML = '<span class="qs-icon">⚙</span><span>TEXT</span>';
+    document.body.appendChild(mini);
+
+    const popover = document.createElement('div');
+    popover.className = 'qs-popover';
+    document.body.appendChild(popover);
+
+    function renderPopover() {
+      const sizes = ['sm','md','lg','xl'];
+      const quizCurr = (state.settings.quizSize || 'md');
+      const globCurr = (state.settings.textSize || 'md');
+      popover.innerHTML = `
+        <div class="qs-section">
+          <div class="qs-section-label">▸ QUIZ TEXT · THIS SCREEN</div>
+          <div class="qs-row">
+            ${sizes.map(k => `<button class="qs-opt ${quizCurr === k ? 'active' : ''}" data-quiz="${k}" data-key="${k}">A</button>`).join('')}
+          </div>
+        </div>
+        <div class="qs-section">
+          <div class="qs-section-label">▸ GLOBAL TEXT</div>
+          <div class="qs-row">
+            ${sizes.map(k => `<button class="qs-opt ${globCurr === k ? 'active' : ''}" data-global="${k}" data-key="${k}">A</button>`).join('')}
+          </div>
+        </div>
+        <button class="qs-jump" data-jump>⚙ FULL SETTINGS →</button>
+      `;
+      popover.querySelectorAll('[data-quiz]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.settings.quizSize = btn.dataset.quiz;
+          State.save(state);
+          applyQuizScaleForScreen(currentScreen);
+          renderPopover();
+          toast('QUIZ TEXT: ' + btn.dataset.quiz.toUpperCase());
+        });
+      });
+      popover.querySelectorAll('[data-global]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.settings.textSize = btn.dataset.global;
+          State.save(state);
+          applyTextSize(btn.dataset.global);
+          renderPopover();
+          toast('GLOBAL TEXT: ' + btn.dataset.global.toUpperCase());
+        });
+      });
+      popover.querySelector('[data-jump]').addEventListener('click', () => {
+        popover.classList.remove('open');
+        goto('settings');
+      });
+    }
+
+    mini.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popover.classList.toggle('open');
+      if (popover.classList.contains('open')) renderPopover();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!popover.classList.contains('open')) return;
+      if (mini.contains(e.target) || popover.contains(e.target)) return;
+      popover.classList.remove('open');
+    });
+  }
+
+  function updateQuickSettingsVisibility(screenId) {
+    const mini = document.querySelector('.quick-settings-mini');
+    const popover = document.querySelector('.qs-popover');
+    if (!mini) return;
+    const show = QUIZ_SCREENS.has(screenId);
+    mini.classList.toggle('show', show);
+    if (!show && popover) popover.classList.remove('open');
+  }
+
   // ── Text-size scale (user-adjustable from settings) ─────────────
   const TEXT_SCALES = { sm: 0.9, md: 1, lg: 1.15, xl: 1.3 };
   function applyTextSize(key) {
@@ -215,6 +293,9 @@
 
     // Mini-player + first-visit hint
     injectMiniPlayer();
+    // Quick-settings (only visible on battle/training/crisis screens)
+    injectQuickSettings();
+    updateQuickSettingsVisibility(currentScreen);
     // Ambient floating orbs (every screen)
     injectHomeOrbs();
     if (!localStorage.getItem('rcpsg_music_hinted')) {

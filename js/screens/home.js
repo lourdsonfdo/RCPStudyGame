@@ -106,6 +106,15 @@ App.registerScreen('home', ({ root, state }) => {
       </div>
     </div>
 
+    <div class="module module-config" data-go="settings">
+      <div class="module-icon-wrap">⚙</div>
+      <div class="module-body">
+        <div class="module-tag">▸ SYSTEM</div>
+        <div class="module-title">SETTINGS</div>
+        <div class="module-meta">TEXT SIZE · TIMER · AUDIO · RESET</div>
+      </div>
+    </div>
+
     <div class="spacer"></div>
 
     <div class="data-stream">
