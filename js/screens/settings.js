@@ -58,6 +58,22 @@ App.registerScreen('settings', ({ root, state }) => {
       ⏱ QUESTION TIMER: ${state.settings.timerOn ? 'ENABLED' : 'DISABLED'}
     </button>
 
+    <div class="hud hud-corners">
+      <span class="br1"></span><span class="br2"></span>
+      <div class="header-strip" style="margin: -14px -16px 12px;">
+        <span><span class="status-dot"></span>TEXT SIZE</span>
+        <span>${ (state.settings.textSize || 'md').toUpperCase() }</span>
+      </div>
+      <div class="text-size-row">
+        ${['sm','md','lg','xl'].map(k => `
+          <button class="text-size-opt ${ (state.settings.textSize || 'md') === k ? 'active' : '' }" data-size="${k}">
+            <span class="ts-letter">A</span>
+            <span class="ts-label">${ {sm:'SMALL', md:'NORMAL', lg:'LARGE', xl:'X-LARGE'}[k] }</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+
     <div class="spacer"></div>
 
     <button class="btn btn-block btn-danger" id="reset">🗑 PURGE ALL DATA</button>
@@ -75,6 +91,17 @@ App.registerScreen('settings', ({ root, state }) => {
     state.settings.timerOn = !state.settings.timerOn;
     State.save(state);
     App.refresh();
+  });
+
+  root.querySelectorAll('[data-size]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const size = btn.dataset.size;
+      state.settings.textSize = size;
+      State.save(state);
+      if (App.applyTextSize) App.applyTextSize(size);
+      App.refresh();
+      App.toast('TEXT SIZE: ' + size.toUpperCase());
+    });
   });
 
   root.querySelector('#reset').addEventListener('click', () => {

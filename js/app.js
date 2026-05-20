@@ -182,9 +182,19 @@
     renderMini();
   }
 
+  // ── Text-size scale (user-adjustable from settings) ─────────────
+  const TEXT_SCALES = { sm: 0.9, md: 1, lg: 1.15, xl: 1.3 };
+  function applyTextSize(key) {
+    const scale = TEXT_SCALES[key] || 1;
+    document.documentElement.style.setProperty('--fs', scale);
+  }
+
   // ────────────────────────────  BOOT  ──────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     state = State.load();
+
+    // Apply persisted text-size scale BEFORE first render so the user sees it immediately
+    applyTextSize(state.settings.textSize || 'md');
 
     // Seed daily challenge if content is available
     if (global.ALL_BOSSES && global.ALL_BOSSES.length) {
@@ -232,5 +242,5 @@
   }
 
   // ────────────────────────────  EXPORT  ────────────────────────────
-  global.App = { goto, back, canGoBack, registerScreen, refresh, getState, persist, toast };
+  global.App = { goto, back, canGoBack, registerScreen, refresh, getState, persist, toast, applyTextSize, TEXT_SCALES };
 })(window);

@@ -1235,3 +1235,116 @@ body::after {
   position: relative;
   display: inline-block;
 }
+
+/* ============================================================
+   FONT-SIZE SCALE — user-adjustable text size
+   Controlled by --fs custom property on :root (set by JS via the
+   settings screen). Default = 1. Sizes: 0.9 / 1 / 1.15 / 1.3.
+   These rules OVERRIDE earlier explicit font-size values via
+   later-in-stylesheet specificity.
+   ============================================================ */
+:root { --fs: 1; }
+
+/* Utility text classes */
+.t-xs   { font-size: calc( 8px * var(--fs)); }
+.t-sm   { font-size: calc( 9px * var(--fs)); }
+.t-md   { font-size: calc(11px * var(--fs)); }
+.t-lg   { font-size: calc(13px * var(--fs)); }
+.t-xl   { font-size: calc(16px * var(--fs)); }
+.t-xxl  { font-size: calc(22px * var(--fs)); }
+
+/* High-readership text (questions, answers, explanations) */
+.q-text       { font-size: calc(13px * var(--fs)); }
+.q-label      { font-size: calc( 8px * var(--fs)); }
+.ans-btn      { font-size: calc(12px * var(--fs)); }
+.ans-key      { font-size: calc(12px * var(--fs)); }
+.explanation  { font-size: calc(10px * var(--fs)); line-height: 1.6; }
+
+/* Menus & cards */
+.module-title { font-size: calc(15px * var(--fs)); }
+.module-meta  { font-size: calc( 8px * var(--fs)); }
+.module-tag   { font-size: calc( 7px * var(--fs)); }
+.case-title   { font-size: calc(14px * var(--fs)); }
+.case-meta    { font-size: calc( 9px * var(--fs)); }
+.case-tag     { font-size: calc( 8px * var(--fs)); }
+.title-main   { font-size: calc(28px * var(--fs)); }
+.title-eyebrow{ font-size: calc( 9px * var(--fs)); }
+.title-sub    { font-size: calc( 9px * var(--fs)); }
+
+/* Stat readouts */
+.vital-value  { font-size: calc(18px * var(--fs)); }
+.vital-label  { font-size: calc( 7px * var(--fs)); }
+.vital-unit   { font-size: calc( 7px * var(--fs)); }
+.xp-header    { font-size: calc(10px * var(--fs)); }
+.xp-sub, .xp-meta { font-size: calc( 8px * var(--fs)); }
+
+/* HP rows */
+.hp-row          { font-size: calc( 9px * var(--fs)); }
+.hp-row .hp-name { font-size: calc( 9px * var(--fs)); }
+.hp-row .hp-val  { font-size: calc(11px * var(--fs)); }
+
+/* Tiles + items */
+.tile-name  { font-size: calc( 9px * var(--fs)); }
+.tile-sub   { font-size: calc( 7px * var(--fs)); }
+.item-name  { font-size: calc(11px * var(--fs)); }
+.item-desc  { font-size: calc( 9px * var(--fs)); }
+.item-count { font-size: calc( 9px * var(--fs)); }
+.item-btn   { font-size: calc( 9px * var(--fs)); }
+
+/* HUD chrome */
+.topbar              { font-size: calc(10px * var(--fs)); }
+.topbar .back-btn    { font-size: calc(10px * var(--fs)); }
+.topbar .mode-tag,
+.topbar .course-tag,
+.topbar .chapter-tag { font-size: calc( 7px * var(--fs)); }
+.header-strip        { font-size: calc(10px * var(--fs)); }
+.data-stream         { font-size: calc( 9px * var(--fs)); }
+
+/* ============================================================
+   TEXT-SIZE SELECTOR (in Settings)
+   ============================================================ */
+.text-size-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.text-size-opt {
+  background: linear-gradient(180deg, rgba(0,16,28,.85) 0%, rgba(0,40,60,.5) 100%);
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  font-family: var(--font-display);
+  cursor: pointer;
+  padding: 10px 6px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  transition: border-color .15s, background .15s, transform .08s, color .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.text-size-opt .ts-letter {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--hud-cyan);
+  text-shadow: 0 0 4px var(--hud-cyan);
+  line-height: 1;
+}
+.text-size-opt .ts-label {
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: var(--text-mute);
+}
+.text-size-opt[data-size="sm"] .ts-letter { font-size: 14px; }
+.text-size-opt[data-size="md"] .ts-letter { font-size: 18px; }
+.text-size-opt[data-size="lg"] .ts-letter { font-size: 24px; }
+.text-size-opt[data-size="xl"] .ts-letter { font-size: 30px; }
+.text-size-opt:hover {
+  border-color: var(--hud-cyan);
+  background: linear-gradient(180deg, rgba(0,40,60,.6) 0%, rgba(0,80,120,.4) 100%);
+}
+.text-size-opt:active { transform: scale(.97); }
+.text-size-opt.active {
+  border-color: var(--hud-green);
+  background: linear-gradient(180deg, rgba(0,60,30,.6) 0%, rgba(0,16,28,.8) 100%);
+  box-shadow: 0 0 12px rgba(0,255,157,.25), inset 0 0 10px rgba(0,255,157,.08);
+}
+.text-size-opt.active .ts-letter { color: var(--hud-green); text-shadow: 0 0 6px var(--hud-green); }
+.text-size-opt.active .ts-label  { color: var(--hud-green); }
+
