@@ -1243,7 +1243,10 @@ body::after {
    These rules OVERRIDE earlier explicit font-size values via
    later-in-stylesheet specificity.
    ============================================================ */
-:root { --fs: 1; }
+:root {
+  --fs: 1;
+  --fs-quiz: 1;  /* Additional multiplier applied ONLY on battle/training screens for q-text/answers/explanation */
+}
 
 /* Utility text classes */
 .t-xs   { font-size: calc( 8px * var(--fs)); }
@@ -1253,12 +1256,14 @@ body::after {
 .t-xl   { font-size: calc(16px * var(--fs)); }
 .t-xxl  { font-size: calc(22px * var(--fs)); }
 
-/* High-readership text (questions, answers, explanations) */
-.q-text       { font-size: calc(13px * var(--fs)); }
+/* High-readership text (questions, answers, explanations)
+   --fs-quiz is set to 1 on most screens, and to the user's quiz-scale
+   only when the active screen is 'battle' or 'training' (see app.js). */
+.q-text       { font-size: calc(13px * var(--fs) * var(--fs-quiz)); }
 .q-label      { font-size: calc( 8px * var(--fs)); }
-.ans-btn      { font-size: calc(12px * var(--fs)); }
-.ans-key      { font-size: calc(12px * var(--fs)); }
-.explanation  { font-size: calc(10px * var(--fs)); line-height: 1.6; }
+.ans-btn      { font-size: calc(12px * var(--fs) * var(--fs-quiz)); }
+.ans-key      { font-size: calc(12px * var(--fs) * var(--fs-quiz)); }
+.explanation  { font-size: calc(10px * var(--fs) * var(--fs-quiz)); line-height: 1.6; }
 
 /* Menus & cards */
 .module-title { font-size: calc(15px * var(--fs)); }
@@ -1347,4 +1352,13 @@ body::after {
 }
 .text-size-opt.active .ts-letter { color: var(--hud-green); text-shadow: 0 0 6px var(--hud-green); }
 .text-size-opt.active .ts-label  { color: var(--hud-green); }
+
+.ts-help {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: calc( 8px * var(--fs));
+  letter-spacing: 1px;
+  color: var(--text-mute);
+  text-align: center;
+}
 

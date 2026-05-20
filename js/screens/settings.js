@@ -61,7 +61,7 @@ App.registerScreen('settings', ({ root, state }) => {
     <div class="hud hud-corners">
       <span class="br1"></span><span class="br2"></span>
       <div class="header-strip" style="margin: -14px -16px 12px;">
-        <span><span class="status-dot"></span>TEXT SIZE</span>
+        <span><span class="status-dot"></span>TEXT SIZE · GLOBAL</span>
         <span>${ (state.settings.textSize || 'md').toUpperCase() }</span>
       </div>
       <div class="text-size-row">
@@ -72,6 +72,24 @@ App.registerScreen('settings', ({ root, state }) => {
           </button>
         `).join('')}
       </div>
+      <div class="ts-help">▸ AFFECTS ALL SCREENS</div>
+    </div>
+
+    <div class="hud hud-corners">
+      <span class="br1"></span><span class="br2"></span>
+      <div class="header-strip" style="margin: -14px -16px 12px;">
+        <span><span class="status-dot"></span>QUIZ TEXT · COMBAT</span>
+        <span>${ (state.settings.quizSize || 'md').toUpperCase() }</span>
+      </div>
+      <div class="text-size-row">
+        ${['sm','md','lg','xl'].map(k => `
+          <button class="text-size-opt ${ (state.settings.quizSize || 'md') === k ? 'active' : '' }" data-quiz-size="${k}">
+            <span class="ts-letter">A</span>
+            <span class="ts-label">${ {sm:'SMALL', md:'NORMAL', lg:'LARGE', xl:'X-LARGE'}[k] }</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="ts-help">▸ ONLY DURING BOSS BATTLES &amp; DRILLS</div>
     </div>
 
     <div class="spacer"></div>
@@ -100,7 +118,19 @@ App.registerScreen('settings', ({ root, state }) => {
       State.save(state);
       if (App.applyTextSize) App.applyTextSize(size);
       App.refresh();
-      App.toast('TEXT SIZE: ' + size.toUpperCase());
+      App.toast('GLOBAL TEXT: ' + size.toUpperCase());
+    });
+  });
+
+  root.querySelectorAll('[data-quiz-size]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const size = btn.dataset.quizSize;
+      state.settings.quizSize = size;
+      State.save(state);
+      // Settings screen isn't a quiz screen, so --fs-quiz stays at 1 here —
+      // change only takes visible effect when you next enter battle/training.
+      App.refresh();
+      App.toast('QUIZ TEXT: ' + size.toUpperCase() + ' (active in battle/drill)');
     });
   });
 

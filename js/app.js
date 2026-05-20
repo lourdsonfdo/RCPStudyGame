@@ -68,6 +68,7 @@
     el.classList.add('active');
     currentScreen = screenId;
     window.scrollTo(0, 0);
+    applyQuizScaleForScreen(screenId);  // Only active on battle/training
     const init = screenInits[screenId];
     if (init) init({ root: el, state, ctx: routeCtx });
     else el.innerHTML = `<div class="panel t-center t-mute">Screen <b>${screenId}</b> not implemented.</div>`;
@@ -188,6 +189,15 @@
     const scale = TEXT_SCALES[key] || 1;
     document.documentElement.style.setProperty('--fs', scale);
   }
+  // Quiz-text scale — applied ONLY when the current screen is battle or training.
+  // Other screens reset to 1 so it doesn't bleed into crisis/scenarios/menus.
+  const QUIZ_SCREENS = new Set(['battle', 'training']);
+  function applyQuizScaleForScreen(screenId) {
+    const isQuiz = QUIZ_SCREENS.has(screenId);
+    const key = (state && state.settings && state.settings.quizSize) || 'md';
+    const scale = isQuiz ? (TEXT_SCALES[key] || 1) : 1;
+    document.documentElement.style.setProperty('--fs-quiz', scale);
+  }
 
   // ────────────────────────────  BOOT  ──────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
@@ -242,5 +252,5 @@
   }
 
   // ────────────────────────────  EXPORT  ────────────────────────────
-  global.App = { goto, back, canGoBack, registerScreen, refresh, getState, persist, toast, applyTextSize, TEXT_SCALES };
+  global.App = { goto, back, canGoBack, registerScreen, refresh, getState, persist, toast, applyTextSize, applyQuizScaleForScreen, TEXT_SCALES };
 })(window);

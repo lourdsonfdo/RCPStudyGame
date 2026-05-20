@@ -24,7 +24,7 @@
     completedScenarios:[],        // scenario ids
     streak: { count: 0, lastPlayed: null, shieldUsed: false },
     dailyChallenge: { date: null, completed: false, bossId: null, course: null },
-    settings: { sfxOn: true, timerOn: true, textSize: 'md' },  // textSize: 'sm'|'md'|'lg'|'xl'
+    settings: { sfxOn: true, timerOn: true, textSize: 'md', quizSize: 'md' },  // textSize: global; quizSize: only on battle/training
   };
 
   // Cumulative XP needed for each level (index 0 = level 1)
