@@ -6,20 +6,47 @@ App.registerScreen('training', ({ root, state, ctx }) => {
   const boss = (window.ALL_BOSSES || []).find(b => b.id === ctx.bossId);
   if (!boss) { root.innerHTML = '<div class="panel t-red">Boss not found.</div>'; return; }
 
-  const pool = (window.ALL_QUESTIONS || []).filter(
+  const allForBoss = (window.ALL_QUESTIONS || []).filter(
     q => boss.questionTopics.includes(q.topic) && q.course === boss.course
   );
+  // Training pool: only questions explicitly marked 'training' or 'both' —
+  // so drill ≠ boss fight. If a topic has no training-tagged questions yet,
+  // fall back to the full topic set so the screen still works.
+  const trainingOnly = allForBoss.filter(q => q.pool === 'training' || q.pool === 'both');
+  const pool = trainingOnly.length ? trainingOnly : allForBoss;
 
   let queue = shuffle(pool);
   let session = { correct: 0, total: 0, xp: 0, gold: 0 };
   let currentQ = null;
   let revealed = false;
 
-  function shuffle(a) { return a.slice().sort(() => Math.random() - 0.5); }
+  function shuffle(a) {
+    const out = a.slice();
+    for (let i = out.length - 1; i > 0; i--) {
+      const j = (Math.random() * (i + 1)) | 0;
+      [out[i], out[j]] = [out[j], out[i]];
+    }
+    return out;
+  }
+
+  // Randomize the order of a question's choices so the correct answer
+  // isn't always in the same slot. Returns a NEW question object.
+  function shuffleChoices(q) {
+    const order = q.choices.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = (Math.random() * (i + 1)) | 0;
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    return {
+      ...q,
+      choices: order.map(i => q.choices[i]),
+      correct: order.indexOf(q.correct),
+    };
+  }
 
   function nextQ() {
     if (!queue.length) queue = shuffle(pool);
-    currentQ = queue.pop();
+    currentQ = shuffleChoices(queue.pop());
     revealed = false;
     render();
   }

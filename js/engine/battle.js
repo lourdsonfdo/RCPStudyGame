@@ -19,6 +19,21 @@
     return a;
   }
 
+  // Randomize the order of a question's choices and remap `correct` accordingly.
+  // Returns a NEW question object — original is untouched.
+  function shuffleChoices(q) {
+    const order = q.choices.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = (Math.random() * (i + 1)) | 0;
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    return {
+      ...q,
+      choices: order.map(i => q.choices[i]),
+      correct: order.indexOf(q.correct),
+    };
+  }
+
   /**
    * Build a fresh battle session.
    * opts:
@@ -30,7 +45,7 @@
    */
   function start({ boss, playerMaxHp, equipped, isDaily, questionPool }) {
     const items = isDaily ? [] : (equipped || []).slice();
-    const questions = shuffle(questionPool).slice(0, QUESTIONS_PER_FIGHT);
+    const questions = shuffle(questionPool).slice(0, QUESTIONS_PER_FIGHT).map(shuffleChoices);
 
     return {
       boss: { ...boss },

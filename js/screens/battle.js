@@ -6,8 +6,11 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
   const boss = (window.ALL_BOSSES || []).find(b => b.id === ctx.bossId);
   if (!boss) { root.innerHTML = '<div class="panel t-red">Boss not found.</div>'; return; }
 
-  const questionPool = (window.ALL_QUESTIONS || []).filter(
-    q => boss.questionTopics.includes(q.topic) && q.course === boss.course
+  // Battle pool: untagged questions (legacy) + explicitly 'battle' or 'both'.
+  // Training-only questions are excluded so the drill feels different from the fight.
+  const questionPool = (window.ALL_QUESTIONS || []).filter(q =>
+    boss.questionTopics.includes(q.topic) && q.course === boss.course
+    && (!q.pool || q.pool === 'battle' || q.pool === 'both')
   );
   if (questionPool.length < 5) {
     root.innerHTML = `<div class="hud hud-corners t-red t-sm" style="padding:14px;"><span class="br1"></span><span class="br2"></span>NOT ENOUGH QUERIES FOR THIS TARGET (${questionPool.length}). CONTENT PENDING.</div>
