@@ -9,9 +9,11 @@
   const STORAGE_KEY = 'rcpsg_audio';
 
   const TRACKS = [
-    { id: 'off',  label: 'Off',  emoji: '🔇' },
-    { id: 'calm', label: 'Calm', emoji: '🌙', file: 'audio/calm.mp3' },
-    { id: 'fast', label: 'Fast', emoji: '⚡', file: 'audio/fast.mp3' },
+    { id: 'off',     label: 'Off',           emoji: '🔇' },
+    { id: 'calm',    label: 'Lo-fi',         emoji: '🌙', file: 'audio/calm.mp3' },
+    { id: 'fast',    label: 'Battle Hymn',   emoji: '⚡', file: 'audio/fast.mp3' },
+    { id: 'fast2',   label: 'Boss Approach', emoji: '⚔️', file: 'audio/fast2.mp3' },
+    { id: 'fast3',   label: 'Final Stand',   emoji: '🔥', file: 'audio/fast3.mp3' },
   ];
 
   let state = loadState();
@@ -90,8 +92,10 @@
       master.gain.value = state.volume * 0.25;
       master.connect(proceduralCtx.destination);
 
-      if (trackId === 'calm') buildCalmLoop(proceduralCtx, master);
-      else if (trackId === 'fast') buildFastLoop(proceduralCtx, master);
+      if (trackId === 'calm')       buildCalmLoop(proceduralCtx, master);
+      else if (trackId === 'fast')  buildBattleHymn(proceduralCtx, master);
+      else if (trackId === 'fast2') buildBossApproach(proceduralCtx, master);
+      else if (trackId === 'fast3') buildFinalStand(proceduralCtx, master);
       notify();
     } catch (e) {
       console.warn('Procedural audio failed:', e);
@@ -212,36 +216,47 @@
   }
 
   // ────────────────────────────────────────────────────────────
-  // CALM — Lo-fi (jazz 7th chords, soft piano lead, brushed drums, vinyl)
+  // CALM — Lo-fi (cleaned up: pure sine waves, master low-pass,
+  // no vinyl crackle, no hi-hat, soft sine-tom instead of snare)
   // ────────────────────────────────────────────────────────────
+
+  function softTom(ctx, master, t, freq = 110, vol = 0.18, dur = 0.22) {
+    // Soft sine tom — replaces noise-based snare for smoother feel
+    const osc = ctx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq * 1.6, t);
+    osc.frequency.exponentialRampToValueAtTime(freq, t + 0.08);
+    const env = ctx.createGain();
+    env.gain.setValueAtTime(vol, t);
+    env.gain.exponentialRampToValueAtTime(0.001, t + dur);
+    osc.connect(env); env.connect(master);
+    osc.start(t); osc.stop(t + dur + 0.02);
+    proceduralNodes.push(osc);
+  }
 
   function buildCalmLoop(ctx, master) {
     // ~75 BPM. Quarter = 0.8s. 4 beats per chord. 4 chords per loop = 12.8s.
     const BEAT = 0.8;
     const CHORD = 4 * BEAT;
 
-    // Fmaj7 → Em7 → Dm7 → G7 — classic lofi
+    // Insert a master low-pass between the loop and the destination for warmth
+    const lp = ctx.createBiquadFilter();
+    lp.type = 'lowpass';
+    lp.frequency.value = 3500;
+    lp.Q.value = 0.7;
+    // Re-route: build a sub-bus that the rest of the loop writes to
+    const calmBus = ctx.createGain();
+    calmBus.gain.value = 1;
+    calmBus.connect(lp);
+    lp.connect(master);
+    const out = calmBus;
+
+    // Fmaj7 → Em7 → Dm7 → G7 — classic lofi progression
     const progression = [
-      {
-        pad:    [87.31, 110.00, 130.81, 164.81],   // F3 A3 C4 E4
-        bass:   [87.31, 87.31, 130.81, 87.31],     // F2-ish walks: F3-F3-C4-F3 (root + 5th flavor)
-        melody: [440.00, 523.25, 440.00, 349.23],  // A4-C5-A4-F4
-      },
-      {
-        pad:    [82.41, 98.00, 123.47, 146.83],    // E3 G3 B3 D4
-        bass:   [82.41, 82.41, 123.47, 82.41],
-        melody: [392.00, 493.88, 392.00, 329.63],  // G4-B4-G4-E4
-      },
-      {
-        pad:    [73.42, 87.31, 110.00, 130.81],    // D3 F3 A3 C4
-        bass:   [73.42, 73.42, 110.00, 73.42],
-        melody: [349.23, 440.00, 349.23, 293.66],  // F4-A4-F4-D4
-      },
-      {
-        pad:    [98.00, 123.47, 146.83, 174.61],   // G3 B3 D4 F4
-        bass:   [98.00, 98.00, 146.83, 98.00],
-        melody: [493.88, 587.33, 493.88, 349.23],  // B4-D5-B4-F4
-      },
+      { pad: [87.31, 110.00, 130.81, 164.81], bass: [87.31, 87.31, 130.81, 87.31], melody: [440.00, 523.25, 440.00, 349.23] },
+      { pad: [82.41,  98.00, 123.47, 146.83], bass: [82.41, 82.41, 123.47, 82.41], melody: [392.00, 493.88, 392.00, 329.63] },
+      { pad: [73.42,  87.31, 110.00, 130.81], bass: [73.42, 73.42, 110.00, 73.42], melody: [349.23, 440.00, 349.23, 293.66] },
+      { pad: [98.00, 123.47, 146.83, 174.61], bass: [98.00, 98.00, 146.83, 98.00], melody: [493.88, 587.33, 493.88, 349.23] },
     ];
 
     const loopDur = progression.length * CHORD;
@@ -250,43 +265,36 @@
       progression.forEach((chord, ci) => {
         const t0 = start + ci * CHORD;
 
-        // Soft pad — slow attack sine cluster, lasts full chord
+        // Soft pad — slow-attack sine cluster, lasts full chord
         chord.pad.forEach(f => {
-          tone(ctx, master, t0, f, CHORD, {
-            type: 'sine', vol: 0.06, attack: 0.5, sustain: 0.04, release: 0.6, lpHz: 1400,
+          tone(ctx, out, t0, f, CHORD, {
+            type: 'sine', vol: 0.06, attack: 0.6, sustain: 0.04, release: 0.7, lpHz: 1200,
           });
         });
 
-        // Quarter-note bass (warm sine, gentle)
+        // Quarter-note bass — pure sine, deep low-pass
         chord.bass.forEach((bf, bi) => {
           const t = t0 + bi * BEAT;
-          tone(ctx, master, t, bf * 0.5, BEAT * 0.9, {  // octave down for bass
-            type: 'sine', vol: 0.15, attack: 0.03, sustain: 0.08, release: BEAT * 0.4, lpHz: 700,
+          tone(ctx, out, t, bf * 0.5, BEAT * 0.95, {
+            type: 'sine', vol: 0.18, attack: 0.04, sustain: 0.10, release: BEAT * 0.45, lpHz: 500,
           });
         });
 
-        // Quarter-note melody (warm triangle, piano-like)
+        // Quarter-note melody — pure sine for maximum smoothness
         chord.melody.forEach((mf, mi) => {
           const t = t0 + mi * BEAT;
-          tone(ctx, master, t, mf, BEAT * 0.85, {
-            type: 'triangle', vol: 0.11, attack: 0.02, sustain: 0.035, release: BEAT * 0.5, lpHz: 2200,
+          tone(ctx, out, t, mf, BEAT * 0.85, {
+            type: 'sine', vol: 0.10, attack: 0.05, sustain: 0.04, release: BEAT * 0.55, lpHz: 2000,
           });
         });
 
-        // Brushed drums — boom-bap pattern with swing
-        kick  (ctx, master, t0 + 0 * BEAT, 0.7);          // beat 1 — soft kick
-        snare (ctx, master, t0 + 1 * BEAT, 0.4, false);   // beat 2 — muffled snare
-        kick  (ctx, master, t0 + 2 * BEAT + 0.15, 0.5);   // beat 3.2 — syncopated ghost kick
-        snare (ctx, master, t0 + 3 * BEAT, 0.45, false);  // beat 4 — muffled snare
-        // Soft hi-hat on every 8th
-        for (let i = 0; i < 8; i++) {
-          hihat(ctx, master, t0 + i * (BEAT / 2), 0.35, 0.03);
-        }
+        // Drums — only a deep kick + soft sine-tom on the off-beats. NO hi-hat, NO snare-noise.
+        kick   (ctx, out, t0 + 0 * BEAT, 0.55);
+        softTom(ctx, out, t0 + 1 * BEAT, 180, 0.10);
+        kick   (ctx, out, t0 + 2 * BEAT + 0.12, 0.42);
+        softTom(ctx, out, t0 + 3 * BEAT, 180, 0.10);
       });
     }
-
-    // Continuous vinyl crackle texture
-    vinylCrackle(ctx, master);
 
     schedule(ctx.currentTime + 0.1);
     schedule(ctx.currentTime + 0.1 + loopDur);
@@ -297,10 +305,10 @@
   }
 
   // ────────────────────────────────────────────────────────────
-  // FAST — Final Fantasy battle (Andalusian minor, arpeggio lead, walking bass, drums)
+  // FAST 1 — "Battle Hymn" — Andalusian Am-G-F-E, classic FF battle
   // ────────────────────────────────────────────────────────────
 
-  function buildFastLoop(ctx, master) {
+  function buildBattleHymn(ctx, master) {
     // ~150 BPM. Beat = 0.4s. 4 beats per chord. 4 chords = 6.4s loop.
     const BEAT = 0.4;
     const EIGHTH = BEAT / 2;
@@ -371,6 +379,147 @@
         }
         // Extra kick on the and-of-3 for syncopation
         kick(ctx, master, t0 + 2.5 * BEAT, 0.6);
+      });
+    }
+
+    schedule(ctx.currentTime + 0.1);
+    schedule(ctx.currentTime + 0.1 + loopDur);
+    proceduralInterval = setInterval(() => {
+      if (!proceduralCtx) { clearInterval(proceduralInterval); return; }
+      schedule(proceduralCtx.currentTime + 0.05);
+    }, loopDur * 1000);
+  }
+
+  // ────────────────────────────────────────────────────────────
+  // FAST 2 — "Boss Approach" — slower (~125 BPM), darker, menacing.
+  // Em → D → C → B7 (Phrygian-flavored descent), sawtooth bass for grit.
+  // ────────────────────────────────────────────────────────────
+
+  function buildBossApproach(ctx, master) {
+    const BEAT = 60 / 125;        // ~0.48s
+    const EIGHTH = BEAT / 2;
+    const CHORD = 4 * BEAT;
+
+    const progression = [
+      // Em: E-G-B
+      { arp:  [329.63, 392.00, 493.88, 659.25, 493.88, 392.00, 329.63, 392.00],
+        bass: [82.41,  82.41,  41.20,  82.41] },  // E2-E2-E1-E2
+      // D: D-F#-A
+      { arp:  [293.66, 369.99, 440.00, 587.33, 440.00, 369.99, 293.66, 369.99],
+        bass: [73.42,  73.42,  36.71,  73.42] },  // D2-D2-D1-D2
+      // C: C-E-G
+      { arp:  [261.63, 329.63, 392.00, 523.25, 392.00, 329.63, 261.63, 329.63],
+        bass: [65.41,  65.41,  32.70,  65.41] },  // C2-C2-C1-C2
+      // B (major dom7): B-D#-F#
+      { arp:  [246.94, 311.13, 369.99, 493.88, 369.99, 311.13, 246.94, 311.13],
+        bass: [61.74,  61.74,  30.87,  61.74] },  // B1-B1-B0-B1
+    ];
+
+    const loopDur = progression.length * CHORD;
+
+    function schedule(start) {
+      progression.forEach((chord, ci) => {
+        const t0 = start + ci * CHORD;
+
+        // Lead arpeggio — square wave, slightly softer than Battle Hymn
+        chord.arp.forEach((f, i) => {
+          const t = t0 + i * EIGHTH;
+          tone(ctx, master, t, f, EIGHTH * 0.85, {
+            type: 'square', vol: 0.085, attack: 0.008, sustain: 0.06, release: EIGHTH * 0.35,
+          });
+        });
+
+        // Sawtooth bass — darker, grittier
+        chord.bass.forEach((bf, bi) => {
+          const t = t0 + bi * BEAT;
+          tone(ctx, master, t, bf, BEAT * 0.95, {
+            type: 'sawtooth', vol: 0.16, attack: 0.005, sustain: 0.10, release: BEAT * 0.4, lpHz: 500,
+          });
+        });
+
+        // Sparse drums — half-time feel for menacing pacing
+        kick (ctx, master, t0 + 0 * BEAT, 1);
+        snare(ctx, master, t0 + 2 * BEAT, 0.85, true);   // backbeat on 3 only
+        // 8th-note hi-hat (less busy than Battle Hymn)
+        for (let i = 0; i < 8; i++) {
+          hihat(ctx, master, t0 + i * (BEAT / 2), 0.35, 0.03);
+        }
+      });
+    }
+
+    schedule(ctx.currentTime + 0.1);
+    schedule(ctx.currentTime + 0.1 + loopDur);
+    proceduralInterval = setInterval(() => {
+      if (!proceduralCtx) { clearInterval(proceduralInterval); return; }
+      schedule(proceduralCtx.currentTime + 0.05);
+    }, loopDur * 1000);
+  }
+
+  // ────────────────────────────────────────────────────────────
+  // FAST 3 — "Final Stand" — fastest (~175 BPM), frantic 16th-note arp,
+  // Dm → Bb → F → A7 (dramatic minor turnaround), double-time drums.
+  // ────────────────────────────────────────────────────────────
+
+  function buildFinalStand(ctx, master) {
+    const BEAT = 60 / 175;        // ~0.343s
+    const SIXTEENTH = BEAT / 4;
+    const CHORD = 4 * BEAT;
+
+    // 16 sixteenth-notes per chord — twice the density of Battle Hymn's 8th notes
+    const progression = [
+      // Dm: D-F-A
+      { arp:  [293.66, 349.23, 440.00, 587.33, 440.00, 349.23, 293.66, 349.23,
+               293.66, 349.23, 440.00, 587.33, 698.46, 587.33, 440.00, 349.23],
+        bass: [73.42, 73.42, 73.42, 73.42, 110.00, 110.00, 73.42, 73.42] },  // D2/D2/A2 walking
+      // Bb: Bb-D-F
+      { arp:  [233.08, 293.66, 349.23, 466.16, 349.23, 293.66, 233.08, 293.66,
+               233.08, 293.66, 349.23, 466.16, 587.33, 466.16, 349.23, 293.66],
+        bass: [58.27, 58.27, 58.27, 58.27, 87.31, 87.31, 58.27, 58.27] },     // Bb1/Bb1/F2
+      // F: F-A-C
+      { arp:  [349.23, 440.00, 523.25, 698.46, 523.25, 440.00, 349.23, 440.00,
+               349.23, 440.00, 523.25, 698.46, 880.00, 698.46, 523.25, 440.00],
+        bass: [87.31, 87.31, 87.31, 87.31, 130.81, 130.81, 87.31, 87.31] },   // F2/F2/C3
+      // A7: A-C#-E
+      { arp:  [440.00, 554.37, 659.25, 880.00, 659.25, 554.37, 440.00, 554.37,
+               440.00, 554.37, 659.25, 880.00, 1108.73, 880.00, 659.25, 554.37],
+        bass: [110.00, 110.00, 82.41, 110.00, 82.41, 82.41, 110.00, 82.41] }, // A2 + E2 alternation
+    ];
+
+    const loopDur = progression.length * CHORD;
+
+    function schedule(start) {
+      progression.forEach((chord, ci) => {
+        const t0 = start + ci * CHORD;
+
+        // 16th-note arpeggio — driving square wave
+        chord.arp.forEach((f, i) => {
+          const t = t0 + i * SIXTEENTH;
+          tone(ctx, master, t, f, SIXTEENTH * 0.9, {
+            type: 'square', vol: 0.085, attack: 0.003, sustain: 0.06, release: SIXTEENTH * 0.3,
+          });
+        });
+
+        // 8th-note walking bass — triangle for warmth, sub-octave for thickness
+        chord.bass.forEach((bf, bi) => {
+          const t = t0 + bi * (BEAT / 2);
+          tone(ctx, master, t, bf, (BEAT / 2) * 0.95, {
+            type: 'triangle', vol: 0.18, attack: 0.005, sustain: 0.12, release: (BEAT / 2) * 0.4,
+          });
+        });
+
+        // Driving drums — double-time kick pattern
+        kick (ctx, master, t0 + 0   * BEAT, 1);
+        kick (ctx, master, t0 + 0.5 * BEAT, 0.5);  // syncopation
+        snare(ctx, master, t0 + 1   * BEAT, 0.9, true);
+        kick (ctx, master, t0 + 2   * BEAT, 1);
+        kick (ctx, master, t0 + 2.5 * BEAT, 0.5);
+        snare(ctx, master, t0 + 3   * BEAT, 0.9, true);
+        // 16th-note hi-hat for relentless energy
+        for (let i = 0; i < 16; i++) {
+          hihat(ctx, master, t0 + i * SIXTEENTH, 0.45, 0.02);
+        }
+        // Crash-style hit on beat 1 (low-volume noise burst)
+        snare(ctx, master, t0, 0.45, true);
       });
     }
 
