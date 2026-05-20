@@ -10,37 +10,39 @@ App.registerScreen('boss-select', ({ root, state, ctx }) => {
   const anyDefeated = state.defeatedBosses.length > 0;
   function isUnlocked(b) { return b.unlockedByDefault || anyDefeated; }
 
-  const courseLabel = course === 'rcp103' ? 'RCP 103 · DISEASE' : 'RCP 104 · PHARMACOLOGY';
+  const courseShort = course.toUpperCase();
+  const defeated = state.defeatedBosses.filter(id => all.some(b => b.id === id)).length;
 
   root.innerHTML = `
     <div class="topbar">
-      <button class="back-btn" data-back>← BACK</button>
-      <span class="t-sm t-orange">⚡ BOSS SELECT</span>
-      <span class="t-sm t-dim">${courseLabel}</span>
+      <button class="back-btn" data-back>◀ BACK</button>
+      <span class="mode-tag">⚡ TARGET ACQUISITION</span>
+      <span class="chapter-tag">${courseShort}</span>
     </div>
 
-    <div class="t-xs t-mute t-center" style="margin: 8px 0;">
-      Defeated: ${state.defeatedBosses.filter(id => all.some(b => b.id === id)).length} / ${all.length}
-    </div>
-
-    <div class="grid-2">
-      ${all.map(b => {
-        const unlocked = isUnlocked(b);
-        const defeated = state.defeatedBosses.includes(b.id);
-        return `
-          <div class="tile ${unlocked ? '' : 'locked'} ${defeated ? 'defeated' : ''}" data-boss-id="${b.id}">
-            <div class="tile-emoji">${
-              !unlocked
-                ? '🔒'
-                : (window.BOSS_SPRITES && window.BOSS_SPRITES[b.id])
-                  ? `<div class="boss-portrait-sm">${window.BOSS_SPRITES[b.id]}</div>`
-                  : b.emoji
-            }</div>
-            <div class="tile-name">${unlocked ? b.name : '???'}</div>
-            <div class="tile-sub">${unlocked ? (b.description || '') : 'LOCKED'}</div>
-            ${defeated ? '<div class="tile-badge">✓ DEFEATED</div>' : ''}
-          </div>`;
-      }).join('')}
+    <div class="hud hud-corners">
+      <span class="br1"></span><span class="br2"></span>
+      <div class="header-strip" style="margin: -14px -16px 12px;">
+        <span><span class="status-dot"></span>HOSTILES ON GRID</span>
+        <span>${defeated}/${all.length} ELIMINATED</span>
+      </div>
+      <div class="grid-2">
+        ${all.map(b => {
+          const unlocked = isUnlocked(b);
+          const wasDefeated = state.defeatedBosses.includes(b.id);
+          const sprite = (window.BOSS_SPRITES && window.BOSS_SPRITES[b.id]) || '';
+          return `
+            <div class="tile ${unlocked ? '' : 'locked'} ${wasDefeated ? 'defeated' : ''}" data-boss-id="${b.id}">
+              ${unlocked
+                ? (sprite
+                    ? `<div class="boss-portrait-sm">${sprite}</div>`
+                    : `<div class="tile-emoji">${b.emoji}</div>`)
+                : `<div class="tile-emoji">🔒</div>`}
+              <div class="tile-name">${unlocked ? b.name : '???'}</div>
+              <div class="tile-sub">${unlocked ? (b.description || '') : 'LOCKED'}</div>
+            </div>`;
+        }).join('')}
+      </div>
     </div>
   `;
 
@@ -48,9 +50,8 @@ App.registerScreen('boss-select', ({ root, state, ctx }) => {
 
   root.querySelectorAll('.tile').forEach(tile => {
     tile.addEventListener('click', () => {
-      if (tile.classList.contains('locked')) { App.toast('Defeat another boss to unlock'); return; }
-      const bossId = tile.dataset.bossId;
-      App.goto('prep-camp', { course, bossId });
+      if (tile.classList.contains('locked')) { App.toast('LOCKED · Defeat another target to unlock'); return; }
+      App.goto('prep-camp', { course, bossId: tile.dataset.bossId });
     });
   });
 });

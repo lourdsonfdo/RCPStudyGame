@@ -29,21 +29,38 @@ App.registerScreen('training', ({ root, state, ctx }) => {
 
     root.innerHTML = `
       <div class="topbar">
-        <button class="back-btn" data-back>← DONE</button>
-        <span class="t-sm t-orange">🏋️ TRAINING</span>
-        <span class="t-sm t-dim">${boss.name}</span>
+        <button class="back-btn" data-back>◀ EXIT</button>
+        <span class="mode-tag">🏋 DRILL SIMULATION</span>
+        <span class="chapter-tag">${boss.name.split(' ').slice(0,2).join(' ').toUpperCase()}</span>
       </div>
 
-      <div class="panel">
-        <div class="xp-header">
-          <span class="t-green">+${session.xp} XP</span>
-          <span class="gold-txt">+${session.gold}g</span>
+      <div class="hud hud-corners">
+        <span class="br1"></span><span class="br2"></span>
+        <div class="header-strip" style="margin: -14px -16px 10px;">
+          <span><span class="status-dot"></span>SESSION ACTIVE</span>
+          <span>${session.correct}/${session.total} CORRECT</span>
         </div>
-        <div class="xp-sub">${session.correct} / ${session.total} correct this session</div>
+        <div class="vitals">
+          <div class="vital">
+            <span class="vital-label">EARNED</span>
+            <span class="vital-value green">+${session.xp}</span>
+            <span class="vital-unit">EXP</span>
+          </div>
+          <div class="vital">
+            <span class="vital-label">CREDITS</span>
+            <span class="vital-value amber">+${session.gold}</span>
+            <span class="vital-unit">¢</span>
+          </div>
+          <div class="vital">
+            <span class="vital-label">ACCURACY</span>
+            <span class="vital-value">${session.total ? Math.round(session.correct/session.total*100) : 0}%</span>
+            <span class="vital-unit">RATIO</span>
+          </div>
+        </div>
       </div>
 
       <div class="q-box">
-        <div class="q-label">▸ FLASHCARD</div>
+        <div class="q-label">▸ FLASHCARD // QUERY</div>
         <div class="q-text">${currentQ.q}</div>
       </div>
 
@@ -91,7 +108,7 @@ App.registerScreen('training', ({ root, state, ctx }) => {
     const post = root.querySelector('#postq');
     post.innerHTML = `
       <div class="explanation">${currentQ.explanation}</div>
-      <button class="btn btn-block btn-primary" id="nextq">▶ NEXT QUESTION</button>
+      <button class="btn btn-block btn-primary" id="nextq">▶ NEXT QUERY</button>
     `;
     post.querySelector('#nextq').addEventListener('click', nextQ);
   }
