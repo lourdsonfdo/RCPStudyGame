@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Octopath Sprite Concept — The Pulmonary Apothecary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Cormorant+SC:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #050810;
+    color: #e8dcc4;
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    padding: 32px 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #f4e4bc;
+    text-shadow: 0 0 24px rgba(212,175,55,0.25);
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    text-align: center;
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: #b89968;
+    margin-bottom: 36px;
+  }
+
+  /* Showcase row */
+  .row {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .panel {
+    background:
+      radial-gradient(ellipse at 50% 30%, #1c2342 0%, #0a0e1f 60%, #02040a 100%);
+    border: 1px solid rgba(184,153,104,0.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,175,55,0.1) inset;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .panel::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 65%, rgba(212,175,55,0.06), transparent 70%);
+    pointer-events: none;
+  }
+  .panel::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.85) 100%);
+    pointer-events: none;
+  }
+  .label {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: #b89968;
+    text-align: center;
+    margin-top: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Sprite presentation */
+  .sprite {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+  .x1 { width: 24px;  height: 36px; }
+  .x4 { width: 96px;  height: 144px; }
+  .x8 { width: 192px; height: 288px; }
+
+  /* The HD-2D treatment — rim lighting + ground shadow */
+  .hd2d-wrap {
+    position: relative;
+    z-index: 2;
+    width: 240px;
+    height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hd2d-spot {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 50px;
+    background: radial-gradient(ellipse, rgba(212,175,55,0.45), rgba(212,175,55,0.1) 40%, transparent 70%);
+    filter: blur(8px);
+    z-index: 1;
+  }
+  .hd2d-shadow {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 16px;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.7), transparent 70%);
+    z-index: 1;
+  }
+  .hd2d-sprite {
+    width: 192px;
+    height: 288px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    position: relative;
+    z-index: 2;
+    filter:
+      drop-shadow(2px 0 0 rgba(244,228,188,0.30))
+      drop-shadow(-1px 0 0 rgba(106,140,184,0.20))
+      drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+    animation: idle 3.5s ease-in-out infinite;
+  }
+  @keyframes idle {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
+  }
+
+  /* Floating motes for HD-2D scene */
+  @keyframes mote-rise {
+    0%   { transform: translateY(0); opacity: 0; }
+    20%  { opacity: 1; }
+    100% { transform: translateY(-220px); opacity: 0; }
+  }
+  .mote {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: #f4e4bc;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #f4e4bc;
+    animation: mote-rise 6s linear infinite;
+    z-index: 1;
+  }
+  .mote:nth-child(1) { left: 20%; top: 95%; animation-delay: 0s; }
+  .mote:nth-child(2) { left: 70%; top: 95%; animation-delay: 1.5s; }
+  .mote:nth-child(3) { left: 40%; top: 95%; animation-delay: 3s; }
+  .mote:nth-child(4) { left: 85%; top: 95%; animation-delay: 4.5s; }
+  .mote:nth-child(5) { left: 10%; top: 95%; animation-delay: 2.2s; }
+
+  /* Glowing orb on staff */
+  .staff-glow {
+    position: absolute;
+    top: 32px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle, rgba(136,204,221,0.7), rgba(136,204,221,0.2) 40%, transparent 70%);
+    filter: blur(4px);
+    animation: pulse 2s ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50%      { transform: scale(1.15); opacity: 1; }
+  }
+
+  /* Name plate */
+  .nameplate {
+    text-align: center;
+    margin-top: 24px;
+    position: relative;
+    z-index: 2;
+  }
+  .nameplate .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #f4e4bc;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 12px rgba(244,228,188,0.3);
+  }
+  .nameplate .epithet {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: #d4af37;
+    margin-top: 4px;
+  }
+  .nameplate .class {
+    font-family: 'Cormorant SC', serif;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: #8c7a5c;
+    margin-top: 8px;
+  }
+
+  /* Stats panel */
+  .stats {
+    margin-top: 18px;
+    padding: 12px 16px;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(184,153,104,0.3);
+    width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+  }
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    padding: 3px 0;
+    color: #b89968;
+  }
+  .stat-row .v { color: #e8dcc4; }
+
+  .footnote {
+    text-align: center;
+    font-style: italic;
+    color: #8c7a5c;
+    font-size: 14px;
+    margin-top: 32px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+</head>
+<body>
+
+<h1>The Pulmonary Apothecary</h1>
+<div class="subtitle">— A Character Sprite in the HD-2D Manner —</div>
+
+<!-- ============================================================
+     Reusable SVG sprite definition
+     Canvas: 24w × 36h
+     Character: hooded cleric/apothecary with glowing staff
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="apothecary" viewBox="0 0 24 36" shape-rendering="crispEdges">
+
+    <!-- Color palette
+         Outline:        #1a0d14
+         Hood outer:     #5a2438
+         Hood inner:     #3a1424
+         Hood highlight: #8a3a58
+         Gold trim:      #d4af37
+         Gold light:     #f4e4bc
+         Skin:           #d8b090
+         Skin shadow:    #a07060
+         Eye glint:      #f4e4bc
+         Cloak/tunic:    #e8d8a8
+         Tunic shadow:   #b89868
+         Belt leather:   #2a1810
+         Buckle:         #d4af37
+         Boots:          #3a2018
+         Boot sole:      #1a0d10
+         Staff wood:     #6a4020
+         Staff dark:     #3a2010
+         Orb hot:        #ffffff
+         Orb bright:     #ccecf5
+         Orb mid:        #88ccdd
+         Orb dark:       #4a8090
+         Pants:          #2a2030
+    -->
+
+    <!-- ━━━━━━━━━━━ STAFF ━━━━━━━━━━━ -->
+    <!-- Staff orb (top) -->
+    <rect x="18" y="2"  width="2" height="1" fill="#88ccdd"/>
+    <rect x="17" y="3"  width="4" height="1" fill="#88ccdd"/>
+    <rect x="17" y="3"  width="1" height="1" fill="#4a8090"/>
+    <rect x="20" y="3"  width="1" height="1" fill="#4a8090"/>
+    <rect x="17" y="4"  width="4" height="2" fill="#88ccdd"/>
+    <rect x="18" y="4"  width="2" height="1" fill="#ccecf5"/>
+    <rect x="18" y="5"  width="1" height="1" fill="#ffffff"/>
+    <rect x="17" y="6"  width="4" height="1" fill="#4a8090"/>
+    <rect x="18" y="6"  width="2" height="1" fill="#88ccdd"/>
+    <!-- Orb cradle (gold band) -->
+    <rect x="17" y="7"  width="4" height="1" fill="#d4af37"/>
+    <rect x="18" y="7"  width="2" height="1" fill="#f4e4bc"/>
+    <rect x="17" y="8"  width="4" height="1" fill="#6a4020"/>
+
+    <!-- Staff shaft -->
+    <rect x="18" y="9"  width="2" height="22" fill="#6a4020"/>
+    <rect x="18" y="9"  width="1" height="22" fill="#3a2010"/>
+    <rect x="19" y="9"  width="1" height="22" fill="#8a5530"/>
+    <!-- Staff grip wrap -->
+    <rect x="17" y="18" width="4" height="2" fill="#3a2010"/>
+    <rect x="17" y="19" width="4" height="1" fill="#1a0d14"/>
+
+    <!-- ━━━━━━━━━━━ HOOD (back layer) ━━━━━━━━━━━ -->
+    <!-- Top of hood (peaked) -->
+    <rect x="11" y="0"  width="2" height="1" fill="#1a0d14"/>
+    <rect x="10" y="1"  width="4" height="1" fill="#5a2438"/>
+    <rect x="10" y="1"  width="1" height="1" fill="#1a0d14"/>
+    <rect x="13" y="1"  width="1" height="1" fill="#1a0d14"/>
+
+    <rect x="9"  y="2"  width="6" height="1" fill="#5a2438"/>
+    <rect x="9"  y="2"  width="1" height="1" fill="#1a0d14"/>
+    <rect x="14" y="2"  width="1" height="1" fill="#1a0d14"/>
+    <rect x="11" y="2"  width="2" height="1" fill="#8a3a58"/>
+
+    <rect x="8"  y="3"  width="8" height="1" fill="#5a2438"/>
+    <rect x="8"  y="3"  width="1" height="1" fill="#1a0d14"/>
+    <rect x="15" y="3"  width="1" height="1" fill="#1a0d14"/>
+    <rect x="9"  y="3"  width="2" height="1" fill="#8a3a58"/>
+
+    <rect x="7"  y="4"  width="10" height="1" fill="#5a2438"/>
+    <rect x="7"  y="4"  width="1"  height="1" fill="#1a0d14"/>
+    <rect x="16" y="4"  width="1"  height="1" fill="#1a0d14"/>
+    <rect x="8"  y="4"  width="2"  height="1" fill="#8a3a58"/>
+
+    <rect x="6"  y="5"  width="12" height="1" fill="#5a2438"/>
+    <rect x="6"  y="5"  width="1"  height="1" fill="#1a0d14"/>
+    <rect x="17" y="5"  width="1"  height="1" fill="#1a0d14"/>
+    <rect x="7"  y="5"  width="2"  height="1" fill="#8a3a58"/>
+
+    <rect x="5"  y="6"  width="14" height="1" fill="#5a2438"/>
+    <rect x="5"  y="6"  width="1"  height="1" fill="#1a0d14"/>
+    <rect x="18" y="6"  width="1"  height="1" fill="#1a0d14"/>
+    <rect x="6"  y="6"  width="2"  height="1" fill="#8a3a58"/>
+
+    <rect x="4"  y="7"  width="14" height="1" fill="#5a2438"/>
+    <rect x="4"  y="7"  width="1"  height="1" fill="#1a0d14"/>
+    <rect x="17" y="7"  width="1"  height="1" fill="#1a0d14"/>
+    <rect x="5"  y="7"  width="2"  height="1" fill="#8a3a58"/>
+
+    <rect x="4"  y="8"  width="14" height="1" fill="#5a2438"/>
+    <rect x="4"  y="8"  width="1"  height="1" fill="#1a0d14"/>
+    <rect x="17" y="8"  width="1"  height="1" fill="#1a0d14"/>
+    <rect x="5"  y="8"  width="1"  height="1" fill="#8a3a58"/>
+
+    <!-- Hood face opening row 9-13: cols 8-13 = face -->
+    <rect x="4"  y="9"  width="4"  height="5" fill="#5a2438"/>
+    <rect x="4"  y="9"  width="1"  height="5" fill="#1a0d14"/>
+    <rect x="14" y="9"  width="4"  height="5" fill="#5a2438"/>
+    <rect x="17" y="9"  width="1"  height="5" fill="#1a0d14"/>
+
+    <!-- Inner hood shadow (left & right of face) -->
+    <rect x="7"  y="9"  width="1"  height="5" fill="#3a1424"/>
+    <rect x="13" y="9"  width="1"  height="5" fill="#3a1424"/>
+
+    <!-- ━━━━━━━━━━━ FACE ━━━━━━━━━━━ -->
+    <!-- Face shadow background (in shadow under hood) -->
+    <rect x="8"  y="9"  width="5"  height="5" fill="#a07060"/>
+    <!-- Upper face is darker due to hood shadow -->
+    <rect x="8"  y="9"  width="5"  height="2" fill="#6a4838"/>
+    <!-- Lower face catches more light -->
+    <rect x="8"  y="12" width="5"  height="2" fill="#d8b090"/>
+
+    <!-- Eyes (dark sockets with bright glints) -->
+    <rect x="9"  y="10" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="11" y="10" width="1"  height="1" fill="#1a0d14"/>
+    <!-- Eye glints (the iconic Octopath/HD-2D detail) -->
+    <rect x="9"  y="10" width="1"  height="1" fill="#f4e4bc" opacity="0.7"/>
+    <rect x="11" y="10" width="1"  height="1" fill="#f4e4bc" opacity="0.7"/>
+
+    <!-- Nose hint -->
+    <rect x="10" y="11" width="1"  height="1" fill="#a07060"/>
+
+    <!-- Mouth -->
+    <rect x="9"  y="13" width="3"  height="1" fill="#6a3848"/>
+    <rect x="10" y="13" width="1"  height="1" fill="#3a1828"/>
+
+    <!-- Chin shadow -->
+    <rect x="9"  y="14" width="3"  height="1" fill="#a07060"/>
+
+    <!-- ━━━━━━━━━━━ NECK + SHOULDERS ━━━━━━━━━━━ -->
+    <!-- Neck -->
+    <rect x="9"  y="14" width="3"  height="1" fill="#a07060"/>
+    <rect x="10" y="14" width="1"  height="1" fill="#d8b090"/>
+
+    <!-- Cloak collar (gold trim) -->
+    <rect x="6"  y="15" width="10" height="1" fill="#d4af37"/>
+    <rect x="7"  y="15" width="2"  height="1" fill="#f4e4bc"/>
+    <rect x="6"  y="15" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="15" y="15" width="1"  height="1" fill="#1a0d14"/>
+
+    <!-- Cloak shoulders (wider) -->
+    <rect x="4"  y="16" width="14" height="1" fill="#5a2438"/>
+    <rect x="4"  y="16" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="17" y="16" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="5"  y="16" width="2"  height="1" fill="#8a3a58"/>
+
+    <rect x="3"  y="17" width="16" height="1" fill="#5a2438"/>
+    <rect x="3"  y="17" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="18" y="17" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="4"  y="17" width="2"  height="1" fill="#8a3a58"/>
+
+    <!-- ━━━━━━━━━━━ TUNIC (under cloak, center) ━━━━━━━━━━━ -->
+    <!-- Visible tunic in the chest opening -->
+    <rect x="9"  y="16" width="4"  height="1" fill="#e8d8a8"/>
+    <rect x="9"  y="17" width="4"  height="1" fill="#e8d8a8"/>
+    <rect x="9"  y="16" width="1"  height="2" fill="#b89868"/>
+
+    <!-- ━━━━━━━━━━━ TORSO + ARMS ━━━━━━━━━━━ -->
+    <rect x="3"  y="18" width="16" height="1" fill="#5a2438"/>
+    <rect x="3"  y="18" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="18" y="18" width="1"  height="1" fill="#1a0d14"/>
+    <!-- Tunic center -->
+    <rect x="8"  y="18" width="6"  height="1" fill="#e8d8a8"/>
+    <rect x="8"  y="18" width="1"  height="1" fill="#b89868"/>
+    <!-- Gold pendant on chest -->
+    <rect x="10" y="18" width="2"  height="1" fill="#d4af37"/>
+    <rect x="11" y="18" width="1"  height="1" fill="#f4e4bc"/>
+
+    <rect x="3"  y="19" width="16" height="1" fill="#5a2438"/>
+    <rect x="3"  y="19" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="18" y="19" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="8"  y="19" width="6"  height="1" fill="#e8d8a8"/>
+    <rect x="8"  y="19" width="1"  height="1" fill="#b89868"/>
+    <!-- Pendant chain catches light -->
+    <rect x="10" y="19" width="2"  height="1" fill="#d4af37"/>
+
+    <rect x="3"  y="20" width="16" height="1" fill="#5a2438"/>
+    <rect x="3"  y="20" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="18" y="20" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="8"  y="20" width="6"  height="1" fill="#e8d8a8"/>
+    <rect x="8"  y="20" width="1"  height="1" fill="#b89868"/>
+
+    <rect x="3"  y="21" width="16" height="1" fill="#5a2438"/>
+    <rect x="3"  y="21" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="18" y="21" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="8"  y="21" width="6"  height="1" fill="#e8d8a8"/>
+    <rect x="8"  y="21" width="1"  height="1" fill="#b89868"/>
+
+    <!-- Hand holding staff (right side) -->
+    <rect x="17" y="19" width="2"  height="2" fill="#a07060"/>
+    <rect x="17" y="19" width="1"  height="2" fill="#6a4838"/>
+    <rect x="17" y="19" width="2"  height="1" fill="#d8b090"/>
+
+    <!-- ━━━━━━━━━━━ BELT ━━━━━━━━━━━ -->
+    <rect x="3"  y="22" width="16" height="2" fill="#2a1810"/>
+    <rect x="3"  y="22" width="1"  height="2" fill="#1a0d14"/>
+    <rect x="18" y="22" width="1"  height="2" fill="#1a0d14"/>
+    <!-- Belt buckle -->
+    <rect x="10" y="22" width="2"  height="2" fill="#d4af37"/>
+    <rect x="10" y="22" width="2"  height="1" fill="#f4e4bc"/>
+    <rect x="10" y="23" width="1"  height="1" fill="#b8902c"/>
+    <!-- Side pouches -->
+    <rect x="5"  y="22" width="2"  height="2" fill="#3a2418"/>
+    <rect x="5"  y="22" width="2"  height="1" fill="#5a3828"/>
+    <rect x="15" y="22" width="2"  height="2" fill="#3a2418"/>
+    <rect x="15" y="22" width="2"  height="1" fill="#5a3828"/>
+
+    <!-- ━━━━━━━━━━━ LOWER ROBE (flares out) ━━━━━━━━━━━ -->
+    <rect x="3"  y="24" width="16" height="1" fill="#5a2438"/>
+    <rect x="3"  y="24" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="18" y="24" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="4"  y="24" width="2"  height="1" fill="#8a3a58"/>
+
+    <rect x="3"  y="25" width="16" height="1" fill="#5a2438"/>
+    <rect x="3"  y="25" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="18" y="25" width="1"  height="1" fill="#1a0d14"/>
+
+    <rect x="2"  y="26" width="18" height="1" fill="#5a2438"/>
+    <rect x="2"  y="26" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="19" y="26" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="3"  y="26" width="2"  height="1" fill="#8a3a58"/>
+
+    <rect x="2"  y="27" width="18" height="1" fill="#5a2438"/>
+    <rect x="2"  y="27" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="19" y="27" width="1"  height="1" fill="#1a0d14"/>
+
+    <rect x="2"  y="28" width="18" height="1" fill="#5a2438"/>
+    <rect x="2"  y="28" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="19" y="28" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="3"  y="28" width="2"  height="1" fill="#8a3a58"/>
+
+    <rect x="2"  y="29" width="18" height="1" fill="#5a2438"/>
+    <rect x="2"  y="29" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="19" y="29" width="1"  height="1" fill="#1a0d14"/>
+
+    <rect x="2"  y="30" width="18" height="1" fill="#5a2438"/>
+    <rect x="2"  y="30" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="19" y="30" width="1"  height="1" fill="#1a0d14"/>
+    <!-- Gold hem trim -->
+    <rect x="2"  y="31" width="18" height="1" fill="#d4af37"/>
+    <rect x="2"  y="31" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="19" y="31" width="1"  height="1" fill="#1a0d14"/>
+    <rect x="3"  y="31" width="2"  height="1" fill="#f4e4bc"/>
+    <rect x="9"  y="31" width="3"  height="1" fill="#f4e4bc"/>
+    <rect x="16" y="31" width="2"  height="1" fill="#f4e4bc"/>
+
+    <!-- ━━━━━━━━━━━ BOOTS ━━━━━━━━━━━ -->
+    <!-- Pants visible in the gap -->
+    <rect x="6"  y="32" width="4"  height="2" fill="#2a2030"/>
+    <rect x="12" y="32" width="4"  height="2" fill="#2a2030"/>
+
+    <!-- Left boot -->
+    <rect x="5"  y="32" width="5"  height="3" fill="#3a2018"/>
+    <rect x="5"  y="32" width="1"  height="3" fill="#1a0d14"/>
+    <rect x="9"  y="32" width="1"  height="3" fill="#1a0d14"/>
+    <rect x="6"  y="32" width="2"  height="1" fill="#5a3828"/>
+    <rect x="5"  y="35" width="5"  height="1" fill="#1a0d10"/>
+
+    <!-- Right boot -->
+    <rect x="14" y="32" width="5"  height="3" fill="#3a2018"/>
+    <rect x="14" y="32" width="1"  height="3" fill="#1a0d14"/>
+    <rect x="18" y="32" width="1"  height="3" fill="#1a0d14"/>
+    <rect x="15" y="32" width="2"  height="1" fill="#5a3828"/>
+    <rect x="14" y="35" width="5"  height="1" fill="#1a0d10"/>
+
+    <!-- Boot buckles -->
+    <rect x="7"  y="33" width="1"  height="1" fill="#d4af37"/>
+    <rect x="16" y="33" width="1"  height="1" fill="#d4af37"/>
+
+  </symbol>
+</svg>
+
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- 1) Native size + scaled versions                              -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="row">
+  <div class="panel" style="width: 110px; padding-top: 60px;">
+    <svg class="sprite x1"><use href="#apothecary"/></svg>
+    <div class="label">1× · 24×36</div>
+  </div>
+
+  <div class="panel" style="width: 180px; padding-top: 28px;">
+    <svg class="sprite x4"><use href="#apothecary"/></svg>
+    <div class="label">4× · 96×144</div>
+  </div>
+
+  <div class="panel" style="width: 260px;">
+    <svg class="sprite x8"><use href="#apothecary"/></svg>
+    <div class="label">8× · raw pixel art</div>
+  </div>
+</div>
+
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- 2) HD-2D treatment (rim light + spotlight + motes)             -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="panel" style="width: 320px; margin: 0 auto;">
+  <span class="mote"></span>
+  <span class="mote"></span>
+  <span class="mote"></span>
+  <span class="mote"></span>
+  <span class="mote"></span>
+
+  <div class="hd2d-wrap">
+    <div class="hd2d-spot"></div>
+    <div class="hd2d-shadow"></div>
+    <div class="staff-glow"></div>
+    <svg class="hd2d-sprite"><use href="#apothecary"/></svg>
+  </div>
+
+  <div class="nameplate">
+    <div class="name">Lourdson, the Pulmonary Apothecary</div>
+    <div class="epithet">— Bearer of the Breath Lantern —</div>
+    <div class="class">CLASS · APOTHECARY</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-row"><span>HP</span><span class="v">120 / 120</span></div>
+    <div class="stat-row"><span>SP</span><span class="v">48 / 48</span></div>
+    <div class="stat-row"><span>STR</span><span class="v">68</span></div>
+    <div class="stat-row"><span>INT</span><span class="v">112</span></div>
+    <div class="stat-row"><span>ELEMENT</span><span class="v">WIND · LIGHT</span></div>
+  </div>
+</div>
+
+<div class="footnote">
+  A wandering apothecary who tends to the lungs of the afflicted.<br/>
+  Her staff bears the Breath Lantern — a vessel of pure air,<br/>
+  said to dispel any miasma that clouds the chest.
+</div>
+
+</body>
+</html>

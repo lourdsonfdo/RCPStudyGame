@@ -25,7 +25,7 @@ App.registerScreen('home', ({ root, state }) => {
       <span class="br1"></span><span class="br2"></span>
       <div class="title-block">
         <div class="title-eyebrow">▸ RESPIRATORY CARE ◂</div>
-        <div class="title-main">RCP // GAME</div>
+        <div class="title-main">RESPIRATORY GAME</div>
         <div class="title-sub">EXAM PREP SIMULATOR · BUILD 1.3</div>
       </div>
     </div>
