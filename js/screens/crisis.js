@@ -20,7 +20,7 @@ App.registerScreen('crisis', ({ root, state, ctx }) => {
     const v = scenario.vitals;
     root.innerHTML = `
       <div class="topbar">
-        <button class="back-btn" data-back>◀ ABORT</button>
+        <button class="back-btn" data-back>BACK</button>
         <span class="mode-tag">🏥 CASE FILE</span>
         <span class="chapter-tag">${scenario.id.toUpperCase()}</span>
       </div>
@@ -69,7 +69,7 @@ App.registerScreen('crisis', ({ root, state, ctx }) => {
     `;
     const arenaEl = root.querySelector('.arena');
     if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: 'crisis' });
-    root.querySelector('[data-back]').addEventListener('click', () => App.goto('scenario-select', { course: ctx.course }));
+    root.querySelector('[data-back]').addEventListener('click', () => App.back());
     root.querySelector('#begin').addEventListener('click', () => { phase = 'decision'; render(); });
   }
 
@@ -170,7 +170,7 @@ App.registerScreen('crisis', ({ root, state, ctx }) => {
       state.completedScenarios.push(scenario.id);
     }
     State.save(state);
-    App.goto('outcome', { session, lvlInfo, course: ctx.course, scenarioId: scenario.id });
+    App.goto('outcome', { session, lvlInfo, course: ctx.course, scenarioId: scenario.id }, { clearHistory: true });
   }
 
   render();

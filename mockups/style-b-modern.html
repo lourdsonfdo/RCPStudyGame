@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Style B — Modern Dark UI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-1: #0a0612;
+      --bg-2: #1a0a2e;
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.10);
+      --glass-hover: rgba(255,255,255,0.08);
+      --accent: #c084fc;       /* violet */
+      --accent-2: #f0abfc;     /* pink */
+      --accent-3: #67e8f9;     /* cyan */
+      --accent-warm: #fbbf24;  /* amber */
+      --text: #f8fafc;
+      --text-dim: #cbd5e1;
+      --text-mute: #64748b;
+    }
+    body {
+      background:
+        radial-gradient(ellipse at top, rgba(192,132,252,.18) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom, rgba(103,232,249,.10) 0%, transparent 50%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+    .screen {
+      width: 100%;
+      max-width: 430px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-top: 12px;
+    }
+
+    /* ─── HERO ─── */
+    .hero { text-align: center; padding: 16px 0 8px; position: relative; }
+    .hero-eyebrow {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: var(--accent-3);
+      margin-bottom: 12px;
+      opacity: .8;
+    }
+    .hero-title {
+      font-weight: 800;
+      font-size: 36px;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      background: linear-gradient(135deg, #f0abfc 0%, #c084fc 50%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 24px rgba(192,132,252,.4));
+    }
+    .hero-sub {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 10px;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    /* ─── GLASS CARDS ─── */
+    .glass {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+      transition: transform .2s, border-color .2s, background .2s;
+    }
+    .glass:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.18); }
+
+    /* ─── STATS ROW ─── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .stat-card {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .stat-emoji { font-size: 20px; line-height: 1; margin-bottom: 4px; }
+    .stat-value { font-size: 14px; font-weight: 700; color: var(--text); }
+    .stat-label { font-size: 9px; color: var(--text-mute); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ─── XP CARD ─── */
+    .xp-card { display: flex; flex-direction: column; gap: 10px; }
+    .xp-head { display: flex; justify-content: space-between; align-items: baseline; }
+    .xp-rank { font-size: 13px; font-weight: 700; }
+    .xp-rank-num { color: var(--accent); }
+    .xp-pct { font-size: 11px; color: var(--text-dim); font-weight: 500; }
+    .xp-track {
+      height: 8px;
+      background: rgba(255,255,255,.06);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .xp-fill {
+      height: 100%;
+      width: 52%;
+      background: linear-gradient(90deg, var(--accent-3) 0%, var(--accent) 50%, var(--accent-2) 100%);
+      border-radius: 999px;
+      box-shadow: 0 0 12px rgba(192,132,252,.6);
+    }
+    .xp-meta { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-mute); }
+
+    /* ─── DAILY CHALLENGE — featured large card ─── */
+    .daily {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(251,191,36,.12) 0%, rgba(192,132,252,.10) 100%);
+      border: 1px solid rgba(251,191,36,.3);
+      border-radius: 18px;
+      padding: 18px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .daily::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 50%, rgba(251,191,36,.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .daily-thumb {
+      width: 60px; height: 60px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 8px 24px rgba(251,191,36,.4);
+      position: relative; z-index: 1;
+    }
+    .daily-body { flex: 1; position: relative; z-index: 1; }
+    .daily-eyebrow {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--accent-warm);
+      margin-bottom: 6px;
+    }
+    .daily-title { font-size: 16px; font-weight: 700; line-height: 1.2; margin-bottom: 4px; }
+    .daily-meta { font-size: 11px; color: var(--text-dim); }
+    .daily-arrow {
+      font-size: 22px;
+      color: var(--accent-warm);
+      position: relative; z-index: 1;
+    }
+
+    /* ─── COURSE CARDS — big hero ─── */
+    .course-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      padding: 22px;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid var(--glass-border);
+    }
+    .course-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+    .course-card-103 {
+      background: linear-gradient(135deg, rgba(103,232,249,.12) 0%, rgba(59,130,246,.18) 100%);
+      border-color: rgba(103,232,249,.3);
+    }
+    .course-card-104 {
+      background: linear-gradient(135deg, rgba(240,171,252,.12) 0%, rgba(192,132,252,.18) 100%);
+      border-color: rgba(192,132,252,.3);
+    }
+    .course-card::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -10%;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .course-card-103::before { background: rgba(103,232,249,.25); }
+    .course-card-104::before { background: rgba(240,171,252,.22); }
+    .course-thumb {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 34px;
+      position: relative; z-index: 1;
+      flex-shrink: 0;
+    }
+    .course-card-103 .course-thumb {
+      background: linear-gradient(135deg, #67e8f9 0%, #3b82f6 100%);
+      box-shadow: 0 8px 20px rgba(103,232,249,.4);
+    }
+    .course-card-104 .course-thumb {
+      background: linear-gradient(135deg, #f0abfc 0%, #c084fc 100%);
+      box-shadow: 0 8px 20px rgba(192,132,252,.4);
+    }
+    .course-body { flex: 1; position: relative; z-index: 1; }
+    .course-eyebrow {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .course-card-103 .course-eyebrow { color: var(--accent-3); }
+    .course-card-104 .course-eyebrow { color: var(--accent-2); }
+    .course-title { font-size: 17px; font-weight: 700; margin-bottom: 4px; line-height: 1.1; }
+    .course-meta { font-size: 11px; color: var(--text-dim); }
+    .course-chevron { font-size: 22px; color: var(--text-dim); position: relative; z-index: 1; }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+    .pill {
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--glass-border);
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    /* ─── DEV TAG ─── */
+    .dev-tag {
+      position: fixed; top: 8px; left: 50%; transform: translateX(-50%);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px; color: var(--accent-2); background: rgba(10,6,18,.9);
+      padding: 6px 12px; border: 1px solid var(--accent); letter-spacing: 2px;
+      z-index: 100; border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dev-tag">★ STYLE B — MODERN DARK UI ★</div>
+
+  <div class="screen">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-eyebrow">⚕ MOBILE STUDY · RCP FINALS</div>
+      <h1 class="hero-title">RCP Study<br>Game</h1>
+      <p class="hero-sub">Master pulmonary disease and pharmacology, one boss at a time.</p>
+    </div>
+
+    <!-- Stats row -->
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-emoji">⚔️</div><div class="stat-value">8 / 22</div><div class="stat-label">Bosses</div></div>
+      <div class="stat-card"><div class="stat-emoji">🔥</div><div class="stat-value">6 days</div><div class="stat-label">Streak</div></div>
+      <div class="stat-card"><div class="stat-emoji">🪙</div><div class="stat-value">320</div><div class="stat-label">Gold</div></div>
+    </div>
+
+    <!-- XP card -->
+    <div class="glass xp-card">
+      <div class="xp-head">
+        <div class="xp-rank">Level <span class="xp-rank-num">3</span> · Intern RT</div>
+        <div class="xp-pct">52%</div>
+      </div>
+      <div class="xp-track"><div class="xp-fill"></div></div>
+      <div class="xp-meta"><span>1,247 XP</span><span>1,153 to next</span></div>
+    </div>
+
+    <!-- Daily challenge -->
+    <div class="daily">
+      <div class="daily-thumb">📅</div>
+      <div class="daily-body">
+        <div class="daily-eyebrow">DAILY CHALLENGE</div>
+        <div class="daily-title">Hyaline Hydra</div>
+        <div class="daily-meta">+75 XP · +50 🪙 · No items</div>
+      </div>
+      <div class="daily-arrow">→</div>
+    </div>
+
+    <!-- Course cards -->
+    <div class="course-card course-card-103">
+      <div class="course-thumb">🫁</div>
+      <div class="course-body">
+        <div class="course-eyebrow">RCP 103</div>
+        <div class="course-title">Pulmonary Disease</div>
+        <div class="course-meta">10 bosses · 100 questions · 6 scenarios</div>
+      </div>
+      <div class="course-chevron">→</div>
+    </div>
+
+    <div class="course-card course-card-104">
+      <div class="course-thumb">💊</div>
+      <div class="course-body">
+        <div class="course-eyebrow">RCP 104</div>
+        <div class="course-title">Pharmacology</div>
+        <div class="course-meta">12 bosses · 120 questions · 6 scenarios</div>
+      </div>
+      <div class="course-chevron">→</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span>⚙ Settings</span>
+      <span class="pill">🎵 Fast</span>
+    </div>
+
+  </div>
+</body>
+</html>

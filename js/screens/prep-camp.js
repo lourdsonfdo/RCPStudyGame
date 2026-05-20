@@ -21,7 +21,7 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
     const sprite = (window.BOSS_SPRITES && window.BOSS_SPRITES[boss.id]) || `<div class="boss-emoji">${boss.emoji}</div>`;
     root.innerHTML = `
       <div class="topbar">
-        <button class="back-btn" data-back>◀ BACK</button>
+        <button class="back-btn" data-back>BACK</button>
         <span class="mode-tag">⚔ PREP CAMP</span>
         <span class="chapter-tag">${boss.course.toUpperCase()}</span>
       </div>
@@ -93,7 +93,7 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
     const arenaEl = root.querySelector('.arena');
     if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: 'battle' });
 
-    root.querySelector('[data-back]').addEventListener('click', () => App.goto('boss-select', { course: ctx.course }));
+    root.querySelector('[data-back]').addEventListener('click', () => App.back());
     root.querySelectorAll('[data-go]').forEach(btn => {
       btn.addEventListener('click', () => {
         const d = btn.dataset.go;
@@ -107,7 +107,7 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
   function renderShop() {
     root.innerHTML = `
       <div class="topbar">
-        <button class="back-btn" data-back>◀ BACK</button>
+        <button class="back-btn" data-back>BACK</button>
         <span class="mode-tag">🪙 REQUISITION TERMINAL</span>
         <span class="chapter-tag gold-txt">¢ ${state.gold}</span>
       </div>
@@ -146,7 +146,7 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
   function renderEquip() {
     root.innerHTML = `
       <div class="topbar">
-        <button class="back-btn" data-back>◀ BACK</button>
+        <button class="back-btn" data-back>BACK</button>
         <span class="mode-tag">🎒 LOADOUT</span>
         <span class="chapter-tag">${state.equipped.length}/3</span>
       </div>

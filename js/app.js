@@ -10,14 +10,55 @@
   const screenInits = {};            // map: screenId → render fn(ctx)
   let routeCtx = {};                 // arbitrary data passed between screens
 
+  // ── Navigation history stack ─────────────────────────────────
+  // Each entry: { screen: string, ctx: object }
+  // We push the previous screen+ctx whenever goto() moves forward.
+  // App.back() pops one entry and switches to it.
+  const history = [];
+  // Screens that should NEVER appear as a "back" target — going back from
+  // them does nothing meaningful, or they're terminal/transient overlays.
+  const NO_BACK_TO = new Set(['battle', 'crisis', 'level-up', 'results', 'outcome']);
+
   function $screen(id) { return document.querySelector(`[data-screen="${id}"]`); }
 
-  function goto(screenId, ctx = {}) {
-    // Skip transition on initial home boot (no current screen to fade FROM)
-    const isInitial = !document.querySelector('.screen.active') || (currentScreen === screenId);
-    if (isInitial) { _doSwitch(screenId, ctx); return; }
+  /**
+   * Navigate to a screen.
+   * opts:
+   *   replace      — don't push current screen onto history (used by App.back internally)
+   *   clearHistory — wipe history first (used by terminal transitions: battle→results, crisis→outcome)
+   */
+  function goto(screenId, ctx = {}, opts = {}) {
+    if (opts.clearHistory) history.length = 0;
+
+    const isInitial = !document.querySelector('.screen.active');
+
+    // Push current screen onto history before navigating away (unless replacing or it's the initial boot)
+    if (!isInitial && !opts.replace && currentScreen && currentScreen !== screenId) {
+      // Don't record returns through transient overlays
+      if (!NO_BACK_TO.has(currentScreen)) {
+        history.push({ screen: currentScreen, ctx: routeCtx });
+        // Cap stack to prevent unbounded growth
+        if (history.length > 20) history.shift();
+      }
+    }
+
+    if (isInitial || currentScreen === screenId) { _doSwitch(screenId, ctx); return; }
     _transition(() => _doSwitch(screenId, ctx));
   }
+
+  /** Pop history stack and navigate back. Falls through to home if stack is empty. */
+  function back() {
+    const prev = history.pop();
+    if (prev) {
+      _transition(() => _doSwitch(prev.screen, prev.ctx));
+    } else {
+      // Empty history → go home
+      if (currentScreen === 'home') return; // already there
+      _transition(() => _doSwitch('home', {}));
+    }
+  }
+
+  function canGoBack() { return history.length > 0 && currentScreen !== 'home'; }
 
   function _doSwitch(screenId, ctx) {
     routeCtx = { ...ctx };
@@ -178,6 +219,18 @@
     }
   }
 
+  // ── Browser back button (mobile swipe / desktop back) ─────────
+  // Each goto() pushes a history state; popstate fires when the user uses
+  // the browser/system back gesture. We intercept and call App.back().
+  window.addEventListener('popstate', () => {
+    if (canGoBack()) back();
+    else history.length === 0 && currentScreen !== 'home' && _transition(() => _doSwitch('home', {}));
+  });
+  // Ensure there's an initial history entry so the first back doesn't exit
+  if (typeof window.history !== 'undefined' && window.history.pushState) {
+    try { window.history.replaceState({ rcpsg: 'home' }, ''); } catch {}
+  }
+
   // ────────────────────────────  EXPORT  ────────────────────────────
-  global.App = { goto, registerScreen, refresh, getState, persist, toast };
+  global.App = { goto, back, canGoBack, registerScreen, refresh, getState, persist, toast };
 })(window);

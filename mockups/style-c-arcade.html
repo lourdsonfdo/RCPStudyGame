@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Style C — Arcade Cabinet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0014;
+      --bg-2: #1a0028;
+      --neon-pink:   #ff2dd4;
+      --neon-cyan:   #00f0ff;
+      --neon-yellow: #fff200;
+      --neon-green:  #39ff14;
+      --neon-purple: #c800ff;
+      --cabinet:     #2a0040;
+      --shadow:      #000;
+      --text:        #fffafa;
+      --text-dim:    #d0b0e8;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Press Start 2P', monospace;
+      min-height: 100vh;
+      padding: 16px 12px;
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* CRT scanlines — much more pronounced than current game */
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background: repeating-linear-gradient(0deg,
+        rgba(0,0,0,.32) 0px, rgba(0,0,0,.32) 1px,
+        transparent 1px, transparent 3px);
+      pointer-events: none; z-index: 200; mix-blend-mode: multiply;
+    }
+    /* CRT screen curvature vignette */
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.55) 100%);
+      pointer-events: none; z-index: 201;
+    }
+    .screen {
+      width: 100%;
+      max-width: 430px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ─── MARQUEE LOGO ─── */
+    .marquee {
+      text-align: center;
+      padding: 14px 14px 18px;
+      background: var(--cabinet);
+      border: 4px solid #6a008a;
+      box-shadow:
+        0 0 0 2px #000 inset,
+        0 0 0 4px var(--neon-pink) inset,
+        0 0 22px var(--neon-pink),
+        0 6px 0 #000;
+      position: relative;
+    }
+    .marquee::before {
+      content: '◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆';
+      position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
+      font-size: 8px; color: var(--neon-yellow);
+      background: var(--bg); padding: 0 6px;
+      letter-spacing: 6px;
+    }
+    .marquee-title {
+      font-size: 22px;
+      letter-spacing: 4px;
+      color: var(--neon-yellow);
+      text-shadow:
+        0 0 6px var(--neon-yellow),
+        0 0 12px var(--neon-pink),
+        0 0 20px var(--neon-pink);
+      animation: neon-flicker 2.7s linear infinite;
+    }
+    .marquee-sub {
+      font-size: 8px;
+      letter-spacing: 6px;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 6px var(--neon-cyan), 0 0 12px var(--neon-cyan);
+      margin-top: 12px;
+    }
+    @keyframes neon-flicker {
+      0%, 95%, 100% { opacity: 1; }
+      96% { opacity: 0.6; }
+      97% { opacity: 1; }
+      98% { opacity: 0.7; }
+      99% { opacity: 1; }
+    }
+
+    /* ─── HIGH SCORE STAT PANEL ─── */
+    .hi-score {
+      background: #000;
+      border: 3px solid var(--neon-cyan);
+      padding: 12px 14px;
+      box-shadow: 0 0 14px var(--neon-cyan), 0 4px 0 #000;
+    }
+    .hs-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 10px;
+      font-size: 8px; letter-spacing: 2px;
+      color: var(--neon-cyan); text-shadow: 0 0 6px var(--neon-cyan);
+    }
+    .hs-rank { color: var(--neon-yellow); text-shadow: 0 0 6px var(--neon-yellow); }
+    .hs-row {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+      font-size: 8px;
+    }
+    .hs-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hs-emoji { font-size: 18px; filter: drop-shadow(0 0 4px currentColor); }
+    .hs-val { font-size: 11px; color: var(--neon-green); text-shadow: 0 0 6px var(--neon-green); }
+    .hs-lbl { font-size: 6px; color: var(--text-dim); letter-spacing: 1px; }
+
+    /* XP bar — chunky segmented */
+    .xp-segmented {
+      margin-top: 14px;
+      display: flex; gap: 2px;
+      padding: 4px;
+      background: #000;
+      border: 2px solid var(--neon-purple);
+    }
+    .xp-cell {
+      flex: 1; height: 14px;
+      background: linear-gradient(180deg, #1a0028 0%, #000 100%);
+      border: 1px solid #2a0040;
+    }
+    .xp-cell.filled {
+      background: linear-gradient(180deg, var(--neon-green) 0%, #00b800 100%);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 6px var(--neon-green);
+    }
+    .xp-cell.filled:nth-child(odd)  { background: linear-gradient(180deg, var(--neon-cyan) 0%, #008cb8 100%); border-color: var(--neon-cyan); }
+    .xp-meta { font-size: 7px; color: var(--text-dim); text-align: right; margin-top: 6px; letter-spacing: 1px; }
+
+    /* ─── COIN-SLOT DAILY ─── */
+    .coin-slot {
+      position: relative;
+      background: #000;
+      border: 3px solid var(--neon-yellow);
+      padding: 14px 14px 14px 70px;
+      box-shadow: 0 0 14px var(--neon-yellow), 0 4px 0 #000;
+      animation: coin-pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes coin-pulse {
+      0%,100% { box-shadow: 0 0 14px var(--neon-yellow), 0 4px 0 #000; }
+      50%     { box-shadow: 0 0 24px var(--neon-yellow), 0 0 36px var(--neon-yellow), 0 4px 0 #000; }
+    }
+    .coin-slot::before {
+      content: '🪙';
+      position: absolute;
+      left: 12px; top: 50%; transform: translateY(-50%);
+      font-size: 32px;
+      filter: drop-shadow(0 0 8px var(--neon-yellow));
+      animation: coin-spin 3s linear infinite;
+    }
+    @keyframes coin-spin {
+      0%,100% { transform: translateY(-50%) rotateY(0deg); }
+      50%     { transform: translateY(-50%) rotateY(180deg); }
+    }
+    .coin-label { font-size: 8px; color: var(--neon-yellow); text-shadow: 0 0 6px var(--neon-yellow); letter-spacing: 2px; }
+    .coin-title { font-size: 12px; color: var(--text); margin-top: 6px; }
+    .coin-meta { font-size: 7px; color: var(--text-dim); margin-top: 6px; letter-spacing: 1px; }
+
+    /* ─── BIG KEYCAP COURSE BUTTONS ─── */
+    .keycap {
+      position: relative;
+      background: var(--cabinet);
+      border: 3px solid var(--neon-pink);
+      padding: 18px 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow:
+        0 0 0 2px #000 inset,
+        0 0 14px var(--neon-pink),
+        0 6px 0 #000,
+        0 8px 14px rgba(0,0,0,.5);
+      transition: transform .1s, box-shadow .1s;
+    }
+    .keycap:active {
+      transform: translateY(4px);
+      box-shadow:
+        0 0 0 2px #000 inset,
+        0 0 14px var(--neon-pink),
+        0 2px 0 #000;
+    }
+    .keycap-104 {
+      border-color: var(--neon-cyan);
+      box-shadow:
+        0 0 0 2px #000 inset,
+        0 0 14px var(--neon-cyan),
+        0 6px 0 #000,
+        0 8px 14px rgba(0,0,0,.5);
+    }
+    .keycap-icon-wrap {
+      width: 56px; height: 56px;
+      background: #000;
+      border: 2px solid var(--neon-pink);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+    .keycap-104 .keycap-icon-wrap { border-color: var(--neon-cyan); }
+    .keycap-body { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .keycap-tag {
+      font-size: 7px;
+      letter-spacing: 2px;
+      color: var(--neon-pink);
+      text-shadow: 0 0 6px var(--neon-pink);
+    }
+    .keycap-104 .keycap-tag { color: var(--neon-cyan); text-shadow: 0 0 6px var(--neon-cyan); }
+    .keycap-title { font-size: 12px; color: var(--text); letter-spacing: 1px; }
+    .keycap-meta  { font-size: 7px; color: var(--text-dim); letter-spacing: 1px; }
+    .keycap-arrow {
+      font-size: 22px;
+      color: var(--neon-pink);
+      text-shadow: 0 0 8px var(--neon-pink);
+      animation: arrow-blink 0.8s ease-in-out infinite;
+    }
+    .keycap-104 .keycap-arrow { color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); }
+    @keyframes arrow-blink {
+      0%,100% { opacity: 1; }
+      50%     { opacity: 0.4; }
+    }
+
+    /* ─── INSERT-COIN FOOTER ─── */
+    .insert-coin {
+      text-align: center;
+      padding: 10px;
+      font-size: 8px;
+      color: var(--neon-green);
+      text-shadow: 0 0 6px var(--neon-green);
+      letter-spacing: 4px;
+      animation: blink 1.1s linear infinite;
+      background: #000;
+      border: 2px solid var(--neon-green);
+    }
+    @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0.3; } }
+
+    .footer-row {
+      display: flex; justify-content: space-between;
+      padding: 10px 12px;
+      font-size: 7px;
+      color: var(--text-dim);
+      background: #000;
+      border: 2px solid #4a0070;
+    }
+    .footer-row .pill {
+      background: #1a0028; border: 1px solid var(--neon-purple);
+      padding: 4px 8px; color: var(--neon-purple);
+      text-shadow: 0 0 4px var(--neon-purple);
+    }
+
+    /* ─── DEV TAG ─── */
+    .dev-tag {
+      position: fixed; top: 6px; left: 50%; transform: translateX(-50%);
+      font-size: 7px; color: var(--neon-yellow); background: #000;
+      padding: 5px 12px; border: 1px solid var(--neon-yellow); letter-spacing: 2px;
+      z-index: 250; text-shadow: 0 0 6px var(--neon-yellow);
+    }
+  </style>
+</head>
+<body>
+  <div class="dev-tag">★ STYLE C — ARCADE CABINET ★</div>
+  <div class="screen">
+
+    <!-- Marquee logo -->
+    <div class="marquee">
+      <div class="marquee-title">RCP STUDY GAME</div>
+      <div class="marquee-sub">— FINAL EXAM EDITION —</div>
+    </div>
+
+    <!-- Hi-score / stat panel -->
+    <div class="hi-score">
+      <div class="hs-head">
+        <span>HI-SCORE</span>
+        <span class="hs-rank">LV.3 INTERN RT</span>
+      </div>
+      <div class="hs-row">
+        <div class="hs-stat" style="color: var(--neon-pink);">
+          <span class="hs-emoji">⚔</span>
+          <span class="hs-val">8 / 22</span>
+          <span class="hs-lbl">BOSSES</span>
+        </div>
+        <div class="hs-stat" style="color: var(--neon-yellow);">
+          <span class="hs-emoji">🔥</span>
+          <span class="hs-val">×6</span>
+          <span class="hs-lbl">STREAK</span>
+        </div>
+        <div class="hs-stat" style="color: var(--neon-green);">
+          <span class="hs-emoji">🪙</span>
+          <span class="hs-val">320</span>
+          <span class="hs-lbl">COINS</span>
+        </div>
+      </div>
+      <!-- Segmented XP bar -->
+      <div class="xp-segmented">
+        <div class="xp-cell filled"></div>
+        <div class="xp-cell filled"></div>
+        <div class="xp-cell filled"></div>
+        <div class="xp-cell filled"></div>
+        <div class="xp-cell filled"></div>
+        <div class="xp-cell filled"></div>
+        <div class="xp-cell filled"></div>
+        <div class="xp-cell filled"></div>
+        <div class="xp-cell filled"></div>
+        <div class="xp-cell filled"></div>
+        <div class="xp-cell"></div>
+        <div class="xp-cell"></div>
+        <div class="xp-cell"></div>
+        <div class="xp-cell"></div>
+        <div class="xp-cell"></div>
+        <div class="xp-cell"></div>
+        <div class="xp-cell"></div>
+        <div class="xp-cell"></div>
+        <div class="xp-cell"></div>
+        <div class="xp-cell"></div>
+      </div>
+      <div class="xp-meta">EXP 1247 / 2400</div>
+    </div>
+
+    <!-- Daily challenge — coin slot -->
+    <div class="coin-slot">
+      <div class="coin-label">★ INSERT TOKEN — DAILY ★</div>
+      <div class="coin-title">VS HYALINE HYDRA</div>
+      <div class="coin-meta">+75 XP · +50 COIN · NO ITEMS</div>
+    </div>
+
+    <!-- Course buttons — big keycaps -->
+    <div class="keycap">
+      <div class="keycap-icon-wrap">🫁</div>
+      <div class="keycap-body">
+        <div class="keycap-tag">PLAYER 1 SELECT</div>
+        <div class="keycap-title">RCP 103</div>
+        <div class="keycap-meta">PULMONARY DISEASE · 10 BOSSES</div>
+      </div>
+      <div class="keycap-arrow">▶</div>
+    </div>
+
+    <div class="keycap keycap-104">
+      <div class="keycap-icon-wrap">💊</div>
+      <div class="keycap-body">
+        <div class="keycap-tag">PLAYER 1 SELECT</div>
+        <div class="keycap-title">RCP 104</div>
+        <div class="keycap-meta">PHARMACOLOGY · 12 BOSSES</div>
+      </div>
+      <div class="keycap-arrow">▶</div>
+    </div>
+
+    <!-- Insert-coin footer -->
+    <div class="insert-coin">▶ PRESS START ◀</div>
+
+    <div class="footer-row">
+      <span>⚙ OPTIONS</span>
+      <span class="pill">♫ FAST</span>
+    </div>
+
+  </div>
+</body>
+</html>

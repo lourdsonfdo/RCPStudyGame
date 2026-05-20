@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Style A — JRPG Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #050818;
+      --panel-bg: linear-gradient(180deg, #1a2052 0%, #0e1338 100%);
+      --panel-border: #6788ff;
+      --inner-glow: rgba(103, 136, 255, .35);
+      --gold: #ffd966;
+      --teal: #66e0e0;
+      --green: #66ff88;
+      --orange: #ffaa44;
+      --text: #f0f3ff;
+      --text-dim: #a4b0e0;
+      --text-mute: #6878a0;
+    }
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(103,136,255,.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(102,224,224,.10) 0%, transparent 40%);
+      color: var(--text);
+      font-family: 'Press Start 2P', monospace;
+      min-height: 100vh;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+    .screen { width: 100%; max-width: 430px; display: flex; flex-direction: column; gap: 14px; padding-top: 8px; }
+
+    /* ─── JRPG decorative panel ─── */
+    .jpanel {
+      position: relative;
+      background: var(--panel-bg);
+      border: 3px solid var(--panel-border);
+      padding: 14px 16px;
+      box-shadow:
+        0 0 0 1px #000 inset,
+        0 0 0 4px #0c1130 inset,
+        0 0 18px var(--inner-glow),
+        0 4px 0 #000;
+    }
+    /* Corner ornaments */
+    .jpanel::before, .jpanel::after {
+      content: ''; position: absolute; width: 12px; height: 12px;
+      border: 3px solid var(--gold);
+      pointer-events: none;
+    }
+    .jpanel::before { top: -3px; left: -3px;  border-right: none; border-bottom: none; }
+    .jpanel::after  { bottom: -3px; right: -3px; border-left: none; border-top: none; }
+    .jpanel-corners-extra { position: absolute; pointer-events: none; }
+    .jpanel-corners-extra::before, .jpanel-corners-extra::after {
+      content: ''; position: absolute; width: 12px; height: 12px;
+      border: 3px solid var(--gold);
+    }
+    .jpanel-corners-extra::before { top: -3px; right: -3px; border-left: none; border-bottom: none; }
+    .jpanel-corners-extra::after  { bottom: -3px; left: -3px; border-right: none; border-top: none; }
+
+    /* ─── TITLE LOGO ─── */
+    .logo-wrap { text-align: center; padding: 18px 0 8px; }
+    .logo-line1 {
+      font-size: 18px;
+      letter-spacing: 4px;
+      color: var(--text);
+      text-shadow:
+        2px 2px 0 #000,
+        4px 4px 0 #6788ff,
+        0 0 18px rgba(103,136,255,.7);
+      animation: logo-pulse 3s ease-in-out infinite;
+    }
+    .logo-line2 {
+      font-size: 22px;
+      letter-spacing: 6px;
+      margin-top: 8px;
+      color: var(--gold);
+      text-shadow:
+        2px 2px 0 #000,
+        4px 4px 0 #b08020,
+        0 0 22px rgba(255,217,102,.7);
+      animation: logo-pulse 3s ease-in-out infinite reverse;
+    }
+    .logo-sub {
+      font-size: 7px;
+      letter-spacing: 4px;
+      color: var(--text-dim);
+      margin-top: 14px;
+    }
+    @keyframes logo-pulse {
+      0%,100% { filter: brightness(1); }
+      50%     { filter: brightness(1.25); }
+    }
+
+    /* ─── STATUS WINDOW (FF main menu style) ─── */
+    .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat-cell { display: flex; flex-direction: column; gap: 6px; }
+    .stat-label { font-size: 6px; color: var(--text-mute); letter-spacing: 2px; }
+    .stat-value { font-size: 10px; color: var(--text); }
+    .stat-value.gold { color: var(--gold); text-shadow: 0 0 8px rgba(255,217,102,.6); }
+    .stat-value.teal { color: var(--teal); text-shadow: 0 0 8px rgba(102,224,224,.5); }
+    .stat-value.orange { color: var(--orange); text-shadow: 0 0 8px rgba(255,170,68,.5); }
+
+    .xp-track {
+      grid-column: 1 / -1;
+      height: 14px;
+      background: #0a0e26;
+      border: 2px solid #2a3a8a;
+      position: relative;
+      box-shadow: 0 0 0 1px #000 inset;
+    }
+    .xp-fill {
+      height: 100%;
+      background: linear-gradient(180deg, #88ffaa 0%, #44dd66 50%, #229944 100%);
+      width: 52%;
+      box-shadow: 0 0 8px rgba(102,255,136,.7) inset;
+    }
+    .xp-fill::after {
+      content: '';
+      position: absolute;
+      top: 1px; left: 0; right: 0; height: 2px;
+      background: rgba(255,255,255,.4);
+    }
+    .xp-sub { grid-column: 1 / -1; font-size: 6px; color: var(--text-mute); text-align: right; }
+
+    /* ─── DAILY CHALLENGE CARD ─── */
+    .daily {
+      background: linear-gradient(180deg, #3a2a0a 0%, #1a1208 100%);
+      border-color: var(--gold);
+      box-shadow:
+        0 0 0 1px #000 inset,
+        0 0 0 4px #1a1208 inset,
+        0 0 20px rgba(255,217,102,.5),
+        0 4px 0 #000;
+      animation: daily-pulse 2s ease-in-out infinite;
+    }
+    .daily::before, .daily::after { border-color: var(--green); }
+    .daily-row { display: flex; align-items: center; gap: 12px; }
+    .daily-icon {
+      font-size: 30px;
+      filter: drop-shadow(0 0 10px var(--gold));
+    }
+    .daily-body { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .daily-title { font-size: 9px; color: var(--gold); }
+    .daily-sub { font-size: 7px; color: var(--text-dim); line-height: 1.6; }
+    .daily-arrow { font-size: 14px; color: var(--gold); }
+    @keyframes daily-pulse {
+      0%,100% { box-shadow: 0 0 0 1px #000 inset, 0 0 0 4px #1a1208 inset, 0 0 20px rgba(255,217,102,.5), 0 4px 0 #000; }
+      50%     { box-shadow: 0 0 0 1px #000 inset, 0 0 0 4px #1a1208 inset, 0 0 30px rgba(255,217,102,.85), 0 4px 0 #000; }
+    }
+
+    /* ─── COURSE BUTTONS ─── */
+    .course-btn {
+      cursor: pointer;
+      transition: transform .15s, filter .15s;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+    }
+    .course-btn:hover { transform: translateY(-2px); filter: brightness(1.15); }
+    .course-icon {
+      font-size: 38px;
+      width: 56px;
+      text-align: center;
+      filter: drop-shadow(0 0 12px var(--panel-border));
+    }
+    .course-body { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .course-title { font-size: 11px; color: var(--text); letter-spacing: 2px; }
+    .course-meta { font-size: 7px; color: var(--text-dim); letter-spacing: 1px; }
+    .course-chevron { font-size: 16px; color: var(--panel-border); }
+
+    .course-103 { background: linear-gradient(180deg, #1a3052 0%, #0a1532 100%); }
+    .course-104 { background: linear-gradient(180deg, #2a1a52 0%, #150a32 100%); border-color: #aa66ff; }
+    .course-104 .course-icon { filter: drop-shadow(0 0 12px #aa66ff); }
+    .course-104 .course-chevron { color: #aa66ff; }
+
+    /* ─── FOOTER ─── */
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      font-size: 7px;
+      color: var(--text-mute);
+      background: rgba(10,14,38,.6);
+      border: 2px solid #2a3460;
+    }
+    .footer-row .pill {
+      background: #1a2052;
+      border: 1px solid var(--panel-border);
+      padding: 4px 8px;
+      color: var(--text-dim);
+    }
+
+    /* ─── DEV TAG ─── */
+    .dev-tag {
+      position: fixed; top: 6px; left: 50%; transform: translateX(-50%);
+      font-size: 7px; color: var(--gold); background: #000;
+      padding: 5px 12px; border: 1px solid var(--gold); letter-spacing: 2px; z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <div class="dev-tag">★ STYLE A — JRPG MENU ★</div>
+  <div class="screen">
+
+    <!-- Title logo -->
+    <div class="logo-wrap">
+      <div class="logo-line1">RCP STUDY</div>
+      <div class="logo-line2">GAME</div>
+      <div class="logo-sub">— THE FINAL EXAM PREP RPG —</div>
+    </div>
+
+    <!-- Status window -->
+    <div class="jpanel">
+      <div class="jpanel-corners-extra"></div>
+      <div class="status-grid">
+        <div class="stat-cell">
+          <div class="stat-label">RANK</div>
+          <div class="stat-value">LV.3 INTERN RT</div>
+        </div>
+        <div class="stat-cell" style="text-align:right;">
+          <div class="stat-label">GOLD</div>
+          <div class="stat-value gold">🪙 320</div>
+        </div>
+        <div class="xp-track"><div class="xp-fill"></div></div>
+        <div class="xp-sub">EXP 1247 / 2400</div>
+        <div class="stat-cell">
+          <div class="stat-label">BOSSES</div>
+          <div class="stat-value teal">⚔ 8 / 22</div>
+        </div>
+        <div class="stat-cell" style="text-align:right;">
+          <div class="stat-label">STREAK</div>
+          <div class="stat-value orange">🔥 ×6</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Daily challenge -->
+    <div class="jpanel daily">
+      <div class="jpanel-corners-extra"></div>
+      <div class="daily-row">
+        <div class="daily-icon">📅</div>
+        <div class="daily-body">
+          <div class="daily-title">DAILY CHALLENGE</div>
+          <div class="daily-sub">Hyaline Hydra · ARDS<br>+75 XP · +50 🪙 · NO ITEMS</div>
+        </div>
+        <div class="daily-arrow">▶</div>
+      </div>
+    </div>
+
+    <!-- Course buttons -->
+    <div class="jpanel course-btn course-103">
+      <div class="jpanel-corners-extra"></div>
+      <div class="course-icon">🫁</div>
+      <div class="course-body">
+        <div class="course-title">RCP 103</div>
+        <div class="course-meta">PULMONARY DISEASE · 10 BOSSES · 100 Q</div>
+      </div>
+      <div class="course-chevron">▶</div>
+    </div>
+
+    <div class="jpanel course-btn course-104">
+      <div class="jpanel-corners-extra"></div>
+      <div class="course-icon">💊</div>
+      <div class="course-body">
+        <div class="course-title">RCP 104</div>
+        <div class="course-meta">PHARMACOLOGY · 12 BOSSES · 120 Q</div>
+      </div>
+      <div class="course-chevron">▶</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-row">
+      <span>⚙ SETTINGS</span>
+      <span class="pill">🎵 FAST</span>
+    </div>
+
+  </div>
+</body>
+</html>

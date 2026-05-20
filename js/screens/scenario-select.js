@@ -10,7 +10,7 @@ App.registerScreen('scenario-select', ({ root, state, ctx }) => {
 
   root.innerHTML = `
     <div class="topbar">
-      <button class="back-btn" data-back>◀ BACK</button>
+      <button class="back-btn" data-back>BACK</button>
       <span class="mode-tag">🏥 CASE FILES</span>
       <span class="chapter-tag">${course.toUpperCase()}</span>
     </div>
@@ -36,7 +36,7 @@ App.registerScreen('scenario-select', ({ root, state, ctx }) => {
     </div>
   `;
 
-  root.querySelector('[data-back]').addEventListener('click', () => App.goto('course-mode', { course }));
+  root.querySelector('[data-back]').addEventListener('click', () => App.back());
   root.querySelectorAll('[data-id]').forEach(row => {
     row.addEventListener('click', () => App.goto('crisis', { course, scenarioId: row.dataset.id }));
   });

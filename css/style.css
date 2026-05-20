@@ -403,12 +403,38 @@ body::after {
 }
 .topbar .chapter-tag { color: var(--text-mute); font-size: 7px; letter-spacing: 1px; }
 .topbar .back-btn {
-  background: none; border: none; color: var(--text-dim); font: inherit;
-  font-size: 8px; cursor: pointer; padding: 6px;
-  transition: color .2s;
+  background: linear-gradient(90deg, rgba(0,229,255,.12) 0%, rgba(0,40,60,.6) 100%);
+  border: 1px solid var(--hud-cyan);
+  color: var(--hud-cyan);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  padding: 6px 12px 6px 8px;
+  display: inline-flex; align-items: center; gap: 4px;
+  text-shadow: 0 0 4px var(--hud-cyan);
+  box-shadow: 0 0 10px rgba(0,229,255,.25), inset 0 0 8px rgba(0,229,255,.08);
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+  -webkit-tap-highlight-color: transparent;
+  transition: background .15s, box-shadow .15s, transform .08s;
 }
-.topbar .back-btn:hover  { color: var(--hud-cyan); }
-.topbar .back-btn:active { transform: scale(.95); }
+.topbar .back-btn::before {
+  content: '◀';
+  font-size: 11px;
+  margin-right: 2px;
+  filter: drop-shadow(0 0 4px var(--hud-cyan));
+  animation: back-arrow 1.4s ease-in-out infinite;
+}
+@keyframes back-arrow {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(-3px); }
+}
+.topbar .back-btn:hover {
+  background: linear-gradient(90deg, rgba(0,229,255,.25) 0%, rgba(0,80,120,.7) 100%);
+  box-shadow: 0 0 16px rgba(0,229,255,.5), inset 0 0 10px rgba(0,229,255,.15);
+}
+.topbar .back-btn:active { transform: translateX(-2px); }
 
 /* ============================================================
    BUTTONS — HUD keycap style

@@ -15,7 +15,7 @@ App.registerScreen('boss-select', ({ root, state, ctx }) => {
 
   root.innerHTML = `
     <div class="topbar">
-      <button class="back-btn" data-back>◀ BACK</button>
+      <button class="back-btn" data-back>BACK</button>
       <span class="mode-tag">⚡ TARGET ACQUISITION</span>
       <span class="chapter-tag">${courseShort}</span>
     </div>
@@ -46,7 +46,7 @@ App.registerScreen('boss-select', ({ root, state, ctx }) => {
     </div>
   `;
 
-  root.querySelector('[data-back]').addEventListener('click', () => App.goto('course-mode', { course }));
+  root.querySelector('[data-back]').addEventListener('click', () => App.back());
 
   root.querySelectorAll('.tile').forEach(tile => {
     tile.addEventListener('click', () => {

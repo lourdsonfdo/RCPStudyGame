@@ -9,7 +9,7 @@ App.registerScreen('course-mode', ({ root, state, ctx }) => {
 
   root.innerHTML = `
     <div class="topbar">
-      <button class="back-btn" data-back>◀ ABORT</button>
+      <button class="back-btn" data-back>BACK</button>
       <span class="mode-tag">▸ MODULE BRIEFING</span>
       <span class="chapter-tag">${courseShort}</span>
     </div>
@@ -44,7 +44,7 @@ App.registerScreen('course-mode', ({ root, state, ctx }) => {
     </div>
   `;
 
-  root.querySelector('[data-back]').addEventListener('click', () => App.goto('home'));
+  root.querySelector('[data-back]').addEventListener('click', () => App.back());
 
   root.querySelectorAll('[data-mode]').forEach(el => {
     el.addEventListener('click', () => {

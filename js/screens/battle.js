@@ -200,7 +200,7 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     }
     State.save(state);
 
-    App.goto('results', { session, lvlInfo, course: boss.course, bossId: boss.id, isDaily: session.isDaily });
+    App.goto('results', { session, lvlInfo, course: boss.course, bossId: boss.id, isDaily: session.isDaily }, { clearHistory: true });
   }
 
   render();

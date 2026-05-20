@@ -7,7 +7,7 @@ App.registerScreen('settings', ({ root, state }) => {
 
   root.innerHTML = `
     <div class="topbar">
-      <button class="back-btn" data-back>◀ EXIT</button>
+      <button class="back-btn" data-back>BACK</button>
       <span class="mode-tag">⚙ SYSTEM CONFIG</span>
       <span></span>
     </div>
@@ -69,7 +69,7 @@ App.registerScreen('settings', ({ root, state }) => {
     </div>
   `;
 
-  root.querySelector('[data-back]').addEventListener('click', () => App.goto('home'));
+  root.querySelector('[data-back]').addEventListener('click', () => App.back());
 
   root.querySelector('#t-timer').addEventListener('click', () => {
     state.settings.timerOn = !state.settings.timerOn;

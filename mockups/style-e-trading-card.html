@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Style E — Trading Card Collection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Press+Start+2P&family=Inter:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-felt:   #1a0e1c;
+      --bg-deep:   #0a0510;
+      --leather:   #2d1810;
+      --gold-1:    #ffe082;
+      --gold-2:    #d4a437;
+      --gold-3:    #8c6918;
+      --silver:    #d1d5db;
+      --rare-blue: #4cc9f0;
+      --epic-purp: #b388ff;
+      --legend:    #ffb74d;
+      --text:      #fef3e7;
+      --text-dim:  #a89684;
+      --text-mute: #5a4838;
+      --crimson:   #d62828;
+    }
+    body {
+      background:
+        radial-gradient(ellipse at top, rgba(212,164,55,.10) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom, rgba(179,136,255,.08) 0%, transparent 50%),
+        linear-gradient(180deg, var(--bg-felt) 0%, var(--bg-deep) 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 14px 12px;
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+    /* Felt-texture overlay */
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(0,0,0,.2) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(255,224,130,.04) 1px, transparent 1px);
+      background-size: 6px 6px, 8px 8px;
+      pointer-events: none;
+      opacity: .6;
+    }
+    .screen {
+      width: 100%; max-width: 430px;
+      display: flex; flex-direction: column; gap: 14px;
+      padding-top: 8px;
+      position: relative; z-index: 1;
+    }
+
+    /* ─── COLLECTOR'S CREST / HEADER ─── */
+    .crest {
+      text-align: center;
+      padding: 16px 0 10px;
+      position: relative;
+    }
+    .crest::before, .crest::after {
+      content: '';
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-2), transparent);
+    }
+    .crest::before { left: 0; }
+    .crest::after  { right: 0; }
+    .crest-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 6px;
+      color: var(--gold-2);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .crest-title {
+      font-family: 'Cinzel', serif;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      background: linear-gradient(180deg, var(--gold-1) 0%, var(--gold-2) 50%, var(--gold-3) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 0 rgba(140,105,24,.3);
+      filter: drop-shadow(0 0 12px rgba(212,164,55,.4));
+    }
+    .crest-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--text-dim);
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    /* ─── TRAINER PROFILE (Stats) — leather banner ─── */
+    .profile {
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(45,24,16,.92) 0%, rgba(20,10,8,.95) 100%);
+      border: 2px solid var(--gold-3);
+      padding: 14px 16px;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,224,130,.15),
+        inset 0 0 20px rgba(0,0,0,.7),
+        0 4px 14px rgba(0,0,0,.5);
+    }
+    .profile::before, .profile::after {
+      content: '◆';
+      position: absolute;
+      color: var(--gold-2);
+      font-size: 10px;
+      filter: drop-shadow(0 0 4px var(--gold-1));
+    }
+    .profile::before { top: -7px; left: 14px; }
+    .profile::after  { top: -7px; right: 14px; }
+    .profile-row { display: flex; align-items: center; gap: 14px; }
+    .badge {
+      width: 56px; height: 56px;
+      background: radial-gradient(circle at 30% 30%, var(--gold-1), var(--gold-2) 60%, var(--gold-3));
+      border: 2px solid var(--gold-1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 22px; font-weight: 900;
+      color: var(--leather);
+      box-shadow:
+        inset 0 0 8px rgba(255,255,255,.5),
+        0 0 14px rgba(212,164,55,.5),
+        0 2px 0 rgba(0,0,0,.4);
+      flex-shrink: 0;
+    }
+    .profile-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .profile-name {
+      font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700;
+      color: var(--gold-1); letter-spacing: 1px;
+    }
+    .profile-rank { font-size: 10px; color: var(--text-dim); letter-spacing: 2px; }
+    .profile-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 6px; margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(212,164,55,.3);
+    }
+    .pstat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .pstat-emoji { font-size: 16px; }
+    .pstat-val   { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; color: var(--gold-1); }
+    .pstat-lbl   { font-size: 7px; letter-spacing: 2px; color: var(--text-mute); text-transform: uppercase; }
+    /* Mini XP bar */
+    .profile-xp {
+      margin-top: 12px;
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 6px; color: var(--text-dim);
+    }
+    .profile-xp-track {
+      flex: 1; height: 8px;
+      background: #0a0510;
+      border: 1px solid var(--gold-3);
+      position: relative;
+    }
+    .profile-xp-fill {
+      height: 100%; width: 52%;
+      background: linear-gradient(90deg, var(--gold-3), var(--gold-1));
+      box-shadow: 0 0 6px var(--gold-1);
+    }
+
+    /* ─── FEATURED CARD (Daily) ─── */
+    .featured {
+      position: relative;
+      margin: 6px 0;
+      animation: float-card 4s ease-in-out infinite;
+    }
+    @keyframes float-card {
+      0%,100% { transform: translateY(0) rotate(-0.5deg); }
+      50%     { transform: translateY(-4px) rotate(0.5deg); }
+    }
+    .card-frame {
+      position: relative;
+      background:
+        linear-gradient(135deg, #b388ff 0%, #6a4caf 50%, #3d2b6e 100%);
+      padding: 8px;
+      border-radius: 12px;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.3),
+        0 0 24px rgba(179,136,255,.5),
+        0 8px 16px rgba(0,0,0,.5);
+    }
+    .card-frame.legendary {
+      background:
+        linear-gradient(135deg, #ffd54f 0%, #ff8a00 50%, #c45c00 100%);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.4),
+        0 0 28px rgba(255,183,77,.6),
+        0 8px 16px rgba(0,0,0,.5);
+    }
+    /* Foil shimmer */
+    .card-frame::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+      border-radius: 12px;
+      pointer-events: none;
+      animation: foil 3.5s ease-in-out infinite;
+    }
+    @keyframes foil {
+      0%   { transform: translateX(-100%); opacity: 0; }
+      40%  { opacity: .9; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+    .card-inner {
+      background: #1a1226;
+      border-radius: 8px;
+      padding: 14px;
+      position: relative;
+    }
+    .legendary .card-inner { background: #1c1408; }
+    .card-rarity {
+      position: absolute; top: 8px; right: 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 9px; font-weight: 700; letter-spacing: 3px;
+      color: var(--gold-1);
+      text-shadow: 0 0 6px var(--gold-1);
+    }
+    .card-banner {
+      display: inline-block;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px;
+      letter-spacing: 2px;
+      color: #000;
+      background: var(--gold-1);
+      padding: 4px 8px;
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 20px; font-weight: 900;
+      color: var(--gold-1);
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,.5);
+    }
+    .card-type {
+      font-size: 9px; letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+    .card-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,224,130,.25);
+    }
+    .card-stat {
+      font-family: 'Cinzel', serif; font-size: 12px;
+      font-weight: 700; color: var(--text);
+    }
+    .card-stat .label { font-size: 7px; color: var(--text-mute); letter-spacing: 1px; text-transform: uppercase; }
+    .card-cta {
+      background: var(--gold-2);
+      color: #1a0e1c;
+      font-family: 'Cinzel', serif;
+      font-size: 11px; font-weight: 900;
+      letter-spacing: 2px;
+      padding: 8px 14px;
+      border: 1px solid var(--gold-1);
+      box-shadow: 0 0 12px rgba(255,224,130,.4);
+    }
+
+    /* ─── DECK COLLECTION (Course cards) ─── */
+    .deck {
+      position: relative;
+      cursor: pointer;
+      transition: transform .2s;
+    }
+    .deck:hover { transform: translateY(-3px); }
+    .deck-stack { position: relative; }
+    .deck-stack::before, .deck-stack::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .deck-stack::before { transform: translate(4px, 4px); opacity: 0.5; }
+    .deck-stack::after  { transform: translate(8px, 8px); opacity: 0.25; }
+    .deck-103 .deck-stack::before { background: linear-gradient(135deg, #4cc9f0 0%, #2196f3 50%, #0d47a1 100%); }
+    .deck-103 .deck-stack::after  { background: linear-gradient(135deg, #4cc9f0 0%, #2196f3 50%, #0d47a1 100%); }
+    .deck-104 .deck-stack::before { background: linear-gradient(135deg, #b388ff 0%, #6a4caf 50%, #3d2b6e 100%); }
+    .deck-104 .deck-stack::after  { background: linear-gradient(135deg, #b388ff 0%, #6a4caf 50%, #3d2b6e 100%); }
+
+    .deck-card {
+      position: relative;
+      padding: 6px;
+      border-radius: 12px;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.3),
+        0 6px 16px rgba(0,0,0,.5);
+    }
+    .deck-103 .deck-card { background: linear-gradient(135deg, #4cc9f0 0%, #2196f3 50%, #0d47a1 100%); }
+    .deck-104 .deck-card { background: linear-gradient(135deg, #b388ff 0%, #6a4caf 50%, #3d2b6e 100%); }
+    .deck-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.22) 50%, transparent 70%);
+      border-radius: 12px;
+      pointer-events: none;
+      animation: foil 4s ease-in-out infinite;
+    }
+    .deck-inner {
+      background: #1a1226;
+      border-radius: 8px;
+      padding: 14px;
+      display: flex; gap: 14px; align-items: center;
+      position: relative;
+    }
+    .deck-104 .deck-inner { background: #18102a; }
+    .deck-emblem {
+      width: 60px; height: 60px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,.4));
+    }
+    .deck-103 .deck-emblem { background: linear-gradient(135deg, #4cc9f0 0%, #2196f3 100%); }
+    .deck-104 .deck-emblem { background: linear-gradient(135deg, #b388ff 0%, #6a4caf 100%); }
+    .deck-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .deck-rarity {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 6px; letter-spacing: 2px;
+    }
+    .deck-103 .deck-rarity { color: var(--rare-blue); }
+    .deck-104 .deck-rarity { color: var(--epic-purp); }
+    .deck-title { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 900; color: var(--gold-1); letter-spacing: 1px; }
+    .deck-meta { font-size: 9px; color: var(--text-dim); }
+    .deck-counter {
+      font-family: 'Cinzel', serif;
+      font-size: 14px; font-weight: 700;
+      color: var(--gold-1);
+      padding: 4px 10px;
+      border: 1px solid var(--gold-2);
+      background: rgba(0,0,0,.4);
+    }
+
+    /* ─── FOOTER BAR ─── */
+    .options-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px;
+      background: rgba(45,24,16,.7);
+      border: 1px solid var(--gold-3);
+      font-size: 9px; letter-spacing: 2px; color: var(--text-dim);
+      font-family: 'Cinzel', serif;
+    }
+    .options-bar .pill {
+      background: rgba(0,0,0,.5);
+      border: 1px solid var(--gold-2);
+      color: var(--gold-1);
+      padding: 4px 8px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 6px;
+    }
+
+    /* ─── DEV TAG ─── */
+    .dev-tag {
+      position: fixed; top: 6px; left: 50%; transform: translateX(-50%);
+      font-family: 'Cinzel', serif;
+      font-size: 9px; color: var(--gold-1); background: rgba(10,5,16,.95);
+      padding: 5px 14px; border: 1px solid var(--gold-2); letter-spacing: 3px;
+      z-index: 100; font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="dev-tag">★ STYLE E — TRADING CARD COLLECTION ★</div>
+
+  <div class="screen">
+
+    <!-- Crest title -->
+    <div class="crest">
+      <div class="crest-eyebrow">— Collection —</div>
+      <div class="crest-title">RCP Study Game</div>
+      <div class="crest-sub">Boss Codex · Final Exam Edition</div>
+    </div>
+
+    <!-- Trainer profile -->
+    <div class="profile">
+      <div class="profile-row">
+        <div class="badge">III</div>
+        <div class="profile-info">
+          <div class="profile-name">LOURD</div>
+          <div class="profile-rank">INTERN RT · TIER III</div>
+        </div>
+      </div>
+      <div class="profile-stats">
+        <div class="pstat"><span class="pstat-emoji">⚔️</span><span class="pstat-val">8 / 22</span><span class="pstat-lbl">Caught</span></div>
+        <div class="pstat"><span class="pstat-emoji">🔥</span><span class="pstat-val">×6</span><span class="pstat-lbl">Streak</span></div>
+        <div class="pstat"><span class="pstat-emoji">🪙</span><span class="pstat-val">320</span><span class="pstat-lbl">Gold</span></div>
+      </div>
+      <div class="profile-xp">
+        <span>EXP</span>
+        <div class="profile-xp-track"><div class="profile-xp-fill"></div></div>
+        <span>1247/2400</span>
+      </div>
+    </div>
+
+    <!-- Featured legendary card (daily) -->
+    <div class="featured">
+      <div class="card-frame legendary">
+        <div class="card-inner">
+          <div class="card-rarity">★ LEGENDARY</div>
+          <div class="card-banner">DAILY ENCOUNTER</div>
+          <div class="card-title">Hyaline Hydra</div>
+          <div class="card-type">ARDS · BOSS · TIER 3</div>
+          <div class="card-row">
+            <div class="card-stat">
+              <div class="label">Reward</div>
+              <div>75 XP · 50 🪙</div>
+            </div>
+            <button class="card-cta">▶ FIGHT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course decks -->
+    <div class="deck deck-103">
+      <div class="deck-stack">
+        <div class="deck-card">
+          <div class="deck-inner">
+            <div class="deck-emblem">🫁</div>
+            <div class="deck-info">
+              <div class="deck-rarity">◆ RARE DECK</div>
+              <div class="deck-title">RCP 103</div>
+              <div class="deck-meta">Pulmonary Disease · 10 bosses</div>
+            </div>
+            <div class="deck-counter">5/10</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="deck deck-104">
+      <div class="deck-stack">
+        <div class="deck-card">
+          <div class="deck-inner">
+            <div class="deck-emblem">💊</div>
+            <div class="deck-info">
+              <div class="deck-rarity">★ EPIC DECK</div>
+              <div class="deck-title">RCP 104</div>
+              <div class="deck-meta">Pharmacology · 12 bosses</div>
+            </div>
+            <div class="deck-counter">3/12</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Options bar -->
+    <div class="options-bar">
+      <span>⚙ Options</span>
+      <span class="pill">♪ FAST</span>
+    </div>
+
+  </div>
+</body>
+</html>

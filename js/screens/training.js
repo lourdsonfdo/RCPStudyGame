@@ -29,7 +29,7 @@ App.registerScreen('training', ({ root, state, ctx }) => {
 
     root.innerHTML = `
       <div class="topbar">
-        <button class="back-btn" data-back>◀ EXIT</button>
+        <button class="back-btn" data-back>BACK</button>
         <span class="mode-tag">🏋 DRILL SIMULATION</span>
         <span class="chapter-tag">${boss.name.split(' ').slice(0,2).join(' ').toUpperCase()}</span>
       </div>
@@ -77,7 +77,7 @@ App.registerScreen('training', ({ root, state, ctx }) => {
 
     root.querySelector('[data-back]').addEventListener('click', () => {
       State.save(state);
-      App.goto('prep-camp', { course: ctx.course, bossId: ctx.bossId });
+      App.back();
     });
 
     root.querySelectorAll('.ans-btn').forEach(btn => {
