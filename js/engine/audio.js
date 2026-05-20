@@ -12,7 +12,7 @@
     { id: 'off',     label: 'Off',           emoji: '🔇' },
     { id: 'calm',    label: 'Lo-fi',         emoji: '🌙', file: 'audio/calm.mp3' },
     { id: 'fast',    label: 'Battle Hymn',   emoji: '⚡', file: 'audio/fast.mp3' },
-    { id: 'fast2',   label: 'Boss Approach', emoji: '⚔️', file: 'audio/fast2.mp3' },
+    { id: 'calm2',   label: 'Midnight Drift', emoji: '🌃', file: 'audio/calm2.mp3' },
     { id: 'fast3',   label: 'Final Stand',   emoji: '🔥', file: 'audio/fast3.mp3' },
   ];
 
@@ -92,10 +92,10 @@
       master.gain.value = state.volume * 0.25;
       master.connect(proceduralCtx.destination);
 
-      if (trackId === 'calm')       buildCalmLoop(proceduralCtx, master);
-      else if (trackId === 'fast')  buildBattleHymn(proceduralCtx, master);
-      else if (trackId === 'fast2') buildBossApproach(proceduralCtx, master);
-      else if (trackId === 'fast3') buildFinalStand(proceduralCtx, master);
+      if (trackId === 'calm')        buildCalmLoop(proceduralCtx, master);
+      else if (trackId === 'calm2')  buildMidnightDrift(proceduralCtx, master);
+      else if (trackId === 'fast')   buildBattleHymn(proceduralCtx, master);
+      else if (trackId === 'fast3')  buildFinalStand(proceduralCtx, master);
       notify();
     } catch (e) {
       console.warn('Procedural audio failed:', e);
@@ -391,28 +391,40 @@
   }
 
   // ────────────────────────────────────────────────────────────
-  // FAST 2 — "Boss Approach" — slower (~125 BPM), darker, menacing.
-  // Em → D → C → B7 (Phrygian-flavored descent), sawtooth bass for grit.
+  // CALM 2 — "Midnight Drift" — slower lo-fi (~68 BPM), dreamier.
+  // Cmaj7 → Am7 → Fmaj7 → Em7 (floaty, late-night study vibe).
+  // Contrasts buildCalmLoop by feel: airier pad, softer melody, no tom.
   // ────────────────────────────────────────────────────────────
 
-  function buildBossApproach(ctx, master) {
-    const BEAT = 60 / 125;        // ~0.48s
-    const EIGHTH = BEAT / 2;
+  function buildMidnightDrift(ctx, master) {
+    const BEAT = 60 / 68;         // ~0.882s
     const CHORD = 4 * BEAT;
 
+    // Master low-pass for warm, smoky tone
+    const lp = ctx.createBiquadFilter();
+    lp.type = 'lowpass';
+    lp.frequency.value = 3200;
+    lp.Q.value = 0.7;
+    const driftBus = ctx.createGain();
+    driftBus.gain.value = 1;
+    driftBus.connect(lp);
+    lp.connect(master);
+    const out = driftBus;
+
+    // Cmaj7 → Am7 → Fmaj7 → Em7
     const progression = [
-      // Em: E-G-B
-      { arp:  [329.63, 392.00, 493.88, 659.25, 493.88, 392.00, 329.63, 392.00],
-        bass: [82.41,  82.41,  41.20,  82.41] },  // E2-E2-E1-E2
-      // D: D-F#-A
-      { arp:  [293.66, 369.99, 440.00, 587.33, 440.00, 369.99, 293.66, 369.99],
-        bass: [73.42,  73.42,  36.71,  73.42] },  // D2-D2-D1-D2
-      // C: C-E-G
-      { arp:  [261.63, 329.63, 392.00, 523.25, 392.00, 329.63, 261.63, 329.63],
-        bass: [65.41,  65.41,  32.70,  65.41] },  // C2-C2-C1-C2
-      // B (major dom7): B-D#-F#
-      { arp:  [246.94, 311.13, 369.99, 493.88, 369.99, 311.13, 246.94, 311.13],
-        bass: [61.74,  61.74,  30.87,  61.74] },  // B1-B1-B0-B1
+      // Cmaj7: C-E-G-B
+      { pad: [130.81, 164.81, 196.00, 246.94], bass: [65.41, 65.41, 98.00, 65.41],
+        melody: [523.25, 659.25, 587.33, 493.88] },
+      // Am7: A-C-E-G
+      { pad: [110.00, 130.81, 164.81, 196.00], bass: [55.00, 55.00, 82.41, 55.00],
+        melody: [440.00, 523.25, 493.88, 392.00] },
+      // Fmaj7: F-A-C-E
+      { pad: [87.31, 110.00, 130.81, 164.81], bass: [43.65, 43.65, 65.41, 43.65],
+        melody: [349.23, 440.00, 392.00, 329.63] },
+      // Em7: E-G-B-D
+      { pad: [82.41,  98.00, 123.47, 146.83], bass: [41.20, 41.20, 61.74, 41.20],
+        melody: [392.00, 493.88, 440.00, 369.99] },
     ];
 
     const loopDur = progression.length * CHORD;
@@ -421,29 +433,33 @@
       progression.forEach((chord, ci) => {
         const t0 = start + ci * CHORD;
 
-        // Lead arpeggio — square wave, slightly softer than Battle Hymn
-        chord.arp.forEach((f, i) => {
-          const t = t0 + i * EIGHTH;
-          tone(ctx, master, t, f, EIGHTH * 0.85, {
-            type: 'square', vol: 0.085, attack: 0.008, sustain: 0.06, release: EIGHTH * 0.35,
+        // Airy pad — long sine cluster, even slower attack than calm1
+        chord.pad.forEach(f => {
+          tone(ctx, out, t0, f, CHORD, {
+            type: 'sine', vol: 0.055, attack: 0.9, sustain: 0.035, release: 0.9, lpHz: 1100,
           });
         });
 
-        // Sawtooth bass — darker, grittier
+        // Quarter-note bass — pure sine, deep low-pass, gentle
         chord.bass.forEach((bf, bi) => {
           const t = t0 + bi * BEAT;
-          tone(ctx, master, t, bf, BEAT * 0.95, {
-            type: 'sawtooth', vol: 0.16, attack: 0.005, sustain: 0.10, release: BEAT * 0.4, lpHz: 500,
+          tone(ctx, out, t, bf, BEAT * 0.95, {
+            type: 'sine', vol: 0.16, attack: 0.05, sustain: 0.09, release: BEAT * 0.5, lpHz: 450,
           });
         });
 
-        // Sparse drums — half-time feel for menacing pacing
-        kick (ctx, master, t0 + 0 * BEAT, 1);
-        snare(ctx, master, t0 + 2 * BEAT, 0.85, true);   // backbeat on 3 only
-        // 8th-note hi-hat (less busy than Battle Hymn)
-        for (let i = 0; i < 8; i++) {
-          hihat(ctx, master, t0 + i * (BEAT / 2), 0.35, 0.03);
-        }
+        // Half-note melody (2 notes per chord, every 2 beats) — sparser, dreamier
+        const melHits = [chord.melody[0], chord.melody[2]];
+        melHits.forEach((mf, mi) => {
+          const t = t0 + mi * 2 * BEAT;
+          tone(ctx, out, t, mf, BEAT * 1.7, {
+            type: 'sine', vol: 0.085, attack: 0.08, sustain: 0.05, release: BEAT * 0.9, lpHz: 1800,
+          });
+        });
+
+        // Drums — only a soft kick on 1 and 3, no tom for a more floaty feel
+        kick(ctx, out, t0 + 0 * BEAT, 0.45);
+        kick(ctx, out, t0 + 2 * BEAT + 0.15, 0.32);
       });
     }
 
