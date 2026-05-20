@@ -1,50 +1,60 @@
 /* ============================================================
-   LEVEL-UP OVERLAY — celebration before returning to caller
-   ctx: { newLevel, returnTo, returnCtx }
+   LEVEL-UP OVERLAY — HUD promotion notice v1.3
+   ctx: { newLevel, oldLevel, returnTo, returnCtx }
    ============================================================ */
 App.registerScreen('level-up', ({ root, state, ctx }) => {
   const newLvl = ctx.newLevel;
   const title = State.titleForLevel(newLvl);
-
-  // Confetti particles
-  const confettiHtml = Array.from({ length: 24 }).map((_, i) => {
-    const left = Math.random() * 100;
-    const dur = (1.6 + Math.random() * 1.4).toFixed(2);
-    const delay = (Math.random() * 0.6).toFixed(2);
-    const color = ['#ffd700','#44ff66','#5577ff','#ff9900','#aa55ff'][i % 5];
-    return `<div style="position:absolute; left:${left}%; top:-20px; width:8px; height:8px; background:${color}; animation: confetti-fall ${dur}s ${delay}s linear forwards;"></div>`;
-  }).join('');
+  const maxHp = State.maxHpForLevel(newLvl);
+  const oldLvl = (ctx.oldLevel ?? (newLvl - 1));
 
   root.innerHTML = `
-    <div style="position:absolute; inset:0; overflow:hidden;">${confettiHtml}</div>
+    <div class="hud hud-corners" style="max-width: 360px; width: 100%;">
+      <span class="br1"></span><span class="br2"></span>
 
-    <div style="text-align:center; display:flex; flex-direction:column; gap:14px; padding:24px;">
-      <div class="fanfare" style="font-size: 48px;">⭐</div>
-      <div class="t-xl t-gold fanfare">LEVEL UP!</div>
-      <div class="t-md t-dim">LVL ${newLvl} · ${title.toUpperCase()}</div>
-      <div class="t-sm t-mute">Max HP: ${State.maxHpForLevel(newLvl)}</div>
+      <div class="header-strip" style="margin: -14px -16px 14px;">
+        <span><span class="status-dot"></span>RANK UP DETECTED</span>
+        <span class="blink">▮ NOTIFY</span>
+      </div>
 
-      <div style="height: 18px;"></div>
+      <div class="title-block fanfare">
+        <div class="title-eyebrow">▸ PROMOTION GRANTED ◂</div>
+        <div class="title-main" style="font-size: 36px;">LV.${newLvl}</div>
+        <div class="title-sub">${title.toUpperCase()}</div>
+      </div>
 
-      <button class="btn btn-block btn-primary" id="continue">▶ CONTINUE</button>
+      <div class="vitals" style="margin-top: 14px;">
+        <div class="vital">
+          <span class="vital-label">RANK</span>
+          <span class="vital-value green">${oldLvl} → ${newLvl}</span>
+          <span class="vital-unit">PROMOTED</span>
+        </div>
+        <div class="vital">
+          <span class="vital-label">MAX HP</span>
+          <span class="vital-value amber">${maxHp}</span>
+          <span class="vital-unit">CAPACITY</span>
+        </div>
+        <div class="vital">
+          <span class="vital-label">STATUS</span>
+          <span class="vital-value">CLEARED</span>
+          <span class="vital-unit">ACTIVE</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="continue" style="margin-top: 16px;">▶ CONTINUE</button>
     </div>
   `;
 
-  root.querySelector('#continue').addEventListener('click', () => {
-    App.goto(ctx.returnTo || 'home', ctx.returnCtx || {});
-  });
-
-  // Tap anywhere to dismiss
-  root.addEventListener('click', e => {
-    if (e.target.id === 'continue') return; // handled above
-    if (e.currentTarget !== root) return;
-    App.goto(ctx.returnTo || 'home', ctx.returnCtx || {});
-  });
-
-  // Juicy entrance
+  // Juicy entrance — particle burst + flash
   setTimeout(() => {
-    Fx.flash('rgba(255,215,0,.45)', 400);
-    const star = root.querySelector('.fanfare');
-    if (star) Fx.particles(star, { color: 'gold', count: 32 });
+    if (window.Fx) {
+      Fx.flash('rgba(255,174,0,.40)', 400);
+      const star = root.querySelector('.title-main');
+      if (star) Fx.particles(star, { color: 'gold', count: 28 });
+    }
   }, 50);
+
+  function dismiss() { App.goto(ctx.returnTo || 'home', ctx.returnCtx || {}); }
+  root.querySelector('#continue').addEventListener('click', dismiss);
+  root.addEventListener('click', (e) => { if (e.target === root) dismiss(); });
 });
