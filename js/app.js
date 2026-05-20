@@ -189,9 +189,9 @@
     const scale = TEXT_SCALES[key] || 1;
     document.documentElement.style.setProperty('--fs', scale);
   }
-  // Quiz-text scale — applied ONLY when the current screen is battle or training.
-  // Other screens reset to 1 so it doesn't bleed into crisis/scenarios/menus.
-  const QUIZ_SCREENS = new Set(['battle', 'training']);
+  // Quiz-text scale — applied ONLY when the current screen is battle, training, or crisis.
+  // Other screens reset to 1 so it doesn't bleed into menus/results/outcome.
+  const QUIZ_SCREENS = new Set(['battle', 'training', 'crisis']);
   function applyQuizScaleForScreen(screenId) {
     const isQuiz = QUIZ_SCREENS.has(screenId);
     const key = (state && state.settings && state.settings.quizSize) || 'md';

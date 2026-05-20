@@ -78,7 +78,7 @@ App.registerScreen('settings', ({ root, state }) => {
     <div class="hud hud-corners">
       <span class="br1"></span><span class="br2"></span>
       <div class="header-strip" style="margin: -14px -16px 12px;">
-        <span><span class="status-dot"></span>QUIZ TEXT · COMBAT</span>
+        <span><span class="status-dot"></span>QUIZ TEXT · COMBAT &amp; CRISIS</span>
         <span>${ (state.settings.quizSize || 'md').toUpperCase() }</span>
       </div>
       <div class="text-size-row">
@@ -89,7 +89,7 @@ App.registerScreen('settings', ({ root, state }) => {
           </button>
         `).join('')}
       </div>
-      <div class="ts-help">▸ ONLY DURING BOSS BATTLES &amp; DRILLS</div>
+      <div class="ts-help">▸ DURING BOSS BATTLES, DRILLS &amp; PATIENT CRISES</div>
     </div>
 
     <div class="spacer"></div>
@@ -130,7 +130,7 @@ App.registerScreen('settings', ({ root, state }) => {
       // Settings screen isn't a quiz screen, so --fs-quiz stays at 1 here —
       // change only takes visible effect when you next enter battle/training.
       App.refresh();
-      App.toast('QUIZ TEXT: ' + size.toUpperCase() + ' (active in battle/drill)');
+      App.toast('QUIZ TEXT: ' + size.toUpperCase() + ' (active in battle/drill/crisis)');
     });
   });
 
