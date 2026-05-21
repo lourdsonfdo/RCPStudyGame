@@ -19,11 +19,12 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     return;
   }
 
-  // Initialize session (stored on closure)
+  // Initialize session (stored on closure).
+  // Passing `state` lets Battle.start bias the pool toward weak questions.
   const session = Battle.start({
     boss, playerMaxHp: state.maxHp,
     equipped: state.equipped, isDaily: !!ctx.isDaily,
-    questionPool,
+    questionPool, state,
   });
 
   // Remove equipped items from inventory now (they're "in use")
@@ -40,6 +41,9 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     const prog = Battle.progress(session);
     const bossPct  = (session.bossHp   / session.bossMaxHp)   * 100;
     const playerPct= (session.playerHp / session.playerMaxHp) * 100;
+    const missionPct = (session.correctCount / session.questions.length) * 100;
+    const targetPct  = (session.correctTarget / session.questions.length) * 100;
+    const missionSecured = session.correctCount >= session.correctTarget;
     const sprite = (window.BOSS_SPRITES && window.BOSS_SPRITES[boss.id]) || `<div class="boss-emoji">${boss.emoji}</div>`;
 
     root.innerHTML = `
@@ -52,6 +56,14 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
       <div class="hud hud-corners" style="padding: 12px 14px;">
         <span class="br1"></span><span class="br2"></span>
         <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="hp-row mission-row">
+            <span class="hp-name">PASS</span>
+            <div class="hp-track">
+              <div class="hp-fill mission ${missionSecured ? 'secured' : ''}" style="width:${missionPct}%"></div>
+              <div class="mission-marker" style="left:${targetPct}%" title="Need ${session.correctTarget}/${session.questions.length} to pass"></div>
+            </div>
+            <span class="hp-val ${missionSecured ? 'val-secured' : ''}">${session.correctCount}/${session.questions.length}${missionSecured ? ' ✓' : ''}</span>
+          </div>
           <div class="hp-row">
             <span class="hp-name">OP</span>
             <div class="hp-track"><div class="hp-fill player" style="width:${playerPct}%"></div></div>
@@ -86,7 +98,7 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
 
       ${(() => {
         // Only show items the player can manually trigger.
-        // reviveCharm and doubleXpTome auto-activate — they're shown as passive badges, not buttons.
+        // doubleXpTome auto-activates — shown as a passive badge, not a button.
         const active  = session.items.filter(k => ITEM_LABEL[k]);
         const passive = session.items.filter(k => !ITEM_LABEL[k]);
         if (!active.length && !passive.length) return '';
@@ -126,27 +138,43 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     const res = Battle.answer(session, idx);
     hintRemoved = [];
 
+    // Per-topic / per-question stats for weak-topic surfacing + spaced repetition
+    if (window.State && State.recordAnswer) {
+      State.recordAnswer(state, q, res.correct);
+    }
+
     const arena = root.querySelector('#arena');
     const bossPortrait = root.querySelector('#boss-portrait');
+    const qbox = root.querySelector('.q-box');
 
     btn.classList.add(res.correct ? 'correct' : 'wrong');
 
+    // Map answer → Octopath-style attack sequence.
+    //   normal correct ........... STRIKE       (~600ms)
+    //   crit (streak ≥ 3) ........ LANCE OF LIGHT (~1100ms)
+    //   heavy crit (streak ≥ 5) .. COMBO STRIKE  (~1800ms)
+    //   killing blow ............. JUDGEMENT     (~2400ms)
+    //   wrong (no shield) ........ BOSS COUNTER  (~1300ms)
+    //   wrong (shielded) ......... small block fx (unchanged)
+    let waitMs = 1400;
     if (res.correct) {
       const dmgAmount = res.crit ? 15 : 10;
       if (window.Fx) {
-        Fx.damageNumber(bossPortrait, '-' + dmgAmount, { crit: res.crit });
-        Fx.particles(bossPortrait, { color: res.crit ? 'gold' : 'green', count: res.crit ? 24 : 14 });
-        Fx.bossHit(bossPortrait);
         if (session.streak >= 3) {
           const qLabel = root.querySelector('.q-label');
           if (qLabel) Fx.attachFire(qLabel);
         }
-        if (res.crit) {
-          Fx.banner('CRIT!', 'crit');
-          Fx.shake(2);
-          Fx.flash('rgba(255,174,0,.4)');
+        if (res.gameOver && session.outcome === 'victory') {
+          Fx.judgement({ caster: qbox, target: bossPortrait, dmg: dmgAmount });
+          waitMs = 2400;
+        } else if (session.streak >= 5) {
+          Fx.comboStrike({ target: bossPortrait, dmg: dmgAmount });
+          waitMs = 1900;
+        } else if (res.crit) {
+          Fx.lanceOfLight({ caster: qbox, target: bossPortrait, dmg: dmgAmount });
+          waitMs = 1500;
         } else {
-          Fx.shake(1);
+          Fx.strike({ target: bossPortrait, dmg: dmgAmount });
         }
       }
     } else {
@@ -155,11 +183,8 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
         Fx.particles(arena, { color: 'blue', count: 10 });
         Fx.shake(1);
       } else if (window.Fx) {
-        Fx.damageNumber(arena, '-15', {});
-        Fx.particles(arena, { color: 'red', count: 10 });
-        Fx.bossLunge(bossPortrait, 1);
-        Fx.shake(3);
-        Fx.flash('rgba(255,56,85,.45)');
+        Fx.bossCounter({ playerArea: arena, bossPortrait });
+        waitMs = 1700;
       }
       const correctBtn = root.querySelectorAll('.ans-btn')[correctIdx];
       if (correctBtn) correctBtn.classList.add('correct');
@@ -168,15 +193,22 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     const expl = document.createElement('div');
     expl.className = 'explanation';
     expl.textContent = res.explanation;
-    const qbox = root.querySelector('.q-box');
     if (qbox) qbox.appendChild(expl);
 
     root.querySelectorAll('.ans-btn').forEach(b => b.classList.add('disabled-vis'));
 
-    setTimeout(() => {
+    // Player-controlled advance — reveal NEXT button after the FX wraps so the
+    // explanation isn't yanked away mid-read.
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'btn btn-block btn-primary next-q-btn';
+    nextBtn.textContent = res.gameOver ? '▶ VIEW RESULTS' : '▶ NEXT QUERY';
+    nextBtn.addEventListener('click', () => {
       if (res.gameOver) endBattle();
       else render();
-    }, 1400);
+    });
+    if (qbox) qbox.appendChild(nextBtn);
+
+    setTimeout(() => nextBtn.classList.add('show'), waitMs);
   }
 
   function useItem(key) {
@@ -214,5 +246,5 @@ const ITEM_LABEL = { healthPotion:'Potion', hintScroll:'Hint', shieldRune:'Shiel
 const ITEM_EMOJI = { healthPotion:'🧪', hintScroll:'🔮', shieldRune:'🛡' };
 
 // Passive items (auto-trigger, shown as badges)
-const PASSIVE_LABEL = { reviveCharm:'Revive Ready', doubleXpTome:'2× XP Active' };
-const PASSIVE_EMOJI = { reviveCharm:'💖', doubleXpTome:'⚡' };
+const PASSIVE_LABEL = { doubleXpTome:'2× XP Active' };
+const PASSIVE_EMOJI = { doubleXpTome:'⚡' };

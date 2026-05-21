@@ -6,6 +6,7 @@
   'use strict';
 
   const QUESTIONS_PER_FIGHT = 10;
+  const MISSION_TARGET     = 8;   // correct answers needed to pass the boss
   const NORMAL_HIT = 10;
   const CRIT_HIT   = 15;
   const PLAYER_DMG = 15;
@@ -43,9 +44,14 @@
    *   isDaily: boolean (disables items)
    *   questionPool: array of question objects (already filtered to topic)
    */
-  function start({ boss, playerMaxHp, equipped, isDaily, questionPool }) {
+  function start({ boss, playerMaxHp, equipped, isDaily, questionPool, state }) {
     const items = isDaily ? [] : (equipped || []).slice();
-    const questions = shuffle(questionPool).slice(0, QUESTIONS_PER_FIGHT).map(shuffleChoices);
+    // If we have access to the player's state, bias the pool toward questions
+    // they've recently missed (light spaced repetition).
+    const picked = (state && State.biasedQuestionPool)
+      ? State.biasedQuestionPool(state, questionPool, { targetCount: QUESTIONS_PER_FIGHT, weakRatio: 0.5 })
+      : shuffle(questionPool).slice(0, QUESTIONS_PER_FIGHT);
+    const questions = picked.map(shuffleChoices);
 
     return {
       boss: { ...boss },
@@ -59,14 +65,16 @@
       qIndex: 0,
       streak: 0,
       correctCount: 0,
+      correctTarget: MISSION_TARGET,  // 8 of 10 = pass
       hintUsedThisQ: false,
       shieldQueued: false,    // shield rune absorbs the NEXT wrong answer
-      reviveAvailable: items.includes('reviveCharm'),
       doubleXpActive: items.includes('doubleXpTome'),
       isDaily: !!isDaily,
       outcome: null,          // 'victory' | 'defeat' | null
       xpEarned: 0,
       goldEarned: 0,
+      // History of every answer this fight (for end-of-battle review screen)
+      answers: [],
     };
   }
 
@@ -105,25 +113,25 @@
       }
     }
 
+    // record this answer for the post-battle review screen
+    b.answers.push({
+      q: q.q,
+      choices: q.choices.slice(),
+      chose: choiceIdx,
+      correctIdx: q.correct,
+      isCorrect,
+      explanation: q.explanation,
+      topic: q.topic,
+    });
+
     // advance
     b.qIndex += 1;
     b.hintUsedThisQ = false;
 
-    // outcome
+    // outcome — always play all 10 questions; victory = correctCount >= 8
     let gameOver = false;
-    if (b.bossHp <= 0) {
-      b.outcome = 'victory'; gameOver = true;
-    } else if (b.playerHp <= 0) {
-      if (b.reviveAvailable) {
-        b.playerHp = 1;
-        b.reviveAvailable = false;
-        b.itemsConsumed.push('reviveCharm');
-      } else {
-        b.outcome = 'defeat'; gameOver = true;
-      }
-    } else if (b.qIndex >= b.questions.length) {
-      // ran out of questions before killing boss
-      b.outcome = b.bossHp <= 0 ? 'victory' : 'defeat';
+    if (b.qIndex >= b.questions.length) {
+      b.outcome = b.correctCount >= b.correctTarget ? 'victory' : 'defeat';
       gameOver = true;
     }
 
@@ -132,7 +140,7 @@
 
   /**
    * Uses an item. Returns { used, effect }.
-   * key: 'healthPotion' | 'hintScroll' | 'shieldRune'  (revive + double XP auto-apply)
+   * key: 'healthPotion' | 'hintScroll' | 'shieldRune'  (double XP auto-applies)
    */
   function useItem(b, key) {
     const i = b.items.indexOf(key);

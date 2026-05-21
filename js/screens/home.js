@@ -13,6 +13,8 @@ App.registerScreen('home', ({ root, state }) => {
   const timeStr = now.toTimeString().slice(0, 8);
   const bossesDef = state.defeatedBosses.length;
   const audioState = window.Audio_ ? Audio_.get() : { track: 'off' };
+  const weakTopics = (State.getWeakTopics ? State.getWeakTopics(state, { limit: 3, minSample: 3 }) : []);
+  const survivalBest = state.survival || { best103: 0, best104: 0 };
 
   root.innerHTML = `
     <div class="header-strip">
@@ -107,6 +109,33 @@ App.registerScreen('home', ({ root, state }) => {
       </div>
     </div>
 
+    <div class="module module-survival" data-go="survival">
+      <div class="module-icon-wrap">⏱</div>
+      <div class="module-body">
+        <div class="module-tag">▸ RAPID-FIRE</div>
+        <div class="module-title">SURVIVAL</div>
+        <div class="module-meta">BEAT THE CLOCK · BEST 103: ${survivalBest.best103} · 104: ${survivalBest.best104}</div>
+      </div>
+    </div>
+
+    ${weakTopics.length ? `
+      <div class="hud hud-corners weak-topics">
+        <span class="br1"></span><span class="br2"></span>
+        <div class="header-strip" style="margin: -14px -16px 12px;">
+          <span><span class="status-dot"></span>WEAK TOPICS DETECTED</span>
+          <span>${weakTopics.length} FLAGGED</span>
+        </div>
+        ${weakTopics.map(t => `
+          <div class="weak-row">
+            <span class="weak-name">${t.topic.toUpperCase()}</span>
+            <div class="weak-bar"><div class="weak-fill" style="width:${Math.round(t.acc * 100)}%"></div></div>
+            <span class="weak-val">${t.correct}/${t.total}</span>
+          </div>
+        `).join('')}
+        <div class="weak-hint">▸ THESE WILL APPEAR MORE OFTEN IN FUTURE BATTLES</div>
+      </div>
+    ` : ''}
+
     <div class="module module-config" data-go="settings">
       <div class="module-icon-wrap">⚙</div>
       <div class="module-body">
@@ -132,6 +161,8 @@ App.registerScreen('home', ({ root, state }) => {
         App.goto('battle', { course: state.dailyChallenge.course, bossId: state.dailyChallenge.bossId, isDaily: true });
       } else if (dest === 'course-mode') {
         App.goto('course-mode', { course: el.dataset.course });
+      } else if (dest === 'survival') {
+        App.goto('survival', {});
       } else {
         App.goto(dest);
       }

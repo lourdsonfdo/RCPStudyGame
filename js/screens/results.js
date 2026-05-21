@@ -55,6 +55,9 @@ App.registerScreen('results', ({ root, state, ctx }) => {
 
     <div class="spacer"></div>
 
+    ${(s.answers && s.answers.some(a => !a.isCorrect)) ? `
+      <button class="btn btn-block btn-review" data-action="review">📖 REVIEW MISSES (${s.answers.filter(a => !a.isCorrect).length})</button>
+    ` : ''}
     <button class="btn btn-block btn-primary" data-action="again">⚔ ENGAGE AGAIN</button>
     <button class="btn btn-block" data-action="select">🗺 TARGET SELECT</button>
     <button class="btn btn-block" data-action="home">⌂ HQ</button>
@@ -63,14 +66,27 @@ App.registerScreen('results', ({ root, state, ctx }) => {
   const arenaEl = root.querySelector('.arena');
   if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: won ? 'victory' : 'defeat' });
 
-  // Show level-up overlay if applicable
+  // Show level-up overlay if applicable.
+  // The returnCtx passes a CLONED lvlInfo with leveledUp:false so coming back
+  // here doesn't re-trigger this timeout (previously caused an infinite loop).
+  let lvlUpTimer = null;
   if (ctx.lvlInfo.leveledUp) {
-    setTimeout(() => App.goto('level-up', { newLevel: ctx.lvlInfo.newLevel, oldLevel: ctx.lvlInfo.oldLevel, returnTo: 'results', returnCtx: ctx }), 600);
+    lvlUpTimer = setTimeout(() => {
+      App.goto('level-up', {
+        newLevel: ctx.lvlInfo.newLevel,
+        oldLevel: ctx.lvlInfo.oldLevel,
+        returnTo: 'results',
+        returnCtx: { ...ctx, lvlInfo: { ...ctx.lvlInfo, leveledUp: false } },
+      });
+    }, 600);
   }
 
   root.querySelectorAll('[data-action]').forEach(btn => {
     btn.addEventListener('click', () => {
+      // Cancel the pending level-up nav so an early tap doesn't yank the user away.
+      if (lvlUpTimer) { clearTimeout(lvlUpTimer); lvlUpTimer = null; }
       const a = btn.dataset.action;
+      if (a === 'review') App.goto('review-answers', { answers: s.answers, course: ctx.course, bossId: ctx.bossId, returnTo: 'results', returnCtx: ctx });
       if (a === 'again')  App.goto('prep-camp',   { course: ctx.course, bossId: ctx.bossId });
       if (a === 'select') App.goto('boss-select', { course: ctx.course });
       if (a === 'home')   App.goto('home');

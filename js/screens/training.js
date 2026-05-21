@@ -123,8 +123,10 @@ App.registerScreen('training', ({ root, state, ctx }) => {
       session.gold += 10;
       State.addXp(state, 5);
       State.addGold(state, 10);
-      State.save(state);
     }
+    // Per-topic / per-question stats (independent of XP gain)
+    if (State.recordAnswer) State.recordAnswer(state, currentQ, ok);
+    State.save(state);
 
     root.querySelectorAll('.ans-btn').forEach((b, i) => {
       b.classList.add('disabled-vis');

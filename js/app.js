@@ -291,6 +291,8 @@
     }
     goto('home');
 
+    // Cinematic atmosphere (bokeh + vignette) — one-time, behind everything
+    injectAtmosphere();
     // Mini-player + first-visit hint
     injectMiniPlayer();
     // Quick-settings (only visible on battle/training/crisis screens)
@@ -305,6 +307,17 @@
       }, 1200);
     }
   });
+
+  // ─── Atmosphere: drifting bokeh + vignette overlay (HD scene feel) ───
+  function injectAtmosphere() {
+    if (document.querySelector('.atm-bokeh')) return;
+    const bokeh = document.createElement('div');
+    bokeh.className = 'atm-bokeh';
+    document.body.appendChild(bokeh);
+    const vign = document.createElement('div');
+    vign.className = 'atm-vignette';
+    document.body.appendChild(vign);
+  }
 
   function injectHomeOrbs() {
     if (document.querySelector('.home-orb')) return;
