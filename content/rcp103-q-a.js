@@ -244,9 +244,9 @@
       course: 'rcp103',
       difficulty: 1,
       q: 'The normal anion gap is:',
-      choices: ['0–4 mEq/L', '8–12 mEq/L', '15–20 mEq/L', '> 20 mEq/L'],
+      choices: ['0–4 mEq/L', '8–14 mEq/L', '15–20 mEq/L', '> 20 mEq/L'],
       correct: 1,
-      explanation: 'Normal anion gap = 8–12 mEq/L. Elevated (> 12) suggests MUDPILES causes.',
+      explanation: 'Normal anion gap = 8–14 mEq/L (study guide cites 8–12; lecture slides cite 9–14 — both ranges are accepted). Elevated values suggest MUDPILES causes.',
     },
     {
       id: 'q-abg-05',
