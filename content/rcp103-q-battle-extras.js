@@ -93,6 +93,13 @@
       correct: 1,
       explanation: 'Winter\'s: expected PaCO2 = 1.5(HCO3-) + 8 ± 2. Actual PaCO2 outside that range suggests an additional respiratory disorder.',
     },
+    {
+      id: 'q-acid-base-b03', topic: 'acid-base', course: 'rcp103', difficulty: 2, pool: 'both',
+      q: 'In chronic respiratory acidosis, how long does it take for full renal compensation to develop?',
+      choices: ['Minutes to 1 hour', '24–48 hours', '3–5 days', '2 weeks'],
+      correct: 2,
+      explanation: 'Lecture slides teach full renal compensation in 3–5 days (HCO3- ↑ ~3.5–4 mEq/L per 10 mmHg PaCO2). Some consolidated study materials state 24–48 hours — that reflects when compensation BEGINS, not when it completes. Per the course slides, go with 3–5 days.',
+    },
 
     // ---------------- PLEURAL / CHEST TUBES / FLAIL (4) ----------------
     {
