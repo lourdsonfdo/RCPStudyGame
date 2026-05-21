@@ -280,7 +280,7 @@
       q: 'A normal mean pulmonary artery pressure at rest is:',
       choices: ['5–9 mmHg', '10–20 mmHg', '25–35 mmHg', '> 40 mmHg'],
       correct: 1,
-      explanation: 'Normal mPAP = 10-20 mmHg. Pulmonary hypertension is defined as mPAP > 25 mmHg at rest.',
+      explanation: 'Normal mPAP = 10-20 mmHg. Pulmonary hypertension is now defined as mPAP > 20 mmHg at rest (updated 2018 World Symposium, previously > 25 mmHg).',
     },
     {
       id: 'q-pe-b01', topic: 'pe', course: 'rcp103', difficulty: 1, pool: 'battle',

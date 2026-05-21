@@ -42,7 +42,7 @@
       q: 'Succinylcholine is most often used for what indication?',
       choices: ['Long-term vent paralysis','Rapid Sequence Intubation (RSI)','Reversal of opioid overdose','Treatment of malignant hyperthermia'],
       correct: 1,
-      explanation: 'Succinylcholine has rapid onset (~60 sec) and short duration (~5–10 min) — ideal for RSI.',
+      explanation: 'Succinylcholine has rapid onset (~60–90 sec) and short duration (~10–15 min) — ideal for RSI.',
     },
     {
       id: 'q-nmba-05',
@@ -132,9 +132,9 @@
       course: 'rcp104',
       difficulty: 1,
       q: 'Approximately what percentage of cardiac output flows through the renal system?',
-      choices: ['5%','10%','25%','50%'],
+      choices: ['5%','10%','~22%','50%'],
       correct: 2,
-      explanation: 'About 25% of cardiac output perfuses the kidneys.',
+      explanation: 'About 22% of cardiac output (~1.1 L/min) perfuses the kidneys (Ch 19).',
     },
     {
       id: 'q-diur-04',
