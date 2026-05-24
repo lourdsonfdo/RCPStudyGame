@@ -1,0 +1,25 @@
+{
+  "name": "RCP Study Game",
+  "short_name": "RCP Study",
+  "description": "Respiratory Care Practitioner study game — boss battles, survival mode, and spaced repetition.",
+  "start_url": "/RCPStudyGame/",
+  "scope": "/RCPStudyGame/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#050c18",
+  "theme_color": "#00e5ff",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
