@@ -333,6 +333,15 @@
     }
   }
 
+  // ── Save on app backgrounding / tab switch / iOS home button ────
+  // `pagehide` fires when iOS terminates the page (beforeunload is unreliable on mobile).
+  // `visibilitychange` fires when the user switches apps or tabs.
+  // Both call State.save() so progress is never lost mid-session.
+  window.addEventListener('pagehide', () => { if (state) State.save(state); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden' && state) State.save(state);
+  });
+
   // ── Browser back button (mobile swipe / desktop back) ─────────
   // Each goto() pushes a history state; popstate fires when the user uses
   // the browser/system back gesture. We intercept and call App.back().

@@ -141,6 +141,7 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     // Per-topic / per-question stats for weak-topic surfacing + spaced repetition
     if (window.State && State.recordAnswer) {
       State.recordAnswer(state, q, res.correct);
+      State.save(state); // persist mid-battle so backgrounding/kill doesn't lose stats
     }
 
     const arena = root.querySelector('#arena');

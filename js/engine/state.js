@@ -61,8 +61,21 @@
     } catch { return deepClone(DEFAULT_STATE); }
   }
 
-  function save(state) { localStorage.setItem(STATE_KEY, JSON.stringify(state)); }
-  function reset()     { localStorage.removeItem(STATE_KEY); }
+  function save(state) {
+    try {
+      localStorage.setItem(STATE_KEY, JSON.stringify(state));
+    } catch (e) {
+      // QuotaExceededError or private-mode block — trim questionStats to recover space, then retry
+      if (e && (e.name === 'QuotaExceededError' || e.code === 22)) {
+        try {
+          const slim = Object.assign({}, state, { questionStats: {} });
+          localStorage.setItem(STATE_KEY, JSON.stringify(slim));
+          console.warn('[State] QuotaExceeded — questionStats cleared to recover storage.');
+        } catch (_) { /* truly full or blocked — fail silently */ }
+      }
+    }
+  }
+  function reset() { localStorage.removeItem(STATE_KEY); }
 
   function levelFromXp(xp) {
     for (let i = LEVEL_XP.length - 1; i >= 0; i--) {
