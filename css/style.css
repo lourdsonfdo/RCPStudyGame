@@ -129,7 +129,7 @@ body::after {
   pointer-events: none;
   background:
     radial-gradient(ellipse 100% 80% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%),
-    radial-gradient(ellipse 60% 30% at 50% 0%, rgba(0, 10, 20, 0.4), transparent),
+    radial-gradient(ellipse 60% 30% at 50% 0%, rgba(245, 239, 224, 0.4), transparent),
     radial-gradient(ellipse 60% 30% at 50% 100%, rgba(0, 0, 0, 0.65), transparent);
   mix-blend-mode: multiply;
 }
@@ -522,14 +522,14 @@ body::after {
 }
 .btn:active { transform: translateY(1px) scale(.98); }
 .btn-primary {
-  background: linear-gradient(180deg, rgba(94,138,94,.95) 0%, rgba(0,15,10,.95) 100%);
+  background: linear-gradient(180deg, rgba(94,138,94,.95) 0%, rgba(245,239,224,.95) 100%);
   border-color: var(--hud-green);
   color: var(--hud-green);
   box-shadow: 0 0 12px rgba(94,138,94,.15);
 }
 .btn-primary:hover {
   border-color: var(--hud-green);
-  background: linear-gradient(180deg, rgba(0,50,30,.9) 0%, rgba(94,138,94,.9) 100%);
+  background: linear-gradient(180deg, rgba(237,228,204,.9) 0%, rgba(94,138,94,.9) 100%);
   box-shadow: 0 0 20px rgba(94,138,94,.28);
 }
 .btn-danger {
@@ -700,7 +700,7 @@ body::after {
    QUESTION BOX
    ============================================================ */
 .q-box {
-  background: linear-gradient(160deg, rgba(0,16,40,.95) 0%, rgba(2,8,28,.95) 80%);
+  background: linear-gradient(160deg, rgba(245,239,224,.95) 0%, rgba(250,245,232,.95) 80%);
   border: 1px solid var(--hud-cyan);
   padding: 14px;
   box-shadow:
@@ -740,9 +740,10 @@ body::after {
   color: var(--text);
 }
 .ans-btn.correct {
-  border-color: var(--hud-green); background: rgba(94,138,94,.9); color: var(--hud-green);
+  border-color: var(--hud-green); background: rgba(94,138,94,.9); color: #ffffff;
   box-shadow: 0 0 14px rgba(94,138,94,.35), inset 0 0 10px rgba(94,138,94,.08);
   animation: correct-pulse .5s ease-out;
+  font-weight: 600;
 }
 @keyframes correct-pulse {
   0%   { box-shadow: 0 0 0 0 rgba(94,138,94,.7), 0 0 14px rgba(94,138,94,.35); }
@@ -750,9 +751,10 @@ body::after {
   100% { box-shadow: 0 0 14px rgba(94,138,94,.35); }
 }
 .ans-btn.wrong {
-  border-color: var(--hud-red); background: rgba(30,0,10,.9); color: var(--hud-red);
+  border-color: var(--hud-red); background: rgba(184,84,98,.9); color: #ffffff;
   box-shadow: 0 0 14px rgba(184,84,98,.35), inset 0 0 10px rgba(184,84,98,.08);
   animation: wrong-shake .45s ease-in-out;
+  font-weight: 600;
 }
 @keyframes wrong-shake {
   0%,100% { transform: translateX(0); }
@@ -762,8 +764,8 @@ body::after {
 }
 .ans-btn.disabled-vis { opacity: .35; pointer-events: none; }
 .ans-key { color: var(--hud-cyan); min-width: 14px; text-shadow: 0 0 4px var(--hud-cyan); font-family: var(--font-display); }
-.ans-btn.correct .ans-key { color: var(--hud-green); text-shadow: 0 0 6px var(--hud-green); }
-.ans-btn.wrong   .ans-key { color: var(--hud-red);   text-shadow: 0 0 6px var(--hud-red); }
+.ans-btn.correct .ans-key { color: #ffffff; text-shadow: 0 0 6px rgba(255,255,255,.6); }
+.ans-btn.wrong   .ans-key { color: #ffffff; text-shadow: 0 0 6px rgba(255,255,255,.6); }
 
 .explanation {
   margin-top: 8px; padding: 10px;
@@ -786,7 +788,7 @@ body::after {
 }
 .tile:hover {
   border-color: var(--hud-cyan);
-  background: linear-gradient(160deg, rgba(237,228,204,.8) 0%, rgba(0,20,50,.8) 70%);
+  background: linear-gradient(160deg, rgba(237,228,204,.8) 0%, rgba(245,239,224,.8) 70%);
   box-shadow: 0 0 14px rgba(184,114,45,.18);
   transform: translateY(-1px);
 }
@@ -859,7 +861,7 @@ body::after {
    ============================================================ */
 .toast {
   position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-  background: linear-gradient(160deg, rgba(0,30,60,.95) 0%, rgba(250,245,232,.95) 100%);
+  background: linear-gradient(160deg, rgba(237,228,204,.95) 0%, rgba(250,245,232,.95) 100%);
   border: 1px solid var(--hud-cyan);
   padding: 10px 16px;
   font-size: 8px; color: var(--text); z-index: 200;
@@ -1158,7 +1160,7 @@ body::after {
   background:
     radial-gradient(circle at 20% 30%, rgba(46,111,106,.18) 0%, transparent 25%),
     radial-gradient(circle at 75% 70%, rgba(184,84,98,.14)  0%, transparent 30%),
-    radial-gradient(circle at 50% 50%, rgba(170,85,255,.10) 0%, transparent 35%);
+    radial-gradient(circle at 50% 50%, rgba(141,122,184,.10) 0%, transparent 35%);
   animation: arena-drift 24s linear infinite;
   filter: blur(2px);
 }
@@ -1233,7 +1235,7 @@ body::after {
 /* Defeat-arena: dark/purple palette */
 .arena.arena-defeat .arena-bg-clouds {
   background:
-    radial-gradient(circle at 50% 50%, rgba(170,85,255,.18) 0%, transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(141,122,184,.18) 0%, transparent 35%),
     radial-gradient(circle at 30% 60%, rgba(85,85,85,.20)   0%, transparent 30%);
 }
 .arena.arena-defeat .arena-bg-beam { opacity: 0; }
@@ -1436,7 +1438,7 @@ body::after {
 .text-size-opt:active { transform: scale(.97); }
 .text-size-opt.active {
   border-color: var(--hud-green);
-  background: linear-gradient(180deg, rgba(0,60,30,.6) 0%, rgba(237,228,204,.8) 100%);
+  background: linear-gradient(180deg, rgba(94,138,94,.6) 0%, rgba(237,228,204,.8) 100%);
   box-shadow: 0 0 12px rgba(94,138,94,.25), inset 0 0 10px rgba(94,138,94,.08);
 }
 .text-size-opt.active .ts-letter { color: var(--hud-green); text-shadow: 0 0 6px var(--hud-green); }
@@ -1479,7 +1481,7 @@ body::after {
   align-items: center;
   gap: 6px;
   padding: 6px 10px;
-  background: rgba(19, 19, 38, 0.85);
+  background: rgba(237, 228, 204, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border-2);
@@ -1544,7 +1546,7 @@ body::after {
 .qs-popover .qs-opt.active {
   border-color: var(--hud-green);
   color: var(--hud-green);
-  background: linear-gradient(180deg, rgba(0,60,30,.6) 0%, rgba(237,228,204,.8) 100%);
+  background: linear-gradient(180deg, rgba(94,138,94,.6) 0%, rgba(237,228,204,.8) 100%);
   text-shadow: 0 0 6px var(--hud-green);
 }
 .qs-popover .qs-jump {
@@ -1596,9 +1598,9 @@ body::after {
   position: fixed;
   height: 12px;
   background: linear-gradient(90deg,
-    transparent 0%, rgba(120, 240, 255, 0.4) 10%,
+    transparent 0%, rgba(212, 149, 90, 0.4) 10%,
     rgba(255, 255, 255, 1) 50%,
-    rgba(120, 240, 255, 0.4) 90%, transparent 100%);
+    rgba(212, 149, 90, 0.4) 90%, transparent 100%);
   transform-origin: left center;
   pointer-events: none;
   opacity: 0;
@@ -1849,7 +1851,7 @@ body::after {
 
 /* ── Survival pick-screen module variants ─────────────────── */
 .module.module-103 .module-icon-wrap {
-  background: radial-gradient(circle at 35% 35%, rgba(184,114,45,.25), rgba(0,20,30,.7));
+  background: radial-gradient(circle at 35% 35%, rgba(184,114,45,.25), rgba(245,239,224,.7));
   border-color: var(--hud-cyan);
   box-shadow: 0 0 12px rgba(184,114,45,.5);
 }
@@ -1858,7 +1860,7 @@ body::after {
 /* ── Survival timer / clock bar ───────────────────────────── */
 .survival-clock {
   position: relative;
-  background: linear-gradient(180deg, rgba(0,30,45,.7) 0%, rgba(0,15,25,.8) 100%);
+  background: linear-gradient(180deg, rgba(237,228,204,.7) 0%, rgba(245,239,224,.8) 100%);
   border: 1px solid rgba(141,122,184,.55);
   padding: 10px 14px;
   clip-path: polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px));
@@ -1949,7 +1951,7 @@ body::after {
 .review-choice {
   display: flex; align-items: center; gap: 8px;
   padding: 6px 8px;
-  background: rgba(0,15,25,.5);
+  background: rgba(245,239,224,.5);
   border: 1px solid var(--line-soft);
   font-family: var(--font-mono);
   font-size: 12px;
