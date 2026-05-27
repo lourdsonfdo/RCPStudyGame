@@ -6,9 +6,8 @@ App.registerScreen('boss-select', ({ root, state, ctx }) => {
   const course = ctx.course;
   const all = (window.ALL_BOSSES || []).filter(b => b.course === course);
 
-  // Unlock rule: unlockedByDefault OR player has defeated ANY boss
-  const anyDefeated = state.defeatedBosses.length > 0;
-  function isUnlocked(b) { return b.unlockedByDefault || anyDefeated; }
+  // Unlock rule: all bosses are unlocked from the start so the player can pick freely.
+  function isUnlocked(_b) { return true; }
 
   const courseShort = course.toUpperCase();
   const defeated = state.defeatedBosses.filter(id => all.some(b => b.id === id)).length;
