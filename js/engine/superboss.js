@@ -146,9 +146,12 @@
       if (run.missed.indexOf(q.id) === -1) run.missed.push(q.id);
     }
 
+    // The drawn question is kept, not just its id: its choices were shuffled
+    // for this run, so `chosen` is only meaningful against this exact copy.
     run.answers.push({
       phase: currentPhase(run).id,
       id: q.id,
+      question: q,
       chosen: choiceIndex,
       correct: correct,
       srcItem: q.srcItem,
@@ -156,7 +159,10 @@
     });
     run.qIndex++;
 
-    if (run.playerHp === 0) run.outcome = 'defeat';
+    // Running out of HP mid-phase is still failing that phase, so it pins the
+    // same way a gate failure does. Without this, the worse you do the LESS
+    // likely you are to get the retry drill -- exactly backwards.
+    if (run.playerHp === 0) failPhase(run);
     return { correct: correct, question: q, correctIndex: q.correct };
   }
 
@@ -167,9 +173,34 @@
    * draws. On a fail the run is over — there is no mid-fight retry — and the
    * phase's 15 questions are PINNED so the next attempt drills the same set.
    */
+  /**
+   * Record this phase as failed, pin its questions and end the run.
+   * Shared by the gate check and by running out of HP mid-phase.
+   */
+  function failPhase(run) {
+    if (run.outcome === 'defeat') return null;
+    const phase = currentPhase(run);
+    const result = {
+      phase: phase.id,
+      phaseName: phase.name,
+      correct: run.correctCount,
+      total: QUESTIONS_PER_PHASE,
+      passed: false,
+      pinned: true,
+    };
+    run.pinned[phase.id] = run.questions.map(q => q.id);
+    run.phaseResults.push(result);
+    run.outcome = 'defeat';
+    return result;
+  }
+
   function endPhase(run) {
     const phase = currentPhase(run);
-    const passed = run.correctCount >= PHASE_GATE && run.outcome !== 'defeat';
+    // Death already closed this phase out and pinned it.
+    if (run.outcome === 'defeat') {
+      return run.phaseResults[run.phaseResults.length - 1];
+    }
+    const passed = run.correctCount >= PHASE_GATE;
     const result = {
       phase: phase.id,
       phaseName: phase.name,
@@ -180,11 +211,8 @@
     run.phaseResults.push(result);
 
     if (!passed) {
-      // Pin this phase's set so the next attempt drills the same 15.
-      run.pinned[phase.id] = run.questions.map(q => q.id);
-      run.outcome = 'defeat';
-      result.pinned = true;
-      return result;
+      run.phaseResults.pop();          // failPhase records its own result
+      return failPhase(run);
     }
 
     // Cleared it — the pin has done its job.
@@ -260,7 +288,7 @@
   global.SuperBoss = {
     QUESTIONS_PER_PHASE, PHASE_GATE, BAR_HP, INTER_PHASE_HEAL, PHASES,
     startRun, drawPhase, drawFinalPhase, valueKeyOf,
-    currentQ, currentPhase, answer, endPhase, phaseComplete,
+    currentQ, currentPhase, answer, endPhase, failPhase, phaseComplete,
     serialize, deserialize,
   };
 

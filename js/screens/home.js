@@ -130,6 +130,14 @@ App.registerScreen('home', ({ root, state }) => {
       </div>
     </div>
 
+    <div class="module module-titan" data-go="superboss-briefing">
+      <div class="module-icon-wrap">🗿</div>
+      <div class="module-body">
+        <div class="module-tag">▸ FINAL PROTOCOL</div>
+        <div class="module-title">VITALS TITAN</div>
+        <div class="module-meta">RCP 202+203 · 5 PHASES · 75 QUERIES</div>
+      </div>
+    </div>
     <div class="module module-survival" data-go="survival">
       <div class="module-icon-wrap">⏱</div>
       <div class="module-body">
@@ -180,6 +188,8 @@ App.registerScreen('home', ({ root, state }) => {
       const dest = el.dataset.go;
       if (dest === 'daily') {
         App.goto('battle', { course: state.dailyChallenge.course, bossId: state.dailyChallenge.bossId, isDaily: true });
+      } else if (dest === 'superboss-briefing') {
+        App.goto('superboss-briefing', {});
       } else if (dest === 'course-mode') {
         App.goto('course-mode', { course: el.dataset.course });
       } else if (dest === 'survival') {

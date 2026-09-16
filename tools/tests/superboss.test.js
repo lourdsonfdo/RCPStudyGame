@@ -299,6 +299,25 @@
     check('pinned values are reserved before the first draw',
       reserved.every(v => rLate.askedValues.indexOf(v) !== -1));
 
+
+    // Dying mid-phase must pin that phase too — the worse the run goes, the
+    // MORE the drill is needed, so this is where the pin matters most.
+    let rDeath = SuperBoss.startRun({ bank: pinBank, playerMaxHp: 30 });
+    const deathIds = rDeath.questions.map(q => q.id);
+    while (!rDeath.outcome) {
+      const q = SuperBoss.currentQ(rDeath);
+      SuperBoss.answer(rDeath, (q.correct + 1) % 4);
+    }
+    check('death mid-phase ends the run', rDeath.outcome === 'defeat');
+    check('death mid-phase still pins the phase',
+      !!rDeath.pinned['p1-202-core'] && rDeath.pinned['p1-202-core'].length === 15);
+    check('death pin holds the questions that were being played',
+      rDeath.pinned['p1-202-core'].slice().sort().join() === deathIds.slice().sort().join());
+    check('death records a phase result',
+      rDeath.phaseResults.length === 1 && rDeath.phaseResults[0].passed === false);
+    check('endPhase after death does not double-record',
+      (SuperBoss.endPhase(rDeath), rDeath.phaseResults.length === 1));
+
     const pinBlob = JSON.parse(JSON.stringify(SuperBoss.serialize(rPin)));
     const rPinRestored = SuperBoss.deserialize(pinBlob, pinBank);
     check('pin round-trips through serialize',

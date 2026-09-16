@@ -3,7 +3,7 @@
    Cache-first strategy: game is fully playable offline after
    the first load.
    ============================================================ */
-const CACHE = 'rcp-study-v5-unlock';
+const CACHE = 'rcp-study-v6-titan';
 
 const PRECACHE = [
   '/RCPStudyGame/',
@@ -16,6 +16,7 @@ const PRECACHE = [
   '/RCPStudyGame/js/engine/battle.js',
   '/RCPStudyGame/js/engine/crisis.js',
   '/RCPStudyGame/js/engine/shop.js',
+  '/RCPStudyGame/js/engine/superboss.js',
   '/RCPStudyGame/js/app.js',
   '/RCPStudyGame/js/screens/home.js',
   '/RCPStudyGame/js/screens/course-mode.js',
@@ -31,6 +32,8 @@ const PRECACHE = [
   '/RCPStudyGame/js/screens/level-up.js',
   '/RCPStudyGame/js/screens/survival.js',
   '/RCPStudyGame/js/screens/review-answers.js',
+  '/RCPStudyGame/js/screens/superboss-briefing.js',
+  '/RCPStudyGame/js/screens/superboss.js',
   '/RCPStudyGame/content/stub.js',
   '/RCPStudyGame/content/boss-sprites.js',
   '/RCPStudyGame/content/rcp103-bosses.js',
@@ -45,6 +48,9 @@ const PRECACHE = [
   '/RCPStudyGame/content/rcp104-q-battle-extras.js',
   '/RCPStudyGame/content/rcp103-scenarios.js',
   '/RCPStudyGame/content/rcp104-scenarios.js',
+  '/RCPStudyGame/content/rcp2xx-superboss.js',
+  '/RCPStudyGame/content/rcp202-values.js',
+  '/RCPStudyGame/content/rcp203-values.js',
   '/RCPStudyGame/icons/icon-192.png',
   '/RCPStudyGame/icons/icon-512.png',
   '/RCPStudyGame/icons/apple-touch-icon.png',

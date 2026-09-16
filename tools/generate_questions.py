@@ -87,11 +87,16 @@ def make_stem(quote, value, title):
     # The first sentence of a card repeats its number and title, which we are
     # already prepending. Drop the echo rather than printing it twice.
     stem = re.sub(r'^\d+\s+' + re.escape(title) + r'\s*', '', stem).strip()
+    i = stem.index('_____')
+    # A blank buried deep in a long "sentence" is almost always a flattened
+    # table row, and windowing it yields fragments like
+    # "... separately) Not separately listed in this deck NI" -- traceable but
+    # unreadable. Drop those rather than trim them.
+    if i > 190:
+        return None, None
     if len(stem) > 300:
-        i = stem.index('_____')
-        head = '... ' if i > 140 else ''
-        tail = ' ...' if len(stem) > i + 160 else ''
-        stem = head + stem[max(0, i - 140):i + 160].strip() + tail
+        cut = stem.rfind(' ', 0, 300)          # trim at a word boundary
+        stem = stem[:cut if cut > 200 else 300].rstrip(' ,;:') + ' ...'
     return '%s — %s' % (title, stem), surface
 
 
@@ -116,12 +121,19 @@ def perturb(value):
             result = result.replace(original, text, 1)
         return result
 
+    is_percent = '%' in value
     for factors in ([2] * len(nums), [0.5] * len(nums), [1.5] * len(nums),
-                    [3] * len(nums), [0.25] * len(nums), [10] * len(nums),
-                    [0.1] * len(nums)):
+                    [3] * len(nums), [0.25] * len(nums), [0.75] * len(nums),
+                    [10] * len(nums), [0.1] * len(nums)):
         candidate = rebuild(factors)
-        if candidate != value and candidate not in out:
-            out.append(candidate)
+        if candidate == value or candidate in out:
+            continue
+        # A percentage over 100 is not a plausible wrong answer, it is a
+        # giveaway -- "SaO2 190%" tells the player which option to discard.
+        if is_percent and any(float(n.replace(',', '')) > 100
+                              for n in NUM_IN_VALUE.findall(candidate)):
+            continue
+        out.append(candidate)
     return out
 
 
@@ -137,6 +149,13 @@ def build(records, cards, limit_per_record=3):
             continue
         card_text = _squash(card['text'])
         phase, topic = phase_for(rec)
+
+        # A flattened table row reads as a wall of values with almost no
+        # sentence around them ("7% 38% 55% VERBAL VOCAL VISUAL words tone").
+        # Blanking one produces a question nobody can answer from context.
+        interior = rec['quote'][:-1]
+        if len(rec['values']) >= 4 and len(re.findall(r'[.;]\s', interior)) < 2:
+            continue
 
         for value in rec['values'][:limit_per_record]:
             vkey = '%s|%s' % (card_key, value)

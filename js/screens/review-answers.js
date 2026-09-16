@@ -1,7 +1,8 @@
 /* ============================================================
    REVIEW ANSWERS — post-battle/post-survival miss review
    ctx: { answers, returnTo, returnCtx, course?, bossId? }
-   answers: [{ q, choices, chose, correctIdx, isCorrect, explanation, topic }]
+   answers: [{ q, choices, chose, correctIdx, isCorrect, explanation, topic,
+               srcItem?, srcCite? }]   srcItem/srcCite show the guide citation
    ============================================================ */
 App.registerScreen('review-answers', ({ root, state, ctx }) => {
   const answers = ctx.answers || [];
@@ -48,6 +49,9 @@ App.registerScreen('review-answers', ({ root, state, ctx }) => {
         <div class="review-expl">
           <span class="review-expl-label">▸ WHY</span>
           <div>${a.explanation || 'No explanation available.'}</div>
+          ${a.srcItem ? `<div class="src-line">
+            ${a.srcItem.replace(':', ' · item ')}${a.srcCite ? ' — ' + a.srcCite : ''}
+          </div>` : ''}
         </div>
       </div>
     `).join('')}
