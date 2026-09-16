@@ -9,6 +9,37 @@
   }
 
   const sprites = {
+    // VITALS TITAN — a monolith of stacked readouts; the core eye pulses
+    'vitals-titan': pair(
+      `<svg viewBox="0 0 16 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="0" width="8" height="2" fill="#7a6a58"/>
+        <rect x="3" y="2" width="10" height="9" fill="#9a8a74"/>
+        <rect x="4" y="3" width="8" height="1" fill="#6a5c4c"/>
+        <rect x="4" y="5" width="8" height="1" fill="#6a5c4c"/>
+        <rect x="4" y="9" width="8" height="1" fill="#6a5c4c"/>
+        <rect x="6" y="6" width="4" height="3" fill="#c0392b"/>
+        <rect x="7" y="7" width="2" height="1" fill="#ffd9d0"/>
+        <rect x="2" y="11" width="12" height="3" fill="#7a6a58"/>
+        <rect x="4" y="14" width="3" height="2" fill="#5a4c3c"/>
+        <rect x="9" y="14" width="3" height="2" fill="#5a4c3c"/>
+        <rect x="0" y="4" width="2" height="1" fill="#c0392baa"/>
+        <rect x="14" y="8" width="2" height="1" fill="#c0392baa"/>
+      </svg>`,
+      `<svg viewBox="0 0 16 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="0" width="8" height="2" fill="#7a6a58"/>
+        <rect x="3" y="2" width="10" height="9" fill="#9a8a74"/>
+        <rect x="4" y="3" width="8" height="1" fill="#6a5c4c"/>
+        <rect x="4" y="5" width="8" height="1" fill="#6a5c4c"/>
+        <rect x="4" y="9" width="8" height="1" fill="#6a5c4c"/>
+        <rect x="6" y="6" width="4" height="3" fill="#e05545"/>
+        <rect x="6" y="7" width="4" height="1" fill="#ffd9d0"/>
+        <rect x="2" y="11" width="12" height="3" fill="#7a6a58"/>
+        <rect x="4" y="14" width="3" height="2" fill="#5a4c3c"/>
+        <rect x="9" y="14" width="3" height="2" fill="#5a4c3c"/>
+        <rect x="0" y="8" width="2" height="1" fill="#c0392baa"/>
+        <rect x="14" y="4" width="2" height="1" fill="#c0392baa"/>
+      </svg>`
+    ),
     // COPD — eyes blink, smog wisps drift
     copd: pair(
       `<svg viewBox="0 0 16 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
