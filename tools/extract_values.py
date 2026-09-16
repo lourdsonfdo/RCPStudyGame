@@ -67,6 +67,21 @@ RANGE = r"%s%s(?:\s*(?:[–—\-]|to)\s*%s%s)?" % (SIGN, NUM, SIGN, NUM)
 VALUE_RE = re.compile(
     r"(?:[<>≤≥]\s*%s(?:\s*%s)?|%s\s*%s)" % (RANGE, UNITS, RANGE, UNITS), re.I)
 
+# Some of the most-tested respiratory values carry NO unit at all: pH 7.35-7.45,
+# FiO2 1.0, P/F < 200, RSBI < 105, I:E 1:1, VD/VT 0.28. A unit-anchored pattern
+# misses every one of them -- pH alone appears 88 times across the two guides.
+#
+# These are captured by their LABEL instead. The label list is deliberately
+# tight: a loose label turns ordinary prose numbers into fake values. "BE" for
+# base excess is excluded for exactly that reason -- it matches "must be 30
+# meters long".
+LABELS = (r"(?:pH|FiO2|FIO2|FiO₂|PaO2/FiO2|P/F|RSBI|f/V[tT]|I:E|"
+          r"V[dD]/V[tT]|a/A|A-a|RQ)")
+LABELED_RE = re.compile(
+    LABELS + r"\s*(?:of|=|is|:)?\s*(?:[<>≤≥]\s*)?"
+    r"(\d+(?:\.\d+)?(?::\d+(?:\.\d+)?)?"
+    r"(?:\s*[–—-]\s*\d+(?:\.\d+)?(?::\d+(?:\.\d+)?)?)?)")
+
 # Numbers that belong to a citation, not to a fact.
 CITE_RE = re.compile(
     r'\b(?:slides?|chapters?|chp|ch\.|lssn|lesson|tables?|figures?|items?|pages?|p\.)'
@@ -125,9 +140,10 @@ def extract_file(path, course):
         for sentence in sentences(text):
             testable = CITE_RE.sub(' ', sentence)
             found = VALUE_RE.findall(testable)
-            if not found:
+            labeled = [m.group(1) for m in LABELED_RE.finditer(testable)]
+            if not found and not labeled:
                 continue
-            values = sorted({normalize_value(v) for v in found})
+            values = sorted({normalize_value(v) for v in found + labeled})
             seq += 1
             records.append({
                 'key': '%s:%s#%d' % (course, item_id, seq),

@@ -428,6 +428,7 @@
    "section": "02",
    "quote": "Treatment is 100% oxygen immediately (NRB with tight seal and enough flow to keep the reservoir inflated if spontaneously breathing; intubate and ventilate at FiO₂ 1.0 if the patient cannot protect the airway), and HBOT is considered for severe CO poisoning, especially with significant neurologic depression or cardiac involvement — HBOT is also used later to help compromised skin grafts/flaps .",
    "values": [
+    "1.0",
     "100%"
    ],
    "cite": "Lssn 2 — Burn & Inhalation Injury, slides 28, 39, 40, 45, 47"
@@ -598,6 +599,7 @@
     "100%",
     "55-80mmhg",
     "6ml/kg",
+    "7.25",
     "88-95%",
     "≤30cmh2o",
     "≥7.25"
@@ -1056,6 +1058,7 @@
    "section": "05",
    "quote": "Acidosis (serum pH < 7.35) → ↑ H⁺ secretion into the urine and ↑ HCO₃⁻ retention → pH rises back toward normal.",
    "values": [
+    "7.35",
     "<7.35"
    ],
    "cite": "Lssn 3 Renal A&P (new deck), slides 4, 13, 14, 15, 16 (notes), 22 · Chptr 19 — Diuretics, slides 15, 16"
@@ -1068,7 +1071,20 @@
    "section": "05",
    "quote": "Alkalosis (serum pH > 7.45) → ↑ HCO₃⁻ excretion in the urine → pH falls back toward normal.",
    "values": [
+    "7.45",
     ">7.45"
+   ],
+   "cite": "Lssn 3 Renal A&P (new deck), slides 4, 13, 14, 15, 16 (notes), 22 · Chptr 19 — Diuretics, slides 15, 16"
+  },
+  {
+   "key": "202:s05-7#4",
+   "course": "202",
+   "item": "s05-7",
+   "item_title": "Renal Function in Acid-Base Balance",
+   "section": "05",
+   "quote": "The four mechanisms (deck's \"pH 7.31\" example, from the notes) (1) ↑ HCO₃⁻ reabsorption , mostly in the proximal tubules , to buffer excess acid;",
+   "values": [
+    "7.31"
    ],
    "cite": "Lssn 3 Renal A&P (new deck), slides 4, 13, 14, 15, 16 (notes), 22 · Chptr 19 — Diuretics, slides 15, 16"
   },
@@ -1175,7 +1191,9 @@
     "108torr",
     "14meq/l",
     "28torr",
-    "35-45torr"
+    "35-45torr",
+    "7.32",
+    "7.35-7.45"
    ],
    "cite": "Heuer Ch 1 — ABG interpretation examples (PDF p47) and T4 Tips (PDF p80) · Heuer Ch 2 — abnormal breathing patterns (PDF p99) · Heuer Ch 11 — Normalizing the pH · Lssn 3 Renal A&P (new deck), slide 19 (notes) · Chptr 19 — Diuretics, slides 16 (notes), 31 Still not covered: DKA's diagnostic glucose , anion gap , and serum/urine ketone numbers, and its insulin/fluid treatment. Look those up in an endocrine or acid-base chapter."
   },
@@ -1297,6 +1315,7 @@
    "section": "06",
    "quote": "SIMV 10, VT 450, FiO₂ 30%, PS 8, PEEP +5 ).",
    "values": [
+    "30",
     "30%"
    ],
    "cite": "RCP 105 Wk 3 — Weaning/Extubation (Chang Ch 13/16), slide 24; RCP 105 Wk 6 — Ventilator Waveform Analysis (Chang Ch 11), slide 38."
@@ -1372,6 +1391,7 @@
    "section": "06",
    "quote": "Adult weaning: meet weaning criteria → wean FiO₂ to 40% → reduce P̄aw by 2–3 cmH₂O every 4–6 hrs to a 22–24 cmH₂O range → switch to PCV at f 20–25/min, I:E 1:1, PEEP 12 → titrate PCV to VT 6–8 mL/kg , keeping Pplat < 35 cmH₂O and P̄aw < 20 cmH₂O.",
    "values": [
+    "1:1",
     "2-3cmh2o",
     "20-25/min",
     "22-24cmh2o",
@@ -1569,6 +1589,7 @@
    "section": "06",
    "quote": "Indications intrapulmonary shunting and refractory hypoxemia (consider PEEP when PaO₂/FiO₂ < 200 mmHg ), decreased FRC and decreased lung compliance (reduced compliance greatly increases alveolar opening pressure), and auto-PEEP not responding to ventilator setting adjustments.",
    "values": [
+    "200",
     "<200mmhg"
    ],
    "cite": "RCP 105 Lctr 4 — Operating Modes (Chang Ch 4), slides 9, 10, 11, 31; RCP 105 — Management of Mechanical Ventilation (Chang Ch 12), slides 11, 15, 16, 17, 18; RCP 105 Lctr 3 — Principles of MV (Chang/Hess), slides 31, 35, 36, 37, 38, 41, 44, 45, 78 ⚠ \"Physiologic PEEP\" — STILL ABSENT VAULT-WIDE. The term \"physiologic PEEP\" (and the variants physiological PEEP , normal PEEP ) does not appear anywhere in the 62 deck files . The vault discusses applied/therapeutic PEEP , auto-PEEP/intrinsic PEEP , and PEEP thresholds ( < 10 cm H₂O as the older Chang ceiling; 10–15 cm H₂O or higher as individualized modern ARDS practice), but never defines a baseline physiologic PEEP value, and never connects glottic closure to an intrinsic end-expiratory pressure. What to look up: the conventional definition of physiologic PEEP as the ~3–5 cm H₂O of end-expiratory pressure normally maintained by the glottis in a non-intubated person (which is lost once the glottis is bypassed by an artificial airway) — check Egan's or the Chang PEEP chapter and confirm the exact number before using it, since no deck in this vault supports any specific value."
@@ -1581,6 +1602,7 @@
    "section": "06",
    "quote": "Clinically you raise PEEP when the patient is hypoxemic, shunting, atelectatic, in ARDS, or needs a higher FiO₂ than you want (keep FiO₂ < 60% / PaO₂ < 80 mmHg , < 60 mmHg in COPD , to prevent O₂ toxicity).",
    "values": [
+    "60",
     "<60%",
     "<60mmhg",
     "<80mmhg"
@@ -1971,6 +1993,7 @@
    "section": "07",
    "quote": "IPAP 15, EPAP 5, RR 12, FiO₂ 40%, I-Time, Rise .",
    "values": [
+    "40",
     "40%"
    ],
    "cite": "RCP 105 NIV (13-slide), slides 7, 8; RCP 202 BiPAP Basics, slides 1, 2"
@@ -2068,6 +2091,7 @@
     "2meq/l",
     "35-45mmhg",
     "42-48mmhg",
+    "7.35-7.45",
     "80-100mmhg"
    ],
    "cite": "RCP 103 ABG Assessments, slide 4"
@@ -2081,7 +2105,8 @@
    "quote": "The single memorized \"perfect\" gas the deck uses for every calculation is pH 7.40 / PaCO₂ 40 mm Hg / HCO₃⁻ 24 mEq/L .",
    "values": [
     "24meq/l",
-    "40mmhg"
+    "40mmhg",
+    "7.40"
    ],
    "cite": "RCP 103 ABG Assessments, slide 4"
   },
@@ -2109,6 +2134,18 @@
     "95-100%"
    ],
    "cite": "RCP 103 ABG Assessments, slides 4, 20, 36, 64"
+  },
+  {
+   "key": "202:s08-3#1",
+   "course": "202",
+   "item": "s08-3",
+   "item_title": "pH — What It Tells You and the Acidosis/Alkalosis Cutoffs",
+   "section": "08",
+   "quote": "3 pH — What It Tells You and the Acidosis/Alkalosis Cutoffs pH is the value you check FIRST Normal arterial pH is 7.35 – 7.45 .",
+   "values": [
+    "7.35-7.45"
+   ],
+   "cite": "RCP 103 ABG Assessments, slides 4, 11, 16, 69"
   },
   {
    "key": "202:s08-4#1",
@@ -2215,7 +2252,8 @@
    "quote": "13 Systematic ABG Interpretation Steps 1 · clinical assessment 2 · pH 7.35 – 7.45 3 · PaCO₂ 35 – 45 mm Hg 4 · HCO₃⁻ 22 – 26 mmol/L 5 · compare all three name the disorder 6 · compensation un / partial / full 7 · oxygenation separately, last acid–base first · oxygenation second — never interleaved a normal pH does not mean normal physiology — step 6 exists because of compensation Steps 2–4 gather three numbers; step 5 is where they are compared against each other to name the disorder.",
    "values": [
     "22-26mmol/l",
-    "35-45mmhg"
+    "35-45mmhg",
+    "7.35-7.45"
    ],
    "cite": "RCP 103 ABG Assessments, slides 2, 69"
   },
@@ -2239,6 +2277,13 @@
    "section": "08",
    "quote": "Disorder pH PaCO₂ HCO₃⁻ PaO₂ Deck's Example Acute alveolar hyperventilation w/ hypoxemia (acute respiratory alkalosis , uncompensated) ↑ > 7.45 ↓ < 35 decreased but still normal decreased pH 7.52 / PaCO₂ 28 / HCO₃⁻ 22 / PaO₂ 61 Acute ventilatory failure w/ hypoxemia (acute respiratory acidosis , uncompensated) ↓ < 7.35 ↑ > 45 increased but still normal decreased pH 7.16 / PaCO₂ 79 / HCO₃⁻ 26 / PaO₂ 57 Chronic ventilatory failure w/ hypoxemia ( COMPENSATED respiratory acidosis) NORMAL increased increased significantly decreased pH 7.36 / PaCO₂ 79 / HCO₃⁻ 43 / PaO₂ 61 Acute alveolar hyperventilation ON chronic ventilatory failure ↑ (alkalosis) ↓ from the chronic baseline ↑ (chronic compensation) decreased pH 7.52 / PaCO₂ 51 / HCO₃⁻ 40 / PaO₂ 46 Acute ventilatory failure ON chronic ventilatory failure ↓ (acidosis) ↑↑ from the chronic baseline ↑ (chronic compensation) decreased pH 7.28 / PaCO₂ 99 / HCO₃⁻ 45 / PaO₂ 34 Metabolic alkalosis increased normal increased normal pH 7.56 / PaCO₂ 44 / HCO₃⁻ 27 / PaO₂ 94 Metabolic acidosis decreased normal decreased normal pH 7.26 / PaCO₂ 37 / HCO₃⁻ 18 / PaO₂ 94 Lactic acidosis (metabolic acidosis w/ hypoxemia) decreased normal or decreased decreased DECREASED pH 7.21 / PaCO₂ 35 / HCO₃⁻ 14 / PaO₂ 34 The side-by-side comparison slide is worth memorizing on its own — from a chronic ventilatory failure baseline of pH 7.36 / PaCO₂ 77 / HCO₃⁻ 43 / PaO₂ 61 , an acute ventilatory failure on top drives it to 7.28 / 99 / 44 / 39 , while an acute hyperventilation on top drives it to 7.51 / 52 / 40 / 49 .",
    "values": [
+    "7.16",
+    "7.21",
+    "7.26",
+    "7.28",
+    "7.36",
+    "7.52",
+    "7.56",
     "<35",
     "<7.35",
     ">45",
@@ -2254,12 +2299,37 @@
    "section": "08",
    "quote": "15 Compensation — Uncompensated, Partially Compensated, Fully Compensated UNCOMPENSATED means the opposite system has not had time to respond yet — this is what every ACUTE pattern in the table above shows: in acute ventilatory failure the HCO₃⁻ is \"increased but remains within the normal range because there has been little to no renal compensation yet.\" PARTIALLY COMPENSATED means the opposite system is adjusting but the pH is STILL abnormal — the deck's DKA case is the textbook example: pH 6.98 with PaCO₂ driven down to 24 mm Hg by Kussmaul respirations — the compensation helps but cannot normalize the pH because the metabolic derangement is extreme .",
    "values": [
-    "24mmhg"
+    "24mmhg",
+    "6.98"
    ],
    "cite": "RCP 103 ABG Assessments, slides 16, 18, 20, 22, 32, 36, 69"
   },
   {
    "key": "202:s08-15#2",
+   "course": "202",
+   "item": "s08-15",
+   "item_title": "Compensation — Uncompensated, Partially Compensated, Fully Compensated",
+   "section": "08",
+   "quote": "The metabolic alkalosis case is the mirror image: pH 7.66, PaCO₂ 57 (hypoventilating to retain CO₂), HCO₃⁻ 61 = severe metabolic alkalosis with PARTIAL respiratory compensation .",
+   "values": [
+    "7.66"
+   ],
+   "cite": "RCP 103 ABG Assessments, slides 16, 18, 20, 22, 32, 36, 69"
+  },
+  {
+   "key": "202:s08-15#3",
+   "course": "202",
+   "item": "s08-15",
+   "item_title": "Compensation — Uncompensated, Partially Compensated, Fully Compensated",
+   "section": "08",
+   "quote": "FULLY/COMPLETELY COMPENSATED means the pH is back in the normal range while the other values remain markedly abnormal — chronic ventilatory failure at pH 7.36 with PaCO₂ 79 and HCO₃⁻ 43 is compensated respiratory acidosis.",
+   "values": [
+    "7.36"
+   ],
+   "cite": "RCP 103 ABG Assessments, slides 16, 18, 20, 22, 32, 36, 69"
+  },
+  {
+   "key": "202:s08-15#4",
    "course": "202",
    "item": "s08-15",
    "item_title": "Compensation — Uncompensated, Partially Compensated, Fully Compensated",
@@ -2276,6 +2346,18 @@
    "item": "s08-16",
    "item_title": "Quick Calculations — ACUTE PaCO₂ Changes",
    "section": "08",
+   "quote": "16 Quick Calculations — ACUTE PaCO₂ Changes Baseline for all of these is the perfect gas: pH 7.40, PaCO₂ 40, HCO₃⁻ 24.",
+   "values": [
+    "7.40"
+   ],
+   "cite": "RCP 103 ABG Assessments, slides 6, 7, 8, 9"
+  },
+  {
+   "key": "202:s08-16#2",
+   "course": "202",
+   "item": "s08-16",
+   "item_title": "Quick Calculations — ACUTE PaCO₂ Changes",
+   "section": "08",
    "quote": "For every 10 mm Hg INCREASE in PaCO₂ : pH falls ~0.06 units and HCO₃⁻ rises ~1 mEq/L (from buffering, before any renal compensation).",
    "values": [
     "10mmhg",
@@ -2284,7 +2366,7 @@
    "cite": "RCP 103 ABG Assessments, slides 6, 7, 8, 9"
   },
   {
-   "key": "202:s08-16#2",
+   "key": "202:s08-16#3",
    "course": "202",
    "item": "s08-16",
    "item_title": "Quick Calculations — ACUTE PaCO₂ Changes",
@@ -2297,7 +2379,7 @@
    "cite": "RCP 103 ABG Assessments, slides 6, 7, 8, 9"
   },
   {
-   "key": "202:s08-16#3",
+   "key": "202:s08-16#4",
    "course": "202",
    "item": "s08-16",
    "item_title": "Quick Calculations — ACUTE PaCO₂ Changes",
@@ -2305,7 +2387,8 @@
    "quote": "PaCO₂ rises from 40 to 60 (a 20 mm Hg change) → 20 ÷ 10 = 2 → 2 × 0.06 = 0.12 → expected pH 7.40 − 0.12 = 7.28 , and HCO₃⁻ = 24 + (2 × 1) = 26 mEq/L .",
    "values": [
     "20mmhg",
-    "26meq/l"
+    "26meq/l",
+    "7.40"
    ],
    "cite": "RCP 103 ABG Assessments, slides 6, 7, 8, 9"
   },
@@ -2331,7 +2414,8 @@
    "values": [
     "10mmhg",
     "3.5-4meq/l",
-    "4-5meq/l"
+    "4-5meq/l",
+    "7.40"
    ],
    "cite": "RCP 103 ABG Assessments, slide 22"
   },
@@ -2458,6 +2542,8 @@
    "section": "08",
    "quote": "The result is chronic ventilatory failure with hypoxemia = compensated respiratory acidosis (deck example pH 7.36 / PaCO₂ 79 / HCO₃⁻ 43 / PaO₂ 61 ; the case study patient was alert, comfortable, RR 11 , with pH 7.39 / PaCO₂ 67 / HCO₃⁻ 39 / PaO₂ 76 / SaO₂ 95% ).",
    "values": [
+    "7.36",
+    "7.39",
     "95%"
    ],
    "cite": "RCP 103 ABG Assessments, slides 18, 19, 20, 21"
@@ -2468,14 +2554,28 @@
    "item": "s08-23",
    "item_title": "The Trap — Acute Hyperventilation on Chronic Ventilatory Failure",
    "section": "08",
-   "quote": "The deck's case: emphysema patient with RLL pneumonia at pH 7.55 / PaCO₂ 49 / HCO₃⁻ 45 / PaO₂ 44 , whose prior gas 4 months earlier was pH 7.39 / PaCO₂ 77 / HCO₃⁻ 46 / PaO₂ 72 .",
+   "quote": "A clinician who doesn't know the patient's history looks at pH 7.52 / PaCO₂ 51 / HCO₃⁻ 40 / PaO₂ 46 and calls it \"partially compensated metabolic alkalosis with severe hypoxemia.\" The marked HYPOXEMIA is the clue — a low oxygen level is NOT typically seen in pure metabolic alkalosis .",
    "values": [
-    "4months"
+    "7.52"
    ],
    "cite": "RCP 103 ABG Assessments, slides 23, 24, 25, 26, 27"
   },
   {
    "key": "202:s08-23#2",
+   "course": "202",
+   "item": "s08-23",
+   "item_title": "The Trap — Acute Hyperventilation on Chronic Ventilatory Failure",
+   "section": "08",
+   "quote": "The deck's case: emphysema patient with RLL pneumonia at pH 7.55 / PaCO₂ 49 / HCO₃⁻ 45 / PaO₂ 44 , whose prior gas 4 months earlier was pH 7.39 / PaCO₂ 77 / HCO₃⁻ 46 / PaO₂ 72 .",
+   "values": [
+    "4months",
+    "7.39",
+    "7.55"
+   ],
+   "cite": "RCP 103 ABG Assessments, slides 23, 24, 25, 26, 27"
+  },
+  {
+   "key": "202:s08-23#3",
    "course": "202",
    "item": "s08-23",
    "item_title": "The Trap — Acute Hyperventilation on Chronic Ventilatory Failure",
@@ -3280,6 +3380,7 @@
    "quote": "ABG on 2 L/min NC: pH 7.24, PaCO₂ 110, HCO₃⁻ 46, PaO₂ 47, SaO₂ 77% = acute on chronic ventilatory failure with moderate–severe hypoxemia.",
    "values": [
     "2l/min",
+    "7.24",
     "77%"
    ],
    "cite": "COPD PP, slides 30-34"
@@ -3547,6 +3648,7 @@
    "section": "12",
    "quote": "The ABG deck states it directly when listing why we draw an arterial sample — \"to determine the adequacy of the patient's ventilation (PaCO₂) , oxygenation (PaO₂) , and acid-base status (pH) .\" Ventilation is about moving air in and out to clear CO₂ ; when it fails you get hypoventilation → ↑ PaCO₂ → respiratory acidosis , and the deck calls that ventilatory failure , defined as PaCO₂ > 45 mm Hg with pH < 7.35 .",
    "values": [
+    "7.35",
     "<7.35",
     ">45mmhg"
    ],
@@ -3575,7 +3677,8 @@
    "quote": "The deck's own worked example: an opioid overdose with PaCO₂ 105 mm Hg, pH 7.14, PaO₂ 36 mm Hg is a ventilation problem first.",
    "values": [
     "105mmhg",
-    "36mmhg"
+    "36mmhg",
+    "7.14"
    ],
    "cite": "ABG Assessments (RCP 103), slides 16, 50 (notes), 17; Principles of Mech Vent (Chang/Hess), slides 20, 25"
   },
@@ -3615,6 +3718,7 @@
     "22-28meq/l",
     "2meq/l",
     "35-45mmhg",
+    "7.35-7.45",
     "80-100mmhg"
    ],
    "cite": "ABG Assessments (RCP 103), slides 4, 12, 13, 70 (notes)"
@@ -3630,7 +3734,8 @@
     "24-30meq/l",
     "2meq/l",
     "35-45mmhg",
-    "42-48mmhg"
+    "42-48mmhg",
+    "7.30-7.40"
    ],
    "cite": "ABG Assessments (RCP 103), slides 4, 12, 13, 70 (notes)"
   },
@@ -3843,6 +3948,7 @@
    "section": "12",
    "quote": "PAO₂ = FiO₂ × (Pb − PH₂O) − (PaCO₂ / RQ) , where Pb ≈ 760 mm Hg at sea level , PH₂O ≈ 47 mm Hg at body temperature , RQ ≈ 0.8 , and FiO₂ = 0.21 on room air, 1.0 on 100% O₂ .",
    "values": [
+    "0.21",
     "100%",
     "47mmhg",
     "760mmhg"
@@ -3886,7 +3992,8 @@
     "10mmhg",
     "1meq/l",
     "20mmhg",
-    "2meq/l"
+    "2meq/l",
+    "7.40"
    ],
    "cite": "ABG Assessments (RCP 103), slides 7, 8, 9, 18, 20, 22"
   },
@@ -5055,6 +5162,7 @@
    "section": "02",
    "quote": "Clue Cause Action Unit will not turn on Power source / plug / circuit breaker Check power; if power is fine, put patient on the gaseous backup and replace the concentrator Analyzed FiO2 < 85–90% of manufacturer's spec Sodium-aluminum pellets are exhausted Switch to gaseous backup ; replace the concentrator or send for service Concentrator alarm Intake filters blocked or dirty Clean the intake filters ; keep them a proper distance from walls and curtains Low O2 output alarm Flowmeter turned off, or unit needs service Turn flow on / call provider Patient on cannula at ≥ 4 L/min complains of nasal dryness Dry gas Add a bubble humidifier No O2 delivered Kinked/obstructed tubing, or source off Check the whole tubing run; turn the unit on General malfunction — Switch to the backup tank , contact the service provider POC warning indicators (Ch 17 Table 17-2) Low battery → switch to AC/DC and charge; if no power available, go to backup O2 .",
    "values": [
+    "85-90",
     "<85-90%",
     "≥4l/min"
    ],
@@ -5161,6 +5269,7 @@
    "section": "02",
    "quote": "H tanks must be tied together and replaced frequently Reservoir cannulas are bulky and poorly tolerated ; demand systems must be individually titrated to SpO2 Failure mode → action Sieve exhausted ( FiO2 < 85–90% of spec) or power loss → gaseous backup , replace unit Loud constant hissing + mist → backup O2, call supplier ( intermittent hissing is normal ) Empty / not turned on → replace the tank If the device fails, switch to a continuous O2 source at 2–3× the conserving-device flow O2-conserving devices in detail All of them minimize the O2 wasted during exhalation with a standard nasal cannula.",
    "values": [
+    "85-90",
     "<85-90%"
    ],
    "cite": "Heuer Ch 6 — LTOT / Oxygen-Conserving or Demand-Flow Devices, Tables 6-12 and 6-13 (PDF p301-307) · Heuer Ch 17 — Home O2 Systems, Oxygen Appliances, Recommending/Troubleshooting Home O2 Systems, Tables 17-2/17-3 (PDF p777-781) · RCP 203 Lssn 3a deck, slide 66 · TDP/Communication deck, slides 19-20 · RCP 105 Wk 7 deck, slide 38"
@@ -5327,6 +5436,7 @@
    "section": "02",
    "quote": "Decision rule from the TDP algorithm: if the patient needs an FiO2 greater than 0.40 , select an appropriate high-flow system ; otherwise start continuous low-flow O2 and adjust FiO2 per guidelines , titrating on SpO2 and work of breathing , and use pulse oximetry whenever FiO2 ≥ 0.44 .",
    "values": [
+    "0.44",
     "≥0.44"
    ],
    "cite": "Heuer Ch 6 — Low-Flow Devices/Systems, Table 6-1, Table 6-2, Air-Entrainment Systems, Blending Systems, Table 6-6 (PDF p287-296), T4 Test-Taking Tips (PDF p368) · Heuer Ch 13 — Recommending Changes in Oxygen Therapy, Table 13-8 · RCP 203 Lssn 3a deck, slides 32-33 · TDP/Communication deck, slides 19-20 · COPD deck, slide 28 · RCP 105 Mgmt of Mech Vent deck, slides 37-38 · RCP 105 Wk 3 deck, slide 28 · RCP 105 Monitoring in Mech Vent deck, slide 44"
@@ -5339,6 +5449,7 @@
    "section": "02",
    "quote": "Standard nasal cannula is titrated in 1–2 L/min increments ; high-flow systems can reach FiO2 ≥ 0.90 ; discharge goal SpO2 ≥ 91% or baseline, watching for oxygen toxicity .",
    "values": [
+    "0.90",
     "1-2l/min",
     "≥0.90",
     "≥91%"
@@ -5557,6 +5668,8 @@
    "section": "02",
    "quote": "Heuer states the two endpoints in prose too: at FiO2 0.80 , every 1 L/min of flowmeter setting yields 1.3 L/min of output; at FiO2 0.24 , every 1 L/min yields 26 L/min .",
    "values": [
+    "0.24",
+    "0.80",
     "1.3l/min",
     "1l/min",
     "26l/min"
@@ -5610,6 +5723,7 @@
    "quote": "Device input ranges: air-entrainment (Venturi) mask 4–12 L/min input, FiO2 24–50% ; air-entrainment nebulizer 10–15 L/min input, 28–100% , with output that should exceed 60 L/min to ensure a stable FiO2.",
    "values": [
     "10-15l/min",
+    "24-50",
     "24-50%",
     "28-100%",
     "4-12l/min",
@@ -5625,6 +5739,7 @@
    "section": "02",
    "quote": "Both become less precise at FiO2 ≥ 0.35 precisely because total flow falls as FiO2 rises.",
    "values": [
+    "0.35",
     "≥0.35"
    ],
    "cite": "Heuer Ch 6 — High-Flow Devices/Systems, Air-Entrainment Systems, Table 6-4, Table 6-5, Table 6-6, Blending Systems (PDF p289-296) · Heuer App B — Equipment Calculations, Table B-6, Problems B.27 and B.28 (PDF p1048-1049) · Heuer Ch 6 T4 Test-Taking Tips (PDF p368) · TDP/Communication deck, slides 19-20 · COPD deck, slide 28 · Bronchiectasis deck, slide 21 · RCP 105 Wk 5 deck, slide 31"
@@ -5775,6 +5890,7 @@
    "section": "02",
    "quote": "Ratio at 50% = 1.7:1 → total parts = 2.7 Total flow = 15 × 2.7 = 40.5 L/min → barely meets the 40 L/min bar At 60%: parts = 2 → 15 × 2 = 30 L/min → FAILS At 70%: parts = 1.6 → 15 × 1.6 = 24 L/min → FAILS badly Conclusion (Heuer, p291): above FiO2 0.60 at flows > 40 L/min, abandon entrainment and use a BLENDER-based system — a mechanical/manual blender (requires 50-psi air AND O2) or a heated high-flow nasal cannula.",
    "values": [
+    "0.60",
     "24l/min",
     "30l/min",
     "40.5l/min",
@@ -5807,6 +5923,7 @@
    "section": "02",
    "quote": "FiO2 > 0.40 → select an appropriate high-flow system ;",
    "values": [
+    "0.40",
     ">0.40"
    ],
    "cite": "Heuer Ch 6 — High-Flow Devices/Systems, Air-Entrainment Systems, Table 6-4, Table 6-5, Table 6-6, Blending Systems (PDF p289-296) · Heuer App B — Equipment Calculations, Table B-6, Problems B.27 and B.28 (PDF p1048-1049) · Heuer Ch 6 T4 Test-Taking Tips (PDF p368) · TDP/Communication deck, slides 19-20 · COPD deck, slide 28 · Bronchiectasis deck, slide 21 · RCP 105 Wk 5 deck, slide 31"
@@ -5938,7 +6055,8 @@
    "values": [
     "22meq/l",
     "27mmhg",
-    "51mmhg"
+    "51mmhg",
+    "7.52"
    ],
    "cite": "Heuer Ch 6 — Low-Flow Devices/Systems, Table 6-1, Table 6-2, Table 6-3, Table 6-7, Table 6-8 (PDF p287-291, p297-298), T4 Test-Taking Tips (PDF p372) · Heuer Ch 13 — Recommending Changes in Oxygen Therapy, Table 13-8 · RCP 105 Wk 1 Lctr 2 deck (Airway Management), slide 55 · ABG Assessments deck (RCP 103), slide 14"
   },
@@ -6975,6 +7093,7 @@
    "section": "03",
    "quote": "Before withdrawing: reduce to the lowest effective dose, ideally 5 to 6 ppm or less , confirm the patient is hemodynamically stable , verify the patient tolerates an FiO2 of 40% or less and a PEEP of 5 cm H2O or less , monitor closely during withdrawal , and be prepared to provide hemodynamic support .",
    "values": [
+    "40",
     "40%",
     "5cmh2o",
     "5to6ppm"
@@ -7132,6 +7251,7 @@
    "section": "04",
    "quote": "You may get a POCT value outside the device's critical range (e.g., pH < 7.20 or > 7.60 ).",
    "values": [
+    "7.20",
     "<7.20",
     ">7.60"
    ],
@@ -8202,7 +8322,9 @@
    "quote": "Heuer is slower and more specific — intubate for NPPV failure defined as worsening ABGs in the first 1–2 hours or lack of improvement in ABGs after 4 hours , or for severe acidosis (pH < 7.25) with hypercapnia (PaCO2 > 60 torr) , severe hypoxemia (P/F < 200) , or severe tachypnea (> 35/min) .",
    "values": [
     "1-2hours",
+    "200",
     "4hours",
+    "7.25",
     "<200",
     "<7.25",
     ">35/min",
@@ -8243,6 +8365,7 @@
    "section": "05",
    "quote": "Low SpO2 → increase EPAP or FiO2 — Heuer applies the shunt rule: if PaO2 ≤ 50 torr on FiO2 ≥ 0.50, raise EPAP (keeping ΔP constant); if it is a simple V/Q problem on FiO2 < 0.50 , just raise FiO2 .",
    "values": [
+    "0.50",
     "<0.50",
     "≤50torr",
     "≥0.50"
@@ -8267,9 +8390,9 @@
    "item": "s05-1",
    "item_title": "BiPAP — Indications, Contraindications, Hazards, Monitoring, Adjustments, Interfaces",
    "section": "05",
-   "quote": "CHF, SpO2 84% with normal PaCO2 → oxygenation problem → raise EPAP.",
+   "quote": "COPD, pH 7.28 / PaCO2 75 → ventilation problem → raise IPAP ;",
    "values": [
-    "84%"
+    "7.28"
    ],
    "cite": "Heuer Ch 11 — Initiating and Adjusting Mask/Nasal CPAP (PDF p527-529) and Initiating and Adjusting BiPAP, Table 11-7 (PDF p547-549) · Heuer Ch 6 — CPAP/NPPV Devices (PDF p306-309) and Table 6-24 NPPV Interface Problems (PDF p330-331) · Heuer Ch 20 — NPPV settings and Table 20-3 Contraindications (heuer_full.txt, unpaginated) · RCP 202 Lssn 1b (BiPAP Basics, Chang Ch 4), slides 1-4 · RCP 105 Wk 1 Lctr 1 (NIV 2023), slides 4-13 · RCP 105 Wk 1 Lctr 1 (NIV/NiPPV, Chang Ch 4 & 7), slides 3-6, 10-13 · RCP 105 Wk 1 Lctr 4 (Operating Modes, Chang Ch 4), slides 12-13"
   },
@@ -8279,8 +8402,21 @@
    "item": "s05-1",
    "item_title": "BiPAP — Indications, Contraindications, Hazards, Monitoring, Adjustments, Interfaces",
    "section": "05",
+   "quote": "CHF, SpO2 84% with normal PaCO2 → oxygenation problem → raise EPAP.",
+   "values": [
+    "84%"
+   ],
+   "cite": "Heuer Ch 11 — Initiating and Adjusting Mask/Nasal CPAP (PDF p527-529) and Initiating and Adjusting BiPAP, Table 11-7 (PDF p547-549) · Heuer Ch 6 — CPAP/NPPV Devices (PDF p306-309) and Table 6-24 NPPV Interface Problems (PDF p330-331) · Heuer Ch 20 — NPPV settings and Table 20-3 Contraindications (heuer_full.txt, unpaginated) · RCP 202 Lssn 1b (BiPAP Basics, Chang Ch 4), slides 1-4 · RCP 105 Wk 1 Lctr 1 (NIV 2023), slides 4-13 · RCP 105 Wk 1 Lctr 1 (NIV/NiPPV, Chang Ch 4 & 7), slides 3-6, 10-13 · RCP 105 Wk 1 Lctr 4 (Operating Modes, Chang Ch 4), slides 12-13"
+  },
+  {
+   "key": "203:s05-1#23",
+   "course": "203",
+   "item": "s05-1",
+   "item_title": "BiPAP — Indications, Contraindications, Hazards, Monitoring, Adjustments, Interfaces",
+   "section": "05",
    "quote": "Readiness: underlying condition mostly resolved, RR < 25/min, HR < 110/min, IPAP < 15 cmH2O, EPAP < 10 cmH2O, compensated pH > 7.35, SpO2 > 90% on < 50% O2.",
    "values": [
+    "7.35",
     "<10cmh2o",
     "<110/min",
     "<15cmh2o",
@@ -8408,6 +8544,7 @@
    "values": [
     "1-2cmh2o",
     "1-3l/min",
+    "1:1",
     "20-30cmh2o",
     "20/min",
     "35/min",
@@ -8416,7 +8553,9 @@
     "5-10cmh2o",
     "5-10ml/kg",
     "5-15cmh2o",
+    "50",
     "5cmh2o",
+    "60-100",
     "60-100%",
     "8-24/min",
     "<25/min",
@@ -8789,7 +8928,8 @@
    "quote": "5 What Hyperventilation Causes Hyperventilation means increased minute ventilation → decreased PaCO2 → increased pH , i.e. acute respiratory alkalosis (the deck's classic ABG is pH 7.52, PaCO2 30 mmHg, HCO3− 24 mEq/L ).",
    "values": [
     "24meq/l",
-    "30mmhg"
+    "30mmhg",
+    "7.52"
    ],
    "cite": "Heuer Ch 1 — ICP normals and causes of decreased ICP (PDF p52) · Heuer Ch 11 — Table 11-5 Altering pH and PaCO2 (PDF p538-539) · Heuer Ch 20 — Head Trauma/TBI respiratory management and PPHN \"Do Not Recommend\" (heuer_full.txt, unpaginated) · Heuer Ch 19/App A — NBRC item on VC SIMV hyperventilation (heuer_full.txt) · RCP 105 Wk 1 Lctr 3 (Principles of Mech Vent, Chang/Hess), slide 48 · RCP 105 Wk 7 (Critical Issues in Mech Vent, Chang Ch 15 HIE/TBI), slide 22 · RCP 105 Mgmt of Mech Vent (Chang Ch 12), slides 23-24 · RCP 105 Wk 3 (Weaning), slide 26 · RCP 105 Monitoring in Mech Vent (Chang Ch 9), slide 30"
   },
@@ -8873,6 +9013,7 @@
    "section": "05",
    "quote": "His worked NBRC item: a patient on VC SIMV, rate 14, VT giving 6–7 mL/kg, PaCO2 low with respiratory alkalosis, PaO2 115 on FiO2 0.40 → decrease the rate , because the VT is already appropriate and the problem is ventilation, not oxygenation.",
    "values": [
+    "0.40",
     "6-7ml/kg"
    ],
    "cite": "Heuer Ch 1 — ICP normals and causes of decreased ICP (PDF p52) · Heuer Ch 11 — Table 11-5 Altering pH and PaCO2 (PDF p538-539) · Heuer Ch 20 — Head Trauma/TBI respiratory management and PPHN \"Do Not Recommend\" (heuer_full.txt, unpaginated) · Heuer Ch 19/App A — NBRC item on VC SIMV hyperventilation (heuer_full.txt) · RCP 105 Wk 1 Lctr 3 (Principles of Mech Vent, Chang/Hess), slide 48 · RCP 105 Wk 7 (Critical Issues in Mech Vent, Chang Ch 15 HIE/TBI), slide 22 · RCP 105 Mgmt of Mech Vent (Chang Ch 12), slides 23-24 · RCP 105 Wk 3 (Weaning), slide 26 · RCP 105 Monitoring in Mech Vent (Chang Ch 9), slide 30"
@@ -8885,6 +9026,8 @@
    "section": "05",
    "quote": "(2) adequate oxygenation — P/F ≥ 150–200, PEEP ≤ 5–8 cmH2O, FiO2 ≤ 0.4–0.5;",
    "values": [
+    "0.4-0.5",
+    "150-200",
     "≤0.4-0.5",
     "≤5-8cmh2o",
     "≥150-200"
@@ -8899,6 +9042,7 @@
    "section": "05",
    "quote": "(3) pH ≥ 7.25;",
    "values": [
+    "7.25",
     "≥7.25"
    ],
    "cite": "Heuer Ch 1 — Ventilator Liberation Parameters and Table 1-15 Adult Respiratory Monitoring Thresholds (PDF p60-64) · Heuer Ch 3 — Mechanics of Spontaneous Ventilation, RSBI/VC/MIP technique (PDF p140-144) and Spontaneous Breathing Trials (PDF p166-167) · Heuer Ch 4 — Interpreting Bedside Ventilation Measures, Table 4-6 (PDF p208-211) and Evaluating SBTs (PDF p233-234) · Heuer Ch 9 — Perform Extubation and the cuff-leak test (PDF p473-474, key points p468) · Heuer Ch 11 — Liberating a Patient from Mechanical Ventilation (PDF p572-577) · Heuer Ch 13 — Extubation readiness criteria and MEP/peak cough flow (heuer_full.txt) · Heuer App B — P/F and shunt ballpark rules (PDF p1041-1042) · RCP 105 Wk 3 (Weaning/Extubation, Chang Ch 13/16), slides 5-7, 9-20, 22, 24-30, 50 · RCP 203 Lssn 2b (Perform Procedures/Gather Clinical Info), slides 15-19, 44-45 · RCP 203 Lssn 3a (Evaluate Procedure Results), slides 59-60 · RCP 105 Wk 1 Lctr 2 (Airway Mgmt, Hess Ch 17), slides 64, 90-91"
@@ -8911,6 +9055,7 @@
    "section": "05",
    "quote": "Parameter Normal — Heuer Normal — decks Threshold / critical value RSBI (f/VT in L) < 50 is the reference range — > 105 predicts weaning failure (Heuer, both Table 1-15 and Table 4-6; elsewhere Heuer also uses RSBI < 100 as the \"no distress\" screen).",
    "values": [
+    "100",
     "<100",
     "<50",
     ">105"
@@ -9169,6 +9314,7 @@
    "section": "05",
    "quote": "SBT failure if RR > 30–35/min or RR changes > 50% from baseline PaO2/FiO2 (P/F) > 500 = normal lungs (Heuer, App B) > 380 = normal ≥ 150–200 with PEEP ≤ 5–8 and FiO2 ≤ 0.4–0.5 to start weaning (Heuer and RCP 203 agree exactly);",
    "values": [
+    "0.4-0.5",
     ">30-35/min",
     ">380",
     ">50%",
@@ -9214,6 +9360,7 @@
    "section": "05",
    "quote": "PaO2 > 60 mmHg (or SaO2 > 90%) on FiO2 ≤ 0.40 P0.1 (airway occlusion pressure) Not covered in Heuer or the available decks.",
    "values": [
+    "0.40",
     ">60mmhg",
     ">90%",
     "≤0.40"
@@ -9229,6 +9376,8 @@
    "quote": "Look up the P0.1 threshold (commonly < 4–6 cmH2O) in Egan's Fundamentals of Respiratory Care , \"Discontinuing Ventilatory Support\" PaCO2 / pH — 35–45 mmHg pH ≥ 7.25 to begin weaning (Heuer); pH ≥ 7.30 and rise in PaCO2 ≤ 10 torr to pass the SBT (Heuer and RCP 203 agree).",
    "values": [
     "35-45mmhg",
+    "7.25",
+    "7.30",
     "<4-6cmh2o",
     "≤10torr",
     "≥7.25",
@@ -9326,6 +9475,7 @@
    "section": "05",
    "quote": "25–65 mmHg on 100% < 350 mmHg at FiO2 1.0.",
    "values": [
+    "1.0",
     "100%",
     "25-65mmhg",
     "<350mmhg"
@@ -9366,7 +9516,9 @@
    "section": "05",
    "quote": "RSBI = 38 / 0.3 RSBI = 127 breaths/min/L -> ABOVE 105 = predicts WEANING FAILURE Heuer's companion problem (same patient, from VE instead of VT):",
    "values": [
-    "127breaths/min"
+    "127",
+    "127breaths/min",
+    "38"
    ],
    "cite": "Heuer Ch 1 — Ventilator Liberation Parameters and Table 1-15 Adult Respiratory Monitoring Thresholds (PDF p60-64) · Heuer Ch 3 — Mechanics of Spontaneous Ventilation, RSBI/VC/MIP technique (PDF p140-144) and Spontaneous Breathing Trials (PDF p166-167) · Heuer Ch 4 — Interpreting Bedside Ventilation Measures, Table 4-6 (PDF p208-211) and Evaluating SBTs (PDF p233-234) · Heuer Ch 9 — Perform Extubation and the cuff-leak test (PDF p473-474, key points p468) · Heuer Ch 11 — Liberating a Patient from Mechanical Ventilation (PDF p572-577) · Heuer Ch 13 — Extubation readiness criteria and MEP/peak cough flow (heuer_full.txt) · Heuer App B — P/F and shunt ballpark rules (PDF p1041-1042) · RCP 105 Wk 3 (Weaning/Extubation, Chang Ch 13/16), slides 5-7, 9-20, 22, 24-30, 50 · RCP 203 Lssn 2b (Perform Procedures/Gather Clinical Info), slides 15-19, 44-45 · RCP 203 Lssn 3a (Evaluate Procedure Results), slides 59-60 · RCP 105 Wk 1 Lctr 2 (Airway Mgmt, Hess Ch 17), slides 64, 90-91"
   },
@@ -9435,6 +9587,7 @@
    "section": "05",
    "quote": "SpO2 ≥ 85–90% or PaO2 ≥ 50–60 torr ; pH ≥ 7.30 ; rise in PaCO2 ≤ 10 torr ;",
    "values": [
+    "7.30",
     "≤10torr",
     "≥50-60torr",
     "≥7.30",
@@ -9603,7 +9756,8 @@
    "section": "05",
    "quote": "No — FiO2 affects oxygenation, not ventilation.\" Heuer's targets: pH 7.35–7.45 in most cases , but you may accept as low as 7.25 or as high as 7.50 depending on the underlying problem, and normalizing the pH may leave the PaCO2 abnormal — a COPD patient with chronic retention may reach a normal pH at a PaCO2 of 55 torr or higher , while an uncorrected DKA patient may need a lower-than-normal PaCO2 .",
    "values": [
-    "55torr"
+    "55torr",
+    "7.35-7.45"
    ],
    "cite": "Heuer Ch 13 — Improving Alveolar Ventilation, desired-VE formula and the 60-60 rule (heuer_full.txt, unpaginated) · Heuer Ch 11 — Normalizing the pH and Table 11-5, Normalizing Oxygenation (PDF p537-540) · Heuer App B — Table B-1 Ventilatory Parameters and ballpark rules (PDF p1037-1039) · RCP 105 Mgmt of Mech Vent (Chang Ch 12), slides 4-12, 15-19, 21-27 · RCP 105 Wk 1 Lctr 5 (Initiation of Mech Vent, Chang Ch 8), slides 12-13, 17-18 · RCP 105 Wk 5 (Procedures Related to Mech Vent, Chang Ch 14/15), slide 36 · RCP 105 Monitoring in Mech Vent (Chang Ch 9), slide 30"
   },
@@ -9662,6 +9816,7 @@
    "section": "05",
    "quote": "His decision rule is the \"60-60 rule\" (a \"50-50 rule\" works too): if PaO2 > 60 torr on FiO2 < 0.6, the problem is V/Q imbalance → simply raise the FiO2; if PaO2 < 60 torr on FiO2 > 0.6, the problem is shunt → PEEP/CPAP must be added or increased.",
    "values": [
+    "0.6",
     "<0.6",
     "<60torr",
     ">0.6",
@@ -9815,10 +9970,9 @@
    "item": "s05-7",
    "item_title": "Making Ventilator Changes from an ABG",
    "section": "05",
-   "quote": "Treat the cause: renal failure, DKA, lactic acidosis ; for alkalosis, hypokalemia Other numbers Eucapnic ventilation = PaCO2 near 40 mmHg , or near 50 mmHg in a CO2 retainer.",
+   "quote": "ABG Typical interpretation Correct action pH 7.52, PaCO2 30, HCO3− 24 Acute respiratory alkalosis Only reduce f/VT/PS if the cause is over-ventilation from an improper setting (Heuer: decrease the rate, add deadspace, or switch A/C to SIMV ).",
    "values": [
-    "40mmhg",
-    "50mmhg"
+    "7.52"
    ],
    "cite": "Heuer Ch 13 — Improving Alveolar Ventilation, desired-VE formula and the 60-60 rule (heuer_full.txt, unpaginated) · Heuer Ch 11 — Normalizing the pH and Table 11-5, Normalizing Oxygenation (PDF p537-540) · Heuer App B — Table B-1 Ventilatory Parameters and ballpark rules (PDF p1037-1039) · RCP 105 Mgmt of Mech Vent (Chang Ch 12), slides 4-12, 15-19, 21-27 · RCP 105 Wk 1 Lctr 5 (Initiation of Mech Vent, Chang Ch 8), slides 12-13, 17-18 · RCP 105 Wk 5 (Procedures Related to Mech Vent, Chang Ch 14/15), slide 36 · RCP 105 Monitoring in Mech Vent (Chang Ch 9), slide 30"
   },
@@ -9828,14 +9982,53 @@
    "item": "s05-7",
    "item_title": "Making Ventilator Changes from an ABG",
    "section": "05",
-   "quote": "Excessive frequency shortens E-time and causes air trapping (real risk at RR 30 in COPD : auto-PEEP, hyperinflation, ↑WOB, hypotension) — Heuer's guard against this is set flow/I-time for an I:E ≤ 1:1, e.g.",
+   "quote": "Fix the hypoxia, treat the acidosis, sedate for anxiety pH 7.30, PaCO2 50, HCO3− 24 Acute respiratory acidosis Usual action is ↑ f, VT, or PS — but the same picture occurs with oversedation or muscle fatigue from a premature weaning attempt , in which case increasing the frequency is NOT the right action ; correct the cause and delay weaning pH 7.47, PaCO2 46, HCO3− 32 (COPD) Reads like \"partially compensated metabolic alkalosis\" It is really acute respiratory alkalosis on top of the COPD patient's compensated respiratory acidosis , from acute hypoxia or improper settings.",
    "values": [
-    "≤1"
+    "7.30",
+    "7.47"
    ],
    "cite": "Heuer Ch 13 — Improving Alveolar Ventilation, desired-VE formula and the 60-60 rule (heuer_full.txt, unpaginated) · Heuer Ch 11 — Normalizing the pH and Table 11-5, Normalizing Oxygenation (PDF p537-540) · Heuer App B — Table B-1 Ventilatory Parameters and ballpark rules (PDF p1037-1039) · RCP 105 Mgmt of Mech Vent (Chang Ch 12), slides 4-12, 15-19, 21-27 · RCP 105 Wk 1 Lctr 5 (Initiation of Mech Vent, Chang Ch 8), slides 12-13, 17-18 · RCP 105 Wk 5 (Procedures Related to Mech Vent, Chang Ch 14/15), slide 36 · RCP 105 Monitoring in Mech Vent (Chang Ch 9), slide 30"
   },
   {
    "key": "203:s05-7#18",
+   "course": "203",
+   "item": "s05-7",
+   "item_title": "Making Ventilator Changes from an ABG",
+   "section": "05",
+   "quote": "Fix the cause and the gas returns to his baseline pH 7.39, PaCO2 55, HCO3− 32 Any primary metabolic problem Metabolic acidosis or alkalosis Do NOT adjust the ventilator to compensate for metabolic acid-base problems.",
+   "values": [
+    "7.39"
+   ],
+   "cite": "Heuer Ch 13 — Improving Alveolar Ventilation, desired-VE formula and the 60-60 rule (heuer_full.txt, unpaginated) · Heuer Ch 11 — Normalizing the pH and Table 11-5, Normalizing Oxygenation (PDF p537-540) · Heuer App B — Table B-1 Ventilatory Parameters and ballpark rules (PDF p1037-1039) · RCP 105 Mgmt of Mech Vent (Chang Ch 12), slides 4-12, 15-19, 21-27 · RCP 105 Wk 1 Lctr 5 (Initiation of Mech Vent, Chang Ch 8), slides 12-13, 17-18 · RCP 105 Wk 5 (Procedures Related to Mech Vent, Chang Ch 14/15), slide 36 · RCP 105 Monitoring in Mech Vent (Chang Ch 9), slide 30"
+  },
+  {
+   "key": "203:s05-7#19",
+   "course": "203",
+   "item": "s05-7",
+   "item_title": "Making Ventilator Changes from an ABG",
+   "section": "05",
+   "quote": "Treat the cause: renal failure, DKA, lactic acidosis ; for alkalosis, hypokalemia Other numbers Eucapnic ventilation = PaCO2 near 40 mmHg , or near 50 mmHg in a CO2 retainer.",
+   "values": [
+    "40mmhg",
+    "50mmhg"
+   ],
+   "cite": "Heuer Ch 13 — Improving Alveolar Ventilation, desired-VE formula and the 60-60 rule (heuer_full.txt, unpaginated) · Heuer Ch 11 — Normalizing the pH and Table 11-5, Normalizing Oxygenation (PDF p537-540) · Heuer App B — Table B-1 Ventilatory Parameters and ballpark rules (PDF p1037-1039) · RCP 105 Mgmt of Mech Vent (Chang Ch 12), slides 4-12, 15-19, 21-27 · RCP 105 Wk 1 Lctr 5 (Initiation of Mech Vent, Chang Ch 8), slides 12-13, 17-18 · RCP 105 Wk 5 (Procedures Related to Mech Vent, Chang Ch 14/15), slide 36 · RCP 105 Monitoring in Mech Vent (Chang Ch 9), slide 30"
+  },
+  {
+   "key": "203:s05-7#20",
+   "course": "203",
+   "item": "s05-7",
+   "item_title": "Making Ventilator Changes from an ABG",
+   "section": "05",
+   "quote": "Excessive frequency shortens E-time and causes air trapping (real risk at RR 30 in COPD : auto-PEEP, hyperinflation, ↑WOB, hypotension) — Heuer's guard against this is set flow/I-time for an I:E ≤ 1:1, e.g.",
+   "values": [
+    "1:1",
+    "≤1"
+   ],
+   "cite": "Heuer Ch 13 — Improving Alveolar Ventilation, desired-VE formula and the 60-60 rule (heuer_full.txt, unpaginated) · Heuer Ch 11 — Normalizing the pH and Table 11-5, Normalizing Oxygenation (PDF p537-540) · Heuer App B — Table B-1 Ventilatory Parameters and ballpark rules (PDF p1037-1039) · RCP 105 Mgmt of Mech Vent (Chang Ch 12), slides 4-12, 15-19, 21-27 · RCP 105 Wk 1 Lctr 5 (Initiation of Mech Vent, Chang Ch 8), slides 12-13, 17-18 · RCP 105 Wk 5 (Procedures Related to Mech Vent, Chang Ch 14/15), slide 36 · RCP 105 Monitoring in Mech Vent (Chang Ch 9), slide 30"
+  },
+  {
+   "key": "203:s05-7#21",
    "course": "203",
    "item": "s05-7",
    "item_title": "Making Ventilator Changes from an ABG",
@@ -9847,7 +10040,7 @@
    "cite": "Heuer Ch 13 — Improving Alveolar Ventilation, desired-VE formula and the 60-60 rule (heuer_full.txt, unpaginated) · Heuer Ch 11 — Normalizing the pH and Table 11-5, Normalizing Oxygenation (PDF p537-540) · Heuer App B — Table B-1 Ventilatory Parameters and ballpark rules (PDF p1037-1039) · RCP 105 Mgmt of Mech Vent (Chang Ch 12), slides 4-12, 15-19, 21-27 · RCP 105 Wk 1 Lctr 5 (Initiation of Mech Vent, Chang Ch 8), slides 12-13, 17-18 · RCP 105 Wk 5 (Procedures Related to Mech Vent, Chang Ch 14/15), slide 36 · RCP 105 Monitoring in Mech Vent (Chang Ch 9), slide 30"
   },
   {
-   "key": "203:s05-7#19",
+   "key": "203:s05-7#22",
    "course": "203",
    "item": "s05-7",
    "item_title": "Making Ventilator Changes from an ABG",
@@ -9855,6 +10048,7 @@
    "quote": "Permissive hypercapnia = deliberate hypoventilation at VT 4–7 mL/kg letting PaCO2 stay > 50 mmHg ; the decks manage the resulting acidosis with bicarbonate or tromethamine (THAM) , Heuer simply holds pH > 7.20–7.25.",
    "values": [
     "4-7ml/kg",
+    "7.20-7.25",
     ">50mmhg",
     ">7.20-7.25"
    ],
@@ -10104,6 +10298,7 @@
    "section": "05",
    "quote": "Candidates: hypoxemia unresponsive to O2 due to intrapulmonary shunting, P/F < 200–300 , and only in patients who are hemodynamically stable — MAP ≥ 60–65 mmHg with no recent change in vasoactive/inotropic dosing.",
    "values": [
+    "200-300",
     "<200-300",
     "≥60-65mmhg"
    ],
@@ -10130,7 +10325,8 @@
    "section": "05",
    "quote": "Currently favored (Box 11-2): set the high-pressure alarm to 50–55 , FiO2 1.0 , then PEEP 20 / PIP 40 (ΔP 20) for 1–3 minutes ; repeat at PEEP 25 / PIP 45 if unsuccessful.",
    "values": [
-    "1-3minutes"
+    "1-3minutes",
+    "1.0"
    ],
    "cite": "Heuer Ch 3 — Airway Pressures and Pulmonary Mechanics, Table 3-5, Auto-PEEP Detection and Measurement, Plateau Pressure (PDF p157-162) · Heuer Ch 4 — Evaluating and Correcting Auto-PEEP and Table 4-17 (PDF p231-233) · Heuer Ch 11 — Optimizing PEEP, Lung Recruitment Maneuvers, Box 11-2, Box 11-3, Figure 11-16 (PDF p540-542, p564-574) · Heuer Ch 1 — ICP causes; urine output normals (PDF p52, p95) · RCP 105 Wk 6 (Waveform Analysis, Chang Ch 11), slides 8-10, 48-50, 66 · RCP 105 Wk 1 Lctr 4 (Operating Modes), slides 9-10 · RCP 105 Wk 1 Lctr 3 (Principles), slides 12-13, 34-39 · RCP 105 Mgmt of Mech Vent (Chang Ch 12), slides 32-35 · RCP 105 Wk 5 (Procedures Related to Mech Vent), slide 34 · RCP 203 Lssn 2b, slides 37, 41-42 · RCP 203 Lssn 3a, slides 52-58 · RCP 105 Wk 1 Lctr 5 (Initiation), slide 18"
   },
@@ -10955,6 +11151,8 @@
    "section": "06",
    "quote": "ARDS: lung-protective ventilation, PEEP, prone positioning (P/F < 150 on FiO₂ > 0.60 with PEEP ≥ 5, at least 16 hours a day ) Pleural effusion Homogeneous, position-dependent areas of increased density — confirm with a lateral decubitus film; loss of sharp costophrenic angles (earliest sign); a meniscus at the fluid–air interface ; possible depressed diaphragm and compression atelectasis ; massive effusion nearly opacifies the hemithorax.",
    "values": [
+    "0.60",
+    "150",
     "16hours",
     "<150",
     ">0.60",
@@ -11596,6 +11794,7 @@
    "quote": "Sodium bicarbonate 0.5-1 mEq/kg is a last resort only, to keep pH > 7.15 ; it raises CO₂ , so you must ventilate.",
    "values": [
     "0.5-1meq",
+    "7.15",
     ">7.15"
    ],
    "cite": "Heuer Ch 15 — Adult Resuscitation Protocols, Monitoring and Assessment, \"5 Hs and 5 Ts\" (PDF p685-690), Table 15-2 ACLS Medications (p688), T4 Tips (p720) · Chptr 21 Vasopressors/Inotropes/Antiarrhythmics deck, slides 46-47, 54 ( the H's and T's appear only in Heuer )"
@@ -12575,6 +12774,7 @@
    "section": "08",
    "quote": "FiO2 1.0, PaO2 250 torr, PaCO2 60 torr, PB 760 (sea level) PAO2 = 1.0 × (760 − 47) − (1.25 × 60) = 713 − 75 = 638 mm Hg (torr) P(A-a)O2 = 638 − 250 = 388 mm Hg (torr) % shunt = (388 ÷ 100) × 5 = 19.4% → Heuer prints 0.189 = 19% (\"~20% physiologic shunt\") CLASSIC PHYSIOLOGIC SHUNT EQUATION — \"gold standard\" (RCP 105 Wk 3 Weaning, slide 14;",
    "values": [
+    "1.0",
     "105wk",
     "19%",
     "19.4%",
@@ -12594,6 +12794,8 @@
    "section": "08",
    "quote": "PaO2 60, SaO2 90%, Pv̄O2 40, Sv̄O2 75%, Hb 15 g/dL, FiO2 1.0, PaCO2 40, PB 760, PH2O 47, RQ 0.8 Step 1 — Alveolar PO2 PAO2 = FiO2 × (PB − PH2O) − (PaCO2 ÷ RQ) PAO2 = 1.0 × (760 − 47) − (40 ÷ 0.8) = 713 − 50 = 663 mm Hg [same as Heuer's form:",
    "values": [
+    "0.8",
+    "1.0",
     "15g/dl",
     "663mmhg",
     "75%",
@@ -12684,6 +12886,7 @@
    "section": "08",
    "quote": "Qs/Qt must be < 20% before a weaning attempt (with P/F ≥ 150 ).",
    "values": [
+    "150",
     "<20%",
     "≥150"
    ],
@@ -12726,6 +12929,7 @@
    "section": "08",
    "quote": "Normal > 0.75 0.35–0.75 hypoxemia, likely V/Q mismatch < 0.35 hypoxemia due to shunting Oxygenation Index OI = (FiO2 × mean airway pressure × 100) ÷ PaO2 Normal < 5–8; > 8 ≈ P/F < 200; > 20 severe (consider HFOV); > 40 high mortality / ECMO indication Heuer worked example (App B, B.13):",
    "values": [
+    "200",
     "<0.35",
     "<200",
     "<5-8",
@@ -12781,6 +12985,7 @@
    "section": "08",
    "quote": "66–300 mm Hg = V/Q mismatch → FiO2 up to 60% ; > 300 mm Hg = shunting → ventilate with PEEP ; weaning criterion P(A-a)O2 < 350 mm Hg on FiO2 1.0 ; age-adjusted room-air normal = (age ÷ 4) + 4 .",
    "values": [
+    "1.0",
     "60%",
     "66-300mmhg",
     "<350mmhg",
@@ -12983,6 +13188,7 @@
    "section": "08",
    "quote": "THE 60/60 RULE PaO2 > 60 torr on FiO2 < 0.60 → V/Q IMBALANCE moderate hypoxemia;",
    "values": [
+    "0.60",
     "<0.60",
     ">60torr"
    ],
@@ -12996,6 +13202,7 @@
    "section": "08",
    "quote": "O2 therapy + treat the underlying cause PaO2 < 60 torr on FiO2 > 0.60 → SEVERE SHUNTING (likely ARDS) refractory hypoxemia; more FiO2 \"will do little good and may potentially harm (oxygen toxicity)\" ACTION:",
    "values": [
+    "0.60",
     "<60torr",
     ">0.60"
    ],
@@ -13034,7 +13241,12 @@
    "section": "08",
    "quote": "PaCO2 − PECO2 > 15–20 torr = large dead space P/F 200–300 , a/A 0.35–0.75 , P(A-a)O2 66–300 mm Hg → FiO2 up to 60% P/F < 100–200 , a/A < 0.35 , P(A-a)O2 > 300 torr on 100% O2 , PaO2 ≤ 50 on FiO2 ≥ 0.50 → PEEP/CPAP DEAD SPACE MATH (Heuer App B, Table B-1) Physiologic dead space (Bohr):",
    "values": [
+    "0.35",
+    "0.35-0.75",
+    "0.50",
     "100%",
+    "100-200",
+    "200-300",
     "60%",
     "66-300mmhg",
     "<0.35",
@@ -13054,6 +13266,7 @@
    "section": "08",
    "quote": "VD = VT × [(PaCO2 − PECO2) ÷ PaCO2] VD/VT = VD ÷ VT Anatomic dead space rule: assume 1 mL per POUND of predicted body weight HEUER WORKED EXAMPLE (Problem B.3) VT 450 mL, PaCO2 60 torr, PECO2 30 torr VD = 450 × [(60 − 30) ÷ 60] = 450 × 0.5 = 225 mL HEUER WORKED EXAMPLE (Problem B.4) 6-ft, 170-lb patient with normal lungs, VT 600 mL VD = 1 mL/lb × 170 lb = 170 mL VD/VT = 170 ÷ 600 = 0.28 (normal) WHY RAPID SHALLOW BREATHING IS BAD — same VD, smaller VT 150 ÷ 500 = 30% but 150 ÷ 300 = 50% Alveolar ventilation:",
    "values": [
+    "170",
     "170ml",
     "1ml",
     "225ml",
@@ -13185,10 +13398,12 @@
    "section": "08",
    "quote": "Parameter Reference range Critical threshold Tidal volume (VT) 5–7 mL/kg PBW < 4–5 mL/kg PBW or < 300 mL Respiratory rate (f) 12–20/min < 6/min or > 30–35/min Minute ventilation (V̇E) 5–10 L/min < 4 L/min or > 10 L/min RSBI (f ÷ VT in L) < 50 > 105 VD/VT 0.25–0.35 > 0.6–0.7 Vital capacity (VC) 70 mL/kg PBW < 10–15 mL/kg PBW MIP / NIF 80–100 cm H2O (neg.) < 20–25 cm H2O (negative) PBW male (kg) = 50 + 2.3 × (height in inches − 60) PBW female (kg) = 45.5 + 2.3 × (height in inches − 60) HEUER WORKED EXAMPLE — RSBI (Ch 3, PDF p141–142) f = 38/min, V̇E = 11.4 L/min VT = 11.4 ÷ 38 = 0.300 L (300 mL) RSBI = 38 ÷ 0.300 = 127 → > 105, predicts WEANING FAILURE",
    "values": [
+    "0.25-0.35",
     "0.300l",
     "11.4l/min",
     "12-20/min",
     "300ml",
+    "38",
     "38/min",
     "5-10l/min",
     "5-7ml/kg",
@@ -13217,7 +13432,8 @@
    "quote": "10 Acute and Chronic Respiratory and Metabolic ABG Patterns Start from the baseline: pH 7.40 / PaCO2 40 mm Hg / HCO3− 24 mEq/L.",
    "values": [
     "24meq/l",
-    "40mmhg"
+    "40mmhg",
+    "7.40"
    ],
    "cite": "Heuer Ch 4 — Acid-Base Status, Tables 4-7 and 4-8, Box 4-1 Example Acid-Base Blood Gas Sets (PDF p211–215) and T4 tips · Heuer Ch 1 — Table 1-4 ABG Reference Ranges (PDF p45), Figure 1-1, Table 1-5 Common ABG Abnormalities (PDF p47–48) · Heuer Ch 19 — Table 19-12 acid-base decision making · Arterial Blood Gas Assessments PP (RCP 103), slides 4, 7–9, 11, 14, 16–18, 20, 26, 30, 32–34 · RCP 105 Mgmt of Mech Ventilation deck (compensated respiratory alkalosis pH 7.41–7.45)"
   },
@@ -13231,6 +13447,7 @@
    "values": [
     "22-26meq/l",
     "35-45torr",
+    "7.35-7.45",
     "80-100torr",
     "95-98%"
    ],
@@ -13245,6 +13462,8 @@
    "quote": "Normal pH + normal PaCO2 → normal pH < 7.35 with PaCO2 > 45 → respiratory acidosis ; pH < 7.35 with PaCO2 ≤ 45 → metabolic acidosis pH > 7.45 with PaCO2 < 35 → respiratory alkalosis ; pH > 7.45 with PaCO2 ≥ 35 → metabolic alkalosis HEUER'S COMPENSATION RULES — this is a BASE-EXCESS method, not the \"for every 10 mm Hg\" method:",
    "values": [
     "10mmhg",
+    "7.35",
+    "7.45",
     "<35",
     "<7.35",
     ">45",
@@ -13262,6 +13481,7 @@
    "section": "08",
    "quote": "Then use the pH to name the primary problem: pH < 7.40 → the primary problem is the one causing ACIDOSIS pH > 7.40 → the primary problem is the one causing ALKALOSIS 2.",
    "values": [
+    "7.40",
     "<7.40",
     ">7.40"
    ],
@@ -13307,7 +13527,8 @@
    "quote": "WORKED COMPENSATION CHECK Baseline: pH 7.40, PaCO2 40, HCO3− 24 The patient's PaCO2 rises acutely to 60 mm Hg. ΔPaCO2 = 60 − 40 = 20 mm Hg 20 ÷ 10 = 2 increments pH :",
    "values": [
     "20mmhg",
-    "60mmhg"
+    "60mmhg",
+    "7.40"
    ],
    "cite": "Heuer Ch 4 — Acid-Base Status, Tables 4-7 and 4-8, Box 4-1 Example Acid-Base Blood Gas Sets (PDF p211–215) and T4 tips · Heuer Ch 1 — Table 1-4 ABG Reference Ranges (PDF p45), Figure 1-1, Table 1-5 Common ABG Abnormalities (PDF p47–48) · Heuer Ch 19 — Table 19-12 acid-base decision making · Arterial Blood Gas Assessments PP (RCP 103), slides 4, 7–9, 11, 14, 16–18, 20, 26, 30, 32–34 · RCP 105 Mgmt of Mech Ventilation deck (compensated respiratory alkalosis pH 7.41–7.45)"
   },
@@ -13333,6 +13554,16 @@
    "values": [
     "2l/min",
     "6months",
+    "7.14",
+    "7.16",
+    "7.22",
+    "7.35",
+    "7.36",
+    "7.39",
+    "7.49",
+    "7.52",
+    "7.53",
+    "7.57",
     "<-2",
     "<22",
     "<35",
@@ -13351,6 +13582,7 @@
    "section": "08",
    "quote": "Build it from Heuer's own rules: a low PaCO2 with a low BE, both abnormal in the same direction = compensation occurring , and pH > 7.40 = the primary problem is the alkalosis .",
    "values": [
+    "7.40",
     ">7.40"
    ],
    "cite": "Heuer Ch 4 — Acid-Base Status, Tables 4-7 and 4-8, Box 4-1 Example Acid-Base Blood Gas Sets (PDF p211–215) and T4 tips · Heuer Ch 1 — Table 1-4 ABG Reference Ranges (PDF p45), Figure 1-1, Table 1-5 Common ABG Abnormalities (PDF p47–48) · Heuer Ch 19 — Table 19-12 acid-base decision making · Arterial Blood Gas Assessments PP (RCP 103), slides 4, 7–9, 11, 14, 16–18, 20, 26, 30, 32–34 · RCP 105 Mgmt of Mech Ventilation deck (compensated respiratory alkalosis pH 7.41–7.45)"
@@ -13361,12 +13593,9 @@
    "item": "s08-10",
    "item_title": "Acute and Chronic Respiratory and Metabolic ABG Patterns",
    "section": "08",
-   "quote": "RCP 105 Mgmt of Mech Vent deck, slide notes — \"in compensated respiratory alkalosis the pH is on the alkalotic side of normal range (7.41 to 7.45).\" Metabolic acidosis decreased normal or ↓ (compensating fast) decreased (HCO3− < 22, BE < −2) Heuer Box 4-1 (partially compensated): pH 7.32 / PCO2 24 / HCO3− 12 / BE −13 · Heuer Table 1-5 (DKA): pH 7.32 / PaCO2 28 / PaO2 108 RA / HCO3− 14 / BE −10 · Deck: pH 7.26 / PaCO2 37 / HCO3− 18 / PaO2 94 ; severe DKA pH 6.98 / PaCO2 24 / HCO3− 6 (Kussmaul breathing) Metabolic alkalosis increased normal or ↑ (compensating) increased (HCO3− > 26, BE > +2) Deck: pH 7.56 / PaCO2 44 / HCO3− 27 / PaO2 94 ; severe pH 7.66 / PaCO2 57 / HCO3− 61 (baking-soda ingestion).",
+   "quote": "Typical constructed set: pH 7.44 / PaCO2 28 / HCO3− 19 / BE −5 — chronic hyperventilation of high altitude, pregnancy, chronic liver disease, or CNS disease.",
    "values": [
-    "105mg",
-    "<-2",
-    "<22",
-    ">26"
+    "7.44"
    ],
    "cite": "Heuer Ch 4 — Acid-Base Status, Tables 4-7 and 4-8, Box 4-1 Example Acid-Base Blood Gas Sets (PDF p211–215) and T4 tips · Heuer Ch 1 — Table 1-4 ABG Reference Ranges (PDF p45), Figure 1-1, Table 1-5 Common ABG Abnormalities (PDF p47–48) · Heuer Ch 19 — Table 19-12 acid-base decision making · Arterial Blood Gas Assessments PP (RCP 103), slides 4, 7–9, 11, 14, 16–18, 20, 26, 30, 32–34 · RCP 105 Mgmt of Mech Ventilation deck (compensated respiratory alkalosis pH 7.41–7.45)"
   },
@@ -13376,10 +13605,33 @@
    "item": "s08-10",
    "item_title": "Acute and Chronic Respiratory and Metabolic ABG Patterns",
    "section": "08",
+   "quote": "RCP 105 Mgmt of Mech Vent deck, slide notes — \"in compensated respiratory alkalosis the pH is on the alkalotic side of normal range (7.41 to 7.45).\" Metabolic acidosis decreased normal or ↓ (compensating fast) decreased (HCO3− < 22, BE < −2) Heuer Box 4-1 (partially compensated): pH 7.32 / PCO2 24 / HCO3− 12 / BE −13 · Heuer Table 1-5 (DKA): pH 7.32 / PaCO2 28 / PaO2 108 RA / HCO3− 14 / BE −10 · Deck: pH 7.26 / PaCO2 37 / HCO3− 18 / PaO2 94 ; severe DKA pH 6.98 / PaCO2 24 / HCO3− 6 (Kussmaul breathing) Metabolic alkalosis increased normal or ↑ (compensating) increased (HCO3− > 26, BE > +2) Deck: pH 7.56 / PaCO2 44 / HCO3− 27 / PaO2 94 ; severe pH 7.66 / PaCO2 57 / HCO3− 61 (baking-soda ingestion).",
+   "values": [
+    "105mg",
+    "6.98",
+    "7.26",
+    "7.32",
+    "7.56",
+    "7.66",
+    "<-2",
+    "<22",
+    ">26"
+   ],
+   "cite": "Heuer Ch 4 — Acid-Base Status, Tables 4-7 and 4-8, Box 4-1 Example Acid-Base Blood Gas Sets (PDF p211–215) and T4 tips · Heuer Ch 1 — Table 1-4 ABG Reference Ranges (PDF p45), Figure 1-1, Table 1-5 Common ABG Abnormalities (PDF p47–48) · Heuer Ch 19 — Table 19-12 acid-base decision making · Arterial Blood Gas Assessments PP (RCP 103), slides 4, 7–9, 11, 14, 16–18, 20, 26, 30, 32–34 · RCP 105 Mgmt of Mech Ventilation deck (compensated respiratory alkalosis pH 7.41–7.45)"
+  },
+  {
+   "key": "203:s08-10#13",
+   "course": "203",
+   "item": "s08-10",
+   "item_title": "Acute and Chronic Respiratory and Metabolic ABG Patterns",
+   "section": "08",
    "quote": "Heuer's treatment cue: hypokalemia → give potassium; hypochloremia → give chloride Combined respiratory + metabolic acidosis very low high low (PaCO2 and BE diverge ) Heuer Box 4-1: pH 6.90 / PCO2 100 / HCO3− 19 / BE −12 · Heuer Table 1-5 (cardiopulmonary arrest): pH 7.05 / PaCO2 60 / PaO2 39 RA / HCO3− 16 / BE −8 Acute ventilatory failure ON chronic ventilatory failure 7.28 99 44 PaO2 39 — compare to the patient's baseline 7.36 / 77 / 43 / 61 (deck) Acute alveolar hyperventilation ON chronic ventilatory failure 7.51 52 40 PaO2 49 — looks like partly compensated metabolic alkalosis; the marked hypoxemia is the giveaway (deck) Hypoxemia severity on room air (Heuer Ch 1): mild PaO2 60–79 torr , moderate 40–59 torr , severe < 40 torr — but a PaO2 < 60 on FiO2 ≥ 0.60 is severe regardless.",
    "values": [
+    "0.60",
     "40-59torr",
+    "6.90",
     "60-79torr",
+    "7.05",
     "<40torr",
     "<60",
     "≥0.60"
@@ -13453,6 +13705,7 @@
    "section": "08",
    "quote": "PaO2 > 60 mm Hg / SaO2 > 90% on FiO2 ≤ 0.40 is the oxygenation weaning criterion.",
    "values": [
+    "0.40",
     ">60mmhg",
     ">90%",
     "≤0.40"
@@ -13687,6 +13940,11 @@
    "values": [
     "15breaths/min",
     "17%",
+    "1:1",
+    "1:2",
+    "1:3",
+    "1:4",
+    "1:5",
     "20%",
     "25%",
     "33%",
@@ -13709,6 +13967,7 @@
    "values": [
     "0.6l",
     "0.75l/sec",
+    "0.8",
     "0.8sec",
     "3.2sec",
     "4.0sec",
@@ -13722,6 +13981,18 @@
    "item": "s08-12",
    "item_title": "Inspiratory Flow Demand — How to Calculate It",
    "section": "08",
+   "quote": "Normal I:E is 1:2 to 1:4.",
+   "values": [
+    "1:2"
+   ],
+   "cite": "Heuer Ch 13 — Box 13-1 Determination of Inspiratory Flow Setting During Volume-Control Ventilation, %I-time and I:E computations · Heuer Ch 6 — Air-Entrainment Systems, total flow ≥ 40 L/min (PDF p330–331), Table 6-5 · Heuer Ch 11 — troubleshooting inspiratory flow demand, HFNC 20–40 L/min · Heuer Ch 3/Ch 4 — Raw, Crs, Cdyn T4 tips (PDF p194–195) · Heuer Ch 1 — Raw > 5–9 cm H2O/L/sec (PDF p66) · RCP 105 Wk 1 Lctr 3, slides 2–4 · RCP 105 Wk 1 Lctr 5, slide 19 · RCP 105 Wk 6 Ventilator Waveform Analysis, slides on excessive flow · RCP 105 Management of Mechanical Ventilation, slide 32 · RCP 203 Lssn 3a, slides 57–59"
+  },
+  {
+   "key": "203:s08-12#7",
+   "course": "203",
+   "item": "s08-12",
+   "item_title": "Inspiratory Flow Demand — How to Calculate It",
+   "section": "08",
    "quote": "Flow and resistance (RCP 105 Wk 1 Lctr 3, slides 2–4;",
    "values": [
     "105wk"
@@ -13729,7 +14000,7 @@
    "cite": "Heuer Ch 13 — Box 13-1 Determination of Inspiratory Flow Setting During Volume-Control Ventilation, %I-time and I:E computations · Heuer Ch 6 — Air-Entrainment Systems, total flow ≥ 40 L/min (PDF p330–331), Table 6-5 · Heuer Ch 11 — troubleshooting inspiratory flow demand, HFNC 20–40 L/min · Heuer Ch 3/Ch 4 — Raw, Crs, Cdyn T4 tips (PDF p194–195) · Heuer Ch 1 — Raw > 5–9 cm H2O/L/sec (PDF p66) · RCP 105 Wk 1 Lctr 3, slides 2–4 · RCP 105 Wk 1 Lctr 5, slide 19 · RCP 105 Wk 6 Ventilator Waveform Analysis, slides on excessive flow · RCP 105 Management of Mechanical Ventilation, slide 32 · RCP 203 Lssn 3a, slides 57–59"
   },
   {
-   "key": "203:s08-12#7",
+   "key": "203:s08-12#8",
    "course": "203",
    "item": "s08-12",
    "item_title": "Inspiratory Flow Demand — How to Calculate It",
@@ -13745,7 +14016,7 @@
    "cite": "Heuer Ch 13 — Box 13-1 Determination of Inspiratory Flow Setting During Volume-Control Ventilation, %I-time and I:E computations · Heuer Ch 6 — Air-Entrainment Systems, total flow ≥ 40 L/min (PDF p330–331), Table 6-5 · Heuer Ch 11 — troubleshooting inspiratory flow demand, HFNC 20–40 L/min · Heuer Ch 3/Ch 4 — Raw, Crs, Cdyn T4 tips (PDF p194–195) · Heuer Ch 1 — Raw > 5–9 cm H2O/L/sec (PDF p66) · RCP 105 Wk 1 Lctr 3, slides 2–4 · RCP 105 Wk 1 Lctr 5, slide 19 · RCP 105 Wk 6 Ventilator Waveform Analysis, slides on excessive flow · RCP 105 Management of Mechanical Ventilation, slide 32 · RCP 203 Lssn 3a, slides 57–59"
   },
   {
-   "key": "203:s08-12#8",
+   "key": "203:s08-12#9",
    "course": "203",
    "item": "s08-12",
    "item_title": "Inspiratory Flow Demand — How to Calculate It",
@@ -13757,7 +14028,7 @@
    "cite": "Heuer Ch 13 — Box 13-1 Determination of Inspiratory Flow Setting During Volume-Control Ventilation, %I-time and I:E computations · Heuer Ch 6 — Air-Entrainment Systems, total flow ≥ 40 L/min (PDF p330–331), Table 6-5 · Heuer Ch 11 — troubleshooting inspiratory flow demand, HFNC 20–40 L/min · Heuer Ch 3/Ch 4 — Raw, Crs, Cdyn T4 tips (PDF p194–195) · Heuer Ch 1 — Raw > 5–9 cm H2O/L/sec (PDF p66) · RCP 105 Wk 1 Lctr 3, slides 2–4 · RCP 105 Wk 1 Lctr 5, slide 19 · RCP 105 Wk 6 Ventilator Waveform Analysis, slides on excessive flow · RCP 105 Management of Mechanical Ventilation, slide 32 · RCP 203 Lssn 3a, slides 57–59"
   },
   {
-   "key": "203:s08-12#9",
+   "key": "203:s08-12#10",
    "course": "203",
    "item": "s08-12",
    "item_title": "Inspiratory Flow Demand — How to Calculate It",
@@ -14719,6 +14990,8 @@
    "section": "10",
    "quote": "Aspirate pH ≤ 2.5 often fatal ; pH > 5.9 usually reversible Accessory muscle What its use signifies Sternocleidomastoid Increased WOB.",
    "values": [
+    "2.5",
+    "5.9",
     ">5.9",
     "≤2.5"
    ],
