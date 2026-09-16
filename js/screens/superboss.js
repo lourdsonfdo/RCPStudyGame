@@ -41,6 +41,16 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
     App.persist();
   }
 
+  // Save immediately: without this, leaving before answering the first
+  // question of a phase would have nothing to resume from.
+  persistRun();
+
+  /** Leave the fight, keeping the exact spot. */
+  function leave() {
+    persistRun();
+    App.goto('superboss-briefing', {});
+  }
+
   function render() {
     const phase = SuperBoss.currentPhase(run);
     const q = SuperBoss.currentQ(run);
@@ -53,8 +63,8 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
 
     root.innerHTML = `
       <div class="topbar">
+        <button class="back-btn" data-leave>BACK</button>
         <span class="mode-tag">🗿 VITALS TITAN</span>
-        <span class="course-tag">RCP 202+203</span>
         <span class="chapter-tag">PHASE ${phase.n}/5</span>
       </div>
 
@@ -110,6 +120,8 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
     root.querySelectorAll('.ans-btn').forEach(btn => {
       btn.addEventListener('click', () => onAnswer(Number(btn.dataset.i), btn));
     });
+    const leaveBtn = root.querySelector('[data-leave]');
+    if (leaveBtn) leaveBtn.addEventListener('click', leave);
   }
 
   function onAnswer(choiceIndex, btn) {
@@ -149,6 +161,12 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
   function showPhaseBreak(result) {
     const next = SuperBoss.currentPhase(run);
     root.innerHTML = `
+      <div class="topbar">
+        <button class="back-btn" data-leave>BACK</button>
+        <span class="mode-tag">🗿 VITALS TITAN</span>
+        <span class="chapter-tag">PHASE ${next.n}/5</span>
+      </div>
+
       <div class="hud hud-corners" style="text-align:center;padding:24px 16px;">
         <span class="br1"></span><span class="br2"></span>
         <div class="title-eyebrow">▸ PHASE CLEARED ◂</div>
@@ -164,6 +182,7 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
       </div>
       <button class="btn btn-primary btn-block" data-continue>ENGAGE</button>`;
     root.querySelector('[data-continue]').addEventListener('click', render);
+    root.querySelector('[data-leave]').addEventListener('click', leave);
   }
 
   function finish() {
