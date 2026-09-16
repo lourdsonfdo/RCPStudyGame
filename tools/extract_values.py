@@ -132,6 +132,16 @@ def extract_file(path, course):
         cite = strip_tags(src_match.group(1)) if src_match else ''
         cite = re.sub(r'^Source\s*', '', cite)
 
+        # The guides mark contested and missing material structurally. A value
+        # from a .warn card is one the sources disagree about (deck vs
+        # textbook), and a question built on it has to say which answer the
+        # exam wants. A .gap card admits the material is absent from the decks.
+        flags = []
+        if 'class="warn"' in inner:
+            flags.append('warn')
+        if 'class="gap"' in inner:
+            flags.append('gap')
+
         # The source line is provenance, not content.
         body = SRC_RE.sub(' ', inner)
         text = strip_tags(body)
@@ -154,6 +164,7 @@ def extract_file(path, course):
                 'quote': sentence,
                 'values': values,
                 'cite': cite,
+                'flags': flags,
             })
     return records
 
