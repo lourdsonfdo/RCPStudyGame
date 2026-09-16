@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VITALS TITAN — sprite candidates</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5efe0; --bg-2:#ede4cc; --line:rgba(184,114,45,.35);
+    --text:#2a2118; --text-dim:#6b5a45; --text-mute:#9d8868;
+    --hud-red:#b85462; --hud-cyan:#b8722d; --hud-green:#5e8a5e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px 20px 60px;background:var(--bg);color:var(--text);
+       font-family:'JetBrains Mono',monospace;}
+  h1{font-family:'Press Start 2P',monospace;font-size:15px;letter-spacing:1px;margin:0 0 6px;}
+  .sub{font-size:12px;color:var(--text-dim);margin-bottom:26px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;max-width:1180px;}
+  .card{background:var(--bg-2);border:1px solid var(--line);padding:18px 16px 16px;text-align:center;position:relative;}
+  .tag{position:absolute;top:8px;left:10px;font-size:9px;color:var(--text-mute);letter-spacing:1px;}
+  .stage{height:160px;display:flex;align-items:center;justify-content:center;margin:14px 0 10px;}
+  .boss-portrait{width:128px;height:128px;position:relative;
+    filter:drop-shadow(0 0 16px var(--hud-red)) drop-shadow(0 0 4px #ff8888);
+    animation:bob 1.8s ease-in-out infinite;}
+  .boss-portrait::before{content:'';position:absolute;inset:-8px;
+    background:radial-gradient(circle,rgba(184,84,98,.3) 0%,transparent 70%);
+    border-radius:50%;animation:aura 2.2s ease-in-out infinite;z-index:-1;}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @keyframes aura{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.15);opacity:1}}
+  .frame{position:absolute;inset:0;width:100%;height:100%}
+  .frame svg{width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+  .frame-2{opacity:0;animation:flick 1.4s steps(1) infinite}
+  .frame-1{animation:flick-a 1.4s steps(1) infinite}
+  @keyframes flick{0%,50%{opacity:0}50.01%,100%{opacity:1}}
+  @keyframes flick-a{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+  .name{font-family:'Press Start 2P',monospace;font-size:10px;margin-bottom:7px;}
+  .desc{font-size:11px;line-height:1.55;color:var(--text-dim);min-height:52px;}
+  .small{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);
+         display:flex;align-items:center;justify-content:center;gap:12px;}
+  .boss-portrait-sm{width:56px;height:56px;position:relative;filter:drop-shadow(0 0 8px var(--hud-red))}
+  .cap{font-size:9px;color:var(--text-mute)}
+</style></head><body>
+<h1>VITALS TITAN — SPRITE CANDIDATES</h1>
+<div class="sub">24×24 pixel grid (current sprite is 16×16). Shown at the real 128px arena size, with the game's
+bob + aura + 2-frame idle. Small view on each card is the boss-select tile size.</div>
+<div class="grid" id="grid"></div>
+<script>
+function pair(a,b){return '<div class="frame frame-1">'+a+'</div><div class="frame frame-2">'+b+'</div>';}
+function svg(body){return '<svg viewBox="0 0 24 24" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">'+body+'</svg>';}
+function r(x,y,w,h,f){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+f+'"/>';}
+
+/* palette */
+const STONE='#8a7a62', STONE_D='#6a5c48', STONE_L='#a89madeup';
+const S1='#8a7a62', S2='#6a5c48', S3='#a89678', DARK='#1a1410',
+      RED='#d04040', RED_D='#a02020', GLOW='#ff9a8a', AMBER='#f0c040',
+      CYAN='#58b0c8', GREEN='#5e8a5e', WHITE='#fff4e6', BRASS='#c8a martian';
+const BR='#c8a24a', GRN='#4f7a52', STEEL='#7d8794', STEEL_D='#5a626d';
+
+/* ── A. GAUGE GOLEM ───────────────────────────────────── */
+function gauge(needle){
+  let s='';
+  s+=r(7,0,10,2,S2)+r(6,2,12,2,S1);                       // crown
+  s+=r(5,4,14,11,S1)+r(6,5,12,9,S2);                      // head block
+  // dial face
+  s+=r(8,6,8,7,WHITE)+r(9,5,6,1,WHITE)+r(9,13,6,1,WHITE);
+  s+=r(8,5,1,1,S3)+r(15,5,1,1,S3)+r(8,13,1,1,S3)+r(15,13,1,1,S3);
+  // ticks
+  s+=r(9,6,1,1,DARK)+r(14,6,1,1,DARK)+r(9,12,1,1,DARK)+r(14,12,1,1,DARK)+r(11,5,2,1,DARK);
+  s+=needle;
+  s+=r(11,9,2,2,RED_D);                                    // hub
+  // shoulders + arms
+  s+=r(2,15,20,3,S2)+r(0,16,2,5,S1)+r(22,16,2,5,S1);
+  s+=r(0,21,3,2,S2)+r(21,21,3,2,S2);
+  // torso with readout bars
+  s+=r(5,18,14,5,S1);
+  s+=r(7,19,10,1,AMBER)+r(7,21,6,1,RED)+r(14,21,3,1,CYAN);
+  s+=r(4,23,6,1,S2)+r(14,23,6,1,S2);
+  return svg(s);
+}
+const A=pair(
+  gauge(r(12,7,1,3,RED)+r(12,6,1,1,RED_D)),                 // needle up
+  gauge(r(13,8,1,1,RED)+r(14,7,2,1,RED)+r(15,7,1,1,RED_D))  // needle right
+);
+
+/* ── B. EKG COLOSSUS ──────────────────────────────────── */
+function ekg(trace,eye){
+  let s='';
+  s+=r(8,0,8,3,STEEL_D)+r(7,1,1,2,STEEL_D)+r(16,1,1,2,STEEL_D);   // helm
+  s+=r(7,3,10,5,STEEL)+r(8,4,8,3,STEEL_D);                        // head
+  s+=eye;
+  s+=r(6,8,12,2,STEEL_D);                                         // collar
+  s+=r(3,10,18,10,STEEL);                                         // torso
+  s+=r(5,11,14,7,DARK);                                           // chest screen
+  s+=trace;
+  s+=r(0,10,3,7,STEEL_D)+r(21,10,3,7,STEEL_D);                    // arms
+  s+=r(0,17,3,3,STEEL)+r(21,17,3,3,STEEL);                        // fists
+  s+=r(5,20,5,4,STEEL_D)+r(14,20,5,4,STEEL_D);                    // legs
+  s+=r(4,10,16,1,'#9aa4b0');                                      // highlight
+  return svg(s);
+}
+const B=pair(
+  ekg(r(6,15,3,1,GREEN)+r(9,13,1,3,GREEN)+r(10,12,1,5,GREEN)+r(11,15,1,1,GREEN)+r(12,15,6,1,GREEN),
+      r(9,5,2,1,RED)+r(13,5,2,1,RED)),
+  ekg(r(6,15,5,1,GREEN)+r(11,13,1,3,GREEN)+r(12,12,1,5,GREEN)+r(13,15,1,1,GREEN)+r(14,15,4,1,GREEN),
+      r(9,5,2,1,GLOW)+r(13,5,2,1,GLOW))
+);
+
+/* ── C. CYLINDER WARDEN ───────────────────────────────── */
+function cyl(gaugeNeedle,vent){
+  let s='';
+  s+=r(10,0,4,2,BR)+r(9,2,6,2,BR);                    // valve stem
+  s+=r(7,4,10,4,BR)+r(8,5,8,2,'#e0bc66');             // regulator body
+  s+=r(5,5,2,2,BR)+r(17,5,2,2,BR);                    // side ports
+  s+=r(9,4,6,1,'#f0d890');
+  // gauge
+  s+=r(10,5,4,3,WHITE)+gaugeNeedle;
+  s+=r(6,8,12,14,GRN)+r(7,9,10,12,'#5d8f60');         // cylinder body
+  s+=r(7,9,2,12,'#7bb07e');                           // highlight
+  s+=r(8,11,8,1,WHITE)+r(8,13,8,1,WHITE);             // label bands
+  s+=r(9,15,6,4,DARK)+r(10,16,1,2,AMBER)+r(12,16,1,2,AMBER)+r(14,16,1,2,AMBER);
+  s+=r(6,22,12,2,'#3d5f40');                          // base
+  s+=vent;
+  return svg(s);
+}
+const C=pair(
+  cyl(r(12,6,1,1,RED), r(3,6,2,1,'#b8d8e8aa')+r(1,7,2,1,'#b8d8e888')),
+  cyl(r(11,6,1,1,RED), r(19,6,2,1,'#b8d8e8aa')+r(21,7,2,1,'#b8d8e888'))
+);
+
+/* ── D. MONOLITH SENTINEL ─────────────────────────────── */
+function mono(eye,bands){
+  let s='';
+  s+=r(6,0,12,2,S2);
+  s+=r(5,2,14,18,S1)+r(6,3,12,16,S2);                 // slab
+  s+=r(6,3,1,16,S3)+r(17,3,1,16,'#4e4436');           // bevel
+  s+=bands;
+  s+=eye;
+  s+=r(3,20,18,2,S1)+r(2,22,20,2,S2);                 // plinth
+  s+=r(0,8,2,1,RED+'aa')+r(22,14,2,1,RED+'aa');       // motes
+  return svg(s);
+}
+const D=pair(
+  mono(r(10,10,4,3,RED)+r(11,11,2,1,GLOW),
+       r(7,5,10,1,AMBER)+r(7,7,7,1,CYAN)+r(7,15,10,1,AMBER)+r(7,17,5,1,GREEN)),
+  mono(r(10,10,4,3,RED_D)+r(10,11,4,1,RED),
+       r(7,5,7,1,AMBER)+r(7,7,10,1,CYAN)+r(7,15,6,1,AMBER)+r(7,17,9,1,GREEN))
+);
+
+/* ── E. NUMERIC WRAITH ────────────────────────────────── */
+function wraith(glyphs,eyes){
+  let s='';
+  s+=r(7,2,10,9,'#e8e0cc')+r(6,4,1,5,'#e8e0cc')+r(17,4,1,5,'#e8e0cc'); // skull
+  s+=r(8,1,8,1,'#f4eedd');
+  s+=eyes;
+  s+=r(10,8,1,2,DARK)+r(13,8,1,2,DARK);               // nasal
+  s+=r(8,11,8,1,'#d8cfb8');
+  s+=r(9,12,1,2,'#e8e0cc')+r(11,12,1,2,'#e8e0cc')+r(13,12,1,2,'#e8e0cc'); // teeth
+  s+=r(7,14,10,2,'#cfc4aa');
+  // tattered shroud
+  s+=r(5,16,14,4,'#6e6250')+r(4,18,2,3,'#6e6250')+r(18,18,2,3,'#6e6250');
+  s+=r(6,20,3,3,'#5a5040')+r(11,20,3,4,'#5a5040')+r(16,20,3,3,'#5a5040');
+  s+=glyphs;
+  return svg(s);
+}
+const E=pair(
+  wraith(r(2,5,1,1,AMBER)+r(3,9,1,1,CYAN)+r(20,7,1,1,AMBER)+r(21,12,1,1,RED)+r(1,14,1,1,CYAN),
+         r(8,5,3,3,RED)+r(13,5,3,3,RED)+r(9,6,1,1,GLOW)+r(14,6,1,1,GLOW)),
+  wraith(r(2,3,1,1,CYAN)+r(4,11,1,1,AMBER)+r(20,5,1,1,RED)+r(22,10,1,1,AMBER)+r(1,12,1,1,RED),
+         r(8,5,3,3,RED_D)+r(13,5,3,3,RED_D)+r(10,6,1,1,GLOW)+r(15,6,1,1,GLOW))
+);
+
+const CANDIDATES=[
+  ['A','GAUGE GOLEM',A,'A manometer for a face. The needle sweeps between frames, so the boss literally reads a value at you. Most on-theme for a boss made of thresholds.'],
+  ['B','EKG COLOSSUS',B,'Armoured torso with a live EKG across the chest; the trace marches left between frames and the eyes flare. Most imposing silhouette of the five.'],
+  ['C','CYLINDER WARDEN',C,'An E-cylinder with a brass regulator head and a working gauge, venting gas from alternating sides. Reads instantly as respiratory kit.'],
+  ['D','MONOLITH SENTINEL',D,'A refined version of the current slab: deeper bevel, four glowing data bands that re-length between frames, single red eye.'],
+  ['E','NUMERIC WRAITH',E,'A bone-white skull in a tattered shroud with numeric motes drifting around it. The least medical, the most "final boss".'],
+];
+document.getElementById('grid').innerHTML=CANDIDATES.map(([k,name,html,desc])=>`
+  <div class="card">
+    <span class="tag">OPTION ${k}</span>
+    <div class="stage"><div class="boss-portrait">${html}</div></div>
+    <div class="name">${name}</div>
+    <div class="desc">${desc}</div>
+    <div class="small"><div class="boss-portrait-sm">${html}</div><span class="cap">tile size</span></div>
+  </div>`).join('');
+</script></body></html>
