@@ -135,6 +135,44 @@ class TestExtractValues(unittest.TestCase):
             self.assertNotIn('6', r['values'])
 
 
+class TestValuePattern(unittest.TestCase):
+    """Regression tests for the value regex itself.
+
+    Respiratory values are frequently negative (NIF/MIP) and frequently
+    expressed in cm H2O with a Unicode subscript. Both were silently dropped by
+    an earlier version of this pattern, which would have produced questions
+    whose 'correct' answer was off by a sign.
+    """
+
+    def values(self, text):
+        return [ev.normalize_value(v) for v in ev.VALUE_RE.findall(text)]
+
+    def test_negative_pressure_keeps_its_sign(self):
+        got = self.values('NIF/MIP normal < \u2212\u200b60 cm H\u2082O'.replace('\u200b', ''))
+        self.assertIn('<-60cmh2o', got)
+
+    def test_bare_negative_with_unit(self):
+        self.assertIn('-100cmh2o', self.values('peak \u2212100 cmH2O'))
+
+    def test_unicode_subscript_unit_is_matched(self):
+        self.assertIn('\u226430cmh2o', self.values('plateau \u2264 30 cm H\u2082O'))
+
+    def test_ascii_and_unicode_subscript_normalise_alike(self):
+        self.assertEqual(self.values('30 cm H\u2082O'), self.values('30 cmH2O'))
+
+    def test_compound_unit_wins_over_its_prefix(self):
+        self.assertIn('70-100ml/cmh2o', self.values('Static compliance 70\u2013100 mL/cm H\u2082O'))
+
+    def test_comparison_keeps_its_unit(self):
+        self.assertIn('>20%', self.values('A major burn is defined as >20% TBSA'))
+
+    def test_plain_number_without_unit_is_not_a_value(self):
+        self.assertEqual(self.values('There are 5 levels of service.'), [])
+
+    def test_range_without_sign_is_unaffected(self):
+        self.assertIn('90-95%', self.values('Concentrators deliver 90\u201395% oxygen'))
+
+
 if __name__ == '__main__':
     unittest.main()
 ```
@@ -170,13 +208,27 @@ CARD_RE = re.compile(
 H3_RE = re.compile(r'<h3>(.*?)</h3>', re.S)
 SRC_RE = re.compile(r'<div class="src">(.*?)</div>', re.S)
 
-UNITS = (r"(?:mm\s?Hg|cm\s?H2O|cmH2O|mL/kg|mL|L/min|LPM|mg/kg|mg|mcg|g/dL|"
-         r"mEq/L|mmol/L|kPa|%|°C|°F|Fr\b|psig|psi|kg|lb|sec(?:onds)?|"
-         r"min(?:utes)?|hours?|hrs?|days?|weeks?|beats?/min|breaths?/min|bpm|"
-         r"/min|joules?|Hz)")
+# Unit alternation is LONGEST-FIRST on purpose: "mL/cm H2O" must win over
+# "mL", and "cm H2O" over a bare number. The 202 guide writes the subscript as
+# Unicode U+2082 (cm H₂O) and the 203 guide writes ASCII (cmH2O), so both forms
+# are accepted here and folded together by normalize_value.
+UNITS = (r"(?:mL/cm\s?H[2₂]O|cm\s?H[2₂]O|cmH[2₂]O|mm\s?Hg|mmHg|mL/kg|mL|L/min|"
+         r"LPM|mg/kg|mg|mcg|g/dL|mEq/L|mmol/L|kPa|%|°C|°F|Fr\b|psig|psi|kg|lb|"
+         r"sec(?:onds)?|min(?:utes)?|hours?|hrs?|days?|weeks?|beats?/min|"
+         r"breaths?/min|bpm|/min|joules?|Hz)")
+
+# A leading sign is part of the value, not decoration. NIF/MIP normals are
+# NEGATIVE pressures (−60 cm H2O); dropping the sign would turn a correct card
+# into a question with a wrong answer, which is the exact failure this whole
+# pipeline exists to prevent.
+SIGN = r"[−–\-]?"
 NUM = r"\d+(?:\.\d+)?"
+RANGE = r"%s%s(?:\s*(?:[–—\-]|to)\s*%s%s)?" % (SIGN, NUM, SIGN, NUM)
+
+# Either a comparison (unit optional — ">20% TBSA", "< −40") or a plain value
+# that MUST carry a unit (so "5 levels" is not mistaken for a value).
 VALUE_RE = re.compile(
-    r"(?:[<>≤≥]\s*%s|%s\s*(?:[–\-]\s*%s\s*)?%s)" % (NUM, NUM, NUM, UNITS), re.I)
+    r"(?:[<>≤≥]\s*%s(?:\s*%s)?|%s\s*%s)" % (RANGE, UNITS, RANGE, UNITS), re.I)
 
 # Numbers that belong to a citation, not to a fact.
 CITE_RE = re.compile(
@@ -192,11 +244,19 @@ def strip_tags(fragment):
 
 
 def normalize_value(raw):
-    """Canonical form for comparison: lowercase, no spaces, ASCII hyphen."""
+    """Canonical form: lowercase, no spaces, ASCII hyphen, ASCII subscript.
+
+    Folds U+2212 MINUS, en/em dashes and the Unicode subscript two so that the
+    202 guide's "−60 cm H₂O" and the 203 guide's "-60 cmH2O" produce the same
+    key. Range separators and negative signs both normalise to "-"; that is
+    fine for a comparison key.
+    """
     return (raw.lower()
                .replace(' ', '')
+               .replace('−', '-')
                .replace('—', '-')
-               .replace('–', '-'))
+               .replace('–', '-')
+               .replace('₂', '2'))
 
 
 def sentences(text):
@@ -269,20 +329,41 @@ if __name__ == '__main__':
 - [ ] **Step 5: Run the test to verify it passes**
 
 Run: `cd /Users/lourdsonfernando/RCPStudyGame && python3 -m unittest discover -s tools/tests -v`
-Expected: PASS, 6 tests OK
+Expected: PASS, 14 tests OK (6 extraction + 8 value-pattern regressions)
 
 - [ ] **Step 6: Run the extractor against the real guides**
 
 Run: `cd /Users/lourdsonfernando/RCPStudyGame && python3 tools/extract_values.py`
 
-Expected output shape (counts must land near the spec's measured inventory):
+Expected output shape:
 ```
-RCP 202: ~254 records across ~90 value-bearing items
-RCP 203: ~727 records across ~89 value-bearing items
-wrote tools/values.json (~981 records)
+RCP 202: >=254 records across >=90 value-bearing items
+RCP 203: >=727 records across >=89 value-bearing items
+wrote tools/values.json (>=981 records)
 ```
 
-If either item count is far below the spec table (90 / 89), STOP — the parser is dropping cards, which is a correctness bug, not a content shortage.
+Those floors are what the original, narrower pattern produced. The corrected pattern recognises
+negative values and Unicode-subscript units, so the counts can only go UP. If any count comes in
+**below** a floor, STOP — the parser is dropping cards, which is a correctness bug, not a content
+shortage.
+
+Then confirm the two specific recoveries:
+
+```bash
+python3 -c "
+import json
+d=json.load(open('tools/values.json'))
+vals=[v for r in d['records'] for v in r['values']]
+signed=[v for v in vals if v.lstrip('<>=\u2264\u2265').startswith('-')]
+cmh2o=[v for v in vals if 'cmh2o' in v]
+print('negative values:', len(signed), signed[:5])
+print('cmH2O-bound values:', len(cmh2o), cmh2o[:5])
+assert signed, 'negative values still dropped'
+assert len(cmh2o) > 100, 'cmH2O values still dropped'
+print('OK')
+"
+```
+Expected: ~60+ negative values and ~300+ cmH2O-bound values, ending in `OK`.
 
 - [ ] **Step 7: Commit**
 
@@ -568,7 +649,7 @@ if __name__ == '__main__':
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `cd /Users/lourdsonfernando/RCPStudyGame && python3 -m unittest discover -s tools/tests -v`
-Expected: PASS, 14 tests OK (6 from Task 1 + 8 here)
+Expected: PASS, 22 tests OK (14 from Task 1 + 8 here)
 
 - [ ] **Step 5: Commit**
 
