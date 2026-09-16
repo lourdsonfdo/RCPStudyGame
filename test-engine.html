@@ -18,6 +18,8 @@
   <script src="js/engine/battle.js"></script>
   <script src="js/engine/crisis.js"></script>
   <script src="content/stub.js"></script>
+  <script src="js/engine/superboss.js"></script>
+  <script src="tools/tests/superboss.test.js"></script>
   <script>
     const out = document.getElementById('out');
     let passed = 0, failed = 0;
@@ -224,6 +226,9 @@
 
     // ─── Summary ────────────────────────────────────────
     out.innerHTML += `<h2>${failed === 0 ? '✓ ALL PASSED' : '✗ ' + failed + ' FAILED'} (${passed} passed)</h2>`;
+  
+    section('Super boss — VITALS TITAN');
+    window.SuperBossTests(check);
   </script>
 </body>
 </html>

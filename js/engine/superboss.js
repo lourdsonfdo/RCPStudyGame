@@ -14,6 +14,8 @@
   const PHASE_GATE          = 12;   // correct answers needed to advance
   const BAR_HP              = 100;  // boss hp per phase bar
   const INTER_PHASE_HEAL    = 0.30; // fraction of max hp restored between phases
+  const HIT_BOSS            = 8;    // damage to the current bar per correct answer
+  const HIT_PLAYER          = 9;    // damage taken per wrong answer
 
   const PHASES = [
     { id: 'p1-202-core',  n: 1, name: '202 · CORE VALUES',
@@ -83,7 +85,9 @@
   function startRun({ bank, playerMaxHp, pinned }) {
     const run = {
       bank: bank.slice(),
-      pinned: pinned || {},
+      // Copy, never alias: clearing a pin on a pass must not reach back and
+      // mutate the caller's saved state while the run is still going.
+      pinned: Object.assign({}, pinned || {}),
       phaseIndex: 0,
       bossBars: PHASES.map(() => BAR_HP),
       playerHp: playerMaxHp,
@@ -114,9 +118,150 @@
     return run;
   }
 
+  function currentQ(run) {
+    return run.questions[run.qIndex] || null;
+  }
+
+  function currentPhase(run) {
+    return PHASES[run.phaseIndex];
+  }
+
+  /**
+   * Answer the current question. Returns { correct, question, correctIndex }.
+   * Mutates `run`.
+   */
+  function answer(run, choiceIndex) {
+    const q = currentQ(run);
+    if (!q || run.outcome) {
+      return { correct: false, question: q, correctIndex: q ? q.correct : -1 };
+    }
+
+    const correct = choiceIndex === q.correct;
+
+    if (correct) {
+      run.correctCount++;
+      run.bossBars[run.phaseIndex] = Math.max(0, run.bossBars[run.phaseIndex] - HIT_BOSS);
+    } else {
+      run.playerHp = Math.max(0, run.playerHp - HIT_PLAYER);
+      if (run.missed.indexOf(q.id) === -1) run.missed.push(q.id);
+    }
+
+    run.answers.push({
+      phase: currentPhase(run).id,
+      id: q.id,
+      chosen: choiceIndex,
+      correct: correct,
+      srcItem: q.srcItem,
+      srcCite: q.srcCite,
+    });
+    run.qIndex++;
+
+    if (run.playerHp === 0) run.outcome = 'defeat';
+    return { correct: correct, question: q, correctIndex: q.correct };
+  }
+
+  /**
+   * Close out the current phase. Returns { passed, correct, total, phase }.
+   *
+   * On a pass, the phase's pin is cleared and the run advances, heals and
+   * draws. On a fail the run is over — there is no mid-fight retry — and the
+   * phase's 15 questions are PINNED so the next attempt drills the same set.
+   */
+  function endPhase(run) {
+    const phase = currentPhase(run);
+    const passed = run.correctCount >= PHASE_GATE && run.outcome !== 'defeat';
+    const result = {
+      phase: phase.id,
+      phaseName: phase.name,
+      correct: run.correctCount,
+      total: QUESTIONS_PER_PHASE,
+      passed: passed,
+    };
+    run.phaseResults.push(result);
+
+    if (!passed) {
+      // Pin this phase's set so the next attempt drills the same 15.
+      run.pinned[phase.id] = run.questions.map(q => q.id);
+      run.outcome = 'defeat';
+      result.pinned = true;
+      return result;
+    }
+
+    // Cleared it — the pin has done its job.
+    delete run.pinned[phase.id];
+
+    if (run.phaseIndex === PHASES.length - 1) {
+      run.outcome = 'victory';
+      return result;
+    }
+
+    run.phaseIndex++;
+    run.playerHp = Math.min(
+      run.playerMaxHp,
+      run.playerHp + Math.round(run.playerMaxHp * INTER_PHASE_HEAL));
+    run.questions = drawPhase(run, run.phaseIndex);
+    run.asked = run.asked.concat(run.questions.map(q => q.id));
+    run.askedValues = run.askedValues.concat(run.questions.map(valueKeyOf));
+    run.qIndex = 0;
+    run.correctCount = 0;
+    return result;
+  }
+
+  function phaseComplete(run) {
+    return run.qIndex >= run.questions.length;
+  }
+
+  /**
+   * Shrink a run for localStorage. The bank is content, not state — it is
+   * reloaded from the content files and re-joined by id on restore.
+   */
+  function serialize(run) {
+    return {
+      v: 1,
+      pinned: JSON.parse(JSON.stringify(run.pinned || {})),
+      phaseIndex: run.phaseIndex,
+      bossBars: run.bossBars.slice(),
+      playerHp: run.playerHp,
+      playerMaxHp: run.playerMaxHp,
+      asked: run.asked.slice(),
+      askedValues: run.askedValues.slice(),
+      missed: run.missed.slice(),
+      phaseResults: run.phaseResults.slice(),
+      questionIds: run.questions.map(q => q.id),
+      qIndex: run.qIndex,
+      correctCount: run.correctCount,
+      answers: run.answers.slice(),
+      outcome: run.outcome,
+    };
+  }
+
+  /** Rebuild a run from a serialized blob plus the live question bank. */
+  function deserialize(blob, bank) {
+    const byId = new Map(bank.map(q => [q.id, q]));
+    return {
+      bank: bank.slice(),
+      pinned: blob.pinned || {},
+      phaseIndex: blob.phaseIndex,
+      bossBars: blob.bossBars.slice(),
+      playerHp: blob.playerHp,
+      playerMaxHp: blob.playerMaxHp,
+      asked: blob.asked.slice(),
+      askedValues: (blob.askedValues || []).slice(),
+      missed: blob.missed.slice(),
+      phaseResults: blob.phaseResults.slice(),
+      questions: blob.questionIds.map(id => byId.get(id)).filter(Boolean),
+      qIndex: blob.qIndex,
+      correctCount: blob.correctCount,
+      answers: blob.answers.slice(),
+      outcome: blob.outcome,
+    };
+  }
+
   global.SuperBoss = {
     QUESTIONS_PER_PHASE, PHASE_GATE, BAR_HP, INTER_PHASE_HEAL, PHASES,
     startRun, drawPhase, drawFinalPhase, valueKeyOf,
+    currentQ, currentPhase, answer, endPhase, phaseComplete,
+    serialize, deserialize,
   };
 
   /**

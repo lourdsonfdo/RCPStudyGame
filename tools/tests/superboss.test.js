@@ -140,5 +140,168 @@
     check('final phase fills from unseen when nothing was missed',
       finalClean.length === 15);
 
+    // ── Answering ────────────────────────────────────────────────
+    // Choices are shuffled at draw time, so the correct index must be read
+    // from the drawn question — never assumed.
+    function rightIdx(run) { return SuperBoss.currentQ(run).correct; }
+    function wrongIdx(run) { return (SuperBoss.currentQ(run).correct + 1) % 4; }
+
+    function freshRun() {
+      return SuperBoss.startRun({
+        bank: makeBank({ 1: 40, 2: 40, 3: 40, 4: 40 }), playerMaxHp: 100 });
+    }
+
+    let ra = freshRun();
+    const before = ra.bossBars[0];
+    let res = SuperBoss.answer(ra, rightIdx(ra));
+    check('correct answer is reported correct', res.correct === true);
+    check('correct answer damages the boss bar', ra.bossBars[0] < before);
+    check('correct increments correctCount', ra.correctCount === 1);
+    check('correct does not record a miss', ra.missed.length === 0);
+    check('qIndex advances', ra.qIndex === 1);
+
+    const hpBefore = ra.playerHp;
+    res = SuperBoss.answer(ra, wrongIdx(ra));
+    check('wrong answer is reported wrong', res.correct === false);
+    check('wrong answer damages the player', ra.playerHp < hpBefore);
+    check('wrong answer records the miss', ra.missed.length === 1);
+    check('answer history records both', ra.answers.length === 2);
+
+    // ── Gate: 11/15 fails, 12/15 passes ──────────────────────────
+    function playPhase(run, correctCount) {
+      for (let i = 0; i < SuperBoss.QUESTIONS_PER_PHASE; i++) {
+        SuperBoss.answer(run, i < correctCount ? rightIdx(run) : wrongIdx(run));
+      }
+      return SuperBoss.endPhase(run);
+    }
+
+    let rFail = freshRun();
+    rFail.playerHp = 1000; rFail.playerMaxHp = 1000;
+    let gate = playPhase(rFail, 11);
+    check('11/15 fails the gate', gate.passed === false);
+    check('failing the gate ends the run', rFail.outcome === 'defeat');
+
+    let rPass = freshRun();
+    rPass.playerHp = 1000; rPass.playerMaxHp = 1000;
+    gate = playPhase(rPass, 12);
+    check('12/15 passes the gate', gate.passed === true);
+    check('passing advances the phase', rPass.phaseIndex === 1);
+    check('phase result recorded', rPass.phaseResults.length === 1);
+    check('counters reset for the new phase', rPass.correctCount === 0 && rPass.qIndex === 0);
+    check('new phase drew 15', rPass.questions.length === 15);
+    check('asked set grew to 30', rPass.asked.length === 30);
+    check('askedValues grew to 30', rPass.askedValues.length === 30);
+
+    // ── Inter-phase heal ─────────────────────────────────────────
+    let rHeal = freshRun();
+    rHeal.playerHp = 20;
+    playPhase(rHeal, 15);
+    check('heal restores 30% of max', rHeal.playerHp === 50);
+
+    let rCap = freshRun();
+    rCap.playerHp = 95;
+    playPhase(rCap, 15);
+    check('heal never exceeds max hp', rCap.playerHp === 100);
+
+    // ── Death ends the run ───────────────────────────────────────
+    let rDead = freshRun();
+    rDead.playerHp = 1;
+    SuperBoss.answer(rDead, wrongIdx(rDead));
+    check('hp reaching zero ends the run', rDead.outcome === 'defeat');
+    check('hp never goes negative', rDead.playerHp === 0);
+
+    // ── Victory ──────────────────────────────────────────────────
+    let rWin = freshRun();
+    rWin.playerHp = 1000; rWin.playerMaxHp = 1000;
+    for (let p = 0; p < 5; p++) playPhase(rWin, 15);
+    check('clearing all five phases wins', rWin.outcome === 'victory');
+    check('five phase results recorded', rWin.phaseResults.length === 5);
+
+    // ── Serialisation round-trip ─────────────────────────────────
+    let rSer = SuperBoss.startRun({
+      bank: makeBank({ 1: 40, 2: 40, 3: 40, 4: 40 }), playerMaxHp: 100 });
+    SuperBoss.answer(rSer, SuperBoss.currentQ(rSer).correct);
+    SuperBoss.answer(rSer, (SuperBoss.currentQ(rSer).correct + 1) % 4);
+
+    const blob = SuperBoss.serialize(rSer);
+    check('serialized form is JSON-safe',
+      typeof JSON.parse(JSON.stringify(blob)) === 'object');
+    check('serialized form drops the bank', blob.bank === undefined);
+
+    const restored = SuperBoss.deserialize(
+      JSON.parse(JSON.stringify(blob)),
+      makeBank({ 1: 40, 2: 40, 3: 40, 4: 40 }));
+    check('restored qIndex', restored.qIndex === rSer.qIndex);
+    check('restored playerHp', restored.playerHp === rSer.playerHp);
+    check('restored asked set', restored.asked.length === rSer.asked.length);
+    check('restored askedValues', restored.askedValues.length === rSer.askedValues.length);
+    check('restored missed set', restored.missed.length === rSer.missed.length);
+    check('restored question order',
+      restored.questions.map(q => q.id).join() === rSer.questions.map(q => q.id).join());
+    check('restored run is answerable',
+      SuperBoss.currentQ(restored).id === SuperBoss.currentQ(rSer).id);
+
+    // ── Failed-phase pinning ─────────────────────────────────────
+    const pinBank = makeBank({ 1: 40, 2: 40, 3: 40, 4: 40 });
+
+    function playPhaseOn(run, correctCount) {
+      for (let i = 0; i < SuperBoss.QUESTIONS_PER_PHASE; i++) {
+        const q = SuperBoss.currentQ(run);
+        SuperBoss.answer(run, i < correctCount ? q.correct : (q.correct + 1) % 4);
+      }
+      return SuperBoss.endPhase(run);
+    }
+
+    let rPin = SuperBoss.startRun({ bank: pinBank, playerMaxHp: 10000 });
+    const failedIds = rPin.questions.map(q => q.id);
+    const pinResult = playPhaseOn(rPin, 11);
+    check('failing a phase pins its set', pinResult.pinned === true);
+    check('pin is keyed by phase id', !!rPin.pinned['p1-202-core']);
+    check('pin holds exactly 15 ids', rPin.pinned['p1-202-core'].length === 15);
+    check('pin holds the questions that were failed',
+      rPin.pinned['p1-202-core'].slice().sort().join() === failedIds.slice().sort().join());
+
+    const rReplay = SuperBoss.startRun({
+      bank: pinBank, playerMaxHp: 10000, pinned: rPin.pinned });
+    const replayIds = rReplay.questions.map(q => q.id);
+    check('pinned phase replays the same 15 questions',
+      replayIds.slice().sort().join() === failedIds.slice().sort().join());
+
+    let sawDifferentOrder = false;
+    for (let i = 0; i < 20 && !sawDifferentOrder; i++) {
+      const r = SuperBoss.startRun({ bank: pinBank, playerMaxHp: 10000, pinned: rPin.pinned });
+      if (r.questions.map(q => q.id).join() !== failedIds.join()) sawDifferentOrder = true;
+    }
+    check('pinned replay reshuffles question order', sawDifferentOrder);
+
+    let sawDifferentChoices = false;
+    for (let i = 0; i < 20 && !sawDifferentChoices; i++) {
+      const r = SuperBoss.startRun({ bank: pinBank, playerMaxHp: 10000, pinned: rPin.pinned });
+      const q = r.questions[0];
+      const source = pinBank.filter(b => b.id === q.id)[0];
+      if (q.choices.join() !== source.choices.join() || q.correct !== source.correct) {
+        sawDifferentChoices = true;
+      }
+    }
+    check('pinned replay reshuffles choices', sawDifferentChoices);
+
+    const rClear = SuperBoss.startRun({
+      bank: pinBank, playerMaxHp: 10000, pinned: rPin.pinned });
+    playPhaseOn(rClear, 15);
+    check('passing a pinned phase clears the pin',
+      rClear.pinned['p1-202-core'] === undefined);
+
+    const latePin = {};
+    latePin['p3-203-equip'] = pinBank.filter(q => q.phase === 3).slice(0, 15).map(q => q.id);
+    const rLate = SuperBoss.startRun({ bank: pinBank, playerMaxHp: 10000, pinned: latePin });
+    const reserved = latePin['p3-203-equip']
+      .map(id => SuperBoss.valueKeyOf(pinBank.filter(b => b.id === id)[0]));
+    check('pinned values are reserved before the first draw',
+      reserved.every(v => rLate.askedValues.indexOf(v) !== -1));
+
+    const pinBlob = JSON.parse(JSON.stringify(SuperBoss.serialize(rPin)));
+    const rPinRestored = SuperBoss.deserialize(pinBlob, pinBank);
+    check('pin round-trips through serialize',
+      rPinRestored.pinned['p1-202-core'].length === 15);
   };
 })(typeof window !== 'undefined' ? window : globalThis);
