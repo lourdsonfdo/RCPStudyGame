@@ -5652,8 +5652,8 @@
    "section": "02",
    "quote": "For pediatrics, the specific order is a nasal cannula at ¼–2 L/min with a calibrated low-flow flowmeter ; in home care, because flows run 0.25–4.0 L/min , a low-flow metering device is likewise required.",
    "values": [
-    "-2l/min",
-    "0.25-4.0l/min"
+    "0.25-4.0l/min",
+    "2l/min"
    ],
    "cite": "Heuer Ch 6 — Gas Delivery, Metering, and Clinical Analyzing Devices, Table 6-9, Blending Systems, Air Compressors, Table 6-8 (PDF p292, p298-301), Heliox delivery (PDF p345), T4 Test-Taking Tips (PDF p372) · Heuer Ch 8 — Flow Calibration (PDF p415) · Heuer Ch 11 — Table 11-9 Clinical Alarms · RCP 105 Wk 1 Lctr 3 deck (Principles of Mech Vent), slide 93 · RCP 203 Lssn 2b deck, slides 10, 12, 29"
   },

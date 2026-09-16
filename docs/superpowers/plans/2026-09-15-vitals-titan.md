@@ -172,6 +172,16 @@ class TestValuePattern(unittest.TestCase):
     def test_range_without_sign_is_unaffected(self):
         self.assertIn('90-95%', self.values('Concentrators deliver 90\u201395% oxygen'))
 
+    def test_range_dash_after_a_fraction_is_not_a_minus(self):
+        got = self.values('nasal cannula at \u00bc\u20132 L/min')
+        self.assertIn('2l/min', got)
+        self.assertNotIn('-2l/min', got)
+
+    def test_spaced_range_is_not_read_as_a_negative(self):
+        got = self.values('14 \u2013 18 breaths/min')
+        self.assertIn('14-18breaths/min', got)
+        self.assertNotIn('-18breaths/min', got)
+
 
 if __name__ == '__main__':
     unittest.main()
@@ -221,7 +231,11 @@ UNITS = (r"(?:mL/cm\s?H[2₂]O|cm\s?H[2₂]O|cmH[2₂]O|mm\s?Hg|mmHg|mL/kg|mL|L/
 # NEGATIVE pressures (−60 cm H2O); dropping the sign would turn a correct card
 # into a question with a wrong answer, which is the exact failure this whole
 # pipeline exists to prevent.
-SIGN = r"[−–\-]?"
+# The lookbehind matters: in "¼–2 L/min" the dash is a RANGE separator whose
+# left operand (a vulgar fraction) this pattern cannot match. Without it the
+# dash is read as a minus and the upper bound becomes "-2 L/min", which is not
+# a real flow. A sign never directly follows a digit or a fraction.
+SIGN = r"(?<![\d¼½¾⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])[−–\-]?"
 NUM = r"\d+(?:\.\d+)?"
 RANGE = r"%s%s(?:\s*(?:[–—\-]|to)\s*%s%s)?" % (SIGN, NUM, SIGN, NUM)
 

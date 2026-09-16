@@ -32,7 +32,11 @@ UNITS = (r"(?:mL/cm\s?H[2₂]O|cm\s?H[2₂]O|cmH[2₂]O|mm\s?Hg|mmHg|mL/kg|mL|L/
 # NEGATIVE pressures (−60 cm H2O); dropping the sign would turn a correct card
 # into a question with a wrong answer, which is the exact failure this whole
 # pipeline exists to prevent.
-SIGN = r"[−–\-]?"
+# The lookbehind matters: in "¼–2 L/min" the dash is a RANGE separator whose
+# left operand (a vulgar fraction) this pattern cannot match. Without it the
+# dash is read as a minus and the upper bound becomes "-2 L/min", which is not
+# a real flow. A sign never directly follows a digit or a fraction.
+SIGN = r"(?<![\d¼½¾⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])[−–\-]?"
 NUM = r"\d+(?:\.\d+)?"
 RANGE = r"%s%s(?:\s*(?:[–—\-]|to)\s*%s%s)?" % (SIGN, NUM, SIGN, NUM)
 

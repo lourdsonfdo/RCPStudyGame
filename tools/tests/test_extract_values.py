@@ -89,6 +89,18 @@ class TestValuePattern(unittest.TestCase):
     def test_range_without_sign_is_unaffected(self):
         self.assertIn('90-95%', self.values('Concentrators deliver 90–95% oxygen'))
 
+    def test_range_dash_after_a_fraction_is_not_a_minus(self):
+        # "¼–2 L/min": the dash separates a range whose left operand is a
+        # fraction this pattern cannot match. It must not become "-2 L/min".
+        got = self.values('nasal cannula at ¼–2 L/min')
+        self.assertIn('2l/min', got)
+        self.assertNotIn('-2l/min', got)
+
+    def test_spaced_range_is_not_read_as_a_negative(self):
+        got = self.values('14 – 18 breaths/min')
+        self.assertIn('14-18breaths/min', got)
+        self.assertNotIn('-18breaths/min', got)
+
 
 if __name__ == '__main__':
     unittest.main()
