@@ -26,10 +26,142 @@ GAS = re.compile(r'cylinder|oxygen|gas|LOX|liquid|regulator|flowmeter|PISS|DISS|
                  r'bulk|manifold|blender|therapy device', re.I)
 # A bare '=' is not a calculation -- "Intimate space = 1 inch" is a definition.
 # Phase 4 needs a real operator or an explicit calculation word.
-CALC = re.compile(r'[×÷]|\bformula\b|\bcalculat|\bduration\b|\bfactor\b|'
-                  r'per kg|\bstep [1-9]\b', re.I)
+# Phase 4 is calculations, so it needs real arithmetic -- two numbers joined by
+# an operator, or an explicit calculation word. A bare '=' is not enough:
+# "Personal space = 1.5 to 4 feet" is a definition, not a computation.
+CALC = re.compile(
+    r'\d\s*[×÷]\s*\d|'                    # 1700 x 0.28
+    r'\d\s*[+\-\u2212]\s*\d+\s*=|'        # 220 - 70 =
+    r'=\s*\(?\s*\d+\s*[×÷+\-\u2212]|'     # = (1700 x ...
+    r'\bformula\b|\bcalculat|\bduration of flow\b|\bcylinder factor\b|'
+    r'\bworked example\b|\bper kg\b|\bstep [1-9]\b|\bratio\b', re.I)
 
 NUM_IN_VALUE = re.compile(r'\d+(?:,\d{3})*(?:\.\d+)?')
+
+
+# Scaffolding that belongs to the guide's prose, not to the question.
+ATTRIBUTION = re.compile(
+    r"(?:\U0001F9E0\s*)?(?:memory trick from the deck|Heuer'?s stated practice|"
+    r"Heuer'?s? (?:discontinuation )?criterion is|Ballpark checks?|"
+    r"the deck (?:says|gives|lists|adds)|per the deck|Heuer (?:says|adds|notes|defines)|"
+    r"What it is|Know All of Them|note the source disagreement)\s*[:\-—]?\s*",
+    re.I)
+
+CLAUSE_LEFT = ('—', ';', '(', '•', ')')
+CLAUSE_RIGHT = ('—', ';', ')', '•')
+
+MAX_BEFORE = 105     # characters of run-up the blank is allowed
+MAX_AFTER = 70       # characters kept after it
+
+
+# Inline citations are reference apparatus, not part of the question.
+CITATION = re.compile(r'\s*\((?:Ch\b|Chp|Chptr|PDF|Table|Box|Fig|App\b|slide|p\d)[^)]*\)?', re.I)
+TRAILING_CITE = re.compile(r'\s*\((?:Ch\b|Chp|PDF|Table|App\b)[^)]*$', re.I)
+
+
+def balance_parens(text):
+    """Drop a parenthesis the trim left stranded."""
+    while text.count('(') > text.count(')'):
+        cut = text.rfind('(')
+        text = text[:cut].rstrip(' ,;:')
+    while text.count(')') > text.count('('):
+        text = text.replace(')', '', 1)
+    return text
+
+
+# Reference apparatus that belongs to the guide, not to a question.
+SRC_ARTEFACT = re.compile(
+    r'RCP\s?\d{3}|slides?\s+\d|\bCh\s?\d+|Chp|Chptr|PDF|Table\s+\d|App\s+B|'
+    r'\bdeck\b|Heuer|Hess|Chang|lesson\s+\d', re.I)
+
+
+def looks_broken(stem):
+    """True when a stem cannot be read as a clean, self-contained question.
+
+    The guides write for reading, not for testing: sentences carry citations,
+    attributions and flattened table rows. Trimming rescues some of them and
+    manufactures nonsense out of others, so the trimmed result has to pass the
+    same bar a sentence would. There are far more candidates than a run needs,
+    so anything doubtful is dropped rather than patched.
+    """
+    body = stem.split('\u2014', 1)[-1]
+    text = body.replace('_____', ' ').strip()
+
+    if SRC_ARTEFACT.search(text):
+        return True                      # cites a source instead of asking
+    if body.count('(') != body.count(')'):
+        return True                      # the trim stranded a bracket
+    if len(re.findall(r'\d', text)) > 12:
+        return True                      # a row of figures, not a sentence
+    if re.search(r'[\u00b7\u2022]', text):
+        return True
+    # Three or more shouty words in a row is a table header, not a sentence.
+    if len(re.findall(r'\b[A-Z]{3,}\b', text)) >= 3:
+        return True
+    if len(text.split()) < 8:
+        return True                      # too little context to answer from
+    if re.search(r'\b(?:if|and|or|but|with|the|of|to|in|for|at|on)\s*[.]$', text, re.I):
+        return True                      # fragment left dangling by the trim
+    if re.search(r'wording trap|memory trick|source disagreement|both sources agree|'
+                 r'obviously cannot', text, re.I):
+        return True                      # commentary about the sources
+    return False
+
+
+def short_title(title):
+    """The topic, not the card's whole multi-part heading."""
+    head = re.split(r'\s[—:]\s|:\s', title)[0].strip()
+    head = re.sub(r'\s*,\s*(and\s+)?.*$', '', head) if len(head) > 46 else head
+    if len(head) > 46:
+        head = head[:46].rsplit(' ', 1)[0]
+    return head.strip(' ,:-—')
+
+
+def tighten(sentence):
+    """Cut a guide sentence down to the clause its blank belongs to.
+
+    The guide writes for reading, so a value sits inside a sentence that keeps
+    going long after it: qualifiers, cross-references, a second worked case.
+    None of that helps answer the question, and all of it has to be read first.
+    """
+    s = ATTRIBUTION.sub('', sentence)
+    s = re.sub(r'\s+', ' ', s).strip()
+    if '_____' not in s:
+        return None
+    i = s.index('_____')
+
+    left = s[:i]
+    if len(left) > MAX_BEFORE:
+        window = left[-MAX_BEFORE:]
+        cut = max(window.rfind(c) for c in CLAUSE_LEFT)
+        if cut == -1:
+            cut = window.find(' ')
+        left = window[cut + 1:]
+
+    right = s[i + 5:]
+    cuts = [right.find(c) for c in CLAUSE_RIGHT if right.find(c) != -1]
+    stop = min(cuts) if cuts else len(right)
+    stop = min(stop, MAX_AFTER)
+    if stop < len(right):
+        tail = right[:stop]
+        if ' ' in tail[MAX_AFTER - 25:] if len(tail) >= MAX_AFTER else False:
+            tail = tail.rsplit(' ', 1)[0]
+        right = tail
+    else:
+        right = right[:stop]
+
+    out = (left + '_____' + right).strip(' ,;:—-')
+    out = TRAILING_CITE.sub('', out)
+    out = CITATION.sub('', out)
+    out = balance_parens(out)
+    out = re.sub(r'\s+([.,;:])', r'\1', out)
+    out = re.sub(r'\(\s*\)', '', out).strip(' ,;:—-')
+    if not out or '_____' not in out:
+        return None
+    out = out[0].upper() + out[1:]
+    if not out.endswith(('.', '?')):
+        out += '.'
+    return None if looks_broken(out) else out
 
 
 def phase_for(rec):
@@ -94,10 +226,14 @@ def make_stem(quote, value, title):
     # unreadable. Drop those rather than trim them.
     if i > 190:
         return None, None
-    if len(stem) > 300:
-        cut = stem.rfind(' ', 0, 300)          # trim at a word boundary
-        stem = stem[:cut if cut > 200 else 300].rstrip(' ,;:') + ' ...'
-    return '%s — %s' % (title, stem), surface
+    stem = tighten(stem)
+    if not stem:
+        return None, None
+    # After tightening, a stem still needs enough around the blank to identify
+    # what is being asked.
+    if len(stem.replace('_____', '').strip()) < 28:
+        return None, None
+    return '%s — %s' % (short_title(title), stem), surface
 
 
 def perturb(value):
@@ -160,7 +296,10 @@ def caution(rec):
     return ' '.join(notes)
 
 
-def build(records, cards, limit_per_record=3):
+# Clean sentences are scarce, so take more blanks from each one: a sentence
+# listing pH / PaCO2 / HCO3 yields a good question per value, and the
+# engine's value dedup stops two of them landing in the same phase.
+def build(records, cards, limit_per_record=6):
     bank = []
     seq = {'202': 0, '203': 0}
     seen_keys = set()
