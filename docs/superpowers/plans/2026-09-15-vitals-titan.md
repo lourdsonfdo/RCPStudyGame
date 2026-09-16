@@ -520,10 +520,52 @@ def build_card_index(guides=None):
 
 
 def _squash(text):
-    """Comparison form: entity-free, lowercase, whitespace- and dash-normalised."""
+    """Comparison form: entity-free, lowercase, whitespace- and dash-normalised.
+
+    Must fold the same characters extract_values.normalize_value folds — the
+    202 guide's Unicode subscript two (cm H₂O) and the 203 guide's ASCII
+    cmH2O are the same value, and a question naturally authored in ASCII
+    must still match a card written with the subscript.
+    """
     t = html.unescape(text).lower()
     t = t.replace('—', '-').replace('–', '-').replace('−', '-')
+    t = t.replace('₂', '2')
     return re.sub(r'\s+', '', t)
+
+
+def _contains_value(card_text, value):
+    """Substring containment with numeric boundaries.
+
+    Plain `in` is not safe here. Once whitespace is squashed, "5l/min" sits
+    inside "45l/min", "60cmh2o" sits inside "-60cmh2o", and "0cmh2o" sits
+    inside both. All three are wrong answers that a naive check waves through
+    — the precise failure this gate exists to prevent.
+
+    A match counts only when it is not glued to an adjacent digit, is not the
+    tail of a decimal, and does not silently drop a leading minus the card has.
+    """
+    needle = _squash(value)
+    if not needle:
+        return False
+
+    start = 0
+    while True:
+        i = card_text.find(needle, start)
+        if i == -1:
+            return False
+        end = i + len(needle)
+        before = card_text[i - 1] if i > 0 else ''
+        before2 = card_text[i - 2] if i > 1 else ''
+        after = card_text[end] if end < len(card_text) else ''
+        after2 = card_text[end + 1] if end + 1 < len(card_text) else ''
+
+        lead_ok = not (before.isdigit()
+                       or (before == '.' and before2.isdigit())
+                       or (before == '-' and not needle.startswith('-')))
+        trail_ok = not (after.isdigit() or (after == '.' and after2.isdigit()))
+        if lead_ok and trail_ok:
+            return True
+        start = i + 1
 
 
 def check_question(q, cards):
@@ -538,7 +580,7 @@ def check_question(q, cards):
     card_text = _squash(card['text'])
 
     quote = q.get('srcQuote', '')
-    if not quote or _squash(quote) not in card_text:
+    if not quote or not _contains_value(card_text, quote):
         errors.append('%s: srcQuote not verbatim in %s' % (qid, q['srcItem']))
 
     choices = q.get('choices', [])
@@ -550,7 +592,7 @@ def check_question(q, cards):
     except (IndexError, KeyError, TypeError):
         return errors + ['%s: correct index out of range' % qid]
 
-    if _squash(answer) not in card_text:
+    if not _contains_value(card_text, answer):
         errors.append('%s: answer value not found in %s (%r)' % (qid, q['srcItem'], answer))
 
     # A distractor drawn from the same sentence is not wrong, it is a second
@@ -663,7 +705,7 @@ if __name__ == '__main__':
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `cd /Users/lourdsonfernando/RCPStudyGame && python3 -m unittest discover -s tools/tests -v`
-Expected: PASS, 22 tests OK (14 from Task 1 + 8 here)
+Expected: PASS, 32 tests OK (16 from Task 1 + 16 here: 8 gate checks, 1 subscript regression, 7 value-boundary regressions)
 
 - [ ] **Step 5: Commit**
 
