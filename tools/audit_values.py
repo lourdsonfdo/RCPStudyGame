@@ -66,7 +66,7 @@ def main():
                 fail['value_not_in_card'].append((r['key'], v))
 
             core = v.lstrip('<>≤≥')
-            digits = re.match(r'-?(\d+(?:\.\d+)?)', core)
+            digits = re.match(r'-?((?:\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?))', core)
             if not digits:
                 continue
             first = digits.group(1)
@@ -84,14 +84,14 @@ def main():
                 fail['sign_dropped'].append((r['key'], v, r['quote'][:70]))
 
             # Range operands must appear in the source in the same order.
-            rng = re.match(r'(-?\d+(?:\.\d+)?)-(-?\d+(?:\.\d+)?)', core)
+            rng = re.match(r'(-?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)-(-?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)', core)
             if rng:
                 lo, hi = rng.group(1).lstrip('-'), rng.group(2).lstrip('-')
                 if not re.search(re.escape(lo) + r'\D{0,6}' + re.escape(hi), r['quote']):
                     fail['range_order'].append((r['key'], v, r['quote'][:70]))
 
             # The unit must sit next to the number in the source, not elsewhere.
-            unit = re.sub(r'^[<>≤≥]?-?[\d.]+(?:-[-\d.]+)?', '', core)
+            unit = re.sub(r'^[<>≤≥]?-?[\d.,]+(?:-[-\d.,]+)?', '', core)
             if unit:
                 pat = re.escape(first) + r'\s*(?:[–—-]\s*[\d.]+\s*)?' + \
                       re.escape(unit).replace('2', '[2₂]').replace('\\ ', r'\s?')

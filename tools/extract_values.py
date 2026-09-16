@@ -19,14 +19,33 @@ CARD_RE = re.compile(
 H3_RE = re.compile(r'<h3>(.*?)</h3>', re.S)
 SRC_RE = re.compile(r'<div class="src">(.*?)</div>', re.S)
 
-# Unit alternation is LONGEST-FIRST on purpose: "mL/cm H2O" must win over
-# "mL", and "cm H2O" over a bare number. The 202 guide writes the subscript as
-# Unicode U+2082 (cm H₂O) and the 203 guide writes ASCII (cmH2O), so both forms
-# are accepted here and folded together by normalize_value.
-UNITS = (r"(?:mL/cm\s?H[2₂]O|cm\s?H[2₂]O|cmH[2₂]O|mm\s?Hg|mmHg|mL/kg|mL|L/min|"
-         r"LPM|mg/kg|mg|mcg|g/dL|mEq/L|mmol/L|kPa|%|°C|°F|Fr\b|psig|psi|kg|lb|"
-         r"sec(?:onds)?|min(?:utes)?|hours?|hrs?|days?|weeks?|beats?/min|"
-         r"breaths?/min|bpm|/min|joules?|Hz)")
+# Unit alternation is LONGEST-FIRST within each family, because Python's `|`
+# takes the first branch that matches: with "mL" ahead of "mL/dL", the value
+# "20 mL/dL" silently truncates to "20 mL" and the audit cannot see it, since
+# the truncated unit is still adjacent to the number.
+#
+# The 202 guide writes the subscript as Unicode U+2082 (cm H2O) and the 203
+# guide writes ASCII, so both forms appear here and normalize_value folds them.
+UNITS = (
+    # compound pressure / compliance / resistance
+    r"(?:cm\s?H[2₂]O/L/s(?:ec)?|mL/cm\s?H[2₂]O|L/cm\s?H[2₂]O|"
+    r"cm\s?H[2₂]O|cmH[2₂]O|"
+    # pressure
+    r"mm\s?Hg|mmHg|torr|kPa|psig|psi|atm|bar\b|"
+    # volume / flow
+    r"mL/kg/min|mL/beat|mL/kg|mL/dL|mL/min|mL|L/min|L/sec|L/s\b|LPM|cc\b|L\b|"
+    # dose / concentration
+    r"mg/kg|mg/dL|mg|mcg|µg|μg|ng/mL|pg/mL|g/dL|g\b|"
+    r"mEq/L|mEq|mmol/L|mmol|mOsm|ppm|kcal|"
+    # rate
+    r"beats?/min|breaths?/min|bpm|/min|"
+    # time
+    r"sec(?:onds)?|min(?:utes)?|hours?|hrs?|h\b|days?|weeks?|wk\b|"
+    r"months?|mo\b|years?|yr\b|"
+    # size / misc
+    r"µm|μm|micron(?:s)?|Fr\b|French|ft\b|feet|foot|inch(?:es)?|"
+    r"°C|°F|%|joules?|J\b|Hz|dB)"
+)
 
 # A leading sign is part of the value, not decoration. NIF/MIP normals are
 # NEGATIVE pressures (−60 cm H2O); dropping the sign would turn a correct card
@@ -37,7 +56,10 @@ UNITS = (r"(?:mL/cm\s?H[2₂]O|cm\s?H[2₂]O|cmH[2₂]O|mm\s?Hg|mmHg|mL/kg|mL|L/
 # dash is read as a minus and the upper bound becomes "-2 L/min", which is not
 # a real flow. A sign never directly follows a digit or a fraction.
 SIGN = r"(?<![\d¼½¾⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞])[−–\-]?"
-NUM = r"\d+(?:\.\d+)?"
+# Comma grouping must be part of the number, not a place to split it. Without
+# this, "1,000 ft" extracts as "000 ft" and "9,000 mL/min" as "000 mL/min" --
+# values that are simply wrong. 18 comma-grouped numbers appear in the guides.
+NUM = r"(?:\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)"
 RANGE = r"%s%s(?:\s*(?:[–—\-]|to)\s*%s%s)?" % (SIGN, NUM, SIGN, NUM)
 
 # Either a comparison (unit optional — ">20% TBSA", "< −40") or a plain value
