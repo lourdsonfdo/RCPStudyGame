@@ -57,7 +57,8 @@ Parses both Tier 3 HTMLs into `tools/values.json`. One record per value-bearing 
 ```
 
 Item cards match `<article class="card( wide)?" id="sNN-M">`. The `.src` div supplies `cite`.
-Cards that continue an item (same item number, second card) merge into one record set.
+Item ids are unique — 155 in 202, 91 in 203, zero duplicates — so one card is exactly one item and
+no cross-card merging is needed.
 
 ### Authoring
 
