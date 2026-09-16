@@ -187,7 +187,9 @@ App.registerScreen('home', ({ root, state }) => {
     el.addEventListener('click', () => {
       const dest = el.dataset.go;
       if (dest === 'daily') {
-        App.goto('battle', { course: state.dailyChallenge.course, bossId: state.dailyChallenge.bossId, isDaily: true });
+        const saved = state.battleRun;
+        const resume = !!(saved && saved.isDaily && saved.bossId === state.dailyChallenge.bossId);
+        App.goto('battle', { course: state.dailyChallenge.course, bossId: state.dailyChallenge.bossId, isDaily: true, resume });
       } else if (dest === 'superboss-briefing') {
         App.goto('superboss-briefing', {});
       } else if (dest === 'course-mode') {

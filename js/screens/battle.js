@@ -19,20 +19,44 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     return;
   }
 
-  // Initialize session (stored on closure).
-  // Passing `state` lets Battle.start bias the pool toward weak questions.
-  const session = Battle.start({
-    boss, playerMaxHp: state.maxHp,
-    equipped: state.equipped, isDaily: !!ctx.isDaily,
-    questionPool, state,
-  });
+  // A saved fight for THIS boss can be picked up where it was left. The
+  // session is a plain object, so it round-trips through localStorage as-is:
+  // the drawn questions keep their shuffled choices, and the items already
+  // spent stay spent.
+  const saved = state.battleRun;
+  const resuming = !!(ctx.resume && saved && saved.bossId === boss.id);
 
-  // Remove equipped items from inventory now (they're "in use")
-  if (!ctx.isDaily) {
+  const session = resuming
+    ? saved.session
+    : Battle.start({
+        boss, playerMaxHp: state.maxHp,
+        equipped: state.equipped, isDaily: !!ctx.isDaily,
+        questionPool, state,
+      });
+
+  // Remove equipped items from inventory now (they're "in use").
+  // On a resume they were consumed when the fight first started.
+  if (!resuming && !ctx.isDaily) {
     session.items.forEach(k => State.consumeItem(state, k));
     State.clearEquipped(state);
     State.save(state);
   }
+
+  function persistFight() {
+    state.battleRun = session.outcome
+      ? null
+      : { bossId: boss.id, course: boss.course, isDaily: !!session.isDaily, session: session };
+    State.save(state);
+  }
+
+  /** Leave the fight, keeping the exact spot. */
+  function leaveFight() {
+    persistFight();
+    if (session.isDaily) App.goto('home', {}, { clearHistory: true });
+    else App.goto('prep-camp', { course: boss.course, bossId: boss.id }, { clearHistory: true });
+  }
+
+  persistFight();   // so leaving before the first answer still resumes
 
   let hintRemoved = [];
 
@@ -48,8 +72,8 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
 
     root.innerHTML = `
       <div class="topbar">
+        <button class="back-btn" data-leave>BACK</button>
         <span class="mode-tag">⚡ COMBAT${session.isDaily ? ' · DAILY' : ''}</span>
-        <span class="course-tag">${boss.course.toUpperCase()}</span>
         <span class="chapter-tag">${Math.min(prog.idx+1, prog.total)}/${prog.total}</span>
       </div>
 
@@ -130,6 +154,9 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     root.querySelectorAll('[data-use]').forEach(btn => {
       btn.addEventListener('click', () => useItem(btn.dataset.use));
     });
+
+    const leaveBtn = root.querySelector('[data-leave]');
+    if (leaveBtn) leaveBtn.addEventListener('click', leaveFight);
   }
 
   function handleAnswer(idx, btn) {
@@ -198,6 +225,8 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
 
     root.querySelectorAll('.ans-btn').forEach(b => b.classList.add('disabled-vis'));
 
+    persistFight();   // keep the saved spot current after every answer
+
     // Player-controlled advance — reveal NEXT button after the FX wraps so the
     // explanation isn't yanked away mid-read.
     const nextBtn = document.createElement('button');
@@ -222,6 +251,7 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
   }
 
   function endBattle() {
+    state.battleRun = null;      // the fight is over; nothing left to resume
     Battle.computeRewards(session);
 
     // Award rewards — computeRewards already applied the doubleXpTome multiplier, so don't double again here

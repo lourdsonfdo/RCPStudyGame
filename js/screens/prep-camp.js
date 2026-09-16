@@ -86,7 +86,17 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
 
       <div class="spacer"></div>
 
-      <button class="btn btn-block btn-primary" data-go="fight">⚔ ENGAGE BOSS</button>
+      ${(() => {
+        // A fight left mid-way through can be picked up rather than restarted.
+        const s = state.battleRun;
+        if (!s || s.bossId !== ctx.bossId || s.isDaily) return '';
+        const at = Math.min(s.session.qIndex + 1, s.session.questions.length);
+        return `<button class="btn btn-block btn-primary" data-go="resume">
+          ▶ RESUME FIGHT — QUERY ${at}/${s.session.questions.length}
+        </button>`;
+      })()}
+
+      <button class="btn btn-block ${state.battleRun && state.battleRun.bossId === ctx.bossId ? '' : 'btn-primary'}" data-go="fight">⚔ ENGAGE BOSS</button>
     `;
 
     // Animated background still applies
@@ -98,7 +108,15 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
       btn.addEventListener('click', () => {
         const d = btn.dataset.go;
         if (d === 'training') App.goto('training', { course: ctx.course, bossId: ctx.bossId });
-        else if (d === 'fight') App.goto('battle', { course: ctx.course, bossId: ctx.bossId });
+        else if (d === 'resume') App.goto('battle', { course: ctx.course, bossId: ctx.bossId, resume: true });
+        else if (d === 'fight') {
+          // Starting fresh abandons whatever was saved for this boss.
+          if (state.battleRun && state.battleRun.bossId === ctx.bossId) {
+            state.battleRun = null;
+            State.save(state);
+          }
+          App.goto('battle', { course: ctx.course, bossId: ctx.bossId });
+        }
         else { panel = d; render(); }
       });
     });
