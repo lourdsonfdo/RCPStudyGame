@@ -3,7 +3,7 @@
    Cache-first strategy: game is fully playable offline after
    the first load.
    ============================================================ */
-const CACHE = 'rcp-study-v6-titan';
+const CACHE = 'rcp-study-v7-titan-back';
 
 const PRECACHE = [
   '/RCPStudyGame/',
