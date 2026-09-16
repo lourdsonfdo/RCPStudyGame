@@ -97,5 +97,42 @@ class TestVerifyValuesUnicodeSubscript(unittest.TestCase):
         self.assertEqual(vv.check_question(GOOD_202, self.cards), [])
 
 
+class TestValueBoundaries(unittest.TestCase):
+    """A wrong answer must not pass because it is a substring of a right one.
+
+    Squashing whitespace makes '5l/min' a substring of '45l/min' and
+    '60cmh2o' a substring of '-60cmh2o'. Both are wrong answers, and a gate
+    that accepts them is worse than no gate, because it certifies them.
+    """
+
+    def setUp(self):
+        self.card = vv._squash(
+            'Deliver oxygen at 45 L/min. Plateau \u2212 60 cmH2O. '
+            'Range 90\u201395%. Dose 0.5 mg. pH 7.25.')
+
+    def test_exact_value_is_found(self):
+        self.assertTrue(vv._contains_value(self.card, '45 L/min'))
+
+    def test_tail_substring_of_a_larger_number_is_rejected(self):
+        self.assertFalse(vv._contains_value(self.card, '5 L/min'))
+
+    def test_dropping_a_leading_minus_is_rejected(self):
+        self.assertTrue(vv._contains_value(self.card, '-60 cmH2O'))
+        self.assertFalse(vv._contains_value(self.card, '60 cmH2O'))
+
+    def test_zero_is_not_found_inside_a_larger_value(self):
+        self.assertFalse(vv._contains_value(self.card, '0 cmH2O'))
+
+    def test_range_terminated_by_a_full_stop_is_found(self):
+        self.assertTrue(vv._contains_value(self.card, '90-95%'))
+
+    def test_range_operand_alone_is_rejected(self):
+        self.assertFalse(vv._contains_value(self.card, '95%'))
+
+    def test_decimal_is_matched_whole(self):
+        self.assertTrue(vv._contains_value(self.card, '0.5 mg'))
+        self.assertFalse(vv._contains_value(self.card, '5 mg'))
+
+
 if __name__ == '__main__':
     unittest.main()

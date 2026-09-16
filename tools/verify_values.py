@@ -49,6 +49,41 @@ def _squash(text):
     return re.sub(r'\s+', '', t)
 
 
+def _contains_value(card_text, value):
+    """Substring containment with numeric boundaries.
+
+    Plain `in` is not safe here. Once whitespace is squashed, "5l/min" sits
+    inside "45l/min", "60cmh2o" sits inside "-60cmh2o", and "0cmh2o" sits
+    inside both. All three are wrong answers that a naive check waves through
+    — the precise failure this gate exists to prevent.
+
+    A match counts only when it is not glued to an adjacent digit, is not the
+    tail of a decimal, and does not silently drop a leading minus the card has.
+    """
+    needle = _squash(value)
+    if not needle:
+        return False
+
+    start = 0
+    while True:
+        i = card_text.find(needle, start)
+        if i == -1:
+            return False
+        end = i + len(needle)
+        before = card_text[i - 1] if i > 0 else ''
+        before2 = card_text[i - 2] if i > 1 else ''
+        after = card_text[end] if end < len(card_text) else ''
+        after2 = card_text[end + 1] if end + 1 < len(card_text) else ''
+
+        lead_ok = not (before.isdigit()
+                       or (before == '.' and before2.isdigit())
+                       or (before == '-' and not needle.startswith('-')))
+        trail_ok = not (after.isdigit() or (after == '.' and after2.isdigit()))
+        if lead_ok and trail_ok:
+            return True
+        start = i + 1
+
+
 def check_question(q, cards):
     """Return a list of error strings for one question. Empty list = pass."""
     errors = []
@@ -61,7 +96,7 @@ def check_question(q, cards):
     card_text = _squash(card['text'])
 
     quote = q.get('srcQuote', '')
-    if not quote or _squash(quote) not in card_text:
+    if not quote or not _contains_value(card_text, quote):
         errors.append('%s: srcQuote not verbatim in %s' % (qid, q['srcItem']))
 
     choices = q.get('choices', [])
@@ -73,7 +108,7 @@ def check_question(q, cards):
     except (IndexError, KeyError, TypeError):
         return errors + ['%s: correct index out of range' % qid]
 
-    if _squash(answer) not in card_text:
+    if not _contains_value(card_text, answer):
         errors.append('%s: answer value not found in %s (%r)' % (qid, q['srcItem'], answer))
 
     # A distractor drawn from the same sentence is not wrong, it is a second
