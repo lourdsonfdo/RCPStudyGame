@@ -126,8 +126,29 @@ class TestValueBoundaries(unittest.TestCase):
     def test_range_terminated_by_a_full_stop_is_found(self):
         self.assertTrue(vv._contains_value(self.card, '90-95%'))
 
-    def test_range_operand_alone_is_rejected(self):
-        self.assertFalse(vv._contains_value(self.card, '95%'))
+    def test_range_operand_alone_is_accepted(self):
+        # '90-95%' genuinely states 95% as its upper bound, so a question
+        # asking for the bound rather than the span is properly sourced.
+        # Only digit-glued substrings and dropped signs are unsafe.
+        self.assertTrue(vv._contains_value(self.card, '95%'))
+        self.assertFalse(vv._contains_value(self.card, '5%'))
+
+    def test_em_dash_punctuation_is_not_a_minus(self):
+        card = vv._squash('Renal compensation is slow \u2014 3 to 5 days minimum.')
+        self.assertTrue(vv._contains_value(card, '3 to 5 days'))
+
+    def test_chemical_charge_is_not_a_minus(self):
+        card = vv._squash('pH 7.40 / PaCO2 40 mm Hg / HCO3\u2212 24 mEq/L.')
+        self.assertTrue(vv._contains_value(card, '24 mEq/L'))
+
+    def test_subscript_does_not_glue_to_the_next_value(self):
+        card = vv._squash('SIMV 10, VT 450, FiO\u2082 30%, PS 8, PEEP +5.')
+        self.assertTrue(vv._contains_value(card, '30%'))
+
+    def test_adjacent_percentages_do_not_block_each_other(self):
+        card = vv._squash("The 3 V's: 7% 38% 55% verbal vocal visual")
+        self.assertTrue(vv._contains_value(card, '38%'))
+        self.assertTrue(vv._contains_value(card, '7%'))
 
     def test_decimal_is_matched_whole(self):
         self.assertTrue(vv._contains_value(self.card, '0.5 mg'))

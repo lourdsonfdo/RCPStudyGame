@@ -35,53 +35,88 @@ def build_card_index(guides=None):
     return index
 
 
-def _squash(text):
-    """Comparison form: entity-free, lowercase, whitespace- and dash-normalised.
+FRACTIONS = '¼½¾⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞'
 
-    Must fold the same characters extract_values.normalize_value folds — the
-    202 guide's Unicode subscript two (cm H₂O) and the 203 guide's ASCII
-    cmH2O are the same value, and a question naturally authored in ASCII
-    must still match a card written with the subscript.
+
+def _squash(text):
+    """Comparison form: entity-free, lowercase, dash- and subscript-normalised.
+
+    The guides use similar-looking dashes for four different jobs, and folding
+    them together destroys the distinction that decides whether a number is
+    negative. Measured across both guides:
+
+      U+2212 attached to a token   a chemical charge     HCO3-          -> dropped
+      U+2212 otherwise             a true negative       "- 60 cm H2O"  -> minus
+      U+2014 between digits        a range (4 cases)     "90-95%"       -> range
+      U+2014 otherwise             punctuation (22)      "slow - 3 days"-> dropped
+      U+2013 after a digit         a range (904 cases)   "80-100 torr"  -> range
+      U+2013 otherwise             a negative (1 card)   "-20 to -25"   -> minus
+
+    Whitespace collapses to a SINGLE SPACE, never removed: removing it glues an
+    analyte's subscript to the value after it, so "FiO2 30%" becomes "fio230%"
+    and 30% reads as the tail of a larger number.
     """
     t = html.unescape(text).lower()
-    t = t.replace('—', '-').replace('–', '-').replace('−', '-')
     t = t.replace('₂', '2')
-    return re.sub(r'\s+', '', t)
+    t = re.sub(r'\s+', ' ', t).strip()
+
+    # A minus welded to the token before it is a charge (HCO3-, Cl-), not a sign.
+    t = re.sub(r'(?<=[a-z0-9])−', '', t)
+    t = t.replace('−', '-')
+
+    # Em dash is a range only when it sits between two numbers.
+    t = re.sub(r'(?<=\d)\s?—\s?(?=\d)', '–', t)
+    t = t.replace('—', ' ')
+
+    # En dash is a range when a number (or a fraction) precedes it, else a sign.
+    t = re.sub(r'(?<![' + FRACTIONS + r'\d])(?<![' + FRACTIONS + r'\d] )–(?=\s?\d)',
+               '-', t)
+
+    t = re.sub(r'\s+', ' ', t).strip()
+    return re.sub(r'-\s+(?=\d)', '-', t)
+
+
+def _value_pattern(value):
+    """Regex matching `value` in squashed card text, with numeric boundaries.
+
+    Spacing inside a value is flexible ("55-80mmhg" matches "55 - 80 mm Hg")
+    but never between two digits, so "45" can never be read as "4 5". A hyphen
+    in the value matches either a hyphen or an en dash, since a range may be
+    written with either.
+
+    The boundaries are the safety property. Plain containment accepts "5 L/min"
+    inside "45 L/min" and "60 cmH2O" inside "-60 cmH2O" -- wrong answers a
+    naive gate would certify as sourced. Guards apply only to ends that are
+    actually numeric: a value ending in a unit ("38%") is already terminated,
+    so a digit after it begins the next value.
+
+    A range operand on its own ("95%" from "90-95%") IS accepted: it is a real
+    value the card states, just the bound rather than the span.
+    """
+    chars = [ch for ch in _squash(value) if not ch.isspace()]
+    if not chars:
+        return None
+
+    parts = []
+    for i, ch in enumerate(chars):
+        parts.append('[-\u2013]' if ch == '-' else re.escape(ch))
+        if i + 1 < len(chars) and not (ch.isdigit() and chars[i + 1].isdigit()):
+            parts.append(r'\s*')
+
+    lead = ''
+    if chars[0].isdigit() or chars[0] in '-.':
+        lead = r'(?<!\d)(?<!\d\.)'
+        if chars[0] != '-':
+            lead += r'(?<!-)'      # never let a value shed a minus the card has
+    trail = r'(?!\d)(?!\.\d)' if (chars[-1].isdigit() or chars[-1] == '.') else ''
+
+    return re.compile(lead + ''.join(parts) + trail)
 
 
 def _contains_value(card_text, value):
-    """Substring containment with numeric boundaries.
-
-    Plain `in` is not safe here. Once whitespace is squashed, "5l/min" sits
-    inside "45l/min", "60cmh2o" sits inside "-60cmh2o", and "0cmh2o" sits
-    inside both. All three are wrong answers that a naive check waves through
-    — the precise failure this gate exists to prevent.
-
-    A match counts only when it is not glued to an adjacent digit, is not the
-    tail of a decimal, and does not silently drop a leading minus the card has.
-    """
-    needle = _squash(value)
-    if not needle:
-        return False
-
-    start = 0
-    while True:
-        i = card_text.find(needle, start)
-        if i == -1:
-            return False
-        end = i + len(needle)
-        before = card_text[i - 1] if i > 0 else ''
-        before2 = card_text[i - 2] if i > 1 else ''
-        after = card_text[end] if end < len(card_text) else ''
-        after2 = card_text[end + 1] if end + 1 < len(card_text) else ''
-
-        lead_ok = not (before.isdigit()
-                       or (before == '.' and before2.isdigit())
-                       or (before == '-' and not needle.startswith('-')))
-        trail_ok = not (after.isdigit() or (after == '.' and after2.isdigit()))
-        if lead_ok and trail_ok:
-            return True
-        start = i + 1
+    """True when `value` occurs in already-squashed `card_text` as a whole value."""
+    pattern = _value_pattern(value)
+    return bool(pattern and pattern.search(card_text))
 
 
 def check_question(q, cards):
