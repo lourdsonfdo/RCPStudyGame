@@ -116,13 +116,97 @@
 
   global.SuperBoss = {
     QUESTIONS_PER_PHASE, PHASE_GATE, BAR_HP, INTER_PHASE_HEAL, PHASES,
-    startRun, drawPhase,
+    startRun, drawPhase, drawFinalPhase, valueKeyOf,
   };
 
-  // Defined in Task 4.
+  /**
+   * Draw one phase's questions.
+   *
+   * Phases 1-4 draw ONLY from questions whose id AND whose tested value have
+   * not been seen this run. Phase 5 is handled separately (see
+   * drawFinalPhase) because it deliberately revisits misses.
+   *
+   * Throws when the unseen pool cannot fill the phase: that means the bank is
+   * too thin for this phase, which is a content bug and must be visible.
+   */
   function drawPhase(run, phaseIndex) {
     const phase = PHASES[phaseIndex];
-    const pool = run.bank.filter(q => q.phase === phase.n);
-    return shuffle(pool).slice(0, QUESTIONS_PER_PHASE);
+
+    // A phase that was failed last attempt replays its own set, reshuffled.
+    // These questions are SUPPOSED to repeat, so the unseen filters are
+    // deliberately bypassed here.
+    const pin = (run.pinned || {})[phase.id];
+    if (pin && pin.length) {
+      const byId = new Map(run.bank.map(q => [q.id, q]));
+      const restored = pin.map(id => byId.get(id)).filter(Boolean);
+      if (restored.length >= QUESTIONS_PER_PHASE) {
+        return shuffle(restored).slice(0, QUESTIONS_PER_PHASE).map(shuffleChoices);
+      }
+      // Bank changed under the pin — fall through and draw fresh.
+    }
+
+    if (phase.id === 'p5-final') return drawFinalPhase(run);
+
+    const asked = new Set(run.asked || []);
+    const askedValues = new Set(run.askedValues || []);
+    const pool = run.bank.filter(q =>
+      q.phase === phase.n && !asked.has(q.id) && !askedValues.has(valueKeyOf(q)));
+
+    if (pool.length < QUESTIONS_PER_PHASE) {
+      throw new Error(
+        'SuperBoss: phase ' + phase.id + ' has only ' + pool.length +
+        ' unseen questions, needs ' + QUESTIONS_PER_PHASE +
+        '. Bank is too thin — fix the content, do not repeat questions.');
+    }
+
+    // Within the draw itself, never take two questions on the same value.
+    const picked = [];
+    const takenValues = new Set();
+    shuffle(pool).forEach(q => {
+      if (picked.length >= QUESTIONS_PER_PHASE) return;
+      const vk = valueKeyOf(q);
+      if (takenValues.has(vk)) return;
+      takenValues.add(vk);
+      picked.push(q);
+    });
+
+    if (picked.length < QUESTIONS_PER_PHASE) {
+      throw new Error(
+        'SuperBoss: phase ' + phase.id + ' has only ' + picked.length +
+        ' distinct values available, needs ' + QUESTIONS_PER_PHASE +
+        '. Bank has too many duplicate values — fix the content.');
+    }
+    return picked.map(shuffleChoices);
+  }
+
+  /**
+   * The final phase is the ONLY place a question may come back, and only on
+   * purpose: it replays what this run got wrong, then tops up with questions
+   * the run has not seen yet.
+   */
+  function drawFinalPhase(run) {
+    const byId = new Map(run.bank.map(q => [q.id, q]));
+    const missed = shuffle((run.missed || []).filter(id => byId.has(id)))
+      .map(id => byId.get(id));
+
+    if (missed.length >= QUESTIONS_PER_PHASE) {
+      return missed.slice(0, QUESTIONS_PER_PHASE).map(shuffleChoices);
+    }
+
+    const taken = new Set(missed.map(q => q.id));
+    const asked = new Set(run.asked || []);
+    const unseen = shuffle(run.bank.filter(q => !asked.has(q.id) && !taken.has(q.id)));
+
+    let picked = missed.concat(unseen.slice(0, QUESTIONS_PER_PHASE - missed.length));
+
+    // Last resort: a run that answered almost everything correctly can exhaust
+    // the unseen pool. Top up from already-asked questions rather than
+    // shipping a short phase — this is the one sanctioned repeat.
+    if (picked.length < QUESTIONS_PER_PHASE) {
+      const used = new Set(picked.map(q => q.id));
+      const rest = shuffle(run.bank.filter(q => !used.has(q.id)));
+      picked = picked.concat(rest.slice(0, QUESTIONS_PER_PHASE - picked.length));
+    }
+    return picked.map(shuffleChoices);
   }
 })(typeof window !== 'undefined' ? window : globalThis);
