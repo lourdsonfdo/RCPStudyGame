@@ -137,6 +137,29 @@ def perturb(value):
     return out
 
 
+# The guides mark cards where the sources disagree, and cards whose material
+# is absent from the lecture decks. A question built on either is still
+# traceable, but the player deserves to know before they memorise it.
+WARN_NOTE = ('\u26a0 Sources disagree on this card \u2014 verify this number in the guide '
+             'before trusting it.')
+GAP_NOTE = ('\u24d8 Not covered by the lecture decks \u2014 background from the textbook, '
+            'not necessarily testable.')
+
+
+def caution(rec):
+    """The warning a flagged card earns, or '' when the card is clean.
+
+    Kept out of `explanation` so the review screen can render it as its own
+    line: a caution buried at the end of a quotation is a caution nobody reads.
+    """
+    notes = []
+    if 'warn' in rec['flags']:
+        notes.append(WARN_NOTE)
+    if 'gap' in rec['flags']:
+        notes.append(GAP_NOTE)
+    return ' '.join(notes)
+
+
 def build(records, cards, limit_per_record=3):
     bank = []
     seq = {'202': 0, '203': 0}
@@ -191,6 +214,7 @@ def build(records, cards, limit_per_record=3):
                 'choices': choices,
                 'correct': 0,
                 'explanation': rec['quote'][:280],
+                'caution': caution(rec),
                 'srcItem': card_key,
                 'srcQuote': rec['quote'],
                 'srcCite': rec['cite'],

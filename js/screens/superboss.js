@@ -234,6 +234,7 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
         topic: a.question.topic,
         srcItem: a.srcItem,
         srcCite: a.srcCite,
+        caution: a.question.caution,
       }));
       App.goto('review-answers', { answers, returnTo: 'home', returnCtx: {} });
     });
