@@ -9,35 +9,64 @@
   }
 
   const sprites = {
-    // VITALS TITAN — a monolith of stacked readouts; the core eye pulses
+    // VITALS TITAN — numeric wraith: a bone skull in a tattered shroud,
+    // ringed by value-glyphs that drift between frames while the sockets dim.
     'vitals-titan': pair(
-      `<svg viewBox="0 0 16 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
-        <rect x="4" y="0" width="8" height="2" fill="#7a6a58"/>
-        <rect x="3" y="2" width="10" height="9" fill="#9a8a74"/>
-        <rect x="4" y="3" width="8" height="1" fill="#6a5c4c"/>
-        <rect x="4" y="5" width="8" height="1" fill="#6a5c4c"/>
-        <rect x="4" y="9" width="8" height="1" fill="#6a5c4c"/>
-        <rect x="6" y="6" width="4" height="3" fill="#c0392b"/>
-        <rect x="7" y="7" width="2" height="1" fill="#ffd9d0"/>
-        <rect x="2" y="11" width="12" height="3" fill="#7a6a58"/>
-        <rect x="4" y="14" width="3" height="2" fill="#5a4c3c"/>
-        <rect x="9" y="14" width="3" height="2" fill="#5a4c3c"/>
-        <rect x="0" y="4" width="2" height="1" fill="#c0392baa"/>
-        <rect x="14" y="8" width="2" height="1" fill="#c0392baa"/>
+      `<svg viewBox="0 0 24 24" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+        <rect x="7" y="2" width="10" height="9" fill="#e8e0cc"/>
+        <rect x="6" y="4" width="1" height="5" fill="#e8e0cc"/>
+        <rect x="17" y="4" width="1" height="5" fill="#e8e0cc"/>
+        <rect x="8" y="1" width="8" height="1" fill="#f4eedd"/>
+        <rect x="8" y="5" width="3" height="3" fill="#d04040"/>
+        <rect x="13" y="5" width="3" height="3" fill="#d04040"/>
+        <rect x="9" y="6" width="1" height="1" fill="#ff9a8a"/>
+        <rect x="14" y="6" width="1" height="1" fill="#ff9a8a"/>
+        <rect x="10" y="8" width="1" height="2" fill="#1a1410"/>
+        <rect x="13" y="8" width="1" height="2" fill="#1a1410"/>
+        <rect x="8" y="11" width="8" height="1" fill="#d8cfb8"/>
+        <rect x="9" y="12" width="1" height="2" fill="#e8e0cc"/>
+        <rect x="11" y="12" width="1" height="2" fill="#e8e0cc"/>
+        <rect x="13" y="12" width="1" height="2" fill="#e8e0cc"/>
+        <rect x="7" y="14" width="10" height="2" fill="#cfc4aa"/>
+        <rect x="5" y="16" width="14" height="4" fill="#6e6250"/>
+        <rect x="4" y="18" width="2" height="3" fill="#6e6250"/>
+        <rect x="18" y="18" width="2" height="3" fill="#6e6250"/>
+        <rect x="6" y="20" width="3" height="3" fill="#5a5040"/>
+        <rect x="11" y="20" width="3" height="4" fill="#5a5040"/>
+        <rect x="16" y="20" width="3" height="3" fill="#5a5040"/>
+        <rect x="2" y="5" width="1" height="1" fill="#f0c040"/>
+        <rect x="3" y="9" width="1" height="1" fill="#58b0c8"/>
+        <rect x="20" y="7" width="1" height="1" fill="#f0c040"/>
+        <rect x="21" y="12" width="1" height="1" fill="#d04040"/>
+        <rect x="1" y="14" width="1" height="1" fill="#58b0c8"/>
       </svg>`,
-      `<svg viewBox="0 0 16 16" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
-        <rect x="4" y="0" width="8" height="2" fill="#7a6a58"/>
-        <rect x="3" y="2" width="10" height="9" fill="#9a8a74"/>
-        <rect x="4" y="3" width="8" height="1" fill="#6a5c4c"/>
-        <rect x="4" y="5" width="8" height="1" fill="#6a5c4c"/>
-        <rect x="4" y="9" width="8" height="1" fill="#6a5c4c"/>
-        <rect x="6" y="6" width="4" height="3" fill="#e05545"/>
-        <rect x="6" y="7" width="4" height="1" fill="#ffd9d0"/>
-        <rect x="2" y="11" width="12" height="3" fill="#7a6a58"/>
-        <rect x="4" y="14" width="3" height="2" fill="#5a4c3c"/>
-        <rect x="9" y="14" width="3" height="2" fill="#5a4c3c"/>
-        <rect x="0" y="8" width="2" height="1" fill="#c0392baa"/>
-        <rect x="14" y="4" width="2" height="1" fill="#c0392baa"/>
+      `<svg viewBox="0 0 24 24" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+        <rect x="7" y="2" width="10" height="9" fill="#e8e0cc"/>
+        <rect x="6" y="4" width="1" height="5" fill="#e8e0cc"/>
+        <rect x="17" y="4" width="1" height="5" fill="#e8e0cc"/>
+        <rect x="8" y="1" width="8" height="1" fill="#f4eedd"/>
+        <rect x="8" y="5" width="3" height="3" fill="#a02020"/>
+        <rect x="13" y="5" width="3" height="3" fill="#a02020"/>
+        <rect x="10" y="6" width="1" height="1" fill="#ff9a8a"/>
+        <rect x="15" y="6" width="1" height="1" fill="#ff9a8a"/>
+        <rect x="10" y="8" width="1" height="2" fill="#1a1410"/>
+        <rect x="13" y="8" width="1" height="2" fill="#1a1410"/>
+        <rect x="8" y="11" width="8" height="1" fill="#d8cfb8"/>
+        <rect x="9" y="12" width="1" height="2" fill="#e8e0cc"/>
+        <rect x="11" y="12" width="1" height="2" fill="#e8e0cc"/>
+        <rect x="13" y="12" width="1" height="2" fill="#e8e0cc"/>
+        <rect x="7" y="14" width="10" height="2" fill="#cfc4aa"/>
+        <rect x="5" y="16" width="14" height="4" fill="#6e6250"/>
+        <rect x="4" y="18" width="2" height="3" fill="#6e6250"/>
+        <rect x="18" y="18" width="2" height="3" fill="#6e6250"/>
+        <rect x="6" y="20" width="3" height="3" fill="#5a5040"/>
+        <rect x="11" y="20" width="3" height="4" fill="#5a5040"/>
+        <rect x="16" y="20" width="3" height="3" fill="#5a5040"/>
+        <rect x="2" y="3" width="1" height="1" fill="#58b0c8"/>
+        <rect x="4" y="11" width="1" height="1" fill="#f0c040"/>
+        <rect x="20" y="5" width="1" height="1" fill="#d04040"/>
+        <rect x="22" y="10" width="1" height="1" fill="#f0c040"/>
+        <rect x="1" y="12" width="1" height="1" fill="#d04040"/>
       </svg>`
     ),
     // COPD — eyes blink, smog wisps drift
