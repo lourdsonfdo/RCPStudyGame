@@ -112,15 +112,24 @@ deliverable.
 
 ### No-repeat rule
 
-A run maintains an `asked` Set of question ids. **Phases 1–4 never repeat a question** — each phase
-draws only from candidates not already in `asked`. Phase 4 is filtered hardest, since its
-calculation items overlap 202 and 203 content that phases 1–3 may already have used.
+A run maintains an `asked` Set of question ids **and an `askedValues` Set of value keys**, where a
+value key is `srcItem` plus the normalised correct answer. **Phases 1–4 never repeat a question or a
+value** — each phase draws only from candidates absent from both sets, and never takes two questions
+on the same value inside a single draw.
+
+Deduping on id alone would be theatre: every question carries exactly one `phase`, so two phases can
+never share an id anyway. The repeat a player would actually notice is a phase-4 calculation
+question asking for a number a phase-1 recall question already asked. That is a value collision, not
+an id collision, so the value key is the real guard. Phase 4 is affected most, since its calculation
+items are built on the same 202 and 203 cards phases 1–3 draw from.
 
 Phase 5 is the only phase that may re-ask, and only deliberately: it prefers questions from this
 run's `missed` set, topping up with unseen questions if `missed` is under 15.
 
-If a phase's unseen candidate pool drops below 15, the run surfaces the shortfall rather than
-silently repeating — this is a content-coverage bug and should be loud.
+If a phase's unseen candidate pool drops below 15 — by id or by distinct value — the run raises and
+names the shortfall rather than silently repeating. That is a content-coverage bug and should be
+loud. `tools/verify_values.py` also reports how many values are tested in more than one phase, so a
+padded bank is visible at build time.
 
 ### Gating and HP
 
