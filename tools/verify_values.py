@@ -73,6 +73,9 @@ def _squash(text):
                '-', t)
 
     t = re.sub(r'\s+', ' ', t).strip()
+    # Stripping tags leaves a space before punctuation ('10 L/min .'),
+    # which a quote written without it would never match.
+    t = re.sub(r'\s+([.,;:])', r'\1', t)
     return re.sub(r'-\s+(?=\d)', '-', t)
 
 
@@ -131,7 +134,11 @@ def check_question(q, cards):
     card_text = _squash(card['text'])
 
     quote = q.get('srcQuote', '')
-    if not quote or not _contains_value(card_text, quote):
+    # A quote is a whole sentence, not a value: plain containment is right
+    # here. _contains_value forbids whitespace between digits so that '45'
+    # cannot match '4 5', which is correct for one value and wrong for a
+    # sentence like '9 18 9 9 18 18'.
+    if not quote or _squash(quote) not in card_text:
         errors.append('%s: srcQuote not verbatim in %s' % (qid, q['srcItem']))
 
     choices = q.get('choices', [])
