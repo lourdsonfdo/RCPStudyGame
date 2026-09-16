@@ -131,10 +131,25 @@ names the shortfall rather than silently repeating. That is a content-coverage b
 loud. `tools/verify_values.py` also reports how many values are tested in more than one phase, so a
 padded bank is visible at build time.
 
+### Failed-phase pinning
+
+When a phase is failed, **its 15 questions are pinned and replayed the next time that phase is
+reached**, so a failed round becomes repetition rather than a fresh set of unknowns.
+
+- The pin is stored across runs in `state.superbossPinned`, keyed by phase id.
+- Because failing ends the run, the replay happens on a later run: phases the player passed draw
+  fresh, the pinned phase serves its saved set.
+- **Question order is reshuffled** on every replay, and **choice order is shuffled too** — the point
+  is to learn the value, not the position of a letter.
+- Passing a pinned phase clears its pin.
+- At run start, every pinned question's value key is seeded into `askedValues` so earlier phases
+  cannot consume a value the pinned phase is holding. This keeps the no-repeat guarantee intact.
+- A pinned phase bypasses the unseen-pool filters by design: its questions are *supposed* to repeat.
+
 ### Gating and HP
 
 - **Gate: 12/15 correct to advance.** Failing a phase ends the run; restart from phase 1. No
-  mid-fight retry.
+  mid-fight retry. The failed phase's questions are pinned for the next attempt (above).
 - Boss HP: 5 bars of 100, one per phase.
 - Player HP carries across phases, restoring **30% between phases**. Without the partial heal,
   75 questions on one bar is unwinnable rather than hard.
@@ -168,10 +183,13 @@ source citation line so it can be traced back to the guide.
 - `tools/verify-values.py` runs green on the full bank (build gate).
 - Coverage report shows every one of the 179 value-bearing items accounted for: covered, partial, or
   explicitly listed as missing.
-- Engine unit checks: phases 1–4 produce zero duplicate ids across a simulated run; phase 5 prefers
-  missed ids; a phase with a short pool raises rather than repeats; gate math at 11/15 and 12/15.
+- Engine unit checks: phases 1–4 produce zero duplicate ids **and zero duplicate value keys** across
+  a simulated run; phase 5 prefers missed ids; a phase with a short pool raises rather than repeats;
+  gate math at 11/15 and 12/15; a failed phase pins its set, replays it reshuffled, and clears the
+  pin on a pass.
 - Manual: full 75-question run in the browser preview, plus a deliberate phase-2 failure to confirm
-  the run ends and restarts at phase 1.
+  the run ends, restarts at phase 1, and serves the same 15 phase-2 questions in a different order
+  on the next attempt.
 
 ## Out of scope
 

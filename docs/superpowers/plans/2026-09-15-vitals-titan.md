@@ -726,12 +726,35 @@ Create `js/engine/superboss.js`:
   }
 
   /**
-   * Begin a run.
-   * opts: { bank: question[], playerMaxHp: number }
+   * Randomise a question's choices and remap `correct`. Returns a NEW object;
+   * the bank entry is untouched. Matters most on a pinned replay — the point
+   * of seeing a failed question again is to learn the value, not which letter
+   * it sat on last time.
    */
-  function startRun({ bank, playerMaxHp }) {
+  function shuffleChoices(q) {
+    const order = q.choices.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = (Math.random() * (i + 1)) | 0;
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    return Object.assign({}, q, {
+      choices: order.map(i => q.choices[i]),
+      correct: order.indexOf(q.correct),
+    });
+  }
+
+  /**
+   * Begin a run.
+   * opts: {
+   *   bank: question[],
+   *   playerMaxHp: number,
+   *   pinned: { [phaseId]: questionId[] }   // sets saved from failed phases
+   * }
+   */
+  function startRun({ bank, playerMaxHp, pinned }) {
     const run = {
       bank: bank.slice(),
+      pinned: pinned || {},
       phaseIndex: 0,
       bossBars: PHASES.map(() => BAR_HP),
       playerHp: playerMaxHp,
@@ -746,9 +769,19 @@ Create `js/engine/superboss.js`:
       answers: [],
       outcome: null,        // 'victory' | 'defeat' | null
     };
+    // Reserve every pinned question's value BEFORE the first draw, so an
+    // earlier phase cannot consume a value a later pinned phase is holding.
+    const byId = new Map(run.bank.map(q => [q.id, q]));
+    Object.keys(run.pinned).forEach(phaseId => {
+      run.pinned[phaseId].forEach(id => {
+        const q = byId.get(id);
+        if (q) run.askedValues.push(valueKeyOf(q));
+      });
+    });
+
     run.questions = drawPhase(run, 0);
     run.asked = run.questions.map(q => q.id);
-    run.askedValues = run.questions.map(valueKeyOf);
+    run.askedValues = run.askedValues.concat(run.questions.map(valueKeyOf));
     return run;
   }
 
@@ -900,6 +933,20 @@ In `js/engine/superboss.js`, replace the whole `drawPhase` function with:
    */
   function drawPhase(run, phaseIndex) {
     const phase = PHASES[phaseIndex];
+
+    // A phase that was failed last attempt replays its own set, reshuffled.
+    // These questions are SUPPOSED to repeat, so the unseen filters are
+    // deliberately bypassed here.
+    const pin = (run.pinned || {})[phase.id];
+    if (pin && pin.length) {
+      const byId = new Map(run.bank.map(q => [q.id, q]));
+      const restored = pin.map(id => byId.get(id)).filter(Boolean);
+      if (restored.length >= QUESTIONS_PER_PHASE) {
+        return shuffle(restored).slice(0, QUESTIONS_PER_PHASE).map(shuffleChoices);
+      }
+      // Bank changed under the pin — fall through and draw fresh.
+    }
+
     if (phase.id === 'p5-final') return drawFinalPhase(run);
 
     const asked = new Set(run.asked || []);
@@ -931,7 +978,7 @@ In `js/engine/superboss.js`, replace the whole `drawPhase` function with:
         ' distinct values available, needs ' + QUESTIONS_PER_PHASE +
         '. Bank has too many duplicate values — fix the content.');
     }
-    return picked;
+    return picked.map(shuffleChoices);
   }
 ```
 
@@ -1030,7 +1077,7 @@ In `js/engine/superboss.js`, replace `drawFinalPhase` with:
       .map(id => byId.get(id));
 
     if (missed.length >= QUESTIONS_PER_PHASE) {
-      return missed.slice(0, QUESTIONS_PER_PHASE);
+      return missed.slice(0, QUESTIONS_PER_PHASE).map(shuffleChoices);
     }
 
     const taken = new Set(missed.map(q => q.id));
@@ -1047,7 +1094,7 @@ In `js/engine/superboss.js`, replace `drawFinalPhase` with:
       const rest = shuffle(run.bank.filter(q => !used.has(q.id)));
       picked = picked.concat(rest.slice(0, QUESTIONS_PER_PHASE - picked.length));
     }
-    return picked;
+    return picked.map(shuffleChoices);
   }
 ```
 
@@ -1082,9 +1129,14 @@ Append inside `global.SuperBossTests`:
         bank: makeBank({ 1: 40, 2: 40, 3: 40, 4: 40 }), playerMaxHp: 100 });
     }
 
+    // Choices are shuffled at draw time, so the correct index must be read
+    // from the drawn question — never assumed.
+    function rightIdx(run) { return SuperBoss.currentQ(run).correct; }
+    function wrongIdx(run) { return (SuperBoss.currentQ(run).correct + 1) % 4; }
+
     let ra = freshRun();
     const before = ra.bossBars[0];
-    let res = SuperBoss.answer(ra, 0);          // correct (fake questions use index 0)
+    let res = SuperBoss.answer(ra, rightIdx(ra));
     check('correct answer is reported correct', res.correct === true);
     check('correct answer damages the boss bar', ra.bossBars[0] < before);
     check('correct increments correctCount', ra.correctCount === 1);
@@ -1092,7 +1144,7 @@ Append inside `global.SuperBossTests`:
     check('qIndex advances', ra.qIndex === 1);
 
     const hpBefore = ra.playerHp;
-    res = SuperBoss.answer(ra, 1);              // wrong
+    res = SuperBoss.answer(ra, wrongIdx(ra));   // wrong
     check('wrong answer is reported wrong', res.correct === false);
     check('wrong answer damages the player', ra.playerHp < hpBefore);
     check('wrong answer records the miss', ra.missed.length === 1);
@@ -1101,7 +1153,7 @@ Append inside `global.SuperBossTests`:
     // ── Gate: 11/15 fails, 12/15 passes ──────────────────────────
     function playPhase(run, correctCount) {
       for (let i = 0; i < SuperBoss.QUESTIONS_PER_PHASE; i++) {
-        SuperBoss.answer(run, i < correctCount ? 0 : 1);
+        SuperBoss.answer(run, i < correctCount ? rightIdx(run) : wrongIdx(run));
       }
       return SuperBoss.endPhase(run);
     }
@@ -1137,7 +1189,7 @@ Append inside `global.SuperBossTests`:
     // ── Death ends the run ───────────────────────────────────────
     let rDead = freshRun();
     rDead.playerHp = 1;
-    SuperBoss.answer(rDead, 1);
+    SuperBoss.answer(rDead, wrongIdx(rDead));
     check('hp reaching zero ends the run', rDead.outcome === 'defeat');
     check('hp never goes negative', rDead.playerHp === 0);
 
@@ -1224,9 +1276,15 @@ Add these functions before the `global.SuperBoss = {...}` assignment:
     run.phaseResults.push(result);
 
     if (!passed) {
+      // Pin this phase's set so the next attempt drills the same 15.
+      run.pinned[phase.id] = run.questions.map(q => q.id);
       run.outcome = 'defeat';
+      result.pinned = true;
       return result;
     }
+
+    // Cleared it — the pin has done its job.
+    delete run.pinned[phase.id];
 
     if (run.phaseIndex === PHASES.length - 1) {
       run.outcome = 'victory';
@@ -1290,8 +1348,8 @@ Append inside `global.SuperBossTests`:
     // ── Serialisation round-trip ─────────────────────────────────
     let rSer = SuperBoss.startRun({
       bank: makeBank({ 1: 40, 2: 40, 3: 40, 4: 40 }), playerMaxHp: 100 });
-    SuperBoss.answer(rSer, 0);
-    SuperBoss.answer(rSer, 1);
+    SuperBoss.answer(rSer, SuperBoss.currentQ(rSer).correct);
+    SuperBoss.answer(rSer, (SuperBoss.currentQ(rSer).correct + 1) % 4);
 
     const blob = SuperBoss.serialize(rSer);
     check('serialized form is JSON-safe',
@@ -1333,6 +1391,7 @@ Add to `js/engine/superboss.js` before the export:
       bossBars: run.bossBars.slice(),
       playerHp: run.playerHp,
       playerMaxHp: run.playerMaxHp,
+      pinned: JSON.parse(JSON.stringify(run.pinned || {})),
       asked: run.asked.slice(),
       askedValues: run.askedValues.slice(),
       missed: run.missed.slice(),
@@ -1350,6 +1409,7 @@ Add to `js/engine/superboss.js` before the export:
     const byId = new Map(bank.map(q => [q.id, q]));
     return {
       bank: bank.slice(),
+      pinned: blob.pinned || {},
       phaseIndex: blob.phaseIndex,
       bossBars: blob.bossBars.slice(),
       playerHp: blob.playerHp,
@@ -1395,6 +1455,124 @@ And at the end of the existing inline `<script>` block, immediately before its c
 ```bash
 git add js/engine/superboss.js tools/tests/superboss.test.js test-engine.html
 git commit -m "feat(engine): persist superboss runs across app backgrounding"
+```
+
+---
+
+## Task 7b: Failed-phase pinning
+
+Failing a phase pins its 15 questions so the next attempt at that phase drills the same set —
+reshuffled, with the choices reshuffled too, so what gets learned is the value and not the position.
+Passing a pinned phase clears the pin. The pin lives in `state.superbossPinned` and survives across
+runs.
+
+**Files:**
+- Modify: `tools/tests/superboss.test.js`
+
+The engine code for this landed in Tasks 3–7 (`startRun`'s `pinned` option, the pin branch in
+`drawPhase`, the pin write/clear in `endPhase`, and `pinned` in serialize/deserialize). This task
+proves it.
+
+- [ ] **Step 1: Write the failing test**
+
+Append inside `global.SuperBossTests`:
+
+```js
+    // ── Failed-phase pinning ─────────────────────────────────────
+    const pinBank = makeBank({ 1: 40, 2: 40, 3: 40, 4: 40 });
+
+    function playPhaseOn(run, correctCount) {
+      for (let i = 0; i < SuperBoss.QUESTIONS_PER_PHASE; i++) {
+        const q = SuperBoss.currentQ(run);
+        SuperBoss.answer(run, i < correctCount ? q.correct : (q.correct + 1) % 4);
+      }
+      return SuperBoss.endPhase(run);
+    }
+
+    // Fail phase 1 -> its set is pinned.
+    let rPin = SuperBoss.startRun({ bank: pinBank, playerMaxHp: 10000 });
+    const failedIds = rPin.questions.map(q => q.id);
+    const pinResult = playPhaseOn(rPin, 11);
+    check('failing a phase pins its set', pinResult.pinned === true);
+    check('pin is keyed by phase id', !!rPin.pinned['p1-202-core']);
+    check('pin holds exactly 15 ids',
+      rPin.pinned['p1-202-core'].length === 15);
+    check('pin holds the questions that were failed',
+      rPin.pinned['p1-202-core'].slice().sort().join() === failedIds.slice().sort().join());
+
+    // Next attempt replays the same set.
+    const rReplay = SuperBoss.startRun({
+      bank: pinBank, playerMaxHp: 10000, pinned: rPin.pinned });
+    const replayIds = rReplay.questions.map(q => q.id);
+    check('pinned phase replays the same 15 questions',
+      replayIds.slice().sort().join() === failedIds.slice().sort().join());
+
+    // Order is reshuffled across attempts (allow for chance: try a few draws).
+    let sawDifferentOrder = false;
+    for (let i = 0; i < 20 && !sawDifferentOrder; i++) {
+      const r = SuperBoss.startRun({ bank: pinBank, playerMaxHp: 10000, pinned: rPin.pinned });
+      if (r.questions.map(q => q.id).join() !== failedIds.join()) sawDifferentOrder = true;
+    }
+    check('pinned replay reshuffles question order', sawDifferentOrder);
+
+    // Choice order is reshuffled too.
+    let sawDifferentChoices = false;
+    for (let i = 0; i < 20 && !sawDifferentChoices; i++) {
+      const r = SuperBoss.startRun({ bank: pinBank, playerMaxHp: 10000, pinned: rPin.pinned });
+      const q = r.questions[0];
+      const source = pinBank.filter(b => b.id === q.id)[0];
+      if (q.choices.join() !== source.choices.join() || q.correct !== source.correct) {
+        sawDifferentChoices = true;
+      }
+    }
+    check('pinned replay reshuffles choices', sawDifferentChoices);
+
+    // Passing the pinned phase clears the pin.
+    const rClear = SuperBoss.startRun({
+      bank: pinBank, playerMaxHp: 10000, pinned: rPin.pinned });
+    playPhaseOn(rClear, 15);
+    check('passing a pinned phase clears the pin',
+      rClear.pinned['p1-202-core'] === undefined);
+
+    // A pin on a LATER phase reserves its values up front, so an earlier
+    // phase cannot consume them.
+    const latePin = {};
+    latePin['p3-203-equip'] = pinBank.filter(q => q.phase === 3).slice(0, 15).map(q => q.id);
+    const rLate = SuperBoss.startRun({ bank: pinBank, playerMaxHp: 10000, pinned: latePin });
+    const reserved = latePin['p3-203-equip']
+      .map(id => SuperBoss.valueKeyOf(pinBank.filter(b => b.id === id)[0]));
+    check('pinned values are reserved before the first draw',
+      reserved.every(v => rLate.askedValues.indexOf(v) !== -1));
+
+    // Pins survive serialisation.
+    const pinBlob = JSON.parse(JSON.stringify(SuperBoss.serialize(rPin)));
+    const rPinRestored = SuperBoss.deserialize(pinBlob, pinBank);
+    check('pin round-trips through serialize',
+      rPinRestored.pinned['p1-202-core'].length === 15);
+```
+
+- [ ] **Step 2: Run the test to verify it fails**
+
+Run: `cd /Users/lourdsonfernando/RCPStudyGame && node tools/run-engine-tests.js`
+Expected: FAIL on the pinning checks if any of the Task 3–7 pin code was missed.
+
+- [ ] **Step 3: Fix any gaps in the engine**
+
+If a check fails, the cause is in `js/engine/superboss.js` — the pin branch at the top of
+`drawPhase`, the `run.pinned[phase.id] = ...` write in `endPhase`'s failure path, the
+`delete run.pinned[phase.id]` on the pass path, the value reservation loop in `startRun`, or
+`pinned` in `serialize`/`deserialize`. Fix the engine, not the test.
+
+- [ ] **Step 4: Run the test to verify it passes**
+
+Run: `cd /Users/lourdsonfernando/RCPStudyGame && node tools/run-engine-tests.js`
+Expected: `66 passed, 0 failed`
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add tools/tests/superboss.test.js js/engine/superboss.js
+git commit -m "feat(engine): pin a failed phase's questions for the next attempt"
 ```
 
 ---
@@ -1807,7 +1985,11 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
     run = SuperBoss.deserialize(state.superbossRun, bank);
   } else {
     try {
-      run = SuperBoss.startRun({ bank, playerMaxHp: state.maxHp });
+      run = SuperBoss.startRun({
+        bank,
+        playerMaxHp: state.maxHp,
+        pinned: state.superbossPinned || {},
+      });
     } catch (err) {
       root.innerHTML = `<div class="hud hud-corners t-red t-sm" style="padding:14px;">
         <span class="br1"></span><span class="br2"></span>${err.message}</div>`;
@@ -1838,6 +2020,10 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
           <span><span class="status-dot"></span>${phase.name}</span>
           <span>${run.correctCount}/${SuperBoss.PHASE_GATE} TO ADVANCE</span>
         </div>
+
+        ${(state.superbossPinned || {})[phase.id]
+          ? `<div class="pin-note t-sm">▸ RETRY DRILL — same 15 queries you missed, reshuffled</div>`
+          : ''}
 
         <div class="titan-bars">
           ${run.bossBars.map((hp, i) => `
@@ -1918,6 +2104,8 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
 
   function finish() {
     state.superbossRun = null;
+    // Carry pins forward: a phase failed this run is drilled on the next one.
+    state.superbossPinned = run.pinned && Object.keys(run.pinned).length ? run.pinned : null;
     if (run.outcome === 'victory' && state.defeatedBosses.indexOf('vitals-titan') === -1) {
       state.defeatedBosses.push('vitals-titan');
     }
@@ -1949,6 +2137,10 @@ Append to `css/style.css`:
 .titan-bar-fill { height: 100%; background: var(--danger); transition: width .25s ease; }
 .titan-bar.active { box-shadow: 0 0 0 1px var(--accent); }
 .titan-bar.cleared .titan-bar-fill { background: var(--line); }
+.pin-note {
+  margin: 0 0 10px; padding: 6px 8px;
+  border-left: 3px solid var(--danger); background: rgba(192,57,43,.08);
+}
 ```
 
 - [ ] **Step 4: Verify it renders**
@@ -1983,6 +2175,8 @@ App.registerScreen('superboss-briefing', ({ root, state }) => {
   const bank = (window.ALL_QUESTIONS || []).filter(q => q.course === 'rcp2xx');
   const hasRun = !!state.superbossRun;
   const saved = state.superbossRun;
+  const pinned = state.superbossPinned || {};
+  const pinnedPhases = SuperBoss.PHASES.filter(p => pinned[p.id]);
 
   root.innerHTML = `
     <div class="topbar">
@@ -2013,11 +2207,18 @@ App.registerScreen('superboss-briefing', ({ root, state }) => {
         <li>Vitals restore <b>30%</b> between phases</li>
       </ul>
 
+      ${pinnedPhases.length ? `
+        <div class="pin-note t-sm">
+          ▸ RETRY DRILL ARMED — ${pinnedPhases.map(p => 'PHASE ' + p.n).join(', ')}
+          will serve the same queries you missed, reshuffled.
+        </div>` : ''}
+
       <div class="phase-list t-sm">
         ${SuperBoss.PHASES.map(p => `
           <div class="phase-row">
-            <span class="phase-n">${p.n}</span>
-            <span><b>${p.name}</b><br><span class="t-mute">${p.blurb}</span></span>
+            <span class="phase-n" ${pinned[p.id] ? 'style="background:var(--danger)"' : ''}>${p.n}</span>
+            <span><b>${p.name}</b>${pinned[p.id] ? ' <span class="t-mute">· pinned</span>' : ''}
+              <br><span class="t-mute">${p.blurb}</span></span>
           </div>`).join('')}
       </div>
 
@@ -2030,6 +2231,7 @@ App.registerScreen('superboss-briefing', ({ root, state }) => {
 
   root.querySelector('[data-back]').addEventListener('click', () => App.back());
   root.querySelector('[data-start]').addEventListener('click', () => {
+    // Clears the in-progress run, NOT the pins — a failed phase stays armed.
     state.superbossRun = null;
     App.persist();
     App.goto('superboss', {});
@@ -2131,6 +2333,12 @@ In `js/screens/results.js`, at the top of the registered screen function, add a 
             </div>` : ''}
         </div>
 
+        ${ctx.phaseResults.some(r => !r.passed) ? `
+          <div class="pin-note t-sm" style="text-align:left;">
+            ▸ ${ctx.phaseResults.filter(r => !r.passed).map(r => r.phaseName).join(', ')}
+            pinned — your next attempt drills the same queries in a new order.
+          </div>` : ''}
+
         <button class="btn" data-review>REVIEW MISSES</button>
         <button class="btn btn-ghost" data-home>RETURN</button>
       </div>`;
@@ -2222,7 +2430,7 @@ Expected: all tests OK
 - [ ] **Step 2: Engine suite (headless)**
 
 Run: `cd /Users/lourdsonfernando/RCPStudyGame && node tools/run-engine-tests.js`
-Expected: `58 passed, 0 failed`, exit 0
+Expected: `66 passed, 0 failed`, exit 0
 
 - [ ] **Step 3: Content gate**
 
@@ -2267,7 +2475,12 @@ Open the app in the preview. Play a complete 75-question run. Confirm:
 - the results screen lists all five phases
 - REVIEW MISSES shows item numbers and source lines
 
-Then start a second run, deliberately score 11/15 in phase 2, and confirm the run ends and the briefing offers a fresh start rather than a resume.
+Then start a second run, deliberately score 11/15 in phase 2, and confirm:
+- the run ends, and the results screen names phase 2 as pinned
+- the briefing shows RETRY DRILL ARMED for phase 2 and marks its row
+- on the next attempt, phase 2 serves **the same 15 questions** in a different order, with the
+  choices in different positions
+- clearing phase 2 on that attempt removes the pin from the briefing
 
 - [ ] **Step 6: Background-resume check**
 
