@@ -1,7 +1,7 @@
 # Super Boss — RCP 202/203 Values Gauntlet
 
 **Date:** 2026-09-15
-**Status:** Design approved, pending spec review
+**Status:** Design and spec approved
 **Repo:** `/Users/lourdsonfernando/RCPStudyGame` (v1.5, head `cf44aa9`)
 
 ## Goal
@@ -96,7 +96,8 @@ deliverable.
 
 ## The boss
 
-`course: 'rcp2xx'`, single boss, not part of the 103/104 grids.
+**VITALS TITAN** (`id: 'vitals-titan'`), `course: 'rcp2xx'`. A single boss, not part of the
+103/104 grids.
 
 **5 phases x 15 questions = 75 per run**, drawn from the ~450 bank.
 
@@ -161,10 +162,6 @@ source citation line so it can be traced back to the guide.
   missed ids; a phase with a short pool raises rather than repeats; gate math at 11/15 and 12/15.
 - Manual: full 75-question run in the browser preview, plus a deliberate phase-2 failure to confirm
   the run ends and restarts at phase 1.
-
-## Open
-
-- **Boss name.** Placeholder `vitals-titan`.
 
 ## Out of scope
 
