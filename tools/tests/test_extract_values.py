@@ -52,5 +52,43 @@ class TestExtractValues(unittest.TestCase):
             self.assertNotIn('6', r['values'])
 
 
+class TestValuePattern(unittest.TestCase):
+    """Regression tests for the value regex itself.
+
+    Respiratory values are frequently negative (NIF/MIP) and frequently
+    expressed in cm H2O with a Unicode subscript. Both were silently dropped by
+    an earlier version of this pattern, which would have produced questions
+    whose 'correct' answer was off by a sign.
+    """
+
+    def values(self, text):
+        return [ev.normalize_value(v) for v in ev.VALUE_RE.findall(text)]
+
+    def test_negative_pressure_keeps_its_sign(self):
+        got = self.values('NIF/MIP normal < −​60 cm H₂O'.replace('​', ''))
+        self.assertIn('<-60cmh2o', got)
+
+    def test_bare_negative_with_unit(self):
+        self.assertIn('-100cmh2o', self.values('peak −100 cmH2O'))
+
+    def test_unicode_subscript_unit_is_matched(self):
+        self.assertIn('≤30cmh2o', self.values('plateau ≤ 30 cm H₂O'))
+
+    def test_ascii_and_unicode_subscript_normalise_alike(self):
+        self.assertEqual(self.values('30 cm H₂O'), self.values('30 cmH2O'))
+
+    def test_compound_unit_wins_over_its_prefix(self):
+        self.assertIn('70-100ml/cmh2o', self.values('Static compliance 70–100 mL/cm H₂O'))
+
+    def test_comparison_keeps_its_unit(self):
+        self.assertIn('>20%', self.values('A major burn is defined as >20% TBSA'))
+
+    def test_plain_number_without_unit_is_not_a_value(self):
+        self.assertEqual(self.values('There are 5 levels of service.'), [])
+
+    def test_range_without_sign_is_unaffected(self):
+        self.assertIn('90-95%', self.values('Concentrators deliver 90–95% oxygen'))
+
+
 if __name__ == '__main__':
     unittest.main()

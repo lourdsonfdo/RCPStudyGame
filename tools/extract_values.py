@@ -19,13 +19,27 @@ CARD_RE = re.compile(
 H3_RE = re.compile(r'<h3>(.*?)</h3>', re.S)
 SRC_RE = re.compile(r'<div class="src">(.*?)</div>', re.S)
 
-UNITS = (r"(?:mm\s?Hg|cm\s?H2O|cmH2O|mL/kg|mL|L/min|LPM|mg/kg|mg|mcg|g/dL|"
-         r"mEq/L|mmol/L|kPa|%|°C|°F|Fr\b|psig|psi|kg|lb|sec(?:onds)?|"
-         r"min(?:utes)?|hours?|hrs?|days?|weeks?|beats?/min|breaths?/min|bpm|"
-         r"/min|joules?|Hz)")
+# Unit alternation is LONGEST-FIRST on purpose: "mL/cm H2O" must win over
+# "mL", and "cm H2O" over a bare number. The 202 guide writes the subscript as
+# Unicode U+2082 (cm H₂O) and the 203 guide writes ASCII (cmH2O), so both forms
+# are accepted here and folded together by normalize_value.
+UNITS = (r"(?:mL/cm\s?H[2₂]O|cm\s?H[2₂]O|cmH[2₂]O|mm\s?Hg|mmHg|mL/kg|mL|L/min|"
+         r"LPM|mg/kg|mg|mcg|g/dL|mEq/L|mmol/L|kPa|%|°C|°F|Fr\b|psig|psi|kg|lb|"
+         r"sec(?:onds)?|min(?:utes)?|hours?|hrs?|days?|weeks?|beats?/min|"
+         r"breaths?/min|bpm|/min|joules?|Hz)")
+
+# A leading sign is part of the value, not decoration. NIF/MIP normals are
+# NEGATIVE pressures (−60 cm H2O); dropping the sign would turn a correct card
+# into a question with a wrong answer, which is the exact failure this whole
+# pipeline exists to prevent.
+SIGN = r"[−–\-]?"
 NUM = r"\d+(?:\.\d+)?"
+RANGE = r"%s%s(?:\s*(?:[–—\-]|to)\s*%s%s)?" % (SIGN, NUM, SIGN, NUM)
+
+# Either a comparison (unit optional — ">20% TBSA", "< −40") or a plain value
+# that MUST carry a unit (so "5 levels" is not mistaken for a value).
 VALUE_RE = re.compile(
-    r"(?:[<>≤≥]\s*%s|%s\s*(?:[–\-]\s*%s\s*)?%s)" % (NUM, NUM, NUM, UNITS), re.I)
+    r"(?:[<>≤≥]\s*%s(?:\s*%s)?|%s\s*%s)" % (RANGE, UNITS, RANGE, UNITS), re.I)
 
 # Numbers that belong to a citation, not to a fact.
 CITE_RE = re.compile(
@@ -41,11 +55,19 @@ def strip_tags(fragment):
 
 
 def normalize_value(raw):
-    """Canonical form for comparison: lowercase, no spaces, ASCII hyphen."""
+    """Canonical form: lowercase, no spaces, ASCII hyphen, ASCII subscript.
+
+    Folds U+2212 MINUS, en/em dashes and the Unicode subscript two so that the
+    202 guide's "−60 cm H₂O" and the 203 guide's "-60 cmH2O" produce the same
+    key. Range separators and negative signs both normalise to "-"; that is
+    fine for a comparison key.
+    """
     return (raw.lower()
                .replace(' ', '')
+               .replace('−', '-')
                .replace('—', '-')
-               .replace('–', '-'))
+               .replace('–', '-')
+               .replace('₂', '2'))
 
 
 def sentences(text):
