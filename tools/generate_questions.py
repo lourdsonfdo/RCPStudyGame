@@ -258,7 +258,7 @@ def perturb(value):
         # A distractor keeps the answer's own precision. "24.75%" beside a
         # true "99%", or an mMRC score of "< 1.5" on a whole-number scale,
         # hands the player the answer: the only clean number is the real one.
-        result = value
+        texts = []
         for original, factor in zip(nums, factors):
             raw = float(original.replace(',', ''))
             places = len(original.split('.')[1]) if '.' in original else 0
@@ -271,8 +271,11 @@ def perturb(value):
                 text = '%.*f' % (places, new)
             if text == original:
                 return None                 # rounded back onto the answer
-            result = result.replace(original, text, 1)
-        return result
+            texts.append(text)
+        # Substitute by POSITION. str.replace() rewrote "10-20%" as "40-20%":
+        # it turned the 10 into 20, then found that new 20 before the old one.
+        replacements = iter(texts)
+        return NUM_IN_VALUE.sub(lambda _: next(replacements), value)
 
     is_percent = '%' in value
     for factors in ([2] * len(nums), [0.5] * len(nums), [1.5] * len(nums),

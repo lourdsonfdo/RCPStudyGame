@@ -62,5 +62,22 @@ class TestApplyRewrites(unittest.TestCase):
         self.assertEqual(shipped[0]['topic'], 'sb-formula')
 
 
+
+class TestDistractors(unittest.TestCase):
+    def test_ranges_stay_in_order(self):
+        for d in g.perturb('\u2265 10\u201320%'):
+            lo, hi = [float(x) for x in g.NUM_IN_VALUE.findall(d)]
+            self.assertLess(lo, hi, d)
+
+    def test_precision_matches_the_answer(self):
+        for d in g.perturb('99%'):
+            self.assertNotIn('.', d, d)
+        for d in g.perturb('7.35'):
+            self.assertEqual(len(d.split('.')[1]), 2, d)
+
+    def test_percentages_never_exceed_100(self):
+        for d in g.perturb('88%'):
+            self.assertLessEqual(float(d.rstrip('%')), 100, d)
+
 if __name__ == '__main__':
     unittest.main()
