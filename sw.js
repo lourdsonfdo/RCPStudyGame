@@ -3,7 +3,7 @@
    Cache-first strategy: game is fully playable offline after
    the first load.
    ============================================================ */
-const CACHE = 'rcp-study-v9-clean-stems';
+const CACHE = 'rcp-study-v10-direct-questions';
 
 const PRECACHE = [
   '/RCPStudyGame/',
