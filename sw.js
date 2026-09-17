@@ -3,7 +3,7 @@
    Cache-first strategy: game is fully playable offline after
    the first load.
    ============================================================ */
-const CACHE = 'rcp-study-v11-storybook';
+const CACHE = 'rcp-study-v12-fresh-precache';
 
 const PRECACHE = [
   '/RCPStudyGame/',
@@ -64,11 +64,31 @@ const PRECACHE = [
   'https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Pixelify+Sans:wght@500;600&family=JetBrains+Mono:wght@400;500;700&display=swap'
 ];
 
-// Install — precache all game assets
+// Install — precache all game assets.
+//
+// GitHub Pages' CDN keeps each file for ~10 minutes, and a new worker installs
+// right after a deploy -- while the CDN may still be serving the PREVIOUS
+// version. A plain addAll() would pin that stale copy under the fresh cache
+// name, and bumping CACHE would not help. So each same-origin file is fetched
+// with a per-deploy query string (a URL the CDN has never cached) and
+// `cache: 'reload'` (skips the browser's HTTP cache), then stored under its
+// plain URL.
+function freshCopy(url) {
+  const sameOrigin = url.startsWith('/');
+  const target = sameOrigin
+    ? url + (url.includes('?') ? '&' : '?') + 'sw=' + encodeURIComponent(CACHE)
+    : url;
+  return fetch(target, { cache: 'reload' }).then(resp => {
+    if (!resp.ok) throw new Error('precache failed for ' + url + ': ' + resp.status);
+    return resp;
+  });
+}
+
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE)
-      .then(c => c.addAll(PRECACHE))
+      .then(c => Promise.all(PRECACHE.map(url =>
+        freshCopy(url).then(resp => c.put(url, resp)))))
       .then(() => self.skipWaiting())
   );
 });
@@ -88,13 +108,19 @@ self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   if (!e.request.url.startsWith('http')) return;
 
+  // Our own files are requested with cache-busting queries (?v=...), but the
+  // precache stores them under their plain URL, so ignore the query when
+  // matching. Cross-origin URLs (fonts) keep theirs -- the query IS the request.
+  const sameOrigin = new URL(e.request.url).origin === self.location.origin;
+
   e.respondWith(
-    caches.match(e.request).then(cached => {
+    caches.match(e.request, { ignoreSearch: sameOrigin }).then(cached => {
       if (cached) return cached;
       return fetch(e.request).then(resp => {
-        // Cache successful responses for our own origin
-        if (resp.ok && (e.request.url.includes('github.io') || e.request.url.includes('fonts.g'))) {
-          caches.open(CACHE).then(c => c.put(e.request, resp.clone()));
+        // Cache successful responses for our own origin (under the plain URL)
+        if (resp.ok && (sameOrigin || e.request.url.includes('fonts.g'))) {
+          const key = sameOrigin ? e.request.url.split('?')[0] : e.request;
+          caches.open(CACHE).then(c => c.put(key, resp.clone()));
         }
         return resp;
       });
