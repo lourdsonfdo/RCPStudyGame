@@ -1,14 +1,24 @@
 """Generate VITALS TITAN questions from tools/values.json.
 
-Every question is a CLOZE built from the source sentence with one value
-blanked out. That makes the stem faithful by construction -- it is the guide's
-own wording, not a paraphrase -- and it makes the whole bank reproducible: edit
-a guide, re-run the extractor, re-run this, and the questions follow.
+Two stages:
 
-Distractors are numeric perturbations of the answer carrying the SAME unit.
-Any distractor that happens to be a true value on the same card is discarded,
-because two true answers make a question unanswerable. tools/verify_values.py
-is the gate that enforces this after generation.
+1. Candidates. Each value becomes a cloze -- its source sentence, trimmed to
+   the clause the value belongs to, with the value blanked out. Candidates
+   that cannot be read cleanly are dropped here.
+
+2. Rewrites. A cloze is faithful but reads like a textbook, so every shipped
+   stem is a hand-written direct question from tools/stem_rewrites.json,
+   keyed by source card + answer. A candidate without a current rewrite is
+   withheld, and a rewrite written for a value the guide has since changed is
+   reported as stale rather than shipped. See load_rewrites().
+
+The answer, the choices and the source citation always come from the
+candidate, never from the rewrite, so tools/verify_values.py still traces
+every answer to its card.
+
+Distractors are numeric perturbations of the answer, carrying its unit and
+its precision. Any distractor that is a true value on the same card is
+discarded, because two true answers make a question unanswerable.
 """
 import json
 import os
@@ -16,6 +26,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from extract_values import normalize_value
 from verify_values import build_card_index, _squash, _contains_value
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -244,16 +255,22 @@ def perturb(value):
     out = []
 
     def rebuild(factors):
+        # A distractor keeps the answer's own precision. "24.75%" beside a
+        # true "99%", or an mMRC score of "< 1.5" on a whole-number scale,
+        # hands the player the answer: the only clean number is the real one.
         result = value
         for original, factor in zip(nums, factors):
             raw = float(original.replace(',', ''))
-            new = raw * factor
-            if raw == int(raw) and new == int(new):
-                text = str(int(new))
-                if ',' in original:
-                    text = '{:,}'.format(int(new))
+            places = len(original.split('.')[1]) if '.' in original else 0
+            new = round(raw * factor, places)
+            if new <= 0 < raw:
+                return None                 # would flip the sign or zero out
+            if places == 0:
+                text = '{:,}'.format(int(new)) if ',' in original else str(int(new))
             else:
-                text = ('%.2f' % new).rstrip('0').rstrip('.')
+                text = '%.*f' % (places, new)
+            if text == original:
+                return None                 # rounded back onto the answer
             result = result.replace(original, text, 1)
         return result
 
@@ -262,7 +279,7 @@ def perturb(value):
                     [3] * len(nums), [0.25] * len(nums), [0.75] * len(nums),
                     [10] * len(nums), [0.1] * len(nums)):
         candidate = rebuild(factors)
-        if candidate == value or candidate in out:
+        if candidate is None or candidate == value or candidate in out:
             continue
         # A percentage over 100 is not a plausible wrong answer, it is a
         # giveaway -- "SaO2 190%" tells the player which option to discard.
@@ -362,6 +379,77 @@ def build(records, cards, limit_per_record=6):
     return bank
 
 
+REWRITES = os.path.join(HERE, 'stem_rewrites.json')
+PHASE_TOPICS = {1: 'sb-202', 2: 'sb-gas', 3: 'sb-equip', 4: 'sb-formula'}
+
+
+def load_rewrites():
+    """Hand-written question stems, keyed by source card + normalised answer.
+
+    Clause-trimming can shorten a guide sentence but cannot turn it into a
+    question, so every shipped stem is rewritten as a direct question. The key
+    ignores question ids (which shift whenever the bank changes) so a rewrite
+    survives regeneration. Each entry also records the answer it was written
+    for: if a guide edit changes that value, the rewrite is stale and the
+    question is withheld until the stem is rewritten against the new number.
+    A value of null means the question was judged unclear or a giveaway.
+    """
+    if not os.path.exists(REWRITES):
+        return {}
+    with open(REWRITES, encoding='utf-8') as fh:
+        return json.load(fh)
+
+
+def rewrite_problems(stem, answer):
+    """Hard failures for a hand-written stem. Empty list = acceptable."""
+    problems = []
+    if not stem.endswith('?'):
+        problems.append('does not end with a question mark')
+    if '_____' in stem:
+        problems.append('still contains a blank')
+    if len(stem) > 170:
+        problems.append('longer than 170 characters (%d)' % len(stem))
+    if normalize_value(answer) in normalize_value(stem):
+        problems.append('gives the answer away')
+    return problems
+
+
+def apply_rewrites(bank, rewrites):
+    """Swap each generated cloze for its rewritten question.
+
+    Returns (shipped, report). A question ships only with a current rewrite.
+    """
+    shipped = []
+    report = {'rewritten': 0, 'dropped': 0, 'stale': [], 'missing': [], 'invalid': []}
+    for q in bank:
+        answer = q['choices'][q['correct']]
+        key = q['srcItem'] + '|' + normalize_value(answer)
+        if key not in rewrites:
+            report['missing'].append(key)
+            continue
+        entry = rewrites[key]
+        if entry is None:
+            report['dropped'] += 1
+            continue
+        if normalize_value(entry['answer']) != normalize_value(answer):
+            report['stale'].append(key)
+            continue
+        problems = rewrite_problems(entry['q'], answer)
+        if problems:
+            report['invalid'].append((key, problems))
+            continue
+        q = dict(q, q=entry['q'])
+        # A hand-written stem knows whether it asks for arithmetic, which the
+        # automatic classifier (reading the source sentence) cannot.
+        if 'phase' in entry:
+            q['phase'] = entry['phase']
+            q['topic'] = PHASE_TOPICS[entry['phase']]
+            q['difficulty'] = 3 if entry['phase'] == 4 else 2
+        shipped.append(q)
+        report['rewritten'] += 1
+    return shipped, report
+
+
 def emit(bank, course, path, header):
     rows = [q for q in bank if q['srcItem'].startswith(course + ':')]
     lines = ['/* ============================================================',
@@ -385,7 +473,7 @@ def emit(bank, course, path, header):
 def main():
     data = json.load(open(os.path.join(HERE, 'values.json'), encoding='utf-8'))
     cards = build_card_index()
-    bank = build(data['records'], cards)
+    bank, report = apply_rewrites(build(data['records'], cards), load_rewrites())
 
     n202 = emit(bank, '202', os.path.join(ROOT, 'content', 'rcp202-values.js'),
                 'RCP 202 VALUES — VITALS TITAN bank')
@@ -399,6 +487,14 @@ def main():
         print('   phase %d: %d' % (p, by_phase[p]))
     flagged = sum(1 for q in bank if q['flags'])
     print('   on contested/absent cards: %d' % flagged)
+    print('rewrites: %d shipped, %d dropped as unclear, %d stale, %d not yet written'
+          % (report['rewritten'], report['dropped'], len(report['stale']), len(report['missing'])))
+    for key in report['stale']:
+        print('   STALE (guide value changed, rewrite the stem): %s' % key)
+    for key, problems in report['invalid']:
+        print('   INVALID %s: %s' % (key, '; '.join(problems)))
+    if report['invalid']:
+        sys.exit(1)
 
 
 if __name__ == '__main__':

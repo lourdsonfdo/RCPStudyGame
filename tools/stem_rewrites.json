@@ -1,0 +1,1613 @@
+{
+ "202:s01-4|1.5to4feet": {
+  "answer": "1.5 to 4 feet",
+  "q": "What is the distance range for personal space?"
+ },
+ "202:s01-4|4to12feet": {
+  "answer": "4 to 12 feet",
+  "q": "What is the distance range for social space?"
+ },
+ "202:s02-1|9%": null,
+ "202:s02-2|10-21days": {
+  "answer": "10–21 days",
+  "q": "How long does a superficial partial-thickness (second-degree) burn take to heal?"
+ },
+ "202:s02-2|7days": {
+  "answer": "7 days",
+  "q": "About how long does a first-degree burn take to heal?"
+ },
+ "202:s02-3|50-100ml/cmh2o": {
+  "answer": "50–100 mL/cm H₂O",
+  "q": "What is the normal range for general (dynamic) lung compliance?"
+ },
+ "202:s02-4|1.0": {
+  "answer": "1.0",
+  "q": "At what FiO₂ should you ventilate a CO-poisoned patient who cannot protect their airway?"
+ },
+ "202:s02-4|2-3atm": {
+  "answer": "2–3 atm",
+  "q": "In hyperbaric oxygen therapy for CO poisoning, what pressure is used for treatments after the first?"
+ },
+ "202:s02-4|3atm": {
+  "answer": "3 atm",
+  "q": "In hyperbaric oxygen therapy for CO poisoning, what pressure is used for the first treatment?"
+ },
+ "202:s02-4|90minutes": {
+  "answer": "90 minutes",
+  "q": "How long does each hyperbaric oxygen treatment for CO poisoning last?"
+ },
+ "202:s02-5|18-24hours": {
+  "answer": "18–24 hours",
+  "q": "With successful burn resuscitation, after how long do fluid requirements decline abruptly?"
+ },
+ "202:s02-5|20-30%": {
+  "answer": "20–30%",
+  "q": "What percentage of inhalation-injury patients develop upper airway obstruction from progressive edema?"
+ },
+ "202:s02-5|>1500°c": null,
+ "202:s04-2|>88%": {
+  "answer": "> 88%",
+  "q": "On a comprehensive exercise test, what is the typical SpO₂ at peak exercise capacity?"
+ },
+ "202:s04-3|150beats/min": {
+  "answer": "150 beats/min",
+  "q": "What is the predicted maximum heart rate for a 70-year-old (220 − age)?"
+ },
+ "202:s04-3|3.5ml": {
+  "answer": "3.5 mL",
+  "phase": 4,
+  "q": "One MET equals how much O₂ consumption per kg of body weight per minute?"
+ },
+ "202:s04-3|35-90ml/kg/min": {
+  "answer": "35–90 mL/kg/min",
+  "q": "What is the typical peak VO₂max range for men?"
+ },
+ "202:s04-3|60-75%": {
+  "answer": "60–75%",
+  "q": "What percentage of predicted maximum heart rate is the target training range for optimal cardiovascular benefit?"
+ },
+ "202:s04-3|90to113beats/min": {
+  "answer": "90 to 113 beats/min",
+  "q": "For a 70-year-old with a predicted HRmax of 150 beats/min, what is the target training heart rate?"
+ },
+ "202:s04-3|<15ml/kg/min": {
+  "answer": "< 15 mL/kg/min",
+  "q": "Exercise capacity is considered reduced below what VO₂max?"
+ },
+ "202:s04-3|≥5": {
+  "answer": "≥ 5",
+  "q": "Exercise capacity is considered reduced if the patient cannot reach what exercise level in METs?"
+ },
+ "202:s04-5|<500-600": {
+  "answer": "< 500–600",
+  "q": "What 6-minute walk distance, in meters, screens as abnormal functional capacity?"
+ },
+ "202:s04-5|>100mmhg": {
+  "answer": "> 100 mm Hg",
+  "q": "Before a 6-minute walk test, a resting diastolic BP above what value is a relative contraindication?"
+ },
+ "202:s04-5|>120beats/min": {
+  "answer": "> 120 beats/min",
+  "q": "Before a 6-minute walk test, a resting heart rate above what value is a relative contraindication?"
+ },
+ "202:s04-5|>180mmhg": {
+  "answer": "> 180 mm Hg",
+  "q": "Before a 6-minute walk test, a resting systolic BP above what value is a relative contraindication?"
+ },
+ "202:s04-5|≥10-20%": {
+  "answer": "≥ 10–20%",
+  "q": "What pre- to post-treatment gain in 6-minute walk distance means the treatment is effective?"
+ },
+ "202:s04-6|28%": {
+  "answer": "28%",
+  "q": "What air-entrainment device setting is used in COPD to avoid O₂-induced hypoventilation?"
+ },
+ "202:s04-6|45torr": {
+  "answer": "45 torr",
+  "q": "Hypoventilation is defined by PaCO₂ rising above what value?"
+ },
+ "202:s04-6|55-60torr": {
+  "answer": "55–60 torr",
+  "q": "What PaO₂ range should be maintained in COPD to avoid O₂-induced hypoventilation?"
+ },
+ "202:s04-7|30%": {
+  "answer": "30%",
+  "q": "In inspiratory muscle training, resistance is raised until inspiratory pressure reaches at least what percentage of MIP?"
+ },
+ "202:s05-10|10%": {
+  "answer": "10%",
+  "q": "What percentage of sodium is normally reabsorbed in the distal tubule?"
+ },
+ "202:s05-10|20%": {
+  "answer": "20%",
+  "q": "What percentage of sodium is normally reabsorbed in the loop of Henle?"
+ },
+ "202:s05-10|70%": {
+  "answer": "70%",
+  "q": "What percentage of sodium is normally reabsorbed in the proximal tubule?"
+ },
+ "202:s05-7|90-120ml/min": {
+  "answer": "90–120 mL/min",
+  "q": "What is the normal GFR range for young healthy adults (per 1.73 m²)?"
+ },
+ "202:s05-8|1to2l": {
+  "answer": "1 to 2 L",
+  "q": "What is normal urine output per day?"
+ },
+ "202:s05-8|20%": {
+  "answer": "20%",
+  "q": "What percentage of the blood flowing through the nephron is filtered at the glomerulus?"
+ },
+ "202:s05-8|20-25%": {
+  "answer": "20–25%",
+  "q": "What percentage of the body's resting oxygen consumption do the kidneys use?"
+ },
+ "202:s05-8|200l": {
+  "answer": "200 L",
+  "q": "About how much fluid do the kidneys filter per day?"
+ },
+ "202:s05-8|99%": {
+  "answer": "99%",
+  "q": "What percentage of glomerular filtrate is reabsorbed in the tubules?"
+ },
+ "202:s06-1|180-900breaths/min": {
+  "answer": "180–900 breaths/min",
+  "phase": 4,
+  "q": "HFOV's 3–15 Hz frequency equals what breathing rate?"
+ },
+ "202:s06-1|20cmh2o": {
+  "answer": "20 cmH₂O",
+  "q": "In the pressure-control example where ARDS drops VT from 500 to 300 mL, what pressure is set?"
+ },
+ "202:s06-1|20to35cmh2o": {
+  "answer": "20 to 35 cmH₂O",
+  "q": "In volume control with VT set at 500 mL, how does PIP change when the patient develops ARDS?"
+ },
+ "202:s06-1|3-15hz": {
+  "answer": "3–15 Hz",
+  "q": "At what frequency range does high-frequency oscillatory ventilation (HFOV) operate?"
+ },
+ "202:s06-1|500ml": null,
+ "202:s06-1|500to300ml": {
+  "answer": "500 to 300 mL",
+  "q": "In pressure control at 20 cmH₂O, how does VT change when the patient develops ARDS?"
+ },
+ "202:s06-1|8-10ml/kg": {
+  "answer": "8–10 mL/kg",
+  "q": "When titrating pressure support, what tidal volume (per kg IBW) is the target?"
+ },
+ "202:s06-1|<25/min": {
+  "answer": "< 25/min",
+  "q": "When titrating pressure support, what spontaneous respiratory rate is the target?"
+ },
+ "202:s06-2|20cmh2o": {
+  "answer": "20 cmH₂O",
+  "q": "With PEEP 5 and PIP 25 cmH₂O, what is the driving pressure?"
+ },
+ "202:s06-2|500ml": null,
+ "202:s06-3|>15cmh2o": {
+  "answer": "> 15 cmH₂O",
+  "q": "Above what PEEP, combined with intra-abdominal pressure over 20 cmH₂O, are the heart, kidneys, and lungs harmed?"
+ },
+ "202:s06-3|>20cmh2o": {
+  "answer": "> 20 cmH₂O",
+  "q": "Above what intra-abdominal pressure, combined with PEEP over 15 cmH₂O, are the heart, kidneys, and lungs harmed?"
+ },
+ "202:s06-4|15cmh2o": {
+  "answer": "15 cmH₂O",
+  "q": "With auto-PEEP, how high can distal airway pressure get while the proximal manometer still reads zero?"
+ },
+ "202:s06-5|10-15cmh2o": {
+  "answer": "10–15 cm H₂O",
+  "q": "How much PEEP do many ARDS patients need?"
+ },
+ "202:s06-5|100%": null,
+ "202:s06-5|<15cmh2o": {
+  "answer": "< 15 cm H₂O",
+  "q": "What is the ideal driving pressure (Pplat − PEEP)?"
+ },
+ "202:s06-5|<30": null,
+ "202:s06-5|<30cmh2o": {
+  "answer": "< 30 cm H₂O",
+  "q": "What plateau pressure limit does ARDSNet recommend, the figure accepted as today's goal?"
+ },
+ "202:s06-5|<50psig": {
+  "answer": "< 50 psig",
+  "q": "A ventilator input-power alarm sounds when the air or O₂ source pressure falls below what?"
+ },
+ "202:s06-5|>10": {
+  "answer": "> 10",
+  "q": "Airway resistance above what value suggests severe bronchospasm, mucus plugging, or a kinked ETT?"
+ },
+ "202:s06-5|>5": {
+  "answer": "> 5",
+  "q": "Airway resistance above what value suggests airway obstruction?"
+ },
+ "202:s06-5|≤30": null,
+ "202:s07-17|10-20%": {
+  "answer": "10–20%",
+  "q": "How far below the patient's baseline should the BiPAP low minute-ventilation alarm be set?"
+ },
+ "202:s07-17|150ml": {
+  "answer": "150 mL",
+  "q": "How far above and below the target tidal volume should BiPAP VT alarms be set?"
+ },
+ "202:s07-3|100%": {
+  "answer": "100%",
+  "q": "The first-line CPAP treatment for acute pulmonary edema uses what oxygen concentration?"
+ },
+ "202:s07-3|8-12cmh2o": {
+  "answer": "8–12 cmH₂O",
+  "q": "At what CPAP level is acute pulmonary edema treated first-line?"
+ },
+ "202:s07-5|4-6cmh2o": {
+  "answer": "4–6 cmH₂O",
+  "q": "What is the typical starting EPAP?"
+ },
+ "202:s07-6|4cmh2o": {
+  "answer": "4 cmH₂O",
+  "q": "What is the minimum pressure support (IPAP − EPAP) needed to keep the patient's tidal volume?"
+ },
+ "202:s07-7|40": {
+  "answer": "40",
+  "q": "In typical BiPAP starting settings, what FiO₂ percentage is used?"
+ },
+ "202:s08-13|98%": null,
+ "202:s08-15|3to5days": {
+  "answer": "3 to 5 days",
+  "q": "How long do the kidneys take to compensate for an acid-base disturbance?"
+ },
+ "202:s08-15|7.36": null,
+ "202:s08-15|7.66": null,
+ "202:s08-16|10mmhg": {
+  "answer": "10 mm Hg",
+  "phase": 4,
+  "q": "Every acute PaCO₂ rise of how much drops pH by about 0.06?"
+ },
+ "202:s08-16|1meq/l": {
+  "answer": "1 mEq/L",
+  "phase": 4,
+  "q": "For every 10 mm Hg acute rise in PaCO₂, how much does HCO₃⁻ rise?"
+ },
+ "202:s08-16|20mmhg": {
+  "answer": "20 mm Hg",
+  "phase": 4,
+  "q": "Every acute PaCO₂ rise of how much drops pH by about 0.12?"
+ },
+ "202:s08-16|2meq/l": {
+  "answer": "2 mEq/L",
+  "phase": 4,
+  "q": "For every 20 mm Hg acute rise in PaCO₂, how much does HCO₃⁻ rise?"
+ },
+ "202:s08-16|7.40": {
+  "answer": "7.40",
+  "phase": 1,
+  "q": "What is the pH of the 'perfect' baseline gas used for quick acid-base calculations?"
+ },
+ "202:s08-18|3.5mmhg": {
+  "answer": "3.5 mm Hg",
+  "q": "If HCO₃⁻ rises from 24 to 29, what is the expected compensatory PaCO₂ rise (0.7 × the HCO₃⁻ rise)?"
+ },
+ "202:s08-19|105meq/l": {
+  "answer": "105 mEq/L",
+  "q": "What normal plasma chloride value is used in the anion gap?"
+ },
+ "202:s08-19|140meq/l": {
+  "answer": "140 mEq/L",
+  "q": "What normal plasma sodium value is used in the anion gap?"
+ },
+ "202:s08-19|24meq/l": {
+  "answer": "24 mEq/L",
+  "q": "What normal plasma bicarbonate value is used in the anion gap?"
+ },
+ "202:s08-1|24-30meq/l": {
+  "answer": "24 – 30 mEq/L",
+  "q": "What is the normal venous HCO₃⁻ range?"
+ },
+ "202:s08-23|17hours": null,
+ "202:s08-23|7.52": null,
+ "202:s08-24|1-2seconds": {
+  "answer": "1–2 seconds",
+  "q": "In a modified Allen's test, the hand should pink up within how long of releasing the ulnar artery?"
+ },
+ "202:s08-26|90seconds": {
+  "answer": "90 seconds",
+  "q": "How quickly does the i-STAT deliver ABG results at the bedside?"
+ },
+ "202:s08-2|97%": null,
+ "202:s08-3|7.35-7.45": {
+  "answer": "7.35 – 7.45",
+  "q": "What is the normal arterial pH range?"
+ },
+ "202:s08-6|60mmhg": {
+  "answer": "60 mm Hg",
+  "q": "At about what PaO₂ are the peripheral chemoreceptors stimulated to increase ventilation?"
+ },
+ "202:s08-7|2meq/l": {
+  "answer": "2 mEq/L",
+  "q": "Normal base excess ranges from −2 up to what upper limit?"
+ },
+ "202:s08-9|2-3ml": {
+  "answer": "2–3 mL",
+  "q": "What volume are blood gas quality-control solution ampules?"
+ },
+ "202:s09-11|<0.75-0.80": {
+  "answer": "< 0.75–0.80",
+  "q": "What FEV₁/FVC ratio is diagnostic of asthma in adults?"
+ },
+ "202:s09-11|<0.90": {
+  "answer": "< 0.90",
+  "q": "What FEV₁/FVC ratio is diagnostic of asthma in children?"
+ },
+ "202:s09-12|>10mmhg": {
+  "answer": "> 10 mmHg",
+  "q": "Pulsus paradoxus is an inspiratory drop in systolic BP of more than what?"
+ },
+ "202:s09-13|50-80%": {
+  "answer": "50–80%",
+  "q": "What PEFR (percent of predicted or personal best) indicates moderate asthma?"
+ },
+ "202:s09-13|<50%": {
+  "answer": "< 50%",
+  "q": "What PEFR (percent of predicted or personal best) indicates severe asthma?"
+ },
+ "202:s09-13|>30/min": {
+  "answer": "> 30/min",
+  "q": "What respiratory rate is typical of severe asthma?"
+ },
+ "202:s09-15|6hr": {
+  "answer": "6 hr",
+  "q": "About how long does a SABA + SAMA combination (ipratropium/albuterol) last?"
+ },
+ "202:s09-16|2.5mg": {
+  "answer": "2.5 mg",
+  "q": "What is the typical nebulized albuterol dose?"
+ },
+ "202:s09-16|3ml": {
+  "answer": "3 mL",
+  "q": "Nebulized albuterol 2.5 mg is typically mixed in how much normal saline?"
+ },
+ "202:s09-17|12hours": {
+  "answer": "12 hours",
+  "q": "Formoterol lasts up to how long?"
+ },
+ "202:s09-17|20min": {
+  "answer": "20 min",
+  "q": "What is the onset time of salmeterol?"
+ },
+ "202:s09-17|24hours": {
+  "answer": "24 hours",
+  "q": "How long do the ultra-long-acting LABAs indacaterol and olodaterol last?"
+ },
+ "202:s09-17|3-5hours": {
+  "answer": "3–5 hours",
+  "q": "When does salmeterol reach its peak effect?"
+ },
+ "202:s09-18|2-4weeks": {
+  "answer": "2–4 weeks",
+  "q": "How long can cromolyn take to show improvement?"
+ },
+ "202:s09-18|50-70%": {
+  "answer": "50–70%",
+  "q": "In about what percentage of patients do antileukotrienes work?"
+ },
+ "202:s09-3|6.5%": {
+  "answer": "6.5%",
+  "q": "What percentage of all physician office visits are for asthma?"
+ },
+ "202:s09-5|1hour": {
+  "answer": "1 hour",
+  "q": "The early phase of an asthma reaction usually resolves within about how long?"
+ },
+ "202:s10-14|≥2": {
+  "answer": "≥ 2",
+  "q": "How many exacerbations in the past year make a future COPD exacerbation especially likely?"
+ },
+ "202:s10-16|15%": null,
+ "202:s10-16|20%": {
+  "answer": "20%",
+  "q": "An alpha-1 antitrypsin level below 15% to what percentage of normal strongly suggests AATD emphysema?"
+ },
+ "202:s10-16|45years": {
+  "answer": "45 years",
+  "q": "Screen for alpha-1 antitrypsin deficiency when a COPD patient is younger than what age?"
+ },
+ "202:s10-18|≥2": null,
+ "202:s10-19|88%": {
+  "answer": "88%",
+  "q": "Nocturnal oxygen is covered when overnight SpO₂ falls below what value?"
+ },
+ "202:s10-19|≤55torr": {
+  "answer": "≤ 55 torr",
+  "q": "What room-air PaO₂ qualifies a COPD patient for continuous home oxygen?"
+ },
+ "202:s10-19|≤88%": {
+  "answer": "≤ 88%",
+  "q": "What room-air SaO₂ qualifies a COPD patient for continuous home oxygen?"
+ },
+ "202:s10-20|88-92%": {
+  "answer": "88–92%",
+  "q": "What SpO₂ does the COPD oxygen protocol target?"
+ },
+ "202:s10-23|7.24": null,
+ "202:s10-23|77%": null,
+ "202:s10-3|80-85%": {
+  "answer": "80–85%",
+  "phase": 1,
+  "q": "What percentage of the FVC does a normal person exhale in the first second?"
+ },
+ "202:s10-3|<0.70": {
+  "answer": "< 0.70",
+  "q": "What post-bronchodilator FEV₁/FVC ratio confirms COPD?"
+ },
+ "202:s10-4|<0.70": null,
+ "202:s10-5|50-79%": null,
+ "202:s10-5|<1": {
+  "answer": "< 1",
+  "q": "What mMRC dyspnea score indicates low risk?"
+ },
+ "202:s10-5|<10": {
+  "answer": "< 10",
+  "q": "In the GOLD assessment, what CAT score fits group A?"
+ },
+ "202:s10-5|≤1": {
+  "answer": "≤ 1",
+  "q": "In the GOLD assessment, how many exacerbations per year fit group A?"
+ },
+ "202:s10-5|≥2": {
+  "answer": "≥ 2",
+  "q": "What mMRC dyspnea score indicates high risk?"
+ },
+ "202:s10-8|≥3months": {
+  "answer": "≥ 3 months",
+  "q": "Chronic bronchitis requires a productive cough lasting how long in each of 2 consecutive years?"
+ },
+ "202:s11-1|50%": {
+  "answer": "50%",
+  "q": "One millimeter of airway edema can shrink an infant's airway diameter by more than what percentage?"
+ },
+ "202:s11-2|20cmh2o": {
+  "answer": "20 cm H₂O",
+  "q": "Below what cuff pressure does microaspiration, the main route to VAP, become likely?"
+ },
+ "202:s11-2|25to35mmhg": {
+  "answer": "25 to 35 mm Hg",
+  "q": "What is normal tracheal capillary perfusion pressure?"
+ },
+ "202:s11-3|20mmhg": {
+  "answer": "20 mm Hg",
+  "q": "Used properly, how much pressure does a foam cuff rarely exceed against the tracheal wall?"
+ },
+ "202:s11-5|30to60seconds": {
+  "answer": "30 to 60 seconds",
+  "q": "In rapid sequence intubation, how long after the paralytic is the patient intubated?"
+ },
+ "202:s11-8|20-30cmh2o": {
+  "answer": "20–30 cm H₂O",
+  "q": "What cuff pressure range is part of VAP prevention?"
+ },
+ "202:s11-8|48hours": {
+  "answer": "48 hours",
+  "q": "VAP is pneumonia that develops how long after intubation?"
+ },
+ "202:s11-8|>6": {
+  "answer": "> 6",
+  "q": "What modified CPIS score supports a VAP diagnosis?"
+ },
+ "202:s12-10|26meq/l": {
+  "answer": "26 mEq/L",
+  "phase": 4,
+  "q": "When PaCO₂ acutely rises from 40 to 60, what HCO₃⁻ is expected?"
+ },
+ "202:s12-2|12.0to15.5g/dl": {
+  "answer": "12.0 to 15.5 g/dL",
+  "q": "What is normal hemoglobin for adult women?"
+ },
+ "202:s12-2|13.5to17.5g/dl": {
+  "answer": "13.5 to 17.5 g/dL",
+  "q": "What is normal hemoglobin for adult men?"
+ },
+ "202:s12-3|55-60mmhg": null,
+ "202:s12-4|0.75seconds": {
+  "answer": "0.75 seconds",
+  "q": "How long does blood normally take to pass through a pulmonary capillary?"
+ },
+ "202:s12-5|6ml/kg": {
+  "answer": "6 mL/kg",
+  "q": "What tidal volume per kg of predicted body weight is the key number for ARDS?"
+ },
+ "202:s12-6|82-86%": {
+  "answer": "82–86%",
+  "q": "In methemoglobinemia, what does the pulse oximeter typically read, even with a high PaO₂?"
+ },
+ "202:s12-6|<30mmhg": {
+  "answer": "< 30 mmHg",
+  "q": "Unless neurosurgery directs it, prolonged PaCO₂ below what value should be avoided?"
+ },
+ "202:s12-7|150ml": null,
+ "202:s12-7|1ml": {
+  "answer": "1 mL",
+  "phase": 4,
+  "q": "Anatomic dead space is estimated at how much per pound of body weight?"
+ },
+ "202:s12-9|100%": {
+  "answer": "100%",
+  "q": "The A–a gradient shortcut (1000 − PaCO₂/0.8) − PaO₂ is only valid on what oxygen concentration?"
+ },
+ "202:s12-9|100-200mmhg": {
+  "answer": "100–200 mm Hg",
+  "q": "What A–a gradient is acceptable on 100% oxygen?"
+ },
+ "202:s12-9|5-15mmhg": {
+  "answer": "5–15 mm Hg",
+  "q": "What is the normal A–a gradient for a young adult on room air?"
+ },
+ "203:s01-1|14days": {
+  "answer": "14 days",
+  "q": "For atypical viral infections like SARS, how long after symptom onset are combined airborne precautions continued?"
+ },
+ "203:s01-1|5μm": {
+  "answer": "5 μm",
+  "q": "Droplet transmission involves particles larger than what size?"
+ },
+ "203:s01-2|10seconds": {
+  "answer": "10 seconds",
+  "q": "When cleaning a stethoscope between patients, how long should the alcohol stay visibly wet?"
+ },
+ "203:s01-2|24hours": {
+  "answer": "24 hours",
+  "q": "How often should a nondisposable large-volume nebulizer be swapped for a sterile unit?"
+ },
+ "203:s01-2|70%": {
+  "answer": "70%",
+  "q": "What alcohol concentration is used to wipe a stethoscope between patients?"
+ },
+ "203:s01-3|2%": {
+  "answer": "2%",
+  "q": "What chlorhexidine concentration is used for line-insertion skin prep?"
+ },
+ "203:s01-3|5minutes": {
+  "answer": "5 minutes",
+  "q": "How long should home semicritical items be disinfected in a 1:50 bleach solution?"
+ },
+ "203:s01-3|70%": {
+  "answer": "70%",
+  "q": "Chlorhexidine for line-insertion prep is mixed in what concentration of isopropyl alcohol?"
+ },
+ "203:s01-4|20-30cmh2o": null,
+ "203:s01-4|24hours": {
+  "answer": "24 hours",
+  "q": "As part of oral care, how often should the oral ETT position be rotated?"
+ },
+ "203:s01-4|33to50%": {
+  "answer": "33 to 50%",
+  "q": "What is the mortality rate of VAP?"
+ },
+ "203:s01-4|48hours": null,
+ "203:s01-4|69%": {
+  "answer": "69%",
+  "q": "Infiltrates plus two of the three other VAP criteria have what sensitivity?"
+ },
+ "203:s01-4|75%": {
+  "answer": "75%",
+  "q": "Infiltrates plus two of the three other VAP criteria have what specificity?"
+ },
+ "203:s01-4|95%": null,
+ "203:s01-5|0.5-1.0μm": {
+  "answer": "0.5–1.0 μm",
+  "q": "How large are TB droplet nuclei?"
+ },
+ "203:s01-5|1-2months": {
+  "answer": "1–2 months",
+  "q": "In TB treatment, INH + RIF is given daily for how long before switching to twice weekly?"
+ },
+ "203:s01-5|10-15minutes": {
+  "answer": "10–15 minutes",
+  "q": "During sputum induction, how long after the beta-agonist pretreatment is the baseline FEV₁ taken?"
+ },
+ "203:s01-5|1year": {
+  "answer": "1 year",
+  "q": "How long is daily INH given to exposed people or those with a positive PPD?"
+ },
+ "203:s01-5|24hours": {
+  "answer": "24 hours",
+  "q": "How far apart should repeat sputum induction attempts be spaced?"
+ },
+ "203:s01-5|3to4weeks": {
+  "answer": "3 to 4 weeks",
+  "q": "In primary TB, over how long do inhaled bacilli multiply before being walled off?"
+ },
+ "203:s01-5|8-24hours": {
+  "answer": "8–24 hours",
+  "q": "Over what time period are the 3 sputum samples for TB collected?"
+ },
+ "203:s01-5|≥3": {
+  "answer": "≥ 3",
+  "q": "Once TB drug resistance is documented, how many additional antibiotics are added?"
+ },
+ "203:s01-5|≥5ml": {
+  "answer": "≥ 5 mL",
+  "q": "What is the minimum volume of each TB sputum sample?"
+ },
+ "203:s02-10|0.25-4.0l/min": null,
+ "203:s02-10|0.2l/sec": {
+  "answer": "0.2 L/sec",
+  "q": "Flow calibration should be accurate to ±5% of the reading or to what flow, whichever is greater?"
+ },
+ "203:s02-10|2l/min": {
+  "answer": "2 L/min",
+  "q": "A pediatric nasal cannula runs from ¼ L/min up to what flow?"
+ },
+ "203:s02-10|5%": {
+  "answer": "5%",
+  "q": "Flow calibration should be accurate to within what percentage of the reading (or ±0.2 L/sec)?"
+ },
+ "203:s02-10|50psi": null,
+ "203:s02-10|50psig": null,
+ "203:s02-1|0.25-4.0l/min": {
+  "answer": "0.25–4.0 L/min",
+  "q": "What flow range do home oxygen patients usually use?"
+ },
+ "203:s02-1|500psi": {
+  "answer": "500 psi",
+  "q": "A cylinder should be changed out when its pressure drops below what?"
+ },
+ "203:s02-1|50psi": {
+  "answer": "50 psi",
+  "q": "At what standard working pressure is piped wall gas delivered to the bedside?"
+ },
+ "203:s02-2|1800psi": null,
+ "203:s02-2|45minutes": {
+  "answer": "45 minutes",
+  "q": "How long will an E cylinder at 800 psi last at 5 L/min (cylinder factor 0.28)?"
+ },
+ "203:s02-2|5l/min": null,
+ "203:s02-2|6l/min": null,
+ "203:s02-3|1l": null,
+ "203:s02-3|344l": {
+  "answer": "344 L",
+  "phase": 4,
+  "q": "One pound of liquid oxygen equals about how many liters of gas?"
+ },
+ "203:s02-3|50-75%": null,
+ "203:s02-3|50psi": null,
+ "203:s02-3|860l": {
+  "answer": "860 L",
+  "phase": 4,
+  "q": "How many liters of gaseous O₂ does 1 L of liquid O₂ produce?"
+ },
+ "203:s02-3|8hours": {
+  "answer": "8 hours",
+  "q": "With a demand-flow device, how long can a portable liquid-oxygen unit last?"
+ },
+ "203:s02-4|1-2minutes": {
+  "answer": "1–2 minutes",
+  "q": "How long after start-up does an oxygen concentrator reach maximum output?"
+ },
+ "203:s02-4|1-4hours": {
+  "answer": "1–4 hours",
+  "q": "What is the typical battery life of a portable oxygen concentrator?"
+ },
+ "203:s02-4|150%": {
+  "answer": "150%",
+  "q": "For air travel, how much battery should a portable concentrator user carry, relative to one-way travel time?"
+ },
+ "203:s02-4|30%": {
+  "answer": "30%",
+  "q": "Pulse-dose portable concentrators are adequate for patients needing up to what O₂ percentage?"
+ },
+ "203:s02-4|6hours": {
+  "answer": "6 hours",
+  "q": "Optional battery packs extend a portable concentrator to more than how long?"
+ },
+ "203:s02-4|85-90": null,
+ "203:s02-4|85-90%": {
+  "answer": "85–90%",
+  "q": "An oxygen concentrator's sieve is failing when analyzed output falls below what percentage of the manufacturer's spec?"
+ },
+ "203:s02-4|<85-90%": null,
+ "203:s02-5|50-75%": {
+  "answer": "50–75%",
+  "phase": 2,
+  "q": "By how much do oxygen-conserving devices reduce O₂ use?"
+ },
+ "203:s02-5|≤2l/min": {
+  "answer": "≤ 2 L/min",
+  "q": "What is the usual maximum home cannula flow for infants?"
+ },
+ "203:s02-5|≤4l/min": {
+  "answer": "≤ 4 L/min",
+  "q": "What is the usual maximum home cannula flow for adults?"
+ },
+ "203:s02-5|≤55torr": null,
+ "203:s02-5|≤88%": null,
+ "203:s02-6|0.90": {
+  "answer": "0.90",
+  "q": "High-flow oxygen systems can reach an FiO₂ of at least what?"
+ },
+ "203:s02-6|≥0.90": null,
+ "203:s02-6|≥91%": {
+  "answer": "≥ 91%",
+  "q": "What SpO₂ is the discharge goal for oxygen therapy?"
+ },
+ "203:s02-7|0.35": null,
+ "203:s02-7|0.40": {
+  "answer": "0.40",
+  "q": "Above what FiO₂ should you move from an air-entrainment device to a high-flow system?"
+ },
+ "203:s02-7|10l/min": null,
+ "203:s02-7|28%": null,
+ "203:s02-7|2l": null,
+ "203:s02-7|2l/min": null,
+ "203:s02-7|32l/min": {
+  "answer": "32 L/min",
+  "phase": 4,
+  "q": "What total flow does a 40% air-entrainment mask (3:1 ratio) deliver at 8 L/min of oxygen?"
+ },
+ "203:s02-7|40%": null,
+ "203:s02-7|40l/min": {
+  "answer": "40 L/min",
+  "q": "What minimum total flow must an air-entrainment device deliver to guarantee a fixed FiO₂?"
+ },
+ "203:s02-7|48l/min": {
+  "answer": "48 L/min",
+  "q": "With a 5:1 air-to-O₂ ratio and 8 L/min of oxygen, what total flow reaches the patient?"
+ },
+ "203:s02-7|50%": null,
+ "203:s02-7|60%": {
+  "answer": "60%",
+  "phase": 4,
+  "q": "At what FiO₂ is the air-to-oxygen entrainment ratio 1:1?"
+ },
+ "203:s02-7|8l/min": null,
+ "203:s02-7|<40l/min": null,
+ "203:s02-7|≥0.35": {
+  "answer": "≥ 0.35",
+  "q": "At what FiO₂ do air-entrainment devices become less precise?"
+ },
+ "203:s02-7|≥40l/min": null,
+ "203:s02-8|100%": null,
+ "203:s02-8|3-5minutes": {
+  "answer": "3–5 minutes",
+  "q": "How long should a patient be preoxygenated on 100% oxygen through a tight-fitting non-rebreather?"
+ },
+ "203:s02-8|40-70%": {
+  "answer": "40–70%",
+  "q": "What FiO₂ does a partial rebreathing mask deliver?"
+ },
+ "203:s02-8|6-10l/min": {
+  "answer": "6–10 L/min",
+  "q": "At what flow does a partial rebreathing mask run?"
+ },
+ "203:s02-8|83%": null,
+ "203:s02-8|87%": null,
+ "203:s02-8|98%": null,
+ "203:s02-8|≥20l/min": {
+  "answer": "≥ 20 L/min",
+  "q": "For suspected MI in the ED, what minimum HFNC flow is the alternative to a non-rebreather?"
+ },
+ "203:s02-9|30minutes": {
+  "answer": "30 minutes",
+  "q": "How long does a T-piece spontaneous breathing trial typically last?"
+ },
+ "203:s02-9|40-50%": {
+  "answer": "40–50%",
+  "q": "For a post-op patient with an ETT needing moderate FiO₂, what O₂ setting is used on the air-entrainment nebulizer?"
+ },
+ "203:s02-9|<5cmh2o": {
+  "answer": "< 5 cm H2O",
+  "q": "During a spontaneous breathing trial, what pressure support is used alongside low CPAP?"
+ },
+ "203:s02-9|≤5cmh2o": {
+  "answer": "≤ 5 cm H2O",
+  "q": "During a spontaneous breathing trial on CPAP, what is the maximum CPAP level?"
+ },
+ "203:s03-1|10seconds": {
+  "answer": "10 seconds",
+  "q": "After actuating an MDI, how long should the patient hold their breath?"
+ },
+ "203:s03-1|3to5seconds": {
+  "answer": "3 to 5 seconds",
+  "q": "When using an MDI, how long should the slow, deep inhalation last?"
+ },
+ "203:s03-1|50%": null,
+ "203:s03-2|10%": null,
+ "203:s03-2|1μm": {
+  "answer": "1 μm",
+  "q": "Aerosol particles smaller than what size are largely exhaled again?"
+ },
+ "203:s03-2|2.31to3.02μm": null,
+ "203:s03-2|20%": {
+  "answer": "20%",
+  "q": "Only 10% to what percentage of the emitted dose is inhaled from a jet nebulizer?"
+ },
+ "203:s03-2|2inches": {
+  "answer": "2 inches",
+  "q": "With the open-mouth technique, how far from the mouth should an MDI be held?"
+ },
+ "203:s03-2|300ml": {
+  "answer": "300 mL",
+  "q": "Ribavirin (Virazole) 6 g powder is reconstituted in what volume?"
+ },
+ "203:s03-2|37°c": {
+  "answer": "37 °C",
+  "q": "At what temperature is BTPS defined?"
+ },
+ "203:s03-2|50%": {
+  "answer": "50%",
+  "q": "By how much does using a face mask instead of a mouthpiece cut aerosol lung deposition?"
+ },
+ "203:s03-2|6to8l/min": {
+  "answer": "6 to 8 L/min",
+  "q": "At what gas flow should a small-volume nebulizer run for optimal particle size?"
+ },
+ "203:s03-3|33%": {
+  "answer": "33%",
+  "q": "If a patient cannot generate an IC above what percentage of predicted, should IPPB or CPAP replace incentive spirometry?"
+ },
+ "203:s03-3|5to10seconds": {
+  "answer": "5 to 10 seconds",
+  "q": "During incentive spirometry, how long should the patient hold the breath at full inspiration?"
+ },
+ "203:s03-3|70%": {
+  "answer": "70%",
+  "q": "Incentive spirometry can be stopped when volumes exceed 60% to what percentage of predicted IC?"
+ },
+ "203:s03-4|10to20cmh2o": {
+  "answer": "10 to 20 cm H2O",
+  "q": "What is the therapeutic pressure range for PEP therapy?"
+ },
+ "203:s03-4|6to25cmh2o": {
+  "answer": "6 to 25 cm H2O",
+  "q": "What pressure range can PEP devices produce?"
+ },
+ "203:s03-5|10minutes": {
+  "answer": "10 minutes",
+  "q": "How long is a typical MetaNeb session?"
+ },
+ "203:s03-6|2.31to3.02μm": null,
+ "203:s03-7|10ppm": {
+  "answer": "10 ppm",
+  "q": "During inhaled nitric oxide therapy, NO₂ above what level causes cell damage, pulmonary edema, and death?"
+ },
+ "203:s03-7|82-86%": null,
+ "203:s03-8|100%": null,
+ "203:s03-8|10l/min": null,
+ "203:s03-8|20%": {
+  "answer": "20%",
+  "phase": 2,
+  "q": "Heliox must always contain at least what percentage of oxygen?"
+ },
+ "203:s04-1|2-3ml": null,
+ "203:s04-2|3minutes": {
+  "answer": "3 minutes",
+  "q": "How soon must an i-STAT sample be analyzed?"
+ },
+ "203:s04-2|<40torr": {
+  "answer": "< 40 torr",
+  "q": "A point-of-care PO₂ below what, with signs of severe hypoxemia, means raise the FiO₂ immediately?"
+ },
+ "203:s04-3|100%": {
+  "answer": "100%",
+  "q": "An oxygen analyzer's two-point calibration uses room air and what oxygen concentration?"
+ },
+ "203:s04-3|100torr": {
+  "answer": "100 torr",
+  "q": "Above what PaO₂ does pulse oximetry give little useful data?"
+ },
+ "203:s04-3|2%": {
+  "answer": "2%",
+  "q": "Oxygen analyzers are generally accurate to within what percentage?"
+ },
+ "203:s04-3|21%": {
+  "answer": "21%",
+  "q": "An oxygen analyzer's two-point calibration uses 100% O₂ and what room-air concentration?"
+ },
+ "203:s04-3|97%": {
+  "answer": "97%",
+  "q": "A pulse oximeter should be removed from service if it reads below what SpO₂ on a healthy subject?"
+ },
+ "203:s04-3|>85%": {
+  "answer": "> 85%",
+  "q": "With high methemoglobin, pulse oximetry reads falsely low when SaO₂ is above what?"
+ },
+ "203:s04-4|0.2l/sec": null,
+ "203:s04-4|100ml": {
+  "answer": "100 mL",
+  "q": "In a spirometer linearity check, how far may the recorded volume deviate from the 3.0-L target?"
+ },
+ "203:s04-4|3%": {
+  "answer": "3%",
+  "q": "What is the ATS volume accuracy standard for diagnostic spirometers, as a percentage?"
+ },
+ "203:s04-4|5%": null,
+ "203:s04-4|50ml": {
+  "answer": "50 mL",
+  "q": "The ATS spirometer volume standard is ±3% or what volume, whichever is larger?"
+ },
+ "203:s04-5|5seconds": {
+  "answer": "5 seconds",
+  "q": "In a modified Allen's test, how long are both arteries held with the hand clenched?"
+ },
+ "203:s04-5|<30minutes": {
+  "answer": "< 30 minutes",
+  "q": "How soon must an ABG in a plastic syringe at room temperature be analyzed?"
+ },
+ "203:s04-7|100torr": {
+  "answer": "100 torr",
+  "q": "PtcO₂ equals PaO₂ only when PaO₂ is below what value?"
+ },
+ "203:s04-7|37°c": {
+  "answer": "37°C",
+  "q": "What is the lowest transcutaneous electrode temperature adequate for PtcCO₂-only monitoring?"
+ },
+ "203:s04-7|42°c": {
+  "answer": "42°C",
+  "q": "What electrode temperature do newer transcutaneous sensors use?"
+ },
+ "203:s04-7|5-20min": {
+  "answer": "5–20 min",
+  "q": "How long does transcutaneous monitoring take to set up and stabilize?"
+ },
+ "203:s04-7|50-80torr": {
+  "answer": "50–80 torr",
+  "q": "What PtcO₂ range should be maintained in neonates?"
+ },
+ "203:s04-7|>30-40torr": {
+  "answer": "> 30–40 torr",
+  "q": "What wound-tissue PtcO₂ indicates perfusion adequate for healing?"
+ },
+ "203:s04-8|100%": null,
+ "203:s04-8|2%": null,
+ "203:s04-8|21%": null,
+ "203:s05-10|10cmh2o": null,
+ "203:s05-10|2-3cmh2o": {
+  "answer": "2–3 cmH2O",
+  "q": "Per Heuer, PEEP is typically set how far above the lower inflection point?"
+ },
+ "203:s05-1|100%": null,
+ "203:s05-1|30minutes": {
+  "answer": "30 minutes",
+  "q": "If a patient keeps deteriorating, how long after starting NIV should they be intubated?"
+ },
+ "203:s05-1|4cmh2o": null,
+ "203:s05-1|6-8ml/kg": {
+  "answer": "6–8 mL/kg",
+  "q": "On BiPAP, what tidal volume per kg should be targeted?"
+ },
+ "203:s05-1|7.28": null,
+ "203:s05-1|8-12cmh2o": null,
+ "203:s05-1|8/min": {
+  "answer": "8/min",
+  "q": "What is the minimum BiPAP backup rate?"
+ },
+ "203:s05-1|84%": null,
+ "203:s05-1|>30": {
+  "answer": "> 30",
+  "q": "What AHI (events per hour) indicates severe obstructive sleep apnea?"
+ },
+ "203:s05-1|>60": {
+  "answer": "> 60",
+  "q": "On BiPAP, total leak should never exceed what value?"
+ },
+ "203:s05-1|≤0.50": {
+  "answer": "≤ 0.50",
+  "q": "When weaning off BiPAP, FiO₂ is first lowered to what before reducing EPAP?"
+ },
+ "203:s05-2|20cmh2o": null,
+ "203:s05-2|300ml": null,
+ "203:s05-2|30cmh2o": {
+  "answer": "30 cmH2O",
+  "phase": 3,
+  "q": "Switch from volume to pressure control whenever the plateau pressure exceeds what?"
+ },
+ "203:s05-2|600ml": null,
+ "203:s05-2|700ml": null,
+ "203:s05-2|>30cmh2o": {
+  "answer": "> 30 cmH2O",
+  "q": "APRV is indicated for acute lung injury, especially when the plateau pressure exceeds what?"
+ },
+ "203:s05-2|≤30cmh2o": null,
+ "203:s05-3|10-20%": null,
+ "203:s05-3|100ml": {
+  "answer": "100 mL",
+  "q": "How far below the expired VT is the low exhaled-volume alarm set?"
+ },
+ "203:s05-3|15-20seconds": {
+  "answer": "15–20 seconds",
+  "q": "What apnea-alarm time delay do the lecture decks give?"
+ },
+ "203:s05-3|<3/min": null,
+ "203:s05-4|100%": {
+  "answer": "100%",
+  "q": "Ventilator humidification should deliver as close to what relative humidity as possible?"
+ },
+ "203:s05-4|150ml": null,
+ "203:s05-4|20-30cmh2o": null,
+ "203:s05-4|37°c": {
+  "answer": "37°C",
+  "q": "What gas temperature at the wye should a heated humidifier target?"
+ },
+ "203:s05-4|50ml": null,
+ "203:s05-4|700ml": null,
+ "203:s05-5|15-20mmhg": {
+  "answer": "15–20 mmHg",
+  "q": "Once ICP exceeds what, cerebral blood flow can fall to a critical level?"
+ },
+ "203:s05-5|24hours": {
+  "answer": "24 hours",
+  "q": "Respiratory alkalosis lasting more than how long shifts the oxyhemoglobin curve to the left?"
+ },
+ "203:s05-5|6-7ml/kg": null,
+ "203:s05-6|120minutes": {
+  "answer": "120 minutes",
+  "q": "What is the maximum duration of a spontaneous breathing trial?"
+ },
+ "203:s05-6|13%": {
+  "answer": "13%",
+  "q": "What percentage of patients who pass an SBT and are extubated need reintubation?"
+ },
+ "203:s05-6|15-25seconds": {
+  "answer": "15–25 seconds",
+  "q": "When measuring MIP through a one-way valve, over how long does the patient 'buck down' toward residual volume?"
+ },
+ "203:s05-6|2-5minutes": {
+  "answer": "2–5 minutes",
+  "q": "How long is the supervised screening period before a spontaneous breathing trial?"
+ },
+ "203:s05-6|20-30minutes": {
+  "answer": "20–30 minutes",
+  "q": "Patients who fail a spontaneous breathing trial usually do so within the first how many minutes?"
+ },
+ "203:s05-6|30%": {
+  "answer": "30%",
+  "q": "What is the normal deadspace-to-tidal-volume (VD/VT) ratio, as a percentage?"
+ },
+ "203:s05-6|30minutes": {
+  "answer": "30 minutes",
+  "q": "If tolerated, what is the minimum duration of a spontaneous breathing trial?"
+ },
+ "203:s05-6|38/min": null,
+ "203:s05-6|<25-30ml/cmh2o": {
+  "answer": "< 25–30 mL/cmH2O",
+  "q": "Static compliance below what range is associated with weaning difficulty?"
+ },
+ "203:s05-6|<45mmhg": {
+  "answer": "< 45 mmHg",
+  "q": "After neuromuscular blockade, what PaCO₂ helps confirm reversal?"
+ },
+ "203:s05-6|>0.60-0.70": {
+  "answer": "> 0.60–0.70",
+  "q": "Per Heuer, what VD/VT ratio is critical?"
+ },
+ "203:s05-6|>10l/min": {
+  "answer": "> 10 L/min",
+  "q": "What minute ventilation indicates excessive work of breathing during weaning?"
+ },
+ "203:s05-6|>300": null,
+ "203:s05-6|>30ml/cmh2o": {
+  "answer": "> 30 mL/cmH2O",
+  "q": "What minimum static compliance is consistent with successful weaning?"
+ },
+ "203:s05-6|>60cmh2o": {
+  "answer": "> 60 cmH2O",
+  "q": "Before extubation, what MEP indicates effective secretion clearance?"
+ },
+ "203:s05-6|>60l/min": {
+  "answer": "> 60 L/min",
+  "q": "Before extubation, what peak cough flow indicates effective secretion clearance?"
+ },
+ "203:s05-6|>80mmhg": {
+  "answer": "> 80 mmHg",
+  "q": "After neuromuscular blockade, what PaO₂ helps confirm reversal?"
+ },
+ "203:s05-7|100-200ml": {
+  "answer": "100–200 mL",
+  "q": "In COPD, by how much is VT decreased to lengthen expiratory time?"
+ },
+ "203:s05-7|40mmhg": {
+  "answer": "40 mmHg",
+  "q": "Eucapnic ventilation targets a PaCO₂ near what?"
+ },
+ "203:s05-7|40torr": {
+  "answer": "40 torr",
+  "q": "In acute-on-chronic COPD, the target PaCO₂ may be substantially higher than what?"
+ },
+ "203:s05-7|50%": {
+  "answer": "50%",
+  "q": "If acceptable oxygenation holds on less than what O₂ percentage, adjust FiO₂ rather than PEEP?"
+ },
+ "203:s05-7|50mmhg": {
+  "answer": "50 mmHg",
+  "q": "In a CO₂ retainer, eucapnic ventilation targets a PaCO₂ near what?"
+ },
+ "203:s05-7|7.30": null,
+ "203:s05-7|7.39": null,
+ "203:s05-7|7.52": null,
+ "203:s05-7|≤0.50": null,
+ "203:s05-7|≤200": {
+  "answer": "≤ 200",
+  "phase": 3,
+  "q": "At what P/F ratio should the NHLBI ARDS protocol be recommended?"
+ },
+ "203:s05-7|≥10g/dl": {
+  "answer": "≥ 10 g/dL",
+  "q": "What minimum hemoglobin should be confirmed before blaming the lungs for poor oxygenation?"
+ },
+ "203:s05-9|0.7-1.5mg/dl": {
+  "answer": "0.7–1.5 mg/dL",
+  "q": "What is the normal creatinine range?"
+ },
+ "203:s05-9|1.0": {
+  "answer": "1.0",
+  "q": "During a recruitment maneuver, what FiO₂ is used?"
+ },
+ "203:s05-9|10-20mg/dl": {
+  "answer": "10–20 mg/dL",
+  "q": "What is the normal BUN range?"
+ },
+ "203:s05-9|15%": {
+  "answer": "15%",
+  "q": "About what percentage of circulating blood volume does the liver receive?"
+ },
+ "203:s05-9|18cmh2o": {
+  "answer": "18 cmH2O",
+  "q": "If compliance peaks at a PEEP of 16 cmH₂O, what is the optimum PEEP (peak plus 2)?"
+ },
+ "203:s05-9|200-300": {
+  "answer": "200–300",
+  "q": "Recruitment maneuvers are considered when the P/F ratio is below what?"
+ },
+ "203:s05-9|25%": {
+  "answer": "25%",
+  "q": "About what percentage of circulating blood volume do the kidneys receive?"
+ },
+ "203:s05-9|<20/min": {
+  "answer": "< 20/min",
+  "q": "Per the deck, a patient on pressure support should keep a spontaneous rate below what?"
+ },
+ "203:s05-9|<200-300": null,
+ "203:s05-9|<25ml": {
+  "answer": "< 25 mL",
+  "q": "Per Heuer, adult urine output below what amount per hour is oliguria?"
+ },
+ "203:s05-9|<30cmh2o": null,
+ "203:s05-9|>30cmh2o": null,
+ "203:s05-9|>50cmh2o": {
+  "answer": "> 50 cmH2O",
+  "q": "A PIP above what is associated with increased alveolar rupture?"
+ },
+ "203:s05-9|≥20%": {
+  "answer": "≥ 20%",
+  "q": "A recruitment maneuver succeeds if the P/F ratio rises by at least what?"
+ },
+ "203:s05-9|≥4-5%": {
+  "answer": "≥ 4–5%",
+  "q": "A recruitment maneuver succeeds if SaO₂ rises by at least what?"
+ },
+ "203:s05-9|≥88-90%": {
+  "answer": "≥ 88–90%",
+  "q": "Optimum PEEP is the level that keeps SpO₂ at what value without lowering blood pressure?"
+ },
+ "203:s06-1|90%": {
+  "answer": "90%",
+  "q": "A Cormack-Lehane Grade IV view carries over what likelihood of difficult intubation?"
+ },
+ "203:s06-3|20-30cmh2o": null,
+ "203:s06-3|20cmh2o": null,
+ "203:s06-3|20to30cmh2o": null,
+ "203:s06-3|25cmh2o": {
+  "answer": "25 cm H₂O",
+  "q": "What is the conservative NBRC cuff-pressure alarm limit?"
+ },
+ "203:s06-3|25mmhg": {
+  "answer": "25 mm Hg",
+  "q": "To stay below capillary perfusion pressure, keep the cuff under what pressure in mm Hg?"
+ },
+ "203:s06-3|30cmh2o": {
+  "answer": "30 cm H₂O",
+  "q": "What is the maximum acceptable intracuff pressure?"
+ },
+ "203:s06-4|20-30cmh2o": null,
+ "203:s06-4|50%": null,
+ "203:s06-4|8years": null,
+ "203:s06-5|-20cmh2o": {
+  "answer": "−20 cm H₂O",
+  "q": "If a chest-tube suction chamber is filled to 20 cm of water, how much suction does the patient get?"
+ },
+ "203:s06-5|1-2days": {
+  "answer": "1–2 days",
+  "q": "After chest-tube removal, how long should you watch for recurrence?"
+ },
+ "203:s06-6|16hours": {
+  "answer": "16 hours",
+  "q": "In ARDS, prone positioning is used for at least how many hours a day?"
+ },
+ "203:s06-6|≥50%": {
+  "answer": "≥ 50%",
+  "q": "Hemothorax is confirmed when pleural fluid hematocrit is at least what percentage of blood hematocrit?"
+ },
+ "203:s06-8|1%": null,
+ "203:s06-8|10%": {
+  "answer": "10%",
+  "q": "During bronchoscopy on an intubated patient, by how much should FiO₂ be raised?"
+ },
+ "203:s06-8|15-30minutes": {
+  "answer": "15–30 minutes",
+  "q": "How long before bronchoscopy is moderate sedation given?"
+ },
+ "203:s06-8|24hours": {
+  "answer": "24 hours",
+  "q": "After bronchoscopy, how long may transient fever and mild hemoptysis last?"
+ },
+ "203:s06-8|2hours": {
+  "answer": "2 hours",
+  "q": "After bronchoscopy, the patient stays NPO for at least how long?"
+ },
+ "203:s06-8|4%": {
+  "answer": "4%",
+  "q": "Lidocaine for bronchoscopy is used as a 1% to what concentration solution?"
+ },
+ "203:s06-8|5to10ml": {
+  "answer": "5 to 10 mL",
+  "q": "How much lidocaine solution is used for topical anesthesia in bronchoscopy?"
+ },
+ "203:s06-8|90%": {
+  "answer": "90%",
+  "q": "During bronchoscopy, if SpO₂ drops below what, raise FiO₂ or halt the procedure?"
+ },
+ "203:s06-9|12fr": {
+  "answer": "12 Fr",
+  "phase": 4,
+  "q": "What suction catheter size fits an 8-mm ETT?"
+ },
+ "203:s06-9|30-60seconds": {
+  "answer": "30–60 seconds",
+  "q": "For suctioning, how long should the patient be pre- and post-oxygenated with 100% O₂?"
+ },
+ "203:s06-9|50%": {
+  "answer": "50%",
+  "q": "In adults, a suction catheter should occlude less than what percentage of the ETT's internal diameter?"
+ },
+ "203:s07-10|0.04sec": {
+  "answer": "0.04 sec",
+  "q": "At 25 mm/sec, how much time does each small ECG box represent?"
+ },
+ "203:s07-10|0.20sec": {
+  "answer": "0.20 sec",
+  "q": "At 25 mm/sec, how much time does each large ECG box represent?"
+ },
+ "203:s07-10|150/min": {
+  "answer": "150/min",
+  "q": "In SVT or atrial fibrillation, immediate cardioversion is indicated if the ventricular rate stays above what despite drugs?"
+ },
+ "203:s07-10|1mg": null,
+ "203:s07-10|3-5min": null,
+ "203:s07-10|>0.12sec": {
+  "answer": "> 0.12 sec",
+  "q": "A QRS longer than what suggests PVCs, bundle branch block, VT, or hyperkalemia?"
+ },
+ "203:s07-10|≥1.5": {
+  "answer": "≥ 1.5",
+  "q": "What ST elevation, in mm, indicates acute STEMI in women?"
+ },
+ "203:s07-11|20bpm": {
+  "answer": "20 bpm",
+  "q": "During a treatment, a heart-rate rise of more than what means stop and notify?"
+ },
+ "203:s07-11|>4": {
+  "answer": "> 4",
+  "q": "A pain interference score above what should be reported to the physician?"
+ },
+ "203:s07-11|≥3seconds": {
+  "answer": "≥ 3 seconds",
+  "q": "What capillary refill time indicates poor perfusion?"
+ },
+ "203:s07-7|≤8": {
+  "answer": "≤ 8",
+  "q": "What Glasgow Coma Scale score indicates severe impairment?"
+ },
+ "203:s07-8|5g/dl": {
+  "answer": "5 g/dL",
+  "q": "How much reduced hemoglobin must be present for cyanosis to be visible?"
+ },
+ "203:s07-8|80%": {
+  "answer": "80%",
+  "q": "With normal hemoglobin, cyanosis generally first appears when SaO₂ drops below what?"
+ },
+ "203:s07-9|0.5-1meq": {
+  "answer": "0.5-1 mEq",
+  "q": "What is the last-resort sodium bicarbonate dose in cardiac arrest, per kg?"
+ },
+ "203:s07-9|10ml": {
+  "answer": "10 mL",
+  "q": "When epinephrine is given through the ETT, how much normal saline follows it?"
+ },
+ "203:s07-9|1mg": {
+  "answer": "1 mg",
+  "q": "What IV dose of epinephrine is given in PEA?"
+ },
+ "203:s07-9|3-4%": {
+  "answer": "3-4%",
+  "q": "How much does survival drop per minute of cardiac arrest when CPR is given?"
+ },
+ "203:s07-9|3-4hours": {
+  "answer": "3-4 hours",
+  "q": "How soon should an intraosseous needle be removed?"
+ },
+ "203:s07-9|3-5minutes": {
+  "answer": "3-5 minutes",
+  "q": "How often is epinephrine given during PEA?"
+ },
+ "203:s07-9|7-10%": {
+  "answer": "7-10%",
+  "q": "How much does survival drop per minute of cardiac arrest without CPR?"
+ },
+ "203:s07-9|7.15": null,
+ "203:s07-9|>7.15": {
+  "answer": "> 7.15",
+  "q": "In cardiac arrest, sodium bicarbonate is a last resort to keep pH above what?"
+ },
+ "203:s08-10|24meq/l": null,
+ "203:s08-10|26meq/l": null,
+ "203:s08-10|40mmhg": null,
+ "203:s08-10|7.35": null,
+ "203:s08-10|7.40": null,
+ "203:s08-10|7.44": null,
+ "203:s08-10|7.45": {
+  "answer": "7.45",
+  "q": "Respiratory alkalosis is a pH above what, with PaCO₂ below 35?"
+ },
+ "203:s08-10|<35": {
+  "answer": "< 35",
+  "q": "Respiratory alkalosis is a pH above 7.45 with PaCO₂ below what?"
+ },
+ "203:s08-10|<7.35": {
+  "answer": "< 7.35",
+  "q": "Respiratory acidosis is a pH below what, with PaCO₂ above 45?"
+ },
+ "203:s08-10|>45": {
+  "answer": "> 45",
+  "q": "Respiratory acidosis is a pH below 7.35 with PaCO₂ above what?"
+ },
+ "203:s08-10|>7.40": {
+  "answer": "> 7.40",
+  "q": "When naming the primary acid-base problem, a pH above what points to alkalosis?"
+ },
+ "203:s08-11|2-4%": {
+  "answer": "2–4%",
+  "q": "With good perfusion, how accurate are pulse oximeters?"
+ },
+ "203:s08-11|4-5%": {
+  "answer": "4–5%",
+  "q": "An SpO₂ decline of more than what during exercise or sleep is abnormal?"
+ },
+ "203:s08-11|70-75years": {
+  "answer": "70–75 years",
+  "q": "At what age does the age-related decline in PaO₂ level off?"
+ },
+ "203:s08-11|75-80torr": {
+  "answer": "75–80 torr",
+  "q": "What is the lower limit of normal PaO₂ for essentially all adults at sea level?"
+ },
+ "203:s08-11|85%": null,
+ "203:s08-11|88-90%": null,
+ "203:s08-11|90%": {
+  "answer": "90%",
+  "q": "On the oxyhemoglobin curve, a PaO₂ of 60 torr corresponds to what SaO₂?"
+ },
+ "203:s08-11|<60torr": {
+  "answer": "< 60 torr",
+  "q": "Heuer defines documented hypoxemia in adults as a PaO₂ below what?"
+ },
+ "203:s08-11|<90%": {
+  "answer": "< 90%",
+  "q": "An SpO₂ below what on any FiO₂ indicates a need for supplemental oxygen?"
+ },
+ "203:s08-11|<95%": {
+  "answer": "< 95%",
+  "q": "In pre- and postductal oximetry, suspect a critical congenital heart defect if both readings are below what?"
+ },
+ "203:s08-11|≥3%": {
+  "answer": "≥ 3%",
+  "q": "In pre- and postductal oximetry, suspect a critical congenital heart defect if the readings differ by at least what?"
+ },
+ "203:s08-12|40l/min": null,
+ "203:s08-12|>60l/min": {
+  "answer": "> 60 L/min",
+  "q": "What inspiratory flow must a patient generate to use a DPI?"
+ },
+ "203:s08-1|0.5l": {
+  "answer": "0.5 L",
+  "q": "What is the normal adult tidal volume in liters?"
+ },
+ "203:s08-2|100%": null,
+ "203:s08-2|12-15%": {
+  "answer": "12–15%",
+  "q": "An FEV₁ improvement of at least what percentage classifies obstruction as reversible?"
+ },
+ "203:s08-2|15minutes": {
+  "answer": "15 minutes",
+  "q": "How long must you wait before repeating a nitrogen washout test?"
+ },
+ "203:s08-2|200ml": {
+  "answer": "200 mL",
+  "q": "In adults, an FEV₁ improvement of at least what volume classifies obstruction as reversible?"
+ },
+ "203:s08-2|85%": {
+  "answer": "85%",
+  "q": "During exercise oxygen titration, the test is stopped if SaO₂ drops below what?"
+ },
+ "203:s08-2|>100mmhg": null,
+ "203:s08-2|>120/min": null,
+ "203:s08-2|>180mmhg": null,
+ "203:s08-3|10%": {
+  "answer": "10%",
+  "q": "PEFR is repeated until three readings vary by less than what?"
+ },
+ "203:s08-3|150ml": {
+  "answer": "150 mL",
+  "q": "A back-extrapolated volume above 5% of FVC or what volume invalidates the start of a spirometry maneuver?"
+ },
+ "203:s08-3|200ml": {
+  "answer": "200 mL",
+  "q": "Per ATS, the two largest FVC and FEV₁ values must agree within what volume (or 5%)?"
+ },
+ "203:s08-3|6seconds": {
+  "answer": "6 seconds",
+  "q": "A spirometry maneuver is unacceptable if exhalation lasts less than what?"
+ },
+ "203:s08-3|<70%": {
+  "answer": "< 70%",
+  "q": "On PFTs, what FEV₁% is below normal?"
+ },
+ "203:s08-3|>5%": {
+  "answer": "> 5%",
+  "q": "A back-extrapolated volume above what percentage of FVC (or 150 mL) invalidates the start of a spirometry maneuver?"
+ },
+ "203:s08-4|5-10%": {
+  "answer": "5–10%",
+  "q": "What helium concentration does the patient rebreathe in the helium dilution test?"
+ },
+ "203:s08-4|80%": {
+  "answer": "80%",
+  "q": "The nitrogen washout test assumes an initial alveolar N₂ of what?"
+ },
+ "203:s08-4|≥15min": null,
+ "203:s08-6|100torr": null,
+ "203:s08-6|5%": {
+  "answer": "5%",
+  "q": "Heuer's shortcut estimates about what percentage of shunt per 100 torr of A–a gradient?"
+ },
+ "203:s08-6|<0.35": {
+  "answer": "< 0.35",
+  "q": "What a/A ratio (PaO₂ ÷ PAO₂) indicates hypoxemia due to shunting?"
+ },
+ "203:s08-6|>300mmhg": null,
+ "203:s08-7|100ml": {
+  "answer": "100 mL",
+  "q": "C(a–v̄)O₂ tells how much O₂ the tissues extract from each how much blood?"
+ },
+ "203:s08-8|0.60": null,
+ "203:s08-8|50%": null,
+ "203:s08-8|<60torr": {
+  "answer": "< 60 torr",
+  "q": "Severe shunting is indicated by what PaO₂ on an FiO₂ above 0.60?"
+ },
+ "203:s08-8|>0.60": {
+  "answer": "> 0.60",
+  "q": "A PaO₂ below 60 torr on an FiO₂ above what indicates severe shunting?"
+ },
+ "203:s08-9|-20to-25cmh2o": {
+  "answer": "−20 to −25 cm H2O",
+  "q": "A MIP less negative than what indicates possible inability to sustain spontaneous ventilation?"
+ },
+ "203:s08-9|20-30cmh2o": null,
+ "203:s08-9|20seconds": {
+  "answer": "20 seconds",
+  "q": "Per the deck, over how long is the MIP occlusion reading taken?"
+ },
+ "203:s09-1|2-5torr": {
+  "answer": "2–5 torr",
+  "q": "Normally, how far below PaCO₂ does PETCO₂ sit?"
+ },
+ "203:s09-4|100-140mmhg": {
+  "answer": "100–140 mm Hg",
+  "q": "What is the normal systolic arterial blood pressure range?"
+ },
+ "203:s09-4|25-30%": {
+  "answer": "25–30%",
+  "q": "What SvO₂ range indicates severe lactic acidosis?"
+ },
+ "203:s09-4|30-50%": {
+  "answer": "30–50%",
+  "q": "What SvO₂ range marks the onset of lactic acidosis?"
+ },
+ "203:s09-4|60-90mmhg": {
+  "answer": "60–90 mm Hg",
+  "q": "What is the normal diastolic arterial blood pressure range?"
+ },
+ "203:s09-4|<25%": {
+  "answer": "< 25%",
+  "q": "Below what SvO₂ does cellular death occur?"
+ },
+ "203:s09-4|>10cmh2o": {
+  "answer": "> 10 cm H2O",
+  "q": "Above what PEEP must hemodynamic pressure readings be corrected?"
+ },
+ "203:s09-4|>18mmhg": {
+  "answer": "> 18 mm Hg",
+  "q": "Cardiogenic pulmonary edema has a PCWP above what?"
+ },
+ "203:s09-4|≥18mmhg": null,
+ "203:s09-5|1.5ml": {
+  "answer": "1.5 mL",
+  "q": "What is the maximum inflation volume of a PA catheter balloon?"
+ },
+ "203:s09-5|10ml": {
+  "answer": "10 mL",
+  "q": "In thermodilution cardiac output, how much D5W is injected?"
+ },
+ "203:s09-6|70mmhg": {
+  "answer": "70 mm Hg",
+  "q": "What MAP is needed to maintain cerebral perfusion pressure?"
+ },
+ "203:s09-6|<20mmhg": {
+  "answer": "< 20 mm Hg",
+  "q": "ICP control is generally unnecessary when ICP is already below what?"
+ },
+ "203:s09-8|50-80torr": null,
+ "203:s09-8|80-100mmhg": {
+  "answer": "80–100 mm Hg",
+  "q": "Transcutaneous PtcO₂ becomes unreliable when PaO₂ is above what range?"
+ },
+ "203:s09-8|80torr": {
+  "answer": "80 torr",
+  "q": "Around what PtcO₂ is the high infant alarm set?"
+ },
+ "203:s10-1|1min": {
+  "answer": "1 min",
+  "q": "How soon after birth is the first Apgar score taken?"
+ },
+ "203:s10-1|5minutes": {
+  "answer": "5 minutes",
+  "q": "After the first Apgar score, when is it taken again?"
+ },
+ "203:s10-2|90%": {
+  "answer": "90%",
+  "q": "In late neonatal hypoxemia, the preductal SpO₂ falls back below what?"
+ },
+ "203:s10-2|≤8": null,
+ "203:s10-3|<29weeks": {
+  "answer": "< 29 weeks",
+  "q": "Surfactant prophylaxis is indicated for high-risk premature infants below what gestational age?"
+ },
+ "203:s10-3|>2": {
+  "answer": "> 2",
+  "phase": 3,
+  "q": "What L/S ratio indicates fetal lung maturity?"
+ },
+ "203:s10-5|25%": {
+  "answer": "25%",
+  "q": "About what percentage of U.S. adults have obstructive sleep apnea?"
+ },
+ "203:s10-5|<90%": {
+  "answer": "< 90%",
+  "q": "Severe OSA includes an SpO₂ below what for more than 20% of sleep time?"
+ },
+ "203:s10-5|>20%": {
+  "answer": "> 20%",
+  "q": "Severe OSA includes an SpO₂ below 90% for more than what share of sleep time?"
+ },
+ "203:s10-5|>30": null,
+ "203:s10-6|>500ng/ml": {
+  "answer": "> 500 ng/mL",
+  "q": "What D-dimer level suggests a clot?"
+ },
+ "203:s10-7|50%": {
+  "answer": "50%",
+  "q": "About what percentage of all pneumonias are viral?"
+ },
+ "203:s10-8|50%": null,
+ "203:s10-8|5g/dl": null
+}
