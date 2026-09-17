@@ -33,14 +33,17 @@ UNITS = (
     # pressure
     r"mm\s?Hg|mmHg|torr|kPa|psig|psi|atm|bar\b|"
     # volume / flow
-    r"mL/kg/min|mL/beat|mL/kg|mL/dL|mL/min|mL|L/min|L/sec|L/s\b|LPM|cc\b|L\b|"
+    # "L/s" is litres per second only with a lowercase s; "L/S" is the
+    # lecithin/sphingomyelin ratio ("3 L/S Ratio" is a heading, not a flow).
+    r"mL/kg/min|mL/beat|mL/kg|mL/dL|mL/min|mL|L/min|L/sec|(?-i:L/s)\b|LPM|cc\b|L\b(?!/s)|"
     # dose / concentration
     r"mg/kg|mg/dL|mg|mcg|µg|μg|ng/mL|pg/mL|g/dL|g\b|"
     r"mEq/L|mEq|mmol/L|mmol|mOsm|ppm|kcal|"
     # rate
     r"beats?/min|breaths?/min|bpm|/min|"
     # time
-    r"sec(?:onds)?|min(?:utes)?|hours?|hrs?|h\b|days?|weeks?|wk\b|"
+    # A bare "h" is hours ("8 h"), but not in "the 5 H's and 5 T's".
+    r"sec(?:onds)?|min(?:utes)?|hours?|hrs?|h\b(?![’'])|days?|weeks?|wk\b|"
     r"months?|mo\b|years?|yr\b|"
     # size / misc
     r"µm|μm|micron(?:s)?|Fr\b|French|ft\b|feet|foot|inch(?:es)?|"
@@ -64,8 +67,14 @@ RANGE = r"%s%s(?:\s*(?:[–—\-]|to)\s*%s%s)?" % (SIGN, NUM, SIGN, NUM)
 
 # Either a comparison (unit optional — ">20% TBSA", "< −40") or a plain value
 # that MUST carry a unit (so "5 levels" is not mistaken for a value).
+# A plain value never starts on a digit welded to a letter. That digit
+# belongs to a NAME -- "O2%" is not "2%", "FEV1%" is not "1%", "FEF25-75%" is
+# a measurement, not a range. The one exception is dosing notation: in
+# "q3-5 min", q means "every", so the interval is a genuine value.
+NOT_A_NAME = r"(?<![A-PR-Za-pr-z])"
+
 VALUE_RE = re.compile(
-    r"(?:[<>≤≥]\s*%s(?:\s*%s)?|%s\s*%s)" % (RANGE, UNITS, RANGE, UNITS), re.I)
+    r"(?:[<>≤≥]\s*%s(?:\s*%s)?|%s%s\s*%s)" % (RANGE, UNITS, NOT_A_NAME, RANGE, UNITS), re.I)
 
 # Some of the most-tested respiratory values carry NO unit at all: pH 7.35-7.45,
 # FiO2 1.0, P/F < 200, RSBI < 105, I:E 1:1, VD/VT 0.28. A unit-anchored pattern

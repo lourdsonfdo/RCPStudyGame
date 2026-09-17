@@ -102,5 +102,26 @@ class TestValuePattern(unittest.TestCase):
         self.assertNotIn('-18breaths/min', got)
 
 
+    def test_digit_inside_a_name_is_not_a_value(self):
+        got = self.values('Verify the prescribed O2% using an O2 analyzer.')
+        self.assertNotIn('2%', got)
+        got = self.values('A normal FEV1% > 75% and FEV3% > 95%.')
+        self.assertNotIn('1%', got)
+        self.assertNotIn('3%', got)
+        self.assertIn('>75%', got)
+
+    def test_measurement_name_is_not_a_range(self):
+        self.assertNotIn('25-75%', self.values('FEF25\u201375% forced expiratory flow'))
+
+    def test_dosing_interval_after_q_is_a_value(self):
+        self.assertIn('3-5min', self.values('epinephrine 1 mg IV q3-5 min'))
+
+    def test_mnemonic_letter_is_not_an_hours_unit(self):
+        self.assertEqual(self.values("The 5 H's and 5 T's of PEA"), [])
+        self.assertIn('8h', self.values('portable unit, 8 h or more'))
+
+    def test_ls_ratio_is_not_a_flow(self):
+        self.assertEqual(self.values('3 L/S Ratio and Mature Surfactant Production'), [])
+
 if __name__ == '__main__':
     unittest.main()

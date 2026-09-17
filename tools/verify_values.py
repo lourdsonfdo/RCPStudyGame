@@ -68,8 +68,11 @@ def _squash(text):
     t = re.sub(r'(?<=\d)\s?—\s?(?=\d)', '–', t)
     t = t.replace('—', ' ')
 
-    # En dash is a range when a number (or a fraction) precedes it, else a sign.
-    t = re.sub(r'(?<![' + FRACTIONS + r'\d])(?<![' + FRACTIONS + r'\d] )–(?=\s?\d)',
+    # En dash is a range when a number, a fraction or a word runs straight into
+    # it ("80–100", "newborn–1 year"); it is a sign only after a space or at
+    # the start ("at –20 to –25 mm Hg"). Reading "newborn–1 year" as a minus
+    # once produced the value "−1 year" on both sides of the audit.
+    t = re.sub(r'(?<![' + FRACTIONS + r'\w])(?<![' + FRACTIONS + r'\d] )–(?=\s?\d)',
                '-', t)
 
     t = re.sub(r'\s+', ' ', t).strip()
@@ -102,7 +105,15 @@ def _value_pattern(value):
 
     parts = []
     for i, ch in enumerate(chars):
-        parts.append('[-\u2013]' if ch == '-' else re.escape(ch))
+        # A hyphen between two numbers is a range and may be written as an en
+        # dash. A hyphen that OPENS a number (at the start, or after < > \u2264 \u2265)
+        # is a minus sign and must match a real minus only -- otherwise
+        # "-1 year" would match the range in "newborn\u20131 year".
+        is_sign = ch == '-' and (i == 0 or chars[i - 1] in '<>\u2264\u2265')
+        if ch == '-' and not is_sign:
+            parts.append('[-\u2013]')
+        else:
+            parts.append(re.escape(ch))
         if i + 1 < len(chars) and not (ch.isdigit() and chars[i + 1].isdigit()):
             parts.append(r'\s*')
 
@@ -111,6 +122,10 @@ def _value_pattern(value):
         lead = r'(?<!\d)(?<!\d\.)'
         if chars[0] != '-':
             lead += r'(?<!-)'      # never let a value shed a minus the card has
+    if chars[0].isdigit():
+        # A digit welded to a letter is part of a name ("o2%" is not "2%"),
+        # except after q, which is dosing notation for "every".
+        lead += r'(?<![a-pr-z])'
     trail = r'(?!\d)(?!\.\d)' if (chars[-1].isdigit() or chars[-1] == '.') else ''
 
     return re.compile(lead + ''.join(parts) + trail)

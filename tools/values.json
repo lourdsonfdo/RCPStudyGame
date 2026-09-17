@@ -6017,36 +6017,9 @@
    "item": "s02-6",
    "item_title": "How Changes in Flow Affect Delivered O2 Concentration; Condensate / Rainout",
    "section": "02",
-   "quote": "On blenders , FiO2 varies with the setting and, to a small degree, with flow: higher flows minimize or eliminate air dilution , so set the desired O2% on the blender and run the high end of the patient's flow range to guarantee it.",
-   "values": [
-    "2%"
-   ],
-   "cite": "Heuer Ch 6 — Low-Flow Devices/Systems, Table 6-1, Table 6-2, Air-Entrainment Systems, Blending Systems, Table 6-6 (PDF p287-296), T4 Test-Taking Tips (PDF p368) · Heuer Ch 13 — Recommending Changes in Oxygen Therapy, Table 13-8 · RCP 203 Lssn 3a deck, slides 32-33 · TDP/Communication deck, slides 19-20 · COPD deck, slide 28 · RCP 105 Mgmt of Mech Vent deck, slides 37-38 · RCP 105 Wk 3 deck, slide 28 · RCP 105 Monitoring in Mech Vent deck, slide 44",
-   "flags": []
-  },
-  {
-   "key": "203:s02-6#4",
-   "course": "203",
-   "item": "s02-6",
-   "item_title": "How Changes in Flow Affect Delivered O2 Concentration; Condensate / Rainout",
-   "section": "02",
-   "quote": "Delivered O2% is HIGHER than set or expected — condensate creates back pressure in the circuit, which acts like a partially obstructed entrainment port. → Drain the condensate, add a water trap, check/correct kinking or other outlet obstructions.",
-   "values": [
-    "2%"
-   ],
-   "cite": "Heuer Ch 6 — Low-Flow Devices/Systems, Table 6-1, Table 6-2, Air-Entrainment Systems, Blending Systems, Table 6-6 (PDF p287-296), T4 Test-Taking Tips (PDF p368) · Heuer Ch 13 — Recommending Changes in Oxygen Therapy, Table 13-8 · RCP 203 Lssn 3a deck, slides 32-33 · TDP/Communication deck, slides 19-20 · COPD deck, slide 28 · RCP 105 Mgmt of Mech Vent deck, slides 37-38 · RCP 105 Wk 3 deck, slide 28 · RCP 105 Monitoring in Mech Vent deck, slide 44",
-   "flags": []
-  },
-  {
-   "key": "203:s02-6#5",
-   "course": "203",
-   "item": "s02-6",
-   "item_title": "How Changes in Flow Affect Delivered O2 Concentration; Condensate / Rainout",
-   "section": "02",
    "quote": "Deck contribution The decks teach the flow→oxygenation link with the rule of thumb that PaO2 should be at least 5 times the O2% — so 50% should give a PaO2 of at least 250 torr , 21% gives 80–100 torr , 100% about 500 torr .",
    "values": [
     "100%",
-    "2%",
     "21%",
     "250torr",
     "50%",
@@ -6057,7 +6030,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-6#6",
+   "key": "203:s02-6#4",
    "course": "203",
    "item": "s02-6",
    "item_title": "How Changes in Flow Affect Delivered O2 Concentration; Condensate / Rainout",
@@ -6071,7 +6044,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-6#7",
+   "key": "203:s02-6#5",
    "course": "203",
    "item": "s02-6",
    "item_title": "How Changes in Flow Affect Delivered O2 Concentration; Condensate / Rainout",
@@ -6087,7 +6060,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-6#8",
+   "key": "203:s02-6#6",
    "course": "203",
    "item": "s02-6",
    "item_title": "How Changes in Flow Affect Delivered O2 Concentration; Condensate / Rainout",
@@ -6100,7 +6073,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-6#9",
+   "key": "203:s02-6#7",
    "course": "203",
    "item": "s02-6",
    "item_title": "How Changes in Flow Affect Delivered O2 Concentration; Condensate / Rainout",
@@ -6119,19 +6092,6 @@
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
    "section": "02",
-   "quote": "Delivered O2 % Air :",
-   "values": [
-    "2%"
-   ],
-   "cite": "Heuer Ch 6 — High-Flow Devices/Systems, Air-Entrainment Systems, Table 6-4, Table 6-5, Table 6-6, Blending Systems (PDF p289-296) · Heuer App B — Equipment Calculations, Table B-6, Problems B.27 and B.28 (PDF p1048-1049) · Heuer Ch 6 T4 Test-Taking Tips (PDF p368) · TDP/Communication deck, slides 19-20 · COPD deck, slide 28 · Bronchiectasis deck, slide 21 · RCP 105 Wk 5 deck, slide 31",
-   "flags": []
-  },
-  {
-   "key": "203:s02-7#2",
-   "course": "203",
-   "item": "s02-7",
-   "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
-   "section": "02",
    "quote": "O2 ratio Total ratio parts (air + O2) Total flow at 10 L/min O2 input 80% 0.3 :",
    "values": [
     "10l/min",
@@ -6141,7 +6101,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#3",
+   "key": "203:s02-7#2",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6155,7 +6115,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#4",
+   "key": "203:s02-7#3",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6169,7 +6129,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#5",
+   "key": "203:s02-7#4",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6183,7 +6143,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#6",
+   "key": "203:s02-7#5",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6197,7 +6157,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#7",
+   "key": "203:s02-7#6",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6211,7 +6171,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#8",
+   "key": "203:s02-7#7",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6225,7 +6185,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#9",
+   "key": "203:s02-7#8",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6239,7 +6199,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#10",
+   "key": "203:s02-7#9",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6253,7 +6213,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#11",
+   "key": "203:s02-7#10",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6267,7 +6227,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#12",
+   "key": "203:s02-7#11",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6280,7 +6240,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#13",
+   "key": "203:s02-7#12",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6294,7 +6254,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#14",
+   "key": "203:s02-7#13",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6307,7 +6267,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#15",
+   "key": "203:s02-7#14",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6324,20 +6284,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#16",
-   "course": "203",
-   "item": "s02-7",
-   "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
-   "section": "02",
-   "quote": "O2 ratio = (100 − desired O2%) ÷ (desired O2% − 21) Total flow formula (Heuer App B, p1049):",
-   "values": [
-    "2%"
-   ],
-   "cite": "Heuer Ch 6 — High-Flow Devices/Systems, Air-Entrainment Systems, Table 6-4, Table 6-5, Table 6-6, Blending Systems (PDF p289-296) · Heuer App B — Equipment Calculations, Table B-6, Problems B.27 and B.28 (PDF p1048-1049) · Heuer Ch 6 T4 Test-Taking Tips (PDF p368) · TDP/Communication deck, slides 19-20 · COPD deck, slide 28 · Bronchiectasis deck, slide 21 · RCP 105 Wk 5 deck, slide 31",
-   "flags": []
-  },
-  {
-   "key": "203:s02-7#17",
+   "key": "203:s02-7#15",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6352,7 +6299,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#18",
+   "key": "203:s02-7#16",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6365,7 +6312,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#19",
+   "key": "203:s02-7#17",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6383,7 +6330,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#20",
+   "key": "203:s02-7#18",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6397,7 +6344,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#21",
+   "key": "203:s02-7#19",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6411,7 +6358,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#22",
+   "key": "203:s02-7#20",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6424,7 +6371,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#23",
+   "key": "203:s02-7#21",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6438,7 +6385,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#24",
+   "key": "203:s02-7#22",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6451,7 +6398,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#25",
+   "key": "203:s02-7#23",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6464,7 +6411,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#26",
+   "key": "203:s02-7#24",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6478,7 +6425,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#27",
+   "key": "203:s02-7#25",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6492,7 +6439,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#28",
+   "key": "203:s02-7#26",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6506,7 +6453,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#29",
+   "key": "203:s02-7#27",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6520,7 +6467,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#30",
+   "key": "203:s02-7#28",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6533,7 +6480,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#31",
+   "key": "203:s02-7#29",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6546,7 +6493,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#32",
+   "key": "203:s02-7#30",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6567,21 +6514,20 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#33",
+   "key": "203:s02-7#31",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
    "section": "02",
    "quote": "For a nebulizer at high O2% settings (> 35–40%) : maximize input flow, add an open reservoir to the expiratory side of the T-tube , connect multiple nebulizers in parallel , provide an inspiratory reservoir with a one-way expiratory valve , or set the nebulizer to a low O2% and bleed in extra O2 .",
    "values": [
-    "2%",
     ">35-40%"
    ],
    "cite": "Heuer Ch 6 — High-Flow Devices/Systems, Air-Entrainment Systems, Table 6-4, Table 6-5, Table 6-6, Blending Systems (PDF p289-296) · Heuer App B — Equipment Calculations, Table B-6, Problems B.27 and B.28 (PDF p1048-1049) · Heuer Ch 6 T4 Test-Taking Tips (PDF p368) · TDP/Communication deck, slides 19-20 · COPD deck, slide 28 · Bronchiectasis deck, slide 21 · RCP 105 Wk 5 deck, slide 31",
    "flags": []
   },
   {
-   "key": "203:s02-7#34",
+   "key": "203:s02-7#32",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6595,7 +6541,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-7#35",
+   "key": "203:s02-7#33",
    "course": "203",
    "item": "s02-7",
    "item_title": "Air-Entrainment Devices and Inspiratory Flow Demand",
@@ -6742,19 +6688,6 @@
    "item": "s02-9",
    "item_title": "Briggs Adaptor (T-Piece)",
    "section": "02",
-   "quote": "\"If the aerosol mist disappears during inspiration in a patient receiving O2 via a large-volume nebulizer and T-piece or mask, the flow is inadequate.\" The fixes, in Heuer's order: maximize input flow ; add an open reservoir to the expiratory side of the T-tube ; connect multiple nebulizers in parallel ; provide an inspiratory reservoir with a one-way expiratory valve ; set the nebulizer to a low O2% and bleed in extra O2 .",
-   "values": [
-    "2%"
-   ],
-   "cite": "Heuer Ch 6 — Table 6-6 (PDF p296), Table 6-8 (PDF p298), Table 6-16 Nebulizer Types (PDF p314), Table 6-17 Troubleshooting Aerosol Delivery Systems (PDF p315), T4 Test-Taking Tips (PDF p371) · Heuer Ch 11 — Weaning / Spontaneous Breathing Trials · RCP 105 Wk 3 deck (Weaning/Extubation), slides 19-20",
-   "flags": []
-  },
-  {
-   "key": "203:s02-9#2",
-   "course": "203",
-   "item": "s02-9",
-   "item_title": "Briggs Adaptor (T-Piece)",
-   "section": "02",
    "quote": "\"A postoperative patient with an ETT requiring a moderate FIO2\" → air-entrainment nebulizer at 40–50% O2 and a T-tube with an open reservoir.",
    "values": [
     "40-50%"
@@ -6763,7 +6696,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-9#3",
+   "key": "203:s02-9#2",
    "course": "203",
    "item": "s02-9",
    "item_title": "Briggs Adaptor (T-Piece)",
@@ -6777,7 +6710,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-9#4",
+   "key": "203:s02-9#3",
    "course": "203",
    "item": "s02-9",
    "item_title": "Briggs Adaptor (T-Piece)",
@@ -6790,7 +6723,7 @@
    "flags": []
   },
   {
-   "key": "203:s02-9#5",
+   "key": "203:s02-9#4",
    "course": "203",
    "item": "s02-9",
    "item_title": "Briggs Adaptor (T-Piece)",
@@ -6851,7 +6784,6 @@
    "section": "02",
    "quote": "\"Verify the prescribed O2% using an O2 analyzer.\" If the blender setting and the measured O2% disagree substantially, check both source pressures (usually ≥ 35 psig) , check for leaks between source and blender , and if both check out, replace the blender .",
    "values": [
-    "2%",
     "≥35psig"
    ],
    "cite": "Heuer Ch 6 — Gas Delivery, Metering, and Clinical Analyzing Devices, Table 6-9, Blending Systems, Air Compressors, Table 6-8 (PDF p292, p298-301), Heliox delivery (PDF p345), T4 Test-Taking Tips (PDF p372) · Heuer Ch 8 — Flow Calibration (PDF p415) · Heuer Ch 11 — Table 11-9 Clinical Alarms · RCP 105 Wk 1 Lctr 3 deck (Principles of Mech Vent), slide 93 · RCP 203 Lssn 2b deck, slides 10, 12, 29",
@@ -7865,19 +7797,6 @@
    "item": "s03-8",
    "item_title": "Heliox (Helium-Oxygen) Therapy",
    "section": "03",
-   "quote": "Heliox comes in premixed cylinders in one of three He%/O2% combinations.",
-   "values": [
-    "2%"
-   ],
-   "cite": "Heuer Ch 12 — Helium-Oxygen (Heliox) Therapy and Table 12-4, Common Modifications for Heliox Therapy (PDF p601-604, summary p608-609) and Heuer Ch 6 — He/O2 Delivery Systems (PDF p345-346, key-points p371-372) · Asthma deck, slide 31 (heliox as adjunct therapy in refractory asthma); Chptr 3 deck (Admn of Aerosolized Agents), slide 33 (power gas alters nebulizer performance)",
-   "flags": []
-  },
-  {
-   "key": "203:s03-8#2",
-   "course": "203",
-   "item": "s03-8",
-   "item_title": "Heliox (Helium-Oxygen) Therapy",
-   "section": "03",
    "quote": "NEVER mix 100% helium with O2 yourself to make a ratio — ALWAYS use premixed heliox, and always with at least 20% O2.",
    "values": [
     "100%",
@@ -7887,7 +7806,7 @@
    "flags": []
   },
   {
-   "key": "203:s03-8#3",
+   "key": "203:s03-8#2",
    "course": "203",
    "item": "s03-8",
    "item_title": "Heliox (Helium-Oxygen) Therapy",
@@ -7909,7 +7828,7 @@
    "flags": []
   },
   {
-   "key": "203:s03-8#4",
+   "key": "203:s03-8#3",
    "course": "203",
    "item": "s03-8",
    "item_title": "Heliox (Helium-Oxygen) Therapy",
@@ -7923,7 +7842,7 @@
    "flags": []
   },
   {
-   "key": "203:s03-8#5",
+   "key": "203:s03-8#4",
    "course": "203",
    "item": "s03-8",
    "item_title": "Heliox (Helium-Oxygen) Therapy",
@@ -7936,7 +7855,7 @@
    "flags": []
   },
   {
-   "key": "203:s03-8#6",
+   "key": "203:s03-8#5",
    "course": "203",
    "item": "s03-8",
    "item_title": "Heliox (Helium-Oxygen) Therapy",
@@ -8921,7 +8840,6 @@
    "quote": "To set gain you must measure a known CO2% : the standard \"high\" calibration gas is a precision mixture of 5% CO2 , equivalent to a PCO2 of 38 torr at sea level under ATPD conditions, with an expected accuracy of ±0.3% — i.e., an acceptable range of 4.7–5.3% (36–40 torr) .",
    "values": [
     "0.3%",
-    "2%",
     "36-40torr",
     "38torr",
     "4.7-5.3%",
@@ -11991,10 +11909,10 @@
    "section": "06",
    "quote": "Age / size ETT ID (mm) Insertion length (cm) Premature or < 3 kg 2.5–3.0, uncuffed 9–11 Newborn–1 year 3.0–4.0 11–12 1–3 years 4.0 11–13 3 years 4.5 12–14 5 years 5.0 13–15 6 years 5.5 14–16 8 years 6.0 15–17 12 years 6.5 17–19 16 years 7.0 18–20 The formulas (Heuer, footnote to Table 9-8):",
    "values": [
-    "-1year",
     "1-3years",
     "12years",
     "16years",
+    "1year",
     "3years",
     "5years",
     "6years",
@@ -12908,22 +12826,6 @@
    "item": "s07-9",
    "item_title": "PEA — Pulseless Electrical Activity, and the H's and T's",
    "section": "07",
-   "quote": "5 H's 5 T's H ypovolemia T ension pneumothorax H ypoxia T amponade (cardiac) H ydrogen ion ( acidosis ) T oxins (drug overdose, anaphylactic reactions) H ypo-/hyperkalemia T hrombosis, pulmonary (pulmonary emboli) H ypothermia T hrombosis, cardiac (MI or ischemia) Note the RT owns several of these directly: hypoxia (airway/O₂), hydrogen ion (ventilation), and tension pneumothorax (needle decompression/chest tube).",
-   "values": [
-    "5h"
-   ],
-   "cite": "Heuer Ch 15 — Adult Resuscitation Protocols, Monitoring and Assessment, \"5 Hs and 5 Ts\" (PDF p685-690), Table 15-2 ACLS Medications (p688), T4 Tips (p720) · Chptr 21 Vasopressors/Inotropes/Antiarrhythmics deck, slides 46-47, 54 ( the H's and T's appear only in Heuer )",
-   "flags": [
-    "warn",
-    "gap"
-   ]
-  },
-  {
-   "key": "203:s07-9#5",
-   "course": "203",
-   "item": "s07-9",
-   "item_title": "PEA — Pulseless Electrical Activity, and the H's and T's",
-   "section": "07",
    "quote": "IO access (deck): if IV access fails, the intraosseous route delivers drugs at IV speed — proximal tibia or humerus , needle out within 3-4 hours .",
    "values": [
     "3-4hours"
@@ -12935,7 +12837,7 @@
    ]
   },
   {
-   "key": "203:s07-9#6",
+   "key": "203:s07-9#5",
    "course": "203",
    "item": "s07-9",
    "item_title": "PEA — Pulseless Electrical Activity, and the H's and T's",
@@ -12953,7 +12855,7 @@
    ]
   },
   {
-   "key": "203:s07-9#7",
+   "key": "203:s07-9#6",
    "course": "203",
    "item": "s07-9",
    "item_title": "PEA — Pulseless Electrical Activity, and the H's and T's",
@@ -13430,13 +13332,11 @@
    "section": "08",
    "quote": "Heuer's ballpark FEV1% > 75% and FEV3% > 95% ; normals blow out 80–90% of the FVC in about 3 seconds Portion of FVC exhaled in the first 1 sec FEV1/FVC (FEV1%) FEV1-to-FVC ratio A normal FEV1% is 70% or more for all patients ; < 70% confirms obstruction (GOLD: post-bronchodilator < 0.70 ); asthma adults < 0.75–0.80 , children < 0.90 FEV1 ÷ FVC × 100 FEF25–75% Forced Expiratory Flow, mid-portion ≤ 70% of predicted = small airway obstruction Average flow over the middle half of the FVC FEF200–1200 Forced Expiratory Flow, early portion ≤ 70% of predicted = large airway obstruction Flow between 200 and 1200 mL of the FVC DLCO Diffusing capacity (not a volume) Heuer:",
    "values": [
-    "1%",
     "1200ml",
     "1sec",
-    "25-75%",
-    "3%",
     "3seconds",
     "70%",
+    "75%",
     "80-90%",
     "<0.70",
     "<0.75-0.80",
@@ -13723,9 +13623,10 @@
    "item": "s08-3",
    "item_title": "PFT Pattern Comparison — Obstructive vs Restrictive vs Mixed vs Normal vs Poor Effort",
    "section": "08",
-   "quote": "FEV1% first → then VC → then TLC → then DLCO.",
+   "quote": "\"Less than normal is < 70% for the FEV1% and < 80% predicted for the VC, TLC, and DLCO.\" FEV1% < 70% → obstructive or mixed.",
    "values": [
-    "1%"
+    "<70%",
+    "<80%"
    ],
    "cite": "Heuer Ch 4 — Figure 4-8 Interpretation of PF Laboratory Test Results (PDF p248), Interpreting Screening Spirometry & Table 4-21 (PDF p242–243), PEFR poor-effort caution (PDF p239) · Heuer Ch 6 — Table 6-35 ATS Guidelines (PDF p354) · Heuer Ch 3 — PEFR technique (PDF p140) · Heuer Ch 1 — Table 1-6 Restrictive vs Obstructive (PDF p49) · RCP 203 Lssn 3a, slides 74–75, 79 · RCP 203 Lssn 2b, slides 18, 20, 73, 76 · RCP 105 Wk 3 Weaning, slide 16 · Neuro-Respiratory Disorders deck, slides 15, 39 · COPD deck, slides 13, 16, 19",
    "flags": []
@@ -13736,31 +13637,15 @@
    "item": "s08-3",
    "item_title": "PFT Pattern Comparison — Obstructive vs Restrictive vs Mixed vs Normal vs Poor Effort",
    "section": "08",
-   "quote": "\"Less than normal is < 70% for the FEV1% and < 80% predicted for the VC, TLC, and DLCO.\" FEV1% < 70% → obstructive or mixed.",
-   "values": [
-    "1%",
-    "<70%",
-    "<80%"
-   ],
-   "cite": "Heuer Ch 4 — Figure 4-8 Interpretation of PF Laboratory Test Results (PDF p248), Interpreting Screening Spirometry & Table 4-21 (PDF p242–243), PEFR poor-effort caution (PDF p239) · Heuer Ch 6 — Table 6-35 ATS Guidelines (PDF p354) · Heuer Ch 3 — PEFR technique (PDF p140) · Heuer Ch 1 — Table 1-6 Restrictive vs Obstructive (PDF p49) · RCP 203 Lssn 3a, slides 74–75, 79 · RCP 203 Lssn 2b, slides 18, 20, 73, 76 · RCP 105 Wk 3 Weaning, slide 16 · Neuro-Respiratory Disorders deck, slides 15, 39 · COPD deck, slides 13, 16, 19",
-   "flags": []
-  },
-  {
-   "key": "203:s08-3#4",
-   "course": "203",
-   "item": "s08-3",
-   "item_title": "PFT Pattern Comparison — Obstructive vs Restrictive vs Mixed vs Normal vs Poor Effort",
-   "section": "08",
    "quote": "FEV1% ≥ 70% → normal or restrictive.",
    "values": [
-    "1%",
     "≥70%"
    ],
    "cite": "Heuer Ch 4 — Figure 4-8 Interpretation of PF Laboratory Test Results (PDF p248), Interpreting Screening Spirometry & Table 4-21 (PDF p242–243), PEFR poor-effort caution (PDF p239) · Heuer Ch 6 — Table 6-35 ATS Guidelines (PDF p354) · Heuer Ch 3 — PEFR technique (PDF p140) · Heuer Ch 1 — Table 1-6 Restrictive vs Obstructive (PDF p49) · RCP 203 Lssn 3a, slides 74–75, 79 · RCP 203 Lssn 2b, slides 18, 20, 73, 76 · RCP 105 Wk 3 Weaning, slide 16 · Neuro-Respiratory Disorders deck, slides 15, 39 · COPD deck, slides 13, 16, 19",
    "flags": []
   },
   {
-   "key": "203:s08-3#5",
+   "key": "203:s08-3#4",
    "course": "203",
    "item": "s08-3",
    "item_title": "PFT Pattern Comparison — Obstructive vs Restrictive vs Mixed vs Normal vs Poor Effort",
@@ -13780,7 +13665,7 @@
    "flags": []
   },
   {
-   "key": "203:s08-3#6",
+   "key": "203:s08-3#5",
    "course": "203",
    "item": "s08-3",
    "item_title": "PFT Pattern Comparison — Obstructive vs Restrictive vs Mixed vs Normal vs Poor Effort",
@@ -13794,7 +13679,7 @@
    "flags": []
   },
   {
-   "key": "203:s08-3#7",
+   "key": "203:s08-3#6",
    "course": "203",
    "item": "s08-3",
    "item_title": "PFT Pattern Comparison — Obstructive vs Restrictive vs Mixed vs Normal vs Poor Effort",
@@ -13808,7 +13693,7 @@
    "flags": []
   },
   {
-   "key": "203:s08-3#8",
+   "key": "203:s08-3#7",
    "course": "203",
    "item": "s08-3",
    "item_title": "PFT Pattern Comparison — Obstructive vs Restrictive vs Mixed vs Normal vs Poor Effort",
@@ -13821,7 +13706,7 @@
    "flags": []
   },
   {
-   "key": "203:s08-3#9",
+   "key": "203:s08-3#8",
    "course": "203",
    "item": "s08-3",
    "item_title": "PFT Pattern Comparison — Obstructive vs Restrictive vs Mixed vs Normal vs Poor Effort",
@@ -13835,7 +13720,7 @@
    "flags": []
   },
   {
-   "key": "203:s08-3#10",
+   "key": "203:s08-3#9",
    "course": "203",
    "item": "s08-3",
    "item_title": "PFT Pattern Comparison — Obstructive vs Restrictive vs Mixed vs Normal vs Poor Effort",
@@ -15159,19 +15044,6 @@
    "item": "s08-11",
    "item_title": "The 40 / 50 / 60 → 70 / 80 / 90 Rule",
    "section": "08",
-   "quote": "PaO2 should be at least 5 × the O2%.",
-   "values": [
-    "2%"
-   ],
-   "cite": "Heuer Ch 1 — Pulse Oximetry (PDF p67) · Heuer Ch 4 — Arterial Oxygenation, age/altitude/5× rules and Table 4-9 (PDF p215–216), T4 Top Test-Taking Tips · Heuer Ch 11 — definition of documented hypoxemia (PDF p521) · RCP 203 Lssn 3a, slides 14–15, 31–33 · RCP 203 Lssn 1, slide 45 · RCP 105 Wk 3 Weaning, slide 13",
-   "flags": []
-  },
-  {
-   "key": "203:s08-11#14",
-   "course": "203",
-   "item": "s08-11",
-   "item_title": "The 40 / 50 / 60 → 70 / 80 / 90 Rule",
-   "section": "08",
    "quote": "On 50% O2 expect ≈ 250 torr ; on 100% expect ≈ 500 torr .",
    "values": [
     "100%",
@@ -15183,20 +15055,7 @@
    "flags": []
   },
   {
-   "key": "203:s08-11#15",
-   "course": "203",
-   "item": "s08-11",
-   "item_title": "The 40 / 50 / 60 → 70 / 80 / 90 Rule",
-   "section": "08",
-   "quote": "PAO2 ≈ 6 × O2%. ) Altitude:",
-   "values": [
-    "2%"
-   ],
-   "cite": "Heuer Ch 1 — Pulse Oximetry (PDF p67) · Heuer Ch 4 — Arterial Oxygenation, age/altitude/5× rules and Table 4-9 (PDF p215–216), T4 Top Test-Taking Tips · Heuer Ch 11 — definition of documented hypoxemia (PDF p521) · RCP 203 Lssn 3a, slides 14–15, 31–33 · RCP 203 Lssn 1, slide 45 · RCP 105 Wk 3 Weaning, slide 13",
-   "flags": []
-  },
-  {
-   "key": "203:s08-11#16",
+   "key": "203:s08-11#14",
    "course": "203",
    "item": "s08-11",
    "item_title": "The 40 / 50 / 60 → 70 / 80 / 90 Rule",
@@ -15211,7 +15070,7 @@
    "flags": []
   },
   {
-   "key": "203:s08-11#17",
+   "key": "203:s08-11#15",
    "course": "203",
    "item": "s08-11",
    "item_title": "The 40 / 50 / 60 → 70 / 80 / 90 Rule",
@@ -15224,7 +15083,7 @@
    "flags": []
   },
   {
-   "key": "203:s08-11#18",
+   "key": "203:s08-11#16",
    "course": "203",
    "item": "s08-11",
    "item_title": "The 40 / 50 / 60 → 70 / 80 / 90 Rule",
@@ -15237,7 +15096,7 @@
    "flags": []
   },
   {
-   "key": "203:s08-11#19",
+   "key": "203:s08-11#17",
    "course": "203",
    "item": "s08-11",
    "item_title": "The 40 / 50 / 60 → 70 / 80 / 90 Rule",
@@ -16109,19 +15968,6 @@
    "item": "s10-3",
    "item_title": "L/S Ratio and Mature Surfactant Production",
    "section": "10",
-   "quote": "3 L/S Ratio and Mature Surfactant Production Your instructor excluded this, but Heuer covers it — know both facts.",
-   "values": [
-    "3l/s"
-   ],
-   "cite": "Heuer Ch 1 — Maternal and Perinatal/Neonatal History (PDF p53-55) · RCP 203 Lssn 2a notes (explicitly de-emphasised)",
-   "flags": []
-  },
-  {
-   "key": "203:s10-3#2",
-   "course": "203",
-   "item": "s10-3",
-   "item_title": "L/S Ratio and Mature Surfactant Production",
-   "section": "10",
    "quote": "Lecithin/sphingomyelin (L/S) ratio > 2:1 indicates fetal lung maturity.",
    "values": [
     ">2"
@@ -16130,7 +15976,7 @@
    "flags": []
   },
   {
-   "key": "203:s10-3#3",
+   "key": "203:s10-3#2",
    "course": "203",
    "item": "s10-3",
    "item_title": "L/S Ratio and Mature Surfactant Production",
@@ -16143,7 +15989,7 @@
    "flags": []
   },
   {
-   "key": "203:s10-3#4",
+   "key": "203:s10-3#3",
    "course": "203",
    "item": "s10-3",
    "item_title": "L/S Ratio and Mature Surfactant Production",
@@ -16157,7 +16003,7 @@
    "flags": []
   },
   {
-   "key": "203:s10-3#5",
+   "key": "203:s10-3#4",
    "course": "203",
    "item": "s10-3",
    "item_title": "L/S Ratio and Mature Surfactant Production",
@@ -16170,7 +16016,7 @@
    "flags": []
   },
   {
-   "key": "203:s10-3#6",
+   "key": "203:s10-3#5",
    "course": "203",
    "item": "s10-3",
    "item_title": "L/S Ratio and Mature Surfactant Production",
@@ -16184,7 +16030,7 @@
    "flags": []
   },
   {
-   "key": "203:s10-3#7",
+   "key": "203:s10-3#6",
    "course": "203",
    "item": "s10-3",
    "item_title": "L/S Ratio and Mature Surfactant Production",

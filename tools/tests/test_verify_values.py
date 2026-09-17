@@ -155,5 +155,23 @@ class TestValueBoundaries(unittest.TestCase):
         self.assertFalse(vv._contains_value(self.card, '5 mg'))
 
 
+    def test_digit_inside_a_name_is_not_found(self):
+        card = vv._squash('Verify the prescribed O2% using an O2 analyzer.')
+        self.assertFalse(vv._contains_value(card, '2%'))
+
+    def test_dosing_interval_after_q_is_found(self):
+        card = vv._squash('epinephrine 1 mg IV q3-5 min.')
+        self.assertTrue(vv._contains_value(card, '3-5 min'))
+
+    def test_dash_after_a_word_is_a_range_not_a_minus(self):
+        card = vv._squash('Newborn\u20131 year 3.0\u20134.0')
+        self.assertTrue(vv._contains_value(card, '1 year'))
+        self.assertFalse(vv._contains_value(card, '-1 year'))
+
+    def test_dash_after_a_space_is_still_a_minus(self):
+        card = vv._squash('Subglottic port runs at \u201320 to \u201325 mm Hg')
+        self.assertTrue(vv._contains_value(card, '-20 to -25 mm Hg'))
+        self.assertFalse(vv._contains_value(card, '20 to 25 mm Hg'))
+
 if __name__ == '__main__':
     unittest.main()
