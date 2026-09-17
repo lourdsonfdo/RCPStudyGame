@@ -3,12 +3,19 @@
    Cache-first strategy: game is fully playable offline after
    the first load.
    ============================================================ */
-const CACHE = 'rcp-study-v10-direct-questions';
+const CACHE = 'rcp-study-v11-storybook';
 
 const PRECACHE = [
   '/RCPStudyGame/',
   '/RCPStudyGame/index.html',
   '/RCPStudyGame/css/style.css',
+  '/RCPStudyGame/css/theme-storybook.css',
+  '/RCPStudyGame/img/m_sky.png',
+  '/RCPStudyGame/img/m_far.png',
+  '/RCPStudyGame/img/m_mid.png',
+  '/RCPStudyGame/img/m_near.png',
+  '/RCPStudyGame/img/m_fg.png',
+  '/RCPStudyGame/img/b_bg.png',
   '/RCPStudyGame/js/engine/state.js',
   '/RCPStudyGame/js/engine/audio.js',
   '/RCPStudyGame/js/engine/fx.js',
@@ -54,7 +61,7 @@ const PRECACHE = [
   '/RCPStudyGame/icons/icon-192.png',
   '/RCPStudyGame/icons/icon-512.png',
   '/RCPStudyGame/icons/apple-touch-icon.png',
-  'https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;700;900&display=swap'
+  'https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Pixelify+Sans:wght@500;600&family=JetBrains+Mono:wght@400;500;700&display=swap'
 ];
 
 // Install — precache all game assets
