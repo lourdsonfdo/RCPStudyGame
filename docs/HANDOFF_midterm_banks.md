@@ -25,7 +25,18 @@ one boss per study-guide section, questions usable in both Study (training) and 
       and the phone layout (375 px, no horizontal scroll) all work.
 - [x] **Pushed 2026-10-25 (`88df029..1de15ab`) with the user's OK.** The live site serves all 3 courses with SW cache v15-midterms,
       checked in the browser (34 bosses / 1,532 Q, no console errors). The gap-fill ships as a second update and needs its own push OK.
-- [ ] **NEXT: Codex gap-fill.** Codex hit its ChatGPT usage limit on 2026-10-25 (resets 3:06 PM) after ~50K tokens/job, with no output written.
+- [x] **RCP 201 gap-fill done by Claude (2026-10-25):** `tools/midterm/gaps201.json`, 111 questions (201 now 491 Q).
+      Method: `python3 tools/gap_prefilter.py 201` → 137 likely-uncovered cards → wrote questions only for real facts,
+      skipping the "⚠️ NOT IN THE SLIDES" meta cards. Dropped 7 that overlapped the drill. Each `src` = `card:<Recall id>`,
+      and every answer's numbers and key terms were checked against that card's text. Outside-the-slides facts say so in `e`.
+      ⚠ Unresolved conflict, left out on purpose: the drill (201 s05) says the infant epiglottis is "larger, floppy and U-shaped",
+      while the card says Ch05 S2 = "larger and LESS FLEXIBLE" (Ch10 S3 = "larger proportionally and U-shaped").
+      SW CACHE = rcp-study-v16-gaps201. Committed; push needs the user's OK.
+- [ ] **NEXT: RCP 202 (184 cards) and 203 (169 cards) gap-fill** — same method, Claude or Codex.
+      `python3 tools/gap_prefilter.py 202 > /tmp/uncov202.txt`, write `tools/midterm/gaps202.json`, rebuild, bump CACHE.
+      Watch for: cards that restate a drill fact in different words, cards whose answer contradicts the drill
+      (keep the drill's version and flag it), and pipe-free use of the script (`| head` raises a harmless BrokenPipe).
+- [ ] (Superseded by the line above) Codex gap-fill: Codex hit its ChatGPT usage limit on 2026-10-25 (resets 3:06 PM) after ~50K tokens/job, with no output written.
       The scratch dir is in /private/tmp and may be cleared, so regenerate the inputs if they're missing (cards export snippet: decks/rcp.json →
       strip HTML, split on `<hr id=answer>`, group by `d[4:7]`). Prompt template = `prompt.txt` there (placeholder __C__).
       Run ONE course at a time (201 is smallest, 321 cards) to stay under the limit:

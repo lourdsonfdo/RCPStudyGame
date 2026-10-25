@@ -1,0 +1,1334 @@
+[
+{
+"section": "s01",
+"q": "What marks the END of the embryo stage?",
+"o": [
+"A crown–rump length of about 3 cm",
+"Completion of 12 weeks' gestation",
+"The first fetal heartbeat",
+"Closure of the neural tube"
+],
+"e": "The end of the embryo stage is a size criterion, not a date — about 3 cm crown–rump.",
+"src": "card:n1788336145481-0"
+},
+{
+"section": "s01",
+"q": "About how much amniotic fluid is present at term?",
+"o": [
+"About 1 liter",
+"About 100 mL",
+"About 3 liters",
+"About 250 mL"
+],
+"e": "Amniotic fluid is about 1 L at term, constantly absorbed and replenished; it allows fetal movement, protects, and aids thermoregulation.",
+"src": "card:n1788336145957-0"
+},
+{
+"section": "s01",
+"q": "Fetal lung fluid is best described as:",
+"o": [
+"Low pH, low protein and bicarbonate, high sodium and chloride",
+"High pH, high protein, low sodium",
+"Identical in composition to amniotic fluid",
+"Plasma filtrate rich in bicarbonate"
+],
+"e": "The fetal lung secretes its own fluid — low pH, low protein and bicarbonate, high Na⁺ and Cl⁻ — keeping developing airways patent and shaping air spaces.",
+"src": "card:n1788336146032-0"
+},
+{
+"section": "s01",
+"q": "What is the main function of fetal lung fluid?",
+"o": [
+"Maintains airway patency and shapes the developing air spaces",
+"Supplies oxygen to the fetal alveoli",
+"Produces surfactant",
+"Removes CO₂ from the fetus"
+],
+"e": "Fetal lung fluid keeps developing airways patent and shapes the formation, size and shape of potential air spaces.",
+"src": "card:n1788336146032-0"
+},
+{
+"section": "s01",
+"q": "Which is NOT one of the amniotic-fluid lung-maturity tests listed on the slides?",
+"o": [
+"Apgar score",
+"Shake (foam) test",
+"TDx-FLM assay",
+"Surfactant-albumin ratio (SAR)"
+],
+"e": "The five lung-maturity tests are L/S ratio, shake/foam test, SAR, TDx-FLM, and fluorescence polarization. Apgar is a newborn score.",
+"src": "card:n1788336483176-0"
+},
+{
+"section": "s01",
+"q": "The pseudoglandular stage of lung development spans:",
+"o": [
+"7 to 16 weeks",
+"First 7 weeks",
+"16 to 26 weeks",
+"26 weeks to term"
+],
+"e": "Embryonal = first 7 weeks (lungs begin at 24 days); pseudoglandular = 7–16 weeks, when the lungs begin to look like glands.",
+"src": "card:n1788336714298-0"
+},
+{
+"section": "s01",
+"q": "Lung development begins at about what point?",
+"o": [
+"24 days",
+"7 weeks",
+"16 weeks",
+"3 days"
+],
+"e": "In the embryonal stage (first 7 weeks), the lungs begin to develop at about 24 days.",
+"src": "card:n1788336714298-0"
+},
+{
+"section": "s01",
+"q": "Low birth weight is defined as a birth weight below:",
+"o": [
+"2500 g, regardless of gestational age",
+"1500 g at term only",
+"The 10th percentile for gestational age",
+"3000 g in a preterm infant"
+],
+"e": "Low birth weight = < 2500 g, a weight-only label. SGA (< 10th percentile) is the GA-adjusted label. (Outside-the-slides card.)",
+"src": "card:n1788336145857-0"
+},
+{
+"section": "s01",
+"q": "Under current week bands, \"full term\" is:",
+"o": [
+"39 0/7 – 40 6/7 weeks",
+"37 0/7 – 42 0/7 weeks",
+"38 0/7 – 41 6/7 weeks",
+"40 0/7 – 42 6/7 weeks"
+],
+"e": "Early term 37–38 6/7, full term 39–40 6/7, late term 41–41 6/7, post-term ≥ 42 wk. The single \"37–42 wk\" label was retired in 2013. (Outside-the-slides card.)",
+"src": "card:n1788336145882-0"
+},
+{
+"section": "s01",
+"q": "A late-preterm infant is born at:",
+"o": [
+"34 0/7 – 36 6/7 weeks",
+"32 0/7 – 33 6/7 weeks",
+"37 0/7 – 38 6/7 weeks",
+"28 0/7 – 31 6/7 weeks"
+],
+"e": "Preterm is < 37 0/7 weeks; late preterm is 34 0/7 – 36 6/7. (Outside-the-slides card.)",
+"src": "card:n1788336145882-0"
+},
+{
+"section": "s02",
+"q": "A two-vessel cord (single umbilical artery) is significant because it:",
+"o": [
+"Is a marker for congenital anomalies",
+"Guarantees normal fetal growth",
+"Means the umbilical vein is absent",
+"Is the normal finding in preterm infants"
+],
+"e": "One artery + one vein (~0.5–1% of pregnancies) is associated with cardiac, renal/GU, GI and skeletal anomalies and trisomy 18/13. (Outside-the-slides card.)",
+"src": "card:n1788336482852-0"
+},
+{
+"section": "s02",
+"q": "On X-ray, where should a high UAC tip sit?",
+"o": [
+"T6–T9",
+"T10–L2",
+"L3–L5",
+"T2–T3"
+],
+"e": "High UAC = T6–T9 (preferred); low = L3–L5; avoid T10–L2 (celiac/SMA/renal). (Outside-the-slides card.)",
+"src": "card:n1788336482702-0"
+},
+{
+"section": "s02",
+"q": "Where should a UVC tip sit on X-ray?",
+"o": [
+"At the IVC/right-atrium junction, about T8–T9",
+"At L3–L5",
+"In the left atrium",
+"At the carina"
+],
+"e": "A UVC travels straight up; its tip belongs at the IVC–right atrium junction, ~T8–T9. (Outside-the-slides card.)",
+"src": "card:n1788336482702-0"
+},
+{
+"section": "s02",
+"q": "Why is the umbilical cord clamped rather than tied?",
+"o": [
+"Wharton's jelly makes the cord slippery and compressible",
+"The cord has no blood vessels",
+"Ties damage the placenta",
+"Clamping speeds up delivery of the placenta"
+],
+"e": "Wharton's jelly makes the cord slippery and compressible, so it is clamped. Lean jelly is linked to growth restriction; excess jelly to gestational diabetes and hydrops. (Outside-the-slides card.)",
+"src": "card:n1788336483127-0"
+},
+{
+"section": "s02",
+"q": "Wharton's jelly is made mainly of:",
+"o": [
+"Glycosaminoglycans, predominantly hyaluronic acid",
+"Fat cells",
+"Smooth muscle",
+"Elastic cartilage"
+],
+"e": "It is mucoid connective tissue — mostly hyaluronic acid plus chondroitin sulfate, which hold water to make a gel. Not fat, not muscle. (Outside-the-slides card.)",
+"src": "card:n1788336483076-0"
+},
+{
+"section": "s03",
+"q": "How is fundal height measured?",
+"o": [
+"Symphysis pubis to the top of the fundus, with a tape measure",
+"Umbilicus to the xiphoid process",
+"Ultrasound crown–rump length",
+"Width of the maternal abdomen at the umbilicus"
+],
+"e": "Fundal height = tape-measure distance from the symphysis pubis to the top of the fundus.",
+"src": "card:n1788336145706-0"
+},
+{
+"section": "s03",
+"q": "What does the contraction stress test detect?",
+"o": [
+"Uteroplacental insufficiency",
+"Fetal lung maturity",
+"Cervical dilation",
+"Placenta previa"
+],
+"e": "The contraction stress test detects uteroplacental insufficiency.",
+"src": "card:n1788336146458-0"
+},
+{
+"section": "s03",
+"q": "Which is NOT a method of obtaining the fetal heart rate?",
+"o": [
+"Pulse oximeter on the maternal finger",
+"Auscultation",
+"External abdominal transducer",
+"Spiral electrode on the fetal scalp"
+],
+"e": "FHR is obtained by auscultation, external abdominal transducer, abdominal electrodes, or a fetal scalp spiral electrode.",
+"src": "card:n1788336482926-0"
+},
+{
+"section": "s03",
+"q": "Which is one of the five components of parturition?",
+"o": [
+"Separation of the placenta",
+"Rupture of the ductus arteriosus",
+"Closure of the foramen ovale",
+"Fetal lung fluid secretion"
+],
+"e": "Parturition: cervical dilation, rupture of membranes, uterine contraction, separation of the placenta, and shrinking of the uterus.",
+"src": "card:n1788336714647-0"
+},
+{
+"section": "s03",
+"q": "On a cervical exam, station 0 means the presenting part is:",
+"o": [
+"At the ischial spines (engaged)",
+"Crowning",
+"Not yet in the pelvis",
+"5 cm above the spines"
+],
+"e": "Station runs −5 to +5 relative to the ischial spines; 0 = engaged, +5 = crowning. (Outside-the-slides card.)",
+"src": "card:n1788336714723-0"
+},
+{
+"section": "s03",
+"q": "What does 48 hours of tocolysis actually buy?",
+"o": [
+"Time for antenatal steroids and maternal transport",
+"A guaranteed term delivery",
+"Prevention of all preterm births",
+"Time for the cervix to close permanently"
+],
+"e": "Tocolytics don't stop preterm birth by themselves; the 48 h allow antenatal corticosteroids, transport to a NICU center, and MgSO₄ neuroprotection. (Outside-the-slides card.)",
+"src": "card:n1788336146708-0"
+},
+{
+"section": "s03",
+"q": "What is the betamethasone regimen for fetal lung maturation?",
+"o": [
+"12 mg IM × 2 doses, 24 hours apart",
+"6 mg IM × 4 doses, every 12 hours",
+"12 mg IV once",
+"0.5 mg/kg PO daily for 7 days"
+],
+"e": "Betamethasone 12 mg IM × 2, 24 h apart (dexamethasone 6 mg IM × 4, q12h), recommended at 24 0/7–33 6/7 weeks. (Outside-the-slides card.)",
+"src": "card:n1788336146808-0"
+},
+{
+"section": "s03",
+"q": "Antenatal corticosteroids reduce neonatal RDS by:",
+"o": [
+"Accelerating type II pneumocyte maturation and surfactant production",
+"Closing the ductus arteriosus",
+"Relaxing the uterus",
+"Clearing fetal lung fluid"
+],
+"e": "They speed type II cell maturation and surfactant production, reducing RDS, IVH, NEC and mortality. (Outside-the-slides card.)",
+"src": "card:n1788336146808-0"
+},
+{
+"section": "s03",
+"q": "Painful, dark-red bleeding with a rigid, board-like uterus suggests:",
+"o": [
+"Abruptio placentae",
+"Placenta previa",
+"Normal labor",
+"Chorioamnionitis"
+],
+"e": "Abruption is painful with a firm, tender uterus and often a nonreassuring FHR. Previa is painless, bright red, with a soft uterus. (Outside-the-slides card.)",
+"src": "card:n1788336714849-0"
+},
+{
+"section": "s03",
+"q": "Why is a digital vaginal exam contraindicated in placenta previa?",
+"o": [
+"It can disrupt the placenta over the os and cause catastrophic hemorrhage",
+"It causes premature rupture of membranes",
+"It triggers fetal bradycardia",
+"It spreads infection to the fetus"
+],
+"e": "In third-trimester painless bleeding: ultrasound first, hands off the cervix. (Outside-the-slides card.)",
+"src": "card:n1788336714824-0"
+},
+{
+"section": "s03",
+"q": "A fetal scalp pH of 7.22 calls for:",
+"o": [
+"Repeat within 30 minutes (borderline)",
+"Immediate delivery",
+"No action; it is normal",
+"Repeat in 24 hours"
+],
+"e": "≥ 7.25 normal; 7.21–7.24 pre-acidosis → repeat within 30 min; ≤ 7.20 acidosis → deliver immediately. (Outside-the-slides card.)",
+"src": "card:n1788336714449-0"
+},
+{
+"section": "s03",
+"q": "Which umbilical cord sample has the LOWER pH?",
+"o": [
+"The artery, which reflects the fetus",
+"The vein, which reflects the placenta",
+"They are always identical",
+"It depends on the mode of delivery"
+],
+"e": "Artery mean pH 7.24–7.27; vein 7.32–7.34. If the two match, you probably sampled the vein twice. (Outside-the-slides card.)",
+"src": "card:n1788336714474-0"
+},
+{
+"section": "s03",
+"q": "Why do babies born by elective cesarean before labor get TTN?",
+"o": [
+"They miss the labor catecholamine surge that switches the lung to fluid absorption",
+"Their surfactant is destroyed by anesthesia",
+"They aspirate meconium",
+"Their ductus closes too early"
+],
+"e": "Labor catecholamines and glucocorticoids activate ENaC, moving Na⁺ and water out of the alveoli. Without labor, fetal lung fluid is retained. (Outside-the-slides card.)",
+"src": "card:n1788336714974-0"
+},
+{
+"section": "s03",
+"q": "Without a medical indication, an elective cesarean should not be done before:",
+"o": [
+"39 0/7 weeks",
+"37 0/7 weeks",
+"36 0/7 weeks",
+"41 0/7 weeks"
+],
+"e": "Elective (no-labor) cesareans carry the highest TTN risk, so ACOG says not before 39 0/7 weeks. (Outside-the-slides card.)",
+"src": "card:n1788336714999-0"
+},
+{
+"section": "s03",
+"q": "A single maternal temperature of what is enough to diagnose chorioamnionitis?",
+"o": [
+"≥ 39.0 °C (102.2 °F)",
+"≥ 38.0 °C (100.4 °F)",
+"≥ 37.5 °C (99.5 °F)",
+"≥ 40.0 °C (104 °F)"
+],
+"e": "≥ 39.0 °C once is enough. At 38.0–38.9 °C you need two readings plus one other sign (fetal HR > 160, WBC > 15,000, purulent fluid). (Outside-the-slides card.)",
+"src": "card:n1788336713722-0"
+},
+{
+"section": "s03",
+"q": "ACOG's preferred term for chorioamnionitis is:",
+"o": [
+"Intraamniotic infection",
+"Triple P",
+"Placentitis",
+"Funisitis"
+],
+"e": "Since 2017 ACOG prefers \"intraamniotic infection\"; \"Triple I\" is the NICHD research label. (Outside-the-slides card.)",
+"src": "card:n1788336713698-0"
+},
+{
+"section": "s04",
+"q": "Where do you look to judge a newborn's color during resuscitation?",
+"o": [
+"The central trunk",
+"The hands and feet",
+"The lips only",
+"The nail beds"
+],
+"e": "Visually inspect the central trunk, then confirm with a pulse oximeter and give O₂ if needed.",
+"src": "card:n1788336146559-0"
+},
+{
+"section": "s04",
+"q": "During PPV, the HR is 80. Per the slide, what next?",
+"o": [
+"Continue PPV and monitor oxygen saturation",
+"Start chest compressions",
+"Stop PPV",
+"Give epinephrine"
+],
+"e": "If HR is > 60 but < 100, continue PPV, monitor SpO₂, and evaluate chest rise.",
+"src": "card:n1788336714173-0"
+},
+{
+"section": "s04",
+"q": "Which is an intubation difficulty named on the slides?",
+"o": [
+"Accidental insertion into the esophagus",
+"Tube too short to reach the larynx",
+"Cuff rupture",
+"Damage to the vocal cords from suction"
+],
+"e": "Named difficulties: hard to visualize landmarks, esophageal insertion, and advancing too far down the trachea.",
+"src": "card:n1788336315556-0"
+},
+{
+"section": "s04",
+"q": "What is the target preductal SpO₂ at 5 minutes after birth (NRP 9th ed.)?",
+"o": [
+"80–85%",
+"60–65%",
+"70–75%",
+"85–95%"
+],
+"e": "2 min 65–70 · 3 min 70–75 · 4 min 75–80 · 5 min 80–85 · 10 min 85–95%. The 1-min row was removed in the 9th edition. (Outside-the-slides card.)",
+"src": "card:n1788336316205-0"
+},
+{
+"section": "s04",
+"q": "What is the target preductal SpO₂ at 10 minutes after birth?",
+"o": [
+"85–95%",
+"80–85%",
+"95–100%",
+"70–75%"
+],
+"e": "NRP 9th edition: 10 min = 85–95%, measured on the right hand/wrist. (Outside-the-slides card.)",
+"src": "card:n1788336316205-0"
+},
+{
+"section": "s04",
+"q": "What ETT size does a 3.0 kg term newborn need?",
+"o": [
+"3.5 mm ID",
+"2.5 mm ID",
+"3.0 mm ID",
+"4.5 mm ID"
+],
+"e": "≤ 1200 g → 2.5 · 1201–2200 g → 3.0 · > 2200 g → 3.5 mm ID. (Outside-the-slides card.)",
+"src": "card:n1788336714548-0"
+},
+{
+"section": "s04",
+"q": "A 1,000 g (26-week) infant needs what ETT size?",
+"o": [
+"2.5 mm ID",
+"3.0 mm ID",
+"3.5 mm ID",
+"2.0 mm ID"
+],
+"e": "Infants ≤ 1200 g (< 28 weeks) get a 2.5 mm tube. (Outside-the-slides card.)",
+"src": "card:n1788336714548-0"
+},
+{
+"section": "s04",
+"q": "Using the \"6 + weight\" rule, how deep at the lip is the ETT for a 3 kg newborn?",
+"o": [
+"9 cm",
+"6 cm",
+"12 cm",
+"10.5 cm"
+],
+"e": "Neonatal depth at the upper lip (cm) = 6 + weight in kg → 6 + 3 = 9 cm. (Outside-the-slides card.)",
+"src": "card:n1788336714597-0"
+},
+{
+"section": "s04",
+"q": "After 60 s of compressions the newborn's HR is still below 60. Next step?",
+"o": [
+"Epinephrine, preferably IV via UVC",
+"Stop resuscitation",
+"Increase PPV rate only",
+"Atropine"
+],
+"e": "HR < 100 → PPV; < 60 after 30 s of good PPV → compressions 3:1 with 100% O₂; still < 60 after 60 s → epinephrine. (Outside-the-slides card.)",
+"src": "card:n1788336483376-0"
+},
+{
+"section": "s05",
+"q": "Which is NOT one of the 7 physical criteria in gestational-age exams?",
+"o": [
+"Heart rate",
+"Lanugo",
+"Ear recoil",
+"Sole creases"
+],
+"e": "The seven: vernix, skin maturity, lanugo, ear recoil, breast tissue, genitalia, sole creases.",
+"src": "card:n1788336145807-0"
+},
+{
+"section": "s05",
+"q": "How many criteria does the New Ballard Score use?",
+"o": [
+"12 (6 neuromuscular + 6 physical)",
+"21",
+"7",
+"10 (5 + 5)"
+],
+"e": "New Ballard: 12 criteria, total −10 to +50, best at 12–24 h; every 5 points = 2 weeks. Dubowitz uses 21. (Outside-the-slides card.)",
+"src": "card:n1788336314528-0"
+},
+{
+"section": "s05",
+"q": "A New Ballard score of 40 corresponds to what gestational age?",
+"o": [
+"40 weeks",
+"36 weeks",
+"32 weeks",
+"44 weeks"
+],
+"e": "Every 5 points = 2 weeks, so a score of 40 = 40 weeks. (Outside-the-slides card.)",
+"src": "card:n1788336314528-0"
+},
+{
+"section": "s05",
+"q": "Which is one of the 7 newborn observation findings on the slide?",
+"o": [
+"Inability to maintain body temperature",
+"Hypertension",
+"Bradypnea",
+"Polyuria"
+],
+"e": "The checklist: tachypnea, tachycardia, grunting, retractions, inability to maintain temperature, reduced vigor, limp appearance. No thresholds are given.",
+"src": "card:n1788336147058-0"
+},
+{
+"section": "s05",
+"q": "Which neonatal reflexes are listed on the slide?",
+"o": [
+"Rooting, suck, grasp, Moro",
+"Babinski, patellar, Achilles, gag",
+"Corneal, cough, swallow, startle",
+"Plantar, palmar, tonic neck, stepping"
+],
+"e": "The four: rooting, suck, grasp, Moro. The neurologic exam depends on intrauterine development.",
+"src": "card:n1788336147532-0"
+},
+{
+"section": "s05",
+"q": "Which is one of the three stated purposes of the neonatal physical exam?",
+"o": [
+"Determining successful transition to extrauterine life",
+"Calculating the Apgar score",
+"Choosing the ETT size",
+"Diagnosing TORCH infection"
+],
+"e": "Purposes: discover physical defects, confirm successful transition to extrauterine life, maintain thermoregulation.",
+"src": "card:n1788336147559-0"
+},
+{
+"section": "s05",
+"q": "In the Quiet Examination, what do you observe?",
+"o": [
+"Color, lanugo, activity, overall look and respiration",
+"Reflexes and muscle tone",
+"Heart and lung auscultation",
+"Head circumference and length"
+],
+"e": "Quiet exam = observe color, lanugo, activity, overall look, respiration — before any hands-on exam.",
+"src": "card:n1788336147483-0"
+},
+{
+"section": "s05",
+"q": "Which comes FIRST in the Ch05 neonatal exam sequence?",
+"o": [
+"Anatomic background",
+"Neurologic examination",
+"Hands-on examination",
+"Quiet examination"
+],
+"e": "Anatomic background → observation survey → history + GA → size → quiet exam → hands-on → neurologic exam.",
+"src": "card:n1788336147458-0"
+},
+{
+"section": "s05",
+"q": "Which does neonatal pulmonary function testing measure?",
+"o": [
+"Compliance, resistance, FRC and crying vital capacity",
+"Exhaled nitric oxide only",
+"Peak expiratory flow by forced effort",
+"Arterial blood gases"
+],
+"e": "Neonatal PFT measures compliance and resistance, WOB, expiratory flows, lung volumes, FRC, crying vital capacity.",
+"src": "card:n1788336147658-0"
+},
+{
+"section": "s05",
+"q": "For neonatal PFT, sedation may cause untoward events in which condition?",
+"o": [
+"Central hypoventilation",
+"Normal term infant",
+"Mild jaundice",
+"Acrocyanosis"
+],
+"e": "Sedation risk: central hypoventilation, CNS depression, OSA, severe obesity, esophagitis/gastritis, hepatic or renal dysfunction.",
+"src": "card:n1788336147633-0"
+},
+{
+"section": "s05",
+"q": "What separates benign acrocyanosis from central cyanosis?",
+"o": [
+"Trunk, tongue and mucous membranes stay pink with normal SpO₂",
+"Blue hands and feet",
+"It appears with crying",
+"It needs supplemental oxygen"
+],
+"e": "Acrocyanosis is normal for 24–48 h; treat with warmth, not oxygen. Central cyanosis beyond ~10 min of life is never acrocyanosis. (Outside-the-slides card.)",
+"src": "card:n1788336714074-0"
+},
+{
+"section": "s05",
+"q": "Why can a severely anemic hypoxemic patient look pink?",
+"o": [
+"Cyanosis needs ~5 g/dL desaturated Hb, which anemia rarely reaches",
+"Anemia raises SpO₂",
+"Anemia causes vasodilation",
+"Low Hb makes oximetry read low"
+],
+"e": "Cyanosis depends on the absolute amount of reduced Hb, so it appears late or never in anemia and early in polycythemia. (Outside-the-slides card.)",
+"src": "card:n1788336714097-0"
+},
+{
+"section": "s05",
+"q": "At roughly what SpO₂ does cyanosis become visible?",
+"o": [
+"80–85%",
+"95%",
+"90–92%",
+"60%"
+],
+"e": "SpO₂ ~80–85% (PaO₂ ~35–50 mm Hg). Cyanosis is a late, unreliable sign — use the pulse oximeter. (Outside-the-slides card.)",
+"src": "card:n1788336714123-0"
+},
+{
+"section": "s06",
+"q": "How do the slides define thermoregulation?",
+"o": [
+"Equality between heat dissipation and heat production",
+"Keeping skin temperature at 37 °C",
+"Shivering to produce heat",
+"Sweating to lose heat"
+],
+"e": "\"The maintenance of equality between heat dissipation and heat production by the body\" — one of the most important parts of neonatal care.",
+"src": "card:n1788336314553-0"
+},
+{
+"section": "s06",
+"q": "The internal thermal gradient is the temperature difference between:",
+"o": [
+"The warm body core and the cooler skin",
+"The skin and the environment",
+"The incubator and the room",
+"Inspired and expired gas"
+],
+"e": "Internal gradient = core to skin; regulated by metabolic rate, subcutaneous fat, surface area, and core-to-skin distance.",
+"src": "card:n1788336314603-0"
+},
+{
+"section": "s06",
+"q": "Which is NOT a regulator of the internal thermal gradient?",
+"o": [
+"Room humidity",
+"Metabolic rate",
+"Amount of subcutaneous fat",
+"Distance from body core to skin"
+],
+"e": "The four: metabolic rate, subcutaneous fat, surface area for heat loss, and core-to-skin distance.",
+"src": "card:n1788336314603-0"
+},
+{
+"section": "s06",
+"q": "Physiologic jaundice in a term infant typically peaks on:",
+"o": [
+"Days 3–5",
+"Day 1",
+"Week 3",
+"Day 10–14"
+],
+"e": "Physiologic jaundice starts after 24 h, peaks day 3–5, resolves by 2–3 weeks. Jaundice in the first 24 h is never physiologic. (Outside-the-slides card.)",
+"src": "card:n1788336315278-0"
+},
+{
+"section": "s06",
+"q": "Breast-milk jaundice (vs breastfeeding jaundice) is characterized by:",
+"o": [
+"Late onset in a baby who is feeding well and thriving",
+"First-week onset in a dehydrated baby",
+"Onset in the first 24 hours",
+"Conjugated hyperbilirubinemia"
+],
+"e": "Breastfeeding jaundice: early, too little milk, baby doing poorly. Breast-milk jaundice: later (peaks week 2), milk inhibits conjugation, baby fine. (Outside-the-slides card.)",
+"src": "card:n1788336315303-0"
+},
+{
+"section": "s06",
+"q": "How does phototherapy clear bilirubin?",
+"o": [
+"Blue-green light converts it to water-soluble lumirubin",
+"It conjugates bilirubin in the liver",
+"It destroys red blood cells",
+"It increases bile production"
+],
+"e": "460–490 nm light photoisomerizes unconjugated bilirubin to lumirubin, excreted in bile and urine without conjugation. (Outside-the-slides card.)",
+"src": "card:n1788336315328-0"
+},
+{
+"section": "s06",
+"q": "Which blood-group incompatibility can affect a firstborn?",
+"o": [
+"ABO (mother type O, infant A or B)",
+"Rh (mother Rh-negative, infant Rh-positive)",
+"Both equally",
+"Neither — only later pregnancies"
+],
+"e": "ABO uses preformed maternal IgG, so it can affect the firstborn and is usually mild. Rh needs prior sensitization, so usually the second pregnancy. (Outside-the-slides card.)",
+"src": "card:n1788336315353-0"
+},
+{
+"section": "s06",
+"q": "Per the slide, direct bilirubin above what is pathologic?",
+"o": [
+"1.5 mg/dL",
+"5 mg/dL",
+"0.3 mg/dL",
+"10 mg/dL"
+],
+"e": "Answer the slide column: direct bilirubin > 1.5 mg/dL. Current teaching uses ≥ 5 mg/dL or > 20% of total.",
+"src": "card:n1788336315403-0"
+},
+{
+"section": "s07",
+"q": "Which is a consequence of asphyxia listed on Ch07 S18?",
+"o": [
+"Necrotizing enterocolitis",
+"Retinopathy of prematurity",
+"Pneumothorax",
+"Hyperthermia"
+],
+"e": "HIE, periventricular leukomalacia, bowel ischemia, NEC, and DIC.",
+"src": "card:n1788336146382-0"
+},
+{
+"section": "s07",
+"q": "Which is an RDS treatment listed on the slides?",
+"o": [
+"Glucocorticoids given to the mother before delivery",
+"Inhaled nitric oxide",
+"Chest physiotherapy",
+"Diuretics"
+],
+"e": "Ch07 S4: prevention, maternal glucocorticoids, artificial surfactant replacement, and ventilation that doesn't damage the lungs.",
+"src": "card:n1788336314454-0"
+},
+{
+"section": "s07",
+"q": "ROP Stage 2 is defined by:",
+"o": [
+"A ridge rising from the plane of the retina",
+"A thin white demarcation line",
+"Total retinal detachment",
+"Normal retinal vessels"
+],
+"e": "Stage 1 = thin white demarcation line; Stage 2 = a ridge rising from the retina, with new vessels possibly behind it.",
+"src": "card:n1788336314904-0"
+},
+{
+"section": "s07",
+"q": "Which is the only cause-and-effect ROP statement on the slide?",
+"o": [
+"Vasoconstriction leads to necrosis of the vessels",
+"Hypothermia damages the lens",
+"Bilirubin stains the retina",
+"Surfactant blocks retinal vessels"
+],
+"e": "ROP: scar behind the lens, linked to oxygen use, immature capillaries, and vasoconstriction → vessel necrosis.",
+"src": "card:n1788336314854-0"
+},
+{
+"section": "s07",
+"q": "Rank newborn respiratory distress at term, most common first:",
+"o": [
+"TTN → RDS → meconium aspiration → pneumonia/sepsis",
+"RDS → TTN → pneumothorax → meconium",
+"Meconium → TTN → RDS → CHD",
+"Pneumonia → RDS → TTN → CDH"
+],
+"e": "TTN → RDS → MAS → pneumonia/sepsis → pneumothorax, CHD, CDH. (Outside-the-slides card.)",
+"src": "card:n1788336147258-0"
+},
+{
+"section": "s07",
+"q": "Which chest film clears within 24–72 hours?",
+"o": [
+"TTN",
+"RDS",
+"Meconium aspiration",
+"Pneumonia"
+],
+"e": "TTN: mildly increased volume, perihilar streaks, fissure fluid — clearing in 24–72 h is the clincher. RDS has low volume and ground glass; MAS is hyperinflated. (Outside-the-slides card.)",
+"src": "card:n1788336482651-0"
+},
+{
+"section": "s07",
+"q": "The single question that separates atelectasis from consolidation is:",
+"o": [
+"Volume — atelectasis loses it, consolidation doesn't",
+"Color — atelectasis is darker",
+"Location — consolidation is always basal",
+"Density — consolidation is less white"
+],
+"e": "Both are white. Atelectasis loses volume and pulls structures toward it; consolidation fills alveoli and pulls nothing. RDS = diffuse atelectasis. (Outside-the-slides card.)",
+"src": "card:n1788336482626-0"
+},
+{
+"section": "s07",
+"q": "On a supine neonatal film, pneumothorax often shows as:",
+"o": [
+"A deep sulcus sign",
+"An air bronchogram",
+"A thumb sign",
+"Reticulogranular haze"
+],
+"e": "Supine air collects anteromedially → deep sulcus sign, hyperlucent hemithorax, sharp heart border. (Outside-the-slides card.)",
+"src": "card:n1788336482676-0"
+},
+{
+"section": "s08",
+"q": "Which infection class do the slides say immunization can prevent?",
+"o": [
+"Viral",
+"Bacterial",
+"Fungal",
+"Protozoal"
+],
+"e": "\"Viral diseases can be avoided by prevention and immunization.\"",
+"src": "card:n1788336147358-0"
+},
+{
+"section": "s08",
+"q": "Which is one of the five infection-prevention measures?",
+"o": [
+"Respiratory hygiene / cough etiquette",
+"Routine antibiotics for all newborns",
+"Daily circuit changes",
+"Isolating all preterm infants"
+],
+"e": "Hand hygiene, PPE, safe injection practices, safe handling of contaminated equipment, and respiratory hygiene/cough etiquette.",
+"src": "card:n1788336147383-0"
+},
+{
+"section": "s08",
+"q": "How do the slides say Pneumocystis carinii is treated?",
+"o": [
+"Trimethoprim-sulfamethoxazole for 21 days",
+"Amphotericin B for 7 days",
+"Acyclovir for 14 days",
+"Penicillin for 10 days"
+],
+"e": "TMP-SMX for 21 days, under \"Protozoal and Fungal Infections\" — not part of TORCH.",
+"src": "card:n1788336482075-0"
+},
+{
+"section": "s08",
+"q": "Which is part of PPHN treatment on the Ch07 slide?",
+"o": [
+"Minimize handling the patient",
+"Inhaled nitric oxide",
+"Sildenafil",
+"ECMO"
+],
+"e": "The slide: maintain temperature, fluids, electrolytes, glucose, oxygenation, BP and perfusion; minimize handling; mechanical ventilation. iNO, ECMO and sildenafil aren't on it.",
+"src": "card:n1788336713623-0"
+},
+{
+"section": "s08",
+"q": "PPHN's other name, listed as an effect of asphyxia on the lungs, is:",
+"o": [
+"Persistent fetal circulation",
+"Hyaline membrane disease",
+"Wet lung",
+"Bronchopulmonary dysplasia"
+],
+"e": "Ch04 S6 lists persistent fetal circulation (PPHN) among the effects of asphyxia on the lungs.",
+"src": "card:n1788336713647-0"
+},
+{
+"section": "s08",
+"q": "In Pierre Robin sequence, how is the airway managed?",
+"o": [
+"Keep the airway patent until the mandible grows",
+"Immediate tracheostomy for all",
+"Surgical tongue removal",
+"Chest tube"
+],
+"e": "Micrognathia pushes the tongue back; management = maintain airway patency until the mandible grows to size.",
+"src": "card:n1788336715324-0"
+},
+{
+"section": "s08",
+"q": "Meconium aspiration is filed under which kind of process?",
+"o": [
+"Processes of intrauterine origin",
+"Postnatal infections",
+"Congenital heart defects",
+"Complications of prematurity"
+],
+"e": "MAS: \"ingestion while in utero\"; meconium in the fluid may follow a fetal asphyxia episode.",
+"src": "card:n1788336315428-0"
+},
+{
+"section": "s09",
+"q": "What is the first defibrillation dose for a child?",
+"o": [
+"2 J/kg",
+"4 J/kg",
+"0.5 J/kg",
+"10 J/kg"
+],
+"e": "First shock 2 J/kg, second 4 J/kg, then ≥ 4 J/kg (max 10 J/kg or adult max). (Outside-the-slides card.)",
+"src": "card:n1788336315731-0"
+},
+{
+"section": "s09",
+"q": "Synchronized cardioversion in a child starts at:",
+"o": [
+"0.5–1 J/kg",
+"2 J/kg",
+"4 J/kg",
+"10 J/kg"
+],
+"e": "Cardioversion (pulse present) starts at 0.5–1 J/kg, escalating to 2 J/kg — don't confuse with defibrillation. (Outside-the-slides card.)",
+"src": "card:n1788336315731-0"
+},
+{
+"section": "s09",
+"q": "Two-rescuer CPR for an infant or child without an advanced airway uses what ratio?",
+"o": [
+"15:2",
+"30:2",
+"3:1",
+"5:1"
+],
+"e": "1 rescuer 30:2; 2 rescuers 15:2; with an advanced airway, continuous compressions + 1 breath every 2–3 s. (Outside-the-slides card.)",
+"src": "card:n1788336315779-0"
+},
+{
+"section": "s09",
+"q": "Per the slides, the pediatric compression rate is:",
+"o": [
+"100/min",
+"100–120/min",
+"60/min",
+"150/min"
+],
+"e": "Answer the slide: 100/min (Ch09 S2). Current PALS says 100–120/min.",
+"src": "card:n1788336315853-0"
+},
+{
+"section": "s09",
+"q": "Per the slides, rescue breathing in pediatric resuscitation is:",
+"o": [
+"1 breath every 6–8 s (8–10/min)",
+"1 breath every 2–3 s (20–30/min)",
+"1 breath every 10 s",
+"2 breaths after every 15 compressions only"
+],
+"e": "Answer the slide: 1 breath q6–8 s. Current guideline: 1 breath q2–3 s.",
+"src": "card:n1788336315853-0"
+},
+{
+"section": "s09",
+"q": "What is the pediatric epinephrine dose in arrest?",
+"o": [
+"0.01 mg/kg IV/IO (max 1 mg)",
+"0.1 mg/kg IV",
+"1 mg/kg IV",
+"0.5 mg IM"
+],
+"e": "0.01 mg/kg (0.1 mL/kg of 1:10,000), max 1 mg, every 3–5 min. (Outside-the-slides card.)",
+"src": "card:n1788336315805-0"
+},
+{
+"section": "s09",
+"q": "What is the amiodarone bolus for refractory pediatric VF/pVT?",
+"o": [
+"5 mg/kg (max 300 mg)",
+"1 mg/kg",
+"0.1 mg/kg",
+"10 mg/kg"
+],
+"e": "Amiodarone 5 mg/kg (max 300 mg), up to 3 doses; lidocaine 1 mg/kg is an alternative. (Outside-the-slides card.)",
+"src": "card:n1788336315805-0"
+},
+{
+"section": "s09",
+"q": "Which is on the slide's 11-drug PALS roster?",
+"o": [
+"Procainamide",
+"Furosemide",
+"Albuterol",
+"Morphine"
+],
+"e": "Adenosine, amiodarone, atropine, calcium, epinephrine, glucose, lidocaine, magnesium, procainamide, sodium bicarbonate, vasopressin.",
+"src": "card:n1788336315631-0"
+},
+{
+"section": "s09",
+"q": "In a child, a narrow-complex rate ≥ 180/min with a fixed R-R interval suggests:",
+"o": [
+"SVT",
+"Sinus tachycardia",
+"Atrial flutter with block",
+"Normal for age"
+],
+"e": "Probable SVT: infants ≥ 220, children ≥ 180, fixed R-R, abrupt onset/offset. Sinus tach has a variable R-R and a cause. (Outside-the-slides card.)",
+"src": "card:n1788336483477-0"
+},
+{
+"section": "s09",
+"q": "What is the most common cause of bradycardia in children?",
+"o": [
+"Hypoxia",
+"Heart block",
+"Hypothermia",
+"Drug overdose"
+],
+"e": "Pediatric bradycardia is respiratory until proven otherwise — oxygenate and ventilate first. (Outside-the-slides card.)",
+"src": "card:n1788336483400-0"
+},
+{
+"section": "s09",
+"q": "A second-degree burn per the slides:",
+"o": [
+"Extends beyond the epidermis into the superficial dermis",
+"Involves only the epidermis",
+"Destroys the dermis and its appendages",
+"Reaches muscle and bone"
+],
+"e": "1st = epidermis only; 2nd = into the superficial dermis (partial thickness); 3rd = destroys dermis and appendages.",
+"src": "card:n1788336713473-0"
+},
+{
+"section": "s09",
+"q": "Chlorine gas is described as:",
+"o": [
+"Greenish-yellow and extremely irritating to mucous membranes",
+"Colorless and odorless",
+"Red-brown and sweet-smelling",
+"Blue and inert"
+],
+"e": "\"A greenish-yellow gas that is extremely irritating to the mucous membranes and skin.\"",
+"src": "card:n1788336715274-0"
+},
+{
+"section": "s09",
+"q": "In which phase of chlorine inhalation do pulmonary edema and mucus plugging occur?",
+"o": [
+"Phase 2",
+"Phase 1",
+"Phase 3",
+"Phase 4"
+],
+"e": "Phase 1 choking/coughing; Phase 2 pharyngeal and pulmonary edema with mucus plugging; Phases 3–4 gradual improvement.",
+"src": "card:n1788336715274-0"
+},
+{
+"section": "s09",
+"q": "In anaphylaxis, which symptom is the airway threat?",
+"o": [
+"Swelling of the lips, tongue or face",
+"Hives",
+"Itchy eyes",
+"Skin itching"
+],
+"e": "Lip/tongue/face swelling threatens the airway. Treatment: administer epinephrine.",
+"src": "card:n1788336715349-0"
+},
+{
+"section": "s09",
+"q": "Why are low-viscosity hydrocarbons dangerous?",
+"o": [
+"They are easily aspirated, causing chemical pneumonitis",
+"They block the esophagus",
+"They cause severe hypoglycemia",
+"They are radioactive"
+],
+"e": "Gasoline, kerosene and lamp oil are easily aspirated → chemical pneumonitis. Do not induce emesis. (Standard teaching; the slide lists the word only.)",
+"src": "card:n1788336715374-0"
+},
+{
+"section": "s09",
+"q": "Why is 1 mm of airway edema so dangerous in an infant?",
+"o": [
+"Resistance rises ~16-fold (∝ 1/r⁴)",
+"It doubles the airway diameter",
+"Infant airways are rigid",
+"It only matters in adults"
+],
+"e": "A 4 mm airway shrinks to 2 mm: area ↓ 75%, resistance ↑ 16× (32× if crying). In an adult 8 → 6 mm, only ~3×. Keep these children calm. (Outside-the-slides card.)",
+"src": "card:n1788336713897-0"
+},
+{
+"section": "s09",
+"q": "Using the uncuffed (Cole) formula, what ETT size does a 4-year-old need?",
+"o": [
+"5.0 mm",
+"4.0 mm",
+"6.0 mm",
+"4.5 mm"
+],
+"e": "Uncuffed ID = age/4 + 4 = 1 + 4 = 5.0 mm. Cuffed (≥ 2 yr) = age/4 + 3.5. (Outside-the-slides card.)",
+"src": "card:n1788336714572-0"
+},
+{
+"section": "s09",
+"q": "Insertion depth for an 8-year-old's ETT (APLS formula)?",
+"o": [
+"16 cm",
+"12 cm",
+"20 cm",
+"14 cm"
+],
+"e": "Children ≥ 2 yr: depth = age/2 + 12 = 4 + 12 = 16 cm. Under 2: 3 × ETT ID. (Outside-the-slides card.)",
+"src": "card:n1788336714597-0"
+},
+{
+"section": "s09",
+"q": "Classic teaching says the narrowest point of the young child's airway is the:",
+"o": [
+"Cricoid ring",
+"Glottis",
+"Carina",
+"Nares"
+],
+"e": "Classic answer: cricoid (the only complete, non-distensible ring). Imaging finds the glottis narrowest, but the cricoid is the functional limit. (Outside-the-slides card.)",
+"src": "card:n1788336713848-0"
+},
+{
+"section": "s10",
+"q": "Which is a standard measurement to begin the pediatric exam?",
+"o": [
+"Head circumference",
+"Blood glucose",
+"Peak flow",
+"Arterial blood gas"
+],
+"e": "Weight, length/height, head circumference, and vital signs.",
+"src": "card:n1788336314354-0"
+},
+{
+"section": "s10",
+"q": "Pediatric fever is a rectal temperature above:",
+"o": [
+"100.4 °F (38 °C)",
+"99.5 °F (37.5 °C)",
+"101.5 °F (38.6 °C)",
+"102.2 °F (39 °C)"
+],
+"e": "Fever = rectal > 100.4 °F / 38 °C — pyrogens raise the hypothalamic setpoint.",
+"src": "card:n1788336314404-0"
+},
+{
+"section": "s10",
+"q": "What is a leading cause of acute otitis media?",
+"o": [
+"Eustachian tube dysfunction",
+"Excess earwax",
+"Swimming",
+"Loud noise"
+],
+"e": "Middle-ear fluid becomes inflamed from bacterial infection; Eustachian tube dysfunction is a leading cause.",
+"src": "card:n1788336314428-0"
+},
+{
+"section": "s10",
+"q": "Which is one of the three diagnostic criteria for acute otitis media?",
+"o": [
+"Fluid in the middle ear",
+"Fever above 104 °F",
+"Ear pain for 2 weeks",
+"Hearing loss in both ears"
+],
+"e": "Acute onset of symptoms, fluid in the middle ear, and signs and symptoms of inflammation.",
+"src": "card:n1788336314428-0"
+},
+{
+"section": "s10",
+"q": "Which is part of the neurologic portion of the well-child exam?",
+"o": [
+"Cranial nerves",
+"Reflex hammer for Moro",
+"Abdominal palpation",
+"Otoscope exam"
+],
+"e": "Neurologic portion: mental/cognitive status, balance and coordination, cranial nerves.",
+"src": "card:n1788336482451-0"
+},
+{
+"section": "s10",
+"q": "Which three eating disorders do the slides name?",
+"o": [
+"Pica, anorexia nervosa, bulimia nervosa",
+"Pica, obesity, failure to thrive",
+"Anorexia, bulimia, binge-eating",
+"Rumination, pica, anorexia"
+],
+"e": "Ch11 S7 names exactly three: pica, anorexia nervosa, bulimia nervosa.",
+"src": "card:n1788336482300-0"
+},
+{
+"section": "s10",
+"q": "Per the slide (Ch11 S6), how are behavioral problems and OSA linked?",
+"o": [
+"Behavioral problems may result in OSA",
+"OSA has no link to behavior",
+"OSA is caused by asthma",
+"OSA occurs only in adults"
+],
+"e": "Answer the slide: behavioral problems \"may result in\" OSA. Standard teaching reverses it — untreated OSA causes the behavior problems.",
+"src": "card:n1788336482427-0"
+},
+{
+"section": "s10",
+"q": "In a child, what AHI is severe OSA?",
+"o": [
+"≥ 10",
+"≥ 30",
+"≥ 5",
+"≥ 1"
+],
+"e": "Children: normal < 1, mild 1–4.9, moderate 5–9.9, severe ≥ 10. Adults: severe > 30. (Outside-the-slides card.)",
+"src": "card:n1788336713322-0"
+},
+{
+"section": "s10",
+"q": "What is the diagnostic AHI cutoff for OSA in children?",
+"o": [
+"Obstructive AHI ≥ 1",
+"AHI ≥ 5",
+"AHI ≥ 15",
+"AHI ≥ 30"
+],
+"e": "Children: obstructive AHI ≥ 1 — five times lower than the adult cutoff of ≥ 5. (Outside-the-slides card.)",
+"src": "card:n1788336713322-0"
+},
+{
+"section": "s10",
+"q": "How do children with OSA most often present in the daytime?",
+"o": [
+"Hyperactivity and inattention",
+"Excessive daytime sleepiness",
+"Morning headache only",
+"Weight loss"
+],
+"e": "Children show hyperactivity, inattention and poor school performance and are often misdiagnosed with ADHD; sleepiness is the adult hallmark. (Outside-the-slides card.)",
+"src": "card:n1788336715049-0"
+},
+{
+"section": "s10",
+"q": "First-line treatment for pediatric OSA with large tonsils and adenoids:",
+"o": [
+"Adenotonsillectomy",
+"CPAP",
+"Weight loss alone",
+"Montelukast"
+],
+"e": "Children: adenotonsillectomy first; adults: CPAP first. CPAP if surgery isn't indicated or fails. (Outside-the-slides card.)",
+"src": "card:n1788336715075-0"
+},
+{
+"section": "s10",
+"q": "What is the leading cause of pediatric OSA?",
+"o": [
+"Adenotonsillar hypertrophy",
+"Asthma",
+"Croup",
+"Cystic fibrosis"
+],
+"e": "Adenotonsillar hypertrophy (peak ages 2–8); obesity dominates in adolescents. (Outside-the-slides card.)",
+"src": "card:n1788336715025-0"
+},
+{
+"section": "s10",
+"q": "What is the gold-standard test for pediatric OSA?",
+"o": [
+"Attended in-lab polysomnography",
+"Home sleep apnea test",
+"Tonsil size on exam",
+"Overnight pulse oximetry"
+],
+"e": "Level I PSG is the only validated test in children; history and tonsil size can't distinguish snoring from OSA. (Outside-the-slides card.)",
+"src": "card:n1788336715099-0"
+},
+{
+"section": "s10",
+"q": "Untreated pediatric OSA can lead to:",
+"o": [
+"Pulmonary hypertension and cor pulmonale",
+"Asthma",
+"Cystic fibrosis",
+"Croup"
+],
+"e": "Chronic nocturnal hypoxemia → pulmonary HTN → cor pulmonale; also growth failure, systemic HTN, neurocognitive problems. (Outside-the-slides card.)",
+"src": "card:n1788336715124-0"
+},
+{
+"section": "s10",
+"q": "What normal awake HR range does PALS give for a school-age child (6–11 y)?",
+"o": [
+"75–118",
+"100–190",
+"60–100",
+"98–140"
+],
+"e": "PALS awake HR: neonate 100–205, infant 100–190, toddler 98–140, preschool 80–120, school-age 75–118, adolescent 60–100. (Outside-the-slides card.)",
+"src": "card:n1788336482951-0"
+},
+{
+"section": "s10",
+"q": "What is the normal respiratory rate for a newborn?",
+"o": [
+"30–60/min",
+"12–20/min",
+"20–28/min",
+"60–80/min"
+],
+"e": "Newborn RR 30–60; tachypnea > 60. The slides' only RR number is > 60 as an RDS sign. (Outside-the-slides card.)",
+"src": "card:n1788336482951-0"
+}
+]
