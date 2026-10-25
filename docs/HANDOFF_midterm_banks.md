@@ -42,7 +42,8 @@ one boss per study-guide section, questions usable in both Study (training) and 
 - [x] **RCP 203 gap-fill done by Claude (2026-10-25):** `tools/midterm/gaps203.json`, 137 questions (203 now 781 Q).
       Skipped the self-contradicting G-cylinder factor (2.14 vs 2.41) and topics the drill already tests (RSBI, classic shunt,
       chest-tube suction, adult ETT size, MEP, chin strap, VC→PC). Dropped 5 duplicates and fixed 1 wrong card id during verify.
-      SW CACHE = rcp-study-v18-gaps203. Committed; **push needs the user's OK.**
+      SW CACHE = rcp-study-v18-gaps203. **Pushed live 2026-10-25** (`53e6b60`). Verified on the live site as a returning
+      player: the first load is still served from the old cache, and **one reload** shows 491 / 676 / 781 with the old cache removed.
 - **Gap-fill is now complete for all three courses.** Totals: 201 = 491 · 202 = 676 · 203 = 781 (1,948).
       Re-run if Recall's cards change: `python3 tools/gap_prefilter.py <course>` and diff against `gaps<course>.json` srcs.
 - [x] (done above) RCP 203 gap-fill (169 cards) — same method, Claude or Codex.
