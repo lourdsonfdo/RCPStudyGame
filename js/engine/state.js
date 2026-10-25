@@ -256,7 +256,7 @@
 
   function recordSurvival(state, course, score) {
     state.survival = state.survival || { best103: 0, best104: 0 };
-    const key = course === 'rcp103' ? 'best103' : 'best104';
+    const key = 'best' + String(course).replace(/^rcp/, '');
     if (score > (state.survival[key] || 0)) state.survival[key] = score;
   }
 

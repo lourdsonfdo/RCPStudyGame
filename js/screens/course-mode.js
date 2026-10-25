@@ -4,7 +4,8 @@
    ============================================================ */
 App.registerScreen('course-mode', ({ root, state, ctx }) => {
   const course = ctx.course || 'rcp103';
-  const courseFull = course === 'rcp103' ? 'PULMONARY DISEASE' : 'PHARMACOLOGY';
+  const courseFull = Academy.course(course).name.toUpperCase();
+  const hasScenarios = (window.ALL_SCENARIOS || []).some(s => s.course === course);
   const courseShort = course.toUpperCase();
 
   root.innerHTML = `
@@ -34,14 +35,23 @@ App.registerScreen('course-mode', ({ root, state, ctx }) => {
       </div>
     </div>
 
-    <div class="module module-104" data-mode="crisis">
-      <div class="module-icon-wrap">🏥</div>
+    <div class="module" data-mode="training">
+      <div class="module-icon-wrap">📖</div>
       <div class="module-body">
         <div class="module-tag">▸ PROTOCOL 02</div>
+        <div class="module-title">STUDY LIBRARY</div>
+        <div class="module-meta">PRACTICE AT YOUR PACE · NO HP</div>
+      </div>
+    </div>
+
+    ${hasScenarios ? `<div class="module module-104" data-mode="crisis">
+      <div class="module-icon-wrap">🏥</div>
+      <div class="module-body">
+        <div class="module-tag">▸ PROTOCOL 03</div>
         <div class="module-title">PATIENT CRISIS</div>
         <div class="module-meta">CLINICAL SCENARIOS · BRANCHING</div>
       </div>
-    </div>
+    </div>` : ''}
   `;
 
   root.querySelector('[data-back]').addEventListener('click', () => App.back());
@@ -50,6 +60,7 @@ App.registerScreen('course-mode', ({ root, state, ctx }) => {
     el.addEventListener('click', () => {
       const m = el.dataset.mode;
       if (m === 'battle') App.goto('boss-select', { course });
+      else if (m === 'training') App.goto('boss-select', { course, mode: 'training' });
       else App.goto('scenario-select', { course });
     });
   });

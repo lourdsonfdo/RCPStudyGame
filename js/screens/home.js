@@ -26,6 +26,8 @@ App.registerScreen('home', ({ root, state }) => {
   };
   const countFor = course => bosses.filter(b => b.course === course && state.defeatedBosses.includes(b.id)).length;
   const totalFor = course => bosses.filter(b => b.course === course).length;
+  const courses = Academy.COURSES.filter(c => totalFor(c.id));
+  const hasScenarios = course => (window.ALL_SCENARIOS || []).some(s => s.course === course);
   const motionPaused = !!state.settings.academyMotionPaused;
   root.classList.add('academy');
   root.classList.toggle('academy-paused', motionPaused);
@@ -68,8 +70,7 @@ App.registerScreen('home', ({ root, state }) => {
     <section class="ac-paths" aria-labelledby="ac-path-title">
       <div class="ac-section-heading"><h2 id="ac-path-title">Choose your path</h2><span>Small steps. Lasting knowledge.</span></div>
       <div class="ac-course-grid">
-        <button class="ac-course" data-course="rcp103"><img src="img/academy-pulmonary.webp" width="480" height="135" alt="" loading="lazy"><span class="ac-course-body"><span class="ac-course-name">Pulmonary Disease ${icon('arrow')}</span><span class="ac-course-code">RCP 103</span><span class="ac-course-description">Pathophysiology, assessment, and management.</span><span class="ac-course-progress">${countFor('rcp103')} / ${totalFor('rcp103')} bosses mastered</span></span></button>
-        <button class="ac-course" data-course="rcp104"><img src="img/academy-pharmacology.webp" width="474" height="135" alt="" loading="lazy"><span class="ac-course-body"><span class="ac-course-name">Pharmacology ${icon('arrow')}</span><span class="ac-course-code">RCP 104</span><span class="ac-course-description">Medications, indications, and respiratory therapy.</span><span class="ac-course-progress">${countFor('rcp104')} / ${totalFor('rcp104')} bosses mastered</span></span></button>
+        ${courses.map(c => `<button class="ac-course" data-course="${c.id}"><img src="${c.img}" width="480" height="135" alt="" loading="lazy"><span class="ac-course-body"><span class="ac-course-name">${esc(c.name)} ${icon('arrow')}</span><span class="ac-course-code">RCP ${c.short}</span><span class="ac-course-description">${esc(c.description)}</span><span class="ac-course-progress">${countFor(c.id)} / ${totalFor(c.id)} bosses mastered</span></span></button>`).join('')}
         <button class="ac-course" data-station="simulation"><img src="img/academy-clinical.webp" width="476" height="135" alt="" loading="lazy"><span class="ac-course-body"><span class="ac-course-name">Clinical Challenges ${icon('arrow')}</span><span class="ac-course-code">Simulation Lab</span><span class="ac-course-description">Put your knowledge to work in clinical scenarios.</span><span class="ac-course-progress">${state.completedScenarios.length} scenarios completed</span></span></button>
       </div>
     </section>
@@ -89,7 +90,8 @@ App.registerScreen('home', ({ root, state }) => {
     root.querySelector('#ac-dialog-title').textContent = {library:'Study library',simulation:'Simulation lab',arena:'Boss arena'}[station];
     root.querySelector('.ac-dialog-sub').textContent = 'Choose the course you’d like to practice.';
     const options = root.querySelector('.ac-dialog-options');
-    options.innerHTML = '<button data-pick="rcp103">Pulmonary Disease <small>RCP 103</small></button><button data-pick="rcp104">Pharmacology <small>RCP 104</small></button>';
+    options.innerHTML = courses.filter(c => station !== 'simulation' || hasScenarios(c.id))
+      .map(c => `<button data-pick="${c.id}">${esc(c.name)} <small>RCP ${c.short}</small></button>`).join('');
     options.querySelectorAll('[data-pick]').forEach(button => button.addEventListener('click', () => {
       dialog.close();
       App.goto(station === 'simulation' ? 'scenario-select' : 'boss-select', { course: button.dataset.pick, mode: station === 'library' ? 'training' : 'battle' });

@@ -49,7 +49,7 @@
     }
 
     function bestFor(crs) {
-      return ((state.survival || {})[crs === 'rcp103' ? 'best103' : 'best104']) || 0;
+      return ((state.survival || {})['best' + Academy.course(crs).short]) || 0;
     }
 
     function render() {
@@ -74,23 +74,15 @@
           <div class="title-sub">+${BONUS_CORRECT}s PER CORRECT · ${PENALTY_WRONG}s PER WRONG · BEAT THE CLOCK</div>
         </div>
 
-        <div class="module module-103" data-pick="rcp103">
-          <div class="module-icon-wrap">🫁</div>
+        ${Academy.COURSES.filter(c => (window.ALL_QUESTIONS || []).some(q => q.course === c.id)).map(c => `
+        <div class="module module-${c.short}" data-pick="${c.id}">
+          <div class="module-icon-wrap">${c.icon}</div>
           <div class="module-body">
-            <div class="module-tag">▸ COURSE 103</div>
-            <div class="module-title">PULMONARY DISEASE</div>
-            <div class="module-meta">BEST RUN: ${bestFor('rcp103')} CORRECT</div>
+            <div class="module-tag">▸ COURSE ${c.short}</div>
+            <div class="module-title">${c.name.toUpperCase()}</div>
+            <div class="module-meta">BEST RUN: ${bestFor(c.id)} CORRECT</div>
           </div>
-        </div>
-
-        <div class="module module-104" data-pick="rcp104">
-          <div class="module-icon-wrap">💊</div>
-          <div class="module-body">
-            <div class="module-tag">▸ COURSE 104</div>
-            <div class="module-title">PHARMACOLOGY</div>
-            <div class="module-meta">BEST RUN: ${bestFor('rcp104')} CORRECT</div>
-          </div>
-        </div>
+        </div>`).join('')}
 
         <div class="spacer"></div>
         <div class="data-stream">

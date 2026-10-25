@@ -3,7 +3,7 @@
    Cache-first strategy: game is fully playable offline after
    the first load.
    ============================================================ */
-const CACHE = 'rcp-study-v14-mobile-cards';
+const CACHE = 'rcp-study-v15-midterms';
 
 const PRECACHE = [
   '/RCPStudyGame/',
@@ -65,6 +65,9 @@ const PRECACHE = [
   '/RCPStudyGame/content/rcp2xx-superboss.js',
   '/RCPStudyGame/content/rcp202-values.js',
   '/RCPStudyGame/content/rcp203-values.js',
+  '/RCPStudyGame/content/rcp201-midterm.js',
+  '/RCPStudyGame/content/rcp202-midterm.js',
+  '/RCPStudyGame/content/rcp203-midterm.js',
   '/RCPStudyGame/icons/icon-192.png',
   '/RCPStudyGame/icons/icon-512.png',
   '/RCPStudyGame/icons/apple-touch-icon.png',

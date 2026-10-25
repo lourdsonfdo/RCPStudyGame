@@ -2,6 +2,21 @@
 (function (global) {
   'use strict';
 
+  // Every playable course. `short` is the survival best-score suffix.
+  const COURSES = [
+    { id: 'rcp103', short: '103', name: 'Pulmonary Disease', icon: '🫁', img: 'img/academy-pulmonary.webp',
+      description: 'Pathophysiology, assessment, and management.' },
+    { id: 'rcp104', short: '104', name: 'Pharmacology', icon: '💊', img: 'img/academy-pharmacology.webp',
+      description: 'Medications, indications, and respiratory therapy.' },
+    { id: 'rcp201', short: '201', name: 'Neonatal & Pediatrics', icon: '👶', img: 'img/academy-clinical.webp',
+      description: 'Midterm study guide: fetal development to pediatric care.' },
+    { id: 'rcp202', short: '202', name: 'Critical Care', icon: '🔥', img: 'img/academy-pulmonary.webp',
+      description: 'Midterm study guide: burns, ECMO, ventilation, ABGs.' },
+    { id: 'rcp203', short: '203', name: 'Board Prep (TMC)', icon: '🩺', img: 'img/academy-pharmacology.webp',
+      description: 'Midterm study guide: equipment, monitoring, airways.' },
+  ];
+  const course = id => COURSES.find(c => c.id === id) || { id, short: id.replace(/^rcp/, ''), name: id.toUpperCase(), icon: '📘' };
+
   function trainingPool(boss, questions) {
     const all = questions.filter(q => q.course === boss.course &&
       (boss.questionTopics || []).includes(q.topic));
@@ -24,7 +39,7 @@
       .sort((a, b) => a[1].correct / a[1].total - b[1].correct / b[1].total);
     for (const [topic] of weakTopics) {
       const entry = supported.find(({ boss }) => (boss.questionTopics || []).includes(topic));
-      if (entry) return { boss: entry.boss, topic, label: topicLabel(topic),
+      if (entry) return { boss: entry.boss, topic, label: entry.boss.sectionTitle || topicLabel(topic),
         count: Math.min(8, entry.pool.length), isWeak: true };
     }
     const entry = supported.find(({ boss }) => !(state.defeatedBosses || []).includes(boss.id)) || supported[0];
@@ -60,5 +75,5 @@
       ? saved : null;
   }
 
-  global.Academy = { recommendation, reviewQuestions, resumableBattle };
+  global.Academy = { COURSES, course, recommendation, reviewQuestions, resumableBattle };
 })(window);
