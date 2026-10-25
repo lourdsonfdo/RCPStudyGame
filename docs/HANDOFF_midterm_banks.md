@@ -29,13 +29,20 @@ one boss per study-guide section, questions usable in both Study (training) and 
       Method: `python3 tools/gap_prefilter.py 201` → 137 likely-uncovered cards → wrote questions only for real facts,
       skipping the "⚠️ NOT IN THE SLIDES" meta cards. Dropped 7 that overlapped the drill. Each `src` = `card:<Recall id>`,
       and every answer's numbers and key terms were checked against that card's text. Outside-the-slides facts say so in `e`.
-      ⚠ Unresolved conflict, left out on purpose: the drill (201 s05) says the infant epiglottis is "larger, floppy and U-shaped",
-      while the card says Ch05 S2 = "larger and LESS FLEXIBLE" (Ch10 S3 = "larger proportionally and U-shaped").
-      SW CACHE = rcp-study-v16-gaps201. Committed; push needs the user's OK.
-- [ ] **NEXT: RCP 202 (184 cards) and 203 (169 cards) gap-fill** — same method, Claude or Codex.
-      `python3 tools/gap_prefilter.py 202 > /tmp/uncov202.txt`, write `tools/midterm/gaps202.json`, rebuild, bump CACHE.
+      Epiglottis conflict (drill "larger, floppy and U-shaped" vs card Ch05 "larger and less flexible"):
+      **the user decided to use the drill's description.** RULE for all courses: when a card contradicts the drill, the drill wins.
+      Pushed live 2026-10-25 (SW v16-gaps201).
+- [x] **RCP 202 gap-fill done by Claude (2026-10-25):** `tools/midterm/gaps202.json`, 157 questions (202 now 665 Q).
+      Read all 184 pre-filtered cards. Skipped meta "not in your sources" cards and topics the drill already covers
+      (Henderson-Hasselbalch, dynamic compliance, Otis, double effect, Mehrabian, levalbuterol, pneumotaxic, PRVC, MLT).
+      Dropped 1 duplicate (6MWT emergency equipment). Female PBW constant 45 matches the drill's own IBW examples.
+      SW CACHE = rcp-study-v17-gaps202. Committed; **push needs the user's OK.**
+- [ ] **NEXT: RCP 203 gap-fill (169 cards)** — same method, Claude or Codex.
+      `python3 tools/gap_prefilter.py 203 > /tmp/uncov203.txt`, write `tools/midterm/gaps203.json`, rebuild, bump CACHE to v18.
       Watch for: cards that restate a drill fact in different words, cards whose answer contradicts the drill
-      (keep the drill's version and flag it), and pipe-free use of the script (`| head` raises a harmless BrokenPipe).
+      (the drill wins, so skip them), and don't pipe the script into `| head` (it raises a harmless BrokenPipe).
+      The verify step is the inline Python in this session's history: it checks card ids resolve in `~/recall/decks/rcp.json`
+      (`.cards[].k`), that the answer's terms appear on the card, and difflib-similar stems in the bank (> 0.62).
 - [ ] (Superseded by the line above) Codex gap-fill: Codex hit its ChatGPT usage limit on 2026-10-25 (resets 3:06 PM) after ~50K tokens/job, with no output written.
       The scratch dir is in /private/tmp and may be cleared, so regenerate the inputs if they're missing (cards export snippet: decks/rcp.json →
       strip HTML, split on `<hr id=answer>`, group by `d[4:7]`). Prompt template = `prompt.txt` there (placeholder __C__).

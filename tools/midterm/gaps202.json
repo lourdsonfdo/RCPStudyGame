@@ -1,0 +1,1886 @@
+[
+{
+"section": "s01",
+"q": "About how many U.S. patients per year experience a medical mistake?",
+"o": [
+"210,000 to 440,000",
+"2,000 to 4,000",
+"1 to 2 million",
+"50,000 to 75,000"
+],
+"e": "Roughly 210,000–440,000 per year, with communication cited as a significant contributing factor.",
+"src": "card:n1789950306928-0"
+},
+{
+"section": "s01",
+"q": "What distance is PUBLIC space?",
+"o": [
+"12 to 25 feet (12+)",
+"4 to 12 feet",
+"1.5 to 4 feet",
+"25 to 50 feet"
+],
+"e": "Public space = 12–25 feet, used for lectures and presentations.",
+"src": "card:n1789950306923-0"
+},
+{
+"section": "s01",
+"q": "When is communication actually complete?",
+"o": [
+"When you know the message was received and understood",
+"When the message is sent",
+"When the patient nods",
+"When it is documented"
+],
+"e": "Communication is complete only when received AND understood, which is why \"Do you understand?\" is worthless.",
+"src": "card:n1789950306949-0"
+},
+{
+"section": "s01",
+"q": "Which is one of the six qualities of a therapeutic relationship?",
+"o": [
+"Empowerment",
+"Friendship",
+"Sympathy",
+"Authority"
+],
+"e": "Care, empowerment, trust, empathy, mutuality, confidentiality.",
+"src": "card:n1789950306957-0"
+},
+{
+"section": "s01",
+"q": "Calling communication TRANSACTIONAL means:",
+"o": [
+"Each party is both a sender and a receiver",
+"Only the RT sends messages",
+"It always involves payment",
+"It must be written down"
+],
+"e": "RT ⇄ Patient, not RT → Patient: both parties send and receive.",
+"src": "card:n1789950306946-0"
+},
+{
+"section": "s01",
+"q": "What is the correct order of the communication process model?",
+"o": [
+"Sender → Message → Channel → Receiver → Feedback",
+"Receiver → Channel → Message → Sender → Feedback",
+"Message → Sender → Feedback → Channel → Receiver",
+"Sender → Feedback → Receiver → Message → Channel"
+],
+"e": "Sender → Message (encoded) → Channel → Receiver (decodes) → Feedback.",
+"src": "card:n1789950306947-0"
+},
+{
+"section": "s01",
+"q": "How does LISTENING differ from HEARING?",
+"o": [
+"Listening requires attention, interpretation and understanding",
+"Listening is passive",
+"They are the same thing",
+"Hearing requires more effort"
+],
+"e": "Hearing is passive. Listen so you can understand, not just so you can respond.",
+"src": "card:n1789950306956-0"
+},
+{
+"section": "s01",
+"q": "Which is one of the Five C's of Communication?",
+"o": [
+"Cohesive",
+"Casual",
+"Creative",
+"Constant"
+],
+"e": "Clear, Concise, Complete/Concrete, Cohesive, Courteous.",
+"src": "card:n1789950306929-0"
+},
+{
+"section": "s01",
+"q": "Which tool delivers the COHESIVE C of communication?",
+"o": [
+"SBAR",
+"SOAP",
+"MARTTI",
+"Teach-back"
+],
+"e": "Cohesive = organized so it fits together, using SBAR: Situation → Background → Assessment → Recommendation.",
+"src": "card:n1789950306932-0"
+},
+{
+"section": "s01",
+"q": "KINESICS refers to:",
+"o": [
+"What your body says",
+"What you say",
+"How you say it",
+"Where you stand"
+],
+"e": "Words = what you say · paralinguistics = how you say it · kinesics = what your body says.",
+"src": "card:n1789950306944-0"
+},
+{
+"section": "s01",
+"q": "Which are the PARALINGUISTIC qualities the instructor emphasizes?",
+"o": [
+"Volume, rate, tone, intonation",
+"Posture, gestures, eye contact, touch",
+"Word choice and grammar",
+"Distance and seating"
+],
+"e": "Paralinguistics = the vocal qualities surrounding speech: volume, rate/speed, tone, intonation (plus pauses, sighs, laughter, pitch).",
+"src": "card:n1789950306943-0"
+},
+{
+"section": "s01",
+"q": "The patient's chart is what kind of document?",
+"o": [
+"A legal document that can be subpoenaed",
+"A private RT notebook",
+"An informal reminder list",
+"A billing record only"
+],
+"e": "The chart is a legal document that can be subpoenaed.",
+"src": "card:n1789950306959-0"
+},
+{
+"section": "s01",
+"q": "Empathy differs from sympathy because empathy is:",
+"o": [
+"Understanding what someone is experiencing",
+"Feeling sorry for someone",
+"Becoming the patient's friend",
+"Sharing your own fears"
+],
+"e": "Empathy = understanding; sympathy = feeling sorry. A therapeutic relationship is not a friendship.",
+"src": "card:n1789950306958-0"
+},
+{
+"section": "s01",
+"q": "Your own beliefs and expectations shaping a conversation are which communication factor?",
+"o": [
+"Intrapersonal",
+"Emotional/sensory",
+"Environmental",
+"Transactional"
+],
+"e": "Intrapersonal = what's inside YOUR head. Emotional/sensory = what the PATIENT is experiencing (fear, pain, impaired senses).",
+"src": "card:n1789950306939-0"
+},
+{
+"section": "s01",
+"q": "Before touching a patient to reassure them, you should:",
+"o": [
+"Explain before you touch; never assume touch comforts everyone",
+"Touch first to build rapport",
+"Avoid all touch",
+"Only touch the patient's hand"
+],
+"e": "Touch can convey compassion, but never assume it's welcome — explain first.",
+"src": "card:n1789950306945-0"
+},
+{
+"section": "s01",
+"q": "Effective communication is defined as:",
+"o": [
+"Shared meaning between sender and receiver",
+"Speaking clearly and loudly",
+"Giving the most information",
+"Using medical terminology"
+],
+"e": "Effective communication = shared meaning. Seek first to understand, then to be understood.",
+"src": "card:n1789950306951-0"
+},
+{
+"section": "s01",
+"q": "If the room is too noisy for a patient to hear you, the best fix is to:",
+"o": [
+"Change the environment",
+"Talk louder",
+"Write everything down",
+"Come back tomorrow"
+],
+"e": "\"Where communication occurs can affect how well it occurs\" — change the environment rather than just talking louder.",
+"src": "card:n1789950306936-0"
+},
+{
+"section": "s01",
+"q": "Who should interpret for a patient with a language difference?",
+"o": [
+"A qualified medical interpreter",
+"A family member",
+"The patient's child",
+"Any bilingual staff member"
+],
+"e": "Use a qualified medical interpreter (MARTTI) — not family, and never children.",
+"src": "card:n1789950306933-0"
+},
+{
+"section": "s01",
+"q": "The dyspnea–anxiety loop runs:",
+"o": [
+"Dyspnea → anxiety → ↑RR → more dyspnea",
+"Anxiety → bradypnea → hypoxemia",
+"Dyspnea → sedation → apnea",
+"Anxiety → ↓RR → relief"
+],
+"e": "Dyspnea → anxiety → increased RR → more dyspnea.",
+"src": "card:n1789950306937-0"
+},
+{
+"section": "s01",
+"q": "Are age, gender, race and dress themselves barriers to communication?",
+"o": [
+"No — our assumptions about them are",
+"Yes, always",
+"Only age is",
+"Only in emergencies"
+],
+"e": "The barrier is our assumptions. Hierarchy should never stop you from raising a patient-safety concern.",
+"src": "card:n1789950306940-0"
+},
+{
+"section": "s01",
+"q": "What does the P in SOAP stand for?",
+"o": [
+"Plan",
+"Problem",
+"Prognosis",
+"Pulse"
+],
+"e": "P = Plan, the treatment selected.",
+"src": "card:n1789950306964-0"
+},
+{
+"section": "s01",
+"q": "In SOAPIER, what does the E stand for?",
+"o": [
+"Evaluation",
+"Education",
+"Examination",
+"Exercise"
+],
+"e": "I = Implementation, E = Evaluation (measurable data on whether it worked), R = Revision.",
+"src": "card:n1789950306965-0"
+},
+{
+"section": "s01",
+"q": "Which tool best confirms a patient understands inhaler use?",
+"o": [
+"Teach-back",
+"Asking \"Do you understand?\"",
+"Handing over a brochure",
+"Closed-ended questions"
+],
+"e": "Teach-back (\"Show me how you'll use your inhaler\") and closed-loop read-back actually confirm understanding.",
+"src": "card:n1789950306950-0"
+},
+{
+"section": "s01",
+"q": "Which is one of the three record types?",
+"o": [
+"Problem-oriented medical record (POMR)",
+"Daily diary record",
+"Verbal handoff record",
+"Family history record"
+],
+"e": "Traditional (source-oriented) chart, POMR, and computer documentation (EMR/EHR).",
+"src": "card:n1789950306960-0"
+},
+{
+"section": "s01",
+"q": "Which order is actionable and safe?",
+"o": [
+"\"Give albuterol 2.5 mg via nebulizer NOW.\"",
+"\"Give some albuterol.\"",
+"\"Give a treatment when you can.\"",
+"\"Give the usual neb.\""
+],
+"e": "Medication communication has almost no margin for error — only a specific drug, dose, route and time is actionable.",
+"src": "card:n1789950306934-0"
+},
+{
+"section": "s01",
+"q": "Which is one of the eight subgoals of communication?",
+"o": [
+"Resolve conflicts",
+"Win arguments",
+"Avoid questions",
+"Save time"
+],
+"e": "Inform, influence, motivate, learn, make decisions, resolve conflicts, build relationships, understand others.",
+"src": "card:n1789950306953-0"
+},
+{
+"section": "s02",
+"q": "What percentage of burn patients develop upper airway obstruction from progressive edema?",
+"o": [
+"20–30%",
+"5%",
+"50–60%",
+"Over 80%"
+],
+"e": "20–30%, usually with temperatures > 1000 °C.",
+"src": "card:n1789960344173-0"
+},
+{
+"section": "s02",
+"q": "What is the treatment for cyanide poisoning?",
+"o": [
+"100% O₂ + hydroxocobalamin (Cyanokit)",
+"Hyperbaric O₂ alone",
+"Naloxone",
+"Atropine"
+],
+"e": "Cyanide: 100% O₂ plus hydroxocobalamin.",
+"src": "card:n1789960344169-0"
+},
+{
+"section": "s02",
+"q": "What is the hourly urine output goal in burn resuscitation?",
+"o": [
+"About 0.5 mL/kg/hr",
+"About 5 mL/kg/hr",
+"About 0.1 mL/kg/hr",
+"About 2 L/hr"
+],
+"e": "~0.5 mL/kg/hr, monitored hourly.",
+"src": "card:n1789960344195-0"
+},
+{
+"section": "s02",
+"q": "How much more strongly does CO bind hemoglobin than oxygen?",
+"o": [
+"200–250 times",
+"2–3 times",
+"20–25 times",
+"1,000 times"
+],
+"e": "CO binds Hb 200–250× more strongly, forming carboxyhemoglobin.",
+"src": "card:n1789960344160-0"
+},
+{
+"section": "s02",
+"q": "Why does a standard pulse oximeter fail in CO poisoning?",
+"o": [
+"It can't tell oxyhemoglobin from carboxyhemoglobin",
+"CO blocks the light",
+"It reads falsely low",
+"It only works on the earlobe"
+],
+"e": "It reads misleadingly normal or high because it can't distinguish O₂Hb from COHb.",
+"src": "card:n1789960344163-0"
+},
+{
+"section": "s02",
+"q": "On the burn deck's reference slide, which P/F ratio suggests considering proning?",
+"o": [
+"< 150",
+"< 300",
+"> 380",
+"< 250"
+],
+"e": "> 380 normal · < 300 mild ARDS/ALI · < 200 ARDS · < 150 consider proning.",
+"src": "card:n1789960344159-0"
+},
+{
+"section": "s02",
+"q": "Why is normal C_RS 100 mL/cm H₂O when lung and chest wall are each 200?",
+"o": [
+"They add as reciprocals: 1/C_RS = 1/C_L + 1/C_CW",
+"They are averaged",
+"Chest wall compliance is subtracted",
+"Airway resistance halves it"
+],
+"e": "Compliances in series add as reciprocals: 1/200 + 1/200 = 1/100.",
+"src": "card:n1789960344155-0"
+},
+{
+"section": "s02",
+"q": "How do you secure an ETT on a patient with facial burns?",
+"o": [
+"Cloth ties",
+"Adhesive tape",
+"Suture to the lip",
+"Commercial adhesive holder"
+],
+"e": "Adhesive tape is seldom useful with facial burns — use cloth ties.",
+"src": "card:n1789960344180-0"
+},
+{
+"section": "s02",
+"q": "What is the most important diagnostic procedure for inhalation injury?",
+"o": [
+"Bronchoscopy",
+"Chest X-ray",
+"ABG",
+"Pulse oximetry"
+],
+"e": "Bronchoscopy directly shows erythema, edema, soot, secretions and mucosal sloughing.",
+"src": "card:n1789960344182-0"
+},
+{
+"section": "s02",
+"q": "How should pulmonary infection after inhalation injury be treated?",
+"o": [
+"Culture-directed antibiotics",
+"Prophylactic antibiotics for everyone",
+"Steroids",
+"No treatment"
+],
+"e": "30–50% develop pulmonary infection; treat with culture-directed antibiotics, not prophylaxis.",
+"src": "card:n1789960344188-0"
+},
+{
+"section": "s02",
+"q": "In the TIME sepsis mnemonic, what does the M stand for?",
+"o": [
+"Mental decline",
+"Metabolic acidosis",
+"Murmur",
+"Myalgia"
+],
+"e": "Temperature (high or low) · Infection signs · Mental decline · Extremely ill.",
+"src": "card:n1789960344202-0"
+},
+{
+"section": "s02",
+"q": "In the intermediate (2–5 day) burn stage, when does the tracheobronchial lining slough?",
+"o": [
+"At 3–4 days",
+"Within 6 hours",
+"At 2 weeks",
+"Never"
+],
+"e": "The upper airway improves while the necrotic tracheobronchial tree sloughs at 3–4 days → plugging, atelectasis, infection, ARDS.",
+"src": "card:n1789960344190-0"
+},
+{
+"section": "s02",
+"q": "Which crystalloid is preferred for burn resuscitation?",
+"o": [
+"Lactated Ringer's",
+"Normal saline",
+"D5W",
+"Albumin 25%"
+],
+"e": "LR causes less hyperchloremic metabolic acidosis than normal saline.",
+"src": "card:n1789960344192-0"
+},
+{
+"section": "s02",
+"q": "How does escharotomy differ from debridement?",
+"o": [
+"Escharotomy relieves pressure; debridement removes tissue",
+"Escharotomy removes tissue",
+"They are the same",
+"Debridement relieves pressure"
+],
+"e": "Escharotomy = incision through rigid eschar to relieve pressure. Debridement/excision = removing tissue.",
+"src": "card:n1789960344200-0"
+},
+{
+"section": "s02",
+"q": "Inhalation injury on chest X-ray looks most like:",
+"o": [
+"Noncardiogenic pulmonary edema",
+"Lobar pneumonia",
+"Pneumothorax",
+"Hyperinflation"
+],
+"e": "Normal heart size with bilateral diffuse opacities; pleural effusions less typical.",
+"src": "card:n1789960344184-0"
+},
+{
+"section": "s02",
+"q": "In which phase of burn care does the RT have the biggest role?",
+"o": [
+"Phase 1 — initial evaluation and fluid resuscitation (first ~72 h)",
+"Phase 2 — wound excision",
+"Phase 3 — definitive closure",
+"Phase 4 — rehabilitation"
+],
+"e": "Phase 1 (days 1–3) is the RT's biggest role; then excision (days 1–7), closure (day 7–~6 wk), rehab.",
+"src": "card:n1789960344196-0"
+},
+{
+"section": "s03",
+"q": "By how much did worldwide ECMO use grow, mostly in which patients?",
+"o": [
+"360%, predominantly adults",
+"36%, mostly neonates",
+"100%, mostly children",
+"10-fold, mostly cardiac surgery"
+],
+"e": "360%, predominantly in adults (deck dates it 2009–2017; Hess 2008–2017).",
+"src": "card:n1789960471173-0"
+},
+{
+"section": "s03",
+"q": "Modern ECMO is based on which technology?",
+"o": [
+"Cardiopulmonary bypass from the 1950s",
+"Hemodialysis from the 1970s",
+"Iron lung ventilation",
+"Hyperbaric chambers"
+],
+"e": "ECMO grew out of 1950s cardiopulmonary bypass technology.",
+"src": "card:n1789960471169-0"
+},
+{
+"section": "s03",
+"q": "What did the first randomized adult ECMO trial (1979) show?",
+"o": [
+"Equally dismal outcomes in both arms",
+"Clear ECMO benefit",
+"ECMO doubled mortality",
+"It was never completed"
+],
+"e": "Both ECMO and conventional arms did equally poorly; a repeat study 15 years later also showed no difference.",
+"src": "card:n1789960471170-0"
+},
+{
+"section": "s03",
+"q": "What does the 54% survival figure in Hess actually describe?",
+"o": [
+"Severe ARDS managed conventionally in an ICU",
+"Severe ARDS managed with ECMO",
+"Neonates on ECMO",
+"VA ECMO for cardiac arrest"
+],
+"e": "It's the conventional-care comparator, not an ECMO result. ECMO arms: CESAR 56%, EOLIA 60%; cumulative respiratory ECMO 61%.",
+"src": "card:n1789960471158-0"
+},
+{
+"section": "s03",
+"q": "Which two events changed adult ECMO use?",
+"o": [
+"The 2008–2009 H1N1 outbreak and the CESAR trial",
+"The 1979 trial and SARS",
+"COVID-19 and EOLIA only",
+"Neonatal ECMO and LVADs"
+],
+"e": "H1N1 (> 70% survival in young adults on ECMO) and CESAR (better survival after transfer to an ECMO center).",
+"src": "card:n1789960471171-0"
+},
+{
+"section": "s03",
+"q": "What is CESAR's catch?",
+"o": [
+"It proved referral to an ECMO center helps, not that ECMO itself did",
+"It enrolled only children",
+"It had no control group",
+"ECMO patients all died"
+],
+"e": "18% of ECMO-referred patients never got ECMO; among those who did, survival was no different.",
+"src": "card:n1789960471172-0"
+},
+{
+"section": "s03",
+"q": "In VA ECMO, what percentage of patients develop limb ischemia?",
+"o": [
+"17%",
+"5%",
+"43%",
+"85%"
+],
+"e": "Limb ischemia in 17%, 5% needing amputation; a distal perfusion catheter helps. VV: DVT up to 85% after decannulation.",
+"src": "card:n1789960471201-0"
+},
+{
+"section": "s03",
+"q": "Which ECMO complication carries the greatest morbidity and mortality?",
+"o": [
+"CNS complications (stroke)",
+"Limb ischemia",
+"Cannula-site bleeding",
+"Hemolysis"
+],
+"e": "Ischemic and hemorrhagic stroke often force terminal discontinuation of ECMO.",
+"src": "card:n1789960471197-0"
+},
+{
+"section": "s03",
+"q": "Which anticoagulant is typical on ECMO, and why?",
+"o": [
+"Heparin — experience, low cost, and a reversal agent",
+"Warfarin — oral dosing",
+"Aspirin — no bleeding risk",
+"Enoxaparin — no monitoring"
+],
+"e": "Heparin, reversible with protamine. Argatroban or bivalirudin if HIT or heparin resistance.",
+"src": "card:n1789960471186-0"
+},
+{
+"section": "s03",
+"q": "ELSO recommends keeping the ACT at:",
+"o": [
+"1.5 times normal",
+"Normal",
+"3 times normal",
+"Half of normal"
+],
+"e": "ELSO: ACT at 1.5× normal. EOLIA targeted aPTT 40–55 s or anti-Xa 0.2–0.3 IU.",
+"src": "card:n1789960471187-0"
+},
+{
+"section": "s03",
+"q": "Modern ECMO oxygenators are made of:",
+"o": [
+"Polymethylpentene hollow fibers",
+"Silicone rubber membranes",
+"Glass beads",
+"Bubble chambers"
+],
+"e": "Silicone rubber was the old standard; polymethylpentene hollow fibers are smaller with minimal plasma leakage.",
+"src": "card:n1789960471205-0"
+},
+{
+"section": "s03",
+"q": "Why did centrifugal pumps replace roller-head pumps?",
+"o": [
+"Less red-cell trauma and hemolysis",
+"They are louder",
+"They need more tubing",
+"They run without power"
+],
+"e": "Centrifugal pumps have fewer parts, are smaller, set up faster, and cause less hemolysis.",
+"src": "card:n1789960471203-0"
+},
+{
+"section": "s03",
+"q": "Which is an ECMO circuit monitoring component?",
+"o": [
+"Bubble detector with emergency clamps",
+"Capnograph on the oxygenator",
+"Peak flow meter",
+"Spirometer"
+],
+"e": "Flow probes, continuous blood gas analyzers, bubble detectors, emergency clamps, plus an arterial line.",
+"src": "card:n1789960471179-0"
+},
+{
+"section": "s03",
+"q": "When inspecting an ECMO circuit, you look for:",
+"o": [
+"Fibrin and clot, and integrity of connections",
+"Condensate in the tubing",
+"Moisture in the sweep gas",
+"Patient's cuff pressure"
+],
+"e": "Inspect tubing, cannulas and oxygenator for fibrin/clot and connection integrity.",
+"src": "card:n1789960471176-0"
+},
+{
+"section": "s03",
+"q": "Where does ECMO bleeding most commonly occur?",
+"o": [
+"At cannulation or surgical sites",
+"Intracranially",
+"In the GI tract",
+"In the lungs"
+],
+"e": "Usually at cannulation/surgical sites, manageable locally. Bleeding elsewhere carries higher morbidity.",
+"src": "card:n1789960471196-0"
+},
+{
+"section": "s03",
+"q": "The \"57% in 1993 to 72% in 2007\" survival trend describes:",
+"o": [
+"Children without comorbidities on ECMO",
+"All adult ECMO patients",
+"Neonates on VA ECMO",
+"H1N1 patients"
+],
+"e": "The deck prints it as a general trend, but it describes children without comorbidities.",
+"src": "card:n1789960471168-0"
+},
+{
+"section": "s03",
+"q": "What is the decisive question for coming off ECMO?",
+"o": [
+"Has the disease improved enough for conventional management?",
+"Has the patient been on ECMO 7 days?",
+"Is the ACT normal?",
+"Is the oxygenator clotted?"
+],
+"e": "Weigh disease improvement against morbidity from ECMO itself.",
+"src": "card:n1789960471164-0"
+},
+{
+"section": "s03",
+"q": "Why does mobile ECMO matter?",
+"o": [
+"Patients can be cannulated at the referring center, then transferred",
+"It allows home ECMO",
+"It removes the need for anticoagulation",
+"It replaces ventilators"
+],
+"e": "ECMO lives in large referral centers; mobility allows safer transport of patients once too unstable to move.",
+"src": "card:n1789960471208-0"
+},
+{
+"section": "s03",
+"q": "Where the ECMO deck and Hess disagree, which should you answer?",
+"o": [
+"The deck's version, while knowing Hess's",
+"Always Hess",
+"Always the newer number",
+"Neither"
+],
+"e": "The deck is what the instructor teaches and likely keys; Hess's versions make good distractors.",
+"src": "card:n1789960471209-0"
+},
+{
+"section": "s04",
+"q": "Why does performing basic ADLs matter so much in rehab?",
+"o": [
+"It maintains independence, dignity and mental well-being",
+"It increases hospital revenue",
+"It replaces exercise",
+"It cures COPD"
+],
+"e": "ADLs restore independence, dignity and mental well-being.",
+"src": "card:n1789960581417-0"
+},
+{
+"section": "s04",
+"q": "What is the correct order of physical reconditioning?",
+"o": [
+"Warm-up/stretch → aerobic → strength",
+"Strength → aerobic → stretch",
+"Aerobic → strength → warm-up",
+"Strength → warm-up → aerobic"
+],
+"e": "Warm-up/stretch first, then aerobic for endurance, then strength-building.",
+"src": "card:n1789960581428-0"
+},
+{
+"section": "s04",
+"q": "How does the hospital benefit from rehab monitoring?",
+"o": [
+"Fewer short-term readmissions and penalties",
+"More ICU admissions",
+"Higher drug sales",
+"Shorter rehab programs"
+],
+"e": "Monitoring newly discharged patients reduces readmissions, avoiding financial penalties.",
+"src": "card:n1789960581419-0"
+},
+{
+"section": "s04",
+"q": "Who prescribes the liter flow found during an O₂ titration?",
+"o": [
+"The ordering physician",
+"The RT",
+"The patient",
+"The rehab nurse"
+],
+"e": "The ordering physician prescribes it for use during those activities.",
+"src": "card:n1789960581443-0"
+},
+{
+"section": "s04",
+"q": "A rehab patient smokes. What must you recommend?",
+"o": [
+"A smoking-cessation program as a condition of participation",
+"Dismissal from rehab",
+"Nicotine patches only",
+"Nothing"
+],
+"e": "Enrollment in smoking cessation is a condition of participation.",
+"src": "card:n1789960581429-0"
+},
+{
+"section": "s04",
+"q": "Which patients are candidates for pulmonary rehab?",
+"o": [
+"COPD, asthma, bronchiectasis, CF, ILD, and LVRS patients",
+"Only COPD",
+"Only post-surgical patients",
+"Only patients under 65"
+],
+"e": "Plus patients planned for or after lung volume reduction surgery.",
+"src": "card:n1789960581422-0"
+},
+{
+"section": "s04",
+"q": "On a treadmill test, by how much do most protocols raise intensity per step?",
+"o": [
+"1–2 METs",
+"5 METs",
+"0.1 MET",
+"10 METs"
+],
+"e": "Change treadmill speed and incline, raising 1–2 METs per step.",
+"src": "card:n1789960581450-0"
+},
+{
+"section": "s04",
+"q": "How does a 6MWT end?",
+"o": [
+"Say \"Stop\" at 6 minutes, mark the spot, and seat the patient",
+"Let the patient walk until tired",
+"Stop at 400 meters",
+"Stop when SpO₂ reaches 95%"
+],
+"e": "Then repeat the Borg, ask what limited them, and record SpO₂, pulse and total distance.",
+"src": "card:n1789960581476-0"
+},
+{
+"section": "s04",
+"q": "Which lab test is part of pre-rehab medical screening?",
+"o": [
+"α1-antitrypsin titer",
+"Troponin",
+"Lipase",
+"Blood culture"
+],
+"e": "H&P, CBC, chem profile, α1-antitrypsin, ECG, ABG, full PFTs, CXR, and an exercise test.",
+"src": "card:n1789960581423-0"
+},
+{
+"section": "s04",
+"q": "How do you administer the Modified Borg Scale?",
+"o": [
+"Stop the activity and have them pick what they feel at that moment",
+"Ask the day after",
+"Let the RT estimate it",
+"Use their heart rate"
+],
+"e": "Stop, review the ratings, and pick the number that matches right now.",
+"src": "card:n1789960581458-0"
+},
+{
+"section": "s05",
+"q": "What share of cardiac output do the kidneys receive?",
+"o": [
+"About 22% (≈1.1 L/min)",
+"About 5%",
+"About 50%",
+"About 2%"
+],
+"e": "Kidneys use 20–25% of resting O₂ and get ~22% of cardiac output, because tubular cells do enormous active transport.",
+"src": "card:n1789960743638-0"
+},
+{
+"section": "s05",
+"q": "What percentage of glomerular filtrate is reabsorbed?",
+"o": [
+"99%",
+"50%",
+"20%",
+"75%"
+],
+"e": "About 20% of nephron blood flow (~130 mL/min) is filtered and 99% of it is reabsorbed.",
+"src": "card:n1789960743638-0"
+},
+{
+"section": "s05",
+"q": "What is the act of urinating called?",
+"o": [
+"Micturition",
+"Defecation",
+"Diuresis",
+"Filtration"
+],
+"e": "Urine path: kidney → ureter → bladder → urethra; urinating = micturition.",
+"src": "card:n1789960743646-0"
+},
+{
+"section": "s05",
+"q": "Per the diuretics deck, oliguria is urine output below:",
+"o": [
+"30 mL/hr",
+"100 mL/hr",
+"60 mL/hr",
+"5 mL/hr"
+],
+"e": "Deck: normal 30–60 mL/hr, oliguria < 30, anuria < 50 mL/day, polyuria > 60. Heuer: oliguria < 25 mL/hr. Know both.",
+"src": "card:n1789960743639-0"
+},
+{
+"section": "s05",
+"q": "Per the diuretics deck, anuria is urine output below:",
+"o": [
+"50 mL/day",
+"500 mL/day",
+"30 mL/hr",
+"5 mL/hr"
+],
+"e": "Anuria < 50 mL/day.",
+"src": "card:n1789960743639-0"
+},
+{
+"section": "s05",
+"q": "What is a normal GFR?",
+"o": [
+"About 120–125 mL/min",
+"About 1.2 L/min",
+"About 30 mL/min",
+"About 500 mL/min"
+],
+"e": "Normal GFR ≈ 120–125 mL/min. Filtration is passive: hydrostatic pressure pushes out, oncotic pressure pulls in.",
+"src": "card:n1789960743628-0"
+},
+{
+"section": "s05",
+"q": "Which equation gives the amount the kidney excretes?",
+"o": [
+"Filtered − reabsorbed + secreted",
+"Filtered + reabsorbed − secreted",
+"Secreted − filtered",
+"Reabsorbed × GFR"
+],
+"e": "Excreted = filtered − reabsorbed + secreted. The kidney secretes H⁺ into the tubule so it can be excreted.",
+"src": "card:n1789960743631-0"
+},
+{
+"section": "s05",
+"q": "Which substance is secreted into the tubule?",
+"o": [
+"H⁺",
+"Glucose",
+"Albumin",
+"Red blood cells"
+],
+"e": "Secreted: H⁺, K⁺, NH₄⁺, creatinine, organic acids, drugs, urea, uric acid.",
+"src": "card:n1789960743630-0"
+},
+{
+"section": "s05",
+"q": "Why does low chloride or low potassium cause metabolic alkalosis?",
+"o": [
+"Na⁺ must trade for H⁺, so H⁺ is lost",
+"Bicarbonate is excreted",
+"CO₂ rises",
+"The kidneys stop filtering"
+],
+"e": "Without Cl⁻ or K⁺, Na⁺ is exchanged for H⁺ → lose H⁺ = alkalosis.",
+"src": "card:n1789960743636-0"
+},
+{
+"section": "s05",
+"q": "Where do loop diuretics act?",
+"o": [
+"Ascending loop of Henle",
+"Proximal tubule",
+"Collecting duct",
+"Glomerulus"
+],
+"e": "Loop diuretics (furosemide) block Na⁺/K⁺/Cl⁻ in the ascending loop — up to 20% of NaCl excreted, the most potent.",
+"src": "card:n1789960743661-0"
+},
+{
+"section": "s05",
+"q": "What is the shared danger of both potassium-sparing diuretic classes?",
+"o": [
+"Hyperkalemia",
+"Hypokalemia",
+"Hyperglycemia",
+"Ototoxicity"
+],
+"e": "Spironolactone/eplerenone and triamterene/amiloride both cause hyperkalemia — more life-threatening than K⁺ loss.",
+"src": "card:n1789960743665-0"
+},
+{
+"section": "s05",
+"q": "Which diuretic class can precipitate DKA?",
+"o": [
+"Thiazides",
+"Loop diuretics",
+"Potassium-sparing",
+"Osmotic"
+],
+"e": "Thiazides have the strongest diabetogenic activity, raising glucose.",
+"src": "card:n1789960743656-0"
+},
+{
+"section": "s05",
+"q": "What is the trade-off of combining a loop and a thiazide diuretic?",
+"o": [
+"Stronger diuresis but more hypokalemia, dehydration and hypotension",
+"Weaker diuresis",
+"Hyperkalemia",
+"No trade-off"
+],
+"e": "Different nephron sites give a synergistic response, at the cost of K⁺, volume and BP.",
+"src": "card:n1789960743667-0"
+},
+{
+"section": "s05",
+"q": "Normally, how much sodium is reabsorbed in the proximal tubule?",
+"o": [
+"70%",
+"20%",
+"10%",
+"99%"
+],
+"e": "70% proximal · 20% loop of Henle · 10% distal. Aldosterone increases distal Na⁺ reabsorption while dumping K⁺.",
+"src": "card:n1789960743659-0"
+},
+{
+"section": "s05",
+"q": "Which is a renal mechanism for handling an acid load?",
+"o": [
+"Making ammonia from glutamine to bind H⁺",
+"Excreting bicarbonate",
+"Retaining CO₂",
+"Reducing GFR"
+],
+"e": "↑ HCO₃⁻ reabsorption, ↑ H⁺ secretion, ammonia from glutamine (NH₄⁺), phosphate buffering.",
+"src": "card:n1789960743633-0"
+},
+{
+"section": "s05",
+"q": "Interpret: pH 7.32, PaCO₂ 28, HCO₃⁻ 14, PaO₂ 108 on room air (DKA).",
+"o": [
+"Partially compensated metabolic acidosis, normal oxygenation",
+"Uncompensated respiratory acidosis",
+"Fully compensated metabolic alkalosis",
+"Acute respiratory alkalosis with hypoxemia"
+],
+"e": "Low HCO₃⁻ is primary, low PaCO₂ is compensation, pH still acidemic, PaO₂ normal.",
+"src": "card:n1789960743651-0"
+},
+{
+"section": "s05",
+"q": "How does azotemia differ from uremia?",
+"o": [
+"Azotemia is abnormal labs only; uremia adds symptoms",
+"Azotemia has symptoms; uremia doesn't",
+"They are the same",
+"Uremia is a kidney stone"
+],
+"e": "Azotemia = ↑ BUN/creatinine only. Uremia = labs plus the clinical syndrome.",
+"src": "card:n1789960743642-0"
+},
+{
+"section": "s05",
+"q": "Which is a therapy to lower ICP?",
+"o": [
+"Head of bed up 30–40 degrees",
+"Lying flat",
+"Increasing PEEP to 20",
+"Fluid bolus"
+],
+"e": "Mannitol or hypertonic saline, ventricular drainage, sedation, head of bed 30–40°.",
+"src": "card:n1789960743585-0"
+},
+{
+"section": "s05",
+"q": "ICP is measured with:",
+"o": [
+"An intraventricular catheter or intraparenchymal probe",
+"A lumbar puncture needle only",
+"A CT scan",
+"A pulse oximeter"
+],
+"e": "Monitored in TBI, intracranial hemorrhage and cerebral edema.",
+"src": "card:n1789960743581-0"
+},
+{
+"section": "s05",
+"q": "How does the sympathetic response pattern differ from the parasympathetic?",
+"o": [
+"Sympathetic is widespread and rapid; parasympathetic is localized",
+"Sympathetic is localized; parasympathetic is widespread",
+"Both are localized",
+"Both are widespread"
+],
+"e": "Parasympathetic: localized, day-to-day. Sympathetic: a widespread alarm system for violent stress.",
+"src": "card:n1789960743602-0"
+},
+{
+"section": "s05",
+"q": "Where does a nerve impulse become a chemical signal?",
+"o": [
+"At the synapse",
+"In the cell body",
+"Along the axon",
+"In the myelin"
+],
+"e": "An electrical action potential travels the fiber, then becomes chemical transmission at the synapse.",
+"src": "card:n1789960743595-0"
+},
+{
+"section": "s06",
+"q": "How fast does diaphragm atrophy set in during controlled ventilation?",
+"o": [
+"18–69 hours of inactivity",
+"2 weeks",
+"30 days",
+"Within 1 hour"
+],
+"e": "18–69 hours of inactivity causes marked myofiber atrophy.",
+"src": "card:n1789960928201-0"
+},
+{
+"section": "s06",
+"q": "Why is there no VC-CSV breathing pattern?",
+"o": [
+"A spontaneous breath can't have an imposed volume and flow",
+"It is too dangerous",
+"It was never invented",
+"It is the same as SIMV"
+],
+"e": "The five patterns: VC-CMV, VC-IMV, PC-CMV, PC-IMV, PC-CSV.",
+"src": "card:n1789960928255-0"
+},
+{
+"section": "s06",
+"q": "In SIMV, what tidal volume do spontaneous breaths get?",
+"o": [
+"Whatever the patient generates",
+"The set tidal volume",
+"Twice the set volume",
+"Zero"
+],
+"e": "Only mandatory breaths get the preset VT.",
+"src": "card:n1789960928207-0"
+},
+{
+"section": "s06",
+"q": "In the equation of motion, which are constants?",
+"o": [
+"Resistance and compliance",
+"Pressure and volume",
+"Flow and pressure",
+"Volume and flow"
+],
+"e": "Pressure, volume and flow are variables; resistance and compliance are constants.",
+"src": "card:n1789960928298-0"
+},
+{
+"section": "s06",
+"q": "Which three parts classify any ventilator mode?",
+"o": [
+"Control variable, breath sequence, targeting scheme",
+"Rate, volume, FiO₂",
+"Trigger, limit, cycle",
+"PEEP, PIP, Pplat"
+],
+"e": "VC/PC + CMV/IMV/CSV + targeting scheme (set-point, dual, adaptive, etc.).",
+"src": "card:n1789960928254-0"
+},
+{
+"section": "s06",
+"q": "What PEEP ceiling do the printed Chang slides give?",
+"o": [
+"< 10 cm H₂O",
+"< 5 cm H₂O",
+"< 20 cm H₂O",
+"< 15 cm H₂O"
+],
+"e": "Printed: < 10. The speaker notes call it outdated — many ARDS patients need 10–15+; PEEP is individualized.",
+"src": "card:n1789961609808-0"
+},
+{
+"section": "s06",
+"q": "Do the decks give a normal PIP or Pplat range?",
+"o": [
+"No — only safety ceilings",
+"Yes, PIP 5–10",
+"Yes, Pplat 40–50",
+"Yes, PIP 30–40"
+],
+"e": "All values are ceilings; the only anchor is VT 500 mL at PIP 20 in healthy lungs.",
+"src": "card:n1789960928294-0"
+},
+{
+"section": "s07",
+"q": "A patient on a nasal mask complains of nasal congestion. What do you do?",
+"o": [
+"Add humidification",
+"Switch to a full-face mask",
+"Stop NIV",
+"Increase EPAP"
+],
+"e": "Nasal congestion → add humidification.",
+"src": "card:n1789961012499-0"
+},
+{
+"section": "s07",
+"q": "What is the nasal mask's biggest complication?",
+"o": [
+"Leakage in mouth-breathers",
+"Claustrophobia",
+"Facial burns",
+"Aspiration"
+],
+"e": "Leakage in mouth-breathers; fit the smallest mask that doesn't obstruct the nostrils.",
+"src": "card:n1789961012514-0"
+},
+{
+"section": "s07",
+"q": "When is a full-face mask indicated?",
+"o": [
+"Significant mouth-breathing, e.g. an acute COPD exacerbation",
+"Every new NIV patient",
+"Patients with facial trauma",
+"Infants"
+],
+"e": "It is the largest and most uncomfortable interface.",
+"src": "card:n1789961012517-0"
+},
+{
+"section": "s07",
+"q": "Which is a hazard of NIV?",
+"o": [
+"Aerophagia",
+"Hyperglycemia",
+"Bradycardia",
+"Pneumonia prevention"
+],
+"e": "Aerophagia, dryness, aspiration, claustrophobia, ↓ cardiac output, eye irritation, pressure sores.",
+"src": "card:n1789961012495-0"
+},
+{
+"section": "s07",
+"q": "What is the RAMP time range on the V60?",
+"o": [
+"Off, or 5 to 45 minutes",
+"1 to 5 seconds",
+"1 to 3 hours",
+"Always 10 minutes"
+],
+"e": "Ramp gradually raises IPAP and EPAP from subtherapeutic levels to reduce anxiety.",
+"src": "card:n1789961012502-0"
+},
+{
+"section": "s07",
+"q": "With a Respironics mask selected on the V60, which leak do you watch?",
+"o": [
+"Patient Leak",
+"Total Leak",
+"Neither",
+"Exhalation port leak"
+],
+"e": "Respironics circuits/masks are pre-compensated → Patient Leak. \"Other\" mask with a Leak Test → Total Leak.",
+"src": "card:n1789961012506-0"
+},
+{
+"section": "s08",
+"q": "Interpret on 2 L NC: pH 7.24, PaCO₂ 110, HCO₃⁻ 46, PaO₂ 47.",
+"o": [
+"Acute on chronic ventilatory failure with hypoxemia",
+"Fully compensated respiratory acidosis",
+"Acute metabolic acidosis",
+"Chronic respiratory alkalosis"
+],
+"e": "HCO₃⁻ 46 shows chronic retention; pH 7.24 shows acute decompensation on top.",
+"src": "card:n1789961384577-0"
+},
+{
+"section": "s08",
+"q": "An emphysema patient's gas went from 7.39/77 (baseline) to 7.55/49. What does the deck's fatal case teach?",
+"o": [
+"Always compare to baseline — he was in impending failure",
+"The second gas was normal",
+"He had metabolic alkalosis only",
+"He was over-oxygenated"
+],
+"e": "He fatigued, PaCO₂ rose above baseline, and he died 17 hours later.",
+"src": "card:n1789961165618-0"
+},
+{
+"section": "s08",
+"q": "Which ABG matches metabolic alkalosis?",
+"o": [
+"7.56 / 44 / 27",
+"7.26 / 37 / 18",
+"7.16 / 79 / 26",
+"7.36 / 79 / 43"
+],
+"e": "Metabolic alkalosis: ↑ pH, normal PaCO₂, ↑ HCO₃⁻ (7.56/44/27). 7.26/37/18 is metabolic acidosis.",
+"src": "card:n1789961165584-0"
+},
+{
+"section": "s08",
+"q": "Why can't compensation normalize the pH in DKA at 6.98 with PaCO₂ 24?",
+"o": [
+"The metabolic derangement is too extreme",
+"The kidneys are compensating",
+"PaCO₂ is too high",
+"Kussmaul breathing worsens it"
+],
+"e": "Kussmaul respirations help but can't normalize such severe acidosis.",
+"src": "card:n1789961165588-0"
+},
+{
+"section": "s08",
+"q": "An ACUTE 10 mm Hg rise in PaCO₂ changes the pH by about:",
+"o": [
+"−0.06",
+"−0.6",
+"+0.06",
+"−0.01"
+],
+"e": "pH falls ~0.06 and HCO₃⁻ rises ~1 mEq/L per 10 mm Hg (buffering only).",
+"src": "card:n1789961165592-0"
+},
+{
+"section": "s08",
+"q": "Calculate the anion gap: Na⁺ 140, Cl⁻ 105, HCO₃⁻ 24.",
+"o": [
+"11 mEq/L",
+"29 mEq/L",
+"35 mEq/L",
+"5 mEq/L"
+],
+"e": "140 − (105 + 24) = 11. Normal 9–14 mEq/L.",
+"src": "card:n1789961165600-0"
+},
+{
+"section": "s08",
+"q": "Why can the anion gap mislead in hypoalbuminemia?",
+"o": [
+"Albumin is an unmeasured anion, so a high gap can look normal",
+"Albumin raises sodium",
+"Albumin is a cation",
+"It makes the gap falsely high"
+],
+"e": "A lactic acidosis can look deceptively normal-gap.",
+"src": "card:n1789961165606-0"
+},
+{
+"section": "s08",
+"q": "Which ABG shows chronic ventilatory failure (compensated respiratory acidosis)?",
+"o": [
+"7.36 / 79 / 43 / PaO₂ 61",
+"7.16 / 79 / 26 / PaO₂ 57",
+"7.56 / 44 / 27 / PaO₂ 94",
+"7.21 / 35 / 14 / PaO₂ 34"
+],
+"e": "Normal pH, ↑ PaCO₂, markedly ↑ HCO₃⁻, ↓ PaO₂.",
+"src": "card:n1789961165581-0"
+},
+{
+"section": "s08",
+"q": "Which ABG shows acute ventilatory failure with hypoxemia?",
+"o": [
+"7.16 / 79 / 26 / PaO₂ 57",
+"7.36 / 79 / 43 / PaO₂ 61",
+"7.51 / 52 / 40 / PaO₂ 49",
+"7.56 / 44 / 27 / PaO₂ 94"
+],
+"e": "pH < 7.35, PaCO₂ > 45, HCO₃⁻ still normal, PaO₂ ↓.",
+"src": "card:n1789961165580-0"
+},
+{
+"section": "s08",
+"q": "What separates lactic acidosis from plain metabolic acidosis on an ABG?",
+"o": [
+"A decreased PaO₂",
+"A high PaCO₂",
+"A normal HCO₃⁻",
+"A high pH"
+],
+"e": "Example 7.21/35/14 with PaO₂ 34 — the low PaO₂ is the clue.",
+"src": "card:n1789961165585-0"
+},
+{
+"section": "s08",
+"q": "Which is an ABG POSTANALYTIC error?",
+"o": [
+"Failing to record the FiO₂",
+"Air bubbles in the sample",
+"A malfunctioning electrode",
+"Venous contamination"
+],
+"e": "Preanalytic: bubbles, anticoagulant, venous sample, delay. Analytic: electrodes, QC. Postanalytic: wrong info, transcription, FiO₂ not recorded, sampling < 20 min after an FiO₂ change.",
+"src": "card:n1789961165627-0"
+},
+{
+"section": "s08",
+"q": "On which arm must you never draw an ABG?",
+"o": [
+"An arm with a dialysis shunt",
+"The dominant arm",
+"An arm with a blood-pressure cuff history",
+"The left arm"
+],
+"e": "Use the other arm.",
+"src": "card:n1789961165622-0"
+},
+{
+"section": "s08",
+"q": "After an ABG puncture, hold pressure for at least:",
+"o": [
+"5 minutes, longer on anticoagulants",
+"30 seconds",
+"1 minute",
+"20 minutes always"
+],
+"e": "At least 5 minutes or until bleeding stops; prepare the needle bevel up.",
+"src": "card:n1789961165623-0"
+},
+{
+"section": "s08",
+"q": "Which is one of the four ways salicylate causes acidosis?",
+"o": [
+"Impairing renal acid excretion",
+"Raising PaCO₂",
+"Increasing bicarbonate",
+"Causing vomiting"
+],
+"e": "↑ lactic acid, ↑ ketones, salicylic acid itself, impaired renal acid excretion.",
+"src": "card:n1789961165609-0"
+},
+{
+"section": "s08",
+"q": "Per the Westgard rules, two or more consecutive controls outside the SD means:",
+"o": [
+"Out of control — recalibrate or replace the electrode",
+"A warning only",
+"Normal variation",
+"Run more patient samples"
+],
+"e": "One control outside = warning; two or more = out of control. Plotted on a Levey-Jennings chart.",
+"src": "card:n1789961165563-0"
+},
+{
+"section": "s08",
+"q": "How is a blood gas analyzer calibrated?",
+"o": [
+"With one high and one low known-value solution or gas",
+"With a patient sample",
+"With room air only",
+"It doesn't need calibration"
+],
+"e": "Low calibration gas or insufficient buffer makes auto-calibration fail.",
+"src": "card:n1789961165561-0"
+},
+{
+"section": "s08",
+"q": "For each 1 mEq/L rise in HCO₃⁻ in metabolic alkalosis, PaCO₂ should rise by:",
+"o": [
+"0.7 mm Hg",
+"1.2 mm Hg",
+"5 mm Hg",
+"0.1 mm Hg"
+],
+"e": "HCO₃⁻ 24 → 29 (+5) → expected PaCO₂ rise 3.5 mm Hg.",
+"src": "card:n1789961165597-0"
+},
+{
+"section": "s08",
+"q": "The A-line waveform doesn't return after flushing. What's wrong?",
+"o": [
+"The stopcock is in the wrong position and the line needs zeroing",
+"The patient has no pulse",
+"The transducer is too high",
+"The bag is overpressurized"
+],
+"e": "Fix the stopcock and re-zero.",
+"src": "card:n1789961165632-0"
+},
+{
+"section": "s08",
+"q": "Which is an unmeasured anion that raises the anion gap?",
+"o": [
+"Ethylene glycol metabolites",
+"Chloride",
+"Sodium",
+"Bicarbonate"
+],
+"e": "Lactate, ketones, salicylates, uremic acids, glycolate/oxalate (ethylene glycol), free fatty acids.",
+"src": "card:n1789961165605-0"
+},
+{
+"section": "s08",
+"q": "An ABG result doesn't fit the patient's presentation. What does the deck say?",
+"o": [
+"Question it",
+"Trust the ABG over the patient",
+"Ignore the patient",
+"Treat the ABG number"
+],
+"e": "\"If the ABG results don't fit the patient's presentation, question them.\"",
+"src": "card:n1789961165636-0"
+},
+{
+"section": "s08",
+"q": "Which is a RESTRICTIVE cause of chronic ventilatory failure?",
+"o": [
+"Kyphoscoliosis",
+"Emphysema",
+"Chronic bronchitis",
+"Cystic fibrosis"
+],
+"e": "Restrictive: TB, fungal disease, kyphoscoliosis, chronic ILD, BPD. Obstructive: bronchitis, emphysema, bronchiectasis, CF.",
+"src": "card:n1789961165615-0"
+},
+{
+"section": "s09",
+"q": "Spirometry diagnoses asthma in adults when FEV₁/FVC is below:",
+"o": [
+"0.75–0.80",
+"0.90",
+"0.50",
+"0.70 post-bronchodilator"
+],
+"e": "Adults < 0.75–0.80, children < 0.90.",
+"src": "card:n1789961280810-0"
+},
+{
+"section": "s09",
+"q": "Which two bodies publish the asthma guidelines?",
+"o": [
+"NAEPP and GINA",
+"GOLD and ATS",
+"AARC and ACCP",
+"WHO and CDC"
+],
+"e": "NAEPP (U.S., NHLBI/NIH) and GINA (international, updated annually).",
+"src": "card:n1789961280808-0"
+},
+{
+"section": "s09",
+"q": "What is the typical nebulized albuterol dose?",
+"o": [
+"2.5 mg in 3 mL normal saline",
+"0.5 mg in 1 mL",
+"10 mg in 3 mL",
+"25 mg in 5 mL"
+],
+"e": "2.5 mg in 3 mL NS (or by MDI). Albuterol is a saligenin agent.",
+"src": "card:n1789961280838-0"
+},
+{
+"section": "s09",
+"q": "What is the typical peak effect of a SABA?",
+"o": [
+"30–60 minutes",
+"5 minutes",
+"4 hours",
+"12 hours"
+],
+"e": "Onset 15 min · peak 30–60 min · duration 4–6 h.",
+"src": "card:n1789961280831-0"
+},
+{
+"section": "s09",
+"q": "Which LABA is NOT available as monotherapy?",
+"o": [
+"Vilanterol",
+"Arformoterol",
+"Indacaterol",
+"Olodaterol"
+],
+"e": "Vilanterol comes only in Breo, Anoro and Trelegy Ellipta.",
+"src": "card:n1789961280851-0"
+},
+{
+"section": "s09",
+"q": "Why can LABAs approach the β-receptor laterally?",
+"o": [
+"They are lipophilic",
+"They are hydrophilic",
+"They are larger molecules",
+"They are given IV"
+],
+"e": "LABAs are lipophilic; SABAs are hydrophilic.",
+"src": "card:n1789961280853-0"
+},
+{
+"section": "s09",
+"q": "What is the most severe risk of asthma biologics?",
+"o": [
+"Anaphylaxis",
+"Tremor",
+"Thrush",
+"Hypokalemia"
+],
+"e": "Biologics are humanized IgG antibodies given parenterally.",
+"src": "card:n1789961280862-0"
+},
+{
+"section": "s09",
+"q": "Which is an asthma lifestyle intervention?",
+"o": [
+"Weight reduction in obese patients",
+"Daily oral steroids",
+"Avoiding all exercise",
+"High-salt diet"
+],
+"e": "Smoking cessation, activity, diet, weight loss, breathing exercises, stress management.",
+"src": "card:n1789961280873-0"
+},
+{
+"section": "s10",
+"q": "What partly compensates for lost gas exchange in emphysema?",
+"o": [
+"Collateral ventilation through pores of Kohn and canals of Lambert",
+"Increased surfactant",
+"Bronchial smooth muscle hypertrophy",
+"Pulmonary vasodilation"
+],
+"e": "Collateral channels let gas reach alveoli beyond blocked airways.",
+"src": "card:n1789961384538-0"
+},
+{
+"section": "s10",
+"q": "What is the single most important long-term COPD intervention?",
+"o": [
+"Smoking cessation with nicotine replacement",
+"Daily antibiotics",
+"Home oxygen for all",
+"Annual CXR"
+],
+"e": "Referral to a smoking-cessation program, including NRT.",
+"src": "card:n1789961384575-0"
+},
+{
+"section": "s10",
+"q": "Does GOLD use \"chronic bronchitis\" and \"emphysema\" in its formal COPD definition?",
+"o": [
+"No",
+"Yes, both",
+"Only emphysema",
+"Only chronic bronchitis"
+],
+"e": "GOLD doesn't use them formally, but they remain clinically useful and often coexist.",
+"src": "card:n1789961384543-0"
+},
+{
+"section": "s10",
+"q": "Which comorbidity commonly coexists with COPD?",
+"o": [
+"GERD",
+"Type 1 diabetes",
+"Hemophilia",
+"Gout"
+],
+"e": "Cardiovascular disease, anxiety, GERD, metabolic disorders.",
+"src": "card:n1789961384556-0"
+},
+{
+"section": "s10",
+"q": "GOLD defines a COPD exacerbation as worsening symptoms that:",
+"o": [
+"Go beyond day-to-day variation and lead to a medication change",
+"Last more than 6 months",
+"Require ICU admission",
+"Cause a fever"
+],
+"e": "An acute event beyond normal variation that leads to a change in medication.",
+"src": "card:n1789961384566-0"
+},
+{
+"section": "s11",
+"q": "What does the deck call the simplest, most cost-effective way to reduce VAP?",
+"o": [
+"Good hand hygiene or gloves",
+"Silver-coated tubes",
+"Daily circuit changes",
+"Prophylactic antibiotics"
+],
+"e": "\"By far the simplest and most cost-effective way.\"",
+"src": "card:n1789961490738-0"
+},
+{
+"section": "s11",
+"q": "Which neck circumference predicts a difficult airway in men?",
+"o": [
+"> 43 cm (17 in)",
+"> 37 cm (15 in)",
+"> 50 cm (20 in)",
+"> 30 cm (12 in)"
+],
+"e": "Men > 43 cm, women > 37 cm.",
+"src": "card:n1789961490713-0"
+},
+{
+"section": "s11",
+"q": "On a 202 exam (Hess), how should you treat MOV and MLT?",
+"o": [
+"Two named options, MOV generally preferred",
+"MLT is obsolete",
+"MOV is contraindicated",
+"Neither is used"
+],
+"e": "Hess presents both neutrally; \"MLT no longer recommended\" is Heuer's 203 position.",
+"src": "card:n1789961490706-0"
+},
+{
+"section": "s11",
+"q": "Clinical VAP diagnosis (infiltrate + 2 of 3 criteria) has what sensitivity?",
+"o": [
+"69%",
+"95%",
+"25%",
+"100%"
+],
+"e": "Sensitivity 69%, specificity 75%. CPIS > 6 supports it; confirm with BAL or protected brush.",
+"src": "card:n1789961490745-0"
+},
+{
+"section": "s11",
+"q": "Convert 30 cm H₂O cuff pressure to mm Hg.",
+"o": [
+"About 22 mm Hg",
+"About 41 mm Hg",
+"About 30 mm Hg",
+"About 15 mm Hg"
+],
+"e": "1 mm Hg = 1.36 cm H₂O, so 20–30 cm H₂O ≈ 14.7–22 mm Hg.",
+"src": "card:n1789961490701-0"
+},
+{
+"section": "s11",
+"q": "How long before intubation is pretreatment given?",
+"o": [
+"3 to 5 minutes",
+"30 seconds",
+"30 minutes",
+"1 hour"
+],
+"e": "Pretreatment blunts the adverse effects of drugs and the procedure.",
+"src": "card:n1789961490719-0"
+},
+{
+"section": "s11",
+"q": "How is the Bivona foam cuff managed after insertion?",
+"o": [
+"The pilot port is left open to atmosphere",
+"It is inflated to 40 cm H₂O",
+"It is filled with saline",
+"It is deflated hourly"
+],
+"e": "Air is evacuated before insertion; intracuff pressure then sits at ambient.",
+"src": "card:n1789961490707-0"
+},
+{
+"section": "s11",
+"q": "What is the OPA measuring landmark?",
+"o": [
+"Corner of the mouth to the angle of the jaw/earlobe",
+"Tip of the nose to the earlobe",
+"Chin to sternal notch",
+"Lips to the larynx"
+],
+"e": "OPA: mouth corner → jaw angle/earlobe. NPA: nose tip → earlobe.",
+"src": "card:n1789961490759-0"
+},
+{
+"section": "s11",
+"q": "With an esophageal detection device, delayed bulb refilling means:",
+"o": [
+"Esophageal placement",
+"Tracheal placement",
+"Right mainstem",
+"Cuff leak"
+],
+"e": "The trachea is rigid (rapid refill); the esophagus collapses (delayed). Waveform capnography has largely replaced it.",
+"src": "card:n1789961490768-0"
+},
+{
+"section": "s11",
+"q": "Which is a deck-listed VAP prevention method?",
+"o": [
+"Daily sedative vacation",
+"Nasal feeding tube",
+"Routine circuit changes every 24 h",
+"Supine positioning"
+],
+"e": "NIV, sedative vacation, early weaning, oral chlorhexidine, oral feeding tube, aspiration precautions.",
+"src": "card:n1789961490741-0"
+},
+{
+"section": "s11",
+"q": "The MACOCHA score predicts:",
+"o": [
+"Difficult intubation",
+"Sepsis risk",
+"Weaning success",
+"VAP risk"
+],
+"e": "A seven-item tool; risk rises with the score.",
+"src": "card:n1789961490714-0"
+},
+{
+"section": "s11",
+"q": "What do the speaker notes say about routine circuit changes?",
+"o": [
+"Change only when visibly soiled or malfunctioning",
+"Every 24 hours",
+"Every 7 days",
+"Every shift"
+],
+"e": "The printed Chang bundle says 7 days (HME 24 h); the notes say routine changes increase contamination.",
+"src": "card:n1789961609812-0"
+},
+{
+"section": "s12",
+"q": "What is the normal hemoglobin range for adult men?",
+"o": [
+"13.5–17.5 g/dL",
+"12.0–15.5 g/dL",
+"8–10 g/dL",
+"18–22 g/dL"
+],
+"e": "Men 13.5–17.5; women 12.0–15.5 g/dL.",
+"src": "card:n1789961609644-0"
+},
+{
+"section": "s12",
+"q": "How long is normal capillary transit time, and when does O₂ equilibrate?",
+"o": [
+"0.75 s; 0.25 s",
+"0.25 s; 0.75 s",
+"2 s; 1 s",
+"0.1 s; 0.05 s"
+],
+"e": "Plenty of reserve until the membrane thickens.",
+"src": "card:n1789961609660-0"
+},
+{
+"section": "s12",
+"q": "In the alveolar gas equation, what value is used for PH₂O?",
+"o": [
+"47 mm Hg",
+"760 mm Hg",
+"40 mm Hg",
+"0.8"
+],
+"e": "PAO₂ = FiO₂(Pb − 47) − PaCO₂/0.8, with Pb ≈ 760 at sea level.",
+"src": "card:n1789961609689-0"
+},
+{
+"section": "s12",
+"q": "The shortcut P(A−a)O₂ = (1000 − PaCO₂/0.8) − PaO₂ is valid only:",
+"o": [
+"On 100% oxygen",
+"On room air",
+"At altitude",
+"In children"
+],
+"e": "It's an approximation for FiO₂ 1.0 only.",
+"src": "card:n1789961609690-0"
+},
+{
+"section": "s12",
+"q": "What is the IBW of a 5'0\" female (deck constant)?",
+"o": [
+"47.3 kg",
+"52.3 kg",
+"45.5 kg",
+"50 kg"
+],
+"e": "45 + 2.3 = 47.3 kg → VT at 8 mL/kg ≈ 378 mL (set ~400).",
+"src": "card:n1789961609665-0"
+},
+{
+"section": "s12",
+"q": "On a 202 exam, which female PBW constant do you use?",
+"o": [
+"45",
+"45.5",
+"50",
+"42"
+],
+"e": "The deck teaches 45; 45.5 is the ARDSNet/Heuer constant. Know both exist.",
+"src": "card:n1789961609663-0"
+}
+]
