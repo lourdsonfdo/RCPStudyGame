@@ -1,125 +1,132 @@
-/* ============================================================
-   HOME SCREEN — Storybook pixel-RPG v2.0
-   ============================================================ */
-const SB_ICONS = {
-"letter": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"1\" y=\"3\" width=\"14\" height=\"1\" fill=\"#1c1024\"/><rect x=\"1\" y=\"4\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"3\" y=\"4\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"4\" y=\"4\" width=\"8\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"12\" y=\"4\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"13\" y=\"4\" width=\"1\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"14\" y=\"4\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"1\" y=\"5\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"2\" y=\"5\" width=\"2\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"4\" y=\"5\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"5\" y=\"5\" width=\"6\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"11\" y=\"5\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"12\" y=\"5\" width=\"2\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"14\" y=\"5\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"1\" y=\"6\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"2\" y=\"6\" width=\"3\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"5\" y=\"6\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"6\" y=\"6\" width=\"4\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"10\" y=\"6\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"11\" y=\"6\" width=\"3\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"14\" y=\"6\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"1\" y=\"7\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"2\" y=\"7\" width=\"4\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"6\" y=\"7\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"7\" y=\"7\" width=\"2\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"9\" y=\"7\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"10\" y=\"7\" width=\"4\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"14\" y=\"7\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"1\" y=\"8\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"2\" y=\"8\" width=\"1\" height=\"1\" fill=\"#e0b878\"/><rect x=\"3\" y=\"8\" width=\"3\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"6\" y=\"8\" width=\"4\" height=\"1\" fill=\"#ff3a4a\"/><rect x=\"10\" y=\"8\" width=\"3\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"13\" y=\"8\" width=\"1\" height=\"1\" fill=\"#e0b878\"/><rect x=\"14\" y=\"8\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"1\" y=\"9\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"2\" y=\"9\" width=\"1\" height=\"1\" fill=\"#e0b878\"/><rect x=\"3\" y=\"9\" width=\"3\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"6\" y=\"9\" width=\"4\" height=\"1\" fill=\"#ff3a4a\"/><rect x=\"10\" y=\"9\" width=\"3\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"13\" y=\"9\" width=\"1\" height=\"1\" fill=\"#e0b878\"/><rect x=\"14\" y=\"9\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"1\" y=\"10\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"2\" y=\"10\" width=\"2\" height=\"1\" fill=\"#e0b878\"/><rect x=\"4\" y=\"10\" width=\"8\" height=\"1\" fill=\"#fff4d8\"/><rect x=\"12\" y=\"10\" width=\"2\" height=\"1\" fill=\"#e0b878\"/><rect x=\"14\" y=\"10\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"1\" y=\"11\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"2\" y=\"11\" width=\"12\" height=\"1\" fill=\"#e0b878\"/><rect x=\"14\" y=\"11\" width=\"1\" height=\"1\" fill=\"#1c1024\"/><rect x=\"1\" y=\"12\" width=\"14\" height=\"1\" fill=\"#1c1024\"/></svg>",
-"lungs": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"7\" y=\"0\" width=\"2\" height=\"1\" fill=\"#fff2e0\"/><rect x=\"7\" y=\"1\" width=\"2\" height=\"1\" fill=\"#fff2e0\"/><rect x=\"7\" y=\"2\" width=\"2\" height=\"1\" fill=\"#d8c8b8\"/><rect x=\"4\" y=\"3\" width=\"2\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"7\" y=\"3\" width=\"2\" height=\"1\" fill=\"#fff2e0\"/><rect x=\"10\" y=\"3\" width=\"2\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"3\" y=\"4\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"4\" y=\"4\" width=\"2\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"6\" y=\"4\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"7\" y=\"4\" width=\"2\" height=\"1\" fill=\"#fff2e0\"/><rect x=\"9\" y=\"4\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"10\" y=\"4\" width=\"2\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"12\" y=\"4\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"2\" y=\"5\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"3\" y=\"5\" width=\"1\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"4\" y=\"5\" width=\"1\" height=\"1\" fill=\"#ffc8d6\"/><rect x=\"5\" y=\"5\" width=\"2\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"7\" y=\"5\" width=\"2\" height=\"1\" fill=\"#fff2e0\"/><rect x=\"9\" y=\"5\" width=\"2\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"11\" y=\"5\" width=\"1\" height=\"1\" fill=\"#ffc8d6\"/><rect x=\"12\" y=\"5\" width=\"1\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"13\" y=\"5\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"2\" y=\"6\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"3\" y=\"6\" width=\"1\" height=\"1\" fill=\"#ffc8d6\"/><rect x=\"4\" y=\"6\" width=\"3\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"7\" y=\"6\" width=\"2\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"9\" y=\"6\" width=\"3\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"12\" y=\"6\" width=\"1\" height=\"1\" fill=\"#ffc8d6\"/><rect x=\"13\" y=\"6\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"1\" y=\"7\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"2\" y=\"7\" width=\"1\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"3\" y=\"7\" width=\"1\" height=\"1\" fill=\"#ffc8d6\"/><rect x=\"4\" y=\"7\" width=\"3\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"7\" y=\"7\" width=\"2\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"9\" y=\"7\" width=\"3\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"12\" y=\"7\" width=\"1\" height=\"1\" fill=\"#ffc8d6\"/><rect x=\"13\" y=\"7\" width=\"1\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"14\" y=\"7\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"1\" y=\"8\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"2\" y=\"8\" width=\"5\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"7\" y=\"8\" width=\"2\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"9\" y=\"8\" width=\"5\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"14\" y=\"8\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"1\" y=\"9\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"2\" y=\"9\" width=\"1\" height=\"1\" fill=\"#c8305a\"/><rect x=\"3\" y=\"9\" width=\"4\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"7\" y=\"9\" width=\"2\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"9\" y=\"9\" width=\"4\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"13\" y=\"9\" width=\"1\" height=\"1\" fill=\"#c8305a\"/><rect x=\"14\" y=\"9\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"1\" y=\"10\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"2\" y=\"10\" width=\"1\" height=\"1\" fill=\"#c8305a\"/><rect x=\"3\" y=\"10\" width=\"3\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"6\" y=\"10\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"9\" y=\"10\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"10\" y=\"10\" width=\"3\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"13\" y=\"10\" width=\"1\" height=\"1\" fill=\"#c8305a\"/><rect x=\"14\" y=\"10\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"1\" y=\"11\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"2\" y=\"11\" width=\"2\" height=\"1\" fill=\"#c8305a\"/><rect x=\"4\" y=\"11\" width=\"2\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"6\" y=\"11\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"9\" y=\"11\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"10\" y=\"11\" width=\"2\" height=\"1\" fill=\"#ff6a8e\"/><rect x=\"12\" y=\"11\" width=\"2\" height=\"1\" fill=\"#c8305a\"/><rect x=\"14\" y=\"11\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"1\" y=\"12\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"2\" y=\"12\" width=\"1\" height=\"1\" fill=\"#8a1a40\"/><rect x=\"3\" y=\"12\" width=\"2\" height=\"1\" fill=\"#c8305a\"/><rect x=\"5\" y=\"12\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"10\" y=\"12\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"11\" y=\"12\" width=\"2\" height=\"1\" fill=\"#c8305a\"/><rect x=\"13\" y=\"12\" width=\"1\" height=\"1\" fill=\"#8a1a40\"/><rect x=\"14\" y=\"12\" width=\"1\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"2\" y=\"13\" width=\"3\" height=\"1\" fill=\"#2a0c1c\"/><rect x=\"11\" y=\"13\" width=\"3\" height=\"1\" fill=\"#2a0c1c\"/></svg>",
-"flask": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"5\" y=\"1\" width=\"6\" height=\"1\" fill=\"#101a24\"/><rect x=\"5\" y=\"2\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"6\" y=\"2\" width=\"4\" height=\"1\" fill=\"#d08a4a\"/><rect x=\"10\" y=\"2\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"5\" y=\"3\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"6\" y=\"3\" width=\"1\" height=\"1\" fill=\"#9a5a2a\"/><rect x=\"7\" y=\"3\" width=\"2\" height=\"1\" fill=\"#d08a4a\"/><rect x=\"9\" y=\"3\" width=\"1\" height=\"1\" fill=\"#9a5a2a\"/><rect x=\"10\" y=\"3\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"5\" y=\"4\" width=\"6\" height=\"1\" fill=\"#101a24\"/><rect x=\"6\" y=\"5\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"7\" y=\"5\" width=\"2\" height=\"1\" fill=\"#dff6ff\"/><rect x=\"9\" y=\"5\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"6\" y=\"6\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"7\" y=\"6\" width=\"2\" height=\"1\" fill=\"#dff6ff\"/><rect x=\"9\" y=\"6\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"5\" y=\"7\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"6\" y=\"7\" width=\"4\" height=\"1\" fill=\"#dff6ff\"/><rect x=\"10\" y=\"7\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"4\" y=\"8\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"5\" y=\"8\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"6\" y=\"8\" width=\"4\" height=\"1\" fill=\"#dff6ff\"/><rect x=\"10\" y=\"8\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"11\" y=\"8\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"3\" y=\"9\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"4\" y=\"9\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"5\" y=\"9\" width=\"6\" height=\"1\" fill=\"#5affa0\"/><rect x=\"11\" y=\"9\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"12\" y=\"9\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"2\" y=\"10\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"3\" y=\"10\" width=\"1\" height=\"1\" fill=\"#dff6ff\"/><rect x=\"4\" y=\"10\" width=\"1\" height=\"1\" fill=\"#d8ffe8\"/><rect x=\"5\" y=\"10\" width=\"6\" height=\"1\" fill=\"#5affa0\"/><rect x=\"11\" y=\"10\" width=\"1\" height=\"1\" fill=\"#d8ffe8\"/><rect x=\"12\" y=\"10\" width=\"1\" height=\"1\" fill=\"#dff6ff\"/><rect x=\"13\" y=\"10\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"2\" y=\"11\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"3\" y=\"11\" width=\"1\" height=\"1\" fill=\"#8ac4dc\"/><rect x=\"4\" y=\"11\" width=\"8\" height=\"1\" fill=\"#5affa0\"/><rect x=\"12\" y=\"11\" width=\"1\" height=\"1\" fill=\"#8ac4dc\"/><rect x=\"13\" y=\"11\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"2\" y=\"12\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"3\" y=\"12\" width=\"1\" height=\"1\" fill=\"#8ac4dc\"/><rect x=\"4\" y=\"12\" width=\"1\" height=\"1\" fill=\"#18b070\"/><rect x=\"5\" y=\"12\" width=\"6\" height=\"1\" fill=\"#5affa0\"/><rect x=\"11\" y=\"12\" width=\"1\" height=\"1\" fill=\"#18b070\"/><rect x=\"12\" y=\"12\" width=\"1\" height=\"1\" fill=\"#8ac4dc\"/><rect x=\"13\" y=\"12\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"2\" y=\"13\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"3\" y=\"13\" width=\"1\" height=\"1\" fill=\"#8ac4dc\"/><rect x=\"4\" y=\"13\" width=\"2\" height=\"1\" fill=\"#18b070\"/><rect x=\"6\" y=\"13\" width=\"4\" height=\"1\" fill=\"#5affa0\"/><rect x=\"10\" y=\"13\" width=\"2\" height=\"1\" fill=\"#18b070\"/><rect x=\"12\" y=\"13\" width=\"1\" height=\"1\" fill=\"#8ac4dc\"/><rect x=\"13\" y=\"13\" width=\"1\" height=\"1\" fill=\"#101a24\"/><rect x=\"3\" y=\"14\" width=\"10\" height=\"1\" fill=\"#101a24\"/></svg>",
-"golem": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"3\" y=\"1\" width=\"10\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"2\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"3\" y=\"2\" width=\"4\" height=\"1\" fill=\"#e0d8cc\"/><rect x=\"7\" y=\"2\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"9\" y=\"2\" width=\"4\" height=\"1\" fill=\"#e0d8cc\"/><rect x=\"13\" y=\"2\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"1\" y=\"3\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"3\" width=\"2\" height=\"1\" fill=\"#e0d8cc\"/><rect x=\"4\" y=\"3\" width=\"8\" height=\"1\" fill=\"#a8a098\"/><rect x=\"12\" y=\"3\" width=\"2\" height=\"1\" fill=\"#e0d8cc\"/><rect x=\"14\" y=\"3\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"1\" y=\"4\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\" fill=\"#e0d8cc\"/><rect x=\"3\" y=\"4\" width=\"10\" height=\"1\" fill=\"#a8a098\"/><rect x=\"13\" y=\"4\" width=\"1\" height=\"1\" fill=\"#e0d8cc\"/><rect x=\"14\" y=\"4\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"1\" y=\"5\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"5\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"4\" y=\"5\" width=\"3\" height=\"1\" fill=\"#14121c\"/><rect x=\"7\" y=\"5\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"9\" y=\"5\" width=\"3\" height=\"1\" fill=\"#14121c\"/><rect x=\"12\" y=\"5\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"14\" y=\"5\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"1\" y=\"6\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"6\" width=\"1\" height=\"1\" fill=\"#a8a098\"/><rect x=\"3\" y=\"6\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"4\" y=\"6\" width=\"2\" height=\"1\" fill=\"#ffb020\"/><rect x=\"6\" y=\"6\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"7\" y=\"6\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"9\" y=\"6\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"10\" y=\"6\" width=\"2\" height=\"1\" fill=\"#ffb020\"/><rect x=\"12\" y=\"6\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"13\" y=\"6\" width=\"1\" height=\"1\" fill=\"#a8a098\"/><rect x=\"14\" y=\"6\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"1\" y=\"7\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"7\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"4\" y=\"7\" width=\"3\" height=\"1\" fill=\"#14121c\"/><rect x=\"7\" y=\"7\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"9\" y=\"7\" width=\"3\" height=\"1\" fill=\"#14121c\"/><rect x=\"12\" y=\"7\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"14\" y=\"7\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"1\" y=\"8\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"8\" width=\"1\" height=\"1\" fill=\"#6a625c\"/><rect x=\"3\" y=\"8\" width=\"10\" height=\"1\" fill=\"#a8a098\"/><rect x=\"13\" y=\"8\" width=\"1\" height=\"1\" fill=\"#6a625c\"/><rect x=\"14\" y=\"8\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"1\" y=\"9\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"9\" width=\"1\" height=\"1\" fill=\"#6a625c\"/><rect x=\"3\" y=\"9\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"5\" y=\"9\" width=\"1\" height=\"1\" fill=\"#6a625c\"/><rect x=\"6\" y=\"9\" width=\"4\" height=\"1\" fill=\"#a8a098\"/><rect x=\"10\" y=\"9\" width=\"1\" height=\"1\" fill=\"#6a625c\"/><rect x=\"11\" y=\"9\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"13\" y=\"9\" width=\"1\" height=\"1\" fill=\"#6a625c\"/><rect x=\"14\" y=\"9\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"1\" y=\"10\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"10\" width=\"1\" height=\"1\" fill=\"#6a625c\"/><rect x=\"3\" y=\"10\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"5\" y=\"10\" width=\"6\" height=\"1\" fill=\"#14121c\"/><rect x=\"11\" y=\"10\" width=\"2\" height=\"1\" fill=\"#a8a098\"/><rect x=\"13\" y=\"10\" width=\"1\" height=\"1\" fill=\"#6a625c\"/><rect x=\"14\" y=\"10\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"1\" y=\"11\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"11\" width=\"1\" height=\"1\" fill=\"#7ac84a\"/><rect x=\"3\" y=\"11\" width=\"1\" height=\"1\" fill=\"#6a625c\"/><rect x=\"4\" y=\"11\" width=\"8\" height=\"1\" fill=\"#a8a098\"/><rect x=\"12\" y=\"11\" width=\"1\" height=\"1\" fill=\"#6a625c\"/><rect x=\"13\" y=\"11\" width=\"1\" height=\"1\" fill=\"#7ac84a\"/><rect x=\"14\" y=\"11\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"2\" y=\"12\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"3\" y=\"12\" width=\"10\" height=\"1\" fill=\"#6a625c\"/><rect x=\"13\" y=\"12\" width=\"1\" height=\"1\" fill=\"#14121c\"/><rect x=\"3\" y=\"13\" width=\"10\" height=\"1\" fill=\"#14121c\"/></svg>",
-"hourglass": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"1\" y=\"1\" width=\"14\" height=\"1\" fill=\"#1a1020\"/><rect x=\"1\" y=\"2\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"2\" y=\"2\" width=\"12\" height=\"1\" fill=\"#d88a40\"/><rect x=\"14\" y=\"2\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"1\" y=\"3\" width=\"14\" height=\"1\" fill=\"#1a1020\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"3\" y=\"4\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"4\" y=\"4\" width=\"8\" height=\"1\" fill=\"#ffd040\"/><rect x=\"12\" y=\"4\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"13\" y=\"4\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"2\" y=\"5\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"3\" y=\"5\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"4\" y=\"5\" width=\"8\" height=\"1\" fill=\"#ffd040\"/><rect x=\"12\" y=\"5\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"13\" y=\"5\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"3\" y=\"6\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"4\" y=\"6\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"5\" y=\"6\" width=\"6\" height=\"1\" fill=\"#ffd040\"/><rect x=\"11\" y=\"6\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"12\" y=\"6\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"4\" y=\"7\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"5\" y=\"7\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"6\" y=\"7\" width=\"4\" height=\"1\" fill=\"#ffd040\"/><rect x=\"10\" y=\"7\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"11\" y=\"7\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"5\" y=\"8\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"6\" y=\"8\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"7\" y=\"8\" width=\"2\" height=\"1\" fill=\"#ffd040\"/><rect x=\"9\" y=\"8\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"10\" y=\"8\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"4\" y=\"9\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"5\" y=\"9\" width=\"2\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"7\" y=\"9\" width=\"2\" height=\"1\" fill=\"#ffd040\"/><rect x=\"9\" y=\"9\" width=\"2\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"11\" y=\"9\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"3\" y=\"10\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"4\" y=\"10\" width=\"3\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"7\" y=\"10\" width=\"2\" height=\"1\" fill=\"#ffd040\"/><rect x=\"9\" y=\"10\" width=\"3\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"12\" y=\"10\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"2\" y=\"11\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"3\" y=\"11\" width=\"2\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"5\" y=\"11\" width=\"6\" height=\"1\" fill=\"#ffd040\"/><rect x=\"11\" y=\"11\" width=\"2\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"13\" y=\"11\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"2\" y=\"12\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"3\" y=\"12\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"4\" y=\"12\" width=\"8\" height=\"1\" fill=\"#ffd040\"/><rect x=\"12\" y=\"12\" width=\"1\" height=\"1\" fill=\"#e6f8ff\"/><rect x=\"13\" y=\"12\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"1\" y=\"13\" width=\"14\" height=\"1\" fill=\"#1a1020\"/><rect x=\"1\" y=\"14\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"2\" y=\"14\" width=\"12\" height=\"1\" fill=\"#8a4a20\"/><rect x=\"14\" y=\"14\" width=\"1\" height=\"1\" fill=\"#1a1020\"/><rect x=\"1\" y=\"15\" width=\"14\" height=\"1\" fill=\"#1a1020\"/></svg>",
-"gear": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"6\" y=\"0\" width=\"4\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"1\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"6\" y=\"1\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"7\" y=\"1\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"9\" y=\"1\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"12\" y=\"1\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"1\" y=\"2\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"2\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"4\" y=\"2\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"6\" y=\"2\" width=\"4\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"10\" y=\"2\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"12\" y=\"2\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"14\" y=\"2\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"1\" y=\"3\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"3\" width=\"12\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"14\" y=\"3\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"3\" y=\"4\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"5\" y=\"4\" width=\"6\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"11\" y=\"4\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"13\" y=\"4\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"5\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"3\" y=\"5\" width=\"1\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"4\" y=\"5\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"5\" y=\"5\" width=\"6\" height=\"1\" fill=\"#141824\"/><rect x=\"11\" y=\"5\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"12\" y=\"5\" width=\"1\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"13\" y=\"5\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"0\" y=\"6\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"6\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"4\" y=\"6\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"5\" y=\"6\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"10\" y=\"6\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"11\" y=\"6\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"12\" y=\"6\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"14\" y=\"6\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"0\" y=\"7\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"1\" y=\"7\" width=\"3\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"4\" y=\"7\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"5\" y=\"7\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"10\" y=\"7\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"11\" y=\"7\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"12\" y=\"7\" width=\"3\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"15\" y=\"7\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"0\" y=\"8\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"1\" y=\"8\" width=\"3\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"4\" y=\"8\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"5\" y=\"8\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"10\" y=\"8\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"11\" y=\"8\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"12\" y=\"8\" width=\"3\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"15\" y=\"8\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"0\" y=\"9\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"9\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"4\" y=\"9\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"5\" y=\"9\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"10\" y=\"9\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"11\" y=\"9\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"12\" y=\"9\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"14\" y=\"9\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"10\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"3\" y=\"10\" width=\"1\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"4\" y=\"10\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"5\" y=\"10\" width=\"6\" height=\"1\" fill=\"#141824\"/><rect x=\"11\" y=\"10\" width=\"1\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"12\" y=\"10\" width=\"1\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"13\" y=\"10\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"11\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"3\" y=\"11\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"5\" y=\"11\" width=\"6\" height=\"1\" fill=\"#7a88a0\"/><rect x=\"11\" y=\"11\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"13\" y=\"11\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"1\" y=\"12\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"12\" width=\"12\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"14\" y=\"12\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"1\" y=\"13\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"13\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"4\" y=\"13\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"6\" y=\"13\" width=\"4\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"10\" y=\"13\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"12\" y=\"13\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"14\" y=\"13\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"2\" y=\"14\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"6\" y=\"14\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"7\" y=\"14\" width=\"2\" height=\"1\" fill=\"#dfe6f0\"/><rect x=\"9\" y=\"14\" width=\"1\" height=\"1\" fill=\"#141824\"/><rect x=\"12\" y=\"14\" width=\"2\" height=\"1\" fill=\"#141824\"/><rect x=\"6\" y=\"15\" width=\"4\" height=\"1\" fill=\"#141824\"/></svg>",
-"cursor": "<svg width=\"14\" height=\"18\" viewBox=\"0 0 7 9\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"2\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"0\" y=\"1\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"1\" y=\"1\" width=\"1\" height=\"1\" fill=\"#f6d98a\"/><rect x=\"2\" y=\"1\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"0\" y=\"2\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"1\" y=\"2\" width=\"2\" height=\"1\" fill=\"#f6d98a\"/><rect x=\"3\" y=\"2\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"0\" y=\"3\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"1\" y=\"3\" width=\"3\" height=\"1\" fill=\"#f6d98a\"/><rect x=\"4\" y=\"3\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"0\" y=\"4\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"1\" y=\"4\" width=\"2\" height=\"1\" fill=\"#f6d98a\"/><rect x=\"3\" y=\"4\" width=\"2\" height=\"1\" fill=\"#c08e36\"/><rect x=\"5\" y=\"4\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"0\" y=\"5\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"1\" y=\"5\" width=\"3\" height=\"1\" fill=\"#f6d98a\"/><rect x=\"4\" y=\"5\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"0\" y=\"6\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"1\" y=\"6\" width=\"2\" height=\"1\" fill=\"#f6d98a\"/><rect x=\"3\" y=\"6\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"0\" y=\"7\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"1\" y=\"7\" width=\"1\" height=\"1\" fill=\"#f6d98a\"/><rect x=\"2\" y=\"7\" width=\"1\" height=\"1\" fill=\"#2a1c08\"/><rect x=\"0\" y=\"8\" width=\"2\" height=\"1\" fill=\"#2a1c08\"/></svg>"
-};
-
+/* Respiratory Academy — real study progress, existing game destinations. */
 App.registerScreen('home', ({ root, state }) => {
-  const prog = State.xpProgressInCurrentLevel(state);
-  const title = State.titleForLevel(state.level);
-  const xpNext = State.xpForNextLevel(state.level);
-  const dailyOn = State.isDailyAvailable(state);
-  const dailyBoss = state.dailyChallenge.bossId
-    ? (window.ALL_BOSSES || []).find(b => b.id === state.dailyChallenge.bossId)
-    : null;
-  const bossesDef = state.defeatedBosses.length;
-  const weakTopics = (State.getWeakTopics ? State.getWeakTopics(state, { limit: 3, minSample: 3 }) : []);
-  const survivalBest = state.survival || { best103: 0, best104: 0 };
-  const showDaily = !!(dailyOn && dailyBoss);
-  const V = 'v=storybook1';
-
-  const row = ({ go, course, icon, name, sub, tag, tagCls, sel, cls }) => `
-    <button class="sb-row ${sel ? 'sel' : ''} ${cls || ''}" data-go="${go}" ${course ? `data-course="${course}"` : ''}>
-      <span class="sb-cursor">${SB_ICONS.cursor}</span>
-      <span class="sb-icon">${SB_ICONS[icon]}</span>
-      <span class="sb-text">
-        <span class="sb-row-title">${name}</span>
-        <span class="sb-row-sub">${sub}</span>
-      </span>
-      ${tag ? `<span class="sb-tag ${tagCls}">${tag}</span>` : ''}
-    </button>`;
-
-  const orn = '<span class="sb-orn tl"></span><span class="sb-orn tr"></span><span class="sb-orn bl"></span><span class="sb-orn br"></span>';
-
+  const bosses = window.ALL_BOSSES || [];
+  const questions = window.ALL_QUESTIONS || [];
+  const next = Academy.recommendation(state, bosses, questions);
+  const review = Academy.reviewQuestions(state, questions);
+  const saved = Academy.resumableBattle(state, bosses);
+  const savedBoss = saved && bosses.find(b => b.id === saved.bossId);
+  const dailyBoss = bosses.find(b => b.id === state.dailyChallenge.bossId);
+  const dailyAvailable = State.isDailyAvailable(state) && dailyBoss;
+  const xp = Math.max(0, Math.min(100, State.xpProgressInCurrentLevel(state).ratio * 100));
+  const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const icon = (name) => {
+    const paths = {
+      book: '<path d="M12 5c-3-2-7-2-10-1v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-3-1-7-1-10 1Zm0 0v15"/>',
+      lungs: '<path d="M12 2v7m0-3-3 4m3-4 3 4M8 7C5 7 2 13 2 18c0 4 7 2 7-1V9m7-2c3 0 6 6 6 11 0 4-7 2-7-1V9"/>',
+      flask: '<path d="M9 2h6m-5 0v7L4 19c-1 2 1 3 3 3h10c2 0 4-1 3-3L14 9V2M7 15h10"/>',
+      pulse: '<path d="M2 12h5l3-8 4 16 3-8h5"/>',
+      settings: '<circle cx="12" cy="12" r="3"/><path d="m9 3 1-2h4l1 2 3 2h3l2 4-2 2v3l2 2-2 4h-3l-3 2h-6l-3-2H3l-2-4 2-2v-3L1 9l2-4h3Z"/>',
+      flag: '<path d="M5 22V3c5-4 9 4 15 0v11c-6 4-10-4-15 0"/>',
+      clock: '<circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/>',
+      mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 5 10 8L22 5"/>',
+      arrow: '<path d="M4 12h16m-6-6 6 6-6 6"/>'
+    };
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] || paths.book}</svg>`;
+  };
+  const countFor = course => bosses.filter(b => b.course === course && state.defeatedBosses.includes(b.id)).length;
+  const totalFor = course => bosses.filter(b => b.course === course).length;
+  const motionPaused = !!state.settings.academyMotionPaused;
+  root.classList.add('academy');
+  root.classList.toggle('academy-paused', motionPaused);
   root.innerHTML = `
-    <div class="sb-hero" aria-hidden="false">
-      <img class="sb-layer" src="img/m_sky.png?${V}" alt="">
-      <div class="sb-glow " style="left:60.51%;top:64.00%;width:76.92%;aspect-ratio:1;background:radial-gradient(circle, rgba(255,170,90,.55) 0%, rgba(0,0,0,0) 70%);"></div>
-      <img class="sb-layer sb-far" src="img/m_far.png?${V}" alt="">
-      <div class="sb-glow " style="left:60.51%;top:65.50%;width:35.90%;aspect-ratio:1;background:radial-gradient(circle, rgba(255,236,170,.7) 0%, rgba(0,0,0,0) 70%);"></div>
-      <img class="sb-layer" src="img/m_mid.png?${V}" alt="">
-      <div class="sb-glow " style="left:16.92%;top:56.50%;width:8.21%;aspect-ratio:1;background:radial-gradient(circle, rgba(255,210,110,.9) 0%, rgba(0,0,0,0) 70%);"></div><div class="sb-glow " style="left:16.92%;top:62.50%;width:8.21%;aspect-ratio:1;background:radial-gradient(circle, rgba(255,210,110,.9) 0%, rgba(0,0,0,0) 70%);"></div><div class="sb-glow " style="left:35.38%;top:60.25%;width:7.18%;aspect-ratio:1;background:radial-gradient(circle, rgba(255,210,110,.9) 0%, rgba(0,0,0,0) 70%);"></div><div class="sb-glow " style="left:22.56%;top:63.50%;width:7.18%;aspect-ratio:1;background:radial-gradient(circle, rgba(255,210,110,.9) 0%, rgba(0,0,0,0) 70%);"></div><div class="sb-glow " style="left:26.15%;top:63.50%;width:7.18%;aspect-ratio:1;background:radial-gradient(circle, rgba(255,210,110,.9) 0%, rgba(0,0,0,0) 70%);"></div><div class="sb-glow " style="left:30.26%;top:63.50%;width:7.18%;aspect-ratio:1;background:radial-gradient(circle, rgba(255,210,110,.9) 0%, rgba(0,0,0,0) 70%);"></div>
-      <img class="sb-layer" src="img/m_near.png?${V}" alt="">
-      <div class="sb-glow sb-flicker" style="left:75.90%;top:63.50%;width:24.62%;aspect-ratio:1;background:radial-gradient(circle, rgba(255,240,190,.95) 0%, rgba(0,0,0,0) 70%);"></div>
-      <div class="sb-firefly" style="left:13.3%;top:75.0%;animation-duration:4s;animation-delay:0s;"></div><div class="sb-firefly" style="left:41.0%;top:70.0%;animation-duration:5s;animation-delay:1.2s;"></div><div class="sb-firefly" style="left:84.6%;top:75.0%;animation-duration:4.5s;animation-delay:0.6s;"></div><div class="sb-firefly" style="left:91.3%;top:60.0%;animation-duration:6s;animation-delay:2s;"></div><div class="sb-firefly" style="left:69.2%;top:84.0%;animation-duration:5.2s;animation-delay:1.7s;"></div><div class="sb-firefly" style="left:30.3%;top:86.0%;animation-duration:4.2s;animation-delay:0.3s;"></div><div class="sb-firefly" style="left:50.3%;top:62.5%;animation-duration:5.6s;animation-delay:2.4s;"></div><div class="sb-firefly" style="left:6.2%;top:64.0%;animation-duration:4.8s;animation-delay:1.1s;"></div>
-      <img class="sb-layer sb-fg" src="img/m_fg.png?${V}" alt="">
-      <div class="sb-hero-shade"></div>
-      <div class="sb-title">
-        <div class="sb-eyebrow">Respiratory Care</div>
-        <h1 class="title-main">Respiratory Game</h1>
-        <div class="sb-sub">Exam Prep Simulator · Build 2.0</div>
+    <header class="ac-header">
+      <a class="ac-brand" href="#" aria-label="RCP Study home">${icon('lungs')}<span>RCP STUDY</span></a>
+      <span class="ac-header-caption">The Respiratory Academy</span>
+      <button class="ac-icon-button" data-action="settings" aria-label="Settings">${icon('settings')}</button>
+    </header>
+    <div class="ac-intro"><span class="ac-kicker">A little practice. A stronger clinician.</span><h1>Welcome to the academy.</h1></div>
+    <div class="ac-main">
+      <div class="ac-scene">
+        <picture><source media="(max-width: 600px)" srcset="img/academy-room-mobile.webp"><img src="img/academy-room.webp" width="1400" height="933" fetchpriority="high" alt="A sunlit respiratory teaching academy with a library, simulation mannequin and ventilator, and a glowing arena doorway."></picture>
+        <div class="ac-sunlight" aria-hidden="true"></div><div class="ac-portal-glow" aria-hidden="true"></div>
+        <div class="ac-dust" aria-hidden="true">${Array.from({ length: 9 }, (_, i) => `<i style="--i:${i};left:${15+i*8}%;top:${22+(i*13)%54}%"></i>`).join('')}</div>
+        <nav class="ac-stations" aria-label="Academy stations">
+          <button data-station="library">${icon('book')}<span>Library</span></button>
+          <button data-station="simulation">${icon('pulse')}<span>Simulation Lab</span></button>
+          <button data-station="arena">${icon('flag')}<span>Boss Arena</span></button>
+        </nav>
+        <button class="ac-motion" data-action="motion" aria-pressed="${motionPaused}">${motionPaused ? 'Play ambience' : 'Pause ambience'}</button>
+        <span class="ac-scene-caption">Learn. Practice. Become.</span>
       </div>
-    </div>
-
-    <div class="sb-window sb-card">
-      ${orn}
-      <div class="sb-card-head">
-        <div class="sb-name">Lourd</div>
-        <div class="sb-rank">${title} <b>Lv ${state.level}</b></div>
-      </div>
-      <div class="sb-exp-row"><span>EXP</span><span>${state.xp} · next ${xpNext}</span></div>
-      <div class="xp-track"><div class="xp-fill" style="width:${(prog.ratio * 100).toFixed(0)}%"></div></div>
-      <div class="sb-stats">
-        <div class="sb-stat"><span>Gold</span><b style="color:#ffd86a">${state.gold}</b></div>
-        <div class="sb-stat"><span>Bosses</span><b style="color:#ff9aa8">${bossesDef}/22</b></div>
-        <div class="sb-stat"><span>Streak</span><b style="color:#8fe8ff">${state.streak.count} ${state.streak.count === 1 ? 'day' : 'days'}</b></div>
-      </div>
-    </div>
-
-    <nav class="sb-window sb-menu" aria-label="Main menu">
-      ${orn}
-      ${showDaily ? row({ go: 'daily', icon: 'letter', name: dailyBoss.name, sub: '75 XP · 50 gold · no loadout', tag: 'Priority', tagCls: 'gold', sel: true }) : ''}
-      ${row({ go: 'course-mode', course: 'rcp103', icon: 'lungs', name: 'Pulmonary Disease', sub: 'RCP 103 · 10 bosses · 6 scenarios', sel: !showDaily })}
-      ${row({ go: 'course-mode', course: 'rcp104', icon: 'flask', name: 'Pharmacology', sub: 'RCP 104 · 12 bosses · 6 scenarios' })}
-      ${row({ go: 'superboss-briefing', icon: 'golem', name: 'Vitals Titan', sub: 'RCP 202 + 203 · 5 phases', tag: 'Final', tagCls: 'red', cls: 'titan' })}
-      ${row({ go: 'survival', icon: 'hourglass', name: 'Survival', sub: `Best 103: ${survivalBest.best103} · 104: ${survivalBest.best104}` })}
-      ${row({ go: 'settings', icon: 'gear', name: 'Settings', sub: 'Text size · Timer · Audio · Reset' })}
-    </nav>
-
-    ${weakTopics.length ? `
-      <div class="hud hud-corners weak-topics">
-        <span class="br1"></span><span class="br2"></span>
-        <div class="header-strip" style="margin: -14px -16px 12px;">
-          <span><span class="status-dot"></span>Weak Topics</span>
-          <span>${weakTopics.length} flagged</span>
+      <aside class="ac-study" aria-labelledby="ac-next-title">
+        <div class="ac-welcome">Welcome back, Lourd<span>${esc(State.titleForLevel(state.level))}</span></div>
+        <div class="ac-next"><span class="ac-kicker">Your next step</span>
+          <h2 id="ac-next-title">${next ? (next.isWeak ? 'Build confidence in ' : 'Explore ') + esc(next.label) : 'Choose your path'}</h2>
+          <p>${next?.isWeak ? 'A little focused practice on a topic you’ve found challenging.' : 'Make a little progress today. Practice first, then take on a boss.'}</p>
+          ${next ? `<span class="ac-session-meta">${icon('book')}${next.count} questions · Practice at your pace</span>` : ''}
+          <button class="ac-primary" data-action="study" ${next ? '' : 'disabled'}>Start Study Session ${icon('arrow')}</button>
+          ${saved ? `<button class="ac-resume" data-action="resume">Resume saved battle<span>${esc(savedBoss.name)}</span></button>` : ''}
         </div>
-        ${weakTopics.map(t => `
-          <div class="weak-row">
-            <span class="weak-name">${t.topic.toUpperCase()}</span>
-            <div class="weak-bar"><div class="weak-fill" style="width:${Math.round(t.acc * 100)}%"></div></div>
-            <span class="weak-val">${t.correct}/${t.total}</span>
-          </div>
-        `).join('')}
-        <div class="weak-hint">These will appear more often in future battles</div>
+        <div class="ac-progress">
+          <div class="ac-level"><span>Level ${state.level}</span><span>${state.streak.count} day${state.streak.count === 1 ? '' : 's'} streak</span></div>
+          <div class="ac-xp" role="progressbar" aria-label="Progress to next level" aria-valuenow="${Math.round(xp)}" aria-valuemin="0" aria-valuemax="100"><span style="width:${xp}%"></span></div>
+          <div class="ac-progress-meta"><span>${state.xp.toLocaleString()} XP${state.level >= 10 ? ' · Max level' : ' / '+State.xpForNextLevel(state.level).toLocaleString()}</span><span>${state.gold.toLocaleString()} gold</span></div>
+        </div>
+      </aside>
+    </div>
+    <section class="ac-paths" aria-labelledby="ac-path-title">
+      <div class="ac-section-heading"><h2 id="ac-path-title">Choose your path</h2><span>Small steps. Lasting knowledge.</span></div>
+      <div class="ac-course-grid">
+        <button class="ac-course" data-course="rcp103"><img src="img/academy-pulmonary.webp" width="480" height="135" alt="" loading="lazy"><span class="ac-course-body"><span class="ac-course-name">Pulmonary Disease ${icon('arrow')}</span><span class="ac-course-code">RCP 103</span><span class="ac-course-description">Pathophysiology, assessment, and management.</span><span class="ac-course-progress">${countFor('rcp103')} / ${totalFor('rcp103')} bosses mastered</span></span></button>
+        <button class="ac-course" data-course="rcp104"><img src="img/academy-pharmacology.webp" width="474" height="135" alt="" loading="lazy"><span class="ac-course-body"><span class="ac-course-name">Pharmacology ${icon('arrow')}</span><span class="ac-course-code">RCP 104</span><span class="ac-course-description">Medications, indications, and respiratory therapy.</span><span class="ac-course-progress">${countFor('rcp104')} / ${totalFor('rcp104')} bosses mastered</span></span></button>
+        <button class="ac-course" data-station="simulation"><img src="img/academy-clinical.webp" width="476" height="135" alt="" loading="lazy"><span class="ac-course-body"><span class="ac-course-name">Clinical Challenges ${icon('arrow')}</span><span class="ac-course-code">Simulation Lab</span><span class="ac-course-description">Put your knowledge to work in clinical scenarios.</span><span class="ac-course-progress">${state.completedScenarios.length} scenarios completed</span></span></button>
       </div>
-    ` : ''}
-
-    <div class="spacer"></div>
+    </section>
+    <div class="ac-activities">
+      <button class="ac-activity" data-action="daily" ${dailyAvailable ? '' : 'disabled'}>${icon('mail')}<span><strong>Daily Challenge</strong><small>${dailyAvailable ? esc(dailyBoss.name) : 'Completed for today. Well done.'}</small></span>${icon('arrow')}</button>
+      <button class="ac-activity" data-action="review" ${review.length ? '' : 'disabled'}>${icon('book')}<span><strong>Review missed questions</strong><small>${review.length ? review.length + ' questions ready for another look' : 'Your missed questions will appear here'}</small></span>${icon('arrow')}</button>
+    </div>
+    <footer class="ac-footer"><button data-action="titan">${icon('flag')}Vitals Titan <small>RCP 202 + 203</small></button><button data-action="survival">${icon('clock')}Survival <small>Test your endurance</small></button></footer>
+    <dialog class="ac-dialog" aria-labelledby="ac-dialog-title"><div class="ac-dialog-head"><h2 id="ac-dialog-title">Choose your course</h2><button data-close aria-label="Close course selection">×</button></div><p class="ac-dialog-sub"></p><div class="ac-dialog-options"></div></dialog>
   `;
-
-  root.querySelectorAll('[data-go]').forEach(el => {
-    el.addEventListener('click', () => {
-      const dest = el.dataset.go;
-      if (dest === 'daily') {
-        const saved = state.battleRun;
-        const resume = !!(saved && saved.isDaily && saved.bossId === state.dailyChallenge.bossId);
-        App.goto('battle', { course: state.dailyChallenge.course, bossId: state.dailyChallenge.bossId, isDaily: true, resume });
-      } else if (dest === 'superboss-briefing') {
-        App.goto('superboss-briefing', {});
-      } else if (dest === 'course-mode') {
-        App.goto('course-mode', { course: el.dataset.course });
-      } else if (dest === 'survival') {
-        App.goto('survival', {});
-      } else {
-        App.goto(dest);
+  const dialog = root.querySelector('dialog');
+  const resume = () => App.goto('battle', { course: saved.course, bossId: saved.bossId, isDaily: !!saved.isDaily, resume: true });
+  root.querySelector('.ac-brand').addEventListener('click', event => { event.preventDefault(); window.scrollTo({top:0,behavior:'auto'}); });
+  root.querySelector('[data-close]').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  function chooseCourse(station) {
+    root.querySelector('#ac-dialog-title').textContent = {library:'Study library',simulation:'Simulation lab',arena:'Boss arena'}[station];
+    root.querySelector('.ac-dialog-sub').textContent = 'Choose the course you’d like to practice.';
+    const options = root.querySelector('.ac-dialog-options');
+    options.innerHTML = '<button data-pick="rcp103">Pulmonary Disease <small>RCP 103</small></button><button data-pick="rcp104">Pharmacology <small>RCP 104</small></button>';
+    options.querySelectorAll('[data-pick]').forEach(button => button.addEventListener('click', () => {
+      dialog.close();
+      App.goto(station === 'simulation' ? 'scenario-select' : 'boss-select', { course: button.dataset.pick, mode: station === 'library' ? 'training' : 'battle' });
+    }));
+    dialog.showModal();
+  }
+  root.querySelectorAll('[data-station]').forEach(button => button.addEventListener('click', () => chooseCourse(button.dataset.station)));
+  root.querySelectorAll('[data-course]').forEach(button => button.addEventListener('click', () => App.goto('course-mode', { course: button.dataset.course })));
+  root.querySelectorAll('[data-action]').forEach(button => button.addEventListener('click', () => {
+    switch (button.dataset.action) {
+      case 'study': if (next) App.goto('training', {course:next.boss.course,bossId:next.boss.id,studyCount:next.count}); break;
+      case 'review': if (review.length) App.goto('training', {review:true,studyCount:Math.min(8,review.length)}); break;
+      case 'resume': if (saved) resume(); break;
+      case 'settings': App.goto('settings'); break;
+      case 'titan': App.goto('superboss-briefing'); break;
+      case 'survival': App.goto('survival'); break;
+      case 'motion':
+        state.settings.academyMotionPaused = !state.settings.academyMotionPaused;
+        State.save(state);
+        root.classList.toggle('academy-paused',state.settings.academyMotionPaused);
+        button.setAttribute('aria-pressed', String(state.settings.academyMotionPaused));
+        button.textContent = state.settings.academyMotionPaused ? 'Play ambience' : 'Pause ambience';
+        break;
+      case 'daily': {
+        if (!dailyAvailable) break;
+        const start = () => App.goto('battle', {course:dailyBoss.course,bossId:dailyBoss.id,isDaily:true});
+        if (saved?.isDaily && saved.bossId === dailyBoss.id) { resume(); break; }
+        if (!saved) { start(); break; }
+        root.querySelector('#ac-dialog-title').textContent = 'A battle is in progress';
+        root.querySelector('.ac-dialog-sub').textContent = 'Starting today’s challenge replaces your saved battle. Your study progress stays safe.';
+        const options = root.querySelector('.ac-dialog-options');
+        options.innerHTML = '<button data-keep>Resume saved battle</button><button data-replace>Start daily challenge instead</button>';
+        options.querySelector('[data-keep]').onclick = () => { dialog.close(); resume(); };
+        options.querySelector('[data-replace]').onclick = () => { dialog.close(); start(); };
+        dialog.showModal();
+        break;
       }
-    });
-  });
+    }
+  }));
 });

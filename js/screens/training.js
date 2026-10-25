@@ -4,16 +4,25 @@
    ============================================================ */
 App.registerScreen('training', ({ root, state, ctx }) => {
   const boss = (window.ALL_BOSSES || []).find(b => b.id === ctx.bossId);
-  if (!boss) { root.innerHTML = '<div class="panel t-red">Boss not found.</div>'; return; }
+  if (!boss && !ctx.review) { root.innerHTML = '<div class="panel t-red">Boss not found.</div>'; return; }
 
   const allForBoss = (window.ALL_QUESTIONS || []).filter(
-    q => boss.questionTopics.includes(q.topic) && q.course === boss.course
+    q => boss && boss.questionTopics.includes(q.topic) && q.course === boss.course
   );
   // Training pool: only questions explicitly marked 'training' or 'both' —
   // so drill ≠ boss fight. If a topic has no training-tagged questions yet,
   // fall back to the full topic set so the screen still works.
   const trainingOnly = allForBoss.filter(q => q.pool === 'training' || q.pool === 'both');
-  const pool = trainingOnly.length ? trainingOnly : allForBoss;
+  const pool = ctx.review ? Academy.reviewQuestions(state, window.ALL_QUESTIONS || [])
+    : (trainingOnly.length ? trainingOnly : allForBoss);
+  if (!pool.length) {
+    root.innerHTML = '<div class="panel">No questions are ready for this session.</div><button class="btn btn-block" data-home>BACK TO ACADEMY</button>';
+    root.querySelector('[data-home]').onclick = () => App.goto('home');
+    return;
+  }
+  const requestedCount = Number(ctx.studyCount);
+  const limit = Number.isFinite(requestedCount) && requestedCount > 0
+    ? Math.min(Math.floor(requestedCount), pool.length) : null;
 
   let queue = shuffle(pool);
   let session = { correct: 0, total: 0, xp: 0, gold: 0 };
@@ -45,6 +54,7 @@ App.registerScreen('training', ({ root, state, ctx }) => {
   }
 
   function nextQ() {
+    if (limit && session.total >= limit) { finish(); return; }
     if (!queue.length) queue = shuffle(pool);
     currentQ = shuffleChoices(queue.pop());
     revealed = false;
@@ -57,8 +67,8 @@ App.registerScreen('training', ({ root, state, ctx }) => {
     root.innerHTML = `
       <div class="topbar">
         <button class="back-btn" data-back>BACK</button>
-        <span class="mode-tag">🏋 DRILL SIMULATION</span>
-        <span class="chapter-tag">${boss.name.split(' ').slice(0,2).join(' ').toUpperCase()}</span>
+        <span class="mode-tag">${ctx.review ? 'MISSED QUESTION REVIEW' : '🏋 DRILL SIMULATION'}</span>
+        <span class="chapter-tag">${limit ? `${session.total + 1} / ${limit}` : (ctx.review ? 'REVIEW' : boss.name.split(' ').slice(0,2).join(' ').toUpperCase())}</span>
       </div>
 
       <div class="hud hud-corners">
@@ -137,9 +147,24 @@ App.registerScreen('training', ({ root, state, ctx }) => {
     const post = root.querySelector('#postq');
     post.innerHTML = `
       <div class="explanation">${currentQ.explanation}</div>
-      <button class="btn btn-block btn-primary" id="nextq">▶ NEXT QUERY</button>
+      ${currentQ.caution ? `<div class="explanation caution-line">${currentQ.caution}</div>` : ''}
+      ${currentQ.srcCite ? `<div class="explanation src-line">Source: ${currentQ.srcCite}</div>` : ''}
+      <button class="btn btn-block btn-primary" id="nextq">${limit && session.total >= limit ? 'VIEW SESSION RESULTS' : '▶ NEXT QUERY'}</button>
     `;
     post.querySelector('#nextq').addEventListener('click', nextQ);
+  }
+
+  function finish() {
+    root.innerHTML = `
+      <div class="hud hud-corners" style="padding:24px;text-align:center;">
+        <h1 class="t-xxl">A little stronger today.</h1>
+        <p style="margin:16px 0;">${session.correct} of ${session.total} correct · ${Math.round(session.correct / session.total * 100)}% accuracy</p>
+        <p>+${session.xp} XP · +${session.gold} gold earned</p>
+      </div>
+      <button class="btn btn-block btn-primary" data-home>RETURN TO THE ACADEMY</button>
+      <button class="btn btn-block" data-again>PRACTICE AGAIN</button>`;
+    root.querySelector('[data-home]').onclick = () => App.goto('home', {}, {clearHistory:true});
+    root.querySelector('[data-again]').onclick = () => App.goto('training', ctx, {replace:true});
   }
 
   nextQ();

@@ -3,13 +3,19 @@
    Cache-first strategy: game is fully playable offline after
    the first load.
    ============================================================ */
-const CACHE = 'rcp-study-v12-fresh-precache';
+const CACHE = 'rcp-study-v13-academy';
 
 const PRECACHE = [
   '/RCPStudyGame/',
   '/RCPStudyGame/index.html',
   '/RCPStudyGame/css/style.css',
   '/RCPStudyGame/css/theme-storybook.css',
+  '/RCPStudyGame/css/theme-academy.css',
+  '/RCPStudyGame/img/academy-room.webp',
+  '/RCPStudyGame/img/academy-room-mobile.webp',
+  '/RCPStudyGame/img/academy-pulmonary.webp',
+  '/RCPStudyGame/img/academy-pharmacology.webp',
+  '/RCPStudyGame/img/academy-clinical.webp',
   '/RCPStudyGame/img/m_sky.png',
   '/RCPStudyGame/img/m_far.png',
   '/RCPStudyGame/img/m_mid.png',
@@ -17,6 +23,7 @@ const PRECACHE = [
   '/RCPStudyGame/img/m_fg.png',
   '/RCPStudyGame/img/b_bg.png',
   '/RCPStudyGame/js/engine/state.js',
+  '/RCPStudyGame/js/engine/academy.js',
   '/RCPStudyGame/js/engine/audio.js',
   '/RCPStudyGame/js/engine/fx.js',
   '/RCPStudyGame/js/engine/arena-bg.js',
@@ -88,7 +95,10 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE)
       .then(c => Promise.all(PRECACHE.map(url =>
-        freshCopy(url).then(resp => c.put(url, resp)))))
+        freshCopy(url).then(resp => c.put(url, resp)).catch(error => {
+          // Font providers may be unavailable; local game assets remain required.
+          if (url.startsWith('/')) throw error;
+        }))))
       .then(() => self.skipWaiting())
   );
 });
@@ -97,7 +107,7 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+      Promise.all(keys.filter(k => k.startsWith('rcp-study-') && k !== CACHE).map(k => caches.delete(k)))
     ).then(() => self.clients.claim())
   );
 });
@@ -114,7 +124,7 @@ self.addEventListener('fetch', e => {
   const sameOrigin = new URL(e.request.url).origin === self.location.origin;
 
   e.respondWith(
-    caches.match(e.request, { ignoreSearch: sameOrigin }).then(cached => {
+    caches.open(CACHE).then(cache => cache.match(e.request, { ignoreSearch: sameOrigin })).then(cached => {
       if (cached) return cached;
       return fetch(e.request).then(resp => {
         // Cache successful responses for our own origin (under the plain URL)

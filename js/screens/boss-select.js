@@ -15,7 +15,7 @@ App.registerScreen('boss-select', ({ root, state, ctx }) => {
   root.innerHTML = `
     <div class="topbar">
       <button class="back-btn" data-back>BACK</button>
-      <span class="mode-tag">⚡ TARGET ACQUISITION</span>
+      <span class="mode-tag">${ctx.mode === 'training' ? 'STUDY LIBRARY' : '⚡ TARGET ACQUISITION'}</span>
       <span class="chapter-tag">${courseShort}</span>
     </div>
 
@@ -50,7 +50,7 @@ App.registerScreen('boss-select', ({ root, state, ctx }) => {
   root.querySelectorAll('.tile').forEach(tile => {
     tile.addEventListener('click', () => {
       if (tile.classList.contains('locked')) { App.toast('LOCKED · Defeat another target to unlock'); return; }
-      App.goto('prep-camp', { course, bossId: tile.dataset.bossId });
+      App.goto(ctx.mode === 'training' ? 'training' : 'prep-camp', { course, bossId: tile.dataset.bossId });
     });
   });
 });
