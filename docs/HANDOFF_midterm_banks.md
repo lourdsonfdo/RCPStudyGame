@@ -21,12 +21,17 @@ one boss per study-guide section, questions usable in both Study (training) and 
       (new Study Library button; Patient Crisis hidden when no scenarios), and survival. state.recordSurvival key = 'best'+number.
       index.html script tags ?v=midterm1; sw.js precaches the 3 files, CACHE = rcp-study-v15-midterms.
 - [x] `node tools/run-engine-tests.js` → 73 passed. Home + 201 boss grid checked in the browser (port 3456, `.claude/launch.json` "mockups").
-- [~] Codex gap-fill: 3 parallel `codex exec` jobs (prompt20X.txt). Re-run one with:
+- [x] Browser: a full 202 battle (Acid Oracle, 9/10 pass), a 201 study session, the survival picker with all 5 courses + a 203 run,
+      and the phone layout (375 px, no horizontal scroll) all work.
+- [x] **Committed locally as `3368fb5`. NOT pushed.** Push only with the user's OK (it publishes the live site).
+- [ ] **NEXT: Codex gap-fill.** Codex hit its ChatGPT usage limit on 2026-10-25 (resets 3:06 PM) after ~50K tokens/job, with no output written.
+      The scratch dir is in /private/tmp and may be cleared, so regenerate the inputs if they're missing (cards export snippet: decks/rcp.json →
+      strip HTML, split on `<hr id=answer>`, group by `d[4:7]`). Prompt template = `prompt.txt` there (placeholder __C__).
+      Run ONE course at a time (201 is smallest, 321 cards) to stay under the limit:
       `cd <scratch>/gap && codex exec --sandbox workspace-write --skip-git-repo-check -C . -o answer201.md - < prompt201.txt`
-- [ ] Verify gaps (structure + spot-check each against its card's `back`), copy to tools/midterm/, rebuild
-- [ ] Browser: play one battle + one study session on a new course; check survival picker
-- [ ] Codex review of the code diff
-- [ ] Commit; ask the user before pushing (always `git log origin/main..HEAD` first, since other sessions commit here)
+- [ ] Verify each gaps20X.json (structure; spot-check each answer against its card's `back`; drop anything not on the card),
+      copy to tools/midterm/, `python3 tools/build_midterm.py`, bump the sw.js CACHE, run the tests, commit
+- [ ] Optional: Codex review of `git show 3368fb5`
 
 ## Gotchas
 - Every content change needs a `CACHE` bump in `sw.js`, or returning players never get the update.
