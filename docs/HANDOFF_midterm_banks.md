@@ -23,7 +23,8 @@ one boss per study-guide section, questions usable in both Study (training) and 
 - [x] `node tools/run-engine-tests.js` → 73 passed. Home + 201 boss grid checked in the browser (port 3456, `.claude/launch.json` "mockups").
 - [x] Browser: a full 202 battle (Acid Oracle, 9/10 pass), a 201 study session, the survival picker with all 5 courses + a 203 run,
       and the phone layout (375 px, no horizontal scroll) all work.
-- [x] **Committed locally as `3368fb5`. NOT pushed.** Push only with the user's OK (it publishes the live site).
+- [x] **Pushed 2026-10-25 (`88df029..1de15ab`) with the user's OK.** The live site serves all 3 courses with SW cache v15-midterms,
+      checked in the browser (34 bosses / 1,532 Q, no console errors). The gap-fill ships as a second update and needs its own push OK.
 - [ ] **NEXT: Codex gap-fill.** Codex hit its ChatGPT usage limit on 2026-10-25 (resets 3:06 PM) after ~50K tokens/job, with no output written.
       The scratch dir is in /private/tmp and may be cleared, so regenerate the inputs if they're missing (cards export snippet: decks/rcp.json →
       strip HTML, split on `<hr id=answer>`, group by `d[4:7]`). Prompt template = `prompt.txt` there (placeholder __C__).
