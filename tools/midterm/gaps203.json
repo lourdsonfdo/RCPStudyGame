@@ -1,0 +1,1646 @@
+[
+{
+"section": "s01",
+"q": "Can you remove a used needle from a disposable syringe by hand?",
+"o": [
+"No — never bend, break or manipulate needles by hand",
+"Yes, if wearing gloves",
+"Yes, with a twisting motion",
+"Only for blood gas syringes"
+],
+"e": "All used sharps go directly into a rigid, puncture-resistant container.",
+"src": "card:n1789943678867-0"
+},
+{
+"section": "s01",
+"q": "Which is one of the three \"nevers\" with sharps?",
+"o": [
+"Never recap a used needle",
+"Never use a sharps container",
+"Never wear gloves",
+"Never dispose of syringes"
+],
+"e": "Never recap, never handle with both hands, never point toward your body. If capping is unavoidable, use a one-handed scoop.",
+"src": "card:n1789943678866-0"
+},
+{
+"section": "s01",
+"q": "Where should infectious waste be separated from noninfectious waste?",
+"o": [
+"At the point of generation",
+"At the incinerator",
+"In the dirty utility room",
+"At the loading dock"
+],
+"e": "Separate and contain at the point of origin in leak-proof, puncture-resistant containers with the biohazard symbol.",
+"src": "card:n1789943678863-0"
+},
+{
+"section": "s01",
+"q": "A biohazard bag is punctured. What do you do?",
+"o": [
+"Double-bag it",
+"Tape the hole",
+"Empty it into a new bag by hand",
+"Leave it for housekeeping"
+],
+"e": "Double-bag, and keep biohazard bags away from sharp objects.",
+"src": "card:n1789943678864-0"
+},
+{
+"section": "s01",
+"q": "How should liquid waste such as suction fluid be transported?",
+"o": [
+"In capped or tightly stoppered bottles",
+"In open basins",
+"In biohazard bags",
+"In the suction canister with the lid off"
+],
+"e": "Then inactivate it or pour it carefully down a utility sink drain or toilet.",
+"src": "card:n1789943678869-0"
+},
+{
+"section": "s01",
+"q": "How is infectious waste finally disposed of?",
+"o": [
+"Sterilization or incineration, then landfill or sewer",
+"Regular trash",
+"Recycling",
+"Burial on site"
+],
+"e": "Solid residue → sanitary landfill; liquid or ground-up waste → sanitary sewer.",
+"src": "card:n1789943678873-0"
+},
+{
+"section": "s01",
+"q": "Which biohazardous materials matter most to RTs?",
+"o": [
+"Isolation wastes, blood products, and contaminated sharps",
+"Paper towels and packaging",
+"Unused medications",
+"Food trays"
+],
+"e": "Isolation wastes, blood and blood products, and contaminated sharps and needles.",
+"src": "card:n1789943678862-0"
+},
+{
+"section": "s01",
+"q": "An ANTISEPTIC is a chemical that:",
+"o": [
+"Kills organisms on living skin or mucous membranes",
+"Only inhibits growth",
+"Kills microorganisms on surfaces only",
+"Sterilizes instruments"
+],
+"e": "Germicide = any chemical that kills microorganisms; bacteriostatic = only inhibits growth.",
+"src": "card:n1789943678790-0"
+},
+{
+"section": "s01",
+"q": "A patient with severe nosocomial pneumonia is intubated after the infection starts. Is it VAP?",
+"o": [
+"No",
+"Yes",
+"Only after 24 hours",
+"Only if cultures grow Pseudomonas"
+],
+"e": "Per Heuer, that does not meet the VAP definition — the pneumonia preceded the ventilator.",
+"src": "card:n1789943678806-0"
+},
+{
+"section": "s01",
+"q": "What is the VAP incidence over the first 5 ventilator days?",
+"o": [
+"3% per day",
+"10% per day",
+"1% per day",
+"0.5% per day"
+],
+"e": "3%/day for days 1–5, 2%/day for days 6–10, then 1%/day.",
+"src": "card:n1789943678811-0"
+},
+{
+"section": "s01",
+"q": "Which agent does Heuer prefer for peptic ulcer prophylaxis in the VAP bundle?",
+"o": [
+"Sucralfate",
+"H2 antagonists",
+"Proton-pump inhibitors only",
+"Antacids hourly"
+],
+"e": "Sucralfate rather than H2 antagonists (Heuer only; the decks omit this).",
+"src": "card:n1789943678819-0"
+},
+{
+"section": "s01",
+"q": "What CONFIRMS VAP?",
+"o": [
+"A pathogen from a lower-airway sample taken before antibiotics",
+"A fever above 38.5 °C",
+"A new infiltrate alone",
+"Purulent secretions alone"
+],
+"e": "BAL, protected specimen brush, mini-BAL, or endotracheal aspirate into a sterile trap — before starting or changing antibiotics.",
+"src": "card:n1789943678814-0"
+},
+{
+"section": "s01",
+"q": "With a heated humidifier, what do you do with circuit condensate?",
+"o": [
+"Drain it away from the patient without breaking the circuit",
+"Drain it back into the humidifier",
+"Drain it toward the patient",
+"Leave it"
+],
+"e": "Drain regularly, away from the patient, without breaking the circuit.",
+"src": "card:n1789943678827-0"
+},
+{
+"section": "s01",
+"q": "Which is the most effective first-line TB drug?",
+"o": [
+"Isoniazid (INH)",
+"Ethambutol",
+"Streptomycin",
+"Pyrazinamide"
+],
+"e": "INH; rifampin is bactericidal and paired with it. Prophylaxis: INH daily for 1 year.",
+"src": "card:n1789943678857-0"
+},
+{
+"section": "s01",
+"q": "On a Ziehl-Neelsen stain, TB bacilli appear:",
+"o": [
+"Red on a blue background",
+"Yellow-green",
+"Purple",
+"Black on white"
+],
+"e": "Fluorescent stain shows yellow-green bacilli, which are easier to read.",
+"src": "card:n1789943678844-0"
+},
+{
+"section": "s01",
+"q": "How quickly does Xpert MTB/RIF return results, and what does it detect?",
+"o": [
+"< 2 hours; TB and rifampin resistance",
+"6–8 weeks; TB only",
+"24 hours; isoniazid resistance",
+"3 days; latent TB"
+],
+"e": "Ultra is more sensitive for smear-negative, pediatric, extrapulmonary and HIV cases.",
+"src": "card:n1789943678849-0"
+},
+{
+"section": "s01",
+"q": "Over what period do inhaled TB bacilli multiply before being walled off?",
+"o": [
+"3 to 4 weeks",
+"24 hours",
+"6 months",
+"1 year"
+],
+"e": "They implant, multiply over 3–4 weeks, then get walled off in a granuloma with a caseous core.",
+"src": "card:n1789943678835-0"
+},
+{
+"section": "s01",
+"q": "Early primary TB on chest X-ray shows a:",
+"o": [
+"Ghon nodule",
+"Thumb sign",
+"Steeple sign",
+"Kerley B line"
+],
+"e": "A Ghon nodule becomes a Ghon complex when the draining lymph nodes are involved.",
+"src": "card:n1789943678850-0"
+},
+{
+"section": "s01",
+"q": "In a waiting area, respiratory hygiene calls for a surgical mask or separation of more than:",
+"o": [
+"3 feet",
+"1 foot",
+"10 feet",
+"25 feet"
+],
+"e": "Plus cover coughs, use a no-touch tissue receptacle, and perform hand hygiene.",
+"src": "card:n1789943678757-0"
+},
+{
+"section": "s01",
+"q": "Which heat method disinfects cleaned home equipment?",
+"o": [
+"Boil for 5 minutes",
+"Boil for 30 seconds",
+"Dishwasher at 40 °C",
+"Freeze overnight"
+],
+"e": "Boil 5 min, microwave submerged 5 min, or dishwasher ≥ 70 °C for 30 min.",
+"src": "card:n1789943678799-0"
+},
+{
+"section": "s01",
+"q": "How do you disinfect a blood spill after removing the visible matter?",
+"o": [
+"EPA-registered germicide or freshly diluted sodium hypochlorite",
+"Soap and water only",
+"Alcohol wipes",
+"Let it air-dry"
+],
+"e": "Gloves first, absorb the bulk, then disinfect with a tuberculocidal or HIV/HBV-effective agent or fresh bleach.",
+"src": "card:n1789943678871-0"
+},
+{
+"section": "s02",
+"q": "How much does a stationary LOX base unit hold?",
+"o": [
+"45 to 100 pounds",
+"5 to 10 pounds",
+"500 pounds",
+"1 to 2 pounds"
+],
+"e": "45–100 lb of LOX depending on the model.",
+"src": "card:n1789943862150-0"
+},
+{
+"section": "s02",
+"q": "Airliner cabins are pressurized to what altitude?",
+"o": [
+"8,000 ft",
+"3,000 ft",
+"15,000 ft",
+"Sea level"
+],
+"e": "8,000 ft: PB 564 mm Hg, PaO₂ ≈ 59 mm Hg.",
+"src": "card:n1789943862173-0"
+},
+{
+"section": "s02",
+"q": "Above what FiO₂ should you choose a high-flow system?",
+"o": [
+"0.40",
+"0.28",
+"0.60",
+"0.90"
+],
+"e": "FiO₂ > 0.40 → high-flow; otherwise start low-flow and titrate on SpO₂ and WOB.",
+"src": "card:n1789943862198-0"
+},
+{
+"section": "s02",
+"q": "How long does a full E cylinder last at 1 L/min?",
+"o": [
+"10.3 hours",
+"5.9 hours",
+"2.6 hours",
+"78.5 hours"
+],
+"e": "B 2.6 · C 4.0 · D 5.9 · E 10.3 · G 78.5 · H/K 115.1 hours at 1 L/min.",
+"src": "card:n1789943862142-0"
+},
+{
+"section": "s02",
+"q": "What is the heliox cylinder factor for an E cylinder?",
+"o": [
+"0.23",
+"0.28",
+"0.14",
+"1.93"
+],
+"e": "He/O₂: D 0.14 · E 0.23 · G 1.93 · H/K 2.50 (vs O₂: 0.16 · 0.28 · 2.41 · 3.14).",
+"src": "card:n1789943862143-0"
+},
+{
+"section": "s02",
+"q": "Which is a cylinder storage rule?",
+"o": [
+"Keep full cylinders separate from empty ones",
+"Store cylinders lying loose",
+"Store near a heat source",
+"Keep empties and fulls together"
+],
+"e": "Secure them, in a well-ventilated area, with full and empty separated.",
+"src": "card:n1789943862137-0"
+},
+{
+"section": "s02",
+"q": "A standard nasal cannula is titrated in what increments?",
+"o": [
+"1–2 L/min",
+"0.1 L/min",
+"5 L/min",
+"10 L/min"
+],
+"e": "High-flow systems can reach FiO₂ ≥ 0.90; discharge goal SpO₂ ≥ 91% or baseline.",
+"src": "card:n1789943862199-0"
+},
+{
+"section": "s02",
+"q": "Why do air-entrainment masks fail at 60% O₂ with 15 L/min input?",
+"o": [
+"Total flow is only 30 L/min",
+"The jet is too large",
+"Too much air is entrained",
+"Oxygen is wasted"
+],
+"e": "60% = 2 parts total → 15 × 2 = 30 L/min, which fails; 50% just barely meets demand at 40.5 L/min.",
+"src": "card:n1789943862215-0"
+},
+{
+"section": "s02",
+"q": "Which is a power source for a portable oxygen concentrator?",
+"o": [
+"12-volt DC from a car",
+"Compressed air",
+"Liquid oxygen",
+"Solar only"
+],
+"e": "Household AC, 12-V DC, or batteries (1–4 h typical, > 6 h with extra packs).",
+"src": "card:n1789943862164-0"
+},
+{
+"section": "s02",
+"q": "How is heliox delivered to a spontaneously breathing patient?",
+"o": [
+"Tight-fitting nonrebreather or high-flow cannula",
+"Simple mask",
+"Low-flow nasal cannula",
+"Venturi mask"
+],
+"e": "A tight-fitting NRB or a high-flow cannula.",
+"src": "card:n1789943862231-0"
+},
+{
+"section": "s02",
+"q": "For Medicare sleep-only home O₂, the patient must have during sleep:",
+"o": [
+"PaO₂ ≤ 55 or SaO₂ ≤ 88% while ≥ 56 / ≥ 89% awake",
+"PaO₂ ≤ 70",
+"SpO₂ < 95%",
+"Any snoring"
+],
+"e": "Or a nocturnal PaO₂ drop > 10 mm Hg. It covers stationary, not portable, equipment.",
+"src": "card:n1789943862184-0"
+},
+{
+"section": "s02",
+"q": "How long should you preoxygenate with a tight NRB before intubation?",
+"o": [
+"At least 3–5 minutes",
+"30 seconds",
+"15–20 minutes",
+"1 hour"
+],
+"e": "Or until end-tidal O₂ > 85–90% if monitored.",
+"src": "card:n1789943862234-0"
+},
+{
+"section": "s02",
+"q": "What is the SpO₂ target in COPD?",
+"o": [
+"88–92%",
+"95–100%",
+"80–85%",
+"92–96%"
+],
+"e": "Excess FiO₂ can worsen hypercapnia; Venturi masks and HFNC give precise FiO₂.",
+"src": "card:n1789943862200-0"
+},
+{
+"section": "s02",
+"q": "Why does concentrator FiO₂ fall as flow rises?",
+"o": [
+"Less contact time with the sieve lets more nitrogen through",
+"The compressor overheats",
+"Humidity blocks the sieve",
+"Oxygen escapes from leaks"
+],
+"e": "That's the reason for the \"up to 10 L/min\" ceiling.",
+"src": "card:n1789943862162-0"
+},
+{
+"section": "s03",
+"q": "What fraction of a CFC MDI dose reaches the lungs with a spacer?",
+"o": [
+"14.8%",
+"8.8%",
+"53%",
+"90%"
+],
+"e": "CFC MDI alone 8.8% · with a spacer 14.8% · HFA 53%.",
+"src": "card:n1789944027620-0"
+},
+{
+"section": "s03",
+"q": "Aerosols are hygroscopic, meaning they:",
+"o": [
+"Grow as they move into humid BTPS conditions",
+"Shrink in the airway",
+"Repel water",
+"Evaporate instantly"
+],
+"e": "Example: cromolyn's MMAD grows from 2.31 to 3.02 µm.",
+"src": "card:n1789944027644-0"
+},
+{
+"section": "s03",
+"q": "What particle size defines the fine particle fraction?",
+"o": [
+"Under 5 to 6 µm",
+"Over 10 µm",
+"Exactly 1 µm",
+"Over 100 µm"
+],
+"e": "An aerosol spans 0.001–100 µm; the fine particle fraction (< 5–6 µm) is likely to reach the lower airway.",
+"src": "card:n1789944027637-0"
+},
+{
+"section": "s03",
+"q": "About what fraction of the dose do traditional aerosol devices deliver to the airway?",
+"o": [
+"10% to 15%",
+"30% to 50%",
+"70% to 80%",
+"1%"
+],
+"e": "Newer devices reach 30–50%. Particle size is measured by cascade impaction.",
+"src": "card:n1789944027645-0"
+},
+{
+"section": "s03",
+"q": "The classic pMDI failure is:",
+"o": [
+"Poor timing of actuation",
+"Too slow an inhalation",
+"Holding the breath",
+"Shaking the canister"
+],
+"e": "Too late → not inhaled deeply; too early → it lands in the mouth.",
+"src": "card:n1789944027612-0"
+},
+{
+"section": "s03",
+"q": "What is the brand name of cromolyn sodium?",
+"o": [
+"Intal",
+"Tilade",
+"Singulair",
+"Xolair"
+],
+"e": "A nonsteroidal mast-cell stabilizer; its sibling is nedocromil (Tilade).",
+"src": "card:n1789944027686-0"
+},
+{
+"section": "s03",
+"q": "Which unusual effect does cromolyn have?",
+"o": [
+"It can suppress ACE-inhibitor cough",
+"It raises blood glucose",
+"It causes tachycardia",
+"It bronchodilates within minutes"
+],
+"e": "It also has anti-sickling effects.",
+"src": "card:n1789944027694-0"
+},
+{
+"section": "s03",
+"q": "A patient on heliox has a weak cough. What should you do?",
+"o": [
+"Wash out the heliox with air-O₂ before coughing",
+"Increase the helium",
+"Give a bronchodilator",
+"Suction blindly"
+],
+"e": "The low-density gas weakens the expulsive phase of a cough.",
+"src": "card:n1789944027731-0"
+},
+{
+"section": "s03",
+"q": "Why does heliox reduce work of breathing?",
+"o": [
+"Its low density lowers driving pressure and makes flow more laminar",
+"It is a bronchodilator",
+"It raises PaO₂",
+"It thins secretions"
+],
+"e": "The effect is greatest in large-airway obstruction.",
+"src": "card:n1789944027717-0"
+},
+{
+"section": "s03",
+"q": "A ventilated heliox patient shows a \"beaked\" P-V loop. The likely cause is:",
+"o": [
+"Excessive volume from unapplied density conversion factors",
+"A cuff leak",
+"Low PEEP",
+"Bronchospasm"
+],
+"e": "Apply conversion factors, confirm a heliox-approved ventilator, and monitor closely.",
+"src": "card:n1789944027732-0"
+},
+{
+"section": "s03",
+"q": "IPV is best described as:",
+"o": [
+"Chest percussion from the inside",
+"An incentive spirometer",
+"A type of CPAP",
+"A cough-assist device"
+],
+"e": "High-frequency percussive bursts during the patient's own breath — hyperinflating and oscillating the airway.",
+"src": "card:n1789944027676-0"
+},
+{
+"section": "s03",
+"q": "Per Heuer, IPV delivers how many bursts per minute?",
+"o": [
+"100 to 300",
+"10 to 20",
+"500 to 1,000",
+"30 to 60"
+],
+"e": "The deck says rates exceeding 200 cycles/min.",
+"src": "card:n1789944027678-0"
+},
+{
+"section": "s03",
+"q": "How do you increase PEP on an Acapella?",
+"o": [
+"Turn the distal knob clockwise",
+"Tilt it downward",
+"Breathe faster",
+"Remove the mouthpiece"
+],
+"e": "A counterweighted lever and magnet create the oscillations.",
+"src": "card:n1789944027672-0"
+},
+{
+"section": "s03",
+"q": "Methemoglobin above what level is usually fatal?",
+"o": [
+"70%",
+"15%",
+"3%",
+"25%"
+],
+"e": "3–15% gray/blue skin · 15–20% cyanosis · 25–50% headache, dyspnea · 50–70% seizures, coma · > 70% usually fatal.",
+"src": "card:n1789944027708-0"
+},
+{
+"section": "s03",
+"q": "How does NO cause methemoglobinemia?",
+"o": [
+"It oxidizes Fe²⁺ to Fe³⁺",
+"It reduces Fe³⁺ to Fe²⁺",
+"It binds CO₂",
+"It destroys red cells"
+],
+"e": "Methemoglobin can't carry O₂ and shifts the curve left. Monitor with co-oximetry.",
+"src": "card:n1789944027707-0"
+},
+{
+"section": "s03",
+"q": "Inhaled nitric oxide is contraindicated in neonates who depend on:",
+"o": [
+"A right-to-left shunt",
+"Supplemental oxygen",
+"CPAP",
+"Surfactant"
+],
+"e": "Also coarctation of the aorta; dropping PVR removes the shunt the baby relies on.",
+"src": "card:n1789944027710-0"
+},
+{
+"section": "s03",
+"q": "iNO dilates vessels by raising:",
+"o": [
+"cGMP",
+"cAMP",
+"Calcium",
+"Histamine"
+],
+"e": "Made from L-arginine; cGMP lowers intracellular calcium. It improves V/Q, not airway caliber.",
+"src": "card:n1789944027697-0"
+},
+{
+"section": "s03",
+"q": "How does a pMDI create its aerosol?",
+"o": [
+"The propellant flashes to vapor and shatters the stream",
+"The patient's breath disperses a powder",
+"A compressor forces air through liquid",
+"Ultrasound vibrates the drug"
+],
+"e": "Pressing the canister releases drug + propellant through the metering valve.",
+"src": "card:n1789944027623-0"
+},
+{
+"section": "s04",
+"q": "What is ventilator QC called?",
+"o": [
+"Operational verification",
+"Proficiency testing",
+"Calibration verification",
+"Levey-Jennings plotting"
+],
+"e": "Manual for older machines; semiautomated self-tests on microprocessor ventilators.",
+"src": "card:n1789944189740-0"
+},
+{
+"section": "s04",
+"q": "When must the extended self-test (EST) be performed?",
+"o": [
+"Between uses on different patients",
+"Every shift",
+"Only after repairs",
+"Before each breath"
+],
+"e": "POST before applying a ventilator and after every circuit change; EST between patients, documented in writing.",
+"src": "card:n1789944189741-0"
+},
+{
+"section": "s04",
+"q": "Which CO₂ concentration is the standard capnograph gain calibration gas?",
+"o": [
+"5% CO₂",
+"10% CO₂",
+"21% CO₂",
+"1% CO₂"
+],
+"e": "5% ≈ PCO₂ 38 torr; acceptable 4.7–5.3%. A 10% gas adds a third verification level.",
+"src": "card:n1789944189748-0"
+},
+{
+"section": "s04",
+"q": "An ABG sits un-iced for too long. What happens to PaO₂?",
+"o": [
+"It decreases",
+"It increases",
+"It stays the same",
+"It rises then falls"
+],
+"e": "Living cells keep consuming O₂ and producing CO₂ → PaO₂ ↓, PaCO₂ ↑, pH falsely acidotic.",
+"src": "card:n1789944189716-0"
+},
+{
+"section": "s04",
+"q": "Why is transcutaneous monitoring a poor choice in emergencies?",
+"o": [
+"It needs 5–20 minutes to set up and stabilize",
+"It is too accurate",
+"It requires an arterial line",
+"It only works on neonates"
+],
+"e": "Also avoid it with poor skin integrity, adhesive allergy, or shock.",
+"src": "card:n1789944189737-0"
+},
+{
+"section": "s05",
+"q": "Heuer accepts a pH as low as what, depending on the problem?",
+"o": [
+"7.25",
+"7.10",
+"7.30",
+"7.00"
+],
+"e": "Usually 7.35–7.45, but 7.25–7.50 may be accepted. A chronic retainer may normalize pH at PaCO₂ ≥ 55.",
+"src": "card:n1789944515787-0"
+},
+{
+"section": "s05",
+"q": "A 6-ft man weighs 120 kg. At 8 mL/kg PBW, what VT do you set?",
+"o": [
+"About 625 mL",
+"About 960 mL",
+"About 1,200 mL",
+"About 400 mL"
+],
+"e": "PBW = 50 + 2.3 × 12 ≈ 78 kg → ~625 mL. Never use actual weight.",
+"src": "card:n1789944384194-0"
+},
+{
+"section": "s05",
+"q": "Compliance peaks at 39 mL/cm H₂O at a PEEP of 16. What is the optimum PEEP per Heuer?",
+"o": [
+"18 cm H₂O",
+"16 cm H₂O",
+"14 cm H₂O",
+"20 cm H₂O"
+],
+"e": "Optimum PEEP = best-compliance PEEP + 2.",
+"src": "card:n1789944610387-0"
+},
+{
+"section": "s05",
+"q": "Which is the true lung driving pressure?",
+"o": [
+"Pplat − PEEP",
+"PIP − PEEP",
+"PIP − Pplat",
+"Pplat + PEEP"
+],
+"e": "PIP − PEEP overestimates distension in high-resistance patients because it includes the resistive part.",
+"src": "card:n1789944610371-0"
+},
+{
+"section": "s05",
+"q": "A COPD patient's gas is 7.47 / 46 / HCO₃⁻ 32. What is it really?",
+"o": [
+"Acute respiratory alkalosis on top of compensated respiratory acidosis",
+"Partially compensated metabolic alkalosis",
+"Normal",
+"Acute metabolic acidosis"
+],
+"e": "Usually from hypoxia or improper settings; fix the cause and he returns to 7.39 / 55 / 32.",
+"src": "card:n1789944515822-0"
+},
+{
+"section": "s05",
+"q": "Per RCP 203, what MIP target applies to a myasthenia gravis patient?",
+"o": [
+"More negative than −20 cm H₂O",
+"More negative than −40",
+"More negative than −60",
+"More negative than −10"
+],
+"e": "> −40 for COPD; > −20 for myasthenia gravis.",
+"src": "card:n1789944515744-0"
+},
+{
+"section": "s05",
+"q": "What is the normal spontaneous respiratory rate for weaning?",
+"o": [
+"12–20/min",
+"6–10/min",
+"30–35/min",
+"20–30/min"
+],
+"e": "Critical: < 6 or > 30–35/min; SBT failure if RR > 30–35 or changes > 50% from baseline.",
+"src": "card:n1789944515751-0"
+},
+{
+"section": "s05",
+"q": "Which NPPV weaning readiness threshold does Heuer give?",
+"o": [
+"IPAP < 15 cm H₂O and EPAP < 10",
+"IPAP < 25 and EPAP < 15",
+"RR < 35",
+"SpO₂ > 85% on 60% O₂"
+],
+"e": "Also RR < 25, HR < 110, pH > 7.35, SpO₂ > 90% on < 50% O₂. Wean daytime first.",
+"src": "card:n1789944384159-0"
+},
+{
+"section": "s05",
+"q": "A volume-flow loop is used mainly to:",
+"o": [
+"Assess bronchodilator response",
+"Identify overdistention",
+"Set PEEP",
+"Measure compliance"
+],
+"e": "V-F loop: bronchodilator response, auto-PEEP, leaks. P-V loop: mechanics, overdistention (beak), trigger work, PSV, asynchrony.",
+"src": "card:n1789944610414-0"
+},
+{
+"section": "s05",
+"q": "What does the dotted line inside a P-V loop represent?",
+"o": [
+"Alveolar pressure",
+"Airway opening pressure",
+"PEEP",
+"Esophageal pressure"
+],
+"e": "The gap between the outer loop and the dotted line is the pressure spent on airway resistance.",
+"src": "card:n1789944610419-0"
+},
+{
+"section": "s05",
+"q": "Per the deck, normal urine output over 24 hours is more than:",
+"o": [
+"400 mL",
+"100 mL",
+"2,500 mL",
+"50 mL"
+],
+"e": "Deck: > 400 mL/24 h or > 160 mL/8 h. Heuer: 1200–1500 mL/day; < 25 mL/h is oliguria.",
+"src": "card:n1789944610393-0"
+},
+{
+"section": "s05",
+"q": "What is the most dangerous action in critical care?",
+"o": [
+"Silencing an alarm without finding the cause",
+"Suctioning too often",
+"Raising the FiO₂",
+"Calling the physician"
+],
+"e": "Alarm → patient → ventilator → cause → fix.",
+"src": "card:n1789944384202-0"
+},
+{
+"section": "s05",
+"q": "Pure CMV (control) is triggered by:",
+"o": [
+"Time only",
+"Patient effort",
+"Pressure drop",
+"Flow change"
+],
+"e": "It needs deep sedation or paralysis; patient efforts cause fighting the ventilator.",
+"src": "card:n1789944384172-0"
+},
+{
+"section": "s05",
+"q": "Permissive hypercapnia uses what tidal volume range?",
+"o": [
+"4–7 mL/kg",
+"10–12 mL/kg",
+"12–15 mL/kg",
+"2–3 mL/kg"
+],
+"e": "Deliberate hypoventilation letting PaCO₂ exceed 50; Heuer holds pH > 7.20–7.25.",
+"src": "card:n1789944515825-0"
+},
+{
+"section": "s05",
+"q": "Eucapnic ventilation in a CO₂ retainer targets a PaCO₂ near:",
+"o": [
+"50 mm Hg",
+"40 mm Hg",
+"30 mm Hg",
+"70 mm Hg"
+],
+"e": "Eucapnic = PaCO₂ near 40, or near 50 in a retainer.",
+"src": "card:n1789944515825-0"
+},
+{
+"section": "s05",
+"q": "Prolonged hypocapnia can cause:",
+"o": [
+"Hypophosphatemia",
+"Hyperkalemia",
+"Hypernatremia",
+"Hypercalcemia"
+],
+"e": "Phosphate shifts into cells → muscle and diaphragm weakness, cardiac and neurologic dysfunction.",
+"src": "card:n1789944384245-0"
+},
+{
+"section": "s05",
+"q": "Per the decks, which PIP is associated with barotrauma?",
+"o": [
+"> 50 cm H₂O",
+"> 25 cm H₂O",
+"> 35 cm H₂O",
+"> 15 cm H₂O"
+],
+"e": "PEEP > 10, Pmean > 30, or PIP > 50 cm H₂O.",
+"src": "card:n1789944610375-0"
+},
+{
+"section": "s05",
+"q": "During a recruitment maneuver, stop immediately if:",
+"o": [
+"SpO₂ drops more than 4%",
+"SpO₂ rises",
+"Pplat reaches 25",
+"The patient coughs once"
+],
+"e": "Also MAP < 60–65, HR > 140 or < 60, a new air leak, or new arrhythmias.",
+"src": "card:n1789944610384-0"
+},
+{
+"section": "s05",
+"q": "In VC, which change reduces auto-PEEP from a short expiratory time?",
+"o": [
+"Increase inspiratory flow",
+"Increase the rate",
+"Increase VT",
+"Add an inspiratory pause"
+],
+"e": "Higher flow shortens I-time and lengthens E-time; also ↓ rate or ↓ VT.",
+"src": "card:n1789944610407-0"
+},
+{
+"section": "s05",
+"q": "Auto-PEEP from high minute ventilation: what PaCO₂ trade-off is accepted?",
+"o": [
+"A higher PaCO₂ as long as pH stays above 7.25",
+"A lower PaCO₂",
+"No change in PaCO₂",
+"pH below 7.10"
+],
+"e": "↓ rate and ↓ VT, accepting permissive hypercapnia.",
+"src": "card:n1789944610408-0"
+},
+{
+"section": "s05",
+"q": "What initial IPAP/EPAP does Heuer's Table 11-7 give?",
+"o": [
+"IPAP 10–15 / EPAP 5",
+"IPAP 8 / EPAP 4",
+"IPAP 20 / EPAP 10",
+"IPAP 5 / EPAP 0"
+],
+"e": "The Chang decks use 8/4; the RCP 105 NIV deck 8–12 / 4–6.",
+"src": "card:n1789944384127-0"
+},
+{
+"section": "s05",
+"q": "Heuer's remedy for nasal bridge redness from a BiPAP mask is:",
+"o": [
+"Reduce strap tension or add a forehead spacer",
+"Tighten the straps",
+"Switch to nasal pillows",
+"Increase IPAP"
+],
+"e": "Mouth leak → chin strap; claustrophobia → clear low-bulk mask.",
+"src": "card:n1789944384165-0"
+},
+{
+"section": "s06",
+"q": "What size suction catheter fits an 8.0 ETT (Table 10-3)?",
+"o": [
+"14 Fr",
+"12 Fr",
+"16 Fr",
+"10 Fr"
+],
+"e": "Use ETT ID × 2, then step down to the next available size. A 7.0 tube takes 12 Fr.",
+"src": "card:n1789944802140-0"
+},
+{
+"section": "s06",
+"q": "A suction catheter won't pass down the ETT. What does it mean?",
+"o": [
+"The tube is kinked or displaced",
+"The cuff is overinflated",
+"The patient is apneic",
+"The catheter is too small"
+],
+"e": "Kinked or displaced tube.",
+"src": "card:n1789944802053-0"
+},
+{
+"section": "s06",
+"q": "What must you flush a subglottic (Hi-Lo Evac) suction port with?",
+"o": [
+"Air",
+"Saline",
+"Sterile water",
+"Heparin"
+],
+"e": "Run at about −20 to −25 mm Hg / −20 to −30 cm H₂O, and flush with air to keep it patent.",
+"src": "card:n1789944802054-0"
+},
+{
+"section": "s06",
+"q": "Halving the ETT radius increases driving pressure by:",
+"o": [
+"16-fold",
+"2-fold",
+"4-fold",
+"8-fold"
+],
+"e": "Poiseuille's law — the reason to use the largest appropriate tube.",
+"src": "card:n1789944802064-0"
+},
+{
+"section": "s06",
+"q": "Which cuff automatically holds about 30 cm H₂O?",
+"o": [
+"Lanz valve",
+"Bivona Fome-Cuf",
+"Standard HVLP cuff",
+"Uncuffed tube"
+],
+"e": "The Bivona foam cuff seals at atmospheric pressure.",
+"src": "card:n1789944802073-0"
+},
+{
+"section": "s06",
+"q": "What usually causes high cuff pressure?",
+"o": [
+"A tube that is too small or poorly positioned",
+"A tube that is too large",
+"Low PEEP",
+"A short tube"
+],
+"e": "Too small a tube needs high cuff pressure to seal.",
+"src": "card:n1789944802062-0"
+},
+{
+"section": "s06",
+"q": "In a ventilated patient, the bronchoscope enters through a:",
+"o": [
+"Bodai adapter with a bronchoscopy port",
+"Disconnected circuit",
+"Tracheostomy only",
+"Nasal airway"
+],
+"e": "Ventilation, FiO₂ and PEEP aren't lost. The working channel is 2–2.6 mm.",
+"src": "card:n1789944802121-0"
+},
+{
+"section": "s06",
+"q": "Why is bronchial brushing done with a sheathed brush?",
+"o": [
+"The sheath prevents contamination going in and out",
+"It cuts tissue",
+"It suctions secretions",
+"It delivers lidocaine"
+],
+"e": "It yields individual cells for cytology or microbiology, not tissue architecture.",
+"src": "card:n1789944802126-0"
+},
+{
+"section": "s06",
+"q": "Why is atropine part of the classic bronchoscopy premedication?",
+"o": [
+"It reduces vagal response, secretions and bronchospasm",
+"It suppresses cough",
+"It sedates the patient",
+"It reverses opioids"
+],
+"e": "Morphine suppresses cough; a sedative completes the trio. The goal is a spontaneously breathing patient, not general anesthesia.",
+"src": "card:n1789944802131-0"
+},
+{
+"section": "s06",
+"q": "Which is an ABSOLUTE contraindication to bronchoscopy?",
+"o": [
+"Inability to oxygenate adequately during the procedure",
+"Chronic cough",
+"Recent pneumonia",
+"Mild asthma"
+],
+"e": "Also no consent, no experienced clinician, coagulopathy, severe refractory hypoxemia, hemodynamic instability.",
+"src": "card:n1789944802123-0"
+},
+{
+"section": "s06",
+"q": "Which bronchoscopy tool removes a smooth, rounded foreign body?",
+"o": [
+"Basket or snare loop",
+"Grasping forceps",
+"Biopsy needle",
+"Cytology brush"
+],
+"e": "Forceps for irregular soft objects; a balloon catheter can also be inflated beyond the object and withdrawn.",
+"src": "card:n1789944802129-0"
+},
+{
+"section": "s06",
+"q": "Which is difficult-airway backup equipment?",
+"o": [
+"Bougie",
+"Nasal cannula",
+"Incentive spirometer",
+"Peak flow meter"
+],
+"e": "Bougie, lighted stylet, intubating LMA, video laryngoscope, fiberoptic scope, supraglottic airways.",
+"src": "card:n1789944802030-0"
+},
+{
+"section": "s06",
+"q": "Per Heuer Table 9-8, what ETT size suits a 5-year-old?",
+"o": [
+"5.0 mm",
+"3.5 mm",
+"6.5 mm",
+"7.0 mm"
+],
+"e": "3 yr 4.5 · 5 yr 5.0 · 6 yr 5.5 · 8 yr 6.0 · 12 yr 6.5 · 16 yr 7.0.",
+"src": "card:n1789944802077-0"
+},
+{
+"section": "s06",
+"q": "Why does a separate collection chamber matter in a chest drainage system?",
+"o": [
+"Fluid no longer deepens the water seal",
+"It increases suction",
+"It removes the need for a water seal",
+"It filters air"
+],
+"e": "In the old one-bottle system, accumulating fluid raised the seal depth and the WOB.",
+"src": "card:n1789944802085-0"
+},
+{
+"section": "s07",
+"q": "Can a 12-lead ECG alone diagnose an MI?",
+"o": [
+"No — it needs the presentation plus cardiac biomarkers",
+"Yes, always",
+"Only in women",
+"Only with ST depression"
+],
+"e": "STEMI and NSTEMI are treated very differently.",
+"src": "card:n1789944966145-0"
+},
+{
+"section": "s07",
+"q": "Acute STEMI in men requires ST elevation of at least:",
+"o": [
+"2 mm in two contiguous precordial leads",
+"0.5 mm in one lead",
+"5 mm in all leads",
+"1 mm in aVR"
+],
+"e": "≥ 1.5 mm in women. Ischemia/NSTEMI shows ST depression ≥ 0.5 mm and T-wave changes.",
+"src": "card:n1789944966141-0"
+},
+{
+"section": "s07",
+"q": "A PR interval over 0.20 sec indicates:",
+"o": [
+"First-degree or Mobitz I AV block",
+"Bundle branch block",
+"Atrial fibrillation",
+"Normal sinus rhythm"
+],
+"e": "QRS > 0.12 sec: PVCs, BBB, VT, hyperkalemia.",
+"src": "card:n1789944966143-0"
+},
+{
+"section": "s07",
+"q": "A pleural friction rub sounds:",
+"o": [
+"Creaking or grating, mainly on inhalation",
+"High-pitched and musical",
+"Low-pitched snoring",
+"Fine crackling at the end of inspiration"
+],
+"e": "Inflamed pleural surfaces rubbing; seen in pleurisy, effusion with inflammation, pneumonia, PE.",
+"src": "card:n1789944966078-0"
+},
+{
+"section": "s07",
+"q": "Sodium bicarbonate in a code is:",
+"o": [
+"A last resort that raises CO₂, so you must ventilate",
+"First-line for all arrests",
+"Given before CPR",
+"Contraindicated always"
+],
+"e": "0.5–1 mEq/kg to keep pH > 7.15. IO access works when IV fails.",
+"src": "card:n1789944966133-0"
+},
+{
+"section": "s07",
+"q": "Without CPR, survival drops by how much per minute?",
+"o": [
+"7–10%",
+"1%",
+"25%",
+"50%"
+],
+"e": "3–4% per minute with CPR.",
+"src": "card:n1789944966133-0"
+},
+{
+"section": "s07",
+"q": "Cheyne-Stokes breathing is caused by:",
+"o": [
+"CNS disease and congestive heart failure",
+"Asthma",
+"Diabetic ketoacidosis",
+"Anxiety"
+],
+"e": "Waxing and waning VT followed by apnea. Treat the cause; bilevel or ASV.",
+"src": "card:n1789944966109-0"
+},
+{
+"section": "s07",
+"q": "A SOMNOLENT patient is:",
+"o": [
+"Easily aroused but drifts back to sleep",
+"Unresponsive to pain",
+"Fully alert",
+"Disoriented with wrong answers"
+],
+"e": "Think sleep apnea or excess O₂ in COPD. Confused = disoriented; semicomatose = minimal response even to pain.",
+"src": "card:n1789944966118-0"
+},
+{
+"section": "s08",
+"q": "Under Heuer's base-excess rule, compensation is occurring when:",
+"o": [
+"PaCO₂ and BE are both high or both low",
+"PaCO₂ is high and BE is low",
+"pH is normal",
+"BE is zero"
+],
+"e": "Then pH < 7.40 → primary acidosis; > 7.40 → primary alkalosis. pH back in 7.35–7.45 = full.",
+"src": "card:n1789945195284-0"
+},
+{
+"section": "s08",
+"q": "pH 7.30 with PaCO₂ 40 indicates a primary:",
+"o": [
+"Metabolic acidosis",
+"Respiratory acidosis",
+"Respiratory alkalosis",
+"Metabolic alkalosis"
+],
+"e": "pH < 7.35 with PaCO₂ ≤ 45 → metabolic acidosis.",
+"src": "card:n1789945195283-0"
+},
+{
+"section": "s08",
+"q": "What FEV₁/FVC confirms obstruction for all patients?",
+"o": [
+"< 70%",
+"< 90%",
+"< 50%",
+"> 80%"
+],
+"e": "A normal FEV₁% is ≥ 70%. Asthma: adults < 0.75–0.80, children < 0.90.",
+"src": "card:n1789945195198-0"
+},
+{
+"section": "s08",
+"q": "By the 40–50–60 / 70–80–90 rule, a PaO₂ of 50 torr ≈ SaO₂:",
+"o": [
+"80%",
+"70%",
+"90%",
+"95%"
+],
+"e": "40 → 70%, 50 → 80%, 60 → 90%. It flattens above 90%.",
+"src": "card:n1789945195299-0"
+},
+{
+"section": "s08",
+"q": "What is the alveolar ventilation at f 15, VT 680 mL, VD 200 mL?",
+"o": [
+"7.2 L/min",
+"10.2 L/min",
+"3.0 L/min",
+"13.2 L/min"
+],
+"e": "V̇A = 15 × (680 − 200) = 7.2 L/min.",
+"src": "card:n1789945195272-0"
+},
+{
+"section": "s08",
+"q": "VT 450 mL, PaCO₂ 60, PĒCO₂ 30. What is the dead space (VD)?",
+"o": [
+"225 mL",
+"150 mL",
+"300 mL",
+"450 mL"
+],
+"e": "VD = 450 × (60 − 30)/60 = 225 mL.",
+"src": "card:n1789945195269-0"
+},
+{
+"section": "s08",
+"q": "Hb 10 g/dL, PaO₂ 50, SaO₂ 80%. What is the CaO₂?",
+"o": [
+"About 11 mL/dL",
+"About 14 mL/dL",
+"About 8 mL/dL",
+"About 20 mL/dL"
+],
+"e": "10 × 1.36 × 0.80 = 10.9 + 0.15 dissolved = 11.05 mL/dL.",
+"src": "card:n1789945195256-0"
+},
+{
+"section": "s08",
+"q": "Which O₂-binding constant does Heuer use in the content formula?",
+"o": [
+"1.36 mL O₂/g Hb",
+"1.34 mL O₂/g Hb",
+"0.003",
+"1.39"
+],
+"e": "The RCP 105 decks use 1.34; either is accepted.",
+"src": "card:n1789945195255-0"
+},
+{
+"section": "s08",
+"q": "How should you state the normal C(a−v̄)O₂ on the exam?",
+"o": [
+"Less than 7.0 mL/dL (about 5 assumed)",
+"More than 10 mL/dL",
+"Exactly 2 mL/dL",
+"15–20 mL/dL"
+],
+"e": "The commonly taught 4–5 mL/dL sits inside Heuer's < 7.0.",
+"src": "card:n1789945195258-0"
+},
+{
+"section": "s08",
+"q": "About how much does PaO₂ fall per 1,000 ft of altitude?",
+"o": [
+"5 torr",
+"1 torr",
+"15 torr",
+"25 torr"
+],
+"e": "Denver at 5,000 ft: 100 − 25 = 75 torr.",
+"src": "card:n1789945195306-0"
+},
+{
+"section": "s08",
+"q": "Across studies, what was the average MIP in successfully weaned patients?",
+"o": [
+"−37 cm H₂O",
+"−20 cm H₂O",
+"−60 cm H₂O",
+"−10 cm H₂O"
+],
+"e": "−37 in weaned vs −30 in non-weaned; weaning likely if MIP is at least −30.",
+"src": "card:n1789945195280-0"
+},
+{
+"section": "s08",
+"q": "Heuer Table 1-5's 7.53 / 27 with PaO₂ 53 is acute respiratory alkalosis caused by:",
+"o": [
+"Hyperventilation due to hypoxemia",
+"Vomiting",
+"Diuretics",
+"Opioid overdose"
+],
+"e": "Seen in pneumonia, asthma, PE.",
+"src": "card:n1789945195292-0"
+},
+{
+"section": "s08",
+"q": "Which ABG fits ACUTE (uncompensated) respiratory acidosis?",
+"o": [
+"7.22 / 65 / HCO₃⁻ 26",
+"7.36 / 79 / HCO₃⁻ 43",
+"7.44 / 28 / HCO₃⁻ 19",
+"7.30 / 40 / HCO₃⁻ 18"
+],
+"e": "pH < 7.35, PaCO₂ > 45, HCO₃⁻ still normal (Heuer Box 4-1).",
+"src": "card:n1789945195290-0"
+},
+{
+"section": "s08",
+"q": "Which is a contraindication to exercise testing?",
+"o": [
+"Unstable angina",
+"Controlled asthma",
+"Mild COPD",
+"Recent cold"
+],
+"e": "Also acute MI, uncontrolled HF, significant dysrhythmias, acute pulmonary disorders, severe HTN.",
+"src": "card:n1789945195217-0"
+},
+{
+"section": "s08",
+"q": "Terminate O₂ titration with exercise if SaO₂ falls below:",
+"o": [
+"85%",
+"92%",
+"88%",
+"75%"
+],
+"e": "No 6MWT within one month of MI or unstable angina; relative: resting HR > 120, SBP > 180, DBP > 100.",
+"src": "card:n1789945195218-0"
+},
+{
+"section": "s09",
+"q": "Pulmonary hypertension is a mean PAP at rest above:",
+"o": [
+"25 mm Hg",
+"15 mm Hg",
+"40 mm Hg",
+"10 mm Hg"
+],
+"e": "Or > 30 on exertion, or systolic PAP > 35 mm Hg.",
+"src": "card:n1789945317689-0"
+},
+{
+"section": "s09",
+"q": "Where are apnea-monitor sensors placed?",
+"o": [
+"Midway between the nipple line and midaxillary line on each side",
+"On the forehead",
+"On the abdomen below the umbilicus",
+"On the back"
+],
+"e": "They sense impedance changes. Typical: neonatal HR alarm 80–210/min, apnea alarm 15–20 s.",
+"src": "card:n1789945317735-0"
+},
+{
+"section": "s09",
+"q": "Which adverse effect of loop diuretics is most important?",
+"o": [
+"Hypokalemia",
+"Hyperglycemia",
+"Hyperkalemia",
+"Bradycardia"
+],
+"e": "It can cause arrhythmias. Others: hypochloremia, metabolic alkalosis, hypovolemia, Ca²⁺ loss, ototoxicity.",
+"src": "card:n1789945317718-0"
+},
+{
+"section": "s09",
+"q": "How do thiazides differ from loop diuretics in calcium handling?",
+"o": [
+"Thiazides retain calcium",
+"Thiazides waste calcium",
+"Neither affects calcium",
+"Both retain calcium"
+],
+"e": "Thiazides also have the strongest diabetogenic activity.",
+"src": "card:n1789945317719-0"
+},
+{
+"section": "s09",
+"q": "Which diuretic class is first-line for mild hypertension?",
+"o": [
+"Thiazides",
+"Loop diuretics",
+"Carbonic anhydrase inhibitors",
+"Osmotic diuretics"
+],
+"e": "Not for acute pulmonary edema. Potassium-sparing agents are supportive.",
+"src": "card:n1789945317722-0"
+},
+{
+"section": "s09",
+"q": "Acetazolamide causes which acid-base effect?",
+"o": [
+"Metabolic acidosis",
+"Metabolic alkalosis",
+"Respiratory acidosis",
+"No change"
+],
+"e": "It blocks proximal HCO₃⁻ reabsorption — used to treat metabolic alkalosis, altitude sickness and glaucoma.",
+"src": "card:n1789945317717-0"
+},
+{
+"section": "s09",
+"q": "Which potassium-sparing diuretic needs liver activation?",
+"o": [
+"Triamterene",
+"Spironolactone",
+"Amiloride",
+"Eplerenone"
+],
+"e": "Avoid triamterene in liver disease. Both K⁺-sparing classes cause hyperkalemia.",
+"src": "card:n1789945317720-0"
+},
+{
+"section": "s09",
+"q": "The PtcO₂ electrode membrane is:",
+"o": [
+"Hydrophobic — passes O₂ and CO₂ but blocks moisture",
+"Hydrophilic",
+"Made of glass",
+"Permeable to electrolytes"
+],
+"e": "A platinum and silver electrode under the membrane with phosphate buffer and KCl.",
+"src": "card:n1789945317725-0"
+},
+{
+"section": "s10",
+"q": "What L/A ratio indicates fetal lung maturity?",
+"o": [
+"≥ 40.0",
+"≥ 2.0",
+"≥ 10",
+"≥ 100"
+],
+"e": "Phosphatidylglycerol present is confirmatory, especially in diabetic mothers.",
+"src": "card:n1789945435726-0"
+},
+{
+"section": "s10",
+"q": "What is the racemic epinephrine dose?",
+"o": [
+"2.25% solution, 0.25–0.5 mL",
+"1:1000, 1 mL",
+"2.5 mg in 3 mL",
+"0.01 mg/kg IV"
+],
+"e": "QID; strong α-adrenergic. Used for croup, epiglottitis, post-extubation stridor.",
+"src": "card:n1789945435735-0"
+},
+{
+"section": "s10",
+"q": "In OSA, which muscle fails to hold the airway open?",
+"o": [
+"Genioglossus",
+"Diaphragm",
+"Sternocleidomastoid",
+"Masseter"
+],
+"e": "The tongue falls back. Cardinal features: obstructive apneas, hypopneas, RERAs.",
+"src": "card:n1789945435739-0"
+},
+{
+"section": "s10",
+"q": "What is the strongest predictor of OSA?",
+"o": [
+"Obesity",
+"Female sex",
+"Age under 30",
+"Asthma"
+],
+"e": "Also large neck, male sex, age > 65, HTN, diabetes, alcohol, sedatives, smoking.",
+"src": "card:n1789945435740-0"
+},
+{
+"section": "s10",
+"q": "Which is first-line OSA treatment?",
+"o": [
+"Behavior modification plus PAP",
+"An oral appliance for all",
+"Surgery",
+"Respiratory stimulants"
+],
+"e": "Weight loss is the most effective behavior change; oral appliances for mild/moderate or CPAP intolerance.",
+"src": "card:n1789945435746-0"
+},
+{
+"section": "s10",
+"q": "What comes first in treating central sleep apnea?",
+"o": [
+"Treat the underlying cause",
+"CPAP 15 cm H₂O",
+"Acetazolamide",
+"Tracheostomy"
+],
+"e": "Then CPAP/BiPAP or ASV (CPAP +5 to +10); stimulants if it persists.",
+"src": "card:n1789945435747-0"
+},
+{
+"section": "s10",
+"q": "Why does a home sleep test report RDI instead of AHI?",
+"o": [
+"It has no EEG, so it can't measure sleep time",
+"It is more accurate",
+"It counts snores",
+"It is done awake"
+],
+"e": "Gold standard: full-night attended in-lab PSG; split-night studies diagnose then titrate.",
+"src": "card:n1789945435743-0"
+},
+{
+"section": "s10",
+"q": "Which is an accessory muscle of inspiration?",
+"o": [
+"Scalenes",
+"Internal intercostals",
+"Rectus abdominis",
+"Diaphragm"
+],
+"e": "Sternocleidomastoid, scalenes, upper trapezius, pectoralis major. Use at rest = increased WOB.",
+"src": "card:n1789945435765-0"
+},
+{
+"section": "s10",
+"q": "Hospital-acquired pneumonia occurs at least how long after admission?",
+"o": [
+"48 hours",
+"12 hours",
+"7 days",
+"90 days"
+],
+"e": "HAP ≥ 48 h after admission; VAP > 48–72 h after intubation; HCAP = recent healthcare exposure.",
+"src": "card:n1789945435763-0"
+},
+{
+"section": "s10",
+"q": "What is the leading cause of community-acquired bacterial pneumonia?",
+"o": [
+"Streptococcus pneumoniae",
+"Pseudomonas aeruginosa",
+"Mycoplasma pneumoniae",
+"Legionella"
+],
+"e": "> 80% of bacterial cases.",
+"src": "card:n1789945435760-0"
+},
+{
+"section": "s10",
+"q": "Which atypical pneumonia organism has no cell wall?",
+"o": [
+"Mycoplasma pneumoniae",
+"Streptococcus pneumoniae",
+"Klebsiella",
+"Haemophilus influenzae"
+],
+"e": "\"Walking pneumonia\" in children and young adults. Viruses cause ≈ 50% of all pneumonias.",
+"src": "card:n1789945435762-0"
+},
+{
+"section": "s10",
+"q": "Why are one or two doses of exogenous surfactant usually enough?",
+"o": [
+"90–95% is taken up, reprocessed and re-secreted",
+"It lasts for months unchanged",
+"The lungs make none afterward",
+"It is given continuously"
+],
+"e": "Type II cells recycle surfactant.",
+"src": "card:n1789945435729-0"
+}
+]

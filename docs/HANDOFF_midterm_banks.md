@@ -37,7 +37,15 @@ one boss per study-guide section, questions usable in both Study (training) and 
       (Henderson-Hasselbalch, dynamic compliance, Otis, double effect, Mehrabian, levalbuterol, pneumotaxic, PRVC, MLT).
       Dropped 1 duplicate (6MWT emergency equipment). Female PBW constant 45 matches the drill's own IBW examples.
       SW CACHE = rcp-study-v17-gaps202. Committed; **push needs the user's OK.**
-- [ ] **NEXT: RCP 203 gap-fill (169 cards)** — same method, Claude or Codex.
+- [x] 202 pushed live (v17). Later added 11 more 202 questions from fact cards first passed over
+      (ECMO stroke/ICH, oxygenator, cannulas, rehab components, active listening, V60 total leak, partial-compensation gases) → 202 = 676.
+- [x] **RCP 203 gap-fill done by Claude (2026-10-25):** `tools/midterm/gaps203.json`, 137 questions (203 now 781 Q).
+      Skipped the self-contradicting G-cylinder factor (2.14 vs 2.41) and topics the drill already tests (RSBI, classic shunt,
+      chest-tube suction, adult ETT size, MEP, chin strap, VC→PC). Dropped 5 duplicates and fixed 1 wrong card id during verify.
+      SW CACHE = rcp-study-v18-gaps203. Committed; **push needs the user's OK.**
+- **Gap-fill is now complete for all three courses.** Totals: 201 = 491 · 202 = 676 · 203 = 781 (1,948).
+      Re-run if Recall's cards change: `python3 tools/gap_prefilter.py <course>` and diff against `gaps<course>.json` srcs.
+- [x] (done above) RCP 203 gap-fill (169 cards) — same method, Claude or Codex.
       `python3 tools/gap_prefilter.py 203 > /tmp/uncov203.txt`, write `tools/midterm/gaps203.json`, rebuild, bump CACHE to v18.
       Watch for: cards that restate a drill fact in different words, cards whose answer contradicts the drill
       (the drill wins, so skip them), and don't pipe the script into `| head` (it raises a harmless BrokenPipe).

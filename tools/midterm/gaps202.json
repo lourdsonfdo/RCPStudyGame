@@ -1882,5 +1882,137 @@
 ],
 "e": "The deck teaches 45; 45.5 is the ARDSNet/Heuer constant. Know both exist.",
 "src": "card:n1789961609663-0"
+},
+{
+"section": "s03",
+"q": "In VV ECMO for H1N1, intracranial hemorrhage contributed to what share of deaths?",
+"o": [
+"43%",
+"9%",
+"17%",
+"85%"
+],
+"e": "ICH occurred in ~9% and contributed to 43% of deaths. Ischemic stroke is more common in VA ECMO (~9% of deaths).",
+"src": "card:n1789960471198-0"
+},
+{
+"section": "s03",
+"q": "What happens inside a modern ECMO oxygenator?",
+"o": [
+"Sweep gas flows through thousands of gas-permeable filaments bathed in venous blood",
+"Blood bubbles through oxygen",
+"Blood passes over a heated plate",
+"Oxygen is injected into the blood"
+],
+"e": "Gas exchange happens across those filament membranes before the blood returns.",
+"src": "card:n1789960471119-0"
+},
+{
+"section": "s03",
+"q": "Why are modern ECMO cannulas reinforced with wire?",
+"o": [
+"To prevent collapse under high negative pressure",
+"To conduct heat",
+"To improve X-ray visibility only",
+"To deliver medications"
+],
+"e": "They're also coated with heparin or polymers for biocompatibility, and double-lumen designs drain both venae cavae.",
+"src": "card:n1789960471204-0"
+},
+{
+"section": "s03",
+"q": "What does Hess admit about ECMO management guidelines?",
+"o": [
+"No clear evidence-based guidelines for ideal management exist yet",
+"ELSO's guidelines are strict protocols",
+"Guidelines are identical worldwide",
+"ECMO needs no guidelines"
+],
+"e": "ELSO gives broad recommendations that leave room for individualized therapy.",
+"src": "card:n1789960471175-0"
+},
+{
+"section": "s04",
+"q": "Which is a component of a pulmonary rehab program?",
+"o": [
+"Nutrition and diet education",
+"Daily IV antibiotics",
+"Mechanical ventilation",
+"Bronchoscopy"
+],
+"e": "Exercise, A&P, disease education, breathing/relaxation, nutrition, psychosocial support, community, ADL strategies — a multidisciplinary team.",
+"src": "card:n1789960581426-0"
+},
+{
+"section": "s01",
+"q": "Which is one of the receiver's active-listening skills?",
+"o": [
+"Listen to the intent, not just the content",
+"Plan your reply while they talk",
+"Interrupt to clarify every point",
+"Avoid eye contact"
+],
+"e": "Content, intent, the sender's nonverbals, your own nonverbals and filters, and listening without judgment.",
+"src": "card:n1789950306955-0"
+},
+{
+"section": "s01",
+"q": "Does communication occurring mean effective communication occurred?",
+"o": [
+"No — people can exchange words and still misunderstand",
+"Yes, always",
+"Only if it was written",
+"Only if the patient nodded"
+],
+"e": "Misunderstanding causes delays, errors, wrong treatment and patient harm.",
+"src": "card:n1789950306927-0"
+},
+{
+"section": "s05",
+"q": "In the autonomic nervous system, the preganglionic fiber runs to the:",
+"o": [
+"Ganglion",
+"Effector organ",
+"Spinal cord",
+"Brain"
+],
+"e": "Preganglionic fiber → ganglion → postganglionic fiber → effector, with relative lengths flipped between the two branches.",
+"src": "card:n1789960743608-0"
+},
+{
+"section": "s07",
+"q": "On the V60 with an after-market circuit and a completed Circuit Test, which leak do you watch?",
+"o": [
+"Total Leak",
+"Patient Leak",
+"Neither",
+"Exhaled VT only"
+],
+"e": "Total Leak after a Circuit Test with after-market gear; Patient Leak with pre-compensated Respironics circuits and masks.",
+"src": "card:n1789961012505-0"
+},
+{
+"section": "s08",
+"q": "pH 7.66, PaCO₂ 57, HCO₃⁻ 61 is:",
+"o": [
+"Severe metabolic alkalosis with partial respiratory compensation",
+"Fully compensated metabolic alkalosis",
+"Acute respiratory acidosis",
+"Mixed respiratory and metabolic acidosis"
+],
+"e": "The patient hypoventilates to retain CO₂, but the pH is still far from normal.",
+"src": "card:n1789961165589-0"
+},
+{
+"section": "s08",
+"q": "From a chronic baseline of 7.36/77/43, which gas shows acute hyperventilation on top?",
+"o": [
+"7.51 / 52 / 40",
+"7.28 / 99 / 44",
+"7.36 / 77 / 43",
+"7.20 / 110 / 46"
+],
+"e": "Acute hyperventilation → 7.51/52/40; acute failure on top → 7.28/99/44.",
+"src": "card:n1789961165586-0"
 }
 ]
