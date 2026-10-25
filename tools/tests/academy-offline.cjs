@@ -7,7 +7,7 @@ const assert=require('node:assert/strict');
  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8873/RCPStudyGame/');await page.locator('.academy.active').waitFor();
  await page.waitForFunction(()=>navigator.serviceWorker.controller,{},{timeout:30000});
- const cache=await page.evaluate(async()=>{const c=await caches.open('rcp-study-v13-academy');return (await c.keys()).length});assert.ok(cache>=57);console.log('Precache assets',cache);
+ const cache=await page.evaluate(async()=>{const name=(await caches.keys()).find(k=>k.startsWith('rcp-study-'));if(!name)return 0;const c=await caches.open(name);return (await c.keys()).length});assert.ok(cache>=57);console.log('Precache assets',cache);
  await page.evaluate(()=>{const s=App.getState();s.gold=250;s.inventory.healthPotion=3;s.equipped=['healthPotion'];App.persist();App.goto('battle',{course:'rcp103',bossId:'copd'});});
  await page.locator('[data-screen="battle"].active').waitFor();
  const saved=await page.evaluate(()=>JSON.stringify(App.getState().battleRun));
