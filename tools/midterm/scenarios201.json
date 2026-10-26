@@ -1,0 +1,130 @@
+[
+{"id":"s201-apneic-newborn","title":"Delivery Room: Limp, Apneic Newborn","vitals":{"rr":0,"spo2":60,"hr":80,"bp":"48/28"},"startingHp":60,
+ "intro":"A term baby is delivered after a prolonged second stage. She is limp, blue and not breathing. The nurse asks whether to score the 1-minute Apgar before anyone touches her.",
+ "decisions":[
+  {"prompt":"What do you do first?","options":[
+   {"text":"Score the 1-minute Apgar, then decide","hpDelta":-15,"explain":"Never delay resuscitation to score the Apgar. An apneic, limp newborn needs immediate action."},
+   {"text":"Warm, dry and open the airway","hpDelta":15,"explain":"Correct. The first steps are warm, dry, position and clear the airway, then assess breathing and heart rate.","src":"The first steps of newborn resuscitation are:"},
+   {"text":"Give epinephrine through the UVC now","hpDelta":-15,"explain":"Far too early. Drugs come only after effective ventilation and compressions have failed."}]},
+  {"prompt":"After drying and stimulation she is still apneic. HR 80. Next?","options":[
+   {"text":"Start PPV at 40–60 breaths/min","hpDelta":20,"explain":"Correct. Apnea or HR below 100 calls for PPV at 40–60 breaths/min, reassessing at 30 seconds.","src":"Which is an indication for positive-pressure ventilation in a newborn?"},
+   {"text":"Keep stimulating until she breathes","hpDelta":-15,"explain":"This is secondary apnea. Stimulation won't work here; only PPV restores breathing, and HR and BP keep falling until it starts."},
+   {"text":"Begin chest compressions at 3:1","hpDelta":-10,"explain":"Compressions are for HR below 60 after 30 seconds of effective PPV. Ventilate first."}]},
+  {"prompt":"After 30 seconds of effective PPV the HR is 50. Next?","options":[
+   {"text":"Continue PPV alone and recheck later","hpDelta":-15,"explain":"HR below 60 despite 30 seconds of effective PPV means you must add compressions."},
+   {"text":"Stop and reassess at the 5-minute mark","hpDelta":-20,"explain":"Waiting lets the heart rate keep falling. Act now."},
+   {"text":"Start chest compressions at 3:1","hpDelta":20,"explain":"Correct. HR below 60 after 30 seconds of effective PPV → compressions at 3 compressions to 1 breath.","src":"An apneic newborn's HR is 50 after 30 seconds of effective PPV. Next step?"}]},
+  {"prompt":"After 60 seconds of compressions the HR is still below 60. Next?","options":[
+   {"text":"Epinephrine, preferably IV via the UVC","hpDelta":20,"explain":"Correct. Still below 60 after 60 seconds of compressions → epinephrine, preferably IV through the UVC (deck: 1:10,000, 0.1–0.3 mL/kg IV).","src":"After 60 s of compressions the newborn's HR is still below 60. Next step?"},
+   {"text":"Atropine down the endotracheal tube","hpDelta":-15,"explain":"Atropine isn't part of newborn resuscitation. Epinephrine is the drug here."},
+   {"text":"Stop resuscitation and call time","hpDelta":-25,"explain":"Far too early. Give epinephrine and keep going."}]}
+ ]},
+{"id":"s201-preemie-rds","title":"NICU: 28-Week Preemie Who Is Grunting","vitals":{"rr":74,"spo2":84,"hr":168,"bp":"38/22"},"startingHp":60,
+ "intro":"A 28-week, 1,050 g infant was born an hour ago; the mother had no antenatal steroids. He is grunting, with retractions and nasal flaring. The chest film shows ground-glass lungs with low volumes.",
+ "decisions":[
+  {"prompt":"What is the most likely diagnosis?","options":[
+   {"text":"Transient tachypnea of the newborn","hpDelta":-5,"explain":"TTN shows mildly increased volume and perihilar streaks and clears in 24–72 hours. Low volumes with ground glass in a 28-weeker is RDS."},
+   {"text":"Meconium aspiration syndrome","hpDelta":-10,"explain":"MAS is a term and post-term disease; preterm guts rarely pass meconium. The film would show patchy infiltrates with hyperinflation."},
+   {"text":"RDS from surfactant deficiency","hpDelta":15,"explain":"Correct. Surfactant production starts around 24 weeks and matures around 35 weeks, so a 28-weeker is surfactant-deficient.","src":"Surfactant deficiency causes which disease?"}]},
+  {"prompt":"Why is he grunting?","options":[
+   {"text":"To create his own PEEP and hold alveoli open","hpDelta":10,"explain":"Correct. Grunting is exhaling against a partly closed glottis — self-made PEEP that tries to raise a low FRC.","src":"Why does an infant grunt?"},
+   {"text":"To clear secretions from the large airways","hpDelta":-5,"explain":"Grunting isn't a cough. It's back-pressure on exhalation to keep collapsing alveoli open."},
+   {"text":"Because his FRC is abnormally high","hpDelta":-10,"explain":"RDS lowers FRC as alveoli collapse. (The slide's 'increased FRC' is a known error.)"}]},
+  {"prompt":"The team will give surfactant. How is it given?","options":[
+   {"text":"Nebulized through a face mask","hpDelta":-10,"explain":"Surfactant isn't nebulized. It's instilled into the lungs through the ETT."},
+   {"text":"Instilled down the endotracheal tube","hpDelta":20,"explain":"Correct. Exogenous surfactant is instilled into the ETT, prophylactically or as rescue therapy.","src":"How is replacement surfactant given?"},
+   {"text":"Infused intravenously over an hour","hpDelta":-15,"explain":"Surfactant works on the alveolar surface. IV delivery doesn't get it there."}]},
+  {"prompt":"He stabilizes on the ventilator. What PaO₂ do you aim for?","options":[
+   {"text":"80–100 mm Hg, like an adult","hpDelta":-10,"explain":"Adult targets over-oxygenate a preemie. High PaO₂ drives retinal vasoconstriction and ROP."},
+   {"text":"As high as possible, to be safe","hpDelta":-20,"explain":"Hyperoxia in a 1,050 g infant is a direct ROP risk. Careful, monitored O₂ is the rule."},
+   {"text":"50–70 mm Hg, to help prevent ROP","hpDelta":15,"explain":"Correct. Infants under 31 weeks and 1,250 g are at highest ROP risk; keep PaO₂ 50–70 with close monitoring.","src":"Target PaO₂ to help prevent ROP is:"}]}
+ ]},
+{"id":"s201-meconium","title":"Delivery Room: Thick Meconium at 42 Weeks","vitals":{"rr":12,"spo2":70,"hr":80,"bp":"50/30"},"startingHp":60,
+ "intro":"A post-term baby is delivered through thick, meconium-stained fluid. He has weak respiratory effort, poor tone and a heart rate of 80.",
+ "decisions":[
+  {"prompt":"He is NOT vigorous. Per the deck, what do you do?","options":[
+   {"text":"Bulb-suction the mouth and nose only","hpDelta":-5,"explain":"Bulb suction alone is for a vigorous baby (crying, good tone, HR above 100). This baby isn't vigorous."},
+   {"text":"Intubate and suction the trachea","hpDelta":15,"explain":"Per the deck: a non-vigorous meconium baby is intubated and suctioned. Note current NRP no longer suctions the trachea routinely — know both.","src":"A baby is born through meconium-stained fluid with HR 80, weak effort and poor tone. Next step?"},
+   {"text":"Wait and score the 1-minute Apgar","hpDelta":-15,"explain":"Never delay resuscitation to score the Apgar."}]},
+  {"prompt":"His chest film shows patchy infiltrates with hyperinflation. This fits:","options":[
+   {"text":"Meconium aspiration syndrome","hpDelta":10,"explain":"Correct. MAS: patchy infiltrates with hyperinflation from ball-valve air trapping.","src":"What does the chest x-ray typically show in MAS?"},
+   {"text":"Respiratory distress syndrome","hpDelta":-10,"explain":"RDS shows ground glass with LOW volumes, usually in a preterm infant."},
+   {"text":"Transient tachypnea of the newborn","hpDelta":-5,"explain":"TTN shows perihilar streaks and fissure fluid and clears within 24–72 hours."}]},
+  {"prompt":"He's on the ventilator with air trapping. Which strategy fits?","options":[
+   {"text":"A fast rate with a short expiratory time","hpDelta":-15,"explain":"A short expiratory time traps more air and raises the risk of an air leak."},
+   {"text":"Zero PEEP to avoid overdistending the lungs","hpDelta":-10,"explain":"PEEP helps keep the partly obstructed airways open in MAS."},
+   {"text":"PEEP with a long expiratory time","hpDelta":15,"explain":"Correct. A long Te lets trapped air out; PEEP keeps airways open. Add surfactant, and iNO if PPHN develops.","src":"Ventilator strategy for MAS with air trapping includes:"}]},
+  {"prompt":"He suddenly worsens: asymmetric chest rise and a shifted PMI. Suspect:","options":[
+   {"text":"A pneumothorax","hpDelta":15,"explain":"Correct. Sudden distress, asymmetric rise and a shifted PMI = pneumothorax — a known MAS air-leak complication.","src":"A ventilated newborn suddenly worsens with asymmetric chest rise and a shifted PMI. Suspect:"},
+   {"text":"A blocked feeding tube","hpDelta":-10,"explain":"A feeding tube problem doesn't shift the PMI or change chest rise."},
+   {"text":"Worsening TTN","hpDelta":-10,"explain":"TTN improves over 24–72 hours and doesn't shift the mediastinum."}]},
+  {"prompt":"Transillumination glows on the right. He is crashing. Immediate treatment?","options":[
+   {"text":"Observe and repeat the film in an hour","hpDelta":-20,"explain":"Observation is only for a small leak in a STABLE baby. A crashing baby needs decompression now."},
+   {"text":"Needle aspiration of the chest","hpDelta":20,"explain":"Correct. Emergency needle aspiration first, then a chest tube for an ongoing leak (suction −15 to −25 cm H₂O).","src":"A newborn with a tension pneumothorax is crashing. Immediate treatment?"},
+   {"text":"Increase the PEEP to re-expand the lung","hpDelta":-15,"explain":"More pressure feeds the air leak and worsens a tension pneumothorax."}]}
+ ]},
+{"id":"s201-epiglottitis","title":"Peds ED: Drooling 4-Year-Old","vitals":{"rr":32,"spo2":91,"hr":150,"bp":"98/60"},"startingHp":60,
+ "intro":"A 4-year-old with a high fever came on fast over a few hours. She is drooling, sitting forward on her hands, and looks frightened. Her voice is muffled.",
+ "decisions":[
+  {"prompt":"What do you suspect?","options":[
+   {"text":"Viral croup","hpDelta":-10,"explain":"Croup follows a cold, brings a barky cough, and usually affects 6 months to 3 years. Drooling and tripoding point elsewhere."},
+   {"text":"Foreign-body aspiration","hpDelta":-5,"explain":"Foreign bodies cause a sudden dry, hacking cough without fever."},
+   {"text":"Epiglottitis","hpDelta":15,"explain":"Correct. Rapid onset, high fever, drooling and a tripod posture = epiglottitis.","src":"A 4-year-old has a high fever, drooling and sits leaning forward. Suspect:"}]},
+  {"prompt":"What is your next step?","options":[
+   {"text":"O₂, keep her calm, intubate in the OR","hpDelta":20,"explain":"Correct. Don't provoke complete obstruction. Give O₂, keep her calm, and secure the airway in the OR.","src":"Management of suspected epiglottitis is:"},
+   {"text":"Look in her throat with a tongue blade","hpDelta":-20,"explain":"Examining the throat can trigger complete airway obstruction. Don't do it."},
+   {"text":"Lay her flat for a portable neck x-ray","hpDelta":-15,"explain":"Lying flat can close the airway. Securing the airway takes priority over imaging."}]},
+  {"prompt":"Which organism is the classic cause?","options":[
+   {"text":"A virus, usually parainfluenza","hpDelta":-5,"explain":"Parainfluenza is the classic croup virus."},
+   {"text":"Bacteria — H. influenzae type b","hpDelta":10,"explain":"Correct. Epiglottitis is bacterial (Hib), classically ages 2–6.","src":"Epiglottitis is caused by:"},
+   {"text":"An allergy to food or pollen","hpDelta":-10,"explain":"Allergic swelling isn't epiglottitis."}]},
+  {"prompt":"Once her airway is secure, a lateral neck film would show:","options":[
+   {"text":"A steeple sign from subglottic narrowing","hpDelta":-10,"explain":"The steeple sign (AP view) is croup."},
+   {"text":"A deep sulcus sign","hpDelta":-10,"explain":"A deep sulcus sign suggests a pneumothorax on a supine film."},
+   {"text":"A thumb sign from a swollen epiglottis","hpDelta":10,"explain":"Correct. Thumb sign on the lateral neck view = swollen epiglottis.","src":"The thumb sign on a lateral neck x-ray indicates:"}]}
+ ]},
+{"id":"s201-croup","title":"Peds Ward: Barky Cough at 2 AM","vitals":{"rr":36,"spo2":94,"hr":138,"bp":"94/58"},"startingHp":60,
+ "intro":"A 2-year-old had a runny nose and low-grade fever for two days. Tonight he woke with a harsh, barking cough and inspiratory stridor. He is not drooling.",
+ "decisions":[
+  {"prompt":"What do you suspect?","options":[
+   {"text":"Croup","hpDelta":15,"explain":"Correct. A cold first, then a barky cough and stridor = croup — a viral subglottic infection.","src":"A 2-year-old had a cold, now has a barky cough and stridor. Suspect:"},
+   {"text":"Epiglottitis","hpDelta":-10,"explain":"Epiglottitis comes on fast with high fever, drooling and tripoding."},
+   {"text":"Acute asthma","hpDelta":-5,"explain":"Asthma causes expiratory wheezing, not a barky cough with inspiratory stridor."}]},
+  {"prompt":"An AP neck film is taken. What sign fits?","options":[
+   {"text":"A thumb sign from a swollen epiglottis","hpDelta":-10,"explain":"The thumb sign is epiglottitis."},
+   {"text":"A steeple sign from subglottic narrowing","hpDelta":10,"explain":"Correct. Steeple sign = subglottic narrowing in croup.","src":"The steeple sign on x-ray indicates:"},
+   {"text":"Patchy infiltrates with hyperinflation","hpDelta":-5,"explain":"That pattern fits meconium aspiration, not croup."}]},
+  {"prompt":"What is the first-line treatment?","options":[
+   {"text":"Immediate intubation in the OR","hpDelta":-15,"explain":"That's the plan for epiglottitis. Mild croup is managed without an airway."},
+   {"text":"Broad-spectrum IV antibiotics","hpDelta":-10,"explain":"Croup is viral; antibiotics don't treat it."},
+   {"text":"Humidity, fluids and observation","hpDelta":15,"explain":"Correct. Croup = humidity, fluids, observation.","src":"Treatment for croup includes:"}]},
+  {"prompt":"Two hours later his stridor is worse at rest. Now give:","options":[
+   {"text":"Racemic epinephrine and steroids","hpDelta":20,"explain":"Correct. Worsening croup despite humidity and fluids → racemic epinephrine and steroids.","src":"If croup worsens despite humidity and fluids, give:"},
+   {"text":"A sedative so he sleeps through it","hpDelta":-20,"explain":"Sedation can depress breathing in a child with a narrowed airway."},
+   {"text":"Albuterol alone every 20 minutes","hpDelta":-10,"explain":"Albuterol targets lower-airway bronchospasm, not subglottic swelling."}]}
+ ]},
+{"id":"s201-pediatric-vf","title":"Peds Code: 6-Year-Old in VF","vitals":{"rr":0,"spo2":0,"hr":0,"bp":"0/0"},"startingHp":60,
+ "intro":"A 6-year-old collapses in the waiting room. She is unresponsive and pulseless. You start CPR alone while help is on the way.",
+ "decisions":[
+  {"prompt":"You're alone, with no advanced airway. Compression-to-ventilation ratio?","options":[
+   {"text":"3:1, as for a newborn","hpDelta":-10,"explain":"3:1 is the neonatal ratio."},
+   {"text":"30:2","hpDelta":15,"explain":"Correct. A child who isn't intubated gets 30:2 with one rescuer, at a rate of at least 100/min.","src":"Compression-to-ventilation ratio for a child who isn't intubated (per the deck)?"},
+   {"text":"5:1, with a breath every 5 seconds","hpDelta":-10,"explain":"5:1 isn't a current pediatric ratio."}]},
+  {"prompt":"The monitor shows ventricular fibrillation. Treatment?","options":[
+   {"text":"Defibrillate and resume CPR immediately","hpDelta":20,"explain":"Correct. VF is shockable: shock, then resume CPR right away.","src":"A pulseless child shows ventricular fibrillation. Treatment?"},
+   {"text":"Give epinephrine and keep doing CPR only","hpDelta":-10,"explain":"That's the plan for non-shockable rhythms (asystole, PEA). VF needs a shock."},
+   {"text":"Synchronized cardioversion at 0.5 J/kg","hpDelta":-15,"explain":"Cardioversion is for rhythms WITH a pulse. Pulseless VF needs defibrillation."}]},
+  {"prompt":"What is the first defibrillation dose?","options":[
+   {"text":"0.5–1 J/kg","hpDelta":-10,"explain":"That's the starting cardioversion dose, not defibrillation."},
+   {"text":"10 J/kg","hpDelta":-15,"explain":"10 J/kg is the maximum, not the starting dose."},
+   {"text":"2 J/kg","hpDelta":15,"explain":"Correct. First shock 2 J/kg, second 4 J/kg, then 4 J/kg or more (max 10 J/kg or the adult dose).","src":"What is the first defibrillation dose for a child?"}]},
+  {"prompt":"IO access is in. What epinephrine dose do you give?","options":[
+   {"text":"0.01 mg/kg IV/IO (max 1 mg)","hpDelta":15,"explain":"Correct. 0.01 mg/kg (0.1 mL/kg of 1:10,000), max 1 mg, every 3–5 minutes.","src":"What is the pediatric epinephrine dose in arrest?"},
+   {"text":"0.1 mg/kg IV/IO (max 5 mg)","hpDelta":-15,"explain":"Ten times too much."},
+   {"text":"1 mg/kg IV/IO (max 10 mg)","hpDelta":-25,"explain":"A hundred times the correct dose."}]},
+  {"prompt":"VF persists after repeated shocks. Which antiarrhythmic dose?","options":[
+   {"text":"Amiodarone 1 mg/kg (max 100 mg)","hpDelta":-10,"explain":"1 mg/kg is the lidocaine dose. Amiodarone is 5 mg/kg."},
+   {"text":"Amiodarone 5 mg/kg (max 300 mg)","hpDelta":15,"explain":"Correct. Amiodarone 5 mg/kg (max 300 mg), up to 3 doses; lidocaine 1 mg/kg is the alternative.","src":"What is the amiodarone bolus for refractory pediatric VF/pVT?"},
+   {"text":"Adenosine 0.1 mg/kg rapid push","hpDelta":-15,"explain":"Adenosine is for stable SVT, not VF."}]}
+ ]}
+]

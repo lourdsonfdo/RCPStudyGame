@@ -1,0 +1,674 @@
+[
+ {
+  "id": "s202-house-fire",
+  "title": "ED Trauma Bay: House-Fire Rescue",
+  "vitals": {
+   "rr": 28,
+   "spo2": 99,
+   "hr": 118,
+   "bp": "104/66"
+  },
+  "startingHp": 60,
+  "intro": "A 70-kg man was pulled from a burning house. He has soot around his nose, singed nasal hair, a headache, and he's confused. Burns cover his entire anterior trunk and his entire right arm. The pulse oximeter reads 99%.",
+  "decisions": [
+   {
+    "prompt": "His SpO₂ is 99% and PaO₂ 95, but he's confused. What do you do?",
+    "options": [
+     {
+      "text": "Trust the SpO₂; he is oxygenating well",
+      "hpDelta": -20,
+      "explain": "A standard oximeter can't tell oxyhemoglobin from carboxyhemoglobin, so it reads falsely normal in CO poisoning."
+     },
+     {
+      "text": "Don't trust the SpO₂; confirm with CO-oximetry",
+      "hpDelta": 15,
+      "explain": "Correct. CO poisoning makes the pulse ox read falsely normal and the PaO₂ stays normal. Only CO-oximetry measures COHb.",
+      "src": "A patient rescued from a house fire has SpO₂ 99% and PaO₂ 95 mm Hg but is confused with a headache. What should the RT do?"
+     },
+     {
+      "text": "Recheck the SpO₂ on a different finger or the earlobe",
+      "hpDelta": -10,
+      "explain": "Every pulse oximeter has the same blind spot for COHb. Moving the probe changes nothing."
+     }
+    ]
+   },
+   {
+    "prompt": "His COHb is markedly elevated. What is the treatment?",
+    "options": [
+     {
+      "text": "100% O₂ by NRB; hyperbaric if severe",
+      "hpDelta": 20,
+      "explain": "Correct. O₂ displaces CO from hemoglobin and shortens the COHb half-life; hyperbaric O₂ greatly raises dissolved O₂.",
+      "src": "What is the treatment for CO poisoning?"
+     },
+     {
+      "text": "Nasal cannula at 2 L/min and observe",
+      "hpDelta": -15,
+      "explain": "Low-flow O₂ barely shortens the COHb half-life. He needs 100%."
+     },
+     {
+      "text": "Room air, since his PaO₂ is normal",
+      "hpDelta": -20,
+      "explain": "PaO₂ is dissolved O₂, which CO doesn't affect. His tissues are still hypoxic."
+     }
+    ]
+   },
+   {
+    "prompt": "Smoke from burning plastics also raises concern for cyanide. Its treatment is:",
+    "options": [
+     {
+      "text": "Naloxone to reverse the CNS depression",
+      "hpDelta": -10,
+      "explain": "Naloxone reverses opioids, not cyanide."
+     },
+     {
+      "text": "Atropine to block cholinergic effects",
+      "hpDelta": -10,
+      "explain": "Atropine is for organophosphates, not cyanide."
+     },
+     {
+      "text": "100% O₂ + hydroxocobalamin (Cyanokit)",
+      "hpDelta": 15,
+      "explain": "Correct. Cyanide: 100% O₂ plus hydroxocobalamin.",
+      "src": "What is the treatment for cyanide poisoning?"
+     }
+    ]
+   },
+   {
+    "prompt": "Burns cover the entire anterior trunk and the entire right arm. %TBSA?",
+    "options": [
+     {
+      "text": "27%",
+      "hpDelta": 10,
+      "explain": "Correct. Anterior trunk 18% + right arm 9% = 27% (the deck's own worked example).",
+      "src": "An adult has burns to the entire anterior trunk and the entire right arm. What is the %TBSA burned?"
+     },
+     {
+      "text": "18%",
+      "hpDelta": -5,
+      "explain": "That counts only the anterior trunk. Add 9% for the arm."
+     },
+     {
+      "text": "36%",
+      "hpDelta": -5,
+      "explain": "36% would be both arms plus the posterior trunk."
+     }
+    ]
+   },
+   {
+    "prompt": "Later he's intubated. A circumferential chest burn is stiffening; pressures are rising and chest expansion is poor. What may be needed?",
+    "options": [
+     {
+      "text": "Bronchoscopy to clear soot",
+      "hpDelta": -5,
+      "explain": "Bronchoscopy diagnoses inhalation injury but won't free a chest restricted by rigid eschar."
+     },
+     {
+      "text": "Chest escharotomy",
+      "hpDelta": 20,
+      "explain": "Correct. Rigid eschar plus edema restricts the chest. Escharotomy cuts through it to relieve the pressure.",
+      "src": "A patient with a circumferential chest burn has rising ventilator pressures and poor chest expansion. What procedure may be needed?"
+     },
+     {
+      "text": "Raise the tidal volume to 12 mL/kg",
+      "hpDelta": -15,
+      "explain": "More volume against a rigid chest just drives pressures higher."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s202-copd-bipap",
+  "title": "Step-Down: COPD Exacerbation",
+  "vitals": {
+   "rr": 30,
+   "spo2": 84,
+   "hr": 112,
+   "bp": "150/90"
+  },
+  "startingHp": 60,
+  "intro": "A 68-year-old with severe COPD, on 2 L/min at home, has 3 days of worsening dyspnea. He's alert and cooperative but tiring. ABG on 2 L NC: pH 7.24, PaCO₂ 110, HCO₃⁻ 46, PaO₂ 47.",
+  "decisions": [
+   {
+    "prompt": "Interpret the ABG.",
+    "options": [
+     {
+      "text": "Fully compensated respiratory acidosis",
+      "hpDelta": -10,
+      "explain": "A pH of 7.24 is not compensated. Full compensation would put the pH back in range."
+     },
+     {
+      "text": "Acute metabolic acidosis with partial compensation",
+      "hpDelta": -15,
+      "explain": "The HCO₃⁻ is HIGH (46), not low. This is a respiratory problem."
+     },
+     {
+      "text": "Acute on chronic ventilatory failure with hypoxemia",
+      "hpDelta": 15,
+      "explain": "Correct. HCO₃⁻ 46 shows chronic retention; pH 7.24 shows acute decompensation on top.",
+      "src": "Interpret on 2 L NC: pH 7.24, PaCO₂ 110, HCO₃⁻ 46, PaO₂ 47."
+     }
+    ]
+   },
+   {
+    "prompt": "He needs noninvasive support for the hypercapnia. Which?",
+    "options": [
+     {
+      "text": "BiPAP",
+      "hpDelta": 20,
+      "explain": "Correct. CPAP helps oxygenation but doesn't breathe for him. Hypercapnia needs IPAP to drive ventilation.",
+      "src": "A COPD patient has a PaCO₂ of 75 mm Hg and needs noninvasive support. Which is appropriate?"
+     },
+     {
+      "text": "CPAP",
+      "hpDelta": -10,
+      "explain": "CPAP gives no pressure support, so it doesn't fix hypercapnia."
+     },
+     {
+      "text": "High-flow cannula alone",
+      "hpDelta": -10,
+      "explain": "He needs ventilatory support, not just more oxygen."
+     }
+    ]
+   },
+   {
+    "prompt": "Typical starting BiPAP settings?",
+    "options": [
+     {
+      "text": "IPAP 25, EPAP 15, backup rate 30",
+      "hpDelta": -15,
+      "explain": "Far too aggressive. High IPAP inflates the stomach, and a rate of 30 ignores his own drive."
+     },
+     {
+      "text": "IPAP 8–12, EPAP 4–6, backup rate 10–12",
+      "hpDelta": 15,
+      "explain": "Correct. Start IPAP 8–12, EPAP 4–6, backup rate 10–12, plus FiO₂ and Rise.",
+      "src": "What are typical starting BiPAP settings?"
+     },
+     {
+      "text": "IPAP 5, EPAP 5, backup rate turned off",
+      "hpDelta": -10,
+      "explain": "Equal IPAP and EPAP give zero pressure support. The minimum PS is 4 cm H₂O."
+     }
+    ]
+   },
+   {
+    "prompt": "An hour later his PaCO₂ is still high and his SpO₂ is fine. Which change?",
+    "options": [
+     {
+      "text": "Increase EPAP",
+      "hpDelta": -5,
+      "explain": "EPAP works like PEEP and mainly improves oxygenation, which is already fine."
+     },
+     {
+      "text": "Increase the FiO₂",
+      "hpDelta": -10,
+      "explain": "More O₂ doesn't remove CO₂ and can worsen hypercapnia in a retainer."
+     },
+     {
+      "text": "Increase IPAP",
+      "hpDelta": 15,
+      "explain": "Correct. IPAP (and the pressure support it creates) drives ventilation and CO₂ removal.",
+      "src": "A BiPAP patient's PaCO₂ is still elevated. Which setting change addresses ventilation?"
+     }
+    ]
+   },
+   {
+    "prompt": "Thirty minutes after the change he's more drowsy and still deteriorating. Best action?",
+    "options": [
+     {
+      "text": "Intubate and start mechanical ventilation",
+      "hpDelta": 20,
+      "explain": "Correct. If he keeps deteriorating about 30 minutes after BiPAP is started, NIV has failed — intubate.",
+      "src": "A patient in respiratory failure continues to deteriorate 30 minutes after BiPAP is started. What is the BEST action?"
+     },
+     {
+      "text": "Give a sedative so he tolerates the mask",
+      "hpDelta": -20,
+      "explain": "Sedating a drowsy hypercapnic patient on NIV risks respiratory arrest."
+     },
+     {
+      "text": "Keep the settings and recheck in 4 hours",
+      "hpDelta": -15,
+      "explain": "Waiting hours on failing NIV delays needed intubation."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s202-ards-ecmo",
+  "title": "ICU: Refractory ARDS Goes on ECMO",
+  "vitals": {
+   "rr": 32,
+   "spo2": 82,
+   "hr": 124,
+   "bp": "102/64"
+  },
+  "startingHp": 60,
+  "intro": "A 34-year-old with severe influenza ARDS remains hypoxemic on maximal ventilator support and proning. Her heart function is normal on echo. The team is calling the ECMO service.",
+  "decisions": [
+   {
+    "prompt": "With normal heart function, which configuration is preferred?",
+    "options": [
+     {
+      "text": "VA ECMO, for full cardiac support",
+      "hpDelta": -10,
+      "explain": "VA is for cardiac or cardiopulmonary failure and carries more stroke and ischemia risk."
+     },
+     {
+      "text": "VV ECMO",
+      "hpDelta": 15,
+      "explain": "Correct. Hess prefers VV for respiratory failure, for its simplicity and safer profile; it needs adequate cardiac function, which she has.",
+      "src": "Why is VV ECMO preferred over VA for adult respiratory failure?"
+     },
+     {
+      "text": "No ECMO; increase the PEEP to 30",
+      "hpDelta": -15,
+      "explain": "She's already on maximal support. More pressure risks barotrauma."
+     }
+    ]
+   },
+   {
+    "prompt": "On VV ECMO her PaCO₂ is climbing. Which knob do you turn?",
+    "options": [
+     {
+      "text": "Increase the sweep gas flow",
+      "hpDelta": 15,
+      "explain": "Correct. Sweep gas controls CO₂ removal; blood flow controls oxygenation.",
+      "src": "On ECMO, which setting is the primary control for CO₂ removal?"
+     },
+     {
+      "text": "Increase the blood flow",
+      "hpDelta": -5,
+      "explain": "Blood flow mainly controls oxygenation. CO₂ clearance depends on sweep gas."
+     },
+     {
+      "text": "Raise the ventilator rate to 35",
+      "hpDelta": -10,
+      "explain": "On ECMO the lungs are rested. Adjust the circuit, not the ventilator."
+     }
+    ]
+   },
+   {
+    "prompt": "Now her SpO₂ is drifting down. Which setting mainly controls oxygenation?",
+    "options": [
+     {
+      "text": "The sweep gas flow to the oxygenator",
+      "hpDelta": -5,
+      "explain": "Sweep gas is the CO₂ control."
+     },
+     {
+      "text": "The heparin infusion rate through the circuit",
+      "hpDelta": -10,
+      "explain": "Heparin keeps the circuit from clotting; it doesn't oxygenate."
+     },
+     {
+      "text": "Blood flow through the oxygenator",
+      "hpDelta": 15,
+      "explain": "Correct. Blood flow through the oxygenator is the oxygenation control.",
+      "src": "On ECMO, which setting is the primary control for oxygenation?"
+     }
+    ]
+   },
+   {
+    "prompt": "The venous drainage tubing turns bright red while her SpO₂ keeps falling. What is happening?",
+    "options": [
+     {
+      "text": "Oxygenator failure",
+      "hpDelta": -10,
+      "explain": "A failing oxygenator gives dark blood coming OUT of it, not bright red blood going in."
+     },
+     {
+      "text": "Recirculation",
+      "hpDelta": 15,
+      "explain": "Correct. Oxygenated blood is being drawn back into the circuit instead of reaching the patient.",
+      "src": "On VV ECMO, the blood in the venous drainage tubing turns bright red and the SpO₂ falls. What is the most likely problem?"
+     },
+     {
+      "text": "Air embolism in the circuit",
+      "hpDelta": -10,
+      "explain": "Air sets off the bubble detector and clamps; it doesn't turn the drainage blood red."
+     }
+    ]
+   },
+   {
+    "prompt": "How do you respond to significant recirculation?",
+    "options": [
+     {
+      "text": "Decrease ECMO flow and confirm cannula position",
+      "hpDelta": 20,
+      "explain": "Correct. Causes include poor cannula position, hypovolemia and excess flow. Reduce flow and check placement.",
+      "src": "What is the correct response to significant recirculation on VV ECMO?"
+     },
+     {
+      "text": "Increase ECMO flow to the circuit's maximum",
+      "hpDelta": -15,
+      "explain": "Excess flow is one cause of recirculation. Turning it up makes it worse."
+     },
+     {
+      "text": "Switch the sweep gas to room air for an hour",
+      "hpDelta": -15,
+      "explain": "That removes oxygen from the circuit and does nothing about recirculation."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s202-tbi",
+  "title": "Neuro ICU: Head Injury After a Fall",
+  "vitals": {
+   "rr": 16,
+   "spo2": 96,
+   "hr": 64,
+   "bp": "110/60"
+  },
+  "startingHp": 60,
+  "intro": "A 45-year-old is intubated after a fall from a ladder with a traumatic brain injury. An ICP monitor reads 25 mm Hg; MAP is 80 mm Hg.",
+  "decisions": [
+   {
+    "prompt": "What is the CPP, and is it acceptable?",
+    "options": [
+     {
+      "text": "105 mm Hg — well above the goal of ≥ 60",
+      "hpDelta": -10,
+      "explain": "CPP = MAP − ICP, not MAP + ICP."
+     },
+     {
+      "text": "55 mm Hg — below the goal of ≥ 60",
+      "hpDelta": 15,
+      "explain": "Correct. CPP = 80 − 25 = 55, below the TBI goal of 60 or more. The ICP is also above the goal of under 20.",
+      "src": "A TBI patient has MAP 80 mm Hg and ICP 25 mm Hg. What is the CPP, and is it acceptable?"
+     },
+     {
+      "text": "55 mm Hg — acceptable for a head injury",
+      "hpDelta": -10,
+      "explain": "The math is right, but 55 is below the TBI goal of 60 or more."
+     }
+    ]
+   },
+   {
+    "prompt": "Which simple measure lowers ICP?",
+    "options": [
+     {
+      "text": "Elevate the head of the bed 30–40°",
+      "hpDelta": 15,
+      "explain": "Correct. Head elevation helps venous drainage and lowers ICP.",
+      "src": "Which of the following DECREASES ICP?"
+     },
+     {
+      "text": "Place him in Trendelenburg (head down)",
+      "hpDelta": -15,
+      "explain": "Head-down positioning raises ICP."
+     },
+     {
+      "text": "Let the PaCO₂ rise to 60 to rest his breathing",
+      "hpDelta": -15,
+      "explain": "Hypercapnia dilates cerebral vessels and raises ICP."
+     }
+    ]
+   },
+   {
+    "prompt": "A resident wants routine hyperventilation to keep ICP down. Per Heuer:",
+    "options": [
+     {
+      "text": "Do it — low PaCO₂ always protects the brain",
+      "hpDelta": -15,
+      "explain": "Prolonged hypocapnia can cause cerebral ischemia."
+     },
+     {
+      "text": "Do it — and add high PEEP as well",
+      "hpDelta": -15,
+      "explain": "High PEEP can raise ICP by impeding venous drainage."
+     },
+     {
+      "text": "Avoid it — hypocapnia can cause ischemia",
+      "hpDelta": 15,
+      "explain": "Correct. Hyperventilation lowers ICP but constricts cerebral vessels; Heuer reserves it for brief use before definitive treatment.",
+      "src": "Why does Heuer say to AVOID routine prophylactic hyperventilation in TBI?"
+     }
+    ]
+   },
+   {
+    "prompt": "Which RT procedure is MOST likely to spike his ICP?",
+    "options": [
+     {
+      "text": "Checking the cuff pressure",
+      "hpDelta": -5,
+      "explain": "A cuff check doesn't stimulate the airway much."
+     },
+     {
+      "text": "Suctioning",
+      "hpDelta": 15,
+      "explain": "Correct. Suctioning and coughing are classic ICP triggers — keep passes brief and preoxygenate.",
+      "src": "Which RT procedure is MOST likely to raise ICP in a head-injured patient?"
+     },
+     {
+      "text": "Adjusting the FiO₂",
+      "hpDelta": -5,
+      "explain": "Changing the FiO₂ doesn't directly raise ICP."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s202-rehab-titration",
+  "title": "Pulmonary Rehab: Exercise O₂ Titration",
+  "vitals": {
+   "rr": 22,
+   "spo2": 91,
+   "hr": 96,
+   "bp": "136/82"
+  },
+  "startingHp": 60,
+  "intro": "A 70-year-old with COPD arrives for intake at pulmonary rehab: a 6-minute walk and an exercise O₂ titration on his own portable system.",
+  "decisions": [
+   {
+    "prompt": "Before you start, you check the rules: if his resting room-air SpO₂ were 83%, should the titration go ahead?",
+    "options": [
+     {
+      "text": "Yes, with O₂ added during the walk",
+      "hpDelta": -10,
+      "explain": "A resting room-air SpO₂ below 85% means the test should not start."
+     },
+     {
+      "text": "No — do not start the test",
+      "hpDelta": 15,
+      "explain": "Correct. Don't start the exercise titration if the resting SpO₂ is below 85% on room air. (His is 91%, so he can go.)",
+      "src": "A patient's resting SpO₂ on room air is 83%. What should the RT do about the planned O₂ titration exercise test?"
+     },
+     {
+      "text": "Yes, but walk him for only 3 minutes",
+      "hpDelta": -10,
+      "explain": "Shortening the test doesn't make it safe."
+     }
+    ]
+   },
+   {
+    "prompt": "His resting heart rate is 124. For a 6MWT this is:",
+    "options": [
+     {
+      "text": "A relative contraindication",
+      "hpDelta": 15,
+      "explain": "Correct. Resting HR over 120 is relative (as are SBP over 180 and DBP over 100). Absolute: MI or unstable angina in the past month.",
+      "src": "A patient's resting heart rate is 124 beats/min before a scheduled 6MWT. This is:"
+     },
+     {
+      "text": "An absolute contraindication",
+      "hpDelta": -5,
+      "explain": "Absolute contraindications are MI or unstable angina within the past month."
+     },
+     {
+      "text": "No concern at all",
+      "hpDelta": -10,
+      "explain": "A resting HR over 120 is a relative contraindication — check with the physician first."
+     }
+    ]
+   },
+   {
+    "prompt": "Cleared to walk, his SpO₂ falls to 86% at peak activity. What do you do?",
+    "options": [
+     {
+      "text": "Stop the test now and send him home",
+      "hpDelta": -10,
+      "explain": "Stopping completely is for SaO₂ below 85%. At 86% you titrate."
+     },
+     {
+      "text": "Increase the O₂ by 4 L/min all at once",
+      "hpDelta": -10,
+      "explain": "Titration goes up in 1 L/min steps."
+     },
+     {
+      "text": "Increase O₂ by 1 L/min until SpO₂ is ≥ 88%",
+      "hpDelta": 15,
+      "explain": "Correct. If SpO₂ drops 2% or more, or below 88%, raise O₂ 1 L/min at a time until it's 88% or higher.",
+      "src": "During an O₂ titration with exercise, the patient's SpO₂ falls to 86% at peak activity. What should the RT do?"
+     }
+    ]
+   },
+   {
+    "prompt": "Later in the walk he turns pale and ashen and is sweating heavily. You should:",
+    "options": [
+     {
+      "text": "Stop the 6MWT immediately",
+      "hpDelta": 20,
+      "explain": "Correct. Stop for chest pain, severe dyspnea, leg cramps, staggering, diaphoresis, or a pale, ashen look.",
+      "src": "Which finding requires the RT to STOP a 6MWT immediately?"
+     },
+     {
+      "text": "Encourage him to finish the 6 minutes",
+      "hpDelta": -20,
+      "explain": "Diaphoresis with a pale, ashen appearance is a stop criterion."
+     },
+     {
+      "text": "Slow the pace and keep walking",
+      "hpDelta": -10,
+      "explain": "These are signs of distress. Stop the test."
+     }
+    ]
+   },
+   {
+    "prompt": "For training, what target heart rate range fits this 70-year-old?",
+    "options": [
+     {
+      "text": "130–150 beats/min",
+      "hpDelta": -10,
+      "explain": "That's at or near his predicted maximum of 150."
+     },
+     {
+      "text": "90–113 beats/min",
+      "hpDelta": 15,
+      "explain": "Correct. HRmax = 220 − 70 = 150; 60% = 90, 75% ≈ 113.",
+      "src": "What is the training target heart rate for a 70-year-old pulmonary rehab patient?"
+     },
+     {
+      "text": "60–75 beats/min",
+      "hpDelta": -10,
+      "explain": "Those are the percentages, not beats per minute."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s202-anxious-patient",
+  "title": "Med-Surg: Anxious, Breathless Patient",
+  "vitals": {
+   "rr": 32,
+   "spo2": 92,
+   "hr": 108,
+   "bp": "142/88"
+  },
+  "startingHp": 60,
+  "intro": "A 58-year-old with COPD speaks mostly Spanish. She's frightened, breathing fast, and was just started on a new inhaler. Her teenage son offers to translate.",
+  "decisions": [
+   {
+    "prompt": "Who should interpret for her?",
+    "options": [
+     {
+      "text": "Her teenage son, who is already here",
+      "hpDelta": -15,
+      "explain": "Never use family members, and never children, to interpret medical information."
+     },
+     {
+      "text": "A qualified medical interpreter",
+      "hpDelta": 15,
+      "explain": "Correct. Use a qualified medical interpreter (MARTTI) — not family, and never children.",
+      "src": "Who should interpret for a patient with a language difference?"
+     },
+     {
+      "text": "Any bilingual staff member nearby",
+      "hpDelta": -5,
+      "explain": "Bilingual staff aren't trained medical interpreters."
+     }
+    ]
+   },
+   {
+    "prompt": "You need to listen to her lungs. Before entering her intimate space you:",
+    "options": [
+     {
+      "text": "Explain what you'll do and ask permission",
+      "hpDelta": 15,
+      "explain": "Correct. Auscultation enters intimate space. Explain first and ask, e.g., \"I'm going to listen to your lungs now, is that okay?\"",
+      "src": "An RT is about to auscultate breath sounds. What is the MOST appropriate action before entering the patient's intimate space?"
+     },
+     {
+      "text": "Start quickly so she isn't kept waiting",
+      "hpDelta": -10,
+      "explain": "Touching without explaining increases fear in an anxious patient."
+     },
+     {
+      "text": "Ask the family to leave the room first",
+      "hpDelta": -5,
+      "explain": "Privacy may help, but the key step is explaining and asking permission."
+     }
+    ]
+   },
+   {
+    "prompt": "Her breathing gets faster as she gets more scared. What cycle is this?",
+    "options": [
+     {
+      "text": "Anxiety → slower breathing → relief",
+      "hpDelta": -10,
+      "explain": "Anxiety speeds breathing up; it doesn't slow it."
+     },
+     {
+      "text": "Dyspnea → sedation → apnea",
+      "hpDelta": -10,
+      "explain": "There's no sedation here. This is the anxiety loop."
+     },
+     {
+      "text": "Dyspnea → anxiety → ↑RR → more dyspnea",
+      "hpDelta": 15,
+      "explain": "Correct. Breaking the loop (calm coaching, pursed-lip breathing) eases both the fear and the dyspnea.",
+      "src": "The dyspnea–anxiety loop runs:"
+     }
+    ]
+   },
+   {
+    "prompt": "Before discharge, how do you confirm she can use the new inhaler?",
+    "options": [
+     {
+      "text": "Teach-back: have her show you",
+      "hpDelta": 20,
+      "explain": "Correct. Teach-back (\"Show me how you'll use your inhaler\") actually confirms understanding.",
+      "src": "Which tool best confirms a patient understands inhaler use?"
+     },
+     {
+      "text": "Ask, \"Do you understand?\"",
+      "hpDelta": -10,
+      "explain": "\"Do you understand?\" almost always gets a yes and confirms nothing."
+     },
+     {
+      "text": "Give her the printed leaflet",
+      "hpDelta": -5,
+      "explain": "A leaflet informs but doesn't confirm she can do it."
+     }
+    ]
+   }
+  ]
+ }
+]

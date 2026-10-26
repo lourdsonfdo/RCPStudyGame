@@ -74,6 +74,21 @@ one boss per study-guide section, questions usable in both Study (training) and 
   `rcp-study-v19-academy-ui`, which will deliver these rebuilt content files. Don't bump sw.js separately and race Codex.
   If the content must ship before Codex is done, bump the CACHE in sw.js and coordinate.
 
+## Patient Crisis scenarios (2026-10-25)
+- 18 cases, 6 per course, in `tools/midterm/scenarios20X.json`. The builder emits them into `content/rcp20X-midterm.js` as
+  `window.ALL_SCENARIOS`, so index.html and sw.js need no changes, and the course briefing shows Patient Crisis automatically.
+  201: apneic newborn, 28-wk RDS, meconium/pneumothorax, epiglottitis, croup, pediatric VF.
+  202: house fire (CO/cyanide/TBSA/escharotomy), COPD on BiPAP, ARDS on ECMO, TBI/ICP, rehab O₂ titration, communication.
+  203: high-pressure alarm, weaning/extubation, TB/airborne, transport O₂ math, code + capnography, VAP bundle.
+- Rules the builder enforces: 3 options per decision, exactly one best (positive hpDelta), and that option's `src` must be the exact
+  stem of a bank/gap question stating the same fact. No raw < or > (the crisis screen inserts text as HTML).
+  The builder writes the decision ids and `next` links, and places the best answer at A/B/C in an even, seeded order.
+- Verified: in a Node simulation with the real js/engine/crisis.js, all 18 best paths end "stabilized" and all 18 worst paths fail.
+  Positions A/B/C = 24/31/28 of 83; the best answer is the uniquely longest 28% (chance 33%). One full play-through in the browser
+  (house fire → PATIENT STABILIZED, +100 XP).
+- `tools/facts.py <course> '<regex>'` prints verified facts (stem → answer | explanation) for writing new cases.
+- Committed, NOT pushed. Ships with Codex's sw.js cache bump, like the option fixes.
+
 ## Gotchas
 - Every content change needs a `CACHE` bump in `sw.js`, or returning players never get the update.
 - VITALS TITAN uses course `rcp2xx`. The new courses are `rcp201`/`rcp202`/`rcp203`, so they don't collide.
