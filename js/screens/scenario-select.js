@@ -17,7 +17,7 @@ App.registerScreen('scenario-select', ({ root, state, ctx }) => {
     </div>
 
     <div class="acsc-banner">
-      <img src="img/academy-clinical.webp" width="476" height="160" alt="" loading="eager">
+      <img src="${Academy.course(course).img || 'img/academy-clinical.webp'}" width="476" height="160" alt="" loading="eager">
       <div class="acsc-banner-overlay"></div>
       <span class="acsc-banner-label">Clinical simulation</span>
     </div>

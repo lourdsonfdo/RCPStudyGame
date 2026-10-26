@@ -8,11 +8,11 @@
       description: 'Pathophysiology, assessment, and management.' },
     { id: 'rcp104', short: '104', name: 'Pharmacology', icon: '💊', img: 'img/academy-pharmacology.webp',
       description: 'Medications, indications, and respiratory therapy.' },
-    { id: 'rcp201', short: '201', name: 'Neonatal & Pediatrics', icon: '👶', img: 'img/academy-clinical.webp',
+    { id: 'rcp201', short: '201', name: 'Neonatal & Pediatrics', icon: '👶', img: 'img/academy-neonatal.webp',
       description: 'Midterm study guide: fetal development to pediatric care.' },
-    { id: 'rcp202', short: '202', name: 'Critical Care', icon: '🔥', img: 'img/academy-pulmonary.webp',
+    { id: 'rcp202', short: '202', name: 'Critical Care', icon: '🔥', img: 'img/academy-critical-care.webp',
       description: 'Midterm study guide: burns, ECMO, ventilation, ABGs.' },
-    { id: 'rcp203', short: '203', name: 'Board Prep (TMC)', icon: '🩺', img: 'img/academy-pharmacology.webp',
+    { id: 'rcp203', short: '203', name: 'Board Prep (TMC)', icon: '🩺', img: 'img/academy-diagnostics.webp',
       description: 'Midterm study guide: equipment, monitoring, airways.' },
   ];
   const course = id => COURSES.find(c => c.id === id) || { id, short: id.replace(/^rcp/, ''), name: id.toUpperCase(), icon: '📘' };

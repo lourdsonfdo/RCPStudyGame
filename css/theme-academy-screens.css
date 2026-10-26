@@ -791,7 +791,7 @@ html:has(.acsc.active), body:has(.acsc.active) { height:auto; min-height:100%; }
 .acsc .arena .arena-bg-clouds { opacity:.12; }
 .acsc[data-screen='training'] .arena { min-height:140px; }
 .acsc:is([data-screen='crisis'],[data-screen='outcome'],[data-screen='superboss']) .arena {
-  background-image:linear-gradient(180deg,#08142120,#081421c9),url('../img/academy-clinical.webp');
+  background-image:linear-gradient(180deg,#08142120,#081421c9),var(--acsc-course-art);
 }
 .acsc[data-screen='course-mode'] .module { display:block; padding:0; overflow:hidden; }
 .acsc[data-screen='course-mode'] .module::before {
@@ -799,9 +799,6 @@ html:has(.acsc.active), body:has(.acsc.active) { height:auto; min-height:100%; }
   aspect-ratio:3.5; background:var(--acsc-course-art) center/contain no-repeat;
   transform:none; opacity:1; border:0; box-shadow:none;
 }
-.acsc[data-screen='course-mode'] .module[data-mode='battle']::before { background-image:url('../img/academy-pulmonary.webp'); }
-.acsc[data-screen='course-mode'] .module[data-mode='training']::before { background-image:url('../img/academy-pharmacology.webp'); }
-.acsc[data-screen='course-mode'] .module[data-mode='crisis']::before { background-image:url('../img/academy-clinical.webp'); }
 .acsc[data-screen='course-mode'] .module-icon-wrap { display:none; }
 .acsc[data-screen='course-mode'] .module-body { padding:18px 20px; }
 .acsc:is([data-screen='settings'],[data-screen='review-answers'],[data-screen='survival'])::before {
