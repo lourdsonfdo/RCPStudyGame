@@ -1,5 +1,9 @@
 # HANDOFF — Midterm study guides → RCP Study Game (RCP 201 / 202 / 203)
 
+> **2026-10-26: ALL SHIPPED.** Codex published the graphics release `ddb08f2` together with the option-length fixes,
+> 18 crisis scenarios and spaced repetition. index.html uses `?v=academy3` and sw.js uses `rcp-study-v19-academy-ui`.
+> Verified live as a returning player: one reload → 1,948 Q, 18 scenarios, State.reviewSummary present, longest-answer rate 26%.
+
 Updated at every milestone so Claude or Codex can resume cold. Newest status first.
 
 ## Goal
