@@ -4,6 +4,8 @@
 bank20X.json = the Recall app's midterm drill (~/recall/drills/rcp20X.json, `sections`).
 gaps20X.json (optional) = extra questions for Recall flashcard facts the drill misses,
   [{"section": "s05", "q", "o", "e", "src": "card:<id>"}], appended to that section.
+fixes20X.json (optional) = {"<stem>": [correct, d1, d2, d3]} replacement options that even out
+  option lengths (see tools/option_balance.py). o[0] stays the correct answer.
 
 Each bank is a list of study-guide sections:
   [{"id": "s01", "title": ..., "covers": ..., "q": [{"q", "o", "e", "src"}]}]
@@ -97,6 +99,18 @@ def build(course):
             if g['section'] not in sections:
                 sys.exit(f"{course} gap {g['q'][:60]!r}: unknown section {g['section']}")
             sections[g['section']]['q'].append(g)
+    # Rewritten options (keyed by stem) that even out lengths so the longest option isn't a giveaway
+    fixes_path = os.path.join(BANKS, f'fixes{course}.json')
+    if os.path.exists(fixes_path):
+        fixes = json.load(open(fixes_path, encoding='utf-8'))
+        stems = {q['q'] for sec in bank for q in sec['q']}
+        unknown = [s for s in fixes if s not in stems]
+        if unknown:
+            sys.exit(f'{course} fixes for unknown stems: {unknown[:3]}')
+        for sec in bank:
+            for q in sec['q']:
+                if q['q'] in fixes:
+                    q['o'] = fixes[q['q']]
     errors = check(course, bank)
     if errors:
         sys.exit('\n'.join(errors))

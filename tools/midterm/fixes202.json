@@ -1,0 +1,1298 @@
+{
+"What is the trade-off of combining a loop and a thiazide diuretic?": [
+"Stronger diuresis but more hypokalemia, dehydration and hypotension",
+"Weaker diuresis but less risk of electrolyte loss and hypotension",
+"Stronger diuresis but a high risk of hyperkalemia and fluid overload",
+"No real trade-off, because the two classes cancel each other's side effects"
+],
+"What do the speaker notes say about routine circuit changes?": [
+"Change only when visibly soiled or malfunctioning",
+"Change the circuit every 24 hours without fail",
+"Change the circuit every 7 days on a fixed schedule",
+"Change the circuit at the start of every shift"
+],
+"How do you administer the Modified Borg Scale?": [
+"Stop the activity and have them pick what they feel at that moment",
+"Ask the patient the next day how hard the session felt overall",
+"Let the RT estimate the rating from the patient's appearance",
+"Convert the patient's heart rate into a rating from the chart"
+],
+"A rehab patient smokes. What must you recommend?": [
+"A smoking-cessation program as a condition of participation",
+"Dismissal from rehab until the patient has quit on their own",
+"Nicotine patches only, with no change to the rehab plan",
+"Nothing, since smoking status does not affect rehab"
+],
+"What is CESAR's catch?": [
+"It proved referral to an ECMO center helps, not that ECMO itself did",
+"It enrolled only children, so it can't be applied to adults",
+"It had no control group, so the survival benefit can't be judged",
+"Every ECMO patient died, so the trial was stopped early"
+],
+"GOLD defines a COPD exacerbation as worsening symptoms that:": [
+"Go beyond day-to-day variation and lead to a medication change",
+"Last more than 6 months and lead to a permanent drop in FEV₁",
+"Require ICU admission and mechanical ventilation to manage",
+"Cause a fever and a new infiltrate on the chest x-ray"
+],
+"What is the distance of INTIMATE space?": [
+"0 to 1.5 feet (1 inch to 18 inches)",
+"1.5 to 4 feet (18 inches to 4 feet)",
+"4 to 12 feet (arm's length to a room)",
+"12 to 25 feet (across a lecture hall)"
+],
+"Why is there no VC-CSV breathing pattern?": [
+"A spontaneous breath can't have an imposed volume and flow",
+"It is too dangerous to use in patients with weak drive",
+"It was never built into any commercial ventilator",
+"It is just another name for SIMV with pressure support"
+],
+"Which region is assigned 1% in the Rule of Nines?": [
+"Perineum / genital area",
+"Each hand and wrist",
+"The face (front of head)",
+"The neck (front and back)"
+],
+"What happens inside a modern ECMO oxygenator?": [
+"Sweep gas flows through thousands of gas-permeable filaments bathed in venous blood",
+"Oxygen is bubbled directly through the venous blood in a large mixing chamber",
+"Blood passes over a heated metal plate that releases oxygen as it warms",
+"Oxygen is injected into the blood line through a small needle port"
+],
+"The A-line waveform doesn't return after flushing. What's wrong?": [
+"The stopcock is in the wrong position and the line needs zeroing",
+"The patient has lost their pulse and needs CPR started",
+"The transducer is too high and is reading falsely low",
+"The pressure bag is overinflated and is damping the trace"
+],
+"Which is an unmeasured anion that raises the anion gap?": [
+"Ethylene glycol metabolites",
+"Chloride (a measured anion)",
+"Sodium (a measured cation)",
+"Bicarbonate (a measured anion)"
+],
+"What share of cardiac output do the kidneys receive?": [
+"About 22% (≈1.1 L/min)",
+"About 5% (≈0.25 L/min)",
+"About 50% (≈2.5 L/min)",
+"About 2% (≈0.1 L/min)"
+],
+"Which three parts classify any ventilator mode?": [
+"Control variable, breath sequence, targeting scheme",
+"Rate, tidal volume, FiO₂ and PEEP settings together",
+"Trigger, limit and cycle variables, and nothing else",
+"PEEP, peak inspiratory pressure and plateau pressure"
+],
+"In which phase of burn care does the RT have the biggest role?": [
+"Phase 1 — initial evaluation and fluid resuscitation (first ~72 h)",
+"Phase 2 — initial wound excision and biologic closure (days 1–7)",
+"Phase 3 — definitive wound closure (day 7 to about week 6)",
+"Phase 4 — rehabilitation, reconstruction and reintegration"
+],
+"What is the single most important long-term COPD intervention?": [
+"Smoking cessation with nicotine replacement",
+"Daily prophylactic antibiotics for life",
+"Home oxygen for every COPD patient",
+"An annual chest x-ray for lung cancer"
+],
+"When is a full-face mask indicated?": [
+"Significant mouth-breathing, e.g. an acute COPD exacerbation",
+"Every new NIV patient, before trying a nasal interface",
+"Patients with severe facial trauma or recent facial surgery",
+"Infants and small children who are nose-breathers"
+],
+"How does LISTENING differ from HEARING?": [
+"Listening requires attention, interpretation and understanding",
+"Listening is passive, while hearing requires active attention",
+"They are the same thing described with two different words",
+"Hearing requires more effort, because it involves interpretation"
+],
+"When is communication actually complete?": [
+"When you know the message was received and understood",
+"When the message has been sent clearly and completely",
+"When the patient nods to show they heard the message",
+"When the message has been documented in the chart"
+],
+"Per the Westgard rules, two or more consecutive controls outside the SD means:": [
+"Out of control — recalibrate or replace the electrode",
+"A warning only — keep running patient samples as usual",
+"Normal variation — no action is needed for two controls",
+"Run more patient samples to see if the trend continues"
+],
+"Percussion over the chest of an emphysema patient is typically:": [
+"Hyperresonant",
+"Dull to percussion",
+"Flat and stony",
+"Normal resonance"
+],
+"Before touching a patient to reassure them, you should:": [
+"Explain before you touch; never assume touch comforts everyone",
+"Touch first to build rapport, then explain what you are doing",
+"Avoid all touch, because touch is never therapeutic for patients",
+"Only touch the patient's hand, since that is always acceptable"
+],
+"Where does ECMO bleeding most commonly occur?": [
+"At cannulation or surgical sites",
+"Intracranially, as a hemorrhagic stroke",
+"In the GI tract, from stress ulcers",
+"In the lungs, as pulmonary hemorrhage"
+],
+"Why can the anion gap mislead in hypoalbuminemia?": [
+"Albumin is an unmeasured anion, so a high gap can look normal",
+"Albumin raises the serum sodium, so the gap looks falsely low",
+"Albumin is a cation, so losing it makes the gap falsely high",
+"Low albumin lowers the chloride, so the gap cannot be calculated"
+],
+"Does communication occurring mean effective communication occurred?": [
+"No — people can exchange words and still misunderstand",
+"Yes — any exchange of words means the message got through",
+"Only if it was written down, since verbal messages don't count",
+"Only if the patient nodded or said they understood"
+],
+"Which patients are candidates for pulmonary rehab?": [
+"COPD, asthma, bronchiectasis, CF, ILD, and LVRS patients",
+"Only COPD patients with an FEV₁ below 50% predicted",
+"Only post-surgical patients recovering from thoracotomy",
+"Only patients under 65 who are able to work full time"
+],
+"After an ABG puncture, hold pressure for at least:": [
+"5 minutes, longer on anticoagulants",
+"30 seconds, unless bleeding continues",
+"1 minute, regardless of anticoagulants",
+"20 minutes for every patient, always"
+],
+"Which two events changed adult ECMO use?": [
+"The 2008–2009 H1N1 outbreak and the CESAR trial",
+"The 1979 adult trial and the 2003 SARS outbreak",
+"The COVID-19 pandemic and the EOLIA trial alone",
+"The growth of neonatal ECMO and the LVAD era"
+],
+"Inhalation injury on chest X-ray looks most like:": [
+"Noncardiogenic pulmonary edema",
+"Lobar pneumonia in one lobe",
+"A large unilateral pneumothorax",
+"Hyperinflation with flat diaphragms"
+],
+"Which anticoagulant is typical on ECMO, and why?": [
+"Heparin — experience, low cost, and a reversal agent",
+"Warfarin — easy oral dosing and long-lasting effect",
+"Aspirin — low cost and almost no bleeding risk",
+"Enoxaparin — predictable effect with no monitoring"
+],
+"What is the typical nebulized albuterol dose?": [
+"2.5 mg in 3 mL normal saline",
+"0.5 mg in 1 mL normal saline",
+"10 mg in 3 mL normal saline",
+"25 mg in 5 mL normal saline"
+],
+"How does escharotomy differ from debridement?": [
+"Escharotomy relieves pressure; debridement removes tissue",
+"Escharotomy removes dead tissue; debridement relieves pressure",
+"They are the same procedure described with two different names",
+"Escharotomy grafts new skin; debridement closes the wound"
+],
+"How is a blood gas analyzer calibrated?": [
+"With one high and one low known-value solution or gas",
+"With a fresh patient sample run twice in a row",
+"With room air drawn into the sample chamber only",
+"It doesn't need calibration once it is installed"
+],
+"How does the hospital benefit from rehab monitoring?": [
+"Fewer short-term readmissions and penalties",
+"More ICU admissions and higher billing",
+"Higher drug sales through the pharmacy",
+"Shorter rehab programs and fewer staff"
+],
+"What is the treatment for cyanide poisoning?": [
+"100% O₂ + hydroxocobalamin (Cyanokit)",
+"Hyperbaric O₂ alone, with no antidote",
+"Naloxone to reverse respiratory depression",
+"Atropine to block the cholinergic effects"
+],
+"Why does performing basic ADLs matter so much in rehab?": [
+"It maintains independence, dignity and mental well-being",
+"It increases hospital revenue through billable sessions",
+"It replaces the need for any aerobic or strength exercise",
+"It reverses the lung damage that causes COPD"
+],
+"How fast does diaphragm atrophy set in during controlled ventilation?": [
+"18–69 hours of inactivity",
+"2–3 weeks of inactivity",
+"30–60 days of inactivity",
+"Within the first hour"
+],
+"Which pair of modes both guarantee tidal volume while also adjusting pressure automatically?": [
+"PRVC and Volume Support",
+"PSV and pressure control",
+"CPAP and pressure support",
+"IMV and volume-control CMV"
+],
+"\"Hasten\" means:": [
+"Quick to do something",
+"Slow to do something",
+"To prevent something",
+"To write something down"
+],
+"On a 202 exam (Hess), how should you treat MOV and MLT?": [
+"Two named options, MOV generally preferred",
+"MLT is obsolete and should never be named",
+"MOV is contraindicated in ventilated patients",
+"Neither is used now that cuffs are self-sealing"
+],
+"Which is a renal mechanism for handling an acid load?": [
+"Making ammonia from glutamine to bind H⁺",
+"Excreting more bicarbonate into the urine",
+"Retaining CO₂ to buffer the extra acid",
+"Reducing GFR so less acid is filtered"
+],
+"What partly compensates for lost gas exchange in emphysema?": [
+"Collateral ventilation through pores of Kohn and canals of Lambert",
+"Increased surfactant production by the remaining type II cells",
+"Bronchial smooth muscle hypertrophy that keeps airways open",
+"Pulmonary vasodilation that sends more blood to damaged areas"
+],
+"How does a 6MWT end?": [
+"Say \"Stop\" at 6 minutes, mark the spot, and seat the patient",
+"Let the patient keep walking until they feel too tired",
+"Stop as soon as the patient has covered 400 meters",
+"Stop when the SpO₂ reaches 95% and record the time"
+],
+"ICP is measured with:": [
+"An intraventricular catheter or intraparenchymal probe",
+"A lumbar puncture needle left in place for monitoring",
+"A CT scan repeated every few hours at the bedside",
+"A forehead pulse oximeter reading cerebral saturation"
+],
+"What is the nasal mask's biggest complication?": [
+"Leakage in mouth-breathers",
+"Claustrophobia in most patients",
+"Facial burns from heated gas",
+"Aspiration of gastric contents"
+],
+"Are age, gender, race and dress themselves barriers to communication?": [
+"No — our assumptions about them are",
+"Yes — each of them always blocks communication",
+"Only age is, because of hearing loss",
+"Only in emergencies, when there is no time"
+],
+"Which condition shifts the oxyhemoglobin curve to the LEFT?": [
+"Prolonged respiratory alkalosis",
+"Fever above 39 °C for hours",
+"Acidemia with a pH of 7.20",
+"Increased red-cell 2,3-DPG levels"
+],
+"Which is one of the three record types?": [
+"Problem-oriented medical record (POMR)",
+"Daily diary record kept by the patient",
+"Verbal handoff record between shifts",
+"Family history record from the intake form"
+],
+"An emphysema patient's gas went from 7.39/77 (baseline) to 7.55/49. What does the deck's fatal case teach?": [
+"Always compare to baseline — he was in impending failure",
+"The second gas was normal, so no change was needed",
+"He had a simple metabolic alkalosis and nothing more",
+"He was over-oxygenated and needed less FiO₂"
+],
+"When inspecting an ECMO circuit, you look for:": [
+"Fibrin and clot, and integrity of connections",
+"Condensate pooling in the circuit tubing",
+"Moisture building up in the sweep-gas line",
+"The patient's ETT cuff pressure and leak"
+],
+"Why does a standard pulse oximeter fail in CO poisoning?": [
+"It can't tell oxyhemoglobin from carboxyhemoglobin",
+"Carbon monoxide blocks the red and infrared light",
+"It reads falsely low, overstating the hypoxemia",
+"It only works on the earlobe in these patients"
+],
+"How long does renal compensation take?": [
+"3–5 days minimum",
+"10–15 minutes",
+"2–4 hours",
+"2–3 weeks"
+],
+"The high pressure alarm sounds. Which is a likely cause?": [
+"Secretions or a mucus plug in the ETT",
+"A circuit disconnection at the Y-piece",
+"A large leak around the ETT cuff",
+"A loose or disconnected sensor line"
+],
+"Why does mobile ECMO matter?": [
+"Patients can be cannulated at the referring center, then transferred",
+"It allows patients to be sent home on ECMO for long-term support",
+"It removes the need for anticoagulation during transport",
+"It replaces the need for mechanical ventilation entirely"
+],
+"Where the ECMO deck and Hess disagree, which should you answer?": [
+"The deck's version, while knowing Hess's",
+"Always Hess, because it is the textbook",
+"Always the newer number, whichever it is",
+"Neither, and leave the question blank"
+],
+"The PIP increases from 25 to 40 cm H₂O while the Pplat stays at 20 cm H₂O. What is the MOST likely cause?": [
+"Bronchospasm or secretions",
+"Worsening ARDS",
+"A tension pneumothorax",
+"Cardiogenic pulmonary edema"
+],
+"Which drug is used mainly for upper-airway swelling (croup, post-extubation stridor) rather than routine asthma?": [
+"Racemic epinephrine",
+"Albuterol sulfate",
+"Salmeterol xinafoate",
+"Montelukast sodium"
+],
+"What does Hess admit about ECMO management guidelines?": [
+"No clear evidence-based guidelines for ideal management exist yet",
+"ELSO's guidelines are strict protocols that every center must follow",
+"Guidelines are identical worldwide and leave no room for variation",
+"ECMO needs no guidelines because the circuit runs automatically"
+],
+"What is the OPA measuring landmark?": [
+"Corner of the mouth to the angle of the jaw/earlobe",
+"Tip of the nose to the earlobe on the same side",
+"Point of the chin to the sternal notch",
+"Center of the lips to the thyroid cartilage"
+],
+"VV+ on the Puritan Bennett 840 consists of which two modes?": [
+"VC+ and Volume Support",
+"PSV and CPAP",
+"APRV and HFOV",
+"SIMV and pressure control"
+],
+"A significantly elevated HCO₃⁻ should raise suspicion of:": [
+"Chronic compensation for a respiratory disorder",
+"An acute respiratory problem that began today",
+"Diabetic ketoacidosis with a high anion gap",
+"A sampling error from venous contamination"
+],
+"On the exam, \"mainstay\" of therapy means:": [
+"Best suited for / therapy of choice",
+"A last-resort therapy when all else fails",
+"A therapy to avoid in most patients",
+"An adjunct added to the main therapy"
+],
+"What is the decisive question for coming off ECMO?": [
+"Has the disease improved enough for conventional management?",
+"Has the patient been on ECMO for a full 7 days yet?",
+"Is the activated clotting time back in the normal range?",
+"Is the oxygenator showing signs of clot and failure?"
+],
+"The \"57% in 1993 to 72% in 2007\" survival trend describes:": [
+"Children without comorbidities on ECMO",
+"All adult ECMO patients worldwide",
+"Neonates supported on VA ECMO",
+"Adults with H1N1 influenza on ECMO"
+],
+"What did the first randomized adult ECMO trial (1979) show?": [
+"Equally dismal outcomes in both arms",
+"A clear survival benefit for ECMO",
+"That ECMO doubled the mortality rate",
+"Nothing, because it was never completed"
+],
+"Which is an additional risk factor for DEVELOPING COPD?": [
+"Severe childhood respiratory infections",
+"Regular aerobic exercise in adulthood",
+"A high-fiber, low-fat diet over many years",
+"Living at sea level for most of one's life"
+],
+"Which is an asthma lifestyle intervention?": [
+"Weight reduction in obese patients",
+"Daily oral steroids for everyone",
+"Avoiding all forms of exercise",
+"A high-salt, high-fat diet"
+],
+"Calling communication TRANSACTIONAL means:": [
+"Each party is both a sender and a receiver",
+"Only the RT sends messages to the patient",
+"It always involves an exchange of payment",
+"It must be written down to be valid"
+],
+"Tidal volume on the ventilator should be based on:": [
+"Ideal (predicted) body weight",
+"Actual (measured) body weight",
+"Body surface area in m²",
+"The patient's age in years"
+],
+"What enzyme inactivates acetylcholine?": [
+"Cholinesterase (acetylcholinesterase)",
+"Monoamine oxidase (MAO-A and MAO-B)",
+"Catechol-O-methyltransferase (COMT)",
+"Carbonic anhydrase (type II)"
+],
+"\"Exclusion criteria\" means the same thing as:": [
+"Contraindication",
+"Indication",
+"Treatment goal",
+"Expected outcome"
+],
+"pH 7.66, PaCO₂ 57, HCO₃⁻ 61 is:": [
+"Severe metabolic alkalosis with partial respiratory compensation",
+"Fully compensated metabolic alkalosis with a normal pH value",
+"Acute respiratory acidosis with no renal compensation at all",
+"Mixed respiratory and metabolic acidosis with severe hypoxemia"
+],
+"Where is a single-site dual-lumen VV ECMO catheter usually placed?": [
+"Right internal jugular vein",
+"Right or left femoral artery",
+"Left femoral vein",
+"Left radial artery"
+],
+"Do the decks give a normal PIP or Pplat range?": [
+"No — only safety ceilings",
+"Yes — PIP 5–10 cm H₂O",
+"Yes — Pplat 40–50 cm H₂O",
+"Yes — PIP 30–40 cm H₂O"
+],
+"The patient's chart is what kind of document?": [
+"A legal document that can be subpoenaed",
+"A private RT notebook kept for reference",
+"An informal reminder list for the shift",
+"A billing record used only by finance"
+],
+"Effective communication is defined as:": [
+"Shared meaning between sender and receiver",
+"Speaking clearly, slowly and loudly enough",
+"Giving the patient the most information possible",
+"Using correct medical terminology every time"
+],
+"A COPD patient on VC has RR 20, VT 700 mL and flow 40 L/min, with rising PIP, auto-PEEP and hypotension. Which change is appropriate?": [
+"Increase the inspiratory flow rate",
+"Increase the tidal volume to 800 mL",
+"Increase the set rate to 26/min",
+"Decrease the inspiratory flow rate"
+],
+"Why did centrifugal pumps replace roller-head pumps?": [
+"Less red-cell trauma and hemolysis",
+"They are louder, so faults are heard",
+"They need longer tubing, so flow is smoother",
+"They run without power during transport"
+],
+"What is the best predictor of a future COPD exacerbation?": [
+"A prior exacerbation",
+"Age over 40 years",
+"Being female",
+"A normal DLCO result"
+],
+"Which lab test is part of pre-rehab medical screening?": [
+"α1-antitrypsin titer",
+"Serial troponin levels",
+"Serum lipase level",
+"Two sets of blood cultures"
+],
+"\"Obliterated\" on an x-ray or exam question means:": [
+"Blocked out / can't see",
+"Clearly visible / sharp",
+"Hyperinflated / overexpanded",
+"Normal / unchanged from before"
+],
+"Where do loop diuretics act?": [
+"Ascending loop of Henle",
+"Proximal convoluted tubule",
+"Cortical collecting duct",
+"Glomerular capillary bed"
+],
+"How is the Bivona foam cuff managed after insertion?": [
+"The pilot port is left open to atmosphere",
+"It is inflated with air to 40 cm H₂O",
+"It is filled with saline to keep its shape",
+"It is deflated for 5 minutes every hour"
+],
+"What does the 54% survival figure in Hess actually describe?": [
+"Severe ARDS managed conventionally in an ICU",
+"Severe ARDS managed with VV ECMO support",
+"Neonates with respiratory failure on ECMO",
+"Adults on VA ECMO after cardiac arrest"
+],
+"Which formula calculates STATIC compliance?": [
+"VT ÷ (Plateau pressure − PEEP)",
+"VT ÷ (Peak pressure − PEEP)",
+"VT ÷ Peak inspiratory pressure",
+"(PIP − Pplat) ÷ inspiratory flow"
+],
+"Which electrode measures PCO₂?": [
+"Severinghaus",
+"Clark (polarographic)",
+"Sanz (glass pH)",
+"Galvanic fuel cell"
+],
+"In SIMV, what tidal volume do spontaneous breaths get?": [
+"Whatever the patient generates",
+"The set tidal volume every time",
+"Twice the set mandatory volume",
+"None — they are not allowed"
+],
+"Why are modern ECMO cannulas reinforced with wire?": [
+"To prevent collapse under high negative pressure",
+"To conduct heat from the circuit to the patient",
+"To make the cannula visible on every x-ray",
+"To deliver medications into the bloodstream"
+],
+"\"Induction agents\" on the exam means:": [
+"Anesthetic medications",
+"Paralytic (blocking) agents",
+"Inhaled bronchodilators",
+"Reversal (antidote) agents"
+],
+"Who prescribes the liter flow found during an O₂ titration?": [
+"The ordering physician",
+"The respiratory therapist",
+"The patient, by comfort",
+"The rehab program nurse"
+],
+"What distance is PUBLIC space?": [
+"12 to 25 feet (12+)",
+"4 to 12 feet (social)",
+"1.5 to 4 feet (personal)",
+"25 to 50 feet (distant)"
+],
+"A hot-water scald with blisters that is VERY painful and involves the epidermis plus superficial dermis is:": [
+"Superficial partial-thickness (2nd degree)",
+"Superficial epidermal only (1st degree)",
+"Full-thickness through the dermis (3rd degree)",
+"Deep tissue into muscle or bone (4th degree)"
+],
+"Empathy differs from sympathy because empathy is:": [
+"Understanding what someone is experiencing",
+"Feeling sorry for what someone is going through",
+"Becoming the patient's friend outside of work",
+"Sharing your own fears so the patient feels less alone"
+],
+"According to the 202 deck, which is a headline indication for BiPAP?": [
+"Preventing intubation in end-stage COPD",
+"Cardiac arrest with no spontaneous breathing",
+"Excessive airway secretions that can't be cleared",
+"Massive hemoptysis with an unprotected airway"
+],
+"What is the typical peak effect of a SABA?": [
+"30–60 minutes",
+"5–10 minutes",
+"4–6 hours",
+"12–24 hours"
+],
+"On HFOV, which settings control OXYGENATION?": [
+"Mean airway pressure (P̄aw) and FiO₂",
+"Amplitude (ΔP) and frequency (Hz)",
+"PEEP and the mandatory breath rate",
+"Inspiratory time and bias flow rate"
+],
+"What is the treatment for CO poisoning?": [
+"100% O₂ by NRB; hyperbaric if severe",
+"Room air and observation for 24 hours",
+"Nasal cannula at 2 L/min until symptoms ease",
+"Nebulized bronchodilators every 4 hours"
+],
+"Interpret: pH 7.32, PaCO₂ 28, HCO₃⁻ 14, PaO₂ 108 on room air (DKA).": [
+"Partially compensated metabolic acidosis, normal oxygenation",
+"Uncompensated respiratory acidosis with mild hypoxemia",
+"Fully compensated metabolic alkalosis, normal oxygenation",
+"Acute respiratory alkalosis with moderate hypoxemia"
+],
+"A patient with a circumferential chest burn has rising ventilator pressures and poor chest expansion. What procedure may be needed?": [
+"Chest escharotomy",
+"Flexible bronchoscopy",
+"Chemical pleurodesis",
+"Surgical tracheostomy"
+],
+"A COPD patient has pedal edema, JVD and cardiomegaly. What is the cause?": [
+"Cor pulmonale from pulmonary hypertension",
+"Left heart failure from a recent MI",
+"Acute kidney failure with fluid overload",
+"Liver cirrhosis with low albumin"
+],
+"How does azotemia differ from uremia?": [
+"Azotemia is abnormal labs only; uremia adds symptoms",
+"Azotemia has symptoms; uremia is abnormal labs only",
+"They are the same condition with two different names",
+"Azotemia is a kidney infection; uremia is a kidney stone"
+],
+"What is the published normal range for DYNAMIC compliance?": [
+"None is published — it is a comparative value",
+"70–100 mL/cm H₂O, the same as static compliance",
+"50–100 mL/cm H₂O, the deck's lung compliance range",
+"30–40 mL/cm H₂O, because resistance lowers it"
+],
+"Neuromuscular blocking agents act on which part of the nervous system?": [
+"The somatic motor system (skeletal muscle)",
+"The autonomic system (smooth muscle and glands)",
+"The central nervous system (brain and spinal cord)",
+"The sympathetic system (fight or flight)"
+],
+"What is the IBW of a 5'6\" female, and the target VT at 8 mL/kg?": [
+"About 59 kg; about 472 mL (~500 mL)",
+"About 64 kg; about 512 mL (~500 mL)",
+"About 50 kg; about 400 mL (~400 mL)",
+"About 78 kg; about 624 mL (~600 mL)"
+],
+"What is the IBW of a 6'0\" male, and the target VT at 8 mL/kg?": [
+"About 78 kg; about 624 mL (~600 mL)",
+"About 72 kg; about 576 mL (~600 mL)",
+"About 84 kg; about 672 mL (~700 mL)",
+"About 59 kg; about 472 mL (~500 mL)"
+],
+"How long before intubation is pretreatment given?": [
+"3 to 5 minutes",
+"30 to 60 seconds",
+"20 to 30 minutes",
+"1 to 2 hours"
+],
+"Waxing and waning tidal volumes with apneic periods (Cheyne-Stokes) point to:": [
+"CNS disease or severe CHF",
+"Damage to the pons",
+"Metabolic acidosis",
+"An acute asthma attack"
+],
+"Biomass smoke from cooking and heating is a risk factor for COPD because it is:": [
+"Inhaled particle exposure",
+"An inherited genetic factor",
+"A dietary or nutritional factor",
+"A lack of regular exercise"
+],
+"Describe the Minimal Leak Technique (MLT).": [
+"Seal the cuff, then withdraw air until a slight end-inspiratory leak",
+"Inflate until no leak is heard at end-inspiration, then stop adding air",
+"Inflate the cuff to 40 cm H₂O and leave it at that pressure",
+"Leave the cuff deflated during ventilation to protect the trachea"
+],
+"\"Eliminate\" in a question stem does NOT mean \"filter.\" What distinction does this protect?": [
+"Lungs eliminate (e.g., CO₂); kidneys filter",
+"Kidneys eliminate (e.g., CO₂); lungs filter",
+"The liver eliminates; the heart filters",
+"There is no real difference between them"
+],
+"Why should cuff pressure stay BELOW 30 cm H₂O?": [
+"It can compress tracheal capillaries, causing ischemia",
+"Higher pressure allows microaspiration past the cuff",
+"Higher pressure raises the peak inspiratory pressure",
+"Higher pressure makes the cuff slowly deflate over time"
+],
+"Why does low chloride or low potassium cause metabolic alkalosis?": [
+"Na⁺ must trade for H⁺, so H⁺ is lost",
+"Bicarbonate is excreted in the urine",
+"CO₂ rises and is retained as acid",
+"The kidneys stop filtering the blood"
+],
+"A patient on HFOV has a rising PaCO₂. Which change will improve ventilation?": [
+"Increase amplitude or decrease frequency",
+"Decrease amplitude and keep frequency",
+"Increase frequency and keep amplitude",
+"Increase mean airway pressure only"
+],
+"Why can't compensation normalize the pH in DKA at 6.98 with PaCO₂ 24?": [
+"The metabolic derangement is too extreme",
+"The kidneys are already fully compensating",
+"The PaCO₂ is still too high to help",
+"Kussmaul breathing makes the acidosis worse"
+],
+"What is the narrowest part of the airway in an adult, and in a child (NBRC answer)?": [
+"Adult = glottis (vocal cords); child = cricoid ring",
+"Adult = cricoid ring; child = glottis (vocal cords)",
+"Both adult and child = the cricoid ring",
+"Both adult and child = the glottis (vocal cords)"
+],
+"Why is normal C_RS 100 mL/cm H₂O when lung and chest wall are each 200?": [
+"They add as reciprocals: 1/C_RS = 1/C_L + 1/C_CW",
+"They are averaged: C_RS = (C_L + C_CW) ÷ 4",
+"Chest wall compliance is subtracted: C_RS = C_L − C_CW",
+"Airway resistance halves the combined compliance value"
+],
+"A patient with severe facial trauma is in hypercapnic respiratory failure. What is the MOST appropriate support?": [
+"Intubation and mechanical ventilation",
+"BiPAP with a full-face mask",
+"CPAP with a nasal mask",
+"High-flow nasal cannula at 60 L/min"
+],
+"Modern ECMO is based on which technology?": [
+"Cardiopulmonary bypass from the 1950s",
+"Hemodialysis machines from the 1970s",
+"Iron lung negative-pressure ventilation",
+"Hyperbaric oxygen chambers"
+],
+"The mnemonic SLUD (Salivation, Lacrimation, Urination, Defecation) describes overstimulation of which system?": [
+"Parasympathetic",
+"Sympathetic (adrenergic)",
+"Somatic motor (skeletal)",
+"Central nervous (brain)"
+],
+"Which is one of the four ways salicylate causes acidosis?": [
+"Impairing renal acid excretion",
+"Raising the PaCO₂ by hypoventilation",
+"Increasing the serum bicarbonate",
+"Causing vomiting and chloride loss"
+],
+"Inhibitory NANC nerves cause bronchodilation using which mediator?": [
+"Nitric oxide or VIP",
+"Substance P or neurokinin A",
+"Acetylcholine",
+"Norepinephrine"
+],
+"What is the RAMP time range on the V60?": [
+"Off, or 5 to 45 minutes",
+"Off, or 1 to 5 seconds",
+"Off, or 1 to 3 hours",
+"Fixed at 10 minutes"
+],
+"Which bedside finding predicts a potentially difficult airway?": [
+"Short thick neck, poor mobility",
+"Mallampati Class I view on exam",
+"Wide, easy, three-finger mouth opening",
+"Normal mandibular and thyromental space"
+],
+"What does \"cachectic\" mean?": [
+"Wasted and underweight from chronic illness",
+"Slightly thin by personal choice or diet",
+"Overweight with fluid retention in the legs",
+"Having a barrel-shaped, hyperinflated chest"
+],
+"Interpret on 2 L NC: pH 7.24, PaCO₂ 110, HCO₃⁻ 46, PaO₂ 47.": [
+"Acute on chronic ventilatory failure with hypoxemia",
+"Fully compensated respiratory acidosis with hypoxemia",
+"Acute metabolic acidosis with normal oxygenation",
+"Chronic respiratory alkalosis with mild hypoxemia"
+],
+"Which is a therapy to lower ICP?": [
+"Head of bed up 30–40 degrees",
+"Lying the patient completely flat",
+"Increasing PEEP to 20 cm H₂O",
+"Giving a large fluid bolus"
+],
+"The MACOCHA score predicts:": [
+"Difficult intubation",
+"Sepsis and septic shock",
+"Weaning success or failure",
+"Risk of developing VAP"
+],
+"The contraindications to NIV fall into which two patterns?": [
+"The patient can't participate, or the mask can't work",
+"The patient is too young, or the patient is too old",
+"The PaCO₂ is too high, or the PaCO₂ is too low",
+"The patient is hypoxemic, or the patient is hypercapnic"
+],
+"Which conditions does the 202 deck ADD (with an asterisk) to Hess's ECMO indication list?": [
+"Smoke inhalation and severe pneumonia",
+"Status asthmaticus and massive PE",
+"ARDS and air-leak syndromes",
+"PPHN and meconium aspiration"
+],
+"Which is an ECMO circuit monitoring component?": [
+"Bubble detector with emergency clamps",
+"Capnograph attached to the oxygenator",
+"Peak flow meter on the sweep-gas line",
+"Spirometer on the venous drainage line"
+],
+"Montelukast (Singulair) is classified as:": [
+"A leukotriene receptor antagonist",
+"A short-acting β₂-adrenergic agonist",
+"An inhaled corticosteroid (ICS)",
+"A mast cell stabilizer (cromone)"
+],
+"The low pressure and low exhaled volume alarms sound together. What is the MOST likely cause?": [
+"Circuit disconnection or leak",
+"Bronchospasm with air trapping",
+"A developing pneumothorax",
+"The patient biting the ETT"
+],
+"What is the rule of thumb for ANATOMIC dead space?": [
+"1 mL per pound of body weight",
+"1 mL per kilogram of ideal weight",
+"2 mL per pound of body weight",
+"150 mL for every adult, any size"
+],
+"What does GOLD stand for?": [
+"Global Initiative for Chronic Obstructive Lung Disease",
+"Global Guidelines for Obstructive Lung Diagnosis",
+"General Organization for Lung Disease and Oxygen",
+"Global Oxygen and Lung Delivery Directive"
+],
+"What does the Mallampati classification assess?": [
+"Oropharynx visibility to predict intubation difficulty",
+"Level of consciousness to decide on intubation",
+"Neck circumference to predict obstructive sleep apnea",
+"Degree of airway edema to predict extubation failure"
+],
+"In the equation of motion, which are constants?": [
+"Resistance and compliance",
+"Pressure and volume",
+"Flow and pressure",
+"Volume and flow"
+],
+"Which order is actionable and safe?": [
+"\"Give albuterol 2.5 mg via nebulizer NOW.\"",
+"\"Give some albuterol when the patient is ready.\"",
+"\"Give a breathing treatment whenever you can.\"",
+"\"Give the usual neb, same as last time.\""
+],
+"Which is one of the receiver's active-listening skills?": [
+"Listen to the intent, not just the content",
+"Plan your reply while the other person talks",
+"Interrupt to clarify every point as it comes up",
+"Avoid eye contact so the speaker feels at ease"
+],
+"What should a patient do after using an inhaled corticosteroid?": [
+"Rinse the mouth to prevent oral thrush",
+"Take a second dose right away for effect",
+"Lie flat for 30 minutes so it reaches the lungs",
+"Hold the breath for 2 full minutes afterward"
+],
+"Which crystalloid is preferred for burn resuscitation?": [
+"Lactated Ringer's",
+"0.9% normal saline",
+"Dextrose 5% in water",
+"Albumin 25% (colloid)"
+],
+"Thoracic (upper-chest) breathing uses which muscles?": [
+"Sternocleidomastoid, scalenes, upper trapezius, pectoralis major",
+"Diaphragm together with the external intercostals only",
+"Internal intercostals together with the abdominal muscles",
+"Glossopharyngeal muscles of the throat and the tongue"
+],
+"Which formula is the Oxygenation Index used to consider ECMO?": [
+"(P̄aw × FiO₂ × 100) ÷ PaO₂",
+"PaO₂ ÷ FiO₂ (the P/F ratio)",
+"(PIP − PEEP) × FiO₂ × 100",
+"(FiO₂ × PaO₂) ÷ P̄aw × 100"
+],
+"Airway hyperresponsiveness (AHR) is measured with:": [
+"Bronchoprovocation testing",
+"A chest x-ray series",
+"An arterial blood gas",
+"A 6-minute walk test"
+],
+"Which vaccinations are recommended for COPD patients to reduce exacerbations?": [
+"Flu, pneumococcal and Tdap",
+"Only hepatitis A and B",
+"Only measles, mumps and rubella",
+"None are recommended for COPD"
+],
+"\"I don't think these treatments are helping\" represents which level of communication?": [
+"Level 3 — personal ideas or judgments",
+"Level 2 — feelings and emotions shared",
+"Level 4 — reporting facts and information",
+"Level 1 — peak communication with intimates"
+],
+"The 7 / 38 / 55 percentages come from Mehrabian's research. What is the caveat the instructor stresses?": [
+"They apply to feelings and attitudes when verbal and nonverbal signals conflict",
+"They apply to all spoken communication, including ventilator orders and handoffs",
+"They were measured only in critically ill ICU patients who could not speak",
+"They apply only to written communication in the chart, not to conversation"
+],
+"Proxemics is BEST defined as:": [
+"The use and interpretation of space and its effect on communication",
+"The study of facial expressions, gestures and body posture in conversation",
+"The tone, pitch, volume and rate of the speaking voice during an interview",
+"The documentation of patient communication in the legal medical record"
+],
+"What is the key difference between VV ECMO and VA ECMO?": [
+"VV = respiratory failure; VA = cardiac and cardiopulmonary failure",
+"VV = cardiac failure only; VA = respiratory failure only",
+"VV = CO₂ removal only; VA = oxygenation and CO₂ removal",
+"VV = neonates and children only; VA = adults only"
+],
+"In dual-site VV ECMO, where are the cannulas typically placed?": [
+"Femoral vein drainage; return to the right IJ or other femoral vein",
+"Femoral vein drainage; return to the femoral artery on the same side",
+"Right atrial drainage; return to the ascending aorta through the chest",
+"Subclavian artery drainage; return to the femoral vein in the groin"
+],
+"What is an advantage of single-site (dual-lumen) VV cannulation?": [
+"Less vessel trauma and infection, and more wakefulness and mobility",
+"Higher blood flows than any dual-site cannulation strategy can reach",
+"Full cardiac support in addition to gas exchange for the patient",
+"Placement at the bedside without any fluoroscopy or echo guidance"
+],
+"What does the Murray Lung Injury Score consider?": [
+"PaO₂/FiO₂, chest x-ray infiltrates, lung compliance and PEEP",
+"Heart rate, blood pressure, urine output and the Glasgow Coma Scale",
+"pH, PaCO₂, HCO₃⁻ and base excess from the most recent arterial gas",
+"Age, weight, height and sex used to predict the patient's lung size"
+],
+"During an O₂ titration with exercise, the patient's SpO₂ falls to 86% at peak activity. What should the RT do?": [
+"Increase O₂ by 1 L/min until SpO₂ is ≥ 88%",
+"Stop the titration and end the test for the day",
+"Decrease the walking pace until the SpO₂ recovers",
+"Increase O₂ by 4 L/min and continue the walk"
+],
+"What is the inspiratory muscle training (IMT) schedule Heuer specifies?": [
+"1–2 sessions/day, 30 minutes total/day, 4–6 days/week",
+"1 session/week, 60 minutes per session, every week",
+"3 sessions/day, 5 minutes per session, 7 days/week",
+"1 session/day, 10 minutes per session, for 2 weeks only"
+],
+"Which is an ABSOLUTE contraindication to a 6MWT?": [
+"MI or unstable angina in the previous month",
+"A resting heart rate of 125 beats/min at rest",
+"A resting systolic BP of 185 mm Hg before the walk",
+"Use of supplemental oxygen at home or during the walk"
+],
+"Which finding requires the RT to STOP a 6MWT immediately?": [
+"Diaphoresis with a pale, ashen appearance",
+"A Borg dyspnea rating of 3 (moderate)",
+"An SpO₂ of 90% partway through the walk",
+"A heart rate increase of 15 beats/min"
+],
+"A 6MWD below what distance screens as abnormal functional capacity?": [
+"500–600 meters",
+"100–150 meters",
+"1,000–1,200 meters",
+"250–300 meters"
+],
+"Methacholine, used in the bronchoprovocation test, is classified as a:": [
+"Direct-acting cholinergic (parasympathomimetic)",
+"Anticholinergic (muscarinic antagonist) bronchodilator",
+"Indirect-acting cholinesterase inhibitor (neostigmine-like)",
+"Beta-2 adrenergic agonist (albuterol-like) bronchodilator"
+],
+"Which flow waveform is associated with Volume Control, and which with Pressure Control?": [
+"VC = square (constant) flow; PC = decelerating flow",
+"VC = decelerating flow; PC = square (constant) flow",
+"VC and PC both use a sine-wave flow pattern",
+"VC and PC both use a decelerating flow pattern"
+],
+"Which statement about VC and PC is correct?": [
+"Only one can be controlled — volume or pressure, not both",
+"PC guarantees both the delivered VT and the airway pressure",
+"VC guarantees both the delivered VT and the airway pressure",
+"Both modes guarantee the VT and the minute ventilation"
+],
+"In Mandatory Minute Ventilation (MMV), when are mandatory breaths delivered?": [
+"When measured minute ventilation falls below a set threshold",
+"At a fixed set rate every minute regardless of patient effort",
+"Only after the patient has been apneic for at least 20 seconds",
+"Whenever the patient's spontaneous rate rises above 30/min"
+],
+"How does PRVC maintain the target tidal volume?": [
+"It adjusts pressure each breath to hit the target VT at the lowest pressure",
+"It delivers the same set pressure every breath and lets the VT vary freely",
+"It uses a fixed square-wave flow pattern exactly like volume control does",
+"It lets the patient's own effort set the tidal volume for every breath"
+],
+"Why can't PSV be used on an apneic patient?": [
+"Every PSV breath must be patient-triggered",
+"It delivers too much tidal volume per breath",
+"It cannot be combined with any level of PEEP",
+"It is time-cycled, so it can't end each breath"
+],
+"How is VT determined in Airway Pressure-Release Ventilation (APRV)?": [
+"The gradient between the high pressure and the release pressure",
+"A preset tidal volume dialed in by the clinician at the bedside",
+"The patient's own inspiratory effort alone, with no set pressures",
+"The oscillation amplitude around the mean airway pressure setting"
+],
+"On a pressure–time waveform, how do you identify a PATIENT-triggered breath?": [
+"A small negative dip below baseline before the breath",
+"A flat baseline with no dip at all before the breath",
+"A sharp pressure spike at the very end of inspiration",
+"A flat plateau held for a moment during inspiration"
+],
+"How does PEEP affect ICP in a head-injured patient with normal lungs?": [
+"It may raise ICP by impeding venous drainage",
+"It lowers ICP by improving cerebral oxygenation",
+"It has no effect on ICP at any level of PEEP",
+"It lowers ICP by reducing the arterial PaCO₂"
+],
+"When is therapeutic (applied) PEEP used for auto-PEEP?": [
+"After adjustments fail, to offset small-airway trapping",
+"Before any other ventilator adjustment is even tried",
+"Never — added PEEP always worsens existing auto-PEEP",
+"Only when the patient is ventilated in pressure control"
+],
+"The high PEEP alarm sounds. What is the MOST likely cause?": [
+"Auto-PEEP from air trapping",
+"A circuit disconnection",
+"A leak around the ETT cuff",
+"Oversedation with apnea"
+],
+"Which is required of every patient before starting NIV?": [
+"Spontaneous breathing, cooperation, and mask tolerance",
+"A PaCO₂ above 80 mm Hg on the most recent arterial gas",
+"A functioning arterial line in place for frequent ABGs",
+"An artificial airway already in place to protect the airway"
+],
+"Which ABG value is CALCULATED rather than measured?": [
+"HCO₃⁻",
+"pH",
+"PaCO₂",
+"PaO₂"
+],
+"Nonvolatile (fixed) acids are:": [
+"Acids the lungs can't remove; the kidneys excrete them",
+"Acids the lungs exhale as carbon dioxide with each breath",
+"Only the carbonic acid formed from CO₂ and water",
+"Bases that raise the pH when they accumulate in blood"
+],
+"Which process causes metabolic alkalosis through loss of H⁺?": [
+"Vomiting or gastric suction",
+"Diabetic ketoacidosis",
+"Lactic acid buildup in shock",
+"Aspirin (salicylate) overdose"
+],
+"According to the WHO, asthma is:": [
+"The most common chronic disease among children worldwide",
+"Rare in low- and middle-income countries around the world",
+"More common in older adults than in children worldwide",
+"Declining toward zero worldwide thanks to modern inhalers"
+],
+"When should asthma therapy be stepped DOWN?": [
+"After at least 3 months of stable control",
+"After 1 week with no daytime symptoms",
+"Never, once a step has been reached",
+"Immediately after an exacerbation ends"
+],
+"While giving albuterol, the RT should stop and notify if the heart rate increases by:": [
+"20 beats/min or 20% over baseline",
+"5 beats/min or 5% over baseline",
+"50 beats/min or 50% over baseline",
+"10 beats/min or 10% over baseline"
+],
+"A patient in the GREEN zone (80–100% of personal best) should:": [
+"Continue daily controllers as prescribed",
+"Use rescue medication immediately",
+"Go straight to the emergency department",
+"Stop the controller medications for now"
+],
+"What are the four classic symptoms of COPD?": [
+"Dyspnea, chronic cough, sputum production and wheezing",
+"Fever, chills, night sweats and unexplained weight gain",
+"Chest pain, palpitations, fainting spells and leg edema",
+"Stridor, drooling, hoarseness and a high fever"
+],
+"Why is \"post-bronchodilator\" the key word in the COPD diagnostic criterion?": [
+"It proves the obstruction persists after bronchodilation",
+"It ensures the patient's FVC has reached its maximum value",
+"It rules out any restrictive lung disease at the same time",
+"It allows the DLCO to be measured accurately afterward"
+],
+"Why do patients with advanced COPD develop chronic CO₂ retention?": [
+"WOB is so high the body accepts an easier, less effective pattern",
+"The kidneys gradually stop excreting CO₂ as the disease progresses",
+"The patient hyperventilates constantly, which raises the PaCO₂",
+"Surfactant production rises and blocks CO₂ diffusion across the alveoli"
+],
+"How is EMPHYSEMA defined?": [
+"Permanent enlargement and destruction of air spaces distal to terminal bronchioles",
+"A productive cough on most days for 3 months in each of 2 consecutive years",
+"Reversible airway obstruction that improves by 12% or more after a bronchodilator",
+"Fibrosis and thickening of the alveolar walls with reduced lung volumes"
+],
+"A stocky, cyanotic COPD patient has a chronic productive cough and peripheral edema. Which type is dominant?": [
+"Chronic bronchitis — \"Blue Bloater\" (Type B)",
+"Emphysema — \"Pink Puffer\" (Type A)",
+"Asthma — reversible airway obstruction",
+"Restrictive disease — reduced lung volumes"
+],
+"Why is polycythemia common in the Blue Bloater?": [
+"Chronic hypoxemia raises erythropoietin",
+"Dehydration from long-term diuretic therapy",
+"A malignancy of the bone marrow",
+"Living at high altitude, and nothing else"
+],
+"Why do emphysema patients become cachectic?": [
+"The energy cost of breathing causes weight loss",
+"Fluid retention hides their true body weight",
+"Polycythemia raises their metabolic rate",
+"Long-term steroid therapy, and nothing else"
+],
+"Having COPD increases a patient's risk of:": [
+"Heart disease and lung cancer",
+"Asthma and seasonal allergies only",
+"Type 1 (insulin-dependent) diabetes",
+"Appendicitis and gallbladder disease"
+],
+"A COPD patient on room air has PaO₂ 54 torr and SaO₂ 87%. Does the patient qualify for LTOT?": [
+"Yes — both values meet the criteria",
+"No — both must be below 50 torr and 85%",
+"No — only the SaO₂ counts toward LTOT",
+"No — LTOT also requires a high PaCO₂"
+],
+"A COPD patient on room air has PaO₂ 62 torr and SaO₂ 91%. Does the patient qualify for continuous LTOT?": [
+"No — neither value meets the threshold",
+"Yes — the PaO₂ is below 80 torr",
+"Yes — the SaO₂ is below 95%",
+"Yes — every COPD patient qualifies"
+],
+"Why should cuff pressure stay ABOVE 20 cm H₂O?": [
+"Microaspiration past the cuff becomes likely",
+"The tracheal mucosa becomes necrotic below 20",
+"ICP rises from venous congestion below 20",
+"Laryngospasm is triggered by low cuff pressure"
+],
+"Mallampati Class III shows:": [
+"Only the soft palate; the uvula is mostly hidden",
+"Only the hard palate; the soft palate is hidden",
+"Soft palate, uvula, fauces and tonsillar pillars",
+"Soft palate, fauces and part of the uvula"
+],
+"A Mallampati score of 3 or 4 also suggests increased risk of:": [
+"Obstructive sleep apnea",
+"Exercise-induced asthma",
+"Pulmonary embolism",
+"Spontaneous pneumothorax"
+],
+"What is the caveat about SSD tubes?": [
+"Less VAP, but no mortality benefit and frequent failure",
+"More VAP because of the extra suction lumen in the tube",
+"Approved only for pediatric patients under 12 years old",
+"Not compatible with mechanical ventilation in the ICU"
+],
+"Why should routine NASAL intubation be avoided in terms of VAP?": [
+"It causes sinusitis, raising VAE risk",
+"It prevents effective tracheal suctioning",
+"It requires a much larger tube size",
+"It raises the cuff pressure to unsafe levels"
+],
+"An NPA is contraindicated in a patient with which injury?": [
+"Basilar skull fracture",
+"Fractured mandible",
+"Oral cancer",
+"Trismus (locked jaw)"
+],
+"What are the major complications of an NPA?": [
+"Nosebleed, laryngospasm; sinusitis over time",
+"Broken teeth if the patient bites down hard",
+"Tracheal necrosis from high cuff pressure",
+"Esophageal perforation during insertion"
+],
+"What is the major risk of an OPA?": [
+"Regurgitation and aspiration",
+"Sinusitis over time",
+"Placement into the cranial vault",
+"Epistaxis (nosebleed)"
+],
+"When is NASOTRACHEAL intubation indicated?": [
+"No mouth access — trismus, oral trauma",
+"Every emergency or crash intubation",
+"A known basilar skull fracture",
+"Whenever a larger ETT size is needed"
+],
+"What is a disadvantage of nasal intubation compared with oral?": [
+"Smaller tube, higher resistance, sinusitis",
+"Less well tolerated by an awake patient",
+"More gagging and retching than oral tubes",
+"It always requires a bite block to secure"
+],
+"Why is a bite block used with ORAL intubation?": [
+"So the patient can't bite the tube",
+"To hold the stylet in place after intubation",
+"To mark the tube's insertion depth at the lip",
+"To prevent sinusitis from developing"
+],
+"How does the deck define OXYGENATION failure?": [
+"PaO₂ < 40 mm Hg despite FiO₂ 50–100%",
+"PaCO₂ > 45 mm Hg with a pH < 7.35",
+"PaO₂ < 80 mm Hg while breathing room air",
+"SpO₂ < 95% on a 2 L/min nasal cannula"
+],
+"What is the lung-protective VT for ARDS?": [
+"About 6 mL/kg predicted body weight",
+"10–12 mL/kg of actual body weight",
+"8–10 mL/kg of actual body weight",
+"About 15 mL/kg predicted body weight"
+],
+"Why is the SaO₂ on a standard ABG report unreliable in CO poisoning?": [
+"It's calculated and can't detect COHb",
+"CO damages the PO₂ electrode in the analyzer",
+"It is always measured directly, so it reads high",
+"It only measures venous blood, not arterial"
+],
+"What is the most common board answer for a cause of ALVEOLAR dead space?": [
+"Pulmonary embolism",
+"Lobar atelectasis",
+"Lobar pneumonia",
+"Cardiogenic pulmonary edema"
+],
+"Which equation shows why oxygenation must be judged by content, not PaO₂ alone?": [
+"CaO₂ = (SaO₂ × Hb × 1.34) + 0.003 × PaO₂",
+"PAO₂ = FiO₂ × (PB − 47) − PaCO₂ ÷ 0.8 alone",
+"VD/VT = (PaCO₂ − PĒCO₂) ÷ PaCO₂ × 100",
+"CPP = MAP − ICP, in a head-injured patient"
+],
+"PBW (predicted body weight) means the same thing as:": [
+"IBW (ideal body weight)",
+"Actual body weight",
+"BMI (body mass index)",
+"BSA (body surface area)"
+],
+"A Rapid Response Team (RRT) is the same as a:": [
+"Medical Emergency Team (MET)",
+"Respiratory therapy team",
+"Code Blue team only",
+"Patient transport team"
+],
+"Under the principle of DOUBLE EFFECT, what makes giving a large morphine dose to a terminally ill patient permissible?": [
+"The intent is pain relief, not death",
+"The intent is to hasten the death",
+"The family requested the large dose",
+"The dose given is small and routine"
+],
+"A physician gives a large morphine dose INTENDING to end a terminally ill patient's life. Under double effect, this is:": [
+"Impermissible, because the intent is to cause death",
+"Permissible, because the patient is already terminal",
+"Permissible, as long as the family agrees to it",
+"Permissible, as long as the dose is a standard one"
+],
+"KINESICS refers to:": [
+"What your body says",
+"What your words say",
+"How your voice sounds",
+"Where you stand in the room"
+],
+"Who should interpret for a patient with a language difference?": [
+"A qualified medical interpreter",
+"A family member at the bedside",
+"The patient's school-age child",
+"Any bilingual staff member nearby"
+],
+"The dyspnea–anxiety loop runs:": [
+"Dyspnea → anxiety → ↑RR → more dyspnea",
+"Anxiety → bradypnea → hypoxemia → calm",
+"Dyspnea → sedation → apnea → arrest",
+"Anxiety → ↓RR → relief → less dyspnea"
+],
+"How much more strongly does CO bind hemoglobin than oxygen?": [
+"200–250 times",
+"2–3 times",
+"20–25 times",
+"1,000–2,000 times"
+],
+"Which ECMO complication carries the greatest morbidity and mortality?": [
+"CNS complications (stroke)",
+"Limb ischemia (VA ECMO)",
+"Bleeding at the cannula site",
+"Hemolysis in the circuit"
+],
+"Modern ECMO oxygenators are made of:": [
+"Polymethylpentene hollow fibers",
+"Silicone rubber flat membranes",
+"Packed glass bead columns",
+"Open bubble-chamber reservoirs"
+],
+"What is the correct order of physical reconditioning?": [
+"Warm-up/stretch → aerobic → strength",
+"Strength → aerobic → stretch/cool-down",
+"Aerobic → strength → warm-up/stretch",
+"Strength → warm-up/stretch → aerobic"
+],
+"What is a normal GFR?": [
+"About 120–125 mL/min",
+"About 1.2–1.5 L/min",
+"About 30–40 mL/min",
+"About 500–600 mL/min"
+],
+"How does the sympathetic response pattern differ from the parasympathetic?": [
+"Sympathetic is widespread and rapid; parasympathetic is localized",
+"Sympathetic is localized and calming; parasympathetic is widespread",
+"Both are localized and act only on one organ at a time",
+"Both are widespread and act on every organ at once"
+],
+"The shortcut P(A−a)O₂ = (1000 − PaCO₂/0.8) − PaO₂ is valid only:": [
+"On 100% oxygen",
+"On room air (21%)",
+"At high altitude",
+"In young children"
+],
+"Which is a component of a pulmonary rehab program?": [
+"Nutrition and diet education",
+"Daily IV antibiotic infusions",
+"Routine mechanical ventilation",
+"Scheduled bronchoscopy"
+]
+}

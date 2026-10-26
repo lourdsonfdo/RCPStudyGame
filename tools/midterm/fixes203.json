@@ -1,0 +1,1364 @@
+{
+"A ventilated heliox patient shows a \"beaked\" P-V loop. The likely cause is:": [
+"Excessive volume from unapplied density conversion factors",
+"A large cuff leak that lets delivered volume escape",
+"Too little PEEP, so alveoli collapse each breath",
+"Bronchospasm raising the airway resistance"
+],
+"For Medicare sleep-only home O₂, the patient must have during sleep:": [
+"PaO₂ ≤ 55 or SaO₂ ≤ 88% while ≥ 56 / ≥ 89% awake",
+"PaO₂ ≤ 70 or SaO₂ ≤ 93% while ≥ 75 / ≥ 95% awake",
+"SpO₂ < 95% for any part of the night, awake or asleep",
+"Loud snoring with witnessed pauses, regardless of SpO₂"
+],
+"How is infectious waste finally disposed of?": [
+"Sterilization or incineration, then landfill or sewer",
+"Bagged with regular trash and sent to the landfill",
+"Sorted and sent out with hospital recycling",
+"Buried on hospital grounds in sealed containers"
+],
+"Which is an ABSOLUTE contraindication to bronchoscopy?": [
+"Inability to oxygenate adequately during the procedure",
+"A chronic cough lasting longer than eight weeks",
+"Recent pneumonia that is improving on antibiotics",
+"Mild, well-controlled asthma on an inhaled steroid"
+],
+"How do you disinfect a blood spill after removing the visible matter?": [
+"EPA-registered germicide or freshly diluted sodium hypochlorite",
+"Soap and warm water only, then dry with paper towels",
+"Alcohol wipes over the area until it looks clean",
+"Leave it to air-dry, then sweep up the residue"
+],
+"Why does heliox reduce work of breathing?": [
+"Its low density lowers driving pressure and makes flow more laminar",
+"It relaxes bronchial smooth muscle like a β₂-agonist bronchodilator",
+"It raises PaO₂ more than oxygen alone at the same FiO₂",
+"It thins secretions so they are cleared from the airways"
+],
+"White (radiopaque) areas with air bronchograms on chest x-ray indicate:": [
+"Infiltrates (consolidation, ARDS)",
+"Pneumothorax (free pleural air)",
+"Emphysema (hyperinflation)",
+"Normal, well-aerated lung"
+],
+"Auto-PEEP from high minute ventilation: what PaCO₂ trade-off is accepted?": [
+"A higher PaCO₂ as long as pH stays above 7.25",
+"A lower PaCO₂ as long as pH stays below 7.50",
+"No change in PaCO₂, whatever the auto-PEEP",
+"Any PaCO₂, even with a pH below 7.10"
+],
+"What CONFIRMS VAP?": [
+"A pathogen from a lower-airway sample taken before antibiotics",
+"A fever above 38.5 °C lasting more than two days on the ventilator",
+"A new infiltrate on the chest x-ray, with no other findings needed",
+"Purulent secretions from the ETT, with no culture needed"
+],
+"Why is atropine part of the classic bronchoscopy premedication?": [
+"It reduces vagal response, secretions and bronchospasm",
+"It suppresses the cough reflex during the procedure",
+"It sedates the patient so they stay calm and still",
+"It reverses opioid effects if breathing slows down"
+],
+"Why does a home sleep test report RDI instead of AHI?": [
+"It has no EEG, so it can't measure sleep time",
+"It is more accurate than in-lab polysomnography",
+"It counts snores instead of apneas and hypopneas",
+"It is performed while the patient is awake"
+],
+"Why does concentrator FiO₂ fall as flow rises?": [
+"Less contact time with the sieve lets more nitrogen through",
+"The compressor overheats and shuts down at high flows",
+"Humidity in the room air clogs the sieve beds",
+"Oxygen escapes from leaks in the tubing connections"
+],
+"Can a 12-lead ECG alone diagnose an MI?": [
+"No — it needs the presentation plus cardiac biomarkers",
+"Yes — ST changes on a 12-lead are always diagnostic",
+"Only in women, whose ECG changes are more specific",
+"Only when ST depression appears in two or more leads"
+],
+"Why is bronchial brushing done with a sheathed brush?": [
+"The sheath prevents contamination going in and out",
+"The sheath lets the brush cut a full tissue sample",
+"The sheath suctions secretions as the brush advances",
+"The sheath delivers lidocaine to numb the airway"
+],
+"A patient on heliox has a weak cough. What should you do?": [
+"Wash out the heliox with air-O₂ before coughing",
+"Increase the helium fraction to ease airflow",
+"Give a bronchodilator before every cough",
+"Suction blindly instead of having them cough"
+],
+"Aerosols are hygroscopic, meaning they:": [
+"Grow as they move into humid BTPS conditions",
+"Shrink as they move into warm, humid airways",
+"Repel water and keep the same size throughout",
+"Evaporate instantly once they leave the device"
+],
+"Heuer Table 1-5's 7.53 / 27 with PaO₂ 53 is acute respiratory alkalosis caused by:": [
+"Hyperventilation due to hypoxemia",
+"Loss of gastric acid from vomiting",
+"Loss of H⁺ from diuretic therapy",
+"Respiratory depression from opioids"
+],
+"Which biohazardous materials matter most to RTs?": [
+"Isolation wastes, blood products, and contaminated sharps",
+"Paper towels, packaging, and used gown wrappers",
+"Unused medications, expired vials, and IV bags",
+"Food trays, linens, and patient belongings"
+],
+"What is the gold-standard test for pulmonary embolism?": [
+"CT pulmonary angiography",
+"Portable chest x-ray",
+"Serum D-dimer level",
+"Spirometry with DLCO"
+],
+"How is heliox delivered to a spontaneously breathing patient?": [
+"Tight-fitting nonrebreather or high-flow cannula",
+"Simple mask or low-flow nasal cannula",
+"Low-flow nasal cannula at 2–6 L/min",
+"Venturi (air-entrainment) mask"
+],
+"Percussion over a pneumothorax is:": [
+"Hyperresonant",
+"Dull to percussion",
+"Flat and stony",
+"Normal resonance"
+],
+"Acute STEMI in men requires ST elevation of at least:": [
+"2 mm in two contiguous precordial leads",
+"0.5 mm in any single limb lead",
+"5 mm in all twelve leads at once",
+"1 mm in lead aVR and one other lead"
+],
+"What is the most dangerous action in critical care?": [
+"Silencing an alarm without finding the cause",
+"Suctioning the airway more often than needed",
+"Raising the FiO₂ before drawing a blood gas",
+"Calling the physician before assessing the patient"
+],
+"How should you state the normal C(a−v̄)O₂ on the exam?": [
+"Less than 7.0 mL/dL (about 5 assumed)",
+"More than 10 mL/dL (about 12 assumed)",
+"Exactly 2 mL/dL (no range allowed)",
+"15–20 mL/dL (same as the CaO₂)"
+],
+"The PtcO₂ electrode membrane is:": [
+"Hydrophobic — passes O₂ and CO₂ but blocks moisture",
+"Hydrophilic — passes water and electrolytes freely",
+"Glass — passes only H⁺ ions, like a pH electrode",
+"Porous — passes electrolytes but blocks all gases"
+],
+"Sodium bicarbonate in a code is:": [
+"A last resort that raises CO₂, so you must ventilate",
+"First-line for every arrest, given with the first dose of epi",
+"Given before CPR starts to correct the acidosis early",
+"Contraindicated in all arrests because it lowers the pH"
+],
+"Heuer's remedy for nasal bridge redness from a BiPAP mask is:": [
+"Reduce strap tension or add a forehead spacer",
+"Tighten the straps to stop the mask from moving",
+"Switch to nasal pillows for all further use",
+"Increase IPAP so the mask seals more easily"
+],
+"What is the racemic epinephrine dose?": [
+"2.25% solution, 0.25–0.5 mL",
+"1:1000 solution, 1–2 mL",
+"0.5% solution, 2.5 mg in 3 mL",
+"1:10,000 solution, 0.01 mg/kg IV"
+],
+"Can you remove a used needle from a disposable syringe by hand?": [
+"No — never bend, break or manipulate needles by hand",
+"Yes — as long as you are wearing two pairs of gloves",
+"Yes — using a firm twisting motion away from your body",
+"Only for blood gas syringes, which need the needle off"
+],
+"A BNP of 60 pg/mL in a dyspneic patient suggests:": [
+"CHF is unlikely (< 100)",
+"Severe CHF (> 900)",
+"Moderate CHF (> 400)",
+"Acute MI (any value)"
+],
+"Cheyne-Stokes breathing is caused by:": [
+"CNS disease and congestive heart failure",
+"Asthma and other obstructive diseases",
+"Diabetic ketoacidosis and other acidoses",
+"Anxiety and panic attacks"
+],
+"In a ventilated patient, the bronchoscope enters through a:": [
+"Bodai adapter with a bronchoscopy port",
+"Disconnected circuit at the Y-piece",
+"Tracheostomy, which must be placed first",
+"Nasal airway alongside the ETT"
+],
+"When must the extended self-test (EST) be performed?": [
+"Between uses on different patients",
+"At the start of every shift on the same patient",
+"Only after the ventilator has been repaired",
+"Before each breath in microprocessor ventilators"
+],
+"Where are apnea-monitor sensors placed?": [
+"Midway between the nipple line and midaxillary line on each side",
+"On the forehead and the back of the neck on the same side",
+"On the abdomen below the umbilicus, one on each side",
+"On the back between the shoulder blades, on each side"
+],
+"What usually causes high cuff pressure?": [
+"A tube that is too small or poorly positioned",
+"A tube that is too large for the trachea",
+"Low PEEP that lets the cuff overexpand",
+"A tube that is cut too short at the lip"
+],
+"What spontaneous VT is critically low for weaning (Heuer)?": [
+"< 4–5 mL/kg PBW (< 300 mL)",
+"< 8 mL/kg PBW (< 550 mL)",
+"< 10 mL/kg PBW (< 700 mL)",
+"< 12 mL/kg PBW (< 850 mL)"
+],
+"What comes first in treating central sleep apnea?": [
+"Treat the underlying cause",
+"CPAP at 15 cm H₂O nightly",
+"Acetazolamide at bedtime",
+"Tracheostomy for bypass"
+],
+"With a heated humidifier, what do you do with circuit condensate?": [
+"Drain it away from the patient without breaking the circuit",
+"Drain it back into the humidifier chamber to reuse the water",
+"Drain it toward the patient's airway so it is suctioned out",
+"Leave it in the tubing until the circuit is changed"
+],
+"Which lab finding is common in chronic pulmonary fibrosis?": [
+"Polycythemia (↑ Hct, Hgb)",
+"Leukopenia (↓ WBC count)",
+"A high D-dimer (> 500)",
+"Anemia (↓ Hgb and Hct)"
+],
+"A PR interval over 0.20 sec indicates:": [
+"First-degree or Mobitz I AV block",
+"Right or left bundle branch block",
+"Atrial fibrillation or flutter",
+"Normal sinus rhythm at rest"
+],
+"How fast does renal compensation for a respiratory problem occur?": [
+"Slowly, over hours to days",
+"Quickly, within minutes",
+"Instantly, within seconds",
+"Never — kidneys don't compensate"
+],
+"On a Ziehl-Neelsen stain, TB bacilli appear:": [
+"Red on a blue background",
+"Yellow-green on a dark background",
+"Purple on a pink background",
+"Black on a white background"
+],
+"A COPD patient's gas is 7.47 / 46 / HCO₃⁻ 32. What is it really?": [
+"Acute respiratory alkalosis on top of compensated respiratory acidosis",
+"Partially compensated metabolic alkalosis from diuretic therapy",
+"A normal blood gas for a COPD patient on home oxygen",
+"Acute metabolic acidosis with full respiratory compensation"
+],
+"Most portable oxygen concentrators deliver pulse-dose only. What is their limit?": [
+"About 30% O₂ or less",
+"About 60% O₂",
+"Nearly 100% O₂",
+"About 45% O₂"
+],
+"A CHF patient on BiPAP has SpO₂ 84% with a normal PaCO₂. What should be adjusted?": [
+"Increase EPAP and IPAP equally",
+"Increase IPAP only, by 5 cm H₂O",
+"Decrease EPAP only, by 2 cm H₂O",
+"Decrease the FiO₂ to 0.30"
+],
+"Which interface is preferred when starting NPPV for ACUTE respiratory failure?": [
+"Oronasal (full face) mask",
+"Nasal pillows interface",
+"Nasal mask with chin strap",
+"Mouthpiece with nose clip"
+],
+"Without CPR, survival drops by how much per minute?": [
+"7–10%",
+"1–2%",
+"20–25%",
+"40–50%"
+],
+"On SIMV, how is the VT of a spontaneous breath determined?": [
+"The patient's effort, plus any PS",
+"The set mandatory VT, every time",
+"The backup rate divided into VE",
+"A fixed 500 mL for all patients"
+],
+"Why are one or two doses of exogenous surfactant usually enough?": [
+"90–95% is taken up, reprocessed and re-secreted",
+"It lasts for months in the alveoli unchanged",
+"The lungs never make their own surfactant again",
+"It is given as a continuous drip for weeks"
+],
+"Why is transcutaneous monitoring a poor choice in emergencies?": [
+"It needs 5–20 minutes to set up and stabilize",
+"It is too accurate for fast-changing patients",
+"It requires an arterial line to be placed first",
+"It only works on neonates, not on adults"
+],
+"During CPR, PETCO₂ suddenly rises from 12 to 38 mm Hg. What does this suggest?": [
+"Return of spontaneous circulation",
+"Disconnection of the breathing circuit",
+"Poor-quality chest compressions",
+"Esophageal placement of the tube"
+],
+"Which PFT pattern fits pulmonary fibrosis?": [
+"↓ FVC, normal FEV₁/FVC, ↓ volumes",
+"↓ FEV₁/FVC with ↑ TLC and ↑ RV",
+"All flows and volumes within normal",
+"↑ FVC with ↓ TLC and normal DLCO"
+],
+"Which of the following is one of the reversible causes of PEA (H's and T's)?": [
+"Tension pneumothorax",
+"Hyperglycemia",
+"Acute asthma attack",
+"Systemic hypertension"
+],
+"How long should you preoxygenate with a tight NRB before intubation?": [
+"At least 3–5 minutes",
+"About 30 seconds",
+"At least 15–20 minutes",
+"About 1 hour"
+],
+"What FEV₁ improvement after bronchodilator indicates reversible obstruction?": [
+"≥ 12–15% and/or ≥ 200 mL",
+"≥ 5% and/or ≥ 50 mL",
+"≥ 50% and/or ≥ 1 L",
+"≥ 25% with no volume needed"
+],
+"A patient with bilateral infiltrates and hypoxemia has a PCWP of 9 mm Hg. What does this suggest?": [
+"Noncardiogenic edema (ARDS)",
+"Left heart failure (cardiogenic)",
+"Mitral stenosis (valvular)",
+"Fluid overload (iatrogenic)"
+],
+"Over what period do inhaled TB bacilli multiply before being walled off?": [
+"3 to 4 weeks",
+"24 to 48 hours",
+"6 to 9 months",
+"1 to 2 years"
+],
+"Which is a power source for a portable oxygen concentrator?": [
+"12-volt DC from a car",
+"Compressed air from a wall outlet",
+"A liquid oxygen reservoir",
+"Solar panels only"
+],
+"Where is surfactant made and stored?": [
+"Type II cells; lamellar bodies",
+"Type I cells; basement membrane",
+"Goblet cells; mucous glands",
+"Alveolar macrophages; lysosomes"
+],
+"How do you increase PEP on an Acapella?": [
+"Turn the distal knob clockwise",
+"Tilt the device downward",
+"Breathe in and out faster",
+"Remove the mouthpiece cap"
+],
+"Which is a cylinder storage rule?": [
+"Keep full cylinders separate from empty ones",
+"Store cylinders lying loose on the floor",
+"Store cylinders near a heat source to stay dry",
+"Keep empty and full cylinders mixed together"
+],
+"How does a pMDI create its aerosol?": [
+"The propellant flashes to vapor and shatters the stream",
+"The patient's inspiratory flow disperses a dry powder",
+"A compressor forces air through the liquid drug",
+"An ultrasonic crystal vibrates the drug into a mist"
+],
+"Under Heuer's base-excess rule, compensation is occurring when:": [
+"PaCO₂ and BE are both high or both low",
+"PaCO₂ is high while the BE is low",
+"The pH has returned to exactly 7.40",
+"The BE is zero and the PaCO₂ is normal"
+],
+"Why must equipment be CLEANED before it is disinfected or sterilized?": [
+"Organic debris shields organisms from the disinfecting agent",
+"Cleaning alone kills all bacterial spores on the surface",
+"Disinfectants only work on surfaces that are still wet",
+"Cleaning is optional for semicritical items like masks"
+],
+"According to the study guide, how do \"severe\" and \"significant\" relate on an exam?": [
+"They are different words and must be read differently",
+"They mean exactly the same thing and can be swapped",
+"\"Significant\" always means more urgent than severe",
+"\"Severe\" only applies to asthma exacerbations"
+],
+"Using the deck's thresholds, a PPD induration of 12 mm is:": [
+"Positive — exposure or latent TB",
+"Negative — no TB exposure",
+"Suspicious only — repeat in a year",
+"Diagnostic of active TB disease"
+],
+"IPV is best described as:": [
+"Chest percussion from the inside",
+"A volume-oriented incentive spirometer",
+"A type of continuous positive pressure",
+"A mechanical insufflation-exsufflation device"
+],
+"What vital capacity is critically low for weaning (Heuer)?": [
+"Less than 10–15 mL/kg PBW",
+"Less than 50–60 mL/kg PBW",
+"Less than 30–35 mL/kg PBW",
+"Less than 65–70 mL/kg PBW"
+],
+"What does an a/A ratio below 0.35 suggest?": [
+"Hypoxemia due to shunting",
+"Normal, healthy oxygenation",
+"V/Q mismatch, and nothing else",
+"Pure alveolar hypoventilation"
+],
+"An ABG shows pH 7.05, PaCO₂ 60, HCO₃⁻ 16 during cardiac arrest. Interpret.": [
+"Combined respiratory and metabolic acidosis",
+"Acute respiratory acidosis with no metabolic part",
+"Metabolic acidosis with full respiratory compensation",
+"Compensated respiratory acidosis with normal HCO₃⁻"
+],
+"When is the Apgar score assigned?": [
+"At 1 and 5 minutes",
+"Only at the moment of birth",
+"At 30 and 60 minutes",
+"At 12 and 24 hours"
+],
+"A ventilated patient has a primary metabolic acidosis from DKA. How should the ventilator be managed?": [
+"Treat the cause; don't compensate with the vent",
+"Raise the rate until the pH is fully normal",
+"Lower the rate so the PaCO₂ rises to match",
+"Add PEEP so the acidosis improves faster"
+],
+"For air travel with a POC, how much battery should the patient carry?": [
+"At least 150% of the one-way travel time",
+"Exactly the scheduled flight time, no extra",
+"One spare battery, whatever the flight length",
+"None — airlines provide seat power for POCs"
+],
+"In volume control, how is the tidal volume achieved?": [
+"A set VT; pressure varies with the lungs",
+"A set pressure; the VT varies with the lungs",
+"The patient sets each VT with their own effort",
+"The backup rate determines each delivered VT"
+],
+"For a transport with a possible delay, how much O₂ should be carried?": [
+"At least twice the volume needed for a one-way trip",
+"Exactly the volume needed for a one-way trip",
+"Half a cylinder, since transports are usually short",
+"Whatever is left in the cylinder on the stretcher"
+],
+"A patient becomes dizzy with tingling fingers during IS. What should the RT do?": [
+"Lengthen the rest between breaths",
+"Increase the volume goal on the device",
+"Stop incentive spirometry permanently",
+"Add supplemental oxygen at 2 L/min"
+],
+"What primarily WIDENS the PaCO₂–PETCO₂ gradient?": [
+"Increased alveolar deadspace (PE)",
+"Hypoventilation from opioids",
+"Increased cardiac output",
+"Intrapulmonary shunting"
+],
+"An acutely ill adult cannot use an MDI or DPI. Which device is the fallback?": [
+"Small-volume jet nebulizer",
+"Dry-powder inhaler with a spacer",
+"Breath-actuated MDI with a mask",
+"SPAG-2 small-particle generator"
+],
+"Once a good PaCO₂–PETCO₂ correlation is established, what can be reduced?": [
+"The number of routine ABGs",
+"The set ventilator rate",
+"The FiO₂ on the ventilator",
+"The level of PEEP"
+],
+"A patient breathes spontaneously at 38/min with a VT of 300 mL. What is the RSBI, and what does it predict?": [
+"127 — predicts weaning failure",
+"11 — predicts weaning success",
+"127 — predicts weaning success",
+"87 — predicts weaning success"
+],
+"Drainage eyelets on the chest tube become visible outside the chest. What should the RT do?": [
+"Notify the physician; don't push it in",
+"Push the tube back in gently, then tape it",
+"Clamp the tube immediately at the chest wall",
+"Increase the suction to −40 cm H₂O"
+],
+"Which drug is used to reduce upper airway swelling in croup?": [
+"Racemic epinephrine",
+"Albuterol alone",
+"Cromolyn sodium",
+"Montelukast"
+],
+"How do bacterial and viral pneumonia typically differ on the CBC?": [
+"Bacterial ↑ WBC; viral ↓ or normal WBC",
+"Bacterial ↓ WBC; viral ↑ WBC",
+"Both raise the WBC by the same amount",
+"Neither one changes the WBC count"
+],
+"Where should a transcutaneous sensor be placed?": [
+"Well-perfused skin — chest, abdomen, thigh",
+"Directly over a bony prominence like the sternum",
+"On an edematous area where the skin is thin",
+"Over a healing burn where blood flow is high"
+],
+"Where on the capnogram is PETCO₂ measured?": [
+"At the end of the alveolar plateau (Phase III)",
+"At the very start of exhalation (Phase I)",
+"At the lowest point of inspiration (Phase 0)",
+"At the middle of the expiratory upstroke (Phase II)"
+],
+"An ANTISEPTIC is a chemical that:": [
+"Kills organisms on living skin or mucous membranes",
+"Only inhibits growth without killing organisms",
+"Kills microorganisms on nonliving surfaces only",
+"Sterilizes surgical instruments, including spores"
+],
+"How is QC performed on a pulse oximeter?": [
+"Check it on a healthy person (pulse, 97–100%, signal loss)",
+"Calibrate it with 100% oxygen, then with room air",
+"Run three levels of liquid control solution through it",
+"Compare its reading against a capnograph reading"
+],
+"Which capnogram shape suggests bronchospasm or obstruction?": [
+"A sloped, blunted \"shark fin\" shape",
+"A tall, sharply square-shaped wave",
+"A flat line sitting at zero",
+"A baseline that rises off zero"
+],
+"During a spirometer leak test, how much volume loss is allowed?": [
+"Less than 10 mL in 1 minute at 3 cm H₂O",
+"Less than 100 mL in 1 minute at 3 cm H₂O",
+"Less than 50 mL in 10 seconds at 3 cm H₂O",
+"No more than 3% of the volume in 1 minute"
+],
+"Why must transcutaneous sensor sites be rotated?": [
+"To prevent burns from the heated sensor",
+"To recalibrate the monitor at each site",
+"To improve the accuracy of the PtcCO₂",
+"To use less contact gel on the skin"
+],
+"PaO₂ is 70 torr on FiO₂ 0.40. How should oxygenation be improved per the 60-60 rule?": [
+"Raise FiO₂ (V/Q problem)",
+"Raise PEEP (shunt problem)",
+"Raise the set rate",
+"Lower the tidal volume"
+],
+"Over 4 hours, Pplat − PEEP stays constant while PIP − Pplat rises from 20 to 35. What is happening?": [
+"Increasing airway resistance",
+"Decreasing lung compliance",
+"Improving lung compliance",
+"A growing circuit leak"
+],
+"If IV access is unavailable, how is epinephrine given by ETT?": [
+"Double the dose, then a saline flush",
+"The same IV dose with no flush after",
+"Half the IV dose, with no flush after",
+"It cannot be given down the ETT at all"
+],
+"A patient with cor pulmonale is likely to have which CVP?": [
+"Elevated (above normal)",
+"Low (below normal)",
+"Normal (2–6 mm Hg)",
+"Zero (unmeasurable)"
+],
+"What does a normal D-dimer mean in suspected PE?": [
+"It helps rule out PE",
+"It confirms that PE is present",
+"It confirms a DVT but not PE",
+"It has no diagnostic value at all"
+],
+"Which findings raise suspicion of VAP?": [
+"New infiltrates plus fever, high WBC, purulent sputum",
+"A clear chest x-ray with a low-grade fever only",
+"Improving compliance with a falling peak pressure",
+"A normal WBC with thin, white, scant secretions"
+],
+"What does a dull percussion note indicate?": [
+"Denser tissue — pneumonia, atelectasis, tumor",
+"Hyperinflation — COPD or acute asthma",
+"Air in the pleural space — pneumothorax",
+"Normal air-filled lung — no disease"
+],
+"How is a T-piece used during weaning?": [
+"For an SBT with no ventilator support",
+"To deliver 10 cm H₂O of PEEP during an SBT",
+"To deliver pressure support during an SBT",
+"To measure the patient's NIF before an SBT"
+],
+"Per Heuer, which finding indicates BiPAP failure requiring intubation?": [
+"Worsening ABGs in the first 1–2 hours",
+"A pH of 7.36 after the first hour",
+"An SpO₂ of 94% on 40% oxygen",
+"A respiratory rate falling to 22/min"
+],
+"Per RCP 203, what MIP target applies to a myasthenia gravis patient?": [
+"More negative than −20 cm H₂O",
+"More negative than −40 cm H₂O",
+"More negative than −60 cm H₂O",
+"More negative than −10 cm H₂O"
+],
+"What result is a POSITIVE methacholine challenge?": [
+"FEV₁ falls by 20% or more",
+"FEV₁ rises by 12% or more",
+"FVC rises by 200 mL or more",
+"PEFR falls by 5% or less"
+],
+"What is orthopnea?": [
+"Breathlessness lying flat, eased by sitting up",
+"Breathlessness only during exercise, eased by rest",
+"Breathlessness only when standing, eased by lying down",
+"Rapid breathing only during sleep, eased by waking"
+],
+"The high FiO₂ alarm suddenly sounds. Which is a likely cause?": [
+"The 100% O₂/suction button was pressed",
+"A leak somewhere in the patient circuit",
+"A low internal battery in the ventilator",
+"Water pooled in the expiratory tubing"
+],
+"On CXR, an ELEVATED hemidiaphragm suggests:": [
+"Atelectasis or phrenic nerve paralysis",
+"Emphysema with marked hyperinflation",
+"A tension pneumothorax on that side",
+"An acute asthma attack with air trapping"
+],
+"What is the classic physiologic shunt equation?": [
+"Qs/Qt = (CcO₂ − CaO₂) ÷ (CcO₂ − Cv̄O₂)",
+"Qs/Qt = (CaO₂ − Cv̄O₂) ÷ (CcO₂ − CaO₂)",
+"Qs/Qt = (PAO₂ − PaO₂) ÷ (PAO₂ − Pv̄O₂)",
+"Qs/Qt = (PaCO₂ − PĒCO₂) ÷ PaCO₂ × 100"
+],
+"Which SBT methods are acceptable?": [
+"T-tube, CPAP, PS 5–8, or CPAP + PS",
+"SIMV at a set rate of 10 breaths/min only",
+"A/C at a reduced rate of 6 breaths/min",
+"Control mode with sedation and paralysis"
+],
+"What is crepitus?": [
+"A crackling feeling from air trapped under the skin",
+"A crackling breath sound heard with a stethoscope",
+"A grating sound from inflamed pleura rubbing together",
+"A high-pitched musical sound from narrowed airways"
+],
+"Nasal flaring in an infant indicates:": [
+"Increased effort — a distress sign",
+"Normal, quiet breathing at rest",
+"Nasal obstruction from secretions only",
+"Hyperventilation from pain or crying"
+],
+"Which NPPV weaning readiness threshold does Heuer give?": [
+"IPAP < 15 cm H₂O and EPAP < 10",
+"IPAP < 25 cm H₂O and EPAP < 15",
+"RR < 35/min and HR < 140/min",
+"SpO₂ > 85% on 60% O₂ or less"
+],
+"A volume-flow loop is used mainly to:": [
+"Assess bronchodilator response",
+"Identify alveolar overdistention",
+"Set the optimal level of PEEP",
+"Measure static lung compliance"
+],
+"How does a dry-powder inhaler work?": [
+"The patient's inspiratory flow disperses it",
+"A pressurized propellant sprays the drug out",
+"Compressed gas from a pump nebulizes the drug",
+"A vibrating mesh turns the drug into a mist"
+],
+"Why can an anemic patient be severely hypoxic without cyanosis?": [
+"There isn't 5 g/dL of reduced Hb to be seen",
+"Anemia darkens the skin and hides the blue color",
+"Anemia raises the SaO₂ even when PaO₂ is low",
+"Cyanosis only appears in children, not adults"
+],
+"A demand-flow device fails. What continuous flow should be used as a backup?": [
+"2–3 times the conserving-device setting",
+"The same flow as the conserving-device setting",
+"Half of the conserving-device setting",
+"10 L/min regardless of the device setting"
+],
+"Where do aerosol particles larger than 10 μm deposit?": [
+"Upper airway (nose, mouth)",
+"Alveoli and respiratory bronchioles",
+"Terminal and small bronchioles",
+"Nowhere — they are all exhaled"
+],
+"Per the deck's Westgard framing, two or more consecutive controls outside the acceptable range indicate:": [
+"Out of control — recalibrate or replace",
+"A warning only — keep running samples",
+"Normal random scatter — no action needed",
+"A need for outside proficiency testing"
+],
+"PIP rose from 30 to 45 cm H₂O; Pplat is unchanged at 25. What is the likely cause?": [
+"Mucus plug or bronchospasm",
+"Worsening ARDS",
+"Tension pneumothorax",
+"Cardiogenic pulmonary edema"
+],
+"Which direction is a chest tube aimed for a pneumothorax versus a hemothorax?": [
+"Superiorly for air; inferiorly/posteriorly for fluid",
+"Inferiorly for air; superiorly/anteriorly for fluid",
+"Superiorly for both air and fluid collections",
+"Inferiorly for both air and fluid collections"
+],
+"A SOMNOLENT patient is:": [
+"Easily aroused but drifts back to sleep",
+"Unresponsive even to painful stimuli",
+"Fully alert and oriented to all spheres",
+"Disoriented and giving wrong answers"
+],
+"Which diseases require DROPLET precautions?": [
+"Influenza, pertussis, and bacterial meningitis",
+"Tuberculosis, measles, and varicella (chickenpox)",
+"MRSA, C. difficile, and draining wound infections",
+"Smallpox, Aspergillus, and SARS-associated illness"
+],
+"What room is required for a patient on AIRBORNE precautions?": [
+"Negative-pressure private room (AIIR), door closed",
+"Private room with normal airflow, door kept open",
+"Semi-private room with the privacy curtain drawn",
+"Positive-pressure room with HEPA-filtered supply air"
+],
+"Ventilator circuits, bronchoscopes, laryngoscope blades and nondisposable nebulizers are classified as:": [
+"Semicritical — high-level disinfection at minimum",
+"Critical — sterilization required before every use",
+"Noncritical — detergent washing between patients only",
+"Noncritical — low-level disinfection between patients"
+],
+"Pasteurization of respiratory equipment uses:": [
+"Hot water above 158°F (70°C) for 30 minutes",
+"Steam under pressure at 121°C (250°F) for 10 minutes",
+"Glutaraldehyde 2% solution for a 20-minute soak",
+"Ethylene oxide gas overnight, then 12 hours of aeration"
+],
+"What skin prep is used before central line insertion (CDC bundle)?": [
+"2% chlorhexidine in alcohol, scrubbed 30 seconds",
+"Povidone-iodine, wiped on and left for 2 seconds",
+"70% isopropyl alcohol alone, wiped on once only",
+"Plain soap and water, then rinsed and towel-dried"
+],
+"What is the PRIMARY mechanism of VAP?": [
+"Microaspiration of secretions pooled above the cuff",
+"Contamination of the wall oxygen supply by bacteria",
+"Airborne spread from other patients in the same ICU",
+"Blood-borne spread from infected central IV lines"
+],
+"Which is part of the VAP prevention bundle?": [
+"Daily sedation vacation with a spontaneous breathing trial",
+"Changing the ventilator circuit every 24 hours on schedule",
+"Supine positioning with the head of bed flat at 0 degrees",
+"Routine nasal rather than oral intubation for comfort"
+],
+"How many sputum samples are collected for AFB testing?": [
+"3, including an early-morning sample",
+"1 sample, collected at any time of day",
+"5 samples, spread out over one week",
+"2 samples, taken exactly 1 hour apart"
+],
+"What is the induction phase of the 6-month TB regimen?": [
+"INH, RIF, PZA and EMB for 2 months",
+"INH alone, taken daily for 1 full year",
+"RIF and INH together for 6 months only",
+"PZA and EMB together for 4 months only"
+],
+"A concentrator alarm sounds. What is the first thing to check?": [
+"Dirty or blocked intake filters",
+"The level in the LOX reservoir",
+"The washer on the PISS regulator",
+"The cylinder factor being used"
+],
+"An active, ambulatory home O₂ patient needs extended flow duration. What should be added?": [
+"An O₂-conserving device",
+"A larger H or K cylinder",
+"A bubble humidifier",
+"A nonrebreather mask"
+],
+"A patient uses O₂ only during sleep. What system is sufficient?": [
+"A stationary system only",
+"A portable LOX unit for travel",
+"A pulse-dose portable concentrator",
+"Several E cylinders on a cart"
+],
+"On a low-flow device, which patient change LOWERS the delivered FiO₂?": [
+"Faster rate and larger tidal volume",
+"Slower rate and smaller tidal volume",
+"A smaller tidal volume on its own",
+"A lower minute ventilation overall"
+],
+"Aerosol tubing is completely filled with water and there is no gurgling sound. What should the RT do?": [
+"Drain the tubing and add a water trap",
+"Increase the flow to 15 L/min to clear it",
+"Replace the nebulizer unit with a new one",
+"Lower the FiO₂ setting on the nebulizer"
+],
+"What is a Briggs adaptor?": [
+"A T-piece joining aerosol tubing to an airway",
+"A spring-loaded valve that adds PEEP to a circuit",
+"A pressure regulator for small O₂ cylinders",
+"A type of heated high-flow nasal cannula"
+],
+"Which flowmeter shows the ACTUAL outlet flow regardless of downstream resistance?": [
+"Pressure-compensated Thorpe tube",
+"Bourdon gauge (fixed orifice)",
+"Uncompensated Thorpe tube",
+"Fixed-orifice flow restrictor"
+],
+"When should the patient actuate the MDI?": [
+"At the start of a slow, deep breath",
+"Just before starting to breathe in",
+"At the very end of a full inhalation",
+"During a slow, steady exhalation"
+],
+"An adult who is not acutely ill cannot coordinate MDI actuation with breathing. What should the RT recommend?": [
+"Add a valved holding chamber (or a breath-actuated MDI)",
+"Switch to a dry-powder inhaler used with a spacer",
+"Stop the MDI and change to an oral medication instead",
+"Tell the patient to actuate twice during each breath"
+],
+"What is the main advantage of a spacer or valved holding chamber?": [
+"Less throat deposition, less coordination",
+"A faster onset of the drug's action",
+"A higher dose delivered with each puff",
+"No need to rinse after an inhaled steroid"
+],
+"How does a valved holding chamber differ from a plain spacer?": [
+"A one-way valve holds the aerosol until inhalation",
+"It has no valve, so it needs perfect hand-breath timing",
+"It is designed for use with dry-powder inhalers only",
+"It converts each MDI dose into a nebulized mist"
+],
+"How should a plastic valved holding chamber be cleaned?": [
+"Monthly in dilute detergent, then air-dried",
+"Daily with alcohol, then towel-dried inside",
+"Weekly in bleach, then rinsed with tap water",
+"Never — throw it away and replace it monthly"
+],
+"The pMDI is the method of choice for children under 5 years old ONLY when:": [
+"It is used with a spacer or valved holding chamber",
+"The child can hold their breath for 10 seconds",
+"It is a breath-actuated MDI with a counter",
+"It is used by itself, without any face mask"
+],
+"What gas flow should power a small-volume jet nebulizer?": [
+"6–8 L/min of O₂ or air",
+"2–3 L/min of O₂ or air",
+"12–15 L/min of O₂ or air",
+"50 psi of O₂, unrestricted"
+],
+"Why is a mouthpiece preferred over a face mask for SVN treatments?": [
+"A face mask cuts lung deposition by about 50%",
+"A mouthpiece doubles the dose of drug in the cup",
+"A face mask cannot be powered with oxygen at all",
+"A mouthpiece makes the treatment finish faster"
+],
+"Which nebulizer is preferred for mechanically ventilated patients and adds no gas flow to the circuit?": [
+"Vibrating-mesh nebulizer",
+"Small-volume jet nebulizer",
+"Ultrasonic nebulizer",
+"SPAG-2 aerosol generator"
+],
+"Which deposition mechanism does the 10-second breath-hold take advantage of?": [
+"Gravitational settling",
+"Inertial impaction",
+"Brownian diffusion",
+"Hygroscopic growth"
+],
+"What is the mechanism of incentive spirometry?": [
+"A slow, held maximal breath that reopens alveoli",
+"Forced exhalation against a fixed-orifice resistor",
+"Positive pressure delivered on inspiration by a machine",
+"Vibration that loosens secretions in the airways"
+],
+"How often should incentive spirometry be performed?": [
+"6–10 maximal breaths per hour awake",
+"5 breaths once a day, in the morning",
+"2 breaths every 4 hours while awake",
+"Continuously for 20 minutes at a time"
+],
+"How does PEP therapy help clear secretions?": [
+"Back-pressure splints airways and gets air behind mucus",
+"It creates positive pressure only during inspiration",
+"It vibrates the chest wall from the outside of the body",
+"It chemically thins the mucus inside the airways"
+],
+"After each set of 10–20 PEP breaths, the patient should:": [
+"Cough or perform huff coughs (FET)",
+"Rest quietly for about 30 minutes",
+"Use the incentive spirometer 10 times",
+"Lie flat with the head down"
+],
+"How does PEP differ from PEEP?": [
+"PEP: exhaled resistance, spontaneous patient; PEEP: vent baseline",
+"PEP and PEEP are two different names for the same single therapy",
+"PEP acts during inspiration; PEEP acts only during exhalation",
+"PEP is used only on ventilated patients; PEEP only on spontaneous"
+],
+"A PEP device generates no pressure. What is the most likely cause?": [
+"A leak at a connection or the mouth seal",
+"An obstructed outlet port on the device",
+"The resistance setting is turned too high",
+"The patient is exhaling much too slowly"
+],
+"A patient in an acute asthma attack asks to use cromolyn. What should the RT do?": [
+"Give a SABA — cromolyn is preventive only",
+"Give cromolyn by small-volume nebulizer now",
+"Double the patient's usual cromolyn dose",
+"Give the cromolyn MDI through a spacer"
+],
+"What is the SVN dose of cromolyn sodium?": [
+"20 mg (2 mL ampule) QID",
+"2.5 mg (3 mL ampule) q4h",
+"1 mg (1 mL ampule) once daily",
+"200 mg (5 mL ampule) BID"
+],
+"What does a Levy-Jennings chart plot?": [
+"Control results over time vs the mean and ±2 SD",
+"Patient ABG results over a single hospital stay",
+"Flow–volume loops recorded during spirometry",
+"The analyzer's internal temperature each day"
+],
+"What is a point-of-care analyzer?": [
+"A device that runs lab tests at the bedside",
+"A bench analyzer housed in the central lab",
+"A pulse oximeter with a reusable finger probe",
+"A capnograph built into the ventilator"
+],
+"Before believing an SpO₂ reading, what should the RT check?": [
+"Its pulse rate matches the actual pulse",
+"That the FiO₂ is set at exactly 21%",
+"That the probe is on the index finger",
+"That the patient is lying completely flat"
+],
+"An oxygen analyzer reads 0%. What are the likely causes?": [
+"Dead battery or bad/disconnected probe",
+"Too much oxygen flowing past the sensor",
+"Condensate on the membrane, and nothing else",
+"Contaminated room air around the analyzer"
+],
+"Which type of oxygen analyzer requires external power to maintain the electrode reaction?": [
+"Polarographic (Clark)",
+"Galvanic fuel cell",
+"Both types equally",
+"Neither type of analyzer"
+],
+"How long should pressure be held after an arterial puncture?": [
+"At least 5 minutes, more if anticoagulated",
+"About 30 seconds, the same for all patients",
+"About 1 minute, even if anticoagulated",
+"No pressure is needed after an ABG draw"
+],
+"How does an air bubble in an ABG sample affect the results?": [
+"↓ PCO₂, ↑ pH, variable PO₂",
+"↑ PCO₂, ↓ pH, ↓ PO₂",
+"↑ PCO₂, ↑ pH, ↑ PO₂",
+"No change in any of the values"
+],
+"Which values does a CO-oximeter measure directly?": [
+"HbO₂, HHb, COHb, MetHb, total Hb",
+"pH, PCO₂ and PO₂, and nothing else",
+"HCO₃⁻ and base excess, and nothing else",
+"SpO₂ and pulse rate from a finger probe"
+],
+"In PSV, what determines the tidal volume?": [
+"Patient effort, compliance, resistance",
+"A preset volume dialed into the ventilator",
+"The set mandatory rate on the ventilator",
+"The FiO₂ setting on the ventilator"
+],
+"Where is the high pressure alarm set per the decks?": [
+"10–15 cm H₂O above observed PIP",
+"At the same level as the set PEEP",
+"50 cm H₂O above the observed PIP",
+"Exactly equal to the observed PIP"
+],
+"Which circuit is typical for home-care and transport ventilators?": [
+"Single-limb with an expiratory valve",
+"Dual-limb with a wye connector",
+"Single-limb with a fixed leak port",
+"Heated-wire dual-limb circuit only"
+],
+"Which circuit is used for noninvasive (NPPV) ventilators?": [
+"Single-limb with a leak (exhaust) port",
+"Dual-limb with a wye and expiratory valve",
+"Single-limb with a mushroom exhalation valve",
+"Closed circuit with no exhaust port at all"
+],
+"A patient on VC SIMV (rate 14, VT 6–7 mL/kg) has a low PaCO₂ and PaO₂ 115 on 40%. What should be changed?": [
+"Decrease the set rate",
+"Decrease the tidal volume",
+"Increase the PEEP level",
+"Increase the FiO₂ setting"
+],
+"Which oxygenation criteria must be met to begin a weaning assessment?": [
+"P/F ≥ 150–200, PEEP ≤ 5–8, FiO₂ ≤ 0.4–0.5",
+"P/F ≥ 400, PEEP 0, FiO₂ 0.21 on room air",
+"P/F ≥ 100, PEEP ≤ 15, FiO₂ ≤ 0.8 or less",
+"SpO₂ ≥ 99% on any FiO₂ and any PEEP level"
+],
+"A patient breathes at 20/min with a VT of 500 mL. What is the RSBI?": [
+"40 — favorable for weaning",
+"100 — borderline for weaning",
+"10 — very favorable for weaning",
+"400 — predicts weaning failure"
+],
+"How long is a NIF/MIP maneuver held against the one-way valve?": [
+"15–25 seconds",
+"2–3 seconds",
+"About 60 seconds",
+"About 5 minutes"
+],
+"During an SBT, which finding indicates failure?": [
+"RR rises > 50% to 38/min",
+"A pH of 7.36 on the ABG",
+"A heart rate change of 8%",
+"A PaCO₂ rise of 4 torr"
+],
+"What MEP or peak cough flow indicates adequate secretion clearance before extubation?": [
+"MEP > 60 cm H₂O or peak cough flow > 60 L/min",
+"MEP > 20 cm H₂O or peak cough flow > 10 L/min",
+"MEP > 100 cm H₂O or peak cough flow > 300 L/min",
+"MEP > 5 cm H₂O, with no cough flow measured"
+],
+"Stridor develops right after extubation. What should the RT recommend?": [
+"Cool humidified O₂ and racemic epinephrine",
+"Immediate reintubation in every single case",
+"A bronchodilator by MDI, and nothing else",
+"Lowering the FiO₂ to reduce the swelling"
+],
+"A patient has a high PaCO₂ on the ventilator. Which setting should be changed?": [
+"Rate or VT (ventilation)",
+"FiO₂ (oxygenation)",
+"PEEP (oxygenation)",
+"Trigger sensitivity"
+],
+"When weaning oxygen support, what should be reduced FIRST?": [
+"FiO₂ to ≤ 0.50, then PEEP",
+"PEEP to 5 first, then FiO₂",
+"Both PEEP and FiO₂ together",
+"The set rate first, then FiO₂"
+],
+"Where is the tip of a MACINTOSH (curved) blade placed?": [
+"In the vallecula, lifting the epiglottis indirectly",
+"Under the epiglottis, lifting it up directly",
+"Into the upper esophagus, behind the larynx",
+"Directly on the vocal cords, holding them open"
+],
+"Which ETT sizes should be available at the bedside for intubation?": [
+"Chosen size, one larger, one smaller",
+"Only the chosen size, already opened",
+"Every size from 2.0 to 10.0 mm",
+"The chosen size and one smaller only"
+],
+"What are the only two ways to confirm the tube is properly above the carina?": [
+"Chest x-ray or fiberoptic laryngoscopy",
+"Equal breath sounds and color-change CO₂ detection",
+"SpO₂ rising and symmetric chest rise",
+"Cuff pressure and the depth marking at the lip"
+],
+"A Cormack-Lehane Grade IV view shows:": [
+"No epiglottis (very difficult)",
+"The full glottic opening (easy)",
+"The epiglottis only (difficult)",
+"The arytenoids only (moderate)"
+],
+"An OPA is appropriate for which patient?": [
+"A comatose patient whose tongue blocks the airway",
+"An alert patient recovering from minor surgery",
+"A patient with an intact, active gag reflex",
+"A patient with trismus and a clenched jaw"
+],
+"When is a laryngeal mask airway (LMA) indicated?": [
+"As a rescue in the \"can ventilate, can't intubate\" scenario",
+"As a long-term airway for weeks of positive-pressure ventilation",
+"To prevent aspiration in a patient with a full stomach",
+"In a conscious patient with an intact gag reflex"
+],
+"What is the main advantage of a tracheostomy tube over an ETT for long-term ventilation?": [
+"Lower resistance, more comfort, and easier suctioning",
+"Better aspiration protection, and nothing else",
+"It never needs a cuff, even on the ventilator",
+"It can be placed at the bedside by the RT alone"
+],
+"What is a tracheostomy button used for?": [
+"Keeping the stoma open after the trach is removed",
+"Providing positive-pressure ventilation at home",
+"Sealing the airway with an inflatable cuff",
+"Delivering high-flow oxygen through the stoma"
+],
+"In a \"can't ventilate, can't intubate\" child under 12, what surgical airway does Heuer prefer?": [
+"Transtracheal jet ventilation",
+"Surgical cricothyrotomy",
+"Nasotracheal intubation",
+"A tracheostomy button"
+],
+"Why must cuff pressure be ADJUSTED, not just measured, when a manometer is attached?": [
+"The manometer steals volume and lowers it",
+"The manometer adds extra pressure to it",
+"The cuff deflates completely when attached",
+"It sets off the ventilator's high-pressure alarm"
+],
+"What is the purpose of the WATER-SEAL chamber in a chest drainage system?": [
+"A one-way valve that lets air out, not in",
+"It collects blood and pleural fluid by gravity",
+"It sets the amount of suction on the pleura",
+"It humidifies the air entering the pleural space"
+],
+"What determines the suction applied to the pleural space in a water-filled system?": [
+"Water depth in the suction-control chamber",
+"The setting on the wall vacuum regulator",
+"The volume in the collection chamber",
+"The depth of water in the water seal"
+],
+"The water-seal chamber shows no tidaling. What does this mean?": [
+"Obstruction (or the lung re-expanded)",
+"The system is working perfectly normally",
+"There is a continuous air leak somewhere",
+"The suction is set much too high"
+],
+"How should a patient with a chest tube be transported?": [
+"Unit below chest level, tube NOT clamped",
+"Tube clamped to prevent leaks on the way",
+"Unit held above chest level at all times",
+"Unit disconnected from the tube for transport"
+],
+"On chest x-ray, what is the earliest sign of a pleural effusion?": [
+"Blunted costophrenic angles",
+"A deep sulcus sign on the film",
+"Air bronchograms in the lower lobe",
+"Hyperlucent lung fields bilaterally"
+],
+"Which set of findings fits a large pleural effusion?": [
+"Dull percussion, absent fremitus, absent breath sounds, trachea shifted away",
+"Hyperresonance, increased fremitus, bronchial breath sounds, trachea midline",
+"Dull percussion, increased fremitus, bronchial breath sounds, trachea shifted toward",
+"Normal percussion, normal fremitus, vesicular breath sounds, trachea midline"
+],
+"Crepitus is found in the neck of a patient on positive pressure ventilation. What should the RT do?": [
+"Assess for pneumothorax; notify the physician",
+"Ignore it, because crepitus is always harmless",
+"Increase the PEEP to help seal the air leak",
+"Increase the tidal volume to re-expand the lung"
+],
+"What quick bedside question helps quantify orthopnea?": [
+"\"How many pillows do you use?\"",
+"\"How far can you walk on level ground?\"",
+"\"Do you snore loudly at night?\"",
+"\"When did you last eat or drink?\""
+],
+"Where is CENTRAL cyanosis seen?": [
+"Lips, mouth and tongue",
+"The fingertips, and nowhere else",
+"The feet and toes, and nowhere else",
+"The earlobes, and nowhere else"
+],
+"The ECG machine fails to obtain a signal from one lead. What is the most likely cause?": [
+"A loose or bad lead, or hair",
+"Patient hyperventilation",
+"A developing pneumothorax",
+"The wrong paper speed setting"
+],
+"After giving a bronchodilator, how long should the RT wait before post-spirometry?": [
+"15–30 minutes",
+"1–2 minutes",
+"2–3 hours",
+"24 hours"
+],
+"Which PFT pattern is RESTRICTIVE?": [
+"↓ FVC, normal FEV₁/FVC, ↓ TLC",
+"↓ FEV₁/FVC, ↑ TLC, ↑ RV",
+"↑ RV and ↑ TLC with ↓ FEV₁",
+"Normal FVC, TLC and FEV₁/FVC"
+],
+"FVC efforts vary widely and aren't reproducible. What does this suggest?": [
+"Poor effort or technique",
+"A restrictive lung disease",
+"An obstructive lung disease",
+"Normal, healthy lungs"
+],
+"When is bronchoprovocation testing used?": [
+"Asthma suspected, spirometry nondiagnostic",
+"To confirm COPD after a bronchodilator",
+"To measure the patient's FRC and RV",
+"To measure the lung's diffusing capacity"
+],
+"Which FRC method measures ALL gas in the chest, including trapped gas?": [
+"Body plethysmography",
+"Helium dilution",
+"Nitrogen washout",
+"Simple spirometry"
+],
+"TGV by body box is larger than FRC by helium dilution. What does this indicate?": [
+"Trapped gas not reaching the airways",
+"A leak in the helium dilution circuit",
+"A restrictive lung disease process",
+"Normal lungs with no air trapping"
+],
+"A steep Phase III slope on a single-breath N₂ test indicates:": [
+"Uneven distribution of ventilation",
+"Normal, uniform distribution of ventilation",
+"A restrictive disease with small lungs",
+"A leak in the test system or mouthpiece"
+],
+"Per the 203 deck, what minimum NIF does a COPD patient need?": [
+"More negative than −40 cm H₂O",
+"More negative than −10 cm H₂O",
+"More negative than −100 cm H₂O",
+"Any value, as long as it is negative"
+],
+"An ABG shows pH 7.32, PaCO₂ 28, HCO₃⁻ 14 in a DKA patient. Interpret.": [
+"Partially compensated metabolic acidosis",
+"Acute (uncompensated) respiratory alkalosis",
+"Fully compensated respiratory acidosis",
+"Partially compensated metabolic alkalosis"
+],
+"A COPD patient's usual ABG is 7.36 / 77 / HCO₃⁻ 43. Today it is 7.28 / 99 / 44. What is this?": [
+"Acute-on-chronic ventilatory failure",
+"Improvement from the patient's baseline",
+"Acute metabolic alkalosis on top",
+"Acute alveolar hyperventilation on top"
+],
+"What is a disadvantage of a SIDESTREAM capnography sensor?": [
+"Water and secretions can occlude the sample line",
+"It adds heavy weight to the ETT connector",
+"It can only be used on intubated patients",
+"It reads falsely high whenever it is humid"
+],
+"The PETCO₂ waveform and value suddenly drop to zero on a ventilated patient. What is the likely cause?": [
+"Disconnection or complete obstruction",
+"Rapidly improving alveolar ventilation",
+"A sudden rise in the cardiac output",
+"A fever with high CO₂ production"
+],
+"PETCO₂ falls suddenly because of a pulmonary embolism. Which action would be a MISTAKE?": [
+"Lowering the ventilator rate",
+"Notifying the physician",
+"Checking an arterial blood gas",
+"Assessing the patient at the bedside"
+],
+"Which condition LOWERS the SvO₂?": [
+"Low cardiac output or anemia",
+"Hypothermia and deep sedation",
+"Cyanide poisoning",
+"Sepsis with poor tissue O₂ use"
+],
+"In what order does a PA catheter travel after insertion?": [
+"SVC → right atrium → right ventricle → pulmonary artery → wedge",
+"Aorta → left ventricle → left atrium → pulmonary vein → wedge",
+"Right atrium → left atrium → left ventricle → pulmonary artery",
+"Pulmonary vein → left atrium → right ventricle → pulmonary artery"
+],
+"In which patients does PtcO₂ most closely approximate PaO₂?": [
+"Neonates and infants",
+"Obese adults",
+"Elderly adults",
+"Patients in shock"
+],
+"How does PtcCO₂ normally compare to PaCO₂?": [
+"Higher, from heat-increased CO₂",
+"Lower, from diffusion loss at the skin",
+"Always exactly identical to PaCO₂",
+"Close to zero in most adults"
+],
+"Why is infant PtcO₂ monitoring valuable?": [
+"Screens for hyperoxemia to prevent ROP",
+"Measures the infant's hemoglobin level",
+"Replaces all arterial blood gases in infants",
+"Detects carbon monoxide poisoning in infants"
+],
+"A newborn is apneic and limp at birth. When should resuscitation begin?": [
+"Immediately — don't wait for the score",
+"After the 1-minute Apgar has been scored",
+"After the 5-minute Apgar has been scored",
+"Only if the Apgar score turns out to be 0"
+],
+"Which marker confirms lung maturity, especially in infants of diabetic mothers?": [
+"Phosphatidylglycerol (PG)",
+"A rising sphingomyelin level",
+"The amniotic bilirubin level",
+"A falling amniotic albumin level"
+],
+"What organism classically causes epiglottitis?": [
+"H. influenzae (bacteria)",
+"Parainfluenza (virus)",
+"RSV (respiratory syncytial virus)",
+"Mycoplasma (atypical bacteria)"
+],
+"Which x-ray sign and view indicate EPIGLOTTITIS?": [
+"Thumb sign on the lateral neck view",
+"Steeple sign on the AP neck view",
+"Kerley B lines on the chest view",
+"Honeycombing on the chest view"
+],
+"What is the hallmark sign of croup?": [
+"A harsh, barking cough with stridor",
+"Drooling with the child in tripod position",
+"Expiratory wheezing, and nothing else",
+"Pink, frothy sputum with each cough"
+],
+"What ABG is typical of mild-to-moderate PE?": [
+"Acute alveolar hyperventilation with hypoxemia",
+"Chronic compensated respiratory acidosis",
+"Partially compensated metabolic alkalosis",
+"A completely normal arterial blood gas"
+],
+"What does expiratory grunting do physiologically?": [
+"Creates auto-PEEP to keep alveoli open",
+"Clears secretions from the large airways",
+"Increases the inspiratory flow rate",
+"Lowers the functional residual capacity"
+],
+"PBW (predicted body weight) means the same thing as:": [
+"IBW (ideal body weight)",
+"Actual body weight",
+"BMI (body mass index)",
+"BSA (body surface area)"
+],
+"A Rapid Response Team (RRT) is the same as a:": [
+"Medical Emergency Team (MET)",
+"Respiratory therapy team",
+"Code Blue team only",
+"Patient transport team"
+],
+"Which is the most effective first-line TB drug?": [
+"Isoniazid (INH)",
+"Ethambutol (EMB)",
+"Streptomycin (SM)",
+"Pyrazinamide (PZA)"
+],
+"How quickly does Xpert MTB/RIF return results, and what does it detect?": [
+"< 2 hours; TB and rifampin resistance",
+"6–8 weeks; TB and nothing else",
+"24 hours; isoniazid resistance only",
+"3 days; latent TB infection only"
+],
+"What particle size defines the fine particle fraction?": [
+"Under 5 to 6 µm",
+"Over 10 to 15 µm",
+"Exactly 1 to 2 µm",
+"Over 50 to 100 µm"
+],
+"Prolonged hypocapnia can cause:": [
+"Hypophosphatemia",
+"Hyperkalemia",
+"Hypernatremia",
+"Hypercalcemia"
+],
+"A suction catheter won't pass down the ETT. What does it mean?": [
+"The tube is kinked or displaced",
+"The cuff is overinflated",
+"The patient has stopped breathing",
+"The catheter is far too small"
+],
+"Which bronchoscopy tool removes a smooth, rounded foreign body?": [
+"Basket or snare loop",
+"Grasping forceps",
+"Transbronchial biopsy needle",
+"Cytology brush"
+],
+"Which is first-line OSA treatment?": [
+"Behavior modification plus PAP",
+"An oral appliance for every patient",
+"Upper-airway surgery for every patient",
+"Respiratory stimulant medications"
+]
+}

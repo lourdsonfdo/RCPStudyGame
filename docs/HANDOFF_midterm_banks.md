@@ -61,6 +61,19 @@ one boss per study-guide section, questions usable in both Study (training) and 
       copy to tools/midterm/, `python3 tools/build_midterm.py`, bump the sw.js CACHE, run the tests, commit
 - [ ] Optional: Codex review of `git show 3368fb5`
 
+## Option-length balance (2026-10-25)
+- Problem: the correct answer was the uniquely longest option in 42% / 49% / 49% of 201 / 202 / 203 questions (chance ≈ 25%),
+  so "pick the longest" worked as a test-taking trick.
+- Fix: `tools/midterm/fixes20X.json` = {stem: [correct, d1, d2, d3]}, applied by the builder. Mostly the wrong options were rewritten
+  to be parallel and similar in length, staying wrong. 565 questions were rewritten (122 / 216 / 227).
+- Result: 23% / 26% / 28% (26% overall). Correct answer is the uniquely SHORTEST only 10–12%, so there is no reverse cue.
+- Tools: `python3 tools/option_balance.py [course] [--list 1.3]` measures; `python3 tools/check_fixes.py` flags any fix that
+  rewords a correct answer. Exactly 3 were reworded, none in meaning: PPHN spelled out, "Elevated (above normal)",
+  and dynamic compliance trimmed to "None is published — it is a comparative value".
+- Shipping: committed content + tools only. **NOT pushed.** Codex's uncommitted UI work already bumps sw.js to
+  `rcp-study-v19-academy-ui`, which will deliver these rebuilt content files. Don't bump sw.js separately and race Codex.
+  If the content must ship before Codex is done, bump the CACHE in sw.js and coordinate.
+
 ## Gotchas
 - Every content change needs a `CACHE` bump in `sw.js`, or returning players never get the update.
 - VITALS TITAN uses course `rcp2xx`. The new courses are `rcp201`/`rcp202`/`rcp203`, so they don't collide.
