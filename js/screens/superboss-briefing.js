@@ -4,6 +4,7 @@
    is pinned from a failed attempt.
    ============================================================ */
 App.registerScreen('superboss-briefing', ({ root, state }) => {
+  root.classList.add('acsc');
   const bank = (window.ALL_QUESTIONS || []).filter(q => q.course === 'rcp2xx');
   const saved = state.superbossRun;
   const pinned = state.superbossPinned || {};
@@ -13,16 +14,22 @@ App.registerScreen('superboss-briefing', ({ root, state }) => {
   root.innerHTML = `
     <div class="topbar">
       <button class="back-btn" data-back>BACK</button>
-      <span class="mode-tag">🗿 FINAL PROTOCOL</span>
+      <span class="mode-tag">Final Protocol</span>
       <span class="chapter-tag">RCP 202+203</span>
+    </div>
+
+    <div class="acsc-banner">
+      <img src="img/academy-clinical.webp" width="476" height="160" alt="" loading="eager">
+      <div class="acsc-banner-overlay"></div>
+      <span class="acsc-banner-label">Vitals Titan — every number that matters</span>
     </div>
 
     <div class="hud hud-corners">
       <span class="br1"></span><span class="br2"></span>
       <div class="title-block">
-        <div class="title-eyebrow">▸ APEX HOSTILE ◂</div>
-        <div class="title-main">VITALS TITAN</div>
-        <div class="title-sub">EVERY NUMBER THAT MATTERS</div>
+        <div class="title-eyebrow">Apex Challenge</div>
+        <div class="title-main">Vitals Titan</div>
+        <div class="title-sub">${bank.length} queries loaded · RCP 202 + 203</div>
       </div>
     </div>
 

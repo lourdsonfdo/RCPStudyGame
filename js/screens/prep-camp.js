@@ -3,6 +3,7 @@
    ctx: { course, bossId }
    ============================================================ */
 App.registerScreen('prep-camp', ({ root, state, ctx }) => {
+  root.classList.add('acsc');
   const boss = (window.ALL_BOSSES || []).find(b => b.id === ctx.bossId);
   if (!boss) { root.innerHTML = '<div class="panel t-red">Boss not found.</div>'; return; }
 

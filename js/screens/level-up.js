@@ -3,6 +3,7 @@
    ctx: { newLevel, oldLevel, returnTo, returnCtx }
    ============================================================ */
 App.registerScreen('level-up', ({ root, state, ctx }) => {
+  root.classList.add('acsc');
   const newLvl = ctx.newLevel;
   const title = State.titleForLevel(newLvl);
   const maxHp = State.maxHpForLevel(newLvl);

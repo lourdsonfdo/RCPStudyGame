@@ -1,0 +1,844 @@
+/*
+  Respiratory Academy — non-home screen theming (v1.0)
+  Applied via .acsc class on each screen's root <section>.
+  Extends the academy design language from theme-academy.css
+  to all non-home screens without touching the home screen.
+
+  Rule: never affect .academy (home) — scoped exclusively to .acsc.
+  Boss sprites, ArenaBg FX, HP bars, and Octopath effects are preserved.
+*/
+
+/* ══════════════════════════════════════════════════════════
+   BODY / HTML — override when any academy screen is active
+   ══════════════════════════════════════════════════════════ */
+body:has(.acsc.active) {
+  background: #081421;
+}
+body:has(.acsc.active)::before {
+  background: radial-gradient(ellipse at top, #182c3e, #081421 70%);
+}
+
+/* ══════════════════════════════════════════════════════════
+   ROOT TOKEN OVERRIDES — cascade to all .acsc descendants
+   ══════════════════════════════════════════════════════════ */
+.acsc {
+  /* Palette */
+  --bg:        #081421;
+  --bg-2:      #0c1c2e;
+  --panel:     #0e2231;
+  --panel-2:   #152b3b;
+  --border:    rgba(119,143,158,.30);
+  --border-2:  rgba(233,200,139,.50);
+  --line:      rgba(119,143,158,.30);
+  --line-soft: rgba(119,143,158,.10);
+  --text:      #f4eddf;
+  --text-dim:  #b8c8d5;
+  --text-mute: #7a9aad;
+  --text-dark: #4a6778;
+  /* Combat accents */
+  --hud-cyan:   #e9c88b;
+  --hud-amber:  #e9c88b;
+  --hud-blue:   #5bbfd4;
+  --hud-green:  #7ed8b8;
+  --hud-red:    #e07070;
+  --hud-purple: #9bb8cc;
+  --pixel-grid: rgba(119,143,158,.09);
+  /* Glow (softer) */
+  --glow-gold:   0 0 6px #e9c88b, 0 0 14px rgba(233,200,139,.35);
+  --glow-green:  0 0 6px #7ed8b8, 0 0 12px rgba(126,216,184,.28);
+  --glow-red:    0 0 6px #e07070, 0 0 12px rgba(224,112,112,.28);
+  --glow-blue:   0 0 6px #5bbfd4, 0 0 12px rgba(91,191,212,.28);
+  /* Alias fix-ups so `.green`, `.red` etc. resolve correctly */
+  --green:   #7ed8b8;
+  --green-2: #3a8a6a;
+  --red:     #e07070;
+  --red-2:   #8a3030;
+  --blue:    #5bbfd4;
+  --blue-2:  #5bbfd4;
+  --gold:    #e9c88b;
+  --orange:  #e9c88b;
+  --yellow:  #7ed8b8;
+  --purple:  #9bb8cc;
+}
+
+/* ══════════════════════════════════════════════════════════
+   COURSE ILLUSTRATION BANNER
+   ══════════════════════════════════════════════════════════ */
+.acsc-banner {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(119,143,158,.32);
+  flex-shrink: 0;
+  background: #0d1e2b;
+}
+.acsc-banner img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+.acsc-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 42%, rgba(6,18,28,.85));
+  pointer-events: none;
+}
+.acsc-banner-label {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  font: italic 17px/1 'Crimson Pro', Georgia, serif;
+  color: #f5e4c6;
+  text-shadow: 0 2px 8px rgba(0,0,0,.7);
+  pointer-events: none;
+}
+/* Full illustration on mobile — no height clipping */
+@media (max-width: 759px) {
+  .acsc-banner img {
+    height: auto;
+    max-height: 210px;
+    object-fit: contain;
+    object-position: center;
+    background: #0d1e2b;
+  }
+}
+@media (max-width: 359px) {
+  .acsc-banner img { max-height: 160px; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   TOPBAR
+   ══════════════════════════════════════════════════════════ */
+.acsc .topbar {
+  background: #0d1e2b;
+  border-color: rgba(119,143,158,.30);
+}
+.acsc .topbar .back-btn {
+  background: #182e3e;
+  border: 1px solid rgba(119,143,158,.50);
+  border-radius: 5px;
+  clip-path: none;
+  color: #e9c88b;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(11px * var(--fs,1));
+  font-weight: 600;
+  letter-spacing: .5px;
+  box-shadow: none;
+  text-shadow: none;
+  min-height: 36px;
+}
+.acsc .topbar .back-btn::before {
+  filter: none;
+  animation: none;
+  color: #e9c88b;
+}
+.acsc .topbar .back-btn:hover {
+  background: #243f52;
+  box-shadow: none;
+}
+.acsc .topbar .mode-tag {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(11px * var(--fs,1));
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: #e9c88b;
+  text-shadow: none;
+}
+.acsc .topbar .chapter-tag {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(11px * var(--fs,1));
+  color: #b8c8d5;
+}
+
+/* ══════════════════════════════════════════════════════════
+   HUD PANELS
+   ══════════════════════════════════════════════════════════ */
+.acsc .hud,
+.acsc .panel {
+  background: linear-gradient(145deg, #152b3b, #0b1c2b);
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 10px;
+  clip-path: none;
+  box-shadow: none;
+}
+.acsc .hud:hover,
+.acsc .panel:hover {
+  box-shadow: none;
+}
+/* Corner bracket accents — softer gold */
+.acsc .hud::before,
+.acsc .hud::after {
+  border-color: rgba(233,200,139,.35);
+}
+.acsc .hud > .br1,
+.acsc .hud > .br2 {
+  border-color: rgba(233,200,139,.35);
+}
+
+/* ── Header strip inside panels ─────────────────────────── */
+.acsc .header-strip {
+  background: rgba(8,20,33,.35);
+  border-color: rgba(119,143,158,.22);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(10px * var(--fs,1));
+  font-weight: 500;
+  letter-spacing: .5px;
+  color: #b8c8d5;
+}
+
+/* ══════════════════════════════════════════════════════════
+   TITLE BLOCK
+   ══════════════════════════════════════════════════════════ */
+.acsc .title-eyebrow {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(9px * var(--fs,1));
+  letter-spacing: 3px;
+  color: #e9c88b;
+}
+.acsc .title-main {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: calc(28px * var(--fs,1));
+  font-weight: 500;
+  letter-spacing: .5px;
+  color: #f4eddf;
+  text-shadow: none;
+}
+.acsc .title-sub {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(11px * var(--fs,1));
+  letter-spacing: 1.5px;
+  color: #b8c8d5;
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════════════════════
+   MODULE CARDS (course-mode, prep-camp, survival)
+   ══════════════════════════════════════════════════════════ */
+.acsc .module {
+  background: #0e2231;
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 8px;
+  clip-path: none;
+}
+.acsc .module:hover {
+  border-color: rgba(233,200,139,.60);
+  background: #152b3b;
+  box-shadow: none;
+}
+.acsc .module:active { transform: translateY(1px); }
+.acsc .module-icon-wrap {
+  background: rgba(8,25,38,.7);
+  border: 1px solid rgba(119,143,158,.40);
+  border-radius: 6px;
+  filter: none;
+}
+.acsc .module-tag {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(9px * var(--fs,1));
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e9c88b;
+  text-shadow: none;
+}
+.acsc .module-title {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: calc(18px * var(--fs,1));
+  font-weight: 500;
+  color: #f4eddf;
+  letter-spacing: 0;
+  text-shadow: none;
+}
+.acsc .module-meta {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(11px * var(--fs,1));
+  font-weight: 400;
+  letter-spacing: .3px;
+  color: #b8c8d5;
+}
+/* 104/crisis alternate accent */
+.acsc .module.module-104 .module-icon-wrap {
+  border-color: rgba(233,200,139,.40);
+  background: rgba(8,25,38,.7);
+  filter: none;
+}
+.acsc .module.module-104 .module-tag {
+  color: #e9c88b;
+  text-shadow: none;
+}
+/* Survival accent */
+.acsc .module.module-survival {
+  border-color: rgba(119,143,158,.30);
+}
+.acsc .module.module-survival .module-icon-wrap {
+  border-color: rgba(119,143,158,.40);
+  background: rgba(8,25,38,.7);
+  filter: none;
+}
+.acsc .module.module-survival .module-tag {
+  color: #b8c8d5;
+  text-shadow: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   BOSS TILES (boss-select grid)
+   ══════════════════════════════════════════════════════════ */
+.acsc .tile {
+  background: #0e2231;
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 8px;
+  clip-path: none;
+  min-height: 100px;
+}
+.acsc .tile:hover {
+  border-color: rgba(233,200,139,.55);
+  background: #152b3b;
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+.acsc .tile:active { transform: scale(.97); }
+.acsc .tile.defeated {
+  border-color: rgba(233,200,139,.55);
+  box-shadow: none;
+}
+.acsc .tile-name {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: calc(12px * var(--fs,1));
+  font-weight: 500;
+  color: #f4eddf;
+  letter-spacing: .3px;
+}
+.acsc .tile-sub {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(10px * var(--fs,1));
+  color: #7a9aad;
+  letter-spacing: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════════════════════════ */
+.acsc .btn {
+  background: #152b3b;
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 6px;
+  clip-path: none;
+  color: #f4eddf;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(13px * var(--fs,1));
+  font-weight: 500;
+  letter-spacing: .3px;
+  box-shadow: none;
+  min-height: 44px;
+}
+.acsc .btn:hover {
+  background: #1e3a50;
+  border-color: rgba(233,200,139,.45);
+  box-shadow: none;
+  color: #f4eddf;
+}
+.acsc .btn:active { transform: translateY(1px) scale(.99); }
+/* Primary — gold gradient (matches home .ac-primary) */
+.acsc .btn-primary {
+  background: linear-gradient(110deg, #f4d494, #d5a456);
+  border-color: transparent;
+  color: #172331;
+  font-weight: 700;
+  box-shadow: none;
+}
+.acsc .btn-primary:hover {
+  background: #f5daa2;
+  border-color: transparent;
+  box-shadow: none;
+  color: #172331;
+}
+.acsc .btn-danger {
+  border-color: #c87070;
+  color: #e08080;
+  background: rgba(140,40,40,.15);
+}
+.acsc .btn-danger:hover { background: rgba(140,40,40,.25); border-color: #e07070; }
+/* Review button — muted amber */
+.acsc .btn-review {
+  border-color: rgba(233,200,139,.40);
+  color: #e9c88b;
+  background: rgba(14,34,49,.6);
+}
+.acsc .btn-review:hover {
+  border-color: rgba(233,200,139,.70);
+  background: rgba(14,34,49,.8);
+}
+
+/* ══════════════════════════════════════════════════════════
+   VITALS GRID
+   ══════════════════════════════════════════════════════════ */
+.acsc .vital {
+  background: rgba(14,34,49,.45);
+  border: 1px solid rgba(119,143,158,.22);
+  border-radius: 4px;
+}
+.acsc .vital::before {
+  background: #e9c88b;
+  box-shadow: none;
+}
+.acsc .vital-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(9px * var(--fs,1));
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #7a9aad;
+}
+.acsc .vital-value {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: calc(20px * var(--fs,1));
+  font-weight: 500;
+  color: #e9c88b;
+  text-shadow: none;
+}
+.acsc .vital-value.amber { color: #e9c88b; text-shadow: none; }
+.acsc .vital-value.green { color: #7ed8b8; text-shadow: none; }
+.acsc .vital-unit {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(9px * var(--fs,1));
+  color: #7a9aad;
+}
+
+/* ══════════════════════════════════════════════════════════
+   QUESTION BOX & ANSWERS
+   Academy note: answers must stay primary — keep compact.
+   ══════════════════════════════════════════════════════════ */
+.acsc .q-box {
+  background: linear-gradient(160deg, #0e2231, #0b1c2b);
+  border: 1px solid rgba(119,143,158,.40);
+  border-radius: 8px;
+  clip-path: none;
+  box-shadow: none;
+}
+.acsc .q-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(9px * var(--fs,1));
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e9c88b;
+  text-shadow: none;
+}
+/* q-text: leverage --fs-quiz from app.js; base is calc(13px…) in style.css */
+.acsc .q-text {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #f4eddf;
+  line-height: 1.65;
+}
+/* Answer buttons */
+.acsc .ans-btn {
+  background: #152b3b;
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 6px;
+  clip-path: none;
+  color: #d5e0e8;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 14px 14px;
+  min-height: 44px;
+}
+.acsc .ans-btn:hover {
+  border-color: rgba(233,200,139,.45);
+  background: #203749;
+  box-shadow: none;
+  color: #f4eddf;
+}
+.acsc .ans-btn:active { transform: scale(.98) translateY(1px); }
+.acsc .ans-key {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: calc(15px * var(--fs,1) * var(--fs-quiz,1));
+  font-weight: 600;
+  color: #e9c88b;
+  text-shadow: none;
+  min-width: 20px;
+}
+/* Keep correct/wrong/disabled feedback from style.css — no override needed */
+
+.acsc .explanation {
+  background: rgba(14,34,49,.65);
+  border: 1px dashed rgba(119,143,158,.25);
+  border-radius: 4px;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #b8c8d5;
+  line-height: 1.65;
+}
+.acsc .caution-line { color: #c4a87a; }
+.acsc .src-line { color: #7a9aad; }
+
+/* ══════════════════════════════════════════════════════════
+   ARENA — preserve boss sprites, FX, ArenaBg parallax layers.
+   Only retheme the panel frame and title text.
+   ══════════════════════════════════════════════════════════ */
+.acsc .arena {
+  background: linear-gradient(180deg, #0c1c2e 0%, #152b3b 50%, #0c1c2e 100%);
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 10px;
+  box-shadow: none;
+}
+/* Boss name color re-tinted (preserves animation/shadow logic, just changes hue) */
+.acsc .boss-name {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: calc(13px * var(--fs,1));
+  letter-spacing: 1.5px;
+}
+.acsc .boss-sub {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(11px * var(--fs,1));
+  color: #7a9aad;
+}
+
+/* ══════════════════════════════════════════════════════════
+   ITEM ROWS (shop / equip / scenario-select)
+   ══════════════════════════════════════════════════════════ */
+.acsc .item-row {
+  background: #0e2231;
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 6px;
+}
+.acsc .item-row:hover {
+  border-color: rgba(233,200,139,.45);
+  box-shadow: none;
+}
+.acsc .item-name {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: calc(14px * var(--fs,1));
+  font-weight: 500;
+  color: #f4eddf;
+}
+.acsc .item-desc {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(11px * var(--fs,1));
+  color: #7a9aad;
+  letter-spacing: 0;
+}
+.acsc .item-btn {
+  background: #152b3b;
+  border: 1px solid rgba(119,143,158,.40);
+  border-radius: 4px;
+  clip-path: none;
+  color: #f4eddf;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(11px * var(--fs,1));
+}
+.acsc .item-btn:hover { border-color: rgba(233,200,139,.50); box-shadow: none; }
+.acsc .item-btn.equipped {
+  border-color: #7ed8b8;
+  color: #7ed8b8;
+  box-shadow: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SURVIVAL CLOCK
+   ══════════════════════════════════════════════════════════ */
+.acsc .survival-clock {
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 8px;
+  background: #0e2231;
+}
+.acsc .survival-bar-track {
+  background: rgba(14,34,49,.7);
+  border-color: rgba(119,143,158,.22);
+  border-radius: 4px;
+}
+.acsc .survival-bar-fill {
+  background: linear-gradient(90deg, #3a8a6a, #7ed8b8);
+  box-shadow: none;
+  border-radius: 4px;
+}
+.acsc .survival-clock.low .survival-bar-fill {
+  background: linear-gradient(90deg, #8a3030, #e07070);
+  box-shadow: none;
+}
+.acsc .survival-meta { color: #b8c8d5; font-family: system-ui, sans-serif; }
+.acsc .survival-clock.low .survival-meta span:first-child { color: #e07070; text-shadow: none; }
+
+/* ══════════════════════════════════════════════════════════
+   REVIEW CARDS (review-answers)
+   ══════════════════════════════════════════════════════════ */
+.acsc .review-card {
+  background: linear-gradient(145deg, #152b3b, #0b1c2b);
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 8px;
+  clip-path: none;
+}
+.acsc .review-card::before,
+.acsc .review-card::after {
+  border-color: rgba(233,200,139,.30);
+}
+.acsc .review-card > .br1,
+.acsc .review-card > .br2 {
+  border-color: rgba(233,200,139,.30);
+}
+.acsc .review-head { border-color: rgba(119,143,158,.22); }
+.acsc .review-num {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: calc(15px * var(--fs,1));
+  font-weight: 600;
+  color: #e9c88b;
+}
+.acsc .review-topic {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(10px * var(--fs,1));
+  color: #7a9aad;
+}
+.acsc .review-q {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(14px * var(--fs,1));
+  color: #f4eddf;
+  line-height: 1.6;
+}
+.acsc .review-choice {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(12px * var(--fs,1));
+  color: #b8c8d5;
+  background: rgba(14,34,49,.35);
+  border-color: rgba(119,143,158,.20);
+  border-radius: 4px;
+}
+.acsc .review-key {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: calc(13px * var(--fs,1));
+  font-weight: 600;
+  color: #7a9aad;
+}
+.acsc .review-expl {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(12px * var(--fs,1));
+  color: #b8c8d5;
+  background: rgba(14,34,49,.40);
+  border-color: rgba(119,143,158,.20);
+  line-height: 1.65;
+}
+.acsc .review-expl-label { color: #e9c88b; }
+
+/* ══════════════════════════════════════════════════════════
+   DATA STREAM FOOTER
+   ══════════════════════════════════════════════════════════ */
+.acsc .data-stream {
+  background: rgba(14,34,49,.45);
+  border: 1px solid rgba(119,143,158,.22);
+  border-radius: 4px;
+  color: #7a9aad;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(10px * var(--fs,1));
+  letter-spacing: .3px;
+}
+.acsc .data-stream .ds-active { color: #7ed8b8; text-shadow: none; }
+
+/* ══════════════════════════════════════════════════════════
+   TEXT-SIZE SELECTOR (settings)
+   ══════════════════════════════════════════════════════════ */
+.acsc .text-size-opt {
+  background: #0e2231;
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 6px;
+  color: #b8c8d5;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+.acsc .text-size-opt:hover {
+  border-color: rgba(233,200,139,.50);
+  background: #152b3b;
+}
+.acsc .text-size-opt.active {
+  background: #152b3b;
+  border-color: rgba(233,200,139,.70);
+  box-shadow: none;
+}
+.acsc .text-size-opt .ts-letter {
+  font-family: 'Crimson Pro', Georgia, serif;
+  color: #e9c88b;
+  text-shadow: none;
+}
+.acsc .text-size-opt .ts-label {
+  color: #7a9aad;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(9px * var(--fs,1));
+}
+.acsc .text-size-opt.active .ts-letter { color: #f4eddf; }
+.acsc .text-size-opt.active .ts-label  { color: #e9c88b; }
+.acsc .ts-help {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(9px * var(--fs,1));
+  color: #7a9aad;
+  letter-spacing: .5px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SUPERBOSS BRIEFING SPECIFICS
+   ══════════════════════════════════════════════════════════ */
+.acsc .brief-list,
+.acsc .phase-list {
+  color: #b8c8d5;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(12px * var(--fs,1));
+}
+.acsc .phase-row { border-color: rgba(119,143,158,.22); }
+.acsc .phase-n {
+  background: #152b3b;
+  border: 1px solid rgba(233,200,139,.40);
+  border-radius: 4px;
+  color: #e9c88b;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-weight: 500;
+  font-size: calc(14px * var(--fs,1));
+}
+.acsc .phase-n.pinned {
+  background: rgba(126,216,184,.15);
+  border-color: #7ed8b8;
+  color: #7ed8b8;
+}
+.acsc .pin-note {
+  background: rgba(14,34,49,.55);
+  border: 1px solid rgba(119,143,158,.30);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: calc(12px * var(--fs,1));
+  color: #e9c88b;
+}
+
+/* ══════════════════════════════════════════════════════════
+   LEVEL-UP OVERLAY
+   ══════════════════════════════════════════════════════════ */
+section.overlay.acsc {
+  background: rgba(8,20,33,.94);
+}
+
+/* ══════════════════════════════════════════════════════════
+   CASE FILE (level-up, results, outcome)
+   ══════════════════════════════════════════════════════════ */
+.acsc .case-file {
+  border-left-color: #e9c88b;
+  background: linear-gradient(90deg, rgba(233,200,139,.10), rgba(11,28,43,.85) 50%);
+  border-color: rgba(119,143,158,.30);
+}
+.acsc .case-file:hover {
+  background: linear-gradient(90deg, rgba(233,200,139,.18), rgba(11,28,43,.85) 50%);
+}
+.acsc .case-file::after { background: #e9c88b; }
+.acsc .case-icon { border-color: #e9c88b; filter: none; }
+.acsc .case-tag { color: #e9c88b; }
+.acsc .case-title {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: calc(15px * var(--fs,1));
+  font-weight: 500;
+  color: #f4eddf;
+}
+
+/* ══════════════════════════════════════════════════════════
+   MUSIC MINI (shown on non-home screens — keep but soften)
+   ══════════════════════════════════════════════════════════ */
+body:has(.acsc.active) .music-mini {
+  background: rgba(14,34,49,.88);
+  border-color: rgba(119,143,158,.35);
+  clip-path: none;
+  border-radius: 5px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 759px) {
+  .acsc .title-main  { font-size: calc(24px * var(--fs,1)); }
+  .acsc .module-title{ font-size: calc(17px * var(--fs,1)); }
+  .acsc .vital-value { font-size: calc(18px * var(--fs,1)); }
+  .acsc .q-text      { line-height: 1.55; }
+  .acsc .ans-btn     { padding: 13px 12px; }
+}
+@media (max-width: 359px) {
+  .acsc .title-main  { font-size: calc(21px * var(--fs,1)); }
+  .acsc .acsc-banner-label { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .acsc .topbar .back-btn::before { animation: none !important; }
+  .acsc .survival-bar-fill         { transition: none !important; }
+}
+
+/* Shared academy scenery and interaction states. */
+html:has(.acsc.active), body:has(.acsc.active) { height:auto; min-height:100%; }
+#app:has(.acsc.active) { max-width:820px; padding:22px 24px 100px; }
+.acsc { font-family:system-ui,-apple-system,sans-serif; line-height:1.5; }
+.acsc .title-main { background:none; -webkit-text-fill-color:currentColor; filter:none; }
+.acsc .topbar { flex-wrap:wrap; gap:8px; border-radius:8px; box-shadow:none; }
+.acsc .topbar .back-btn, .acsc .item-btn { min-height:44px; }
+.acsc .topbar .mode-tag { flex:1; text-align:center; }
+.acsc :is(button,[tabindex]):focus-visible { outline:3px solid #ffe2a3; outline-offset:3px; }
+.acsc .header-strip { flex-wrap:wrap; gap:6px; }
+.acsc :is(.module-body,.item-body,.vital) { min-width:0; }
+.acsc :is(.module-title,.item-name,.tile-name,.boss-name,.vital-value) { overflow-wrap:anywhere; }
+.acsc .tile-name { font-size:calc(17px * var(--fs,1)); }
+.acsc .tile-sub { font-size:calc(12px * var(--fs,1)); color:#b8c8d5; }
+.acsc .module-title { font-size:calc(23px * var(--fs,1)); }
+.acsc .module-meta { font-size:calc(13px * var(--fs,1)); }
+.acsc .boss-name { font-size:calc(21px * var(--fs,1)); }
+.acsc-banner img { height:auto; max-height:none; object-fit:contain; }
+.acsc .acsc-banner-label { display:block; font-size:calc(19px * var(--fs,1)); line-height:1.2; }
+.acsc .arena {
+  background-image:linear-gradient(180deg,#08142115,#08142135 45%,#081421e8),url('../img/academy-room.webp');
+  background-size:cover; background-position:center 56%;
+  min-height:240px; isolation:isolate;
+}
+.acsc .arena::before { background:radial-gradient(ellipse at 25% 20%,#f7dba040,transparent 65%); }
+.acsc .arena .arena-bg-clouds { opacity:.12; }
+.acsc[data-screen='training'] .arena { min-height:140px; }
+.acsc:is([data-screen='crisis'],[data-screen='outcome'],[data-screen='superboss']) .arena {
+  background-image:linear-gradient(180deg,#08142120,#081421c9),url('../img/academy-clinical.webp');
+}
+.acsc[data-screen='course-mode'] .module { display:block; padding:0; overflow:hidden; }
+.acsc[data-screen='course-mode'] .module::before {
+  content:''; position:relative; inset:auto; display:block; width:100%; height:auto;
+  aspect-ratio:3.5; background:var(--acsc-course-art) center/contain no-repeat;
+  transform:none; opacity:1; border:0; box-shadow:none;
+}
+.acsc[data-screen='course-mode'] .module[data-mode='battle']::before { background-image:url('../img/academy-pulmonary.webp'); }
+.acsc[data-screen='course-mode'] .module[data-mode='training']::before { background-image:url('../img/academy-pharmacology.webp'); }
+.acsc[data-screen='course-mode'] .module[data-mode='crisis']::before { background-image:url('../img/academy-clinical.webp'); }
+.acsc[data-screen='course-mode'] .module-icon-wrap { display:none; }
+.acsc[data-screen='course-mode'] .module-body { padding:18px 20px; }
+.acsc:is([data-screen='settings'],[data-screen='review-answers'],[data-screen='survival'])::before {
+  content:''; display:block; flex-shrink:0; width:100%; aspect-ratio:3.5;
+  background:var(--acsc-course-art) center/contain no-repeat; border-radius:10px;
+  border:1px solid #778f9e50;
+}
+.acsc[data-screen='survival']:has(.answers)::before { display:none; }
+.acsc .ans-btn { box-shadow:none; }
+.acsc .ans-btn .ans-key { background:#e9c88b; color:#172331; box-shadow:none; border:0; }
+.acsc .ans-btn.correct, .acsc .ans-btn.correct:hover { background:#174938; border-color:#7ed8b8; color:#f0fff7; }
+.acsc .ans-btn.wrong, .acsc .ans-btn.wrong:hover { background:#582a32; border-color:#ed9292; color:#fff2f2; }
+.acsc .review-choice.correct { background:#174938; border-color:#7ed8b8; color:#f0fff7; }
+.acsc .review-choice.chosen-wrong { background:#582a32; border-color:#ed9292; color:#fff2f2; }
+body:has(.acsc.active) :is(.atm-bokeh,.atm-vignette,.home-orb) { display:none; }
+body:has(.acsc.active) .music-mini { top:auto; bottom:16px; right:16px; }
+body:has(.acsc.active) .music-popover { top:auto; bottom:64px; }
+body.academy-motion-paused .acsc *, body.academy-motion-paused .acsc *::before,
+body.academy-motion-paused .acsc *::after { animation:none !important; }
+@media (prefers-reduced-motion:reduce) {
+  .acsc *, .acsc *::before, .acsc *::after { animation:none !important; transition:none !important; }
+}
+@media (max-width:759px) {
+  #app:has(.acsc.active) { padding:16px 14px 100px; }
+  .acsc .arena { min-height:200px; background-image:linear-gradient(180deg,#08142115,#08142135 45%,#081421e8),url('../img/academy-room-mobile.webp'); }
+  .acsc .item-row { flex-wrap:wrap; }
+  .acsc .item-body { flex:1; min-width:120px; }
+}
+@media (max-width:359px) {
+  .acsc .grid-2 { grid-template-columns:1fr; }
+  .acsc .acsc-banner-label { left:12px; bottom:8px; font-size:calc(16px * var(--fs,1)); }
+}
+.acsc[data-screen='training']::before {
+  content:''; display:block; flex-shrink:0; height:76px;
+  background:linear-gradient(90deg,#08142110,#08142180),var(--acsc-course-art) center/cover no-repeat;
+  border:1px solid #778f9e50; border-radius:8px;
+}
+
+body:has(.acsc.active) .quick-settings-mini { top:auto; bottom:16px; left:16px; min-height:36px; background:#0e2231; border-color:#778f9e80; }
+body:has(.acsc.active) .qs-popover { top:auto; bottom:64px; left:14px; max-width:calc(100vw - 28px); min-width:0; background:#0e2231; }

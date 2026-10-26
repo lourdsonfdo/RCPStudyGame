@@ -7,6 +7,7 @@
    card is contested or absent from the lecture decks
    ============================================================ */
 App.registerScreen('review-answers', ({ root, state, ctx }) => {
+  root.classList.add('acsc');
   const answers = ctx.answers || [];
   const misses  = answers.filter(a => !a.isCorrect);
   const total   = answers.length;

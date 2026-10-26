@@ -3,6 +3,7 @@
    ctx: { session, lvlInfo, course, bossId, isDaily }
    ============================================================ */
 App.registerScreen('results', ({ root, state, ctx }) => {
+  root.classList.add('acsc');
   const s = ctx.session;
   const won = s.outcome === 'victory';
   const sprite = (window.BOSS_SPRITES && window.BOSS_SPRITES[s.boss.id]) || '';

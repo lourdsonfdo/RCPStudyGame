@@ -2,6 +2,7 @@
    SETTINGS — reset progress, toggles, about
    ============================================================ */
 App.registerScreen('settings', ({ root, state }) => {
+  root.classList.add('acsc');
   const title = State.titleForLevel(state.level);
   const prog = State.xpProgressInCurrentLevel(state);
 

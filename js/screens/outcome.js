@@ -3,6 +3,7 @@
    ctx: { session, lvlInfo, course, scenarioId }
    ============================================================ */
 App.registerScreen('outcome', ({ root, state, ctx }) => {
+  root.classList.add('acsc');
   const s = ctx.session;
   const outcomeText = {
     stabilized: { emoji:'❤️‍🩹', title:'PATIENT STABILIZED', color:'var(--hud-green)' },

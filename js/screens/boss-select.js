@@ -3,8 +3,10 @@
    ctx: { course: 'rcp103' | 'rcp104' }
    ============================================================ */
 App.registerScreen('boss-select', ({ root, state, ctx }) => {
+  root.classList.add('acsc');
   const course = ctx.course;
   const all = (window.ALL_BOSSES || []).filter(b => b.course === course);
+  const courseInfo = Academy.course(course);
 
   // Unlock rule: all bosses are unlocked from the start so the player can pick freely.
   function isUnlocked(_b) { return true; }
@@ -15,15 +17,21 @@ App.registerScreen('boss-select', ({ root, state, ctx }) => {
   root.innerHTML = `
     <div class="topbar">
       <button class="back-btn" data-back>BACK</button>
-      <span class="mode-tag">${ctx.mode === 'training' ? 'STUDY LIBRARY' : '⚡ TARGET ACQUISITION'}</span>
+      <span class="mode-tag">${ctx.mode === 'training' ? 'Study Library' : 'Target Select'}</span>
       <span class="chapter-tag">${courseShort}</span>
+    </div>
+
+    <div class="acsc-banner">
+      <img src="${courseInfo.img}" width="480" height="160" alt="" loading="eager">
+      <div class="acsc-banner-overlay"></div>
+      <span class="acsc-banner-label">${defeated}/${all.length} mastered</span>
     </div>
 
     <div class="hud hud-corners">
       <span class="br1"></span><span class="br2"></span>
       <div class="header-strip" style="margin: -14px -16px 12px;">
-        <span><span class="status-dot"></span>HOSTILES ON GRID</span>
-        <span>${defeated}/${all.length} ELIMINATED</span>
+        <span><span class="status-dot"></span>${ctx.mode === 'training' ? 'Study topics' : 'Choose your target'}</span>
+        <span>${defeated}/${all.length} ${ctx.mode === 'training' ? 'practiced' : 'defeated'}</span>
       </div>
       <div class="grid-2">
         ${all.map(b => {

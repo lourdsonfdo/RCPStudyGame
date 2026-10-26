@@ -66,6 +66,11 @@
     const el = $screen(screenId);
     if (!el) { console.error('Unknown screen:', screenId); return; }
     el.classList.add('active');
+    // Shared scenery survives screen-local rerenders (answers, shop, equipment).
+    const courseArt = global.Academy && ctx.course ? global.Academy.course(ctx.course).img : null;
+    const artUrl = new URL(courseArt || 'img/academy-clinical.webp', document.baseURI).href;
+    el.style.setProperty('--acsc-course-art', `url("${artUrl}")`);
+    document.body.classList.toggle('academy-motion-paused', !!state.settings.academyMotionPaused);
     currentScreen = screenId;
     window.scrollTo(0, 0);
     applyQuizScaleForScreen(screenId);

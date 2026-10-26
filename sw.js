@@ -3,7 +3,7 @@
    Cache-first strategy: game is fully playable offline after
    the first load.
    ============================================================ */
-const CACHE = 'rcp-study-v18-gaps203';
+const CACHE = 'rcp-study-v19-academy-ui';
 
 const PRECACHE = [
   '/RCPStudyGame/',
@@ -11,6 +11,7 @@ const PRECACHE = [
   '/RCPStudyGame/css/style.css',
   '/RCPStudyGame/css/theme-storybook.css',
   '/RCPStudyGame/css/theme-academy.css',
+  '/RCPStudyGame/css/theme-academy-screens.css',
   '/RCPStudyGame/img/academy-room.webp',
   '/RCPStudyGame/img/academy-room-mobile.webp',
   '/RCPStudyGame/img/academy-pulmonary.webp',

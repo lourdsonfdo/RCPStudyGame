@@ -16,6 +16,7 @@
   const FLASH_BAD_MS  = 720;   // pause after wrong (lets player register correct one)
 
   App.registerScreen('survival', ({ root, state }) => {
+    root.classList.add('acsc');
     if (activeRaf) { cancelAnimationFrame(activeRaf); activeRaf = null; }
 
     // ── session ──────────────────────────────────────────────

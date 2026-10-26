@@ -3,6 +3,7 @@
    ctx: { resume: true } to restore a saved run, otherwise starts fresh.
    ============================================================ */
 App.registerScreen('superboss', ({ root, state, ctx }) => {
+  root.classList.add('acsc');
   const boss = (window.ALL_BOSSES || []).find(b => b.id === 'vitals-titan');
   const bank = (window.ALL_QUESTIONS || []).filter(q => q.course === 'rcp2xx');
   const sprite = (window.BOSS_SPRITES || {})['vitals-titan'] || '🗿';

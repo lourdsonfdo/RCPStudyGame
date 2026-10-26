@@ -3,6 +3,7 @@
    ctx: { course }
    ============================================================ */
 App.registerScreen('scenario-select', ({ root, state, ctx }) => {
+  root.classList.add('acsc');
   const course = ctx.course;
   const all = (window.ALL_SCENARIOS || []).filter(s => s.course === course);
   const completed = (id) => state.completedScenarios.includes(id);
@@ -11,15 +12,21 @@ App.registerScreen('scenario-select', ({ root, state, ctx }) => {
   root.innerHTML = `
     <div class="topbar">
       <button class="back-btn" data-back>BACK</button>
-      <span class="mode-tag">🏥 CASE FILES</span>
+      <span class="mode-tag">Case Files</span>
       <span class="chapter-tag">${course.toUpperCase()}</span>
+    </div>
+
+    <div class="acsc-banner">
+      <img src="img/academy-clinical.webp" width="476" height="160" alt="" loading="eager">
+      <div class="acsc-banner-overlay"></div>
+      <span class="acsc-banner-label">Clinical simulation</span>
     </div>
 
     <div class="hud hud-corners">
       <span class="br1"></span><span class="br2"></span>
       <div class="header-strip" style="margin: -14px -16px 12px;">
-        <span><span class="status-dot"></span>INCOMING CASES</span>
-        <span>${resolved}/${all.length} RESOLVED</span>
+        <span><span class="status-dot"></span>Available cases</span>
+        <span>${resolved}/${all.length} resolved</span>
       </div>
 
       ${all.length === 0 ? '<div class="t-mute t-center t-sm" style="padding:20px;">NO CASES ON FILE</div>' : ''}

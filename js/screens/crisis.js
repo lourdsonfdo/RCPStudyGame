@@ -3,6 +3,7 @@
    ctx: { course, scenarioId }
    ============================================================ */
 App.registerScreen('crisis', ({ root, state, ctx }) => {
+  root.classList.add('acsc');
   const scenario = (window.ALL_SCENARIOS || []).find(s => s.id === ctx.scenarioId);
   if (!scenario) { root.innerHTML = '<div class="panel t-red">SCENARIO NOT FOUND.</div>'; return; }
 
