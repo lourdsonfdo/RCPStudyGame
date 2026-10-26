@@ -89,6 +89,21 @@ one boss per study-guide section, questions usable in both Study (training) and 
 - `tools/facts.py <course> '<regex>'` prints verified facts (stem → answer | explanation) for writing new cases.
 - Committed, NOT pushed. Ships with Codex's sw.js cache bump, like the option fixes.
 
+## Spaced repetition (2026-10-25)
+- `js/engine/state.js`: Leitner boxes in `questionStats[sig]` (`box`, `due`). A miss → box 0, due now; each correct review →
+  next box, due in 1 / 3 / 7 / 14 days; correct from box 4 → mastered (box 5, never due). Any miss resets to box 0.
+  Never-missed questions are never scheduled. Old saves (no `box`) count as due if ever missed or below 60% accuracy,
+  and convert on their next answer, so nobody's progress is lost. The old flat 14-day rule is gone.
+- Same API for callers (battle, training, home, survival, superboss): `recordAnswer`, `isWeakQuestion` (= due now),
+  `biasedQuestionPool`, `Academy.reviewQuestions` (now sorted lowest box first, then most recent miss).
+  New: `State.reviewSummary(state)` → `{due, scheduled, mastered, nextDue}`, ready for Codex to show on home
+  (e.g. "6 due · next review tomorrow").
+- Tests: `node tools/tests/review.test.js` (10 new) + academy (7) + engine (73), all passing. Browser check: a miss
+  appeared in Review, a correct review rescheduled it about 24 h out.
+- ⚠ SHIPPING: `index.html` loads `js/engine/state.js?v=midterm1` and `academy.js?v=midterm1`. **Bump those `?v=` tags**
+  along with the sw.js cache, or browsers keep the cached old copies (seen locally). index.html is in Codex's open work,
+  so it needs to make this change. Committed, NOT pushed.
+
 ## Gotchas
 - Every content change needs a `CACHE` bump in `sw.js`, or returning players never get the update.
 - VITALS TITAN uses course `rcp2xx`. The new courses are `rcp201`/`rcp202`/`rcp203`, so they don't collide.

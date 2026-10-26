@@ -188,7 +188,24 @@
     return h.toString(36);
   }
 
-  function recordAnswer(state, q, isCorrect) {
+  /* Spaced repetition (Leitner boxes). A question enters review the first time it is
+     missed: box 0, due now. Each correct review moves it up a box and schedules it
+     REVIEW_DAYS[box] days out; a correct answer from the last box masters it. Any miss
+     sends it back to box 0. Never-missed questions are never scheduled. */
+  const DAY_MS = 24 * 60 * 60 * 1000;
+  const REVIEW_DAYS = [0, 1, 3, 7, 14];       // box 0..4
+  const MASTERED_BOX = REVIEW_DAYS.length;    // 5
+
+  // Box and due time for a stats entry, without modifying it. Entries saved before
+  // boxes existed count as due if they were ever missed or are below 60% accuracy.
+  function schedule(s) {
+    if (!s) return null;
+    if (s.box !== undefined) return { box: s.box, due: s.due };
+    if (s.lastWrong || (s.seen && s.correct / s.seen < 0.6)) return { box: 0, due: s.lastWrong || 0 };
+    return null;
+  }
+
+  function recordAnswer(state, q, isCorrect, now = Date.now()) {
     if (!q || !q.topic) return;
     // Topic stats
     state.topicStats = state.topicStats || {};
@@ -200,9 +217,20 @@
     const sig = qSig(q);
     if (!sig) return;
     if (!state.questionStats[sig]) state.questionStats[sig] = { seen: 0, correct: 0, lastWrong: 0 };
-    state.questionStats[sig].seen += 1;
-    if (isCorrect) state.questionStats[sig].correct += 1;
-    else state.questionStats[sig].lastWrong = Date.now();
+    const s = state.questionStats[sig];
+    const current = schedule(s);
+    s.seen += 1;
+    if (isCorrect) {
+      s.correct += 1;
+      if (current && current.box < MASTERED_BOX) {
+        s.box = current.box + 1;
+        s.due = s.box < MASTERED_BOX ? now + REVIEW_DAYS[s.box] * DAY_MS : null;
+      }
+    } else {
+      s.lastWrong = now;
+      s.box = 0;
+      s.due = now;
+    }
   }
 
   function getWeakTopics(state, opts = {}) {
@@ -216,16 +244,28 @@
       .slice(0, limit);
   }
 
-  // Spaced repetition heuristic — a question is "weak" if it's been missed at
-  // least once OR overall accuracy on it is below 60%. Used to bias pools.
-  const WEAK_WINDOW_MS = 14 * 24 * 60 * 60 * 1000;  // 14 days
-  function isWeakQuestion(state, q) {
+  // A question is "weak" when it is in review and due. Used to bias pools and fill Review.
+  function isWeakQuestion(state, q, now = Date.now()) {
     const sig = qSig(q);
     if (!sig) return false;
-    const s = (state.questionStats || {})[sig];
-    if (!s || s.seen === 0) return false;
-    if (s.lastWrong && (Date.now() - s.lastWrong) < WEAK_WINDOW_MS) return true;
-    return (s.correct / s.seen) < 0.6;
+    const sch = schedule((state.questionStats || {})[sig]);
+    return !!sch && sch.box < MASTERED_BOX && sch.due <= now;
+  }
+
+  // Counts for a review panel: due now, scheduled for later, mastered, and the next due time.
+  function reviewSummary(state, now = Date.now()) {
+    const out = { due: 0, scheduled: 0, mastered: 0, nextDue: null };
+    Object.values(state.questionStats || {}).forEach(s => {
+      const sch = schedule(s);
+      if (!sch) return;
+      if (sch.box >= MASTERED_BOX) out.mastered++;
+      else if (sch.due <= now) out.due++;
+      else {
+        out.scheduled++;
+        if (out.nextDue === null || sch.due < out.nextDue) out.nextDue = sch.due;
+      }
+    });
+    return out;
   }
 
   /**
@@ -275,5 +315,7 @@
     // Study tracking (v1.4)
     qSig, recordAnswer, getWeakTopics, isWeakQuestion,
     biasedQuestionPool, recordSurvival,
+    // Spaced repetition
+    reviewSummary, MASTERED_BOX, REVIEW_DAYS,
   };
 })(window);

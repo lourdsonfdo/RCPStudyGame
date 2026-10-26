@@ -51,17 +51,18 @@
     count: Math.min(8, entry.pool.length), isWeak: false };
   }
 
-  function reviewQuestions(state, questions) {
+  // Questions due for spaced review: least-known box first, then most recently missed.
+  function reviewQuestions(state, questions, now = Date.now()) {
     const seen = new Set();
+    const stats = state.questionStats || {};
+    const stat = q => stats[global.State.qSig(q)];
     return (questions || []).filter(q => {
       const sig = global.State.qSig(q);
-      if (!sig || seen.has(sig) || !global.State.isWeakQuestion(state, q)) return false;
+      if (!sig || seen.has(sig) || !global.State.isWeakQuestion(state, q, now)) return false;
       seen.add(sig);
       return true;
-    }).sort((a, b) => {
-      const stats = state.questionStats || {};
-      return (stats[global.State.qSig(b)].lastWrong || 0) - (stats[global.State.qSig(a)].lastWrong || 0);
-    });
+    }).sort((a, b) => ((stat(a).box || 0) - (stat(b).box || 0)) ||
+      ((stat(b).lastWrong || 0) - (stat(a).lastWrong || 0)));
   }
 
   function resumableBattle(state, bosses) {
