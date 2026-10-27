@@ -839,3 +839,24 @@ body.academy-motion-paused .acsc *::after { animation:none !important; }
 
 body:has(.acsc.active) .quick-settings-mini { top:auto; bottom:16px; left:16px; min-height:36px; background:#0e2231; border-color:#778f9e80; }
 body:has(.acsc.active) .qs-popover { top:auto; bottom:64px; left:14px; max-width:calc(100vw - 28px); min-width:0; background:#0e2231; }
+
+/* Painted transparent portraits; existing container effects remain in charge. */
+.acsc .boss-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: auto;
+  user-select: none;
+  pointer-events: none;
+}
+.acsc .boss-portrait:has(.boss-art) {
+  width: 176px;
+  height: 176px;
+  max-width: 100%;
+}
+.acsc .boss-portrait-sm:has(.boss-art) {
+  width: 96px;
+  height: 96px;
+  max-width: 100%;
+}
