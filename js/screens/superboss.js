@@ -1,6 +1,7 @@
 /* ============================================================
    SUPERBOSS — VITALS TITAN run screen.
    ctx: { resume: true } to restore a saved run, otherwise starts fresh.
+   Returns a cleanup function for router navigation cancellation.
    ============================================================ */
 App.registerScreen('superboss', ({ root, state, ctx }) => {
   root.classList.add('acsc');
@@ -28,7 +29,6 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
           pinned: state.superbossPinned || {},
         });
   } catch (err) {
-    // A phase too thin to fill is a content bug, and it is meant to be loud.
     root.innerHTML = `<div class="hud hud-corners t-red t-sm" style="padding:14px;">
         <span class="br1"></span><span class="br2"></span>${err.message}
       </div>
@@ -42,17 +42,23 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
     App.persist();
   }
 
-  // Save immediately: without this, leaving before answering the first
-  // question of a phase would have nothing to resume from.
   persistRun();
 
-  /** Leave the fight, keeping the exact spot. */
+  // Screen-local pending timer tracking for cleanup
+  const _pending = new Set();
+  function _wait(ms, fn) {
+    const id = setTimeout(() => { _pending.delete(id); fn(); }, ms);
+    _pending.add(id);
+    return id;
+  }
+
   function leave() {
     persistRun();
     App.goto('superboss-briefing', {});
   }
 
   function render() {
+    if (window.Fx && Fx.reset) Fx.reset();
     const phase = SuperBoss.currentPhase(run);
     const q = SuperBoss.currentQ(run);
     if (!q) return;
@@ -115,18 +121,40 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
       </div>
     `;
 
+    // Arena art — Titan uses the rcp2xx sanctum explicitly
     const arenaEl = root.querySelector('#arena');
-    if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: 'battle' });
+    if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: 'battle', course: 'rcp2xx' });
+
+    // Mount atlas on the combat portrait if BossMotion is available
+    const bossPortraitEl = root.querySelector('#boss-portrait');
+    if (bossPortraitEl && window.BossMotion) {
+      BossMotion.attach(bossPortraitEl, { bossId: 'vitals-titan' });
+    }
 
     root.querySelectorAll('.ans-btn').forEach(btn => {
-      btn.addEventListener('click', () => onAnswer(Number(btn.dataset.i), btn));
+      btn.addEventListener('click', () => {
+        if (btn.disabled || btn.classList.contains('disabled-vis')) return;
+        onAnswer(Number(btn.dataset.i), btn);
+      });
     });
     const leaveBtn = root.querySelector('[data-leave]');
     if (leaveBtn) leaveBtn.addEventListener('click', leave);
   }
 
+  function _disableAllAnswers() {
+    root.querySelectorAll('.ans-btn').forEach(b => {
+      b.disabled = true;
+      b.classList.add('disabled-vis');
+    });
+  }
+
   function onAnswer(choiceIndex, btn) {
+    // Guard repeat input
+    if (btn.disabled || btn.classList.contains('disabled-vis')) return;
+    _disableAllAnswers();
+
     const q = SuperBoss.currentQ(run);
+    const hpBefore = run.playerHp;
     const res = SuperBoss.answer(run, choiceIndex);
 
     if (window.State && State.recordAnswer) {
@@ -136,18 +164,26 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
     root.querySelectorAll('.ans-btn').forEach((b, i) => {
       if (i === res.correctIndex) b.classList.add('correct');
       else if (i === choiceIndex) b.classList.add('wrong');
-      b.classList.add('disabled-vis');
     });
 
     const portrait = root.querySelector('#boss-portrait');
+    const arena    = root.querySelector('#arena');
+
     if (window.Fx) {
-      if (res.correct) Fx.strike({ target: portrait, dmg: 8 });
-      else Fx.shake(1);
+      if (res.correct) {
+        Fx.strike({ target: portrait, dmg: 8 });
+      } else {
+        // Full counter sequence — waits >= 1000ms before autorender
+        Fx.bossCounter({ playerArea: arena, bossPortrait: portrait, bossName: 'Vitals Titan', dmg: hpBefore - run.playerHp });
+      }
     }
 
     persistRun();
 
-    setTimeout(() => {
+    // Wait at least 1000ms for the counter sequence; correct can be shorter
+    const waitMs = res.correct ? 850 : 1400;
+
+    _wait(waitMs, () => {
       if (run.outcome === 'defeat') return finish();
       if (SuperBoss.phaseComplete(run)) {
         const result = SuperBoss.endPhase(run);
@@ -156,10 +192,11 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
         return showPhaseBreak(result);
       }
       render();
-    }, res.correct ? 850 : 1200);
+    });
   }
 
   function showPhaseBreak(result) {
+    if (window.Fx && Fx.reset) Fx.reset();
     const next = SuperBoss.currentPhase(run);
     root.innerHTML = `
       <div class="topbar">
@@ -187,9 +224,9 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
   }
 
   function finish() {
+    if (window.Fx && Fx.reset) Fx.reset();
     const won = run.outcome === 'victory';
     state.superbossRun = null;
-    // Carry pins forward: a phase failed this run is drilled on the next one.
     state.superbossPinned =
       run.pinned && Object.keys(run.pinned).length ? run.pinned : null;
     if (won && state.defeatedBosses.indexOf('vitals-titan') === -1) {
@@ -243,7 +280,6 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
       <button class="btn btn-block" data-home>RETURN</button>`;
 
     root.querySelector('[data-review]').addEventListener('click', () => {
-      // Shape the run's history for the shared review screen.
       const answers = run.answers.map(a => ({
         q: a.question.q,
         choices: a.question.choices,
@@ -263,4 +299,11 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
   }
 
   render();
+
+  // Return cleanup: cancel pending timers, dispose atlas on navigate-away
+  return function cleanup() {
+    _pending.forEach(id => clearTimeout(id));
+    _pending.clear();
+    if (window.BossMotion) BossMotion.reset();
+  };
 });

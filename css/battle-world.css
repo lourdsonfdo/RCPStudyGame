@@ -1,0 +1,72 @@
+/* Battle-only worlds. The illustrated academy remains a place to prepare. */
+.acsc .arena[data-battle-world] {
+  background-image: linear-gradient(180deg,#06101a08 40%,#06101a35 70%,#06101aee), var(--battle-world-art);
+  background-size: cover;
+  background-position: center 65%;
+  min-height: 300px;
+  padding: 12px 14px 16px;
+  border: 1px solid #a38a5d88;
+  box-shadow: inset 0 0 38px #030b1580, 0 6px 24px #0005;
+}
+.acsc .arena[data-battle-world]::before {
+  background: linear-gradient(90deg,#06101a35,transparent 20% 80%,#06101a35);
+}
+.acsc .arena[data-battle-world] .arena-bg-clouds { opacity: .04; }
+.acsc .arena[data-battle-world] .arena-bg-beam { opacity: .12; }
+.acsc .arena[data-battle-world] .boss-portrait {
+  width: 216px;
+  height: 216px;
+  max-width: 100%;
+  margin: 0 auto 6px;
+  animation: none;
+  transform: none;
+  filter: drop-shadow(0 4px 3px #0009);
+  isolation: isolate;
+}
+.acsc .arena[data-battle-world] .boss-portrait::before { display: none; }
+.acsc .arena[data-battle-world] .boss-portrait::after {
+  content: '';
+  position: absolute;
+  left: 22%; right: 22%; bottom: 3%; height: 9%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse,#02080be0 15%,#02080b70 50%,transparent 74%);
+  z-index: -1;
+}
+.acsc .boss-portrait[data-motion-ready='true'] { animation: none !important; transform: none !important; }
+.acsc .boss-portrait[data-motion-ready='true'] > .boss-art { visibility: hidden; }
+.boss-pose {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%; height: 100%;
+  background-size: 300% 200%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  pointer-events: none;
+  image-rendering: auto;
+}
+.acsc .arena[data-battle-world] .boss-name {
+  position: relative;
+  display: table;
+  margin: 0 auto 3px;
+  padding: 4px 12px;
+  background: #081725d9;
+  border: 1px solid #c7aa6d66;
+  border-radius: 4px;
+  text-shadow: 0 2px 3px #000;
+}
+.acsc .arena[data-battle-world] .boss-sub {
+  max-width: 44ch;
+  margin: 0 auto;
+  color: #eef6fa;
+  text-shadow: 0 1px 3px #000,0 0 7px #000;
+}
+@media (min-width: 760px) {
+  .acsc .arena[data-battle-world] { min-height: 340px; }
+  .acsc .arena[data-battle-world] .boss-portrait { width: 250px; height: 250px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-host *, .fx-host *::before, .fx-host *::after { animation: none !important; transition: none !important; }
+}
+body.academy-motion-paused .fx-host *, body.academy-motion-paused .fx-host *::before,
+body.academy-motion-paused .fx-host *::after { animation: none !important; transition: none !important; }

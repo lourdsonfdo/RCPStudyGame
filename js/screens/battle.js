@@ -1,6 +1,8 @@
 /* ============================================================
    BATTLE SCREEN — drives a Battle session and renders combat
    ctx: { course, bossId, isDaily? }
+   Returns a cleanup function that cancels pending timers and
+   disposes BossMotion when the router navigates away.
    ============================================================ */
 App.registerScreen('battle', ({ root, state, ctx }) => {
   root.classList.add('acsc');
@@ -20,10 +22,6 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     return;
   }
 
-  // A saved fight for THIS boss can be picked up where it was left. The
-  // session is a plain object, so it round-trips through localStorage as-is:
-  // the drawn questions keep their shuffled choices, and the items already
-  // spent stay spent.
   const saved = state.battleRun;
   const resuming = !!(ctx.resume && saved && saved.bossId === boss.id);
 
@@ -35,8 +33,6 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
         questionPool, state,
       });
 
-  // Remove equipped items from inventory now (they're "in use").
-  // On a resume they were consumed when the fight first started.
   if (!resuming && !ctx.isDaily) {
     session.items.forEach(k => State.consumeItem(state, k));
     State.clearEquipped(state);
@@ -50,18 +46,26 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     State.save(state);
   }
 
-  /** Leave the fight, keeping the exact spot. */
   function leaveFight() {
     persistFight();
     if (session.isDaily) App.goto('home', {}, { clearHistory: true });
     else App.goto('prep-camp', { course: boss.course, bossId: boss.id }, { clearHistory: true });
   }
 
-  persistFight();   // so leaving before the first answer still resumes
+  persistFight();
 
   let hintRemoved = [];
 
+  // Screen-local pending timers — cancelled on cleanup
+  const _pending = new Set();
+  function _wait(ms, fn) {
+    const id = setTimeout(() => { _pending.delete(id); fn(); }, ms);
+    _pending.add(id);
+    return id;
+  }
+
   function render() {
+    if (window.Fx && Fx.reset) Fx.reset();
     const q = Battle.currentQ(session);
     const prog = Battle.progress(session);
     const bossPct  = (session.bossHp   / session.bossMaxHp)   * 100;
@@ -122,8 +126,6 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
       </div>
 
       ${(() => {
-        // Only show items the player can manually trigger.
-        // doubleXpTome auto-activates — shown as a passive badge, not a button.
         const active  = session.items.filter(k => ITEM_LABEL[k]);
         const passive = session.items.filter(k => !ITEM_LABEL[k]);
         if (!active.length && !passive.length) return '';
@@ -138,20 +140,22 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
       })()}
     `;
 
-    // Animated arena background
+    // Animated arena background with course-specific art
     const arenaEl = root.querySelector('#arena');
-    if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: 'battle' });
+    if (arenaEl && window.ArenaBg) ArenaBg.attach(arenaEl, { mode: 'battle', course: boss.course });
 
-    // Click answers
+    // Mount atlas on the combat portrait if BossMotion is available
+    const bossPortraitEl = root.querySelector('#boss-portrait');
+    if (bossPortraitEl && window.BossMotion) {
+      BossMotion.attach(bossPortraitEl, { bossId: boss.id });
+    }
+
+    // Click answers — guard against double-clicks via immediate disabled state
     root.querySelectorAll('.ans-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (btn.classList.contains('disabled-vis')) return;
-        const i = +btn.dataset.i;
-        handleAnswer(i, btn);
-      });
+      if (btn.classList.contains('disabled-vis')) return;
+      btn.addEventListener('click', () => handleAnswer(+btn.dataset.i, btn));
     });
 
-    // Item buttons
     root.querySelectorAll('[data-use]').forEach(btn => {
       btn.addEventListener('click', () => useItem(btn.dataset.use));
     });
@@ -160,16 +164,29 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     if (leaveBtn) leaveBtn.addEventListener('click', leaveFight);
   }
 
+  function _disableAllAnswers() {
+    root.querySelectorAll('.ans-btn').forEach(b => {
+      b.disabled = true;
+      b.classList.add('disabled-vis');
+    });
+  }
+
   function handleAnswer(idx, btn) {
+    // Guard: if this button is already disabled, ignore stale event
+    if (btn.disabled || btn.classList.contains('disabled-vis')) return;
+
+    // Immediately disable all answer buttons to prevent repeat input
+    _disableAllAnswers();
+    root.querySelectorAll('[data-use]').forEach(b => { b.disabled = true; });
+
     const q = Battle.currentQ(session);
     const correctIdx = q.correct;
     const res = Battle.answer(session, idx);
     hintRemoved = [];
 
-    // Per-topic / per-question stats for weak-topic surfacing + spaced repetition
     if (window.State && State.recordAnswer) {
       State.recordAnswer(state, q, res.correct);
-      State.save(state); // persist mid-battle so backgrounding/kill doesn't lose stats
+      State.save(state);
     }
 
     const arena = root.querySelector('#arena');
@@ -178,16 +195,9 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
 
     btn.classList.add(res.correct ? 'correct' : 'wrong');
 
-    // Map answer → Octopath-style attack sequence.
-    //   normal correct ........... STRIKE       (~600ms)
-    //   crit (streak ≥ 3) ........ LANCE OF LIGHT (~1100ms)
-    //   heavy crit (streak ≥ 5) .. COMBO STRIKE  (~1800ms)
-    //   killing blow ............. JUDGEMENT     (~2400ms)
-    //   wrong (no shield) ........ BOSS COUNTER  (~1300ms)
-    //   wrong (shielded) ......... small block fx (unchanged)
     let waitMs = 1400;
     if (res.correct) {
-      const dmgAmount = res.crit ? 15 : 10;
+      const dmgAmount = Math.abs(res.bossHpDelta);
       if (window.Fx) {
         if (session.streak >= 3) {
           const qLabel = root.querySelector('.q-label');
@@ -195,7 +205,8 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
         }
         if (res.gameOver && session.outcome === 'victory') {
           Fx.judgement({ caster: qbox, target: bossPortrait, dmg: dmgAmount });
-          waitMs = 2400;
+          _wait(1850, () => { if (window.BossMotion) BossMotion.play(bossPortrait, 'defeat'); });
+          waitMs = 2800;
         } else if (session.streak >= 5) {
           Fx.comboStrike({ target: bossPortrait, dmg: dmgAmount });
           waitMs = 1900;
@@ -212,7 +223,7 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
         Fx.particles(arena, { color: 'blue', count: 10 });
         Fx.shake(1);
       } else if (window.Fx) {
-        Fx.bossCounter({ playerArea: arena, bossPortrait });
+        Fx.bossCounter({ playerArea: arena, bossPortrait, bossName: boss.name, dmg: Math.abs(res.playerHpDelta) });
         waitMs = 1700;
       }
       const correctBtn = root.querySelectorAll('.ans-btn')[correctIdx];
@@ -224,12 +235,8 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     expl.textContent = res.explanation;
     if (qbox) qbox.appendChild(expl);
 
-    root.querySelectorAll('.ans-btn').forEach(b => b.classList.add('disabled-vis'));
+    persistFight();
 
-    persistFight();   // keep the saved spot current after every answer
-
-    // Player-controlled advance — reveal NEXT button after the FX wraps so the
-    // explanation isn't yanked away mid-read.
     const nextBtn = document.createElement('button');
     nextBtn.className = 'btn btn-block btn-primary next-q-btn';
     nextBtn.textContent = res.gameOver ? '▶ VIEW RESULTS' : '▶ NEXT QUERY';
@@ -239,7 +246,7 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     });
     if (qbox) qbox.appendChild(nextBtn);
 
-    setTimeout(() => nextBtn.classList.add('show'), waitMs);
+    _wait(waitMs, () => nextBtn.classList.add('show'));
   }
 
   function useItem(key) {
@@ -252,10 +259,9 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
   }
 
   function endBattle() {
-    state.battleRun = null;      // the fight is over; nothing left to resume
+    state.battleRun = null;
     Battle.computeRewards(session);
 
-    // Award rewards — computeRewards already applied the doubleXpTome multiplier, so don't double again here
     const lvlInfo = State.addXp(state, session.xpEarned);
     State.addGold(state, session.goldEarned);
     if (session.outcome === 'victory' && !state.defeatedBosses.includes(boss.id)) {
@@ -271,6 +277,13 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
   }
 
   render();
+
+  // Return cleanup: cancel pending timers, dispose atlas on navigate-away
+  return function cleanup() {
+    _pending.forEach(id => clearTimeout(id));
+    _pending.clear();
+    if (window.BossMotion) BossMotion.reset();
+  };
 });
 
 // Manually-activated items (have buttons)

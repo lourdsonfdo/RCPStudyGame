@@ -9,6 +9,7 @@
   let currentScreen = 'home';
   const screenInits = {};            // map: screenId → render fn(ctx)
   let routeCtx = {};                 // arbitrary data passed between screens
+  let _screenCleanup = null;         // cleanup fn returned by the current screen init
 
   // ── Navigation history stack ─────────────────────────────────
   // Each entry: { screen: string, ctx: object }
@@ -61,6 +62,16 @@
   function canGoBack() { return history.length > 0 && currentScreen !== 'home'; }
 
   function _doSwitch(screenId, ctx) {
+    // Cancel the previous screen's pending effects and timers before any init,
+    // including same-screen re-renders triggered by App.refresh().
+    if (_screenCleanup) {
+      try { _screenCleanup(); } catch (e) { /* ignore */ }
+      _screenCleanup = null;
+    }
+    if (global.Fx && Fx.reset) {
+      try { Fx.reset(); } catch (e) { /* ignore */ }
+    }
+
     routeCtx = { ...ctx };
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const el = $screen(screenId);
@@ -76,8 +87,12 @@
     applyQuizScaleForScreen(screenId);
     updateQuickSettingsVisibility(screenId);
     const init = screenInits[screenId];
-    if (init) init({ root: el, state, ctx: routeCtx });
-    else el.innerHTML = `<div class="panel t-center t-mute">Screen <b>${screenId}</b> not implemented.</div>`;
+    if (init) {
+      const cleanup = init({ root: el, state, ctx: routeCtx });
+      if (typeof cleanup === 'function') _screenCleanup = cleanup;
+    } else {
+      el.innerHTML = `<div class="panel t-center t-mute">Screen <b>${screenId}</b> not implemented.</div>`;
+    }
   }
 
   function _transition(midpointFn) {

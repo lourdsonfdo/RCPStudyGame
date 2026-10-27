@@ -1,0 +1,543 @@
+{
+  "poses": {
+    "m202-s03": {
+      "id": "m202-s03",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-e79f65ea-246f-49c8-b9c5-6e284c8448aa.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6013986013986014
+    },
+    "asthma": {
+      "id": "asthma",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-62b0e014-1b0c-4e3a-9fcb-10b8f7a76818.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6358595194085028
+    },
+    "copd": {
+      "id": "copd",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-9b3422de-9744-479a-bbb5-12e804acefc0.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6825396825396826
+    },
+    "ild": {
+      "id": "ild",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-e68d4642-5589-460a-b3c7-357ef5dbf1d9.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5771812080536913
+    },
+    "abg": {
+      "id": "abg",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-3e041379-bc3f-4b20-9e9e-5d626e054f7b.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6056338028169014
+    },
+    "neuro": {
+      "id": "neuro",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-a40de40b-e30a-47e0-bf17-e122bba50df8.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6868686868686869
+    },
+    "sleep": {
+      "id": "sleep",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-27f8c867-5a29-47ec-9cdd-70bf5d795e60.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6405959031657356
+    },
+    "pvd": {
+      "id": "pvd",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-d8854493-ef8b-45eb-986b-b16de22be30a.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5539452495974235
+    },
+    "ards": {
+      "id": "ards",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-dc2ec668-43d9-4166-b1e1-bb31b82cee00.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6454033771106942
+    },
+    "infectious": {
+      "id": "infectious",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-a52c68b1-f39b-4c97-8c6a-82c98a79da02.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5180722891566265
+    },
+    "corticosteroids": {
+      "id": "corticosteroids",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-4404b419-fb78-432d-9f4a-4e742ce41805.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5920826161790017
+    },
+    "nonsteroidal": {
+      "id": "nonsteroidal",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-603f6191-c7db-4d0a-a6f9-e30f2ccb4104.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5972222222222222
+    },
+    "antiinfective": {
+      "id": "antiinfective",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-1c51e946-3794-4e1d-89ff-216ba9e50999.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5781512605042017
+    },
+    "cold-cough": {
+      "id": "cold-cough",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-46a5cddd-d703-4bd5-a872-4c33fcc68e86.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.588034188034188
+    },
+    "antimicrobial": {
+      "id": "antimicrobial",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-af9afc07-68bf-462d-b72f-abe90174cacf.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5575364667747164
+    },
+    "pleural": {
+      "id": "pleural",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-6e1a08e6-ea57-4db6-867a-e38b246d628c.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6429906542056075
+    },
+    "diuretics": {
+      "id": "diuretics",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-8caf117c-9598-42dd-81fe-8cc3a56e3d28.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5521669341894061
+    },
+    "nmba": {
+      "id": "nmba",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-9d1c785e-383e-4624-83fa-0bf5bd1d92fb.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6003490401396161
+    },
+    "vasopressors": {
+      "id": "vasopressors",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-fc0d96e7-4ffa-473a-ae6d-cee0cbb40f62.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.63003663003663
+    },
+    "emphysema-no": {
+      "id": "emphysema-no",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-812c5a4f-2404-4ee2-86cb-573babb91e34.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6977687626774848
+    },
+    "antihypertensives": {
+      "id": "antihypertensives",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-3a96f40a-4ae6-4f59-b8d0-17756358a313.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5341614906832298
+    },
+    "cns-drugs": {
+      "id": "cns-drugs",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-923026c6-90b9-4e9e-9089-f87c92e5f95f.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5801011804384486
+    },
+    "m201-s01": {
+      "id": "m201-s01",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-e09649bf-9f95-43ed-9c38-bd5a98c01f12.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5714285714285714
+    },
+    "m201-s04": {
+      "id": "m201-s04",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-7c6a2919-39a0-4219-9df5-9ccea210a4f1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6405959031657356
+    },
+    "m201-s07": {
+      "id": "m201-s07",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-e0c48641-c408-4490-be82-eeca358f59ab.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.63003663003663
+    },
+    "m201-s02": {
+      "id": "m201-s02",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-713e4b4f-ea41-4e28-9ad7-43a366f2e450.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6441947565543071
+    },
+    "sleep-pharm": {
+      "id": "sleep-pharm",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-8d504b1b-dd6b-44e7-9219-5402bd376f9a.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5742904841402338
+    },
+    "m201-s06": {
+      "id": "m201-s06",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-7c202b95-34c9-46c9-af59-959e47f2a5f6.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6254545454545455
+    },
+    "m201-s03": {
+      "id": "m201-s03",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-cc3a1217-0dc6-462f-a55a-bf932804089d.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5941278065630398
+    },
+    "m201-s05": {
+      "id": "m201-s05",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-d927eaff-4cf3-4a56-850d-dca4370346fa.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5961871750433275
+    },
+    "m201-s08": {
+      "id": "m201-s08",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-f5958d76-77c8-4b81-bc87-e88e830936f6.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6731898238747553
+    },
+    "m202-s01": {
+      "id": "m202-s01",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-86a7b681-c3ff-4c14-94c6-6a03a156cfac.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6045694200351494
+    },
+    "m201-s09": {
+      "id": "m201-s09",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-084e5e35-74d0-4f53-aab1-a6d33bd494a1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6099290780141844
+    },
+    "m202-s05": {
+      "id": "m202-s05",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-1154098a-3718-40d5-8667-ac13d64ae938.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6120996441281139
+    },
+    "m202-s02": {
+      "id": "m202-s02",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-de66608a-b068-4fd1-8408-038b934b3566.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5801011804384486
+    },
+    "m201-s10": {
+      "id": "m201-s10",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-dee190ca-76cf-44af-abc5-59cd4fffe030.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5781512605042017
+    },
+    "m202-s04": {
+      "id": "m202-s04",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-624d5619-57f2-4674-9a62-c2b353da1dfe.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5685950413223141
+    },
+    "m202-s06": {
+      "id": "m202-s06",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-6dbbf555-dd61-4a22-8f51-b443d2b5931f.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6745098039215687
+    },
+    "m202-s07": {
+      "id": "m202-s07",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-206fb9a0-2b04-4d51-b2e7-40a531b47dce.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6441947565543071
+    },
+    "m202-s14": {
+      "id": "m202-s14",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-e45d1adf-342e-4bdc-9c2f-d10485d13435.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6551059730250481
+    },
+    "m202-s08": {
+      "id": "m202-s08",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-4d563a9a-d916-4555-b74d-93404c2e48f0.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5539452495974235
+    },
+    "m202-s12": {
+      "id": "m202-s12",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-bcc2b2da-3c4f-4b58-81bf-860c2de0b653.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.607773851590106
+    },
+    "m202-s09": {
+      "id": "m202-s09",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-58576fc3-98ae-4f89-b689-6c29725ec322.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5451664025356577
+    },
+    "m203-s04": {
+      "id": "m203-s04",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-309b258c-97cc-416e-816a-9cb089808e73.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6045694200351494
+    },
+    "m203-s01": {
+      "id": "m203-s01",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-5f26f536-8364-4082-98ca-e9f2894713a0.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5961871750433275
+    },
+    "m202-s10": {
+      "id": "m202-s10",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-86e91c1c-e825-4de5-a311-d04f909b5a96.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.7747747747747747
+    },
+    "m202-s11": {
+      "id": "m202-s11",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-615247d4-8ea3-4bb6-8bc1-73d174084cc8.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6056338028169014
+    },
+    "m203-s03": {
+      "id": "m203-s03",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-a693ef21-cf20-45a4-9cab-6d90c9aa6d64.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6088495575221239
+    },
+    "m203-s05": {
+      "id": "m203-s05",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-081a364b-4301-4bce-a8aa-2d5200f9da71.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6758349705304518
+    },
+    "m203-s06": {
+      "id": "m203-s06",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-f0476b4b-ef22-4f9b-bc44-4e66d107ec56.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.581081081081081
+    },
+    "m203-s02": {
+      "id": "m203-s02",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-626c488e-e926-4366-a264-eb434c35be82.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6539923954372624
+    },
+    "m203-s08": {
+      "id": "m203-s08",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-ab53129b-5cb5-439c-beec-d861c614f602.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.549520766773163
+    },
+    "m203-s07": {
+      "id": "m203-s07",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-a2ca035f-06bf-4aef-816a-315e2deccbbd.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5408805031446541
+    },
+    "m203-s10": {
+      "id": "m203-s10",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-6daeed06-ced9-4464-a59e-09f0638bf17e.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.5830508474576271
+    },
+    "m203-s09": {
+      "id": "m203-s09",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-781a3350-7d9d-4f70-a10e-181362e44c6f.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.555735056542811
+    },
+    "m203-s12": {
+      "id": "m203-s12",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-41ba63a6-2b62-4326-be9e-88d2af284c2b.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6679611650485436
+    },
+    "vitals-titan": {
+      "id": "vitals-titan",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-e03df7ff-2b05-404e-9d77-eefceb745e2f.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "scale": 0.6231884057971014
+    }
+  },
+  "arenas": {
+    "rcp104": {
+      "id": "rcp104",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-23ae984f-b6bb-4d84-99de-febf9fd91097.png"
+    },
+    "rcp201": {
+      "id": "rcp201",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-84ff2dae-c82a-44d1-b6e9-45744413a252.png"
+    },
+    "rcp202": {
+      "id": "rcp202",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-48f28340-e078-4db1-bf8e-ef4d56fcf7d8.png"
+    },
+    "rcp203": {
+      "id": "rcp203",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-5f46b7aa-ef00-4d5c-b900-bd5244715c03.png"
+    },
+    "rcp2xx": {
+      "id": "rcp2xx",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-b91f6c0c-9122-4c6f-9274-cd674c94dbfa.png"
+    },
+    "rcp103": {
+      "id": "rcp103",
+      "source": "/Users/lourdsonfernando/.codex/generated_images/01a175a0-9e71-7e31-82f6-1b39be6c4c4c/exec-648d71b5-6e53-4c07-bf1e-3f22d103d63c.png"
+    }
+  }
+}

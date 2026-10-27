@@ -5,11 +5,38 @@
    - Adds: slash, beam, divineColumn, magicCircle, shockwave,
      attackBanner, chargeUp, lightning, bgDim, judgement (full
      finisher), comboStrike (multi-slash crit)
+   - Adds: reset() — cancels all tracked timers and WAAPI,
+     removes host/dim overlay, calls BossMotion.reset.
    - GPU-only animations (transform/opacity). No layout writes.
    - Particle pooling + position caching to keep mobile smooth.
+   - Reduced-motion / paused / hidden: motion fx are suppressed
+     but text feedback (damage numbers) is always shown.
    ============================================================ */
 (function (global) {
   'use strict';
+
+  // ─── Timer tracking (for reset) ────────────────────────────────
+  const _timers = new Set();
+  const _animations = new Set();
+  function _after(ms, fn) {
+    const id = setTimeout(() => { _timers.delete(id); fn(); }, ms);
+    _timers.add(id);
+    return id;
+  }
+
+  // ─── Reduced-motion / paused / hidden guard ─────────────────────
+  function _motionOk() {
+    try {
+      if (global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches)
+        return false;
+    } catch (e) { /* ignore */ }
+    if (document.body && document.body.classList &&
+        document.body.classList.contains('academy-motion-paused'))
+      return false;
+    if (typeof document !== 'undefined' && document.hidden)
+      return false;
+    return true;
+  }
 
   // ─── Shared host (single fixed overlay above everything) ───
   let host = null;
@@ -54,18 +81,22 @@
   // ─── Single live banner — new one replaces the old ──────────
   let activeBanner = null;
 
+  // ─── Background dim ref ─────────────────────────────────────
+  let dimEl = null;
+
   // ============================================================
   // EXISTING API — kept compatible
   // ============================================================
 
-  function damageNumber(targetEl, text, opts = {}) {
+  function damageNumber(targetEl, text, opts) {
+    opts = opts || {};
     if (!targetEl) return;
     const r = rect(targetEl);
     const el = document.createElement('div');
     let cls = 'fx-dmg';
-    if (opts.crit) cls += ' crit';
-    if (opts.heal) cls += ' heal';
-    if (opts.miss) cls += ' miss';
+    if (opts.crit)    cls += ' crit';
+    if (opts.heal)    cls += ' heal';
+    if (opts.miss)    cls += ' miss';
     if (opts.bigCrit) cls += ' big-crit';
     el.className = cls;
     el.textContent = text;
@@ -73,11 +104,12 @@
     el.style.left = (r.left + r.width / 2 + jitter) + 'px';
     el.style.top  = (r.top  + r.height * 0.35) + 'px';
     ensureHost().appendChild(el);
-    setTimeout(() => el.remove(), 1500);
+    _after(1500, () => el.remove());
   }
 
-  function particles(targetEl, opts = {}) {
-    if (!targetEl) return;
+  function particles(targetEl, opts) {
+    if (!targetEl || !_motionOk()) return;
+    opts = opts || {};
     const count = opts.count || 14;
     const color = opts.color || 'gold';
     const r = rect(targetEl);
@@ -96,26 +128,31 @@
         '--dx:' + (Math.cos(angle) * dist) + 'px;' +
         '--dy:' + (Math.sin(angle) * dist) + 'px;';
       root.appendChild(p);
-      setTimeout(() => releaseParticle(p), 900);
+      _after(900, () => releaseParticle(p));
     }
   }
 
-  function flash(color = 'white', dur = 200) {
+  function flash(color, dur) {
+    color = color || 'white';
+    dur = dur || 200;
+    if (!_motionOk()) return;
     const f = document.createElement('div');
     f.className = 'fx-flash';
     f.style.background = color;
     f.style.animationDuration = dur + 'ms';
     ensureHost().appendChild(f);
-    setTimeout(() => f.remove(), dur + 50);
+    _after(dur + 50, () => f.remove());
   }
 
-  function shake(intensity = 2) {
+  function shake(intensity) {
+    intensity = intensity || 2;
+    if (!_motionOk()) return;
     const app = document.getElementById('app') || document.body;
     const cls = 'fx-shake-' + Math.max(1, Math.min(5, intensity));
     app.classList.remove('fx-shake-1','fx-shake-2','fx-shake-3','fx-shake-4','fx-shake-5');
     void app.offsetWidth;
     app.classList.add(cls);
-    setTimeout(() => app.classList.remove(cls), 600);
+    _after(600, () => app.classList.remove(cls));
   }
 
   function attachFire(el) {
@@ -131,31 +168,38 @@
     if (f) f.remove();
   }
 
-  function banner(text, type = 'crit') {
+  function banner(text, type) {
+    type = type || 'crit';
     if (activeBanner) activeBanner.remove();
     const b = document.createElement('div');
     b.className = 'fx-banner fx-banner-' + type;
     b.textContent = text;
     activeBanner = b;
     ensureHost().appendChild(b);
-    setTimeout(() => { if (activeBanner === b) activeBanner = null; b.remove(); }, 900);
+    _after(900, () => { if (activeBanner === b) activeBanner = null; b.remove(); });
   }
 
-  function bossLunge(bossEl, dir = 1) {
-    if (!bossEl) return;
+  function bossLunge(bossEl, dir) {
+    dir = dir || 1;
+    if (!bossEl || !_motionOk()) return;
     bossEl.classList.remove('fx-lunge');
     void bossEl.offsetWidth;
     bossEl.style.setProperty('--lunge-dir', dir);
     bossEl.classList.add('fx-lunge');
-    setTimeout(() => bossEl.classList.remove('fx-lunge'), 500);
+    _after(500, () => bossEl.classList.remove('fx-lunge'));
   }
 
   function bossHit(bossEl) {
     if (!bossEl) return;
+    // Request hit pose from atlas if mounted
+    if (global.BossMotion && global.BossMotion.play) {
+      global.BossMotion.play(bossEl, 'hit');
+    }
+    if (!_motionOk()) return;
     bossEl.classList.remove('fx-bosshit');
     void bossEl.offsetWidth;
     bossEl.classList.add('fx-bosshit');
-    setTimeout(() => bossEl.classList.remove('fx-bosshit'), 400);
+    _after(400, () => bossEl.classList.remove('fx-bosshit'));
   }
 
   // ============================================================
@@ -163,13 +207,14 @@
   // ============================================================
 
   // ─── Slash arc at a point ───────────────────────────────────
-  function slash(targetEl, opts = {}) {
-    if (!targetEl) return;
+  function slash(targetEl, opts) {
+    if (!targetEl || !_motionOk()) return;
+    opts = opts || {};
     const r = rect(targetEl);
     const cx = r.left + r.width / 2;
     const cy = r.top  + r.height / 2;
     const angle = opts.angle != null ? opts.angle : (-25 + (Math.random() - 0.5) * 30);
-    const size  = opts.size || 520;
+    const size  = opts.size  || 520;
     const color = opts.color || '#fff';
     const s = document.createElement('div');
     s.className = 'fx-slash';
@@ -189,11 +234,13 @@
               style="filter: drop-shadow(0 0 8px #fff);"/>
       </svg>`;
     ensureHost().appendChild(s);
-    setTimeout(() => s.remove(), 500);
+    _after(500, () => s.remove());
   }
 
   // ─── Beam attack from player to target ──────────────────────
-  function beam(fromEl, toEl, opts = {}) {
+  function beam(fromEl, toEl, opts) {
+    if (!_motionOk()) return;
+    opts = opts || {};
     const a = rect(fromEl);
     const b = rect(toEl);
     if (!a || !b) return;
@@ -212,24 +259,25 @@
     el.style.transform = 'rotate(' + ang + 'deg)';
     if (opts.color) el.style.background = opts.color;
     ensureHost().appendChild(el);
-    setTimeout(() => el.remove(), 600);
+    _after(600, () => el.remove());
   }
 
   // ─── Divine column of light over target ─────────────────────
   function divineColumn(targetEl) {
-    if (!targetEl) return;
+    if (!targetEl || !_motionOk()) return;
     const r = rect(targetEl);
     const cx = r.left + r.width / 2;
     const c = document.createElement('div');
     c.className = 'fx-divine-column';
     c.style.left = cx + 'px';
     ensureHost().appendChild(c);
-    setTimeout(() => c.remove(), 1500);
+    _after(1500, () => c.remove());
   }
 
   // ─── Magic circle rune at point ─────────────────────────────
-  function magicCircle(targetEl, opts = {}) {
-    if (!targetEl) return;
+  function magicCircle(targetEl, opts) {
+    if (!targetEl || !_motionOk()) return;
+    opts = opts || {};
     const r = rect(targetEl);
     const cx = r.left + r.width / 2;
     const cy = r.top  + r.height * (opts.atFeet ? 0.95 : 0.5);
@@ -253,12 +301,13 @@
         </g>
       </svg>`;
     ensureHost().appendChild(m);
-    setTimeout(() => m.remove(), 1600);
+    _after(1600, () => m.remove());
   }
 
   // ─── Shockwave ring at point ────────────────────────────────
-  function shockwave(targetEl, opts = {}) {
-    if (!targetEl) return;
+  function shockwave(targetEl, opts) {
+    if (!targetEl || !_motionOk()) return;
+    opts = opts || {};
     const r = rect(targetEl);
     const cx = r.left + r.width / 2;
     const cy = r.top  + r.height / 2;
@@ -269,7 +318,7 @@
     s.style.top  = cy + 'px';
     if (scale !== 1) s.style.setProperty('--shock-scale', scale);
     ensureHost().appendChild(s);
-    setTimeout(() => s.remove(), 700);
+    _after(700, () => s.remove());
   }
 
   // ─── Attack banner (large Octopath name banner) ─────────────
@@ -283,12 +332,13 @@
     `;
     activeBanner = b;
     ensureHost().appendChild(b);
-    setTimeout(() => { if (activeBanner === b) activeBanner = null; b.remove(); }, 1300);
+    _after(1300, () => { if (activeBanner === b) activeBanner = null; b.remove(); });
   }
 
   // ─── Charge up — particles converge on caster ───────────────
-  function chargeUp(playerEl, opts = {}) {
-    if (!playerEl) return;
+  function chargeUp(playerEl, opts) {
+    if (!playerEl || !_motionOk()) return;
+    opts = opts || {};
     const r = rect(playerEl);
     const cx = r.left + r.width / 2;
     const cy = r.top  + r.height / 2;
@@ -303,7 +353,7 @@
     aura.style.top  = cy + 'px';
     aura.style.animationDuration = (dur + 200) + 'ms';
     root.appendChild(aura);
-    setTimeout(() => aura.remove(), dur + 250);
+    _after(dur + 250, () => aura.remove());
 
     // converging particles
     for (let i = 0; i < count; i++) {
@@ -315,21 +365,25 @@
       const sy = cy + Math.sin(ang) * dist;
       p.style.left = sx + 'px';
       p.style.top  = sy + 'px';
-      p.animate([
+      const anim = p.animate([
         { transform: 'translate(0, 0) scale(1)', opacity: 0 },
         { transform: 'translate(0, 0) scale(1)', opacity: 1, offset: 0.2 },
         { transform: `translate(${cx - sx}px, ${cy - sy}px) scale(0.3)`, opacity: 1 }
       ], { duration: dur, easing: 'cubic-bezier(0.5, 0, 0.75, 0)', fill: 'forwards' });
+      _animations.add(anim);
+      anim.onfinish = () => { _animations.delete(anim); anim.cancel(); };
       root.appendChild(p);
-      setTimeout(() => p.remove(), dur + 50);
+      _after(dur + 50, () => { _animations.delete(anim); anim.cancel(); p.remove(); });
     }
   }
 
   // ─── Lightning bolts (boss counter) ─────────────────────────
-  function lightning(opts = {}) {
+  function lightning(opts) {
+    if (!_motionOk()) return;
+    opts = opts || {};
     const strikes = opts.strikes || 3;
-    const W = window.innerWidth;
-    const H = window.innerHeight;
+    const W = global.innerWidth  || 400;
+    const H = global.innerHeight || 700;
     let paths = '';
     for (let i = 0; i < strikes; i++) {
       const x = 100 + Math.random() * (W - 200);
@@ -347,12 +401,12 @@
     l.className = 'fx-lightning';
     l.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${paths}</svg>`;
     ensureHost().appendChild(l);
-    setTimeout(() => l.remove(), 500);
+    _after(500, () => l.remove());
   }
 
   // ─── Background dim toggle ──────────────────────────────────
-  let dimEl = null;
   function bgDim(on) {
+    if (on && !_motionOk()) return;
     if (!dimEl) {
       dimEl = document.createElement('div');
       dimEl.className = 'fx-bg-dim';
@@ -368,7 +422,6 @@
 
   /**
    * Strike — basic correct answer.
-   * One slash + light flash + small shake + damage number.
    */
   function strike({ target, dmg }) {
     clearCache();
@@ -376,7 +429,7 @@
     flash('rgba(255,255,255,.35)', 200);
     shake(1);
     bossHit(target);
-    setTimeout(() => damageNumber(target, '-' + dmg, {}), 100);
+    _after(100, () => damageNumber(target, '-' + dmg, {}));
   }
 
   /**
@@ -386,7 +439,7 @@
     clearCache();
     attackBanner('~ a piercing radiance ~', 'LANCE OF LIGHT');
     chargeUp(caster, { duration: 500, count: 10 });
-    setTimeout(() => {
+    _after(500, () => {
       beam(caster, target);
       flash('rgba(120,240,255,.5)', 280);
       shake(2);
@@ -394,7 +447,7 @@
       shockwave(target, { scale: 1.2 });
       particles(target, { color: 'blue', count: 16 });
       damageNumber(target, '-' + dmg, { crit: true });
-    }, 500);
+    });
   }
 
   /**
@@ -403,19 +456,19 @@
   function comboStrike({ target, dmg }) {
     clearCache();
     attackBanner('~ a perfect strike ~', 'CRITICAL!');
-    setTimeout(() => {
+    _after(250, () => {
       slash(target, { angle: -30, color: '#fff' });
       flash('rgba(255,255,255,.35)', 150);
       shockwave(target, { scale: 0.8 });
       bossHit(target);
-    }, 250);
-    setTimeout(() => {
+    });
+    _after(450, () => {
       slash(target, { angle: 20, color: '#ffe080' });
       flash('rgba(255,220,120,.4)', 150);
       shockwave(target, { scale: 1 });
       bossHit(target);
-    }, 450);
-    setTimeout(() => {
+    });
+    _after(650, () => {
       slash(target, { angle: -10, color: '#fff' });
       slash(target, { angle: 15, color: '#ffe080' });
       flash('rgba(255,255,255,.5)', 200);
@@ -424,7 +477,7 @@
       particles(target, { color: 'gold', count: 22 });
       bossHit(target);
       damageNumber(target, '-' + dmg, { bigCrit: true });
-    }, 650);
+    });
   }
 
   /**
@@ -436,10 +489,10 @@
     attackBanner('~ the heavens descend ~', 'JUDGEMENT');
     magicCircle(target, { atFeet: true, color: '#ffd060' });
     chargeUp(caster, { duration: 700, count: 14 });
-    setTimeout(() => {
+    _after(900, () => {
       divineColumn(target);
-    }, 900);
-    setTimeout(() => {
+    });
+    _after(1500, () => {
       flash('rgba(255,220,120,.7)', 450);
       shake(4);
       bossHit(target);
@@ -447,25 +500,97 @@
       particles(target, { color: 'gold', count: 24 });
       damageNumber(target, '-' + dmg, { bigCrit: true });
       bgDim(false);
-    }, 1500);
+    });
   }
 
   /**
-   * Boss Counter — wrong answer. Lightning + red flash + knockback.
+   * Boss Counter — wrong answer.
+   * opts: { playerArea, bossPortrait, bossName, dmg }
+   * When BossMotion atlas is active (play returns true), skips old
+   * whole-image lunge. Impact at ~600ms matches attack duration.
+   * Reduced-motion: skips visual FX but still shows damage number.
    */
-  function bossCounter({ playerArea, bossPortrait }) {
+  function bossCounter(opts) {
+    opts = opts || {};
+    const { playerArea, bossPortrait, bossName, dmg } = opts;
     clearCache();
-    attackBanner('~ the wraith retaliates ~', 'PLEURAL CRUSH');
-    setTimeout(() => {
+
+    // Boss-specific or generic counter label — never hardcoded
+    const attackLabel = bossName ? bossName + ' STRIKES' : 'COUNTERATTACK';
+    const eyebrow     = bossName ? '~ ' + bossName.toLowerCase() + ' retaliates ~'
+                                 : '~ the guardian retaliates ~';
+    attackBanner(eyebrow, attackLabel);
+
+    // Begin attack-pose windup immediately if atlas is mounted
+    const atlasActive = global.BossMotion && global.BossMotion.play
+      ? global.BossMotion.play(bossPortrait, 'attack')
+      : false;
+
+    // Impact at ~600ms
+    _after(600, () => {
+      if (!_motionOk()) {
+        // Suppressed mode: still show text feedback
+        if (playerArea) damageNumber(playerArea, '-' + (dmg || 15), {});
+        return;
+      }
       lightning({ strikes: 4 });
       flash('rgba(255,56,85,.55)', 350);
       shake(4);
-      bossLunge(bossPortrait, 1);
+      // Skip the old whole-image lunge when atlas is active
+      if (!atlasActive) bossLunge(bossPortrait, 1);
       if (playerArea) {
         particles(playerArea, { color: 'red', count: 14 });
-        damageNumber(playerArea, '-15', {});
+        damageNumber(playerArea, '-' + (dmg || 15), {});
       }
-    }, 600);
+    });
+  }
+
+  // ============================================================
+  // RESET — cancel all FX (called on router navigate/re-render)
+  // ============================================================
+
+  function cancelVisuals() {
+    // Cancel all tracked timeouts
+    _timers.forEach(id => clearTimeout(id));
+    _timers.clear();
+
+    _animations.forEach(anim => anim.cancel());
+    _animations.clear();
+    const app = document.getElementById('app') || document.body;
+    app.classList.remove('fx-shake-1','fx-shake-2','fx-shake-3','fx-shake-4','fx-shake-5');
+
+    // Remove the FX overlay after explicitly cancelling its WAAPI animations
+    if (host) {
+      try { host.remove(); } catch (e) { /* ignore */ }
+      host = null;
+    }
+
+    // Clear dim ref (element already removed with host)
+    dimEl = null;
+
+    // Clear banner ref
+    activeBanner = null;
+
+    // Clear position cache
+    clearCache();
+
+  }
+
+  function reset() {
+    cancelVisuals();
+    // Delegate to BossMotion if available
+    if (global.BossMotion && global.BossMotion.reset) {
+      try { global.BossMotion.reset(); } catch (e) { /* ignore */ }
+    }
+  }
+
+  // Preference changes stop effects already in flight, not only future ones.
+  function syncMotion() { if (!_motionOk()) cancelVisuals(); }
+  const media = global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)');
+  if (media && media.addEventListener) media.addEventListener('change', syncMotion);
+  document.addEventListener('visibilitychange', syncMotion);
+  if (typeof MutationObserver !== 'undefined') {
+    new MutationObserver(syncMotion).observe(document.body, { attributes: true, attributeFilter: ['class'] });
   }
 
   // ============================================================
@@ -480,6 +605,8 @@
     attackBanner, chargeUp, lightning, bgDim,
     // composite sequences
     strike, lanceOfLight, comboStrike, judgement, bossCounter,
+    // lifecycle
+    reset,
     // utility
     clearCache,
   };

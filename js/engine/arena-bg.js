@@ -1,14 +1,21 @@
 /* ============================================================
    ARENA-BG ENGINE — inject animated parallax layers into arena
-   Usage: ArenaBg.attach(arenaEl, { mode: 'battle' | 'crisis' | 'victory' | 'defeat' });
-   Auto-applies the arena-<mode> class and adds animated children.
+   Usage: ArenaBg.attach(arenaEl, { mode, course });
+     mode:   'battle' | 'crisis' | 'victory' | 'defeat'
+     course: 'rcp103' | 'rcp104' | 'rcp201' | 'rcp202' | 'rcp203' | 'rcp2xx'
+   In battle mode with an allowed course, stamps data-battle-world
+   and resolves --battle-world-art for CSS art selection.
    ============================================================ */
 (function (global) {
   'use strict';
 
-  function attach(arenaEl, opts = {}) {
+  const BATTLE_COURSES = new Set(['rcp103','rcp104','rcp201','rcp202','rcp203','rcp2xx']);
+
+  function attach(arenaEl, opts) {
     if (!arenaEl) return;
-    const mode = opts.mode || 'battle';
+    opts = opts || {};
+    const mode   = opts.mode   || 'battle';
+    const course = opts.course || null;
 
     // Apply modifier class
     arenaEl.classList.remove('arena-battle','arena-crisis','arena-victory','arena-defeat');
@@ -41,6 +48,18 @@
       m.style.animationDuration = (4 + Math.random() * 4) + 's';
       m.style.animationDelay = (-Math.random() * 6) + 's';
       bg.appendChild(m);
+    }
+
+    // Battle-world art: stamp data attribute and CSS custom property
+    if (mode === 'battle' && course && BATTLE_COURSES.has(course)) {
+      arenaEl.setAttribute('data-battle-world', course);
+      const artPath = 'img/arenas/' + course + '.webp';
+      const base = (typeof document !== 'undefined' && document.baseURI) || '';
+      const artUrl = base ? new URL(artPath, base).href : artPath;
+      arenaEl.style.setProperty('--battle-world-art', 'url("' + artUrl + '")');
+    } else {
+      arenaEl.removeAttribute('data-battle-world');
+      arenaEl.style.removeProperty('--battle-world-art');
     }
   }
 
