@@ -33,4 +33,6 @@ Files: `index.html`, `sw.js`, browser tests, art docs.
 - [x] Add boss-motion.js before Fx/screens and battle-world.css after academy styles. Revise changed URLs; SW v22-battle-worlds precaches all63new assets and two new code files.
 - [x] Run asset coverage, motion, integration and existing engine tests. Browser-check 320/390/1440, all course scenes,57sheet loads, real answers/crit/shield/finisher, Titan, pause/reduced motion changes, leave midattack, failure fallback and offline. Save screenshots/video previews outside served repo.
 - [x] Claude spec-compliance review then code-quality review; resolve substantiated issues and repeat affected checks.
-- [ ] Commit intended files, publish using existing live-site authorization, verify changed production assets SHA256 match release, save Obsidian summary.
+- [x] Commit intended files, publish using existing live-site authorization, verify changed production assets SHA256 match release, save Obsidian summary.
+
+Release e012202 published to main. All72 public release files SHA256 verified against the live site on2026-10-27; offline and responsive combat checks passed.
