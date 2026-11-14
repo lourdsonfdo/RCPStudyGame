@@ -94,6 +94,8 @@
     const r = rect(targetEl);
     const el = document.createElement('div');
     let cls = 'fx-dmg';
+    if (opts.incoming) cls += ' incoming';
+    if (!_motionOk()) cls += ' motion-static';
     if (opts.crit)    cls += ' crit';
     if (opts.heal)    cls += ' heal';
     if (opts.miss)    cls += ' miss';
@@ -423,9 +425,39 @@
   /**
    * Strike — basic correct answer.
    */
+  function impactBurst(target, { color = '#ffd878', power = 1 } = {}) {
+    if (!target || !_motionOk()) return;
+    const r = rect(target);
+    const burst = document.createElement('div');
+    burst.className = 'fx-impact-burst';
+    burst.style.left = (r.left + r.width / 2) + 'px';
+    burst.style.top = (r.top + r.height / 2) + 'px';
+    burst.style.setProperty('--impact-color', color);
+    burst.style.setProperty('--impact-size', Math.min(340, 180 * power) + 'px');
+    for (let i = 0; i < 12; i++) {
+      const ray = document.createElement('span');
+      ray.className = 'fx-impact-ray';
+      ray.style.setProperty('--ray-angle', (i * 30 + 12) + 'deg');
+      burst.appendChild(ray);
+    }
+    ensureHost().appendChild(burst);
+    _after(800, () => burst.remove());
+  }
+
+  function damageVignette() {
+    if (!_motionOk()) return;
+    const vignette = document.createElement('div');
+    vignette.className = 'fx-damage-vignette';
+    ensureHost().appendChild(vignette);
+    _after(800, () => vignette.remove());
+  }
+
   function strike({ target, dmg }) {
     clearCache();
-    slash(target, { angle: -25 + (Math.random() - 0.5) * 20, color: '#fff' });
+    slash(target, { angle: -28, color: '#ffe4a0' });
+    impactBurst(target);
+    particles(target, { color: 'gold', count: 18 });
+    _after(85, () => slash(target, { angle: -18, color: '#fff3ce', size: 380 }));
     flash('rgba(255,255,255,.35)', 200);
     shake(1);
     bossHit(target);
@@ -445,6 +477,7 @@
       shake(2);
       bossHit(target);
       shockwave(target, { scale: 1.2 });
+      impactBurst(target, { color: '#a8f4ff', power: 1.35 });
       particles(target, { color: 'blue', count: 16 });
       damageNumber(target, '-' + dmg, { crit: true });
     });
@@ -474,6 +507,7 @@
       flash('rgba(255,255,255,.5)', 200);
       shake(3);
       shockwave(target, { scale: 1.4 });
+      impactBurst(target, { power: 1.65 });
       particles(target, { color: 'gold', count: 22 });
       bossHit(target);
       damageNumber(target, '-' + dmg, { bigCrit: true });
@@ -497,6 +531,7 @@
       shake(4);
       bossHit(target);
       shockwave(target, { scale: 1.6 });
+      impactBurst(target, { power: 1.9 });
       particles(target, { color: 'gold', count: 24 });
       damageNumber(target, '-' + dmg, { bigCrit: true });
       bgDim(false);
@@ -513,6 +548,8 @@
   function bossCounter(opts) {
     opts = opts || {};
     const { playerArea, bossPortrait, bossName, dmg } = opts;
+    const playerHealth = document.querySelector('.screen.active .hp-fill.player');
+    const damageTarget = playerHealth ? playerHealth.parentElement : playerArea;
     clearCache();
 
     // Boss-specific or generic counter label — never hardcoded
@@ -530,9 +567,11 @@
     _after(600, () => {
       if (!_motionOk()) {
         // Suppressed mode: still show text feedback
-        if (playerArea) damageNumber(playerArea, '-' + (dmg || 15), {});
+        if (playerArea) damageNumber(damageTarget, '-' + (dmg ?? 15), { incoming: true });
         return;
       }
+      damageVignette();
+      impactBurst(damageTarget, { color: '#ff6685', power: 1.35 });
       lightning({ strikes: 4 });
       flash('rgba(255,56,85,.55)', 350);
       shake(4);
@@ -540,7 +579,7 @@
       if (!atlasActive) bossLunge(bossPortrait, 1);
       if (playerArea) {
         particles(playerArea, { color: 'red', count: 14 });
-        damageNumber(playerArea, '-' + (dmg || 15), {});
+        damageNumber(damageTarget, '-' + (dmg ?? 15), { incoming: true });
       }
     });
   }

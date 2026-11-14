@@ -5,8 +5,8 @@
 (function (global) {
   'use strict';
 
-  const QUESTIONS_PER_FIGHT = 10;
-  const MISSION_TARGET     = 8;   // correct answers needed to pass the boss
+  const QUESTIONS_PER_FIGHT = 30;
+  const MISSION_TARGET     = 24;   // correct answers needed to pass the boss
   const NORMAL_HIT = 10;
   const CRIT_HIT   = 15;
   const PLAYER_DMG = 15;
@@ -51,6 +51,13 @@
     const picked = (state && State.biasedQuestionPool)
       ? State.biasedQuestionPool(state, questionPool, { targetCount: QUESTIONS_PER_FIGHT, weakRatio: 0.5 })
       : shuffle(questionPool).slice(0, QUESTIONS_PER_FIGHT);
+    // Use every eligible question before repeating a smaller topic bank.
+    const selected = new Set(picked);
+    const remaining = shuffle(questionPool.filter(q => !selected.has(q)));
+    picked.push(...remaining.slice(0, QUESTIONS_PER_FIGHT - picked.length));
+    while (picked.length < QUESTIONS_PER_FIGHT && questionPool.length) {
+      picked.push(...shuffle(questionPool).slice(0, QUESTIONS_PER_FIGHT - picked.length));
+    }
     const questions = picked.map(shuffleChoices);
 
     return {
@@ -65,7 +72,7 @@
       qIndex: 0,
       streak: 0,
       correctCount: 0,
-      correctTarget: MISSION_TARGET,  // 8 of 10 = pass
+      correctTarget: MISSION_TARGET,  // 24 of 30 = pass
       hintUsedThisQ: false,
       shieldQueued: false,    // shield rune absorbs the NEXT wrong answer
       doubleXpActive: items.includes('doubleXpTome'),
@@ -128,7 +135,7 @@
     b.qIndex += 1;
     b.hintUsedThisQ = false;
 
-    // outcome — always play all 10 questions; victory = correctCount >= 8
+    // Complete the full session before evaluating its saved pass target.
     let gameOver = false;
     if (b.qIndex >= b.questions.length) {
       b.outcome = b.correctCount >= b.correctTarget ? 'victory' : 'defeat';
