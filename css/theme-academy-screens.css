@@ -860,3 +860,15 @@ body:has(.acsc.active) .qs-popover { top:auto; bottom:64px; left:14px; max-width
   height: 96px;
   max-width: 100%;
 }
+
+/* Explicit answer results remain readable independently of button colors. */
+.answer-feedback {
+  padding: 12px 16px;
+  margin: 12px 0;
+  border: 2px solid currentColor;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.answer-feedback.is-correct { color: #b7f7d5; background: #123b2d; }
+.answer-feedback.is-incorrect { color: #ffd1d8; background: #4b1f2b; }

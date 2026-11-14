@@ -145,6 +145,8 @@ App.registerScreen('training', ({ root, state, ctx }) => {
       else if (i === idx) b.classList.add('wrong');
     });
 
+    App.showAnswerFeedback(root, ok);
+
     const post = root.querySelector('#postq');
     post.innerHTML = `
       <div class="explanation">${currentQ.explanation}</div>

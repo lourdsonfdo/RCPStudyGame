@@ -185,6 +185,8 @@
       });
       if (window.State && State.recordAnswer) State.recordAnswer(state, currentQ, ok);
 
+    App.showAnswerFeedback(root, ok);
+
       // Visual feedback
       root.querySelectorAll('.ans-btn').forEach((b, i) => {
         b.classList.add('disabled-vis');

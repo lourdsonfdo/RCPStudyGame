@@ -193,6 +193,8 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
     const bossPortrait = root.querySelector('#boss-portrait');
     const qbox = root.querySelector('.q-box');
 
+    App.showAnswerFeedback(root, res.correct);
+
     btn.classList.add(res.correct ? 'correct' : 'wrong');
 
     let waitMs = 1400;

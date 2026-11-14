@@ -166,6 +166,8 @@ App.registerScreen('superboss', ({ root, state, ctx }) => {
       else if (i === choiceIndex) b.classList.add('wrong');
     });
 
+    App.showAnswerFeedback(root, res.correct);
+
     const portrait = root.querySelector('#boss-portrait');
     const arena    = root.querySelector('#arena');
 

@@ -374,6 +374,17 @@
     try { window.history.replaceState({ rcpsg: 'home' }, ''); } catch {}
   }
 
+  function showAnswerFeedback(root, correct) {
+    const answers = root.querySelector('.answers');
+    if (!answers) return;
+    const feedback = document.createElement('div');
+    feedback.className = 'answer-feedback ' + (correct ? 'is-correct' : 'is-incorrect');
+    feedback.setAttribute('role', 'status');
+    feedback.setAttribute('aria-live', 'polite');
+    answers.before(feedback);
+    feedback.textContent = correct ? '✓ Correct' : '✕ Incorrect';
+  }
+
   // ────────────────────────────  EXPORT  ────────────────────────────
-  global.App = { goto, back, canGoBack, registerScreen, refresh, getState, persist, toast, applyTextSize, applyQuizScaleForScreen, TEXT_SCALES };
+  global.App = { showAnswerFeedback, goto, back, canGoBack, registerScreen, refresh, getState, persist, toast, applyTextSize, applyQuizScaleForScreen, TEXT_SCALES };
 })(window);
