@@ -22,6 +22,8 @@
   let proceduralNodes = [];
   let proceduralInterval = null;
   let usingProcedural = false;
+  let proceduralMaster = null;
+  let playbackGeneration = 0;
   let listeners = [];
 
   function loadState() {
@@ -29,18 +31,20 @@
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return { track: 'off', volume: 0.6 };
       const p = JSON.parse(raw);
-      return { track: p.track || 'off', volume: typeof p.volume === 'number' ? p.volume : 0.6 };
+      return { track: TRACKS.some(t => t.id === p.track) ? p.track : 'off', volume: Number.isFinite(p.volume) ? Math.max(0, Math.min(1, p.volume)) : 0.6 };
     } catch { return { track: 'off', volume: 0.6 }; }
   }
 
   function saveState() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
   }
 
-  function stop() {
+  function stop(clearSelection = true) {
+    playbackGeneration += 1;
     if (audioEl) {
       try { audioEl.pause(); } catch {}
-      audioEl.src = '';
+      audioEl.removeAttribute('src');
+      audioEl.load();
       audioEl = null;
     }
     if (proceduralInterval) {
@@ -54,31 +58,79 @@
       proceduralCtx = null;
     }
     usingProcedural = false;
+    proceduralMaster = null;
+    if (clearSelection) {
+      state.track = 'off';
+      saveState();
+      notify();
+    }
   }
 
   function play(trackId) {
-    stop();
+    const track = TRACKS.find(t => t.id === trackId);
+    if (!track) return;
+    if (state.track === trackId && (audioEl || usingProcedural)) {
+      resumePlayback();
+      return;
+    }
+    stop(false);
     state.track = trackId;
     saveState();
     notify();
     if (trackId === 'off') return;
-    const t = TRACKS.find(t => t.id === trackId);
-    if (!t || !t.file) return;
 
-    audioEl = new global.Audio(t.file);
-    audioEl.loop = true;
-    audioEl.volume = state.volume;
-    audioEl.addEventListener('error', () => {
+    const generation = playbackGeneration;
+    const media = new global.Audio(track.file);
+    audioEl = media;
+    media.loop = true;
+    media.volume = state.volume;
+    // A failed load may reject play() AND dispatch error. Switch only once,
+    // and ignore callbacks belonging to a track the user already stopped.
+    function fallback(error) {
+      if (generation !== playbackGeneration || audioEl !== media) return;
+      if (error && (error.name === 'NotAllowedError' || error.name === 'AbortError')) return;
+      media.pause();
       audioEl = null;
       startProcedural(trackId);
-    });
-    const p = audioEl.play();
-    if (p && p.catch) {
-      p.catch(() => {
-        audioEl = null;
-        startProcedural(trackId);
-      });
     }
+    media.addEventListener('error', () => fallback());
+    const pending = media.play();
+    if (pending && pending.catch) pending.catch(fallback);
+  }
+
+  function resumePlayback() {
+    if (document.hidden || state.track === 'off') return;
+    if (proceduralCtx && proceduralCtx.state !== 'running') {
+      proceduralCtx.resume().catch(() => {});
+    } else if (audioEl && audioEl.paused) {
+      audioEl.play().catch(() => {});
+    } else if (!audioEl && !proceduralCtx) {
+      play(state.track);
+    }
+  }
+
+  // Schedule against the audio clock so timer drift cannot overlap phrases.
+  function scheduleLoop(ctx, schedule, loopDur) {
+    let nextStart = ctx.currentTime + 0.1;
+    function queue() {
+      if (ctx !== proceduralCtx || ctx.state === 'closed') return;
+      if (nextStart < ctx.currentTime) nextStart = ctx.currentTime + 0.05;
+      while (nextStart < ctx.currentTime + loopDur) {
+        schedule(nextStart);
+        nextStart += loopDur;
+      }
+    }
+    queue();
+    proceduralInterval = setInterval(queue, 250);
+  }
+
+  function trackNode(node) {
+    proceduralNodes.push(node);
+    node.onended = () => {
+      node.disconnect();
+      const index = proceduralNodes.indexOf(node);
+      if (index !== -1) proceduralNodes.splice(index, 1);
+    };
   }
 
   function startProcedural(trackId) {
@@ -89,6 +141,7 @@
       usingProcedural = true;
 
       const master = proceduralCtx.createGain();
+      proceduralMaster = master;
       master.gain.value = state.volume * 0.25;
       master.connect(proceduralCtx.destination);
 
@@ -96,6 +149,7 @@
       else if (trackId === 'calm2')  buildMidnightDrift(proceduralCtx, master);
       else if (trackId === 'fast')   buildBattleHymn(proceduralCtx, master);
       else if (trackId === 'fast3')  buildFinalStand(proceduralCtx, master);
+      if (proceduralCtx.state === 'suspended') proceduralCtx.resume().catch(() => {});
       notify();
     } catch (e) {
       console.warn('Procedural audio failed:', e);
@@ -125,7 +179,7 @@
     env.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
     osc.connect(env); env.connect(master);
     osc.start(t); osc.stop(t + 0.22);
-    proceduralNodes.push(osc);
+    trackNode(osc);
   }
 
   function snare(ctx, master, t, vol = 1, bright = true) {
@@ -140,7 +194,7 @@
     env.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
     noise.connect(bp); bp.connect(env); env.connect(master);
     noise.start(t); noise.stop(t + 0.18);
-    proceduralNodes.push(noise);
+    trackNode(noise);
   }
 
   function hihat(ctx, master, t, vol = 1, dur = 0.04) {
@@ -154,7 +208,7 @@
     env.gain.exponentialRampToValueAtTime(0.001, t + dur);
     noise.connect(hp); hp.connect(env); env.connect(master);
     noise.start(t); noise.stop(t + dur + 0.02);
-    proceduralNodes.push(noise);
+    trackNode(noise);
   }
 
   function tone(ctx, master, t, freq, dur, opts = {}) {
@@ -187,7 +241,7 @@
     env.gain.linearRampToValueAtTime(0, t + dur);
     chain.connect(env); env.connect(master);
     osc.start(t); osc.stop(t + dur + 0.01);
-    proceduralNodes.push(osc);
+    trackNode(osc);
   }
 
   function vinylCrackle(ctx, master) {
@@ -212,7 +266,7 @@
     g.gain.value = 0.06;
     noise.connect(hp); hp.connect(g); g.connect(master);
     noise.start();
-    proceduralNodes.push(noise);
+    trackNode(noise);
   }
 
   // ────────────────────────────────────────────────────────────
@@ -231,7 +285,7 @@
     env.gain.exponentialRampToValueAtTime(0.001, t + dur);
     osc.connect(env); env.connect(master);
     osc.start(t); osc.stop(t + dur + 0.02);
-    proceduralNodes.push(osc);
+    trackNode(osc);
   }
 
   function buildCalmLoop(ctx, master) {
@@ -296,12 +350,7 @@
       });
     }
 
-    schedule(ctx.currentTime + 0.1);
-    schedule(ctx.currentTime + 0.1 + loopDur);
-    proceduralInterval = setInterval(() => {
-      if (!proceduralCtx) { clearInterval(proceduralInterval); return; }
-      schedule(proceduralCtx.currentTime + 0.05);
-    }, loopDur * 1000);
+    scheduleLoop(ctx, schedule, loopDur);
   }
 
   // ────────────────────────────────────────────────────────────
@@ -382,12 +431,7 @@
       });
     }
 
-    schedule(ctx.currentTime + 0.1);
-    schedule(ctx.currentTime + 0.1 + loopDur);
-    proceduralInterval = setInterval(() => {
-      if (!proceduralCtx) { clearInterval(proceduralInterval); return; }
-      schedule(proceduralCtx.currentTime + 0.05);
-    }, loopDur * 1000);
+    scheduleLoop(ctx, schedule, loopDur);
   }
 
   // ────────────────────────────────────────────────────────────
@@ -463,12 +507,7 @@
       });
     }
 
-    schedule(ctx.currentTime + 0.1);
-    schedule(ctx.currentTime + 0.1 + loopDur);
-    proceduralInterval = setInterval(() => {
-      if (!proceduralCtx) { clearInterval(proceduralInterval); return; }
-      schedule(proceduralCtx.currentTime + 0.05);
-    }, loopDur * 1000);
+    scheduleLoop(ctx, schedule, loopDur);
   }
 
   // ────────────────────────────────────────────────────────────
@@ -539,22 +578,16 @@
       });
     }
 
-    schedule(ctx.currentTime + 0.1);
-    schedule(ctx.currentTime + 0.1 + loopDur);
-    proceduralInterval = setInterval(() => {
-      if (!proceduralCtx) { clearInterval(proceduralInterval); return; }
-      schedule(proceduralCtx.currentTime + 0.05);
-    }, loopDur * 1000);
+    scheduleLoop(ctx, schedule, loopDur);
   }
 
   function setVolume(v) {
+    if (!Number.isFinite(v)) return;
     state.volume = Math.max(0, Math.min(1, v));
     saveState();
     if (audioEl) audioEl.volume = state.volume;
-    if (usingProcedural) {
-      const track = state.track;
-      stop();
-      play(track);
+    if (proceduralMaster) {
+      proceduralMaster.gain.setTargetAtTime(state.volume * 0.25, proceduralCtx.currentTime, 0.03);
     }
     notify();
   }
@@ -567,6 +600,16 @@
     return () => { listeners = listeners.filter(f => f !== fn); };
   }
   function notify() { listeners.forEach(f => { try { f(get()); } catch {} }); }
+
+  document.addEventListener('pointerdown', resumePlayback);
+  document.addEventListener('keydown', resumePlayback);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (audioEl) audioEl.pause();
+      if (proceduralCtx && proceduralCtx.state === 'running') proceduralCtx.suspend().catch(() => {});
+    } else resumePlayback();
+  });
+  global.addEventListener('pageshow', resumePlayback);
 
   global.Audio_ = { play, stop, setVolume, get, tracks, subscribe };
 })(window);

@@ -96,6 +96,9 @@
     const q = currentQ(b);
     if (!q || b.outcome) return { invalid: true };
 
+    // Original damage was tuned for ten questions. Scale by session length
+    // so saved ten-question fights retain their original damage values.
+    const damageScale = 10 / Math.max(10, b.questions.length);
     const isCorrect = choiceIdx === q.correct;
     let bossHpDelta = 0;
     let playerHpDelta = 0;
@@ -106,17 +109,18 @@
       b.streak += 1;
       b.correctCount += 1;
       crit = b.streak >= 3;
-      const dmg = crit ? CRIT_HIT : NORMAL_HIT;
-      bossHpDelta = -dmg;
-      b.bossHp = Math.max(0, b.bossHp - dmg);
+      const dmg = Math.max(1, Math.round((crit ? CRIT_HIT : NORMAL_HIT) * damageScale));
+      bossHpDelta = -Math.min(b.bossHp, dmg);
+      b.bossHp += bossHpDelta;
     } else {
       b.streak = 0;
       if (b.shieldQueued) {
         shielded = true;
         b.shieldQueued = false;
       } else {
-        playerHpDelta = -PLAYER_DMG;
-        b.playerHp = Math.max(0, b.playerHp - PLAYER_DMG);
+        const dmg = Math.max(1, Math.round(PLAYER_DMG * damageScale));
+        playerHpDelta = -Math.min(b.playerHp, dmg);
+        b.playerHp += playerHpDelta;
       }
     }
 
