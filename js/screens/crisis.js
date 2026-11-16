@@ -2,6 +2,25 @@
    CRISIS SCREEN — drives a patient-scenario session
    ctx: { course, scenarioId }
    ============================================================ */
+/* Every option of one decision, marked right or wrong, each with its explanation.
+   `picked` is the index the player chose. An option is right when it helps the patient. */
+window.CrisisReview = {
+  html(decision, picked) {
+    return `<div class="answers">${decision.options.map((o, i) => {
+      const good = o.hpDelta > 0;
+      return `
+        <div class="ans-btn ${good ? 'correct' : 'wrong'}" style="cursor:default; align-items:flex-start;">
+          <span class="ans-key">${'ABC'[i] || (i + 1)}</span>
+          <span style="display:block; text-align:left;">
+            <strong>${good ? '✓ Right' : '✗ Wrong'}${i === picked ? ' · your choice' : ''}</strong><br>
+            ${o.text}
+            <span style="display:block; margin-top:6px; opacity:.9; font-size:.92em;">${o.explain}</span>
+          </span>
+        </div>`;
+    }).join('')}</div>`;
+  },
+};
+
 App.registerScreen('crisis', ({ root, state, ctx }) => {
   root.classList.add('acsc');
   const scenario = (window.ALL_SCENARIOS || []).find(s => s.id === ctx.scenarioId);
@@ -10,8 +29,14 @@ App.registerScreen('crisis', ({ root, state, ctx }) => {
   const session = Crisis.start(scenario);
   let phase = 'intro';            // 'intro' | 'decision' | 'reveal'
   let lastResult = null;
+  let reviewAt = null;            // index into session.history while looking back, else null
+
+  // The decision on screen during 'reveal' is the last history entry, so looking back
+  // from there starts one earlier.
+  const lastReviewable = () => session.history.length - (phase === 'reveal' ? 2 : 1);
 
   function render() {
+    if (reviewAt !== null)    return renderReview();
     if (phase === 'intro')    return renderIntro();
     if (phase === 'decision') return renderDecision();
     if (phase === 'reveal')   return renderReveal();
@@ -81,6 +106,7 @@ App.registerScreen('crisis', ({ root, state, ctx }) => {
 
     root.innerHTML = `
       <div class="topbar">
+        ${session.history.length ? '<button class="back-btn" data-review>BACK</button>' : '<span></span>'}
         <span class="mode-tag">🏥 ACTIVE CASE</span>
         <span class="chapter-tag">${session.history.length + 1}/${scenario.decisions.length}</span>
       </div>
@@ -108,6 +134,7 @@ App.registerScreen('crisis', ({ root, state, ctx }) => {
       </div>
     `;
 
+    bindReviewBack();
     root.querySelectorAll('.ans-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const i = +btn.dataset.i;
@@ -127,6 +154,7 @@ App.registerScreen('crisis', ({ root, state, ctx }) => {
 
     root.innerHTML = `
       <div class="topbar">
+        ${session.history.length > 1 ? '<button class="back-btn" data-review>BACK</button>' : '<span></span>'}
         <span class="mode-tag">🏥 OUTCOME</span>
         <span class="chapter-tag ${goodSign ? 't-green' : 't-red'}">${goodSign ? '+' : ''}${lastResult.hpDelta} HP</span>
       </div>
@@ -141,8 +169,8 @@ App.registerScreen('crisis', ({ root, state, ctx }) => {
       </div>
 
       <div class="q-box">
-        <div class="q-label">▸ YOUR INTERVENTION</div>
-        <div class="q-text">${d.options[i].text}</div>
+        <div class="q-label">▸ DECISION POINT // ${session.history.length}</div>
+        <div class="q-text">${d.prompt}</div>
       </div>
 
       <div class="hud hud-corners">
@@ -154,12 +182,50 @@ App.registerScreen('crisis', ({ root, state, ctx }) => {
         <div class="explanation">${lastResult.explain}</div>
       </div>
 
+      ${CrisisReview.html(d, i)}
+
       <button class="btn btn-block btn-primary" id="next">${lastResult.gameOver ? '▶ FINAL REPORT' : '▶ CONTINUE'}</button>
     `;
+    bindReviewBack();
     root.querySelector('#next').addEventListener('click', () => {
       if (lastResult.gameOver) return endScenario();
       phase = 'decision'; render();
     });
+  }
+
+  function bindReviewBack() {
+    const btn = root.querySelector('[data-review]');
+    if (btn) btn.addEventListener('click', () => { reviewAt = lastReviewable(); render(); });
+  }
+
+  // Read-only look at an earlier decision. Nothing here changes the patient or the score.
+  function renderReview() {
+    const h = session.history[reviewAt];
+    const d = scenario.decisions.find(dd => dd.id === h.decisionId);
+    const atEnd = reviewAt >= lastReviewable();
+    root.innerHTML = `
+      <div class="topbar">
+        ${reviewAt > 0 ? '<button class="back-btn" data-prev>BACK</button>' : '<span></span>'}
+        <span class="mode-tag">🏥 REVIEW</span>
+        <span class="chapter-tag">${reviewAt + 1}/${scenario.decisions.length}</span>
+      </div>
+
+      <div class="q-box">
+        <div class="q-label">▸ DECISION POINT // ${reviewAt + 1} · ${h.hpDelta >= 0 ? '+' : ''}${h.hpDelta} HP</div>
+        <div class="q-text">${d.prompt}</div>
+      </div>
+
+      ${CrisisReview.html(d, h.optionIdx)}
+
+      <button class="btn btn-block btn-primary" id="fwd">${atEnd ? '▶ RETURN TO CASE' : '▶ NEXT'}</button>
+    `;
+    const prev = root.querySelector('[data-prev]');
+    if (prev) prev.addEventListener('click', () => { reviewAt -= 1; render(); });
+    root.querySelector('#fwd').addEventListener('click', () => {
+      reviewAt = atEnd ? null : reviewAt + 1;
+      render();
+    });
+    window.scrollTo(0, 0);
   }
 
   function endScenario() {

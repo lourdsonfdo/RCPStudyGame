@@ -61,6 +61,19 @@ App.registerScreen('outcome', ({ root, state, ctx }) => {
 
     <div class="spacer"></div>
 
+    <button class="btn btn-block" id="review-toggle">📋 REVIEW DECISIONS</button>
+    <div id="review-list" hidden>
+      ${s.history.map((h, n) => {
+        const d = s.scenario.decisions.find(dd => dd.id === h.decisionId);
+        return `
+          <div class="q-box">
+            <div class="q-label">▸ DECISION POINT // ${n + 1} · ${h.hpDelta >= 0 ? '+' : ''}${h.hpDelta} HP</div>
+            <div class="q-text">${d.prompt}</div>
+          </div>
+          ${CrisisReview.html(d, h.optionIdx)}`;
+      }).join('')}
+    </div>
+
     <button class="btn btn-block btn-primary" data-action="select">🗺 CASE LIST</button>
     <button class="btn btn-block" data-action="home">⌂ HQ</button>
   `;
@@ -71,6 +84,11 @@ App.registerScreen('outcome', ({ root, state, ctx }) => {
   if (ctx.lvlInfo.leveledUp) {
     setTimeout(() => App.goto('level-up', { newLevel: ctx.lvlInfo.newLevel, oldLevel: ctx.lvlInfo.oldLevel, returnTo: 'outcome', returnCtx: ctx }), 600);
   }
+
+  root.querySelector('#review-toggle').addEventListener('click', () => {
+    const list = root.querySelector('#review-list');
+    list.hidden = !list.hidden;
+  });
 
   root.querySelectorAll('[data-action]').forEach(btn => {
     btn.addEventListener('click', () => {
