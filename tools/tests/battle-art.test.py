@@ -4,8 +4,18 @@ from PIL import Image
 import hashlib,json
 ROOT=Path(__file__).resolve().parents[2]
 ids=set(json.loads((ROOT/'docs/art/boss-sprite-concepts.json').read_text()))
+assert len(ids)==97, 'Expected all 97 stable boss IDs'
+sources=json.loads((ROOT/'docs/art/battle-motion-sources.json').read_text())
+assert set(sources['poses'])==ids, 'Every atlas needs an original source record'
+portraits=list((ROOT/'img/bosses').glob('*.webp'))
+assert {p.stem for p in portraits}==ids, 'Every boss needs a portrait'
+for path in portraits:
+    im=Image.open(path)
+    assert im.size==(384,384) and im.mode=='RGBA', path
+    low,high=im.getchannel('A').getextrema()
+    assert low==0 and high>=240, f'Portrait needs genuine alpha: {path}'
 sheets=list((ROOT/'img/boss-motion').glob('*.webp'))
-assert {p.stem for p in sheets}==ids, 'All 57 stable boss IDs need sheets'
+assert {p.stem for p in sheets}==ids, 'All 97 stable boss IDs need sheets'
 hashes=set()
 sw=(ROOT/'sw.js').read_text()
 for path in sheets:
@@ -27,9 +37,15 @@ for path in sheets:
     assert max(bottoms)-min(bottoms)<=3, f'Unanchored poses: {path.stem}: {bottoms}'
     assert f"'/RCPStudyGame/img/boss-motion/{path.name}'" in sw, path
 arenas=list((ROOT/'img/arenas').glob('*.webp'))
-assert {p.stem for p in arenas}=={'rcp103','rcp104','rcp201','rcp202','rcp203','rcp2xx'}
-assert len({hashlib.sha256(p.read_bytes()).digest() for p in arenas})==6
+assert {p.stem for p in arenas}=={'rcp103','rcp104','rcp201','rcp202','rcp203','rcp2xx','rcp202f','rcp203f','rcptmc'}
+assert len({hashlib.sha256(p.read_bytes()).digest() for p in arenas})==9
+assert set(sources['arenas'])=={p.stem for p in arenas}
 for p in arenas:
     assert Image.open(p).size==(1440,960), p
     assert f"'/RCPStudyGame/img/arenas/{p.name}'" in sw, p
-print('PASS 57 unique six-pose transparent anchored sheets and six distinct precached arenas')
+banners=[ROOT/'img'/f'{name}.webp' for name in ['academy-critical-final','academy-board-final','academy-tmc']]
+assert len({hashlib.sha256(p.read_bytes()).digest() for p in banners})==3
+for p in banners:
+    assert Image.open(p).size==(960,320), p
+    assert f"'/RCPStudyGame/img/{p.name}'" in sw, p
+print('PASS 97 unique six-pose transparent anchored sheets and nine distinct precached arenas; three new course banners')

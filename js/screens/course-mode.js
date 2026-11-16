@@ -8,7 +8,7 @@ App.registerScreen('course-mode', ({ root, state, ctx }) => {
   const courseInfo = Academy.course(course);
   const courseFull = courseInfo.name;
   const hasScenarios = (window.ALL_SCENARIOS || []).some(s => s.course === course);
-  const courseShort = course.toUpperCase();
+  const courseShort = Academy.tag(course);
 
   root.innerHTML = `
     <div class="topbar">

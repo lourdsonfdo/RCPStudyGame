@@ -162,8 +162,8 @@ function check(name, cond, detail) {
       'got: ' + artVal);
   }
 
-  // 1c. all six allowed courses are accepted
-  for (const course of ['rcp103','rcp104','rcp201','rcp202','rcp203','rcp2xx']) {
+  // 1c. all nine allowed courses are accepted
+  for (const course of ['rcp103','rcp104','rcp201','rcp202','rcp203','rcp2xx','rcp202f','rcp203f','rcptmc']) {
     const { ArenaBg } = loadArenaBg();
     const el = makeEl('div');
     ArenaBg.attach(el, { mode: 'battle', course });

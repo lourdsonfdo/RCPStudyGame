@@ -2,14 +2,14 @@
    ARENA-BG ENGINE — inject animated parallax layers into arena
    Usage: ArenaBg.attach(arenaEl, { mode, course });
      mode:   'battle' | 'crisis' | 'victory' | 'defeat'
-     course: 'rcp103' | 'rcp104' | 'rcp201' | 'rcp202' | 'rcp203' | 'rcp2xx'
+     course: 'rcp103' | 'rcp104' | 'rcp201' | 'rcp202' | 'rcp203' | 'rcp2xx' | 'rcp202f' | 'rcp203f' | 'rcptmc'
    In battle mode with an allowed course, stamps data-battle-world
    and resolves --battle-world-art for CSS art selection.
    ============================================================ */
 (function (global) {
   'use strict';
 
-  const BATTLE_COURSES = new Set(['rcp103','rcp104','rcp201','rcp202','rcp203','rcp2xx']);
+  const BATTLE_COURSES = new Set(['rcp103','rcp104','rcp201','rcp202','rcp203','rcp2xx','rcp202f','rcp203f','rcptmc']);
 
   function attach(arenaEl, opts) {
     if (!arenaEl) return;
@@ -51,9 +51,12 @@
     }
 
     // Battle-world art: stamp data attribute and CSS custom property
-    if (mode === 'battle' && course && BATTLE_COURSES.has(course)) {
-      arenaEl.setAttribute('data-battle-world', course);
-      const artPath = 'img/arenas/' + course + '.webp';
+    // A course without its own backdrop borrows one through Academy.COURSES[].arena.
+    const info = course && global.Academy ? global.Academy.course(course) : null;
+    const world = BATTLE_COURSES.has(course) ? course : (info && info.arena) || null;
+    if (mode === 'battle' && world && BATTLE_COURSES.has(world)) {
+      arenaEl.setAttribute('data-battle-world', world);
+      const artPath = 'img/arenas/' + world + '.webp';
       const base = (typeof document !== 'undefined' && document.baseURI) || '';
       const artUrl = base ? new URL(artPath, base).href : artPath;
       arenaEl.style.setProperty('--battle-world-art', 'url("' + artUrl + '")');

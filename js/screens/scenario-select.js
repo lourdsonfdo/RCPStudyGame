@@ -13,7 +13,7 @@ App.registerScreen('scenario-select', ({ root, state, ctx }) => {
     <div class="topbar">
       <button class="back-btn" data-back>BACK</button>
       <span class="mode-tag">Case Files</span>
-      <span class="chapter-tag">${course.toUpperCase()}</span>
+      <span class="chapter-tag">${Academy.tag(course)}</span>
     </div>
 
     <div class="acsc-banner">

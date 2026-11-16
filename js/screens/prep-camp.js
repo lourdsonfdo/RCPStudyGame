@@ -24,7 +24,7 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
       <div class="topbar">
         <button class="back-btn" data-back>BACK</button>
         <span class="mode-tag">⚔ PREP CAMP</span>
-        <span class="chapter-tag">${boss.course.toUpperCase()}</span>
+        <span class="chapter-tag">${Academy.tag(boss.course)}</span>
       </div>
 
       <div class="arena" style="min-height: 170px;">

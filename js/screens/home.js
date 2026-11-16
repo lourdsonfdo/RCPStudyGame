@@ -70,7 +70,7 @@ App.registerScreen('home', ({ root, state }) => {
     <section class="ac-paths" aria-labelledby="ac-path-title">
       <div class="ac-section-heading"><h2 id="ac-path-title">Choose your path</h2><span>Small steps. Lasting knowledge.</span></div>
       <div class="ac-course-grid">
-        ${courses.map(c => `<button class="ac-course" data-course="${c.id}"><img src="${c.img}" width="480" height="135" alt="" loading="lazy"><span class="ac-course-body"><span class="ac-course-name">${esc(c.name)} ${icon('arrow')}</span><span class="ac-course-code">RCP ${c.short}</span><span class="ac-course-description">${esc(c.description)}</span><span class="ac-course-progress">${countFor(c.id)} / ${totalFor(c.id)} bosses mastered</span></span></button>`).join('')}
+        ${courses.map(c => `<button class="ac-course" data-course="${c.id}"><img src="${c.img}" width="480" height="135" alt="" loading="lazy"><span class="ac-course-body"><span class="ac-course-name">${esc(c.name)} ${icon('arrow')}</span><span class="ac-course-code">${esc(c.tag || 'RCP ' + c.short)}</span><span class="ac-course-description">${esc(c.description)}</span><span class="ac-course-progress">${countFor(c.id)} / ${totalFor(c.id)} bosses mastered</span></span></button>`).join('')}
         <button class="ac-course" data-station="simulation"><img src="img/academy-clinical.webp" width="476" height="135" alt="" loading="lazy"><span class="ac-course-body"><span class="ac-course-name">Clinical Challenges ${icon('arrow')}</span><span class="ac-course-code">Simulation Lab</span><span class="ac-course-description">Put your knowledge to work in clinical scenarios.</span><span class="ac-course-progress">${state.completedScenarios.length} scenarios completed</span></span></button>
       </div>
     </section>
@@ -91,7 +91,7 @@ App.registerScreen('home', ({ root, state }) => {
     root.querySelector('.ac-dialog-sub').textContent = 'Choose the course you’d like to practice.';
     const options = root.querySelector('.ac-dialog-options');
     options.innerHTML = courses.filter(c => station !== 'simulation' || hasScenarios(c.id))
-      .map(c => `<button data-pick="${c.id}">${esc(c.name)} <small>RCP ${c.short}</small></button>`).join('');
+      .map(c => `<button data-pick="${c.id}">${esc(c.name)} <small>${esc(c.tag || 'RCP ' + c.short)}</small></button>`).join('');
     options.querySelectorAll('[data-pick]').forEach(button => button.addEventListener('click', () => {
       dialog.close();
       App.goto(station === 'simulation' ? 'scenario-select' : 'boss-select', { course: button.dataset.pick, mode: station === 'library' ? 'training' : 'battle' });

@@ -11,7 +11,7 @@ App.registerScreen('boss-select', ({ root, state, ctx }) => {
   // Unlock rule: all bosses are unlocked from the start so the player can pick freely.
   function isUnlocked(_b) { return true; }
 
-  const courseShort = course.toUpperCase();
+  const courseShort = Academy.tag(course);
   const defeated = state.defeatedBosses.filter(id => all.some(b => b.id === id)).length;
 
   root.innerHTML = `

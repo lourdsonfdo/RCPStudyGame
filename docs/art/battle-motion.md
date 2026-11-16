@@ -18,6 +18,8 @@ Oxygenator uses the approved six-pose design preview as its source. The source m
 
 `tools/pose_cells.py` identifies the six separate guardian silhouettes by alpha connectivity, retains associated detached details, and rejects sheets with joined bodies. `tools/prepare_boss_motion.py` crops and resamples these complete silhouettes with one scale per character, aligns visible silhouettes to a shared baseline, preserves alpha, and packs six 384px square cells into a 1152x768 WebP atlas. It synthesizes no new poses. Static portraits remain unchanged. `BossMotion` overlays sheets only on combat portraits after successful loading; image failures preserve the static fallback. Idle alternates neutral/inhale. Attacks show wind-up/strike/recovery; hits show recoil/recovery. Pose timers stop for saved pause, reduced motion and hidden documents. Router cleanup cancels motion/FX.
 
-The six arena files are 1440x960 WebPs. All six arenas and 57 atlases are precached for offline battles.
+The nine arena files are 1440x960 WebPs. All nine arenas and 97 atlases are precached for offline battles.
 
 Four sheets were regenerated with compact full-body poses and at least90px transparent margins to prevent adjoining silhouettes: asthma, emphysema-no, m202-s10, m203-s05. The larger-margin prompt preserves the six-pose sequence and guardian identities; it limits each figure to about300px within each512px cell.
+
+Final-exam additions: 40 portraits served as identity references for 40 new six-pose sheets, prepared with the same extraction and atlas tools. Prompts specify compact poses and at least 90px transparent margins. `tmc-c13` was regenerated after the alpha check rejected its first source. `f202-s14` and `tmc-c12` were regenerated to remove pale halos found during visual review. Preparation source logging was redirected inside the repository during this run; image processing was unchanged.

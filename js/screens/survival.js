@@ -79,7 +79,7 @@
         <div class="module module-${c.short}" data-pick="${c.id}">
           <div class="module-icon-wrap">${c.icon}</div>
           <div class="module-body">
-            <div class="module-tag">▸ COURSE ${c.short}</div>
+            <div class="module-tag">▸ ${c.tag || 'COURSE ' + c.short}</div>
             <div class="module-title">${c.name.toUpperCase()}</div>
             <div class="module-meta">BEST RUN: ${bestFor(c.id)} CORRECT</div>
           </div>
@@ -139,7 +139,7 @@
         </div>
 
         <div class="q-box">
-          <div class="q-label">▸ RAPID QUERY · ${course.toUpperCase()}</div>
+          <div class="q-label">▸ RAPID QUERY · ${Academy.tag(course)}</div>
           <div class="q-text">${currentQ.q}</div>
         </div>
 
@@ -271,7 +271,7 @@
           <span class="br1"></span><span class="br2"></span>
           <div class="title-eyebrow">▸ FINAL SCORE ◂</div>
           <div class="title-main" style="font-size: 56px; margin: 4px 0; color: var(--hud-green); text-shadow: 0 0 16px var(--hud-green);">${score}</div>
-          <div class="title-sub">${course.toUpperCase()} · ${newBest ? '★ NEW PERSONAL BEST ★' : 'previous best: ' + best}</div>
+          <div class="title-sub">${Academy.tag(course)} · ${newBest ? '★ NEW PERSONAL BEST ★' : 'previous best: ' + best}</div>
         </div>
 
         <div class="hud hud-corners">

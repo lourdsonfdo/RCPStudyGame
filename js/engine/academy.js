@@ -14,8 +14,20 @@
       description: 'Midterm study guide: burns, ECMO, ventilation, ABGs.' },
     { id: 'rcp203', short: '203', name: 'Board Prep (TMC)', icon: '🩺', img: 'img/academy-diagnostics.webp',
       description: 'Midterm study guide: equipment, monitoring, airways.' },
+    // Final-exam and board banks. `tag` is the short label shown in top bars.
+    { id: 'rcp202f', short: '202f', tag: 'RCP 202 FINAL', name: 'Critical Care Final', icon: '🎓',
+      img: 'img/academy-critical-final.webp',
+      description: 'Final study guide: weaning, trauma, CPR, ventilation, ARDS.' },
+    { id: 'rcp203f', short: '203f', tag: 'RCP 203 FINAL', name: 'Board Prep Final', icon: '🎓',
+      img: 'img/academy-board-final.webp',
+      description: 'Final study guide: assessment, drugs, ventilation, monitoring.' },
+    { id: 'rcptmc', short: 'tmc', tag: 'TMC BOARDS', name: 'TMC Board Exam', icon: '🏅',
+      img: 'img/academy-tmc.webp',
+      description: 'NBRC TMC practice: 420 questions across the exam blueprint.' },
   ];
   const course = id => COURSES.find(c => c.id === id) || { id, short: id.replace(/^rcp/, ''), name: id.toUpperCase(), icon: '📘' };
+  // Short label for top bars: "RCP202" for the numbered courses, the course's own tag otherwise.
+  const tag = id => course(id).tag || String(id).toUpperCase();
 
   function trainingPool(boss, questions) {
     const all = questions.filter(q => q.course === boss.course &&
@@ -76,5 +88,5 @@
       ? saved : null;
   }
 
-  global.Academy = { COURSES, course, recommendation, reviewQuestions, resumableBattle };
+  global.Academy = { COURSES, course, tag, recommendation, reviewQuestions, resumableBattle };
 })(window);
