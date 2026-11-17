@@ -58,6 +58,7 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
         </div>
       </div>
 
+      ${boss.id === Rematch.boss && Rematch.pending(state).length ? `<button class="btn btn-block" data-go="rematch">Practice saved misses (${Rematch.pending(state).length})</button>` : ''}
       <div class="module" data-go="training">
         <div class="module-icon-wrap">🏋️</div>
         <div class="module-body">
@@ -108,7 +109,8 @@ App.registerScreen('prep-camp', ({ root, state, ctx }) => {
     root.querySelectorAll('[data-go]').forEach(btn => {
       btn.addEventListener('click', () => {
         const d = btn.dataset.go;
-        if (d === 'training') App.goto('training', { course: ctx.course, bossId: ctx.bossId });
+        if (d === 'rematch') App.goto('rematch', { course: ctx.course, bossId: boss.id, ids: Rematch.pending(state) });
+        else if (d === 'training') App.goto('training', { course: ctx.course, bossId: ctx.bossId });
         else if (d === 'resume') App.goto('battle', { course: ctx.course, bossId: ctx.bossId, resume: true });
         else if (d === 'fight') {
           // Starting fresh abandons whatever was saved for this boss.

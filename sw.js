@@ -3,7 +3,7 @@
    Cache-first strategy: game is fully playable offline after
    the first load.
    ============================================================ */
-const CACHE = 'rcp-study-v32-rte-source';
+const CACHE = 'rcp-study-v33-warden-rematch';
 
 const PRECACHE = [
   '/RCPStudyGame/css/battle-world.css',
@@ -154,6 +154,7 @@ const PRECACHE = [
   '/RCPStudyGame/js/screens/prep-camp.js',
   '/RCPStudyGame/js/screens/training.js',
   '/RCPStudyGame/js/screens/battle.js',
+  '/RCPStudyGame/js/screens/rematch.js',
   '/RCPStudyGame/js/screens/results.js',
   '/RCPStudyGame/js/screens/scenario-select.js',
   '/RCPStudyGame/js/screens/crisis.js',

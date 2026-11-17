@@ -262,6 +262,7 @@ App.registerScreen('battle', ({ root, state, ctx }) => {
 
   function endBattle() {
     state.battleRun = null;
+    Rematch.record(state, session);
     Battle.computeRewards(session);
 
     const lvlInfo = State.addXp(state, session.xpEarned);

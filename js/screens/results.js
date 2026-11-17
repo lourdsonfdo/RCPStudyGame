@@ -5,6 +5,7 @@
 App.registerScreen('results', ({ root, state, ctx }) => {
   root.classList.add('acsc');
   const s = ctx.session;
+  const pending = Rematch.fromFight(state, s);
   const won = s.outcome === 'victory';
   const sprite = (window.BOSS_SPRITES && window.BOSS_SPRITES[s.boss.id]) || '';
 
@@ -56,6 +57,7 @@ App.registerScreen('results', ({ root, state, ctx }) => {
 
     <div class="spacer"></div>
 
+    ${pending.length ? `<button class="btn btn-block btn-primary" data-action="rematch">Rematch my ${pending.length} ${pending.length === 1 ? 'miss' : 'misses'}</button>` : ''}
     ${(s.answers && s.answers.some(a => !a.isCorrect)) ? `
       <button class="btn btn-block btn-review" data-action="review">📖 REVIEW MISSES (${s.answers.filter(a => !a.isCorrect).length})</button>
     ` : ''}
@@ -87,6 +89,7 @@ App.registerScreen('results', ({ root, state, ctx }) => {
       // Cancel the pending level-up nav so an early tap doesn't yank the user away.
       if (lvlUpTimer) { clearTimeout(lvlUpTimer); lvlUpTimer = null; }
       const a = btn.dataset.action;
+      if (a === 'rematch') App.goto('rematch', { ...ctx, ids: pending });
       if (a === 'review') App.goto('review-answers', { answers: s.answers, course: ctx.course, bossId: ctx.bossId, returnTo: 'results', returnCtx: ctx });
       if (a === 'again')  App.goto('prep-camp',   { course: ctx.course, bossId: ctx.bossId });
       if (a === 'select') App.goto('boss-select', { course: ctx.course });

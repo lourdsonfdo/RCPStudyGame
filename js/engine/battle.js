@@ -201,5 +201,5 @@
     return { xp, gold };
   }
 
-  global.Battle = { start, currentQ, progress, answer, useItem, computeRewards };
+  global.Battle = { shuffleChoices, start, currentQ, progress, answer, useItem, computeRewards };
 })(window);
