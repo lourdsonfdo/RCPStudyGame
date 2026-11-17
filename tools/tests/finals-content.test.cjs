@@ -68,8 +68,19 @@ for (const [cid, file] of [['rcp202f', 'rcp202-final.json'], ['rcp203f', 'rcp203
   compared += src.length;
 }
 const page = fs.readFileSync(path.join(recall, 'guides', 'tmc-trainer.html'), 'utf8');
-const start = page.indexOf('window.__BANK__ = ') + 'window.__BANK__ = '.length;
-const bank = JSON.parse(page.slice(start, page.indexOf('</script>', start)).trim().replace(/;$/, ''));
+// Since 2026-11-17 the page is the 2027 RTE trainer: its bank is <script id="bank" type="application/json">,
+// and the game uses the 420 book-sourced breadth items (ids C<chapter>-Q<n>). The 2020 page used window.__BANK__.
+let bank;
+if (page.includes('window.__BANK__ = ')) {
+  const start = page.indexOf('window.__BANK__ = ') + 'window.__BANK__ = '.length;
+  bank = JSON.parse(page.slice(start, page.indexOf('</script>', start)).trim().replace(/;$/, ''));
+} else {
+  const m = page.match(/<script id="bank" type="application\/json">([\s\S]*?)<\/script>/);
+  assert(m, 'no RTE bank in tmc-trainer.html');
+  const rte = JSON.parse(m[1]);
+  bank = { questions: rte.breadth.filter(q => q.origin === 'heuer').map(q => ({ ...q, ch: Number(q.id.slice(1, 3)) })) };
+  assert.strictEqual(bank.questions.length, 420, 'expected 420 book-sourced RTE breadth items');
+}
 assert(bank.questions.every(q => q.key === 0), 'a TMC key is not 0');
 const tmcSrc = bank.questions.map(q => sig(q.stem, q.opts, q.why)).sort();
 assert.deepStrictEqual(game('rcptmc').sort(), tmcSrc, 'rcptmc differs from the Recall TMC trainer');

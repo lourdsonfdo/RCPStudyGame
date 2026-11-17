@@ -1,0 +1,138 @@
+[
+ {
+  "ch": 1,
+  "title": "Evaluate Data in the Patient Record",
+  "sec": "I-A",
+  "nbrc": 10,
+  "bank": 30,
+  "area": "Patient Data"
+ },
+ {
+  "ch": 2,
+  "title": "Perform Clinical Assessment",
+  "sec": "I-B",
+  "nbrc": 10,
+  "bank": 30,
+  "area": "Patient Data"
+ },
+ {
+  "ch": 3,
+  "title": "Perform Procedures to Gather Clinical Information",
+  "sec": "I-C",
+  "nbrc": 12,
+  "bank": 36,
+  "area": "Patient Data"
+ },
+ {
+  "ch": 4,
+  "title": "Evaluate Procedure Results",
+  "sec": "I-D",
+  "nbrc": 10,
+  "bank": 30,
+  "area": "Patient Data"
+ },
+ {
+  "ch": 5,
+  "title": "Recommend Diagnostic Procedures",
+  "sec": "I-E",
+  "nbrc": 8,
+  "bank": 24,
+  "area": "Patient Data"
+ },
+ {
+  "ch": 6,
+  "title": "Assemble and Troubleshoot Devices",
+  "sec": "II-A",
+  "nbrc": 15,
+  "bank": 45,
+  "area": "Troubleshooting, QC & Infection Control"
+ },
+ {
+  "ch": 7,
+  "title": "Ensure Infection Prevention",
+  "sec": "II-B",
+  "nbrc": 2,
+  "bank": 6,
+  "area": "Troubleshooting, QC & Infection Control"
+ },
+ {
+  "ch": 8,
+  "title": "Perform Quality Control Procedures",
+  "sec": "II-C",
+  "nbrc": 3,
+  "bank": 9,
+  "area": "Troubleshooting, QC & Infection Control"
+ },
+ {
+  "ch": 9,
+  "title": "Maintain a Patent Airway",
+  "sec": "III-A",
+  "nbrc": 10,
+  "bank": 30,
+  "area": "Initiation & Modification of Interventions"
+ },
+ {
+  "ch": 10,
+  "title": "Perform Airway Clearance and Lung Expansion",
+  "sec": "III-B",
+  "nbrc": 5,
+  "bank": 15,
+  "area": "Initiation & Modification of Interventions"
+ },
+ {
+  "ch": 11,
+  "title": "Support Oxygenation and Ventilation",
+  "sec": "III-C",
+  "nbrc": 15,
+  "bank": 45,
+  "area": "Initiation & Modification of Interventions"
+ },
+ {
+  "ch": 12,
+  "title": "Administer Medications and Specialty Gases",
+  "sec": "III-D",
+  "nbrc": 4,
+  "bank": 12,
+  "area": "Initiation & Modification of Interventions"
+ },
+ {
+  "ch": 13,
+  "title": "Ensure Modifications to the Respiratory Care Plan",
+  "sec": "III-E",
+  "nbrc": 18,
+  "bank": 54,
+  "area": "Initiation & Modification of Interventions"
+ },
+ {
+  "ch": 14,
+  "title": "Utilize Evidence-Based Principles",
+  "sec": "III-F",
+  "nbrc": 6,
+  "bank": 18,
+  "area": "Initiation & Modification of Interventions"
+ },
+ {
+  "ch": 15,
+  "title": "Provide Respiratory Care in High-Risk Situations",
+  "sec": "III-G",
+  "nbrc": 5,
+  "bank": 15,
+  "area": "Initiation & Modification of Interventions"
+ },
+ {
+  "ch": 16,
+  "title": "Assist a Physician/Provider",
+  "sec": "III-H",
+  "nbrc": 4,
+  "bank": 12,
+  "area": "Initiation & Modification of Interventions"
+ },
+ {
+  "ch": 17,
+  "title": "Initiate and Conduct Patient and Family Education",
+  "sec": "III-I",
+  "nbrc": 3,
+  "bank": 9,
+  "area": "Initiation & Modification of Interventions"
+ }
+]

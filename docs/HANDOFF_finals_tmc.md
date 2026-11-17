@@ -32,3 +32,11 @@ A new section in a Recall drill needs a boss name in `BOSSES` (tools/build_final
   correct option uniquely longest now 21% / 24%) and synced here (CACHE rcp-study-v30-finals-board-style).
   TMC bank fixed 2026-11-17 in ~/rcp-tmc-trainer (241/420 rewritten, Codex-audited against the Heuer text;
   answer clearly longest 56% -> 3%), copied to Recall and synced here (CACHE rcp-study-v31-tmc-board-style).
+
+## 2026-11-17 — Recall's trainer is now the 2027 RTE trainer
+Recall `guides/tmc-trainer.html` was replaced by the RTE trainer (~/rcp-tmc-trainer/index.html). Its bank is a
+`<script id="bank" type="application/json">` block (breadth + cj). `tmc_bank_from_recall()` now reads that and keeps the
+420 book-sourced breadth items (origin "heuer"; chapter from the id `C<ch>-Q<n>`; chapter titles from
+`tools/finals/tmc-chapters.json`). The questions are unchanged; 9 source tags now show the 2027 RTE section.
+The 42 new 2027-topic items and the 191 clinical-judgment items are NOT in the game (no boss mapping yet).
+CACHE `rcp-study-v32-rte-source`, `tmc-boards.js?v=finals3`. The reader still accepts the old window.__BANK__ page.

@@ -96,10 +96,25 @@ COURSES = {
 
 
 def tmc_bank_from_recall():
+    """Recall's guides/tmc-trainer.html. Since 2026-11-17 it is the 2027 RTE trainer, whose bank is a
+    <script id="bank" type="application/json"> block; the game keeps the 420 book-sourced breadth items
+    (origin "heuer", each still tagged with its Heuer chapter). The older 2020 page used window.__BANK__."""
     html = open(os.path.join(RECALL, 'guides', 'tmc-trainer.html'), encoding='utf-8').read()
-    start = html.index('window.__BANK__ = ') + len('window.__BANK__ = ')
-    data, _ = json.JSONDecoder().raw_decode(html[start:])
-    return {'chapters': data['chapters'], 'questions': data['questions']}
+    if 'window.__BANK__ = ' in html:
+        start = html.index('window.__BANK__ = ') + len('window.__BANK__ = ')
+        data, _ = json.JSONDecoder().raw_decode(html[start:])
+        return {'chapters': data['chapters'], 'questions': data['questions']}
+    m = re.search(r'<script id="bank" type="application/json">(.*?)</script>', html, re.S)
+    if not m:
+        sys.exit('tmc-trainer.html: no question bank found')
+    data = json.loads(m.group(1))
+    qs = [{'ch': int(q['id'][1:3]), 'sec': q['sec'], 'lvl': q.get('lvl27', ''), 'topic': q['topic'],
+           'stem': q['stem'], 'opts': q['opts'], 'key': q['key'], 'why': q['why'], 'id': q['id']}
+          for q in data['breadth'] if q.get('origin') == 'heuer']   # ids are C<chapter>-Q<n>; sec is the 2027 RTE section
+    if len(qs) != 420:
+        sys.exit(f'tmc-trainer.html: expected 420 book-sourced breadth items, found {len(qs)}')
+    chapters = json.load(open(os.path.join(BANKS, 'tmc-chapters.json'), encoding='utf-8'))
+    return {'chapters': chapters, 'questions': qs}
 
 
 def sync():

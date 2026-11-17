@@ -3,7 +3,7 @@
    Cache-first strategy: game is fully playable offline after
    the first load.
    ============================================================ */
-const CACHE = 'rcp-study-v31-tmc-board-style';
+const CACHE = 'rcp-study-v32-rte-source';
 
 const PRECACHE = [
   '/RCPStudyGame/css/battle-world.css',
