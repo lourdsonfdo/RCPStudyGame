@@ -28,6 +28,6 @@ A new section in a Recall drill needs a boss name in `BOSSES` (tools/build_final
 ## Not done / known limits
 - The 20 CSE simulations in the TMC trainer are not in the game (different format from Patient Crisis).
 - No Patient Crisis cases for the three new courses.
-- Answer-length cue: the correct option is the uniquely longest in 63% / 68% / 64% of the 202F / 203F / TMC
-  questions (chance is 25%). Recall has the same cue. The midterm banks were fixed with rewritten distractors
-  (`tools/midterm/fixes20X.json`); the same has not been done here.
+- Answer-length cue: fixed in Recall for 202F/203F on 2026-11-16/17 (board-style distractor rewrite, Codex-audited;
+  correct option uniquely longest now 21% / 24%) and synced here (CACHE rcp-study-v30-finals-board-style).
+  The TMC bank still has the cue (64%).
