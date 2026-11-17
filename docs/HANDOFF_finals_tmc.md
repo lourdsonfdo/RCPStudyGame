@@ -30,4 +30,5 @@ A new section in a Recall drill needs a boss name in `BOSSES` (tools/build_final
 - No Patient Crisis cases for the three new courses.
 - Answer-length cue: fixed in Recall for 202F/203F on 2026-11-16/17 (board-style distractor rewrite, Codex-audited;
   correct option uniquely longest now 21% / 24%) and synced here (CACHE rcp-study-v30-finals-board-style).
-  The TMC bank still has the cue (64%).
+  TMC bank fixed 2026-11-17 in ~/rcp-tmc-trainer (241/420 rewritten, Codex-audited against the Heuer text;
+  answer clearly longest 56% -> 3%), copied to Recall and synced here (CACHE rcp-study-v31-tmc-board-style).
