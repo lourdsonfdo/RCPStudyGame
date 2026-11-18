@@ -17,7 +17,7 @@ App.registerScreen('settings', ({ root, state }) => {
       <span class="br1"></span><span class="br2"></span>
       <div class="header-strip" style="margin: -14px -16px 14px;">
         <span><span class="status-dot"></span>OPERATOR PROFILE</span>
-        <span>LOURD · ID#0042</span>
+        <span>STUDENT · ID#0042</span>
       </div>
       <div class="vitals">
         <div class="vital">

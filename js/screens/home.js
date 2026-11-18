@@ -52,7 +52,7 @@ App.registerScreen('home', ({ root, state }) => {
         <span class="ac-scene-caption">Learn. Practice. Become.</span>
       </div>
       <aside class="ac-study" aria-labelledby="ac-next-title">
-        <div class="ac-welcome">Welcome back, Lourd<span>${esc(State.titleForLevel(state.level))}</span></div>
+        <div class="ac-welcome">Welcome back<span>${esc(State.titleForLevel(state.level))}</span></div>
         <div class="ac-next"><span class="ac-kicker">Your next step</span>
           <h2 id="ac-next-title">${next ? (next.isWeak ? 'Build confidence in ' : 'Explore ') + esc(next.label) : 'Choose your path'}</h2>
           <p>${next?.isWeak ? 'A little focused practice on a topic you’ve found challenging.' : 'Make a little progress today. Practice first, then take on a boss.'}</p>
